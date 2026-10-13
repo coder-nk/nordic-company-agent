@@ -37,7 +37,8 @@ for measurement.
 | 2 | 250 fresh companies with discovery leads | 240 (all L1) | 3 (+2 doubtful) | 7 | org numbers inside group-company lists and misnamed hits no longer prove identity; parent © footers; foreign HQ blocks; foreign phone prefixes; authority and invoice mailboxes; truncated handles |
 | 3 | 300 fresh (150 registry-site-only, 150 with leads) | 172 (150 L1, 22 L2) | 5 (+3 doubtful) | 4 (+9 doubtful) | structural policies: L1 needs a visible labelled proof; no sections of foreign or group roots, chains or platforms; foreign and group signals on all pages; L2 needs an exact registry contact, a visible full legal name and a privacy/terms controller check; conservative phones and e-mails (no shared switchboards, postboxes or sister contacts); description filters; stricter handles |
 | 4 | 300 fresh (same mix) | 130 (127 L1, 3 L2) | 2 (+2 doubtful) | 4 | decisive policies: exclusivity (no other org numbers on any fetched page except in data-processor or agency context), brand alignment, acquisition and ownership phrases, the controller check also for L1, impostor/template pages, contacts only from the company's own block or equal to the registry, logos on own domain only, every span must contain its value |
-| 5 | 500 fresh | *pending* | | | |
+| 5 | 500 fresh | 242 (238 L1, 4 L2) | 3 (+2 doubtful) | ~10 (theme demo text, shared phones) | removed the last "own block on a group site" rescue: any group, foreign, sister or ownership signal → ambiguous; subdomains inherit the registrable domain's co-filers; «vi/oss» definitions in privacy pages; co-filers sharing the brand token; theme/demo filters; shared phones never published |
+| 6 | 600 fresh | *pending* | | | |
 
 ## Refresh
 * Re-running 50 companies against their previous envelopes: **0 changes** (idempotent). Sources disabled or
