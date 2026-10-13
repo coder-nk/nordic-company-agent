@@ -4,7 +4,8 @@
 * **Used:** Brønnøysundregistrene open data (NLOD 2.0, attribution in every envelope's `licences`),
   Regnskapsregisteret open API (NLOD 2.0), company-owned websites (robots.txt honoured, one polite fetch per
   page, quoted only as evidence), NAV job-ad feed (public token, NAV API terms: inactive ads are removed),
-  GLEIF (CC0), Wikidata (CC0), Brreg Støtteregisteret (NLOD 2.0).
+  GLEIF (CC0), Wikidata (CC0), Brreg Støtteregisteret (NLOD 2.0), Forskningsrådet SkatteFUNN lists and open
+  project data (NLOD 2.0), Mattilsynet smilefjes inspections (CC BY 4.0, attributed in every envelope that uses them).
 * **Not used** (their terms forbid systematic collection, or there is no permitted access): proff.no / forvalt.no,
   purehelp.no, 1881.no, gulesider.no, regnskapstall.no, LinkedIn, Meta/Instagram, Glassdoor, Indeed, Google or Bing
   results, Norid whois/RDAP, w2.brreg.no/kunngjoring (robots.txt disallows it). Social profile URLs are

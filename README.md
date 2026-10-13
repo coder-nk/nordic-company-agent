@@ -60,7 +60,9 @@ Other commands: `nca company 923609016 --summary`, `nca serve` (HTTP: `GET /comp
 | NAV Arbeidsplassen job feed | active job ads by employer org number | public rotating token (no account) | NAV API terms |
 | GLEIF API | LEI, LEI status, LEI parents | keyless | CC0 |
 | Wikidata | Wikidata item, Wikipedia article, listing, linked profiles (P2333 = org number) | keyless SPARQL | CC0 |
-| Støtteregisteret (Brreg) | dated state-aid grants | keyless | NLOD 2.0 |
+| Støtteregisteret (Brreg) | dated state-aid grants (live search; full register dump as a declared cache for large batches) | keyless | NLOD 2.0 |
+| Forskningsrådet: SkatteFUNN lists and open project data | R&D tax-incentive projects, Research Council applications/grants (declared cache) | public files | NLOD 2.0 (data.norge.no) |
+| Mattilsynet smilefjes inspections | dated food-safety inspections at registered locations (declared cache) | public API CSV | CC BY 4.0 (Mattilsynet) |
 
 **No language model is used.** The summaries are deterministic templates over published claims, and
 every sentence cites claim and evidence ids. No proff.no, purehelp, 1881, gulesider, LinkedIn, Meta,
@@ -82,6 +84,9 @@ Google or search-engine scraping. See `LIMITATIONS.md` and `CRAWLERS.md`.
   cursor at run time; inactive ads removed.
 * `wikidata_p2333.json.gz`: org number → Wikidata QID map, so batches with no Wikidata entities need no
   Wikidata request.
+* `state_aid.jsonl.gz`: Støtteregisteret grants for 42,788 universe companies, used only when the budget cannot afford the live search.
+* `public_records.jsonl.gz`: SkatteFUNN, Research Council and Mattilsynet records for 19,355 universe companies.
+* `registry_website_domains.json.gz`: hosts filed as website by several org numbers (never proof of identity).
 
 Rebuild with `tools/build_site_discovery.py`, `tools/build_nav_jobs_cache.py` and `tools/build_wikidata_index.py`.
 
