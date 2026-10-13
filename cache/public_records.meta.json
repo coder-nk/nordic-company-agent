@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-13T16:56:17Z",
+ "built_at": "2026-10-13T16:58:01Z",
  "built_by": "tools/build_public_records_cache.py",
  "companies": {
   "food_inspection": 5659,
@@ -15,7 +15,7 @@
  "files": [
   {
    "bytes": 1744549,
-   "checked_at": "2026-10-13T16:55:11Z",
+   "checked_at": "2026-10-13T16:56:29Z",
    "etag": "\"1dd56bb4231eaa5\"",
    "fetched_at": "2026-10-13T16:55:11Z",
    "final_url": "https://www.forskningsradet.no/siteassets/skattefunn/tall/260902-webliste-skattefunn.xlsx",
@@ -28,7 +28,7 @@
   },
   {
    "bytes": 12200263,
-   "checked_at": "2026-10-13T16:55:15Z",
+   "checked_at": "2026-10-13T16:56:30Z",
    "etag": "\"1dd56bb5b8e0c47\"",
    "fetched_at": "2026-10-13T16:55:15Z",
    "final_url": "https://www.forskningsradet.no/siteassets/skattefunn/tall/skattefunn-innsendte-soknader-2002-2024.xlsx",
@@ -41,7 +41,7 @@
   },
   {
    "bytes": 54010790,
-   "checked_at": "2026-10-13T16:55:17Z",
+   "checked_at": "2026-10-13T16:56:31Z",
    "etag": "W/\"af47853d164bd316bf121dfd88db1047274dd1925b88e88fb29ea84863ba260c\"",
    "fetched_at": "2026-10-13T16:55:17Z",
    "final_url": "https://raw.githubusercontent.com/Forskningsradet/open-data/main/datasets/soknader2/dataset.csv",
@@ -54,7 +54,7 @@
   },
   {
    "bytes": 15825563,
-   "checked_at": "2026-10-13T16:55:28Z",
+   "checked_at": "2026-10-13T16:56:34Z",
    "etag": "\"6acdc78d-f17a9b\"",
    "fetched_at": "2026-10-13T16:55:28Z",
    "final_url": "https://smilefjes.mattilsynet.no/api/tilsyn.csv",

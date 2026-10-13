@@ -76,8 +76,8 @@ OUT_META = CACHE / "public_records.meta.json"
 UNIVERSE = ROOT / "data" / "signalpost-company-universe-2025.jsonl.gz"
 
 SKATTEFUNN_PAGE = "https://www.forskningsradet.no/skattefunn/suksesshistorier/"
-SKATTEFUNN_CURRENT_RX = re.compile(r'href="([^"]*/\d{6}-webliste-skattefunn\.xlsx)"', re.I)
-SKATTEFUNN_HISTORY_RX = re.compile(r'href="([^"]*/skattefunn-innsendte-soknader-2002-\d{4}\.xlsx)"', re.I)
+SKATTEFUNN_CURRENT_RX = re.compile(r'href="([^"]*/\d{6}-webliste-skattefunn\.xlsx)"', re.IGNORECASE)
+SKATTEFUNN_HISTORY_RX = re.compile(r'href="([^"]*/skattefunn-innsendte-soknader-2002-\d{4}\.xlsx)"', re.IGNORECASE)
 NFR_CSV = "https://raw.githubusercontent.com/Forskningsradet/open-data/main/datasets/soknader2/dataset.csv"
 # Documented by the research notes / task, but robots.txt on data.mattilsynet.no disallows everything;
 # the national catalogue distribution is tried next.
@@ -438,8 +438,8 @@ def iter_skattefunn(path: Path, url: str, sha: str, universe: set[str], stats: C
                         break
                     continue
 
-                def g(k: str) -> Any:
-                    i = header_idx.get(k)  # type: ignore[union-attr]
+                def g(k: str, values: tuple = values, idx: dict[str, int] = header_idx) -> Any:
+                    i = idx.get(k)
                     return values[i] if i is not None and i < len(values) else None
 
                 stats["skattefunn_rows"] += 1
@@ -520,7 +520,7 @@ def iter_nfr(path: Path, url: str, sha: str, universe: set[str], stats: Counter)
             start_line = line_no + 1
             line_no = reader.line_num
 
-            def g(k: str) -> str | None:
+            def g(k: str, values: list[str] = values) -> str | None:
                 i = idx.get(k)
                 return values[i] if i is not None and i < len(values) else None
 
@@ -603,7 +603,7 @@ def iter_smilefjes(path: Path, url: str, sha: str, universe: set[str], orgmap: d
     header, rows = read_smilefjes(path)
     idx = {h.strip(): i for i, h in enumerate(header)}
     for line, values in rows:
-        def g(k: str) -> str | None:
+        def g(k: str, values: list[str] = values) -> str | None:
             i = idx.get(k)
             return values[i] if i is not None and i < len(values) else None
 
@@ -802,20 +802,20 @@ def phase_write() -> dict[str, Any]:
         "stats": dict(sorted(stats.items())),
         "licences": {k: v for k, v in LICENCES.items()},
         "notes": [
-            "SkatteFUNN status: Godkjent/Søknad godkjent JA -> approved; NEI (or Søknad avslått JA) -> rejected; "
-            "empty -> no_decision_recorded. date = Søknadsdato/Innsendt dato, decision_date = Vedtaksdato.",
-            "Forskningsrådet status from prosjektfase: Bevilgning -> granted, Avsluttet -> completed, Avslag -> "
+            ("SkatteFUNN status: Godkjent/Søknad godkjent JA -> approved; NEI (or Søknad avslått JA) -> rejected; "
+            "empty -> no_decision_recorded. date = Søknadsdato/Innsendt dato, decision_date = Vedtaksdato."),
+            ("Forskningsrådet status from prosjektfase: Bevilgning -> granted, Avsluttet -> completed, Avslag -> "
             "rejected, Vurderes -> under_review, Mottatt -> received. amount = tildelt_belop verbatim, only for "
             "granted/completed projects with a positive amount (total for the whole project period). The file does "
-            "not state a currency; Forskningsrådet amounts are NOK.",
-            "Food inspections: grade = total_karakter as given (0/1 smile, 2 straight mouth, 3 sad mouth per "
+            "not state a currency; Forskningsrådet amounts are NOK."),
+            ("Food inspections: grade = total_karakter as given (0/1 smile, 2 straight mouth, 3 sad mouth per "
             "Mattilsynet's documented scale). Inspections at units that are deleted from Enhetsregisteret (no parent "
-            "provable) are dropped. Mattilsynet withdraws invalidated inspections, so rebuild daily.",
+            "provable) are dropped. Mattilsynet withdraws invalidated inspections, so rebuild daily."),
             "raw_cells: original cell values used, as strings (xlsx dates as read by openpyxl, ISO-8601).",
-            "summary: verbatim popular-science summary, cut to <= 600 characters at a word boundary "
-            "(summary_truncated=true when cut; no ellipsis added).",
-            "record_id: skattefunn:soknad:<Søknadsnummer> (new system), skattefunn:prosjekt:<Prosjektnummer> "
-            "(2002-2024 file), forskningsradet:<prosjektnummer>, mattilsynet:<tilsynid>.",
+            ("summary: verbatim popular-science summary, cut to <= 600 characters at a word boundary "
+            "(summary_truncated=true when cut; no ellipsis added)."),
+            ("record_id: skattefunn:soknad:<Søknadsnummer> (new system), skattefunn:prosjekt:<Prosjektnummer> "
+            "(2002-2024 file), forskningsradet:<prosjektnummer>, mattilsynet:<tilsynid>."),
             "Person fields (project leader names, gender) are never stored.",
         ] + list(downloads.get("_notes") or []),
     }

@@ -75,6 +75,7 @@ for _text, _id in ((LICENCE_SKATTEFUNN, "NLOD-2.0-SkatteFUNN"), (LICENCE_NFR, "N
                    (LICENCE_MATTILSYNET, "CC-BY-4.0-Mattilsynet")):
     envelope.LICENCE_IDS.setdefault(_text, _id)
     envelope.LICENCE_TEXTS.setdefault(_id, _text)
+del _text, _id
 
 CONFIDENCE = 0.95                 # exact organisation number, read from a declared cache of the official file
 CONFIDENCE_CACHED_MAPPING = 0.85  # inspection at a location whose parent comes only from the cached brreg mapping

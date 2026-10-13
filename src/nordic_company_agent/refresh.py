@@ -51,7 +51,8 @@ CHANGE_TYPES = {
 
 # Fields whose items are time-series/activity streams: new items are 'added' but old items aging
 # out of a source window are not 'removed' business events.
-WINDOWED_FIELDS = {"registry_event", "role_change_event", "news_item", "state_aid_grant"}
+WINDOWED_FIELDS = {"registry_event", "role_change_event", "news_item", "state_aid_grant", "tax_incentive_project",
+                   "research_grant", "food_inspection", "job_posting_history"}
 
 
 def _ckey(c: dict[str, Any]) -> tuple[str, str]:

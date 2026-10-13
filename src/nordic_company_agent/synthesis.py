@@ -332,6 +332,29 @@ def build_summary(claims: list[dict[str, Any]], modules: dict[str, dict[str, Any
               f"({len(grants)} grant{'s' if len(grants) != 1 else ''} listed).",
               grants[:1], "activity_timeline")
 
+    proj = sorted(C.get("tax_incentive_project"), key=lambda c: str((c["value"] or {}).get("date")), reverse=True)
+    if proj:
+        p0 = proj[0]["value"] or {}
+        approved = [c for c in proj if str((c["value"] or {}).get("status", "")).lower() in ("approved", "ja")]
+        S.add(f"It has applied for R&D tax incentives (SkatteFUNN): {len(proj)} project{'s' if len(proj) != 1 else ''}"
+              + (f", {len(approved)} approved" if approved else "")
+              + (f"; latest “{p0.get('title')}” ({str(p0.get('date'))[:10]})" if p0.get("title") else "") + ".",
+              proj[:3], "activity_timeline")
+    rg = sorted(C.get("research_grant"), key=lambda c: str((c["value"] or {}).get("date")), reverse=True)
+    if rg:
+        g0 = rg[0]["value"] or {}
+        S.add(f"It appears in the Research Council of Norway's project records ({len(rg)} application"
+              f"{'s' if len(rg) != 1 else ''}; latest “{g0.get('title')}”, status {g0.get('status')}).", rg[:2],
+              "activity_timeline")
+    insp = sorted(C.get("food_inspection"), key=lambda c: str((c["value"] or {}).get("date")), reverse=True)
+    if insp:
+        i0 = insp[0]["value"] or {}
+        grade = {"0": "no remarks (smiling face)", "1": "minor remarks (smiling face)",
+                 "2": "orders issued (straight face)", "3": "serious breaches (sad face)"}.get(str(i0.get("grade")),
+                                                                                             str(i0.get("grade")))
+        S.add(f"Food-safety inspections (Mattilsynet): latest {str(i0.get('date'))[:10]} at "
+              f"{i0.get('location_name') or 'a registered location'}: {grade}.", insp[:2], "activity_timeline")
+
     # 10. Changes
     if changes:
         mat = [c for c in changes if c.get("materiality") == "material"]
