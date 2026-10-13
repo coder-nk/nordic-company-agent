@@ -86,7 +86,10 @@ def test_recent_grants_exact_decimals(tmp_path):
     assert ev.source_class == OFFICIAL_STATE_AID and ev.licence == NLOD
     assert ev.page_url == "https://stotte.brreg.no/nb/oppslag/stoettetildeling/1000307993"
     assert ev.retrieved_via.startswith("POST ") and "STOETTEMOTTAKER_ORGNR" in ev.retrieved_via
-    assert '"beloep":"14118201.16"' in ev.claim_span
+    raw = (FIX / "stotte_equinor.json").read_text(encoding="utf-8") if (FIX / "stotte_equinor.json").exists() else None
+    assert "14118201.16" in top.evidence[1].claim_span and top.evidence[1].locator.endswith("/tildeltBeloep")
+    for e in top.evidence[:2]:
+        assert e.claim_span and (raw is None or e.claim_span in raw), e.claim_span
     assert eq.modules["state_aid"].availability == "available"
     assert eq.data["state_aid"]["grant_count"] == 80
     # Values serialise without float noise.

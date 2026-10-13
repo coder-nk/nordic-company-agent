@@ -50,8 +50,7 @@ def by_key(c: CompanyResult) -> dict[str, Claim]:
 def mock_parents(router: respx.MockRouter) -> None:
     fx = {"6367001EBAEQ4T2WM033/direct-parent": "gleif_parent_kernel.json",
           "6367001EBAEQ4T2WM033/ultimate-parent": "gleif_parent_awilhelmsen.json",
-          "529900LMX1QKF7XGQA66/direct-parent": "gleif_parent_yit.json",
-          "529900LMX1QKF7XGQA66/ultimate-parent": "gleif_parent_yit.json"}
+          }  # 529900LMX1QKF7XGQA66 (SWEROCK) is LAPSED: its stale parents must not even be fetched
     for path, name in fx.items():
         router.get(f"{gleif.BASE}/lei-records/{path}").mock(
             return_value=httpx.Response(200, content=(FIX / name).read_bytes(), headers=JSONAPI))
@@ -74,7 +73,7 @@ def test_batch_claims_parents_and_not_available(tmp_path):
         mock_parents(router)
         run(ctx, cos)
         assert batch.call_count == 1
-    assert ctx.client.used == 5  # 1 batch + 2 x (direct + ultimate parent)
+    assert ctx.client.used == 3  # 1 batch + direct + ultimate parent (DIPS only; SWEROCK is LAPSED)
     eq, dips, swe, sandnes = cos
 
     k = by_key(eq)
@@ -105,7 +104,7 @@ def test_batch_claims_parents_and_not_available(tmp_path):
     ks = by_key(swe)
     assert ks["lei_status"].value["registration_status"] == "LAPSED"
     assert "does not mean the company is inactive" in ks["lei_status"].note
-    assert ks["lei_parent|direct"].value["country"] == "FI"
+    assert "lei_parent|direct" not in ks and "LAPSED" in swe.data["gleif"]["parent_note"]
 
     assert sandnes.claims == []
     assert sandnes.modules["gleif"].availability == "not_available"

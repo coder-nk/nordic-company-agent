@@ -76,8 +76,10 @@ async def _run(ctx: RunContext, company: CompanyResult) -> None:
         company.outcome(ModuleOutcome(MODULE, "not_applicable", note=f"identity not an active main unit ({status})"))
         return
     if rec.get("erIKonsern") is not True:
-        company.outcome(ModuleOutcome(MODULE, "not_applicable",
-                                      note="not registered as part of a group (erIKonsern is not true)"))
+        # Checked (registry flag), nothing registered: not_available rather than not_applicable, because a
+        # parent may still exist outside the Norwegian group register (e.g. a foreign owner).
+        company.outcome(ModuleOutcome(MODULE, "not_available",
+                                      note="no group registered in Enhetsregisteret (erIKonsern is not true)"))
         return
     url = group_url(orgnr)
     if not ctx.allow(TIER, 1):

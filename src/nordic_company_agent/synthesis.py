@@ -54,12 +54,39 @@ def _money(v: Any, cur: str) -> str:
     a = abs(d)
     sign = "-" if d < 0 else ""
     if a >= Decimal("1e9"):
-        return f"{sign}{cur} {a / Decimal('1e9'):.2f} bn"
+        return f"{cur} {sign}{a / Decimal('1e9'):.2f} bn"
     if a >= Decimal("1e6"):
-        return f"{sign}{cur} {a / Decimal('1e6'):.1f} m"
+        return f"{cur} {sign}{a / Decimal('1e6'):.1f} m"
     if a >= Decimal("1e3"):
-        return f"{sign}{cur} {a / Decimal('1e3'):.0f} k"
-    return f"{sign}{cur} {a:.0f}"
+        return f"{cur} {sign}{a / Decimal('1e3'):.0f} k"
+    return f"{cur} {sign}{a:.0f}"
+
+
+REGISTRY_PATH_LABELS = [
+    ("antallAnsatte", "employee count"), ("harRegistrertAntallAnsatte", "employee count"),
+    ("forretningsadresse", "business address"), ("postadresse", "postal address"), ("navn", "name"),
+    ("naeringskode", "industry code"), ("sisteInnsendteAarsregnskap", "latest filed accounts"),
+    ("hjemmeside", "website"), ("epostadresse", "e-mail"), ("telefon", "phone"), ("mobil", "mobile"),
+    ("vedtektsfestetFormaal", "statutory purpose"), ("vedtektsdato", "articles of association"),
+    ("aktivitet", "activity"), ("kapital", "share capital"), ("organisasjonsform", "legal form"),
+    ("konkurs", "bankruptcy status"), ("underAvvikling", "liquidation status"), ("erIKonsern", "group membership"),
+    ("registrertIMvaregisteret", "VAT registration"), ("registrertIForetaksregisteret", "business register"),
+    ("institusjonellSektorkode", "sector"), ("stiftelsesdato", "founding date"), ("slettedato", "deletion"),
+    ("paategninger", "register annotations"), ("fravalgRevisjon", "audit exemption"),
+    ("overordnetEnhet", "parent body"), ("maalform", "language form"), ("historiskeNavn", "name history"),
+]
+
+
+def _humanize_paths(paths: list[str]) -> list[str]:
+    out: list[str] = []
+    for p in paths:
+        key = p.strip("/").split("/")[0]
+        if key.startswith("registreringsdato") and key not in ("registreringsdatoEnhetsregisteret",):
+            continue  # bookkeeping timestamps that accompany the real change
+        label = next((lab for k, lab in REGISTRY_PATH_LABELS if key.startswith(k)), key)
+        if label not in out:
+            out.append(label)
+    return out
 
 
 class _S:
@@ -120,11 +147,11 @@ def build_summary(claims: list[dict[str, Any]], modules: dict[str, dict[str, Any
     if purpose:
         p = purpose["value"]
         p = p if len(p) <= 220 else p[:217].rsplit(" ", 1)[0] + "…"
-        S.add(f"Registered activity: “{p}”.", [purpose], "activity")
+        S.add(f"Registered activity: “{p.rstrip('.')}”.", [purpose], "activity")
     if desc:
         d = desc["value"]
         d = d if len(d) <= 220 else d[:217].rsplit(" ", 1)[0] + "…"
-        S.add(f"The company's own website describes it as: “{d}” (company-reported).", [desc], "activity")
+        S.add(f"The company's own website describes it as: “{d.rstrip('.')}” (company-reported).", [desc], "activity")
 
     # 3. Where
     addr = C.one("business_address")
@@ -149,11 +176,14 @@ def build_summary(claims: list[dict[str, Any]], modules: dict[str, dict[str, Any
     board = C.get("board_member")
     owner = C.one("owner")
     parts, used = [], []
+    same_person = ceo and chair and ceo["value"].get("name") == chair["value"].get("name")
     if ceo:
-        parts.append(f"{ceo['value'].get('name')} is general manager (daglig leder)")
+        parts.append(f"{ceo['value'].get('name')} is general manager (daglig leder)"
+                     + (" and chairs the board" if same_person else ""))
         used.append(ceo)
-    if chair:
+    if chair and not same_person:
         parts.append(f"{chair['value'].get('name')} chairs the board")
+    if chair:
         used.append(chair)
     if board:
         parts.append(f"{len(board) + (1 if chair else 0)} board member{'s' if len(board) + (1 if chair else 0) != 1 else ''} are registered")
@@ -177,34 +207,52 @@ def build_summary(claims: list[dict[str, Any]], modules: dict[str, dict[str, Any
                   + (f" (as of {v.get('as_of')})" if v.get("as_of") else "") + ".", [emp], "size")
         elif v.get("range"):
             S.add(f"Fewer than five employees are registered (exact count not published).", [emp], "size")
-    rev = sorted(C.get("revenue"), key=lambda c: ((c.get("period") or {}).get("year") or 0,
-                                                     (c.get("period") or {}).get("scope") == "company"), reverse=True)
-    company_rev = [c for c in rev if (c.get("period") or {}).get("scope") == "company"] or rev
-    if company_rev:
-        r0 = company_rev[0]
-        per = r0.get("period") or {}
+    periods = [c for c in C.get("accounts_period")]
+    def _pkey(c):
+        p = c.get("period") or {}
+        return (p.get("year") or 0, 1 if p.get("scope") == "company" else 0)
+    company_periods = sorted([c for c in periods if (c.get("period") or {}).get("scope") == "company"], key=_pkey,
+                             reverse=True)
+    headline = company_periods[0] if company_periods else (sorted(periods, key=_pkey, reverse=True) or [None])[0]
+    if headline:
+        per = headline.get("period") or {}
         yr, scope = per.get("year"), per.get("scope")
         cur = _currency(C, yr, scope)
         same = lambda f: next((c for c in C.get(f) if (c.get("period") or {}).get("year") == yr
                                and (c.get("period") or {}).get("scope") == scope), None)
-        op, npf, eq, ta = same("operating_profit"), same("net_profit"), same("equity"), same("total_assets")
-        txt = f"In its {yr} {'group' if scope == 'group' else 'company'} accounts it reported revenue of {_money(r0['value'], cur)}"
+        r0, op, npf, eq, ta = same("revenue"), same("operating_profit"), same("net_profit"), same("equity"), same("total_assets")
+        days = _period_days(per)
+        scope_txt = "group (consolidated)" if scope == "group" else "company"
+        parts = []
+        if r0:
+            parts.append(f"revenue of {_money(r0['value'], cur)}")
         if op:
-            txt += f", an operating result of {_money(op['value'], cur)}"
+            parts.append(f"an operating result of {_money(op['value'], cur)}")
         if npf:
-            txt += f" and a net result of {_money(npf['value'], cur)}"
-        txt += "."
-        S.add(txt, [r0, op, npf], "financials")
+            parts.append(f"a net result of {_money(npf['value'], cur)}")
+        if parts:
+            txt = f"In its {yr} {scope_txt} accounts"
+            if days is not None and days < 300:
+                txt += f" (a short {days}-day period)"
+            txt += " it reported " + (", ".join(parts[:-1]) + " and " + parts[-1] if len(parts) > 1 else parts[0]) + "."
+            S.add(txt, [headline, r0, op, npf], "financials")
         if eq and ta:
-            S.add(f"Equity was {_money(eq['value'], cur)} of total assets {_money(ta['value'], cur)}.", [eq, ta], "financials")
-        prev = next((c for c in company_rev if (c.get("period") or {}).get("year") == (yr or 0) - 1
+            neg = (_num(eq["value"]) or 0) < 0
+            S.add(f"At the end of {yr} its {scope_txt} equity was {_money(eq['value'], cur)}{' (negative)' if neg else ''} "
+                  f"and total assets {_money(ta['value'], cur)}.", [eq, ta], "financials")
+        prev = next((c for c in C.get("revenue") if (c.get("period") or {}).get("year") == (yr or 0) - 1
                      and (c.get("period") or {}).get("scope") == scope), None)
-        if prev and _num(prev["value"]) and _num(prev["value"]) != 0 and _currency(C, yr - 1, scope) == cur:
-            g = (_num(r0["value"]) - _num(prev["value"])) / abs(_num(prev["value"])) * 100
+        founded = (C.one("founding_date") or {}).get("value")
+        prev_per = (prev or {}).get("period") or {}
+        ok_growth = (r0 and prev and _num(prev["value"]) and _num(r0["value"])
+                     and _num(prev["value"]) > 0 and _num(r0["value"]) > 0
+                     and _currency(C, yr - 1, scope) == cur
+                     and (_period_days(prev_per) or 365) >= 300 and (days or 365) >= 300
+                     and not (founded and prev_per.get("start") and str(founded) > str(prev_per.get("start"))))
+        if ok_growth:
+            g = (_num(r0["value"]) - _num(prev["value"])) / _num(prev["value"]) * 100
             S.add(f"Revenue {'grew' if g >= 0 else 'fell'} {abs(g):.1f}% from {yr - 1} (derived from the two filed figures).",
                   [r0, prev], "financials")
-    elif (modules.get("accounts") or {}).get("availability") in ("not_available", "not_applicable"):
-        pass
 
     # 6. Group and identifiers
     parent = C.one("parent_company", "parent")
@@ -219,7 +267,10 @@ def build_summary(claims: list[dict[str, Any]], modules: dict[str, dict[str, Any
         S.add(txt + ".", [parent, ult], "group")
     lei = C.one("lei")
     if lei:
-        S.add(f"It holds LEI {lei['value']}.", [lei], "identifiers")
+        lst = C.one("lei_status")
+        rs = ((lst or {}).get("value") or {}).get("registration_status")
+        extra = f" (registration {rs}: not renewed)" if rs == "LAPSED" else (f" (registration {rs})" if rs and rs != "ISSUED" else "")
+        S.add(f"It holds LEI {lei['value']}{extra}.", [lei, lst], "identifiers")
     listing = C.one("stock_listing")
     if listing:
         lv = listing["value"]
@@ -255,14 +306,18 @@ def build_summary(claims: list[dict[str, Any]], modules: dict[str, dict[str, Any
     grants = sorted(C.get("state_aid_grant"), key=lambda c: str((c["value"] or {}).get("date")), reverse=True)
     if ev:
         e0 = ev[0]["value"]
-        S.add(f"Latest registry update: {str(e0.get('date'))[:10]} ({', '.join((e0.get('fields') or [])[:4]) or e0.get('change_type')}); "
-              f"{len(ev)} dated registry events in the last year.", ev[:3], "activity_timeline")
+        what = ", ".join(_humanize_paths(e0.get("fields") or [])[:4]) or str(e0.get("change_type") or "update")
+        S.add(f"Latest registry update: {str(e0.get('date'))[:10]} ({what}); "
+              f"{len(ev)} dated registry event{'s' if len(ev) != 1 else ''} in the last year.", ev[:3], "activity_timeline")
     if news:
         n0 = news[0]["value"]
         S.add(f"Most recent item on its website: “{n0.get('title')}” ({str(n0.get('published'))[:10]}).", news[:1], "activity_timeline")
     if grants:
         g0 = grants[0]["value"]
-        S.add(f"It has received public support: latest grant {str(g0.get('date'))[:10]} from {g0.get('grantor')}.",
+        giver = g0.get("grantor") or (f"the body with organisation number {g0.get('grantor_organisation_number')}"
+                                      if g0.get("grantor_organisation_number") else "a public body")
+        S.add(f"It has received public support: latest grant {str(g0.get('date'))[:10]} from {giver} "
+              f"({len(grants)} grant{'s' if len(grants) != 1 else ''} listed).",
               grants[:1], "activity_timeline")
 
     # 10. Changes
@@ -298,6 +353,15 @@ def build_summary(claims: list[dict[str, Any]], modules: dict[str, dict[str, Any
         S.sentences.append({"topic": "identity", "text": msg, "claim_ids": [], "evidence_ids": []})
     return {"text": " ".join(s["text"] for s in S.sentences), "sentences": S.sentences, "unknowns": unknowns,
             "method": "deterministic template over published claims; every sentence cites claim and evidence ids"}
+
+
+def _period_days(per: dict[str, Any]) -> int | None:
+    from datetime import date
+    try:
+        a, b = date.fromisoformat(str(per.get("start"))[:10]), date.fromisoformat(str(per.get("end"))[:10])
+        return (b - a).days + 1
+    except (ValueError, TypeError):
+        return None
 
 
 def _currency(C: _Claims, year: Any, scope: Any) -> str:

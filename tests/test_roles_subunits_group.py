@@ -185,7 +185,7 @@ def test_group_gating_and_404(tmp_path):
     c = company("930459615", erIKonsern=False)
     ctx = RunContext(RunConfig(run_id="t", out_dir=tmp_path))
     asyncio.run(group.run(ctx, c))
-    assert c.modules["group"].availability == "not_applicable" and ctx.client.used == 0
+    assert c.modules["group"].availability == "not_available" and ctx.client.used == 0
     d = company("930459615", erIKonsern=True)
     run(group, d, tmp_path / "d", {f"{BASE}/konsernstruktur/930459615": (404, b"")})
     assert d.modules["group"].availability == "not_available" and d.claims == []

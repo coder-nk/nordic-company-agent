@@ -117,8 +117,8 @@ async def phase_dns(nameserver: str, concurrency: int) -> None:
     log(f"dns: {len(done)} done, {len(todo)} to resolve via {nameserver}")
     r = dns.asyncresolver.Resolver(configure=False)
     r.nameservers = [nameserver]
-    r.timeout = 4
-    r.lifetime = 8
+    r.timeout = 1.5   # per-try: the campus resolver drops some UDP queries; retry fast
+    r.lifetime = 7
     sem = asyncio.Semaphore(concurrency)
     out = (WORK / "dns.jsonl").open("a", encoding="utf-8")
     stats = Counter()

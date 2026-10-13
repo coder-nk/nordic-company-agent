@@ -17,6 +17,7 @@ import json
 from decimal import Decimal
 from typing import Any
 
+from .registry import members_span, span_at
 from ..envelope import (NLOD, OFFICIAL_STATE_AID, Claim, CompanyResult, Evidence, ModuleOutcome, utc_iso)
 
 MODULE = "state_aid"
@@ -161,6 +162,7 @@ async def _run(ctx, company: CompanyResult) -> None:
         return
     retrieved_at = utc_iso(res.retrieved_at)
     sha = ctx.snapshots.save_result(res, retrieved_at)
+    raw_text = res.text
     doc = json.loads(res.content, parse_float=Decimal)
     grants = [(i, g) for i, g in enumerate(doc.get("stoettetildeling") or [])
               if ((_role(g, "rolletype.stoettemottaker") or {}).get("organisasjonsnummer")) == o]
@@ -210,23 +212,24 @@ async def _run(ctx, company: CompanyResult) -> None:
                         if lo is not None and hi is not None else "amount interval")
         else:
             disp_amt = "amount not stated"
-        span_kv: dict[str, Any] = {"stoettetiltaksnummer": nr, "tildelingsdato": g.get("tildelingsdato")}
-        if amount is not None:
-            span_kv["tildeltBeloep"] = {"beloep": str(amount), "valuta": currency}
-        elif rng:
-            span_kv["beloepsintervall"] = {k: str((rng.get(k) or {}).get("beloep")) for k in ("fraBeloep", "tilBeloep")}
-        span_kv["stoettegiver"] = giver.get("navn")
-        span = _span(**span_kv)
-        evs = [Evidence(source_url=SEARCH_URL, source_class=OFFICIAL_STATE_AID, source_name=SOURCE_NAME,
-                        retrieved_at=retrieved_at, content_sha256=sha, claim_span=span,
-                        locator=f"/stoettetildeling/{i}", extraction_method=VERSION, page_url=grant_page(nr),
-                        effective_at=g.get("tildelingsdato"), http_status=res.status, licence=NLOD, retrieved_via=via)]
+        rec_ptr = f"/stoettetildeling/{i}"
+        rec_span = (members_span(raw_text, rec_ptr, ["stoettetiltaksnummer", "tildelingsdato"])
+                    or span_at(raw_text, rec_ptr + "/tildelingsdato"))
+        amt_ptr = rec_ptr + ("/tildeltBeloep" if amount is not None else "/beloepsintervall")
+        amt_span = span_at(raw_text, amt_ptr)
+        common = dict(source_url=SEARCH_URL, source_class=OFFICIAL_STATE_AID, source_name=SOURCE_NAME,
+                      retrieved_at=retrieved_at, content_sha256=sha, extraction_method=VERSION,
+                      page_url=grant_page(nr), effective_at=g.get("tildelingsdato"), http_status=res.status,
+                      licence=NLOD, retrieved_via=via)
+        evs = [Evidence(claim_span=rec_span, locator=rec_ptr, **common)]
+        if amt_span:
+            evs.append(Evidence(claim_span=amt_span, locator=amt_ptr, **common))
         for hit, what in ((scheme_hit, "scheme name"), (purpose_hit, "purpose label")):
             if hit:
                 name, url, lsha, lra, li = hit
                 loc = f"/stoetteordning/{li}/navn" if what == "scheme name" else f"/{li}/navn"
                 evs.append(Evidence(source_url=url, source_class=OFFICIAL_STATE_AID, source_name=SOURCE_NAME,
-                                    retrieved_at=lra, content_sha256=lsha, claim_span=_span(navn=name)[:300],
+                                    retrieved_at=lra, content_sha256=lsha, claim_span=str(name)[:300],
                                     locator=loc, extraction_method=f"{VERSION}:{what.replace(' ', '_')}",
                                     licence=NLOD,
                                     retrieved_via=(f"POST {url} body=[]" if what == "scheme name" else None)))

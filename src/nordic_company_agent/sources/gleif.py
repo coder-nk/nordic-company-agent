@@ -16,6 +16,7 @@ import unicodedata
 from typing import Any
 from urllib.parse import urlencode
 
+from .registry import members_span, span_at
 from ..envelope import (CC0_GLEIF, OFFICIAL_LEI, Claim, CompanyResult, Evidence, ModuleOutcome,
                         utc_iso)
 
@@ -161,8 +162,11 @@ async def _fetch_parent(ctx, company: CompanyResult, lei: str, kind: str) -> tup
     if len(parent_orgnr) == 9:
         note += f"; parent registeredAs {val['registered_as']} (Norwegian organisation number {parent_orgnr})"
     ent = attrs.get("entity") or {}
-    span = _span(lei=val["lei"], legalName={"name": val["name"]}, registeredAs=ent.get("registeredAs"))
-    ev = _evidence(lei=val["lei"], res_sha=sha, retrieved_at=retrieved_at, locator="/data/attributes",
+    raw = res.text
+    base_ptr = "/data/0/attributes" if isinstance(doc.get("data"), list) else "/data/attributes"
+    span = (members_span(raw, base_ptr + "/entity", ["legalName", "legalAddress"])
+            or span_at(raw, base_ptr + "/entity/legalName") or span_at(raw, base_ptr + "/lei"))
+    ev = _evidence(lei=val["lei"], res_sha=sha, retrieved_at=retrieved_at, locator=base_ptr + "/entity/legalName",
                    span=span, via=None, source_url=url,
                    effective_at=_date((attrs.get("registration") or {}).get("lastUpdateDate")))
     return [Claim(field="lei_parent", value=val, evidence=[ev], qualifier="direct" if relation == "parent" else "ultimate",
@@ -228,11 +232,11 @@ async def _run_batch(ctx, companies: list[CompanyResult]) -> None:
         for o in chunk:
             for company in targets[o]:
                 await _emit(ctx, company, by_org.get(o, []), url=url, sha=sha, retrieved_at=retrieved_at,
-                            publish=publish, status=res.status, truncated=truncated)
+                            publish=publish, status=res.status, truncated=truncated, text=res.text)
 
 
 async def _emit(ctx, company: CompanyResult, hits: list[tuple[int, dict[str, Any]]], *, url: str, sha: str,
-                retrieved_at: str, publish: str | None, status: int, truncated: bool) -> None:
+                retrieved_at: str, publish: str | None, status: int, truncated: bool, text: str = "") -> None:
     hits = [(i, r) for i, r in hits
             if ((r.get("attributes") or {}).get("registration") or {}).get("status") not in DROP_STATUSES]
     if not hits:
@@ -273,9 +277,12 @@ async def _emit(ctx, company: CompanyResult, hits: list[tuple[int, dict[str, Any
     effective = _date(reg.get("lastUpdateDate"))
     claims: list[Claim] = []
 
+    ev_reg = _evidence(lei=lei, res_sha=sha, retrieved_at=retrieved_at, locator=f"{base}/entity/registeredAs",
+                       via=url, span=span_at(text, f"{base}/entity/registeredAs") or _span(registeredAs=ra),
+                       effective_at=_date(publish), status=status)
     ev_lei = _evidence(lei=lei, res_sha=sha, retrieved_at=retrieved_at, locator=f"{base}/lei", via=url,
-                       span=_span(lei=lei, registeredAs=ra), effective_at=_date(publish), status=status)
-    claims.append(Claim(field="lei", value=lei, evidence=[ev_lei], confidence=0.99 if names_match else 0.95,
+                       span=span_at(text, f"{base}/lei") or _span(lei=lei), effective_at=_date(publish), status=status)
+    claims.append(Claim(field="lei", value=lei, evidence=[ev_reg, ev_lei], confidence=0.99 if names_match else 0.95,
                         display=lei, method="gleif_registeredAs_digits", note=basis_note,
                         effective_at=_date(publish)))
 
@@ -288,8 +295,8 @@ async def _emit(ctx, company: CompanyResult, hits: list[tuple[int, dict[str, Any
                    "is inactive")
     ev_status = _evidence(lei=lei, res_sha=sha, retrieved_at=retrieved_at, locator=f"{base}/registration",
                           via=url, effective_at=effective, status=status,
-                          span=_span(status=reg.get("status"), nextRenewalDate=reg.get("nextRenewalDate"),
-                                     managingLou=reg.get("managingLou")))
+                          span=members_span(text, f"{base}/registration", ["status", "nextRenewalDate", "managingLou"])
+                          or span_at(text, f"{base}/registration/status"))
     claims.append(Claim(field="lei_status", value=status_val, evidence=[ev_status],
                         confidence=0.99 if names_match else 0.95, effective_at=effective, note=st_note,
                         display=f"LEI {reg.get('status')}, entity {ent.get('status')}, next renewal "
@@ -307,7 +314,7 @@ async def _emit(ctx, company: CompanyResult, hits: list[tuple[int, dict[str, Any
         former.append(name)
         ev = _evidence(lei=lei, res_sha=sha, retrieved_at=retrieved_at, locator=f"{base}/entity/otherNames/{j}",
                        via=url, effective_at=effective, status=status,
-                       span=_span(name=name, type="PREVIOUS_LEGAL_NAME"))
+                       span=span_at(text, f"{base}/entity/otherNames/{j}"))
         claims.append(Claim(field="former_name", value={"name": name, "from": None, "to": None}, evidence=[ev],
                             qualifier=f"lei:{_norm_name(name)}",
                             confidence=0.9, display=name, method="gleif_otherNames_PREVIOUS_LEGAL_NAME",
@@ -315,7 +322,13 @@ async def _emit(ctx, company: CompanyResult, hits: list[tuple[int, dict[str, Any
 
     rels = rec.get("relationships") or {}
     parents: list[dict[str, Any]] = []
-    for kind in ("direct-parent", "ultimate-parent"):
+    # Parent relationships are only current while the child's LEI is maintained: a LAPSED/RETIRED
+    # record keeps whatever parent was reported years ago (seen: 2016 relationships after renames).
+    lei_current = reg.get("status") in ("ISSUED", "PENDING_TRANSFER", "PENDING_ARCHIVAL") and \
+        (ent.get("status") or "ACTIVE") == "ACTIVE"
+    parent_note = None if lei_current else (f"parent relationships not published: LEI registration is "
+                                            f"{reg.get('status')}, so reported parents may be stale")
+    for kind in (("direct-parent", "ultimate-parent") if lei_current else ()):
         links = (rels.get(kind) or {}).get("links") or {}
         if "lei-record" not in links:
             continue
@@ -330,6 +343,7 @@ async def _emit(ctx, company: CompanyResult, hits: list[tuple[int, dict[str, Any
         "legal_form": (ent.get("legalForm") or {}).get("id"), "creation_date": _date(ent.get("creationDate")),
         "names_match_registry": names_match, "parents": parents,
         "parent_reporting_exception": "reporting-exception" in ((rels.get("direct-parent") or {}).get("links") or {}),
+        "parent_note": parent_note,
         "golden_copy": publish,
     }
     company.outcome(ModuleOutcome(MODULE, "available", source_url=record_url(lei), retrieved_at=retrieved_at,

@@ -22,7 +22,10 @@ FAMILY_TITLES = [
 ]
 DIMENSIONS = [("company", ("legal_identity",)), ("financials", ("annual_accounts",)),
               ("people_places", ("leadership", "workplaces")), ("website", ("website", "social_profiles")),
-              ("footprint", ("hiring", "public_activity", "social_profiles"))]
+              ("footprint", ())]
+# External footprint = signals beyond the registry: profiles, jobs, news, grants, encyclopedic identity, LEI.
+FOOTPRINT_FIELDS = {"social_profile", "job_posting", "news_item", "state_aid_grant", "encyclopedia_entry",
+                    "wikidata_item", "lei", "stock_listing", "careers_page"}
 
 CSS = """
 :root{--bg:#f7f7f5;--card:#fff;--ink:#1d1f21;--mute:#666b70;--line:#e3e3df;--acc:#0b6e4f;--warn:#a15c00;--bad:#9b1c1c;--chip:#eef4f1}
@@ -242,7 +245,9 @@ def build_site(envelopes: list[dict[str, Any]], out: Path, report: dict[str, Any
             encoding="utf-8")
         av = [c for c in env.get("claims", []) if c["availability"] == "available"]
         fams = {c.get("family") for c in av}
-        dims = [(d, any(f in fams for f in fs)) for d, fs in DIMENSIONS]
+        flds = {c.get("field") for c in av}
+        dims = [(d, bool(flds & FOOTPRINT_FIELDS) if d == "footprint" else any(f in fams for f in fs))
+                for d, fs in DIMENSIONS]
         get = lambda fld: next((c for c in av if c["field"] == fld), None)
         form = (get("legal_form") or {}).get("value") or {}
         muni = ((get("municipality") or {}).get("value") or {}).get("name")

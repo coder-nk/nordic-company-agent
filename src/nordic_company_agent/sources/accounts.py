@@ -729,6 +729,8 @@ def _derived(rec: _Rec, by_field: dict[str, Claim]) -> list[Claim]:
         if den is None or den <= 0:
             continue
         value = (num_c.value / den).quantize(Decimal("0.0001"), rounding=ROUND_HALF_EVEN)
+        if abs(value) > 5:
+            continue  # tiny denominator: a ratio beyond ±500 % carries no decision value
         seen: set[str] = set()
         evs = [e for e in num_c.evidence + den_c.evidence if not (e.id in seen or seen.add(e.id))]
         out.append(Claim(

@@ -20,6 +20,7 @@ import re
 from typing import Any
 from urllib.parse import urlencode, urlsplit
 
+from .registry import span_at
 from ..envelope import (CC0_WIKIDATA, OPEN_KNOWLEDGE_BASE, Claim, CompanyResult, Evidence, ModuleOutcome,
                         utc_iso)
 from ..web.extract import name_core_tokens, reg_domain, social_handle, social_matches_company
@@ -243,13 +244,15 @@ async def _run_batch(ctx, companies: list[CompanyResult]) -> None:
                 by_org.setdefault(o, {}).setdefault(q, []).append((idx, b))
         for o in chunk:
             for c in targets[o]:
-                _emit(c, by_org.get(o, {}), url=url, sha=sha, retrieved_at=retrieved_at, status=res.status)
+                _emit(c, by_org.get(o, {}), url=url, sha=sha, retrieved_at=retrieved_at, status=res.status,
+                      text=res.text)
 
 
 def _ev(qid: str, *, url: str, sha: str, retrieved_at: str, idx: int, binding: dict[str, Any],
-        status: int, page_url: str | None = None) -> Evidence:
+        status: int, page_url: str | None = None, text: str = "") -> Evidence:
+    span = span_at(text, f"/results/bindings/{idx}") if text else None
     return Evidence(source_url=item_url(qid), source_class=OPEN_KNOWLEDGE_BASE, source_name=SOURCE_NAME,
-                    retrieved_at=retrieved_at, content_sha256=sha, claim_span=_span(binding),
+                    retrieved_at=retrieved_at, content_sha256=sha, claim_span=span or _span(binding),
                     locator=f"/results/bindings/{idx}", extraction_method=VERSION, page_url=page_url or item_url(qid),
                     http_status=status, licence=CC0_WIKIDATA, retrieved_via=url)
 
@@ -269,14 +272,14 @@ def _truthy(rows: list[tuple[int, dict[str, Any]]]) -> list[tuple[int, dict[str,
 
 
 def _emit(company: CompanyResult, items: dict[str, list[tuple[int, dict[str, Any]]]], *, url: str, sha: str,
-          retrieved_at: str, status: int) -> None:
+          retrieved_at: str, status: int, text: str = "") -> None:
     o = company.organisation_number
     if not items:
         company.outcome(ModuleOutcome(MODULE, "not_available", source_url=url, retrieved_at=retrieved_at,
                                       http_status=status,
                                       note=f"no current, non-deprecated P2333 = {o} statement on Wikidata"))
         return
-    kw = dict(url=url, sha=sha, retrieved_at=retrieved_at, status=status)
+    kw = dict(url=url, sha=sha, retrieved_at=retrieved_at, status=status, text=text)
     qids = sorted(items, key=lambda q: int(q[1:]) if q[1:].isdigit() else 0)
     if len(qids) > 1:
         claims = []

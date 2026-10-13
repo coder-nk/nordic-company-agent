@@ -18,6 +18,7 @@ verify  web/verify.py: L1 / L2 publish; ambiguous / not_available / blocked neve
 from __future__ import annotations
 
 import asyncio
+import html
 import dataclasses
 import re
 import socket
@@ -32,6 +33,7 @@ import httpx
 
 from ..envelope import (COMPANY_LINKED_PROFILE, COMPANY_OWNED, COMPANY_SITE, Claim, CompanyResult, Evidence,
                         ModuleOutcome, utc_iso)
+from ..orgnr import text_patterns
 from ..http import BROWSER_ACCEPT, BudgetExceeded, DeadlineExceeded, RobotsDisallowed, UnsafeURL
 from ..web import candidates as C
 from ..web import extract as X
@@ -597,12 +599,67 @@ async def _news(ctx, st: _State, v: V.Verdict) -> tuple[list[dict], tuple[V.Page
 
 
 # --------------------------------------------------------------------------- claims
+_GAP = r"(?:\s|&nbsp;|&#160;|&#xa0;|<[^>]{0,300}>)+"
+
+
+def _verbatim(raw: str | None, span: str | None, max_len: int = 300, anchor: "re.Pattern[str] | None" = None) -> str | None:
+    """Map a (whitespace-normalised) span back to the exact fragment of the raw page source, so the
+    evidence span is always a verbatim substring of the stored snapshot."""
+    if not span:
+        return None
+    if not raw or span in raw:
+        return span[:max_len]
+    if span.startswith("<html") and "lang" in span:
+        m = re.search(r"<html\b[^>]*>", raw, re.I)
+        if m:
+            return m.group(0)[:max_len]
+    toks = [t for t in re.split(r"\s+", span.strip()) if t]
+    if not toks:
+        return None
+
+    def find(part: list[str]) -> str | None:
+        pat = _GAP.join(re.escape(html.escape(t, quote=False)) if html.escape(t, quote=False) != t and
+                        html.escape(t, quote=False) in raw else re.escape(t) for t in part)
+        try:
+            m = re.search(pat, raw)
+        except re.error:
+            return None
+        return m.group(0) if m else None
+
+    # Shrink the token window around the centre of the span (where the value sits) until the raw
+    # fragment fits; markup between tokens can make the raw text much longer than the span.
+    joined = " ".join(toks)
+    a0 = a1 = len(toks) // 2
+    if anchor is not None:
+        m_a = anchor.search(joined)
+        if m_a:
+            a0 = joined[:m_a.start()].count(" ")
+            a1 = joined[:m_a.end()].count(" ")
+    need = a1 - a0 + 1
+    size = len(toks)
+    while size >= need:
+        extra = size - need
+        lo = max(0, a0 - extra // 2)
+        lo = min(lo, max(0, len(toks) - size))
+        part = toks[lo:lo + size]
+        frag = find(part)
+        if frag is not None and len(frag) <= max_len:
+            return frag
+        size = size - 1 if size <= 6 else int(size * 0.7)
+    # Last resort: the longest token that does occur verbatim (e.g. the e-mail or phone itself).
+    for t in sorted(toks, key=len, reverse=True):
+        if len(t) >= 4 and t in raw:
+            return t[:max_len]
+    return None
+
+
 def _ev(page: V.Page, locator: str, span: str | None, *, source_class: str = COMPANY_OWNED,
-        effective_at: str | None = None) -> Evidence:
+        effective_at: str | None = None, anchor: "re.Pattern[str] | None" = None) -> Evidence:
     host = (urlsplit(page.final_url).hostname or "").lower()
+    raw = getattr(page, "html", None)
     return Evidence(source_url=page.final_url, source_class=source_class, source_name=f"Company website ({host})",
                     retrieved_at=page.retrieved_at, content_sha256=page.sha256,
-                    claim_span=(span or "")[:300] or None, locator=locator, extraction_method=METHOD,
+                    claim_span=_verbatim(raw, span, anchor=anchor), locator=locator, extraction_method=METHOD,
                     page_url=page.final_url, effective_at=effective_at, http_status=page.status,
                     final_url=page.final_url, licence=COMPANY_SITE)
 
@@ -711,7 +768,8 @@ def _emit(ctx, company: CompanyResult, rec: dict, st: _State, results: list[Lead
     basis = "organisation_number_exact" if v.level == "L1" else "registry_website_corroborated"
     method = f"{V.GATE_VERSION}:{v.level}"
     proof_page = v.infos[v.proof["page"]].page
-    proof_ev = _ev(proof_page, v.proof["locator"], v.proof["span"])
+    proof_ev = _ev(proof_page, v.proof["locator"], v.proof["span"],
+                   anchor=text_patterns(company.organisation_number))
     site_evs = [proof_ev]
     if v.level == "L2":
         rev = _registry_hjemmeside_ev(company, rec)
@@ -727,7 +785,9 @@ def _emit(ctx, company: CompanyResult, rec: dict, st: _State, results: list[Lead
     for f in facts:
         page = v.infos[f.page].page
         sc = COMPANY_LINKED_PROFILE if f.field == "social_profile" else COMPANY_OWNED
-        claims.append(Claim(field=f.field, value=f.value, evidence=[_ev(page, f.locator, f.span, source_class=sc)],
+        anc = re.compile(re.escape(str(f.value))) if f.field in ("contact_email", "careers_page") else None
+        claims.append(Claim(field=f.field, value=f.value,
+                            evidence=[_ev(page, f.locator, f.span, source_class=sc, anchor=anc)],
                             qualifier=f.qualifier, confidence=conf, display=_display(f.field, f.value),
                             method=METHOD, match_basis=basis))
     if news and feed_ev is not None:

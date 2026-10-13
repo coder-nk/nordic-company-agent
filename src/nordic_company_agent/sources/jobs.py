@@ -24,6 +24,7 @@ from datetime import datetime, timedelta, timezone
 from email.utils import format_datetime
 from typing import Any
 
+from .registry import members_span, span_at
 from ..envelope import (NAV_TERMS, OFFICIAL_JOBS_FEED, Claim, CompanyResult, Evidence, ModuleOutcome, canonical,
                         sha256_hex, utc_iso)
 from ..web.extract import name_core_tokens
@@ -200,7 +201,7 @@ class _Run:
                 break
             items = doc.get("items") or []
             self.pages.append({"url": res.url, "sha": sha, "retrieved_at": retrieved_at, "status": res.status,
-                               "items": items})
+                               "items": items, "text": res.text})
             self.live_ok = True
             if items:
                 self.last_item_modified = items[-1].get("date_modified") or self.last_item_modified
@@ -249,6 +250,7 @@ class _Run:
         pc = str(ad.get("positioncount") or "").strip()
         locs = ad.get("workLocations") or []
         return {
+            "text": redacted.decode("utf-8", errors="replace"),
             "uuid": uuid, "http_status": res.status, "status": j.get("status"), "sha": res.sha256,
             "retrieved_at": retrieved_at, "employer_organisation_number": re.sub(r"\D", "", str(emp.get("orgnr") or "")),
             "employer_name": emp.get("name"), "title": ad.get("title"), "published": ad.get("published"),
@@ -371,11 +373,14 @@ async def _run_batch(ctx, companies: list[CompanyResult]) -> None:
 
     cache_ev = None
     if cache_present:
-        meta_bytes = canonical(meta).encode("utf-8")
+        meta_text = canonical(meta)
+        meta_bytes = meta_text.encode("utf-8")
+        meta_sha = ctx.snapshots.save(meta_bytes, url=f"cache/{CACHE_NAME}.meta.json", retrieved_at=built_at or utc_iso(now),
+                                      content_type="application/json")
         cache_ev = Evidence(
             source_url=cursor.get("page_url") or FEED_URL, source_class=OFFICIAL_JOBS_FEED, source_name=SOURCE_NAME,
-            retrieved_at=built_at or utc_iso(now), content_sha256=sha256_hex(meta_bytes),
-            claim_span=_span(built_at=built_at, active_ads=meta.get("active_ads"), feed_cursor=cursor.get("page_id")),
+            retrieved_at=built_at or utc_iso(now), content_sha256=meta_sha,
+            claim_span=members_span(meta_text, "", ["active_ads", "built_at"]) or span_at(meta_text, "/built_at"),
             locator=f"cache:{CACHE_NAME}.meta.json", extraction_method=f"{VERSION}:cache",
             page_url="https://arbeidsplassen.nav.no/stillinger", licence=NAV_TERMS,
             retrieved_via=f"declared cache cache/{CACHE_NAME}.jsonl.gz (built {built_at} by tools/build_nav_jobs_cache.py)")
@@ -383,9 +388,8 @@ async def _run_batch(ctx, companies: list[CompanyResult]) -> None:
     if run.pages:
         last = run.pages[-1]
         live_ev = Evidence(source_url=last["url"], source_class=OFFICIAL_JOBS_FEED, source_name=SOURCE_NAME,
-                           retrieved_at=last["retrieved_at"], content_sha256=last["sha"], locator="/items",
-                           claim_span=_span(next_url=None if run.reached_end else "…",
-                                            last_item_modified=run.last_item_modified),
+                           retrieved_at=last["retrieved_at"], content_sha256=last["sha"], locator="/next_url",
+                           claim_span=span_at(last.get("text"), "/next_url") or span_at(last.get("text"), "/id"),
                            extraction_method=VERSION, page_url="https://arbeidsplassen.nav.no/stillinger",
                            http_status=last["status"], licence=NAV_TERMS)
 
@@ -398,15 +402,16 @@ async def _run_batch(ctx, companies: list[CompanyResult]) -> None:
 
 
 def _row_evidence(ctx, row: dict[str, Any], built_at: str | None) -> Evidence:
-    body = canonical(row).encode("utf-8")
+    body_text = canonical(row)
+    body = body_text.encode("utf-8")
     checked_at = row.get("checked_at") or built_at or utc_iso()
     sha = ctx.snapshots.save(body, url=row.get("feed_entry_url") or entry_url(row["uuid"]), retrieved_at=checked_at,
                              content_type="application/json")
     return Evidence(
         source_url=row.get("feed_entry_url") or entry_url(row["uuid"]), source_class=OFFICIAL_JOBS_FEED,
         source_name=SOURCE_NAME, retrieved_at=checked_at, content_sha256=sha,
-        claim_span=_span(uuid=row.get("uuid"), employer_organisation_number=row.get("employer_organisation_number"),
-                         title=row.get("title"), status=row.get("status")),
+        claim_span=(members_span(body_text, "", ["employer_organisation_number", "status", "title"])
+                    or span_at(body_text, "/employer_organisation_number")),
         locator=f"cache:{CACHE_NAME}.jsonl.gz#uuid={row.get('uuid')}", extraction_method=f"{VERSION}:cache",
         page_url=row.get("url") or public_url(row["uuid"]), effective_at=(row.get("updated") or "")[:10] or None,
         licence=NAV_TERMS,
@@ -416,8 +421,8 @@ def _row_evidence(ctx, row: dict[str, Any], built_at: str | None) -> Evidence:
 def _entry_evidence(e: dict[str, Any]) -> Evidence:
     return Evidence(source_url=entry_url(e["uuid"]), source_class=OFFICIAL_JOBS_FEED, source_name=SOURCE_NAME,
                     retrieved_at=e["retrieved_at"], content_sha256=e["sha"],
-                    claim_span=_span(orgnr=e["employer_organisation_number"], name=e.get("employer_name"),
-                                     title=e.get("title"), status=e.get("status")),
+                    claim_span=(members_span(e.get("text"), "/ad_content/employer", ["name", "orgnr"])
+                                or span_at(e.get("text"), "/ad_content/employer/orgnr")),
                     locator="/ad_content/employer/orgnr", extraction_method=VERSION, page_url=e.get("url"),
                     effective_at=(e.get("updated") or "")[:10] or None, http_status=e.get("http_status"),
                     licence=NAV_TERMS)
@@ -470,7 +475,9 @@ def _emit(ctx, company: CompanyResult, subunits: dict[str, str] | None, rows_by_
             evs.append(Evidence(source_url=page["url"], source_class=OFFICIAL_JOBS_FEED, source_name=SOURCE_NAME,
                                 retrieved_at=page["retrieved_at"], content_sha256=page["sha"],
                                 locator=f"/items/{it['index']}/_feed_entry",
-                                claim_span=_span(uuid=u, status="ACTIVE", sistEndret=it["modified"]),
+                                claim_span=(members_span(page.get("text"), f"/items/{it['index']}/_feed_entry",
+                                                         ["status", "uuid"])
+                                            or span_at(page.get("text"), f"/items/{it['index']}/_feed_entry/status")),
                                 extraction_method=VERSION, page_url=r.get("url"), http_status=page["status"],
                                 licence=NAV_TERMS))
         postings[u] = (r, evs, b)
