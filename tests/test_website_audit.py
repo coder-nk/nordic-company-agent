@@ -166,4 +166,4 @@ def test_company_label_mailbox_allowed():
     rec = {"navn": "TYR", "organisasjonsform": {"kode": "FLI"}, "epostadresse": "ola.nordmann@tyr.no"}
     v = V.verify(pages, rec, "970142223", lead_kind="registry_website", start_url="https://www.tyr.no/")
     emails = [f.value for f in V.collect_facts(v, rec) if f.field == "contact_email"]
-    assert emails == ["tyr@tyr.no"]                 # registry-equal personal mailbox withheld
+    assert emails == []                             # policy L: only generic role mailboxes; personal withheld

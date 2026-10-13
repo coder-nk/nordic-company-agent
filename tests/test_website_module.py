@@ -82,7 +82,8 @@ def test_l1_registry_website_with_redirect(tmp_path):
     ver = values(c, "website_verification")[0]
     assert ver["level"] == "L1" and "912 342 344" in ver["proof_span"]
     assert values(c, "contact_email") == ["kontakt@ekomas.no"]
-    assert values(c, "website_address") == ["Industriveien 9B 2021 Skedsmokorsket"]
+    # the address is split by <br> in the source: no verbatim span contains it, so it is not published (N)
+    assert values(c, "website_address") == []
     site = claims(c, "official_website")[0]
     assert site.confidence == 0.97
     ev: Evidence = site.evidence[0]
@@ -245,9 +246,9 @@ def test_multi_company_footer_only_block_facts(tmp_path):
     ctx = make_ctx(tmp_path)
     c = run_site(ctx, "920209319", {"https://www.advokateneiba47.no/": httpx.Response(
         200, text=fx("company_websites__L1_multi"), headers=HTML)}, hosts=("www.advokateneiba47.no",))
-    assert c.modules["website"].availability == "available"
-    assert values(c, "contact_email") == []          # thomas@ is personal, even though it is the registry e-mail
-    assert values(c, "contact_phone") == ["+4745020113"]
+    assert c.modules["website"].availability == "ambiguous"   # policy H: the footer prints two other firms
+    assert values(c, "contact_email") == []
+    assert values(c, "contact_phone") == []
     blob = json.dumps([x.value for x in c.claims], default=str)
     for bad in ("tore@okseter.no", "nina@advokat-nba.no", "91841861", "93420277", "post@advokateneiba47.no"):
         assert bad not in blob

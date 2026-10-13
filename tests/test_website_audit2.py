@@ -38,7 +38,7 @@ def test_nesthood_listed_subsidiary_on_parent_site():
     rec = {"navn": "NESTHOOD OSLO AS", "organisasjonsform": {"kode": "AS"}, "epostadresse": "post@nesthood.no"}
     v, facts = run([home, ks], rec, "927433672", start="https://www.nesthood.no/",
                    shared=["925051284", "925178322", "927433672"])
-    assert v.level == "ambiguous" and "parent/group" in v.reason and facts == []
+    assert v.level == "ambiguous" and facts == []        # policy H: other org numbers on the site
     hit = next(h for i in v.infos for h in i.hits)
     assert hit["list"] is True
 
@@ -61,7 +61,7 @@ def test_isovator_number_printed_under_another_name():
                "Horgenveien 227, 3303 Hokksund Tlf: 915 40 073 E-post: post@returgass.no</footer>")
     rec = {"navn": "ISOVATOR AS", "organisasjonsform": {"kode": "AS"}, "epostadresse": "post@returgass.no"}
     v, facts = run([pg(html, "https://srg.no/")], rec, "974273845", lead="email_domain")
-    assert v.level == "ambiguous" and "Stiftelsen ReturGass" in v.reason and facts == []
+    assert v.level == "ambiguous" and facts == []
     assert v.site_links == ["https://www.isovator.no/"]          # followed as an L1-only lead by sources/website.py
 
 
@@ -101,7 +101,7 @@ def test_scankab_block_stops_at_danish_parent():
     v, facts = run([pg(html, "https://scankab.no/kontakt/", "contact")], rec, "987147229",
                    start="https://www.scankab.no/")
     assert v.level == "L1"
-    assert vals(facts, "contact_email") == ["scankab@scankab.no"]
+    assert vals(facts, "contact_email") == []            # policy L: 'scankab@' is not a generic role mailbox
     assert vals(facts, "contact_phone") == ["+4751637020"]
     assert "+4570203455" not in str(facts) and "+4770203455" not in str(facts)
 

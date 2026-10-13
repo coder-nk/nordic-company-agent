@@ -312,7 +312,8 @@ def _to_page(ctx, kind: str, res) -> V.Page:
     looks_html = "html" in ctype.lower() or body.startswith((b"<!doctype html", b"<html", b"<head", b"<!--"))
     html = res.text if (looks_html or not ctype) else ""
     return V.Page(kind=kind, url=res.url, final_url=res.final_url, status=res.status, html=html, sha256=sha,
-                  retrieved_at=retrieved_at, redirects=list(res.redirects), content_type=ctype)
+                  retrieved_at=retrieved_at, redirects=list(res.redirects), content_type=ctype,
+                  utf8=_is_utf8(res.content))
 
 
 def _record(st: _State, lead_no: int, page: V.Page | None = None, *, kind: str = "", url: str = "",
@@ -541,6 +542,73 @@ def _parse_date(s: str | None) -> datetime | None:
     return dt
 
 
+def _verbatim_around(raw: str, needle: str, limit: int = 300, ascii_only: bool = False) -> str | None:
+    """Verbatim slice of `raw` (<= limit chars) containing `needle` (pure ASCII for non-UTF-8 sources)."""
+    if not raw or not needle:
+        return None
+    i = raw.find(needle)
+    if i < 0:
+        return None
+    if ascii_only:
+        return V._ascii_slice(raw, i, i + len(needle), limit)
+    return V._raw_slice(raw, i, i + len(needle), limit)
+
+
+def _is_utf8(data: bytes | None) -> bool:
+    try:
+        (data or b"").decode("utf-8")
+        return True
+    except UnicodeDecodeError:
+        return False
+
+
+def _text_rx(text: str, max_tokens: int = 10) -> "re.Pattern[str] | None":
+    """Regex for `text` as it may be written in HTML source (entities for punctuation/letters, any whitespace)."""
+    toks = [t for t in re.split(r"\s+", text.strip()) if t][:max_tokens]
+    if not toks:
+        return None
+
+    def ch(c: str) -> str:
+        if c.isascii() and c.isalnum():
+            return re.escape(c)
+        return f"(?:{re.escape(c)}|&#0*{ord(c)};|&#[xX]0*{ord(c):x};|&[a-zA-Z]+;)"
+
+    try:
+        return re.compile(r"(?:\s|&nbsp;|&#160;)+".join("".join(ch(c) for c in t) for t in toks), re.I)
+    except re.error:
+        return None
+
+
+def _news_span(raw: str, href: str, title: str, url: str, ascii_only: bool = False) -> str | None:
+    """Verbatim fragment (<= 300 chars) of the news page containing the article link and/or its title,
+    accepted only when it shows the value (title prefix, URL or path)."""
+    fact = V.Fact("news_item", {"title": title, "url": url}, 0, "a[href]", "")
+    hits = []
+    for needle in (f'"{href}"', f"'{href}'", href, html.escape(href, quote=False), html.escape(href)):
+        i = raw.find(needle) if needle else -1
+        if i >= 0:
+            hits.append((i, i + len(needle)))
+            break
+    trx = _text_rx(title)
+    tm = None
+    if trx is not None:
+        lo = hits[0][0] if hits else 0
+        tm = trx.search(raw, lo, lo + 3000 if hits else len(raw)) or (trx.search(raw) if hits else None)
+    cands = []
+    if hits and tm is not None:
+        a0, b0 = min(hits[0][0], tm.start()), max(hits[0][1], tm.end())
+        if b0 - a0 <= 300:
+            cands.append((a0, b0))
+    if tm is not None:
+        cands.append((tm.start(), tm.end()))
+    cands += hits
+    for a0, b0 in cands:
+        sp = V._ascii_slice(raw, a0, b0) if ascii_only else V._raw_slice(raw, a0, b0)
+        if sp and sp in raw and V._span_has(fact, sp) and (not ascii_only or sp.isascii()):
+            return sp
+    return None
+
+
 def parse_feed(data: bytes, feed_url: str, accept_url) -> list[dict]:
     """Dated items of an RSS 2.0 / RSS 1.0 / Atom feed: [{"title","url","published","span"}], newest first.
     `accept_url(url) -> bool` restricts items to the verified site. DTD/entity declarations are refused."""
@@ -552,6 +620,7 @@ def parse_feed(data: bytes, feed_url: str, accept_url) -> list[dict]:
     except ET.ParseError:
         return []
     raw = data.decode("utf-8", errors="replace")
+    ascii_only = not _is_utf8(data)
 
     def local(tag: Any) -> str:
         return str(tag).rsplit("}", 1)[-1].lower()
@@ -590,14 +659,20 @@ def parse_feed(data: bytes, feed_url: str, accept_url) -> list[dict]:
         url = urljoin(feed_url, link)
         if not url.startswith(("http://", "https://")) or not accept_url(url):
             continue
-        span = V.raw_window(raw, link, 160, 120) or f"{title} {raw_date}"
+        span = _verbatim_around(raw, link, ascii_only=ascii_only) or \
+            _verbatim_around(raw, html.escape(link, quote=False), ascii_only=ascii_only)
+        fact = V.Fact("news_item", {"title": title[:300], "url": url}, 0, "item", "")
+        if not span or not V._span_has(fact, span):
+            continue                                   # policy N: no verbatim fragment containing the link
         out.setdefault(url, {"title": title[:300], "url": url, "published": utc_iso(dt), "span": span})
     items = sorted(out.values(), key=lambda it: (it["published"], it["url"]), reverse=True)
     return items[:MAX_NEWS]
 
 
-PLACEHOLDER_TITLE_RX = re.compile(r"^\W*(hello world|hei verden|hallo verden|sample page|eksempelside|"
-                                  r"uncategori[sz]ed|ukategorisert|test(?:innlegg| post)?|lorem ipsum)\b", re.I)
+PLACEHOLDER_TITLE_RX = re.compile(r"^\W*(hello,? world|hei,? verden|hallo,? verden|sample page|eksempelside|"
+                                  r"uncategori[sz]ed|ukategorisert|test(?:innlegg| post)?|lorem ipsum|hurtigvisning|"
+                                  r"quick ?view|les mer|read more|vis mer|see more|se mer|legg i handlekurv|"
+                                  r"add to cart|kjøp nå|buy now)\W*$|^\W*(hello,? world|hei,? verden)\b", re.I)
 NEWS_PATH_RX = re.compile(r"/(?:news|nyheter|aktuelt|artikler|blogg?|presse|press|nytt|pressemeldinger)(?:/|$)", re.I)
 _NO_MONTHS = {"januar": 1, "februar": 2, "mars": 3, "april": 4, "mai": 5, "juni": 6, "juli": 7, "august": 8,
               "september": 9, "oktober": 10, "november": 11, "desember": 12, "january": 1, "february": 2,
@@ -649,7 +724,11 @@ def news_section_link(v: V.Verdict) -> str | None:
     return best[1] if best else None
 
 
-def parse_news_page(html_text: str, page_url: str, accept_url, section_path: str) -> list[dict]:
+_LEADING_DATE_RX = re.compile(r"^\s*(?:\d{1,2}\.\s?\d{1,2}\.\s?(?:20)?\d\d|20\d\d-\d\d-\d\d)\s*[-–|:·]?\s*")
+
+
+def parse_news_page(html_text: str, page_url: str, accept_url, section_path: str,
+                    ascii_only: bool = False) -> list[dict]:
     """Article links under the news section, with the nearest visible date (if any)."""
     from selectolax.lexbor import LexborHTMLParser
     tree = LexborHTMLParser(html_text)
@@ -667,6 +746,12 @@ def parse_news_page(html_text: str, page_url: str, accept_url, section_path: str
         if re.search(r"/(?:page|side|kategori|category|tag|arkiv|archive)(?:/|$)|\?page=", u, re.I):
             continue
         title = re.sub(r"\s+", " ", a.text(separator=" ", strip=True) or a.attributes.get("title") or "").strip()
+        hd = a.css_first("h1, h2, h3, h4, h5, h6")
+        if hd is not None:                             # the card's heading, not its date/teaser text
+            ht = re.sub(r"\s+", " ", hd.text(separator=" ", strip=True) or "").strip()
+            if len(ht) >= 12:
+                title = ht
+        title = _LEADING_DATE_RX.sub("", title).strip()
         if len(title) < 12 or len(title) > 200 or PLACEHOLDER_TITLE_RX.search(title):
             continue
         date = None
@@ -683,8 +768,9 @@ def parse_news_page(html_text: str, page_url: str, accept_url, section_path: str
                 break
             node = node.parent
         if u not in out:
-            span = V.raw_window(html_text, href, 120, 160) or title
-            out[u] = {"title": title, "url": u, "published": date, "span": span}
+            span = _news_span(html_text, href, title, u, ascii_only)
+            if span:
+                out[u] = {"title": title, "url": u, "published": date, "span": span}
     items = sorted(out.values(), key=lambda it: (it["published"] or "", it["url"]), reverse=True)
     return items[:MAX_NEWS]
 
@@ -700,10 +786,10 @@ async def _news_page(ctx, st: _State, v: V.Verdict) -> tuple[list[dict], tuple[V
     retrieved_at = utc_iso(res.retrieved_at)
     sha = ctx.snapshots.save_result(res, retrieved_at)
     page = V.Page("news", res.url, res.final_url, res.status, res.text, sha, retrieved_at, list(res.redirects),
-                  res.headers.get("content-type", ""))
+                  res.headers.get("content-type", ""), utf8=_is_utf8(res.content))
     _record(st, -1, page)
     items = parse_news_page(res.text, res.final_url, lambda u: V.under_base(u, v.site_url or "", v.subpath, v.exclusive),
-                            urlsplit(res.final_url).path or urlsplit(link).path)
+                            urlsplit(res.final_url).path or urlsplit(link).path, ascii_only=not page.utf8)
     return items, (page, "a[href]"), link
 
 
@@ -723,8 +809,9 @@ async def _news(ctx, st: _State, v: V.Verdict) -> tuple[list[dict], tuple[V.Page
         sha = ctx.snapshots.save_result(res, retrieved_at)
     except Exception:
         pass
-    page = V.Page("feed", res.url, res.final_url, res.status, "", sha, retrieved_at, list(res.redirects),
-                  res.headers.get("content-type", ""))
+    page = V.Page("feed", res.url, res.final_url, res.status, res.content.decode("utf-8", errors="replace"), sha,
+                  retrieved_at, list(res.redirects), res.headers.get("content-type", ""),
+                  utf8=_is_utf8(res.content))                 # keep the feed text: spans must be verbatim
     _record(st, -1, page)
     if not res.ok:
         return [], None
@@ -793,9 +880,14 @@ def _ev(page: V.Page, locator: str, span: str | None, *, source_class: str = COM
         effective_at: str | None = None, anchor: "re.Pattern[str] | None" = None) -> Evidence:
     host = (urlsplit(page.final_url).hostname or "").lower()
     raw = getattr(page, "html", None)
+    cs = _verbatim(raw, span, anchor=anchor)
+    if cs and raw and not getattr(page, "utf8", True) and not cs.isascii():
+        # non-UTF-8 body: only a pure-ASCII fragment is byte-identical in the stored snapshot
+        m = anchor.search(raw) if anchor is not None else None
+        cs = V._ascii_slice(raw, m.start(), m.end()) if m else None
     return Evidence(source_url=page.final_url, source_class=source_class, source_name=f"Company website ({host})",
                     retrieved_at=page.retrieved_at, content_sha256=page.sha256,
-                    claim_span=_verbatim(raw, span, anchor=anchor), locator=locator, extraction_method=METHOD,
+                    claim_span=cs, locator=locator, extraction_method=METHOD,
                     page_url=page.final_url, effective_at=effective_at, http_status=page.status,
                     final_url=page.final_url, licence=COMPANY_SITE)
 
@@ -943,17 +1035,20 @@ def _emit(ctx, company: CompanyResult, rec: dict, st: _State, results: list[Lead
         fpage, root = feed_ev
         for it in news:
             val = {"title": it["title"], "url": it["url"], "published": it["published"]}
+            sp = it.get("span") or ""
+            if not (sp in (fpage.html or "") and len(sp) <= 300 and (fpage.utf8 or sp.isascii()) and
+                    V._span_has(V.Fact("news_item", val, 0, root, sp), sp)):
+                continue                               # policy N: verbatim span showing the item, or no item
             pub = (it["published"] or "")[:10] or None
             claims.append(Claim(field="news_item", value=val,
                                 evidence=[_ev(fpage, root, it["span"], effective_at=pub)],
                                 qualifier=it["url"], confidence=conf, display=_display("news_item", val),
                                 effective_at=pub, method=METHOD, match_basis=basis,
                                 note=None if pub else "no date shown next to the link on the news page"))
-    if news_link:
-        hp = v.infos[0].page
-        claims.append(Claim(field="news_page", value=news_link,
-                            evidence=[_ev(hp, "a[href]", V.raw_window(hp.html, urlsplit(news_link).path or news_link,
-                                                                         60, 80) or news_link)],
+    hp = v.infos[0].page
+    np_span = V.span_for(hp, V.Fact("news_page", news_link, 0, "a[href]", "")) if news_link else None
+    if news_link and np_span:
+        claims.append(Claim(field="news_page", value=news_link, evidence=[_ev(hp, "a[href]", np_span)],
                             confidence=conf, display=news_link, method=METHOD, match_basis=basis))
     order = {f: i for i, f in enumerate(FIELD_ORDER)}
     claims.sort(key=lambda c: (order.get(c.field, 99), c.qualifier or "", V._ws(str(c.value))))

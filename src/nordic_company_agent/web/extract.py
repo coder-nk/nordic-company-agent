@@ -73,6 +73,16 @@ def parking_url(url: str) -> bool:
     return bool(_PARKING_PATH_RX.search(sp.path or ""))
 
 
+INVISIBLE_RX = re.compile("[\u200b-\u200f\u2060-\u2064\ufeff\u180e\u00ad\u034f\u061c\u115f\u1160\u17b4\u17b5"
+                          "\u3164\uffa0\U000e0000-\U000e007f\ufe00-\ufe0f]")
+
+
+def strip_invisible(s: str) -> str:
+    """Remove zero-width / invisible characters (incl. Sanity 'stega' encodings) before any text analysis:
+    they can hide digits of an org-number list from pattern matching."""
+    return INVISIBLE_RX.sub("", s or "")
+
+
 def decode_cfemail(hexstr: str) -> str | None:
     """Decode a Cloudflare e-mail-protection token (data-cfemail / /cdn-cgi/l/email-protection#...)."""
     h = (hexstr or "").strip()
@@ -314,7 +324,6 @@ def extract_page(html: str, url: str, target: str | None = None, legal_name: str
     res["footer_excerpt"] = footer_text[:600]
     # --- parked / placeholder
     sig = []
-    host = (urlsplit(url).hostname or "").lower()
     if parking_url(url): sig.append("parking_url")
     pm = PARKED_TEXT_RX.search(title + " \n " + text[:3000])
     if pm: sig.append("parked_text:" + pm.group(0)[:40])
@@ -651,15 +660,19 @@ _KEY_FOLD = str.maketrans({"æ": "ae", "ø": "o", "å": "a", "ä": "a", "ö": "o
 
 
 def entity_words(name: str) -> list[str]:
-    """Name tokens of a legal name: case/diacritics/punctuation and legal-form words removed, '&' = 'og'."""
+    """Name tokens of a legal name: case/diacritics/punctuation removed, '&' = 'og', and the legal form removed
+    ONLY at the end ("SON SPA AS" -> [son, spa]: "spa" is part of the name, not S.p.A.)."""
     n = unicodedata.normalize("NFKC", name or "").lower().translate(_KEY_FOLD).replace("&", " og ").replace("+", " og ")
-    n = re.sub(r"\b(?:sp\.?\s*z\s*o\.?\s*o\.?|a/s|s\.r\.l\.|s\.p\.a\.|b\.v\.|n\.v\.|s\.a\.|pty\.?\s*ltd\.?|pvt\.?\s*ltd\.?)",
-               " ", n)
+    n = re.sub(r"(?:\bsp\.?\s*z\s*o\.?\s*o\.?|\ba/s|\bs\.r\.l\.|\bs\.p\.a\.|\bb\.v\.|\bn\.v\.|\bs\.a\.|"
+               r"\bpty\.?\s*ltd\.?|\bpvt\.?\s*ltd\.?|\bprivate\s+limited)\s*$", " ", n.strip())
     toks = []
     for t in re.findall(r"[a-z0-9]+", n):
         m = re.fullmatch(r"((?:19|20)\d\d)([a-z]{3,}.*)", t)       # "2026Noma" (copyright year glued to the name)
         toks.extend([m.group(1), m.group(2)] if m else [t])
-    return [t for t in toks if t not in _FORM_WORDS and t not in ("og", "and")]
+    toks = [t for t in toks if t not in ("og", "and")]
+    if len(toks) > 1 and toks[-1] in _FORM_WORDS:          # one trailing legal-form token only
+        toks.pop()
+    return toks
 
 
 def entity_key(name: str) -> str:
