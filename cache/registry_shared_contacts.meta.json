@@ -1,0 +1,9 @@
+{
+  "name": "registry_shared_contacts",
+  "built_at": "2026-10-13T18:16:35Z",
+  "source": "Enhetsregisteret bulk file enheter.csv.gz (telefon, mobil, forretningsadresse, postadresse), NLOD 2.0",
+  "entities": 1177860,
+  "shared_phones": 12310,
+  "shared_addresses": 59299,
+  "description": "Registry phone numbers and street addresses shared by sister organisations (names sharing a distinctive token). The website identity gate does not count them as corroboration of a site for any of those organisation numbers."
+}

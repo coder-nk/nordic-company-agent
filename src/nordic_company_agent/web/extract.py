@@ -572,3 +572,161 @@ def corroborate(htmls: list[str], rec: dict, site_url: str) -> dict:
     sig["n_corroborations"] = sum([bool(sig["phone_match"]), bool(sig["email_match"] or sig["email_domain_match"]),
                                    bool(addr_hits), sig["legal_name_full"]])
     return sig
+
+
+# --------------------------------------------------------------------------- legal entities named on a page
+# Legal-form tokens (Norwegian and foreign). Matched case-sensitively so English prose ("recommend Yabimo as a
+# solid supplier") never reads as the legal name "YABIMO AS".
+NO_FORMS = ("AS", "ASA", "ANS", "DA", "SA", "BA", "KS", "NUF", "IKS", "KF", "ENK", "SE", "BRL")
+_FORMS_RX = (r"AS|ASA|ANS|DA|SA|BA|KS|NUF|IKS|KF|ENK|BRL|AB|ApS|APS|A/S|EHF|ehf\.?|Oy|Oyj|OY|GmbH|GMBH|AG|"
+             r"Ltd\.?|LTD\.?|Limited|LIMITED|LLC|Inc\.?|INC\.?|B\.V\.|BV|N\.V\.|NV|S\.r\.l\.|Srl|SRL|S\.p\.A\.|SpA|"
+             r"S\.A\.|SAS|SARL|PLC|plc|LLP|Pty\.? Ltd\.?|Pvt\.? Ltd\.?|Private Limited|Private Ltd\.?|"
+             r"Sp\. z o\.o\.|sp\. z o\.o\.|SP\. Z O\.O\.|S\.L\.|s\.r\.o\.|Kft\.?|AE|SIA|UAB|OÜ")
+_WORD = r"[A-ZÆØÅÄÖÜÉ0-9][\wÆØÅæøåÄÖÜäöüÉé&'’.\-]*"
+ENTITY_RX = re.compile(
+    r"(?<![\wÆØÅæøå])(?P<name>" + _WORD + r"(?:(?:\s+(?:og|and|&|of|for|i)\s+|\s+|\s*&\s*|\s*\(\w+\)\s*)" + _WORD +
+    r"){0,5})\s*,?\s+(?P<form>" + _FORMS_RX + r")(?![\wÆØÅæøå])")
+FOREIGN_FORMS_RX = re.compile(r"^(?!(?:AS|ASA|ANS|DA|SA|BA|KS|NUF|IKS|KF|ENK|BRL)$)")
+FOREIGN_REG_RX = re.compile(
+    r"(registered in (?:england|scotland|wales|ireland|england (?:and|&) wales)\b[^.|]{0,40}|"
+    r"company (?:registration )?(?:no|number|reg\.?(?: no)?)\.?\s*:?\s*\d{6,8}\b|"
+    r"organisationsnummer\s*:?\s*\d{6}-\d{4}|org\.?\s*nr\.?\s*:?\s*\d{6}-\d{4}|"
+    r"\bcvr(?:-nr\.?|\s*nr\.?|-nummer)?\s*:?\s*\d{8}\b|\bkrs\s*:?\s*\d{10}\b|\bnip\s*:?\s*\d{3}-?\d{3}-?\d{2}-?\d{2}\b|"
+    r"\by-tunnus\b|\bhrb\s*\d{3,}|\bhandelsregister\b|\bkvk\b(?:-nummer)?\s*:?\s*\d{8}|\bsire[nt]\s*:?\s*\d{9}|"
+    r"\babn\s*:?\s*\d{2}\s?\d{3}|\bvat\s*(?:reg\.?\s*)?(?:no|number)?\.?\s*:?\s*(?:gb|de|se|dk|pl|fi|nl|fr|it|es|ie|be|at)\s?\d{6,})",
+    re.I)
+_FORM_WORDS = {"as", "asa", "ans", "da", "sa", "ba", "ks", "nuf", "iks", "kf", "enk", "brl", "ab", "aps", "a/s", "ehf",
+               "oy", "oyj", "gmbh", "ag", "ltd", "limited", "llc", "inc", "bv", "nv", "srl", "spa", "sas", "sarl", "plc",
+               "llp", "pty", "pvt", "private", "sp", "z", "o", "oo", "sl", "sro", "kft", "ae", "sia", "uab", "ou"}
+_KEY_FOLD = str.maketrans({"æ": "ae", "ø": "o", "å": "a", "ä": "a", "ö": "o", "ü": "u", "é": "e", "è": "e"})
+
+
+def entity_key(name: str) -> str:
+    """Comparable key of a legal name: case/diacritics/punctuation and legal-form words removed, '&' = 'og'.
+    Country words are kept: 'YABIMO Norge AS' and 'YABIMO AS' are different legal entities."""
+    n = unicodedata.normalize("NFKC", name or "").lower().translate(_KEY_FOLD).replace("&", " og ").replace("+", " og ")
+    n = re.sub(r"\b(?:sp\.?\s*z\s*o\.?\s*o\.?|a/s|s\.r\.l\.|s\.p\.a\.|b\.v\.|n\.v\.|s\.a\.|pty\.?\s*ltd\.?|pvt\.?\s*ltd\.?)",
+               " ", n)
+    toks = [t for t in re.findall(r"[a-z0-9]+", n) if t not in _FORM_WORDS and t not in ("og", "and")]
+    return "".join(toks)
+
+
+def same_entity(key: str, own_key: str, foreign: bool | None = None, own_foreign: bool | None = None) -> bool:
+    """Entity mention `key` names the entity `own_key` (a leading label such as a country or heading may have
+    been captured: 'Norway Hydreco Hydraulics Norway AS'). A foreign legal form never names a Norwegian-form
+    entity: 'YABIMO Sp. z o.o.' is not 'YABIMO AS'."""
+    if not key or not own_key:
+        return False
+    if foreign is not None and own_foreign is not None and foreign != own_foreign:
+        return False
+    return key == own_key or (len(own_key) >= 5 and key.endswith(own_key))
+
+
+def legal_form_is_foreign(legal_name: str) -> bool:
+    words = re.findall(r"[\wÆØÅæøå/.]+", legal_name or "")
+    return not (words and words[-1].upper().rstrip(".") in NO_FORMS)
+
+
+def legal_entities(text: str) -> list[dict]:
+    """Legal entities named in text: [{"name","form","key","span","foreign"}] (name + legal-form token)."""
+    out = []
+    for m in ENTITY_RX.finditer(text or ""):
+        before = (text or "")[max(0, m.start() - 40):m.start()]
+        before = before[max(before.rfind(c) for c in "©|.\n") + 1:]      # same phrase only
+        if CREDIT_RX.search(before + " " + m.group(0)) or re.search(r"\btheme|\bplugin|\btemplate", before + m.group(0), re.I):
+            continue                                       # web agency / theme credit, not the site owner
+        name = m.group("name").strip(" ,")
+        # drop leading generic words that start a sentence/label ("Kontakt", "Copyright", "Org")
+        name = re.sub(r"^(?:(?:Copyright|Kontakt|Contact|Om|About|Levert av|Faktura|Org\.?(?:nr)?\.?|Tlf\.?|"
+                      r"E-post|Email|Adresse|Address|Velkommen til|Welcome to)\s+)+", "", name)
+        key = entity_key(name)
+        if not key or len(key) < 2:
+            continue
+        form = m.group("form")
+        out.append({"name": f"{name} {form}", "form": form, "key": key,
+                    "foreign": form.upper().rstrip(".") not in NO_FORMS,
+                    "span": re.sub(r"\s+", " ", text[max(0, m.start() - 40):m.end() + 60]).strip()})
+    return out
+
+
+def foreign_registrations(text: str) -> list[str]:
+    return sorted({re.sub(r"\s+", " ", m.group(0)).strip()[:80] for m in FOREIGN_REG_RX.finditer(text or "")})
+
+
+def legal_name_rx(legal_name: str) -> re.Pattern | None:
+    """Regex for the exact registered name: name words case-insensitive with flexible separators, the
+    legal-form token case-sensitive ('AS', not 'as'), not followed by an English function word."""
+    words = re.findall(r"[\wÆØÅæøåÄÖÜäöüÉé]+", unicodedata.normalize("NFKC", legal_name or ""))
+    if not words:
+        return None
+    form = words[-1] if words[-1].upper() in NO_FORMS and words[-1].isupper() else None
+    body = words[:-1] if form else words
+    if not body:
+        return None
+    sep = r"[\s.,\-–&]*"
+    parts = [r"(?i:" + re.escape(w) + r")" for w in body]
+    rx = r"(?<![\wÆØÅæøå])" + sep.join(parts)
+    if form:
+        rx += r"[\s.,]+" + re.escape(form) + r"(?![\wÆØÅæøå])(?!\s+(?:a|an|the|well|of|to|in|for|and|or|with|we|is)\b)"
+    else:
+        rx += r"(?![\wÆØÅæøå])"
+    return re.compile(rx)
+
+
+def name_block(html: str, legal_name: str, target: str | None = None, max_len: int = 500):
+    """Smallest DOM block naming the exact legal name, grown while it stays <= max_len chars and names no other
+    legal entity and no other org number (the legal-name analogue of `orgnr_block`, for pages that list several
+    group companies). Returns orgnr_block-shaped dict or None."""
+    nrx = legal_name_rx(legal_name)
+    if nrx is None:
+        return None
+    own = entity_key(legal_name)
+    own_foreign = legal_form_is_foreign(legal_name)
+    tree = LexborHTMLParser(html)
+    for sel in ("script", "style", "noscript", "template", "svg"):
+        for n in tree.css(sel):
+            n.decompose()
+    best = None
+    best_len = None
+    for node in (tree.body.traverse() if tree.body else []):
+        t = node.text(separator=" ")
+        if len(t) < 4000 and nrx.search(t) and (best is None or len(t) < best_len):
+            best, best_len = node, len(t)
+    if best is None:
+        return None
+
+    def foreign_bits(txt: str) -> bool:
+        if any(not same_entity(e["key"], own, e["foreign"], own_foreign) for e in legal_entities(txt)):
+            return True
+        for m in ORGNR_RX.finditer(txt):
+            d = re.sub(r"\D", "", m.group("num"))
+            if mod11_ok(d) and d != target:
+                return True
+        return False
+
+    block = best
+    while block.parent is not None and block.parent.tag not in ("html", "body"):
+        pt = block.parent.text(separator=" ")
+        if len(pt) > max_len or foreign_bits(pt):
+            break
+        block = block.parent
+    btxt = re.sub(r"\s+", " ", block.text(separator=" ")).strip()
+    bhtml = block.html or ""
+    obf = set()
+    for n in block.css("[data-cfemail]"):
+        dec = decode_cfemail(n.attributes.get("data-cfemail") or "")
+        if dec:
+            obf.add(dec)
+    for m in _CF_HREF_RX.finditer(bhtml):
+        dec = decode_cfemail(m.group(1))
+        if dec:
+            obf.add(dec)
+    hrefs = sorted({(a.attributes.get("href") or "").strip() for a in block.css("a[href]")} - {""})
+    emails = sorted({e.lower() for e in EMAIL_RX.findall(btxt)} | obf |
+                    {unquote(m).lower() for m in re.findall(r'href=["\']mailto:([^"\'?]+)', bhtml, re.I)})
+    phones = sorted({re.sub(r"\D", "", m.group("num")) for m in PHONE_RX.finditer(btxt)
+                     if len(re.sub(r"\D", "", m.group("num"))) == 8})
+    return {"block_tag": block.tag, "block_text": btxt[:max_len], "emails": [e for e in emails if not PLACEHOLDER_EMAIL_RX.search(e)],
+            "phones": phones, "isolated": not foreign_bits(btxt), "kind": "legal_name",
+            "links": [h for h in hrefs if not h.lower().startswith(("mailto:", "tel:", "javascript:", "#"))],
+            "tel_links": sorted({unquote(h.split(":", 1)[1]).strip() for h in hrefs if h.lower().startswith(("tel:", "callto:"))})}

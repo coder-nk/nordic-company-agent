@@ -23,8 +23,18 @@ Rules (DESIGN.md "Website identity gate", research/company_websites.md §3-§10,
       fields; a partially matching name (parent/brand site) needs two corroborations or the full legal name; a
       different legal entity named as owner (copyright / JSON-LD legalName) refuses L2 unless the registry match
       is overwhelming, and then only registry-equal contacts are published.
-  Facts: generic role mailboxes or the registry e-mail (never fornavn.etternavn@, never invoice-scanning
-  addresses); phones normalised to E.164, staff lines (named person / personal mailbox next to the number,
+  Group / foreign sites (audit of the 1,000-company run): a cross-domain redirect keeps the fetched path as the
+      base (never the wider host root); a shared host needs a visible labelled org number in an owner context
+      (JSON-LD/HTML-only hits refused); a registry redirect onto a multi-entity host without the name in the title
+      is refused; sibling entities (same distinctive token + legal form) without the exact registered name refuse
+      L2; foreign registration markers / foreign entities in footer, copyright, contact or imprint text allow L2 only
+      via the company's own legal-name block, from which alone facts are then taken; registry phones/addresses
+      shared with sister organisations (cache `registry_shared_contacts`) do not corroborate; the legal name needs
+      its upper-case form token; c/o-company registry addresses need two corroborations.
+  L2e own-domain registry e-mail lead: exact registered name in title/og:site_name, >= 2 corroborations, exclusive
+      host, no other-entity signals (confidence 0.8).
+  Facts: generic role mailboxes only (never a person's mailbox, even the registry e-mail; never invoice-scanning
+  or country/region-qualified mailboxes of foreign group entities); phones normalised to E.164, staff lines (named person / personal mailbox next to the number,
   directory pages, non-registry mobiles) skipped; socials whose handle is dominated by the company name or the
   exclusive domain label (platform, sponsor, place-name and brand+foreign-country handles rejected).
 """
@@ -44,7 +54,14 @@ from ..orgnr import is_valid
 from . import extract as X
 
 GATE_VERSION = "website_gate@1"
-CONFIDENCE = {"L1": 0.97, "L2": 0.85}
+CONFIDENCE = {"L1": 0.97, "L2": 0.85, "L2e": 0.8}
+PUBLISHED_LEVELS = ("L1", "L2", "L2e")
+OWNER_PAGE_KINDS = ("contact", "about", "terms", "privacy", "impressum")
+# Country/region-qualified role mailboxes (info-uk@, sales-au@, reception-wa@) belong to foreign group entities.
+REGION_LOCAL_RX = re.compile(r"(?:[-_.](?:uk|gb|au|in|it|de|se|dk|fi|us|usa|wa|nsw|qld|vic|nz|pl|fr|es|nl|be|at|ch|cz|"
+                             r"ee|lv|lt|is|ie|ca|br|mx|sg|hk|cn|jp|kr|za|ae|qa|tr|emea|apac|latam|na)$|"
+                             r"^(?:uk|gb|au|in|it|de|se|dk|fi|us|usa|nz|pl|fr|es|nl|emea|apac)[-_.])")
+
 
 # --------------------------------------------------------------------------- regexes / vocabularies
 # Weak placeholder phrases: only decisive in the <title> or on near-empty pages (research §3 lesson 1).
@@ -97,7 +114,7 @@ ROLE_LOCALS = {
     "ekspedisjon", "avdeling", "hovedkontor", "felles", "bedrift", "team", "medlem", "medlemskap", "billett",
     "billetter", "tickets", "event", "arrangement", "kurs", "elev", "skole", "barnehage", "legekontor", "time",
     "timebestilling", "akutt", "vakt", "kantine", "restaurant", "bord", "cafe", "kafe", "hotell", "hotel",
-    "frontdesk",
+    "frontdesk", "fotball", "handball", "haandball", "handballgruppa", "golf", "ski", "tennis", "idrett",
 }
 INVOICE_LOCALS = {"faktura", "fakturamottak", "fakturaer", "invoice", "invoices", "regning", "regninger", "bilag",
                   "ehf", "fakturering", "billing", "inngaaende", "inngaende", "scan", "skann", "kreditor",
@@ -227,6 +244,21 @@ class PageInfo:
     feeds: list[tuple[str, str]]
     links: list[tuple[str, str]]
     h1: str = ""
+    entities: list[dict] = field(default_factory=list)       # legal entities named on the page
+    owner_entities: list[dict] = field(default_factory=list) # ... in footer / copyright / contact / imprint text
+    foreign_regs: list[str] = field(default_factory=list)    # foreign registration markers (UK company no, CVR ...)
+    name_block: dict | None = None                           # block naming the exact legal name
+    exact_named: bool = False                                # exact legal name (case-sensitive form) in the text
+
+    def head_text(self) -> str:
+        """Site-declared text outside the body: title, meta description/author, og:*, JSON-LD names/contacts."""
+        parts = [self.title] + [self.meta.get(k, "") for k in ("description", "og:description", "og:site_name",
+                                                               "og:title", "author", "twitter:description")]
+        for o in self.orgs:
+            for k in ("name", "legalName", "telephone", "email"):
+                if isinstance(o.get(k), str):
+                    parts.append(o[k])
+        return " | ".join(p for p in parts if p)
 
     @property
     def url(self) -> str:
@@ -295,7 +327,7 @@ def _meta_full(tree) -> tuple[str, dict[str, str], str | None, list[tuple[str, s
     for m in tree.css("meta"):
         k = (m.attributes.get("property") or m.attributes.get("name") or m.attributes.get("itemprop") or "").lower().strip()
         if k in ("description", "og:description", "og:site_name", "og:title", "og:image", "og:url", "application-name",
-                 "twitter:description", "generator") and k not in meta:
+                 "twitter:description", "generator", "author") and k not in meta:
             v = _ws(m.attributes.get("content") or "")
             if v:
                 meta[k] = v[:1000]
@@ -379,9 +411,18 @@ def analyse_page(page: Page, target: str, name: str = "", idx: int = 0) -> PageI
     others = (set(x.get("other_orgnrs_kw", [])) | set(x.get("other_orgnrs_text", [])) |
               set(x.get("brreg_links", [])) | ids) - {target}
     block = X.orgnr_block(html, target) if any(h["src"] == "text" for h in hits) else None
+    entities = X.legal_entities(text)
+    owner_text = " | ".join([x.get("footer_excerpt", ""), " | ".join(x.get("copyright", []) or [])] +
+                            ([text] if page.kind in ("contact", "impressum", "about") else []))
+    owner_entities = [e for e in X.legal_entities(owner_text) if not PROVIDER_RX.search(e["key"])]
+    nrx = X.legal_name_rx(name) if name else None
+    exact_named = bool(nrx and (nrx.search(text) or nrx.search(title)))
+    nblock = X.name_block(html, name, target) if (nrx and nrx.search(text)) else None
     return PageInfo(idx=idx, page=page, x=x, text=text, title=title, meta=meta, lang=lang,
                     blocking=_blocking(x, page, title, text), hits=hits, others=others, block=block, orgs=orgs,
-                    feeds=feeds, links=links, h1=h1)
+                    feeds=feeds, links=links, h1=h1, entities=entities, owner_entities=owner_entities,
+                    foreign_regs=X.foreign_registrations(owner_text),
+                    name_block=nblock, exact_named=exact_named)
 
 
 # --------------------------------------------------------------------------- site identity helpers
@@ -398,10 +439,18 @@ def site_base(start_url: str, final_url: str) -> tuple[str, bool]:
     final_dom = X.reg_domain(host)
     start_sub = not HOMEISH_PATH_RX.match(start_path)
     final_sub = not HOMEISH_PATH_RX.match(path)
+    # After a redirect to another registrable domain the host root was never fetched (axflow.no ->
+    # axflow.com/nb-no/: the root is the foreign group's site), so any non-root final path, locale prefixes
+    # included, is the base.
+    cross = bool(start_dom) and start_dom != final_dom
+    if cross and path not in ("", "/") and not re.fullmatch(r"/(?:index|default)\.[a-z]{2,5}", path, re.I):
+        final_sub = True
     subpath = start_sub or (final_sub and start_dom != final_dom)
     if not subpath:
         return f"{scheme}://{host}/", False
     base = path
+    if re.search(r"/[^/]+\.(?:html?|php|aspx?|jsp)$", base, re.I):
+        base = base.rsplit("/", 1)[0] + "/"
     if start_sub and (st.hostname or "").lower().removeprefix("www.") == host.removeprefix("www.") \
             and path.lower().startswith(start_path.rstrip("/").lower()):
         base = start_path
@@ -510,13 +559,42 @@ def _all_emails(info: PageInfo) -> set[str]:
     return {e for e in out if X.EMAIL_RX.fullmatch(e)}
 
 
-def corroborate(infos: list[PageInfo], rec: dict, site_domain: str) -> dict:
-    text = " ".join(i.text for i in infos)
+def address_key(postcode: str | None, line: str | None) -> str | None:
+    """Key of a registry street address ('0278|karenslyst allé 2'); None for post boxes / c/o lines."""
+    if not postcode or not line or re.match(r"\s*(postboks|pb\.?|boks|c/o)\b", line, re.I):
+        return None
+    return f"{postcode}|{re.sub(r'\s+', ' ', line.strip().lower())}"
+
+
+def _shared(shared_contacts: dict | None, kind: str, key: str | None, target: str) -> list[str]:
+    """Sister organisations (same distinctive name token) that file the same registry phone/address as the
+    target, from the declared cache `registry_shared_contacts`."""
+    if not shared_contacts or not key:
+        return []
+    lst = set(map(str, (shared_contacts.get(kind) or {}).get(key) or []))
+    if target and target not in lst:
+        return []
+    return sorted(lst - {target})
+
+
+def corroborate(infos: list[PageInfo], rec: dict, site_domain: str, *, shared_contacts: dict | None = None,
+                target: str = "") -> dict:
+    """Registry corroboration. A phone or street address that the registry also lists for another organisation
+    number (sister company, shared office, accountant) does not count; the legal name must carry its form token
+    in upper case ('Yabimo as a supplier' is not 'YABIMO AS')."""
+    text = " ".join(i.text + " | " + i.head_text() for i in infos)
     tl = text.lower()
     tel_digits = [re.sub(r"\D", "", t) for i in infos for t in i.x.get("tel_links", [])]
     sig: dict[str, Any] = {}
-    sig["phone_match"] = [p for p in registry_phones(rec)
-                          if phone_in_text(p, text) or any(d.endswith(p) for d in tel_digits)]
+    sig["shared_discounted"] = []
+    phones = []
+    for p in registry_phones(rec):
+        others = _shared(shared_contacts, "phones", p, target)
+        if others:
+            sig["shared_discounted"].append(f"phone {p} also filed by {', '.join(others[:3])}")
+            continue
+        phones.append(p)
+    sig["phone_match"] = [p for p in phones if phone_in_text(p, text) or any(d.endswith(p) for d in tel_digits)]
     em = registry_email(rec)
     found = set().union(*(_all_emails(i) for i in infos)) if infos else set()
     sig["email_match"] = bool(em) and em in found
@@ -533,17 +611,22 @@ def corroborate(infos: list[PageInfo], rec: dict, site_domain: str) -> dict:
         street = re.findall(r"[a-zæøåäöü][a-zæøåäöü.\-]{3,}", (lines[0] or "").lower())
         if not street or re.match(r"(postboks|pb|boks|c/o)$", street[0]):
             continue
+        others = _shared(shared_contacts, "addresses", address_key(pn, lines[0]), target)
+        if others:
+            sig["shared_discounted"].append(f"address {pn} {lines[0]} also filed by {', '.join(others[:3])}")
+            continue
         for m in re.finditer(r"(?<!\d)" + re.escape(pn) + r"(?!\d)", text):
             win = tl[max(0, m.start() - 120): m.end() + 60]
             if street[0] in win:
                 addr_hits.append(f"{k}:{pn}+{street[0]}")
                 break
     sig["address_match"] = addr_hits
-    name = _ws((rec.get("navn") or "").lower())
+    name = _ws(rec.get("navn") or "")
     toks = X.name_core_tokens(name)
-    strong_name = bool(ORGFORM_WORD_RX.search(rec.get("navn") or "")) or len(toks) >= 3
-    sig["legal_name_full"] = bool(name) and len(toks) >= 1 and strong_name and bool(re.search(
-        r"(?<![a-z0-9æøå])" + re.escape(name).replace(r"\ ", r"[\s\-]+") + r"(?![a-z0-9æøå])", tl))
+    strong_name = bool(ORGFORM_WORD_RX.search(name)) or len(toks) >= 3
+    nrx = X.legal_name_rx(name)
+    sig["legal_name_full"] = bool(name) and len(toks) >= 1 and strong_name and nrx is not None and \
+        bool(nrx.search(text))
     sig["n"] = sum([bool(sig["phone_match"]), bool(sig["email_match"] or sig["email_domain_match"]),
                     bool(addr_hits), bool(sig["legal_name_full"])])
     sig["kinds"] = [k for k in ("phone_match", "email_match", "email_domain_match", "address_match", "legal_name_full")
@@ -573,10 +656,15 @@ class Verdict:
     target: str = ""
     form: str | None = None
     foreign_owner: str | None = None            # L2 only: site names another legal entity as owner
+    other_entities: list[str] = field(default_factory=list)   # sibling / foreign legal entities named on the site
+    foreign_regs: list[str] = field(default_factory=list)
+    exact_strong: bool = False                  # exact registered name in title / og:site_name / JSON-LD name
+    strict_block: bool = False                  # facts only from the company's own legal-name block
+    cross_domain: bool = False
 
     @property
     def published(self) -> bool:
-        return self.level in ("L1", "L2")
+        return self.level in PUBLISHED_LEVELS
 
     @property
     def confidence(self) -> float:
@@ -585,16 +673,35 @@ class Verdict:
     @property
     def restricted(self) -> bool:
         """Facts must come from the target's own org-number block (or equal the registry record)."""
-        return self.multi or not self.exclusive or bool(self.foreign_owner)
+        return self.multi or not self.exclusive or bool(self.foreign_owner) or bool(self.other_entities) or \
+            self.strict_block
 
 
 _HIT_RANK = {("text", True): 0, ("registry_link", True): 1, ("jsonld", True): 2, ("text", False): 3,
              ("html", True): 4, ("html", False): 5}
 
 
+def _trim_entity(name: str, dist_keys: list[str]) -> str:
+    """'Off Road Hydraulic Solutions HYDRECO HYDRAULICS LTD' -> 'HYDRECO HYDRAULICS LTD' (for notes)."""
+    words = name.split()
+    for j, w in enumerate(words):
+        if any(squash(w).startswith(k) for k in dist_keys):
+            return " ".join(words[j:])
+    return name
+
+
+def _owner_context_hit(i: PageInfo, h: dict, prof: NameProfile) -> bool:
+    """A visible, keyword-labelled org number where a site states its owner: footer, contact/about/terms/
+    privacy/imprint page, or next to the company name."""
+    if h["src"] != "text" or not h["kw"] or h["credit"]:
+        return False
+    return bool(i.x.get("target_in_footer")) or i.page.kind in OWNER_PAGE_KINDS or \
+        (bool(prof.required) and all(token_in(t, h["span"]) for t in prof.required))
+
+
 def verify(pages: list[Page], rec: dict | None, target: str, *, lead_kind: str, start_url: str,
            shared_orgnrs: Iterable[str] = (), name: str | None = None, form: str | None = None,
-           cache: dict | None = None) -> Verdict:
+           cache: dict | None = None, shared_contacts: dict | None = None) -> Verdict:
     """Identity verdict for the pages of one lead (pages[0] = home page after redirects)."""
     rec = rec or {}
     name = name if name is not None else (rec.get("navn") or "")
@@ -649,8 +756,28 @@ def verify(pages: list[Page], rec: dict | None, target: str, *, lead_kind: str, 
     v.other_orgnrs = others
     v.multi = bool(others)
     v.dominant = any(name_matches(i.strong_text(), prof) for i in ok)
+    own_key = X.entity_key(name)
+    v.exact_strong = bool(own_key) and len(own_key) >= 3 and any(own_key in squash(i.strong_text()) for i in ok)
+    dist_keys = [squash(t) for t in prof.required if len(squash(t)) >= 3 and not t.isdigit()]
+    own_foreign = form == "NUF" or X.legal_form_is_foreign(name)
+    seen_ent: dict[str, str] = {}
+    for i in ok:
+        for e in i.entities:                       # siblings: anywhere on the fetched pages
+            if not X.same_entity(e["key"], own_key, e["foreign"], own_foreign) and any(k in e["key"] for k in dist_keys):
+                seen_ent.setdefault(e["key"] + ("|f" if e["foreign"] else ""), _trim_entity(e["name"], dist_keys))
+        for e in i.owner_entities:                 # foreign entities: where a site states its owner
+            if not X.same_entity(e["key"], own_key, e["foreign"], own_foreign) and e["foreign"] and form != "NUF":
+                seen_ent.setdefault(e["key"] + "|f", e["name"])
+    v.other_entities = sorted(set(seen_ent.values()))[:10]
+    v.foreign_regs = [] if form == "NUF" else sorted({r for i in ok for r in i.foreign_regs})[:5]
+    siblings = sorted({n for k, n in seen_ent.items() if any(d in k.split("|")[0] for d in dist_keys)})
+    exact_named = any(i.exact_named for i in ok)
+    st_dom0 = X.reg_domain(urlsplit(start_url).hostname or "") if start_url else ""
+    v.cross_domain = bool(st_dom0) and st_dom0 != v.domain
     found = [(i, h) for i in ok for h in i.hits]
     reg_lead = lead_kind == "registry_website"
+    email_lead = lead_kind == "email_domain" and "@" in registry_email(rec) and \
+        X.reg_domain(registry_email(rec).split("@", 1)[1]) == v.domain
     if found:
         i, h = min(found, key=lambda ih: (_HIT_RANK.get((ih[1]["src"], ih[1]["kw"]), 9), ih[0].idx))
         if all(hh["credit"] for _, hh in found) and not v.dominant:
@@ -663,8 +790,21 @@ def verify(pages: list[Page], rec: dict | None, target: str, *, lead_kind: str, 
             v.reason = (f"org number printed on {i.url}, but the site also shows {ctx} and is not branded as "
                         f"{name or 'the company'}; it is not the company's own website")
             return v
+        if (shared or v.subpath) and not any(_owner_context_hit(ii, hh, prof) for ii, hh in found):
+            v.reason = (f"{v.host} is shared with other organisation numbers ({', '.join(shared[:5]) or 'sub-path site'}); "
+                        f"the org number is not printed visibly with a label in an owner context (footer, contact, "
+                        f"imprint, privacy) - only in {h['src']}")
+            return v
+        if reg_lead and v.cross_domain and (v.multi or shared) and not v.dominant:
+            v.reason = (f"registered website redirects to {v.host}, a site that also shows/serves other organisation "
+                        f"numbers ({', '.join((others or shared)[:5])}) and whose title/site name does not carry "
+                        f"{name or 'the company name'}")
+            return v
         method = {"text": "orgnr_in_page_text", "registry_link": "orgnr_in_registry_link",
                   "jsonld": "orgnr_in_jsonld_identifier", "html": "orgnr_in_page_html"}[h["src"]]
+        if not under_base(i.url, v.site_url, v.subpath, v.exclusive):
+            # never publish a base wider than the page that proved identity
+            v.site_url, v.subpath, v.exclusive = i.url.split("#")[0].split("?")[0], True, False
         v.level = "L1"
         v.proof = {"page": i.idx, "url": i.url, "span": h["span"], "method": method, "locator": h["locator"]}
         note = []
@@ -682,7 +822,7 @@ def verify(pages: list[Page], rec: dict | None, target: str, *, lead_kind: str, 
         v.reason = (f"site shows other organisation number(s) {', '.join(others[:5])} but not {target}: "
                     "it belongs to another entity")
         return v
-    if not reg_lead:
+    if not (reg_lead or email_lead):
         v.reason = "candidate site does not print the organisation number"
         return v
     if v.subpath:
@@ -693,7 +833,20 @@ def verify(pages: list[Page], rec: dict | None, target: str, *, lead_kind: str, 
                     "only a printed org number can verify it")
         return v
     if hi.x.get("text_len", 0) < 200 and not hi.orgs:
-        v.reason = "home page has no readable content (JavaScript or image-only); org number not found"
+        # JS-rendered shell: accept only strong head evidence (registry phone/e-mail declared in the head or body
+        # AND the full registered name in <title> or meta author / og:site_name)
+        head = hi.head_text() + " | " + hi.text
+        nrx = X.legal_name_rx(name)
+        name_in_head = bool(nrx) and any(nrx.search(x) for x in (hi.title, hi.meta.get("author", ""),
+                                                                 hi.meta.get("og:site_name", "")))
+        contact_in_head = any(phone_in_text(p, head) for p in registry_phones(rec)) or \
+            (bool(registry_email(rec)) and registry_email(rec) in head.lower())
+        if not (name_in_head and contact_in_head):
+            v.reason = "home page has no readable content (JavaScript or image-only); org number not found"
+            return v
+    if siblings and not exact_named:
+        v.reason = (f"site of a sister/group entity: it names {', '.join(siblings[:4])} but never "
+                    f"{name or 'the company'}")
         return v
     if ADDRESS_NAME_RX.match(_ws(name).upper()):
         v.reason = "address-named entity (property SPV); the site must print the org number"
@@ -718,8 +871,31 @@ def verify(pages: list[Page], rec: dict | None, target: str, *, lead_kind: str, 
         return v
     former = [h.get("navn", "") for h in rec.get("historiskeNavn") or [] if isinstance(h, dict)]
     owner = next((ent for i in ok for ent in _owner_entities(i) if not _entity_matches(ent, prof, former)), None)
-    corr = corroborate(ok, rec, v.domain or "")
+    # A registry phone/address shared with sister organisations only corroborates when the site carries this
+    # company's exact full name in its title / og:site_name / JSON-LD name (it is not a sibling's or the group's).
+    corr = corroborate(ok, rec, v.domain or "", shared_contacts=None if v.exact_strong else shared_contacts,
+                       target=target)
     v.corroboration = corr
+    if v.other_entities or v.foreign_regs:
+        # Precision first: a site that names other legal entities (sister/group companies, foreign registrations)
+        # and does not print this company's organisation number is a group site, not this company's own
+        # official website. L2 is refused outright (an L1 proof is required on such sites).
+        what = ", ".join((v.other_entities + v.foreign_regs)[:4])
+        v.reason = (f"site names other legal entities ({what}) and does not print this organisation number: "
+                    "treated as a group site, not the company's own website")
+        return v
+    if False:  # kept for reference: the former block-based acceptance on group sites
+        blk = next((i.name_block for i in ok if i.name_block and i.name_block.get("isolated")), None)
+        reg_ph = set(registry_phones(rec))
+        ok_blk = bool(blk) and (any(p in reg_ph for p in blk.get("phones", [])) or
+                                any(_nat8(t) in reg_ph for t in blk.get("tel_links", [])) or
+                                (bool(registry_email(rec)) and registry_email(rec) in blk.get("emails", [])))
+        if not ok_blk:
+            what = ", ".join((v.other_entities + v.foreign_regs)[:4])
+            v.reason = (f"site names other legal entities ({what}); no block of {name or 'the company'} with its "
+                        "registry phone or e-mail")
+            return v
+        v.strict_block = True
     if owner:
         # A sibling/parent named as owner: only an overwhelming registry match keeps the registry-filed site,
         # and then facts are restricted to values equal to the registry record.
@@ -729,7 +905,22 @@ def verify(pages: list[Page], rec: dict | None, target: str, *, lead_kind: str, 
         v.foreign_owner = owner
     if corr["n"] < 1:
         v.reason = "registered website with the company name, but no registry corroboration (phone, e-mail, address, legal name)"
+        if corr["shared_discounted"]:
+            v.reason += " not shared with other organisation numbers (" + "; ".join(corr["shared_discounted"][:2]) + ")"
         return v
+    co_company = [co for co in co_names(rec) if not _person_like(co)]
+    if co_company and corr["n"] < 2:
+        v.reason = (f"registry address is c/o {co_company[0]}; with one registry corroboration only an org number "
+                    "printed on the site can verify it")
+        return v
+    if email_lead and not reg_lead:
+        nrx = X.legal_name_rx(name)
+        title_name = bool(nrx) and any(nrx.search(i.title) or nrx.search(i.meta.get("og:site_name", "")) for i in ok)
+        if not (corr["n"] >= 2 and title_name and not v.cross_domain and not v.foreign_owner and
+                not v.other_entities and not v.foreign_regs and not co_company):
+            v.reason = ("own-domain registry e-mail lead: needs the full registered name in the title, two registry "
+                        "corroborations and no other-entity signals")
+            return v
     if not prof.distinctive and corr["n"] < 2:
         v.reason = "generic company name: two registry corroborations needed"
         return v
@@ -753,11 +944,18 @@ def verify(pages: list[Page], rec: dict | None, target: str, *, lead_kind: str, 
         v.reason = "company name appears only in the footer and only one registry corroboration"
         return v
     pi = prom_pages[0]
-    v.level = "L2"
+    v.level = "L2" if reg_lead else "L2e"
     span = _clip(" | ".join(p for p in (pi.title, pi.meta.get("og:site_name", "")) if p) or pi.prominent_text()[:300])
-    v.proof = {"page": pi.idx, "url": pi.url, "span": span, "method": "registry_website+name+" + "+".join(corr["kinds"]),
-               "locator": "title"}
-    v.reason = "registry-filed website; company name prominent; corroborated by " + ", ".join(corr["kinds"])
+    locator = "title"
+    if v.strict_block:
+        bi = next(i for i in ok if i.name_block and i.name_block.get("isolated"))
+        pi, span, locator = bi, _clip(bi.name_block["block_text"]), "text (legal-name block)"
+    method = ("registry_website" if reg_lead else "registry_email_domain") + "+name+" + "+".join(corr["kinds"])
+    v.proof = {"page": pi.idx, "url": pi.url, "span": span, "method": method, "locator": locator}
+    v.reason = ("registry-filed website" if reg_lead else "domain of the registry e-mail") + \
+        "; company name prominent; corroborated by " + ", ".join(corr["kinds"])
+    if v.strict_block:
+        v.reason += f" (site also names {', '.join((v.other_entities + v.foreign_regs)[:3])}: facts only from the company's own block)"
     if v.foreign_owner:
         v.reason += f" (site names {v.foreign_owner} as owner: only registry-equal contact facts published)"
     return v
@@ -832,6 +1030,10 @@ def text_phones(text: str) -> list[dict]:
     return out
 
 
+# Service providers named in footers (payments, platforms, analytics): never the site owner.
+PROVIDER_RX = re.compile(r"klarna|vipps|mobilepay|nets|paypal|stripe|adyen|svea|resurs|qliro|dibs|bambora|worldline|"
+                         r"google|facebook|meta|wix|shopify|squarespace|apple|microsoft|trustpilot|cybot|cookiebot|"
+                         r"mailchimp|hubspot|automattic|wordpress|webflow|godaddy|onecom|amazon|cloudflare|elementor")
 SOCIAL_PLATFORMS = ("facebook", "instagram", "linkedin", "twitter", "youtube", "tiktok")
 # brand + foreign country handle (enterpriseuk, brandsverige): an international sibling, not the Norwegian entity
 FOREIGN_HANDLE_RX = re.compile(r"(?:uk|usa|us|de|dk|se|fi|nl|sverige|sweden|danmark|denmark|deutschland|germany|"
@@ -1012,7 +1214,9 @@ def collect_facts(v: Verdict, rec: dict | None) -> list[Fact]:
     home = ok[0]
     proof_i = v.infos[v.proof["page"]] if v.proof else home
     restricted = v.restricted
-    rich = (not restricted) or v.dominant           # site-level descriptive facts allowed
+    # Site-level descriptive facts (title, description, brand, logo, socials, careers, news): only on the
+    # company's own site, or where title/og:site_name/JSON-LD carry its exact registered name.
+    rich = (not restricted) or v.exact_strong
     label = squash((v.domain or "").split(".")[0]) if v.exclusive else None
     reg_em = registry_email(rec)
     reg_em_dom = X.reg_domain(reg_em.split("@", 1)[1]) if "@" in reg_em else ""
@@ -1035,11 +1239,11 @@ def collect_facts(v: Verdict, rec: dict | None) -> list[Fact]:
                     break
             if any(f.field == "website_description" for f in facts):
                 break
-    lang = home.lang
+    lang = home.lang if rich else None
     if lang and re.fullmatch(r"[A-Za-z]{2,3}(?:[-_][A-Za-z0-9]{2,8})*", lang):
         facts.append(Fact("website_language", lang, home.idx, "html[lang]", f'<html lang="{lang}">'))
     matched_orgs = [(i, o) for i in ok for o in i.orgs if org_matches(o, target, prof)]
-    if rich or v.dominant:
+    if rich:
         brand = None
         for i in (home, proof_i):
             sn = i.meta.get("og:site_name")
@@ -1078,12 +1282,20 @@ def collect_facts(v: Verdict, rec: dict | None) -> list[Fact]:
 
     # ---- address
     addr = None
-    blocks = [(i, i.block) for i in ok if i.block and i.block.get("isolated")]
-    if v.level == "L1":
+    name_blocks = [(i, i.name_block) for i in ok if i.name_block and i.name_block.get("isolated")]
+    if v.strict_block:
+        blocks = name_blocks
+    else:
+        blocks = [(i, i.block) for i in ok if i.block and i.block.get("isolated")]
+        if restricted:
+            blocks += name_blocks
+    if v.level == "L1" or v.strict_block:
         for i, b in blocks:
             found = find_addresses(b.get("block_text", ""))
             if found:
-                addr = Fact("website_address", found[0]["value"], i.idx, "text (org-number block)", found[0]["span"])
+                addr = Fact("website_address", found[0]["value"], i.idx,
+                            "text (legal-name block)" if b.get("kind") == "legal_name" else "text (org-number block)",
+                            found[0]["span"])
                 break
     else:
         reg_pcs = {(rec.get(k) or {}).get("postnummer") for k in ("forretningsadresse", "postadresse")} - {None}
@@ -1092,7 +1304,7 @@ def collect_facts(v: Verdict, rec: dict | None) -> list[Fact]:
             if found:
                 addr = Fact("website_address", found[0]["value"], i.idx, "text", found[0]["span"])
                 break
-    if addr is None and (not restricted or v.dominant):
+    if addr is None and rich and not v.strict_block:
         for i, o in matched_orgs:
             a = _jsonld_address(o)
             if a:
@@ -1124,29 +1336,37 @@ def collect_facts(v: Verdict, rec: dict | None) -> list[Fact]:
     for e, i, in_block in cand_emails:
         if e in seen or X.PLACEHOLDER_EMAIL_RX.search(e) or not X.EMAIL_RX.fullmatch(e):
             continue
+        # Only generic role mailboxes are published (never a person's mailbox, even when it is the registry
+        # e-mail: that one is already published from Brreg as registry_email).
         kind = email_kind(e, prof, label or squash((v.domain or "").split(".")[0]))
-        if kind in ("invoice",):
+        local = e.split("@", 1)[0]
+        if kind == "name" and squash(local) not in ({label} if label and len(label) >= 3 else set()) | \
+                ({prof.joined} if len(prof.joined) >= 5 else set()):
+            continue                                      # single name token: may be a surname mailbox
+        if kind not in ("role", "name"):
             continue
+        if REGION_LOCAL_RX.search(local) and v.form != "NUF":
+            continue                                      # info-uk@, sales-au@: a foreign group entity's mailbox
         dom = X.reg_domain(e.split("@", 1)[1])
         equal_reg = bool(reg_em) and e == reg_em
         if restricted and not (in_block or equal_reg):
             continue
         if equal_reg:
-            ok_e = kind != "personal"
+            ok_e = True
         else:
-            if kind not in ("role", "name"):
-                continue
             site_dom = (dom == v.domain) and (v.exclusive or in_block)
             ok_e = site_dom or (reg_em_dom and dom == reg_em_dom and reg_em_dom not in X.FREEMAIL) or \
                 (in_block and dom not in X.FREEMAIL)
-            if v.level == "L2":
-                ok_e = dom == v.domain or (reg_em_dom and dom == reg_em_dom and reg_em_dom not in X.FREEMAIL)
+            if v.level in ("L2", "L2e"):
+                ok_e = (dom == v.domain or (reg_em_dom and dom == reg_em_dom and reg_em_dom not in X.FREEMAIL)) and \
+                    (in_block or not v.strict_block)
         if not ok_e:
             continue
         loc, span = email_span(i, e)
         if in_block and loc == "text":
-            b = i.block or {}
-            loc, span = "text (org-number block)", text_window(b.get("block_text", ""), e) or span
+            b = next((bb for ii, bb in blocks if ii.idx == i.idx and e in bb.get("emails", [])), None) or i.block or {}
+            loc = "text (legal-name block)" if b.get("kind") == "legal_name" else "text (org-number block)"
+            span = text_window(b.get("block_text", ""), e) or span
         facts.append(Fact("contact_email", e, i.idx, loc, span, qualifier=e))
         seen.add(e)
 
@@ -1192,15 +1412,16 @@ def collect_facts(v: Verdict, rec: dict | None) -> list[Fact]:
     block_ph = {(re.sub(r"\D", "", p)[-8:], i.idx) for i, b in blocks for p in b.get("phones", []) + b.get("tel_links", [])}
     for i, b in blocks:
         btxt = b.get("block_text", "")
+        bname = "legal-name block" if b.get("kind") == "legal_name" else "org-number block"
         for p in b.get("tel_links", []):
             n8 = _nat8(p)
             if n8 not in reg_ph and n8 and staff_context(btxt, n8):
                 continue
-            add_phone(0 if n8 in reg_ph else 1, p, i, 'a[href^="tel:"] (org-number block)', tel_span(i, p))
+            add_phone(0 if n8 in reg_ph else 1, p, i, f'a[href^="tel:"] ({bname})', tel_span(i, p))
         for p in b.get("phones", []):
             if p not in reg_ph and staff_context(btxt, p):
                 continue
-            add_phone(0 if p in reg_ph else 1, p, i, "text (org-number block)", best_text_span(btxt, p))
+            add_phone(0 if p in reg_ph else 1, p, i, f"text ({bname})", best_text_span(btxt, p))
     for i in ok:
         tels = i.x.get("tel_links", [])
         directory = len({_nat8(t) or t for t in tels}) > 3          # staff directory page
@@ -1212,7 +1433,7 @@ def collect_facts(v: Verdict, rec: dict | None) -> list[Fact]:
                 continue
             if restricted and (n8, i.idx) not in block_ph:
                 continue
-            if v.level == "L2" and i.page.kind != "contact":
+            if v.level in ("L2", "L2e") and i.page.kind != "contact":
                 continue
             if (n8, i.idx) in block_ph:
                 continue                                   # already taken from the block
@@ -1228,7 +1449,7 @@ def collect_facts(v: Verdict, rec: dict | None) -> list[Fact]:
                 continue
             if restricted or not tp["kw"]:
                 continue
-            if v.level == "L2" and i.page.kind != "contact":
+            if v.level in ("L2", "L2e") and i.page.kind != "contact":
                 continue
             if mobile(tp["digits"]) or staff_context(i.text, tp["digits"]):
                 continue                                   # staff mobile / named-person lines are not company lines
@@ -1238,7 +1459,7 @@ def collect_facts(v: Verdict, rec: dict | None) -> list[Fact]:
                 if org_matches(o, target, prof) and isinstance(o.get("telephone"), str):
                     tel = o["telephone"]
                     n8 = _nat8(tel)
-                    if v.level == "L2" and n8 not in reg_ph:
+                    if v.level in ("L2", "L2e") and n8 not in reg_ph:
                         continue
                     add_phone(0 if n8 in reg_ph else 3, tel, i, 'script[type="application/ld+json"] telephone',
                               raw_window(i.page.html, tel, 30, 30) or tel)
@@ -1263,7 +1484,7 @@ def collect_facts(v: Verdict, rec: dict | None) -> list[Fact]:
                 if not can or can[0] in so_seen:
                     continue
                 in_block = (can[0], i.idx) in block_socials
-                if restricted and not v.dominant and not in_block:
+                if restricted and not v.exact_strong and not in_block:
                     continue
                 if not social_matches(can[0], prof, label if not restricted else None):
                     continue
@@ -1273,7 +1494,7 @@ def collect_facts(v: Verdict, rec: dict | None) -> list[Fact]:
                 facts.append(Fact("social_profile", {"platform": platform, "url": can[0], "handle": can[1]}, i.idx,
                                   "a[href]", raw_window(i.page.html, u.split("://", 1)[-1], 30, 60) or u,
                                   qualifier=f"{platform}|{can[0]}"))
-    if not restricted or v.dominant:
+    if rich:
         for i, o in matched_orgs:
             same = o.get("sameAs")
             for u in (same if isinstance(same, list) else [same]):
@@ -1302,7 +1523,7 @@ def collect_facts(v: Verdict, rec: dict | None) -> list[Fact]:
                     continue
                 if not under_base(u, v.site_url, v.subpath, v.exclusive):
                     continue
-                if restricted and not v.dominant and not v.subpath:
+                if restricted and not v.exact_strong and not (v.subpath and not v.other_entities):
                     continue
                 sp = urlsplit(u)
                 if X.SKIP_EXT_RX.search(sp.path) or sp.path in ("", "/"):
@@ -1325,7 +1546,7 @@ def feed_url(v: Verdict) -> str | None:
     """RSS/Atom feed linked from the verified home page (comment feeds skipped)."""
     if not v.published or not v.infos or not v.site_url:
         return None
-    if v.restricted and not v.dominant and not v.subpath:
+    if v.restricted and not v.exact_strong and not (v.subpath and not v.other_entities):
         return None
     for u, t in v.infos[0].feeds:
         if re.search(r"comment|kommentar", u + " " + t, re.I):

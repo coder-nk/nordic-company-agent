@@ -383,7 +383,8 @@ async def _check_lead(ctx, st: _State, lead: Lead, rec: dict, target: str, *, le
                 _record(st, lead_no, kind="client_redirect", url=cs, error=msg)
     home = pages[0]
     lead_kind = "registry_website" if lead.registry else lead.kind
-    pre = V.verify(pages, rec, target, lead_kind=lead_kind, start_url=lead.start, cache=st.analysis)
+    pre = V.verify(pages, rec, target, lead_kind=lead_kind, start_url=lead.start, cache=st.analysis,
+                   shared_contacts=_shared_contacts(ctx))
     if pre.level in ("blocked", "not_available"):
         return LeadResult(lead, pre.level, f"{lead.start}: {pre.reason}", pre, pages)
     trx = X.target_rx(target)
@@ -429,8 +430,8 @@ async def _check_lead(ctx, st: _State, lead: Lead, rec: dict, target: str, *, le
             found = found or bool(trx.search(p.html))
     shared = _shared_orgnrs(ctx, target, home.final_url)
     v = V.verify(pages, rec, target, lead_kind=lead_kind, start_url=lead.start, shared_orgnrs=shared,
-                 cache=st.analysis)
-    state = {"L1": "available", "L2": "available"}.get(v.level, v.level)
+                 cache=st.analysis, shared_contacts=_shared_contacts(ctx))
+    state = "available" if v.published else v.level
     reason = v.reason if state == "available" else f"{lead.start}: {v.reason}"
     if state == "ambiguous" and st.budget_hit and not found:
         reason += " (not all subpages could be checked within the request budget)"
@@ -470,6 +471,17 @@ def _shared_index(ctx) -> dict[str, set[str]]:
     if isinstance(getattr(ctx, "shared", None), dict):
         ctx.shared["website_shared_index"] = idx
     return idx
+
+
+def _shared_contacts(ctx) -> dict | None:
+    """Declared cache `registry_shared_contacts` ({"phones": {phone8: [orgnr]}, "addresses": {"pc|street": [orgnr]}}):
+    registry phones/addresses filed by two or more organisation numbers (built by
+    tools/build_registry_shared_contacts.py). Such values never count as website corroboration."""
+    shared = ctx.shared if isinstance(getattr(ctx, "shared", None), dict) else {}
+    if "website_shared_contacts" not in shared:
+        val = _safe_json(ctx, "registry_shared_contacts")
+        shared["website_shared_contacts"] = val if isinstance(val, dict) else None
+    return shared.get("website_shared_contacts")
 
 
 def _safe_json(ctx, name: str) -> Any:
@@ -614,8 +626,10 @@ def news_section_link(v: V.Verdict) -> str | None:
     """Same-site link to the company's news/press/blog section on the verified home page."""
     if not v.published or not v.infos or not v.site_url:
         return None
+    if v.restricted and not v.exact_strong and not (v.subpath and not v.other_entities):
+        return None                    # group / multi-entity site: its news is not this company's (same gate as feeds)
     best = None
-    for href, txt in v.infos[0].links:
+    for href, _txt in v.infos[0].links:
         u = urljoin(v.infos[0].url, href).split("#")[0]
         if not u.startswith(("http://", "https://")) or not NEWS_PATH_RX.search(urlsplit(u).path or ""):
             continue
@@ -880,7 +894,8 @@ def _emit(ctx, company: CompanyResult, rec: dict, st: _State, results: list[Lead
         return
     # ------------------------------------------------------------------ published (L1 / L2)
     conf = v.confidence
-    basis = "organisation_number_exact" if v.level == "L1" else "registry_website_corroborated"
+    basis = {"L1": "organisation_number_exact", "L2": "registry_website_corroborated",
+             "L2e": "registry_email_domain_corroborated"}.get(v.level, "registry_website_corroborated")
     method = f"{V.GATE_VERSION}:{v.level}"
     proof_page = v.infos[v.proof["page"]].page
     proof_ev = _ev(proof_page, v.proof["locator"], v.proof["span"],

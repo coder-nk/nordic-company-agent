@@ -250,7 +250,7 @@ def test_multi_company_footer_only_block_facts(tmp_path):
     c = run_site(ctx, "920209319", {"https://www.advokateneiba47.no/": httpx.Response(
         200, text=fx("company_websites__L1_multi"), headers=HTML)}, hosts=("www.advokateneiba47.no",))
     assert c.modules["website"].availability == "available"
-    assert values(c, "contact_email") == ["thomas@advokat-os.no"]
+    assert values(c, "contact_email") == []          # thomas@ is personal, even though it is the registry e-mail
     assert values(c, "contact_phone") == ["+4745020113"]
     blob = json.dumps([x.value for x in c.claims], default=str)
     for bad in ("tore@okseter.no", "nina@advokat-nba.no", "91841861", "93420277", "post@advokateneiba47.no"):

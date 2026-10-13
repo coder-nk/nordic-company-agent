@@ -100,7 +100,11 @@ def test_fixture_publishable_facts(x):
     phones = {f.value for f in facts if f.field == "contact_phone"}
     socials = {f.value["url"] for f in facts if f.field == "social_profile"}
     for e in exp.get("email", []):
-        assert e.split(" ")[0] in emails
+        addr = e.split(" ")[0]
+        if V.email_kind(addr, V.name_profile(x["legal_name"]), "") == "role":
+            assert addr in emails
+        else:                                   # personal mailboxes are never published (registry_email covers it)
+            assert addr not in emails
     for p in exp.get("phone", []):
         assert p in phones
     for k, u in exp.items():
@@ -140,7 +144,7 @@ def test_cloudflare_bot_wall_is_blocked_not_dead():
 def test_multi_company_footer_isolates_the_block():
     v, facts = verdict_for(case("920209319"))
     assert v.level == "L1" and v.multi and v.restricted
-    assert {f.value for f in facts if f.field == "contact_email"} == {"thomas@advokat-os.no"}
+    assert {f.value for f in facts if f.field == "contact_email"} == set()      # thomas@ is a personal mailbox
     assert {f.value for f in facts if f.field == "contact_phone"} == {"+4745020113"}
     assert not [f for f in facts if f.field in ("website_description", "brand_name", "social_profile", "logo_url")]
     addr = [f.value for f in facts if f.field == "website_address"]

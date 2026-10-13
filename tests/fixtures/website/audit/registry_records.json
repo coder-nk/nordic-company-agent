@@ -1,0 +1,209 @@
+{
+ "912500128": {
+  "epostadresse": "info@yabimo.com",
+  "forretningsadresse": {
+   "adresse": [
+    "c/o Rödl & Partner Accounting AS",
+    "Karenslyst allé 2"
+   ],
+   "kommune": "OSLO",
+   "kommunenummer": "0301",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "0278",
+   "poststed": "OSLO"
+  },
+  "hjemmeside": "www.yabimo.com",
+  "navn": "YABIMO AS",
+  "organisasjonsform": {
+   "beskrivelse": "Aksjeselskap",
+   "kode": "AS"
+  },
+  "organisasjonsnummer": "912500128",
+  "telefon": "+48146360059"
+ },
+ "918210997": {
+  "epostadresse": "axflow@axflow.no",
+  "forretningsadresse": {
+   "adresse": [
+    "Lilleakerveien 10"
+   ],
+   "kommune": "OSLO",
+   "kommunenummer": "0301",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "0283",
+   "poststed": "OSLO"
+  },
+  "hjemmeside": "www.axflow.no/",
+  "navn": "AXFLOW AS",
+  "organisasjonsform": {
+   "beskrivelse": "Aksjeselskap",
+   "kode": "AS"
+  },
+  "organisasjonsnummer": "918210997",
+  "postadresse": {
+   "adresse": [
+    "Postboks 98   LILLEAKER"
+   ],
+   "kommune": "OSLO",
+   "kommunenummer": "0301",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "0216",
+   "poststed": "OSLO"
+  },
+  "telefon": "22 73 67 00"
+ },
+ "920217761": {
+  "epostadresse": "post-no@hydreco.com",
+  "forretningsadresse": {
+   "adresse": [
+    "Rauerskauveien 518"
+   ],
+   "kommune": "NITTEDAL",
+   "kommunenummer": "3232",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "1482",
+   "poststed": "NITTEDAL"
+  },
+  "hjemmeside": "www.hydreco.com",
+  "mobil": "91518833",
+  "navn": "HYDRECO HYDRAULICS NORWAY AS",
+  "organisasjonsform": {
+   "beskrivelse": "Aksjeselskap",
+   "kode": "AS"
+  },
+  "organisasjonsnummer": "920217761",
+  "telefon": "22 90 94 10"
+ },
+ "925516139": {
+  "forretningsadresse": {
+   "adresse": [
+    "Smalgangen 43"
+   ],
+   "kommune": "OSLO",
+   "kommunenummer": "0301",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "0188",
+   "poststed": "OSLO"
+  },
+  "hjemmeside": "jonkburger.no",
+  "navn": "JØNK GRØNLAND AS",
+  "organisasjonsform": {
+   "beskrivelse": "Aksjeselskap",
+   "kode": "AS"
+  },
+  "organisasjonsnummer": "925516139"
+ },
+ "981124626": {
+  "epostadresse": "firmapost@olavolsen.no",
+  "forretningsadresse": {
+   "adresse": [
+    "Strandveien 18"
+   ],
+   "kommune": "BÆRUM",
+   "kommunenummer": "3201",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "1366",
+   "poststed": "LYSAKER"
+  },
+  "navn": "DR TECHN OLAV OLSEN AS",
+  "organisasjonsform": {
+   "beskrivelse": "Aksjeselskap",
+   "kode": "AS"
+  },
+  "organisasjonsnummer": "981124626",
+  "postadresse": {
+   "adresse": [
+    "Postboks 139"
+   ],
+   "kommune": "BÆRUM",
+   "kommunenummer": "3201",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "1325",
+   "poststed": "LYSAKER"
+  },
+  "telefon": "67 82 80 00"
+ },
+ "984447647": {
+  "epostadresse": "firma@star-elektro.no",
+  "forretningsadresse": {
+   "adresse": [
+    "Slettebakksveien 84A"
+   ],
+   "kommune": "BERGEN",
+   "kommunenummer": "4601",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "5093",
+   "poststed": "BERGEN"
+  },
+  "hjemmeside": "star-elektro.no",
+  "navn": "STAR ELEKTRO AS",
+  "organisasjonsform": {
+   "beskrivelse": "Aksjeselskap",
+   "kode": "AS"
+  },
+  "organisasjonsnummer": "984447647",
+  "telefon": "55 57 79 50"
+ },
+ "995845067": {
+  "epostadresse": "firmapost@otera.no",
+  "forretningsadresse": {
+   "adresse": [
+    "Stemmane 4C"
+   ],
+   "kommune": "KRISTIANSAND",
+   "kommunenummer": "4204",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "4636",
+   "poststed": "KRISTIANSAND S"
+  },
+  "hjemmeside": "www.otera.no",
+  "navn": "OTERA INFRA AS",
+  "organisasjonsform": {
+   "beskrivelse": "Aksjeselskap",
+   "kode": "AS"
+  },
+  "organisasjonsnummer": "995845067",
+  "postadresse": {
+   "adresse": [
+    "Postboks 9203 Sørlandsparken"
+   ],
+   "kommune": "KRISTIANSAND",
+   "kommunenummer": "4204",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "4697",
+   "poststed": "KRISTIANSAND S"
+  }
+ },
+ "999152090": {
+  "forretningsadresse": {
+   "adresse": [
+    "Plogfabrikkvegen 5"
+   ],
+   "kommune": "KLEPP",
+   "kommunenummer": "1120",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "4353",
+   "poststed": "KLEPP STASJON"
+  },
+  "hjemmeside": "www.aluhak.no",
+  "mobil": "918 58 492",
+  "navn": "ALUHAK DRIFT AS",
+  "organisasjonsform": {
+   "beskrivelse": "Aksjeselskap",
+   "kode": "AS"
+  },
+  "organisasjonsnummer": "999152090",
+  "telefon": "51 42 57 00"
+ }
+}
