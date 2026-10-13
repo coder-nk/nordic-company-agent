@@ -289,10 +289,17 @@ def build_summary(claims: list[dict[str, Any]], modules: dict[str, dict[str, Any
     if socials:
         plats = sorted({(c["value"] or {}).get("platform") for c in socials} - {None})
         S.add("Company-linked profiles: " + ", ".join(p.title() for p in plats) + ".", socials, "web")
+    emails, phones = C.get("contact_email")[:2], C.get("contact_phone")[:2]
+    if emails or phones:
+        bits = [str(c["value"]) for c in emails] + [str(c.get("display") or c["value"]) for c in phones]
+        S.add("Contact listed on its website: " + ", ".join(bits) + ".", emails + phones, "web")
 
     # 8. Hiring
     jobs = C.get("job_posting")
     jc = C.one("active_job_count")
+    careers = C.one("careers_page")
+    if careers and not jobs:
+        S.add(f"Its website has a careers page ({careers['value']}).", [careers], "hiring")
     if jobs:
         titles = [(j["value"] or {}).get("title") for j in jobs[:3]]
         S.add(f"It appears to be hiring: {len(jobs)} active job ad{'s' if len(jobs) != 1 else ''} on NAV Arbeidsplassen"
