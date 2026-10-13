@@ -101,6 +101,10 @@ def cmd_run(a: argparse.Namespace) -> int:
     from .report import build_report, validate_envelopes
 
     t_start = time.monotonic()
+    if a.output and a.out == "out/run":
+        a.out = str(Path(a.output).parent if Path(a.output).suffix else Path(a.output))
+    if a.workers:
+        a.concurrency = a.workers
     out_dir = Path(a.out)
     out_dir.mkdir(parents=True, exist_ok=True)
     orgnrs, invalid, dups = read_inputs(a.input)
@@ -119,7 +123,18 @@ def cmd_run(a: argparse.Namespace) -> int:
         for extra in ("run-report.json", "changes.jsonl"):
             if (out_dir / extra).exists():
                 shutil.copy2(out_dir / extra, hist / extra)
-    modules = set(ALL_MODULES) if not a.modules else {m.strip() for m in a.modules.split(",") if m.strip()}
+    REF_MODULES = {"registry_live": "registry", "accounting_obligation": "registry", "financials": "accounts",
+                   "locations": "subunits", "financial_history": "account_copies"}
+    if a.modules:
+        req = {REF_MODULES.get(m.strip(), m.strip()) for m in a.modules.split(",") if m.strip()}
+        unknown = req - set(ALL_MODULES)
+        if unknown:
+            print(f"warning: ignoring unknown modules {sorted(unknown)}", file=sys.stderr)
+        modules = (req & set(ALL_MODULES)) | {"registry"}
+        if "website" in modules:
+            modules |= {"social_profiles", "news"}
+    else:
+        modules = set(ALL_MODULES)
     if a.skip_modules:
         modules -= {m.strip() for m in a.skip_modules.split(",")}
     config = RunConfig.from_env(
@@ -141,11 +156,17 @@ def cmd_run(a: argparse.Namespace) -> int:
     expected = [o for o in all_inputs]
     validation = validate_envelopes(envelopes, expected)
     write_jsonl(out_dir / "envelopes.jsonl", envelopes)
+    for extra in (a.output, a.profiles_output):
+        if extra and Path(extra).resolve() != (out_dir / "envelopes.jsonl").resolve():
+            write_jsonl(Path(extra), envelopes)
     changes = [dict(ch, organisation_number=e["organisation_number"]) for e in envelopes for ch in e.get("changes", [])]
     write_jsonl(out_dir / "changes.jsonl", changes)
     report = build_report(result, expected, validation, config, invalid, dups)
     report["operations"]["wall_clock_s"] = round(time.monotonic() - t_start, 1)
     (out_dir / "run-report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2, default=str) + "\n")
+    if a.report:
+        Path(a.report).parent.mkdir(parents=True, exist_ok=True)
+        Path(a.report).write_text(json.dumps(report, ensure_ascii=False, indent=2, default=str) + "\n")
     if not a.no_viewer:
         from .viewer import build_site
         build_site(envelopes, out_dir / "site", report=report)
@@ -240,6 +261,14 @@ def main(argv: list[str] | None = None) -> int:
     r.add_argument("--no-live-discovery", action="store_true", help="only use cached/registry website leads")
     r.add_argument("--no-snapshots", action="store_true", help="do not store raw response snapshots")
     r.add_argument("--no-viewer", action="store_true")
+    # Aliases accepted for drop-in compatibility with the Builderr reference harness
+    # (scripts/run_competition_batch.py --organisations --bulk --output --profiles-output --report --run-id ...).
+    r.add_argument("--output", help="envelope JSONL path (reference-harness alias; implies --out <its folder>)")
+    r.add_argument("--profiles-output", help="also write the envelopes to this JSONL path")
+    r.add_argument("--report", help="also write the run report to this path")
+    r.add_argument("--workers", type=int, help="alias for --concurrency")
+    r.add_argument("--checkpoint-every", type=int, help=argparse.SUPPRESS)
+    r.add_argument("--resume", action="store_true", help=argparse.SUPPRESS)
     r.add_argument("--bulk-mode", choices=["auto", "always", "never"], default="auto",
                    help="use Brreg nightly bulk files for roles/sub-units when the request budget is too small "
                         "for per-company calls (auto), always, or never")
