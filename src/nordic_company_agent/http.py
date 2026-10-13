@@ -73,7 +73,11 @@ async def assert_public_url(url: str) -> None:
             loop = asyncio.get_running_loop()
             try:
                 infos = await asyncio.wait_for(loop.getaddrinfo(host, parts.port or 443, type=socket.SOCK_STREAM), 8)
-            except Exception as exc:  # DNS failure is a transport error for the caller
+            except (TimeoutError, asyncio.TimeoutError) as exc:
+                raise httpx.ConnectTimeout(f"DNS lookup for {host} timed out") from exc  # transient, not 'dead'
+            except OSError as exc:
+                if getattr(exc, "errno", None) == socket.EAI_AGAIN:
+                    raise httpx.ConnectTimeout(f"DNS lookup for {host} temporarily failed (EAI_AGAIN)") from exc
                 raise httpx.ConnectError(f"DNS resolution failed for {host}: {exc}") from exc
             addrs = [ipaddress.ip_address(i[4][0].split("%")[0]) for i in infos]
         cached = bool(addrs) and all(a.is_global and not a.is_multicast for a in addrs)
@@ -157,12 +161,16 @@ class _HostGate:
 
     async def __aenter__(self):
         await self.sem.acquire()
-        async with self._lock:
-            now = time.monotonic()
-            wait = self._next_start - now
-            self._next_start = max(now, self._next_start) + self.min_interval
-        if wait > 0:
-            await asyncio.sleep(wait)
+        try:
+            async with self._lock:
+                now = time.monotonic()
+                wait = self._next_start - now
+                self._next_start = max(now, self._next_start) + self.min_interval
+            if wait > 0:
+                await asyncio.sleep(wait)
+        except BaseException:
+            self.sem.release()  # cancelled while spacing: do not leak the permit
+            raise
         return self
 
     async def __aexit__(self, *exc):
@@ -220,7 +228,8 @@ class BudgetedClient:
                                                                    max_keepalive_connections=max_connections // 2)),
         )
         # Never send or keep cookies: every request is anonymous and reproducible.
-        self._client.cookies = _NoCookies()
+        self._client._cookies = _NoCookies()  # (the public setter would wrap it in a plain Cookies jar)
+        self.timeout = timeout
 
     # ------------------------------------------------------------------ budget
     @property
@@ -314,7 +323,8 @@ class BudgetedClient:
                 raise RobotsDisallowed(f"{current} ({reason})")
             res = await self._send_with_retries(method, current, source=source, headers=headers,
                                                 data=data, retries=retries, hop=hop,
-                                                max_bytes=max_bytes or self.max_body_bytes, timeout=timeout)
+                                                max_bytes=max_bytes or self.max_body_bytes, timeout=timeout,
+                                                public_only=public_only)
             if res.status in (301, 302, 303, 307, 308) and "location" in res.headers and hop < max_redirects:
                 nxt = urljoin(current, res.headers["location"])
                 if not nxt.startswith(("http://", "https://")):
@@ -332,7 +342,7 @@ class BudgetedClient:
         return res
 
     async def _send_with_retries(self, method, url, *, source, headers, data, retries, hop, max_bytes,
-                                 timeout: float | None = None) -> FetchResult:
+                                 timeout: float | None = None, public_only: bool = False) -> FetchResult:
         attempt = 0
         last_exc: Exception | None = None
         while attempt <= retries:
@@ -346,7 +356,7 @@ class BudgetedClient:
             try:
                 async with self._gate(host):
                     res = await self._send_once(method, url, headers=headers, data=data, max_bytes=max_bytes,
-                                                timeout=timeout)
+                                                timeout=timeout, public_only=public_only)
             except (httpx.TransportError, httpx.TimeoutException) as exc:
                 last_exc = exc
                 self._record(CallRecord(source, method, url, None, started.isoformat(),
@@ -371,7 +381,8 @@ class BudgetedClient:
         raise last_exc or RuntimeError("unreachable")
 
     async def download(self, url: str, path, *, source: str, headers: dict[str, str] | None = None,
-                       max_redirects: int = 3, read_timeout: float = 120.0) -> dict[str, Any]:
+                       max_redirects: int = 3, read_timeout: float = 120.0,
+                       max_seconds: float | None = None) -> dict[str, Any]:
         """Stream a (large) official bulk file to `path`. Counts one request per hop, honours the
         run deadline between chunks. Returns {status, final_url, bytes, sha256, headers, retrieved_at}."""
         current = url
@@ -398,6 +409,8 @@ class BudgetedClient:
                         size += len(chunk)
                         if self.deadline is not None and time.monotonic() >= self.deadline:
                             raise DeadlineExceeded("run deadline reached during bulk download")
+                        if max_seconds is not None and time.monotonic() - t0 > max_seconds:
+                            raise DeadlineExceeded(f"bulk download exceeded {max_seconds:.0f}s")
                 self._record(CallRecord(source, "GET", current, resp.status_code, started.isoformat(),
                                         int((time.monotonic() - t0) * 1000), size, redirect_hop=hop))
                 return {"status": resp.status_code, "final_url": current, "bytes": size, "sha256": h.hexdigest(),
@@ -410,12 +423,38 @@ class BudgetedClient:
         elif rec.error or (rec.status or 0) >= 500:
             self.error_count += 1
 
-    async def _send_once(self, method, url, *, headers, data, max_bytes, timeout: float | None = None) -> FetchResult:
+    async def _send_once(self, method, url, *, headers, data, max_bytes, timeout: float | None = None,
+                         public_only: bool = False) -> FetchResult:
+        """One HTTP exchange with a hard wall-clock cap (httpx timeouts are per read, so a server that
+        trickles one byte per second would otherwise hold the request open indefinitely)."""
+        cap = 2 * (timeout or self.timeout) + 5
+        if self.deadline is not None:
+            cap = max(1.0, min(cap, self.deadline - time.monotonic()))
+        try:
+            async with asyncio.timeout(cap):
+                return await self._send_once_inner(method, url, headers=headers, data=data, max_bytes=max_bytes,
+                                                   timeout=timeout, public_only=public_only)
+        except TimeoutError as exc:
+            raise httpx.ReadTimeout(f"request exceeded {cap:.0f}s wall clock") from exc
+
+    async def _send_once_inner(self, method, url, *, headers, data, max_bytes, timeout: float | None,
+                               public_only: bool) -> FetchResult:
         req_headers = dict(headers or {})
         extra = {"timeout": httpx.Timeout(timeout, connect=min(timeout, 8.0))} if timeout else {}
         async with self._client.stream(method, url, headers=req_headers, **extra,
                                        content=data if isinstance(data, (bytes, str)) else None,
                                        data=data if isinstance(data, dict) else None) as resp:
+            if public_only:
+                # DNS-rebinding guard: the address actually connected to must be public too.
+                ns = resp.extensions.get("network_stream")
+                peer = ns.get_extra_info("server_addr") if ns is not None else None
+                if peer:
+                    try:
+                        ip = ipaddress.ip_address(str(peer[0]).split("%")[0])
+                    except ValueError:
+                        ip = None
+                    if ip is not None and not ip.is_global:
+                        raise UnsafeURL(f"{url}: connected peer {ip} is not a public address")
             chunks: list[bytes] = []
             size = 0
             truncated = False
@@ -443,20 +482,22 @@ class BudgetedClient:
                     try:
                         res = await self._send_with_retries("GET", origin + "/robots.txt", source=source,
                                                             headers={"Accept": "text/plain,*/*"}, data=None,
-                                                            retries=0, hop=0, max_bytes=500_000)
+                                                            retries=0, hop=0, max_bytes=500_000, public_only=True)
                     except httpx.TimeoutException:
                         # One more (counted) attempt before treating the whole origin as unreachable.
                         await asyncio.sleep(1.0)
                         res = await self._send_with_retries("GET", origin + "/robots.txt", source=source,
                                                             headers={"Accept": "text/plain,*/*"}, data=None,
                                                             retries=0, hop=0, max_bytes=500_000, timeout=20.0)
-                    if res.status in (301, 302, 307, 308) and "location" in res.headers:
-                        # One counted hop to follow a robots.txt redirect (e.g. http -> https).
-                        loc = urljoin(origin + "/robots.txt", res.headers["location"])
-                        await assert_public_url(loc)
-                        res = await self._send_with_retries("GET", loc, source=source,
+                    cur, hops = origin + "/robots.txt", 0
+                    while res.status in (301, 302, 303, 307, 308) and "location" in res.headers and hops < 5:
+                        # RFC 9309: follow at least five redirect hops (each one counted).
+                        hops += 1
+                        cur = urljoin(cur, res.headers["location"])
+                        await assert_public_url(cur)
+                        res = await self._send_with_retries("GET", cur, source=source,
                                                             headers={"Accept": "text/plain,*/*"}, data=None,
-                                                            retries=0, hop=1, max_bytes=500_000)
+                                                            retries=0, hop=hops, max_bytes=500_000, public_only=True)
                     ctype = res.headers.get("content-type", "")
                     if res.status == 200 and "html" not in ctype.lower():
                         parser = urllib.robotparser.RobotFileParser()
@@ -468,7 +509,7 @@ class BudgetedClient:
                         parser = urllib.robotparser.RobotFileParser()
                         parser.disallow_all = True
                         self._robots_reason[origin] = f"robots.txt returned HTTP {res.status}: treated as disallow"
-                except (BudgetExceeded, DeadlineExceeded):
+                except (BudgetExceeded, DeadlineExceeded, UnsafeURL):
                     raise
                 except httpx.TimeoutException:
                     parser = urllib.robotparser.RobotFileParser()

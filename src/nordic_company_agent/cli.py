@@ -22,40 +22,48 @@ from .orgnr import InvalidOrgNumber, is_valid, normalize
 
 
 def read_inputs(path: str) -> tuple[list[str], list[dict[str, Any]], list[str]]:
-    """Read .json / .jsonl / text lists of organisation numbers.
+    """Read .json / .jsonl / text lists of organisation numbers (UTF-8, BOM tolerated).
 
-    Returns (valid unique numbers in input order, invalid entries, duplicates).
+    Returns (valid unique numbers in input order, invalid entries, duplicates). Unparseable lines and
+    entries without a recognisable number become invalid entries (they still get an envelope).
     `input_order(path)` gives the envelope order (valid and invalid, duplicates removed)."""
     p = Path(path)
-    text = (gzip.open(p, "rt", encoding="utf-8").read() if p.suffix == ".gz" else p.read_text(encoding="utf-8"))
-    values: list[Any]
+    raw = gzip.open(p, "rb").read() if p.suffix == ".gz" else p.read_bytes()
+    text = raw.decode("utf-8-sig", errors="replace")
+    values: list[Any] = []
     stripped = text.lstrip()
-    if p.suffix in (".json",) or (stripped.startswith("[") or (stripped.startswith("{") and "\n{" not in stripped.strip())):
+    if stripped.startswith("[") or (stripped.startswith("{") and p.suffix == ".json"):
         try:
             body = json.loads(text)
-            values = body if isinstance(body, list) else body.get("organisation_numbers") or body.get("organisations") or []
+            values = body if isinstance(body, list) else (body.get("organisation_numbers") or
+                                                          body.get("organisations") or [])
         except json.JSONDecodeError:
-            values = [json.loads(line) for line in text.splitlines() if line.strip()]
+            values = [_loads_or_raw(line) for line in text.splitlines() if line.strip()]
     elif ".jsonl" in p.name or stripped.startswith("{"):
-        values = [json.loads(line) for line in text.splitlines() if line.strip()]
+        values = [_loads_or_raw(line) for line in text.splitlines() if line.strip()]
     else:
-        values = [line.strip() for line in text.splitlines() if line.strip() and not line.startswith("#")]
+        values = [line.strip() for line in text.splitlines() if line.strip() and not line.lstrip().startswith("#")]
     out: list[str] = []
     invalid: list[dict[str, Any]] = []
     dups: list[str] = []
     seen: set[str] = set()
     order: list[str] = []
     for v in values:
-        raw = v.get("organisation_number") or v.get("orgnr") or v.get("organisasjonsnummer") if isinstance(v, dict) else v
+        if isinstance(v, dict):
+            raw_v = v.get("organisation_number") or v.get("orgnr") or v.get("organisasjonsnummer") or v.get("org")
+            if raw_v is None:
+                raw_v = json.dumps(v, ensure_ascii=False, sort_keys=True)[:80]
+        else:
+            raw_v = v
         try:
-            org = normalize(str(raw))
+            org = normalize(str(raw_v))
         except InvalidOrgNumber as exc:
-            digits = "".join(ch for ch in str(raw) if ch.isdigit()) or str(raw)
+            digits = "".join(ch for ch in str(raw_v) if ch.isdigit()) or str(raw_v)
             if digits in seen:
                 dups.append(digits)
                 continue
             seen.add(digits)
-            invalid.append({"input": raw, "organisation_number": digits, "reason": str(exc)})
+            invalid.append({"input": raw_v, "organisation_number": digits, "reason": str(exc)})
             order.append(digits)
             continue
         if org in seen:
@@ -66,6 +74,13 @@ def read_inputs(path: str) -> tuple[list[str], list[dict[str, Any]], list[str]]:
         order.append(org)
     _ORDER_CACHE[str(path)] = order
     return out, invalid, dups
+
+
+def _loads_or_raw(line: str) -> Any:
+    try:
+        return json.loads(line)
+    except json.JSONDecodeError:
+        return line.strip()
 
 
 _ORDER_CACHE: dict[str, list[str]] = {}
@@ -137,8 +152,15 @@ def cmd_run(a: argparse.Namespace) -> int:
         modules = set(ALL_MODULES)
     if a.skip_modules:
         modules -= {m.strip() for m in a.skip_modules.split(",")}
+    # Placeholder envelopes first: even a hard kill (SIGKILL/OOM) leaves exactly one line per input.
+    from .pipeline import failed_envelope
+    ts0 = utc_iso()
+    skel = {e["organisation_number"]: invalid_envelope(e, run_id, ts0) for e in invalid}
+    skel.update({o: failed_envelope(o, run_id, ts0, ts0, "run did not complete (placeholder written at start)")
+                 for o in orgnrs})
+    write_jsonl(out_dir / "envelopes.jsonl", [skel[o] for o in all_inputs if o in skel])
     config = RunConfig.from_env(
-        run_id=run_id, out_dir=out_dir,
+        run_id=run_id, out_dir=out_dir, started_monotonic=t_start,
         **({"max_requests": a.max_requests} if a.max_requests else {}),
         **({"time_budget_s": a.time_budget * 60} if a.time_budget else {}),
         modules=modules, concurrency=a.concurrency,
@@ -147,33 +169,64 @@ def cmd_run(a: argparse.Namespace) -> int:
         live_discovery=not a.no_live_discovery, save_snapshots=not a.no_snapshots, bulk_mode=a.bulk_mode,
         **({"cache_dir": Path(a.cache_dir)} if a.cache_dir else {}),
     )
-    result = asyncio.run(run_batch(orgnrs, config, invalid=invalid, duplicates=dups, previous=previous))
+    from concurrent.futures import ThreadPoolExecutor
+    loop = asyncio.new_event_loop()
+    loop.set_default_executor(ThreadPoolExecutor(max_workers=64, thread_name_prefix="nca-io"))
+    try:
+        result = loop.run_until_complete(run_batch(orgnrs, config, invalid=invalid, duplicates=dups,
+                                                   previous=previous))
+    except KeyboardInterrupt:
+        return 130
     by_org = {e["organisation_number"]: e for e in result.envelopes}
     ts = utc_iso()
     for entry in invalid:
         by_org.setdefault(entry["organisation_number"], invalid_envelope(entry, run_id, ts))
     envelopes = [by_org[o] for o in all_inputs if o in by_org]
     expected = [o for o in all_inputs]
-    validation = validate_envelopes(envelopes, expected)
     write_jsonl(out_dir / "envelopes.jsonl", envelopes)
+    validation = validate_envelopes(envelopes, expected)
     for extra in (a.output, a.profiles_output):
         if extra and Path(extra).resolve() != (out_dir / "envelopes.jsonl").resolve():
             write_jsonl(Path(extra), envelopes)
     changes = [dict(ch, organisation_number=e["organisation_number"]) for e in envelopes for ch in e.get("changes", [])]
     write_jsonl(out_dir / "changes.jsonl", changes)
-    report = build_report(result, expected, validation, config, invalid, dups)
-    report["operations"]["wall_clock_s"] = round(time.monotonic() - t_start, 1)
-    (out_dir / "run-report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2, default=str) + "\n")
-    if a.report:
-        Path(a.report).parent.mkdir(parents=True, exist_ok=True)
-        Path(a.report).write_text(json.dumps(report, ensure_ascii=False, indent=2, default=str) + "\n")
-    if not a.no_viewer:
-        from .viewer import build_site
-        build_site(envelopes, out_dir / "site", report=report)
-    print(json.dumps({k: report[k] for k in ("run_id", "expected_count", "emitted_envelopes", "identity")}
-                     | {"requests": report["operations"]["requests"], "wall_clock_s": report["operations"]["wall_clock_s"],
-                        "validation_passed": validation["passed"], "out": str(out_dir)}, indent=2))
-    return 0 if validation["passed"] else 1
+    try:
+        report = build_report(result, expected, validation, config, invalid, dups)
+        report["operations"]["wall_clock_s"] = round(time.monotonic() - t_start, 1)
+        for flag in ("timed_out", "interrupted", "run_error"):
+            if result.ctx.shared.get(flag):
+                report[flag] = result.ctx.shared[flag]
+        report["bulk"] = result.ctx.shared.get("bulk_report")
+        (out_dir / "run-report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2, default=str) + "\n")
+        if a.report:
+            Path(a.report).parent.mkdir(parents=True, exist_ok=True)
+            Path(a.report).write_text(json.dumps(report, ensure_ascii=False, indent=2, default=str) + "\n")
+        if not a.no_viewer:
+            from .viewer import build_site
+            build_site(envelopes, out_dir / "site", report=report)
+        print(json.dumps({k: report[k] for k in ("run_id", "expected_count", "emitted_envelopes", "identity")}
+                         | {"requests": report["operations"]["requests"],
+                            "wall_clock_s": report["operations"]["wall_clock_s"],
+                            "validation_passed": validation["passed"], "out": str(out_dir)}, indent=2))
+    except Exception as exc:  # the envelopes are already written; reporting problems must not fail the run
+        print(f"warning: report/viewer generation failed: {type(exc).__name__}: {exc}", file=sys.stderr)
+    code = 0 if validation["passed"] else 1
+    _finish(loop, code)
+    return code
+
+
+def _finish(loop, code: int) -> None:
+    """Outputs are on disk. Do not let stray worker threads (e.g. a hung DNS lookup) delay exit."""
+    import os
+    import threading
+    try:
+        loop.close()
+    except Exception:
+        pass
+    sys.stdout.flush()
+    sys.stderr.flush()
+    if any(t.is_alive() and not t.daemon for t in threading.enumerate() if t is not threading.main_thread()):
+        os._exit(code)
 
 
 def cmd_company(a: argparse.Namespace) -> int:

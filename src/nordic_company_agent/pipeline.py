@@ -6,6 +6,7 @@ from __future__ import annotations
 import asyncio
 import importlib
 import json
+import signal
 import time
 import traceback
 from dataclasses import dataclass, field
@@ -33,6 +34,10 @@ MODULES: list[tuple[str, str, str, str, int]] = [
     ("state_aid", "state_aid", "company", "extras", 7),
     ("account_copies", "accounts:run_copies", "company", "extras", 7),
 ]
+
+# Per-company module wall-clock limits (seconds); a stuck host can never stall a whole phase.
+MODULE_TIMEOUT_S = {"website": 150.0, "account_copies": 100.0, "accounts": 60.0, "roles": 60.0, "subunits": 60.0,
+                    "group": 60.0, "authorisations": 60.0, "state_aid": 90.0}
 
 # Modules whose absence of a positive result must still yield explicit claims (missing-data labels).
 PRIMARY_FIELD = {
@@ -65,8 +70,8 @@ def plan_reservations(ctx: RunContext, companies: list[CompanyResult], bulk: set
         if rec.get("hjemmeside") or any(r.get("leads") for r in rows):
             leads += 1
     needs = {
-        "registry": 2 + max(1, n // 900) + (n - ne) * 2 + len(bulk or ()),
-        "batch_external": 6 + 3 * (n // 100 + 1) + 8,
+        "registry": len(bulk or ()),
+        "batch_external": 3 + 2 * (n // 100 + 1) + max(10, ne // 8) + 25,
         "accounts": filers,
         "website_primary": 3 * leads,
         "roles": 0 if "roles" in (bulk or ()) else ne,
@@ -76,7 +81,7 @@ def plan_reservations(ctx: RunContext, companies: list[CompanyResult], bulk: set
         "discovery": 3 * max(0, ne - leads),
         "extras": 2 * ne,
     }
-    remaining = ctx.client.max_requests
+    remaining = ctx.client.remaining
     reservations: dict[str, int] = {}
     for tier in ("registry", "batch_external", "accounts", "website_primary", "roles", "subunits", "group",
                  "website_secondary", "discovery", "extras"):
@@ -117,7 +122,12 @@ async def _run_company_module(ctx: RunContext, name: str, fn: Callable[..., Awai
             if ctx.time_left() < 15:
                 company.outcome(ModuleOutcome(name, "failed", note="not checked: run time budget exhausted"))
                 return
-            await fn(ctx, company)
+            limit = min(MODULE_TIMEOUT_S.get(name, 90.0), max(1.0, ctx.time_left() - 15))
+            try:
+                await asyncio.wait_for(fn(ctx, company), timeout=limit)
+            except (TimeoutError, asyncio.TimeoutError):
+                if name not in company.modules:
+                    company.outcome(ModuleOutcome(name, "failed", note=f"not checked: module timed out after {limit:.0f}s"))
             _tag(company, n_before, name)
         except Exception as exc:  # modules should not raise; this is the last safety net
             company.error(name, "failed", f"{type(exc).__name__}: {exc}")
@@ -138,7 +148,12 @@ async def run_modules(ctx: RunContext, companies: list[CompanyResult]) -> dict[s
     sem = asyncio.Semaphore(ctx.config.concurrency)
     for ph in phases:
         if ph >= 3 and ctx.shared.get("_bulk_task") is not None:
-            await ctx.shared.pop("_bulk_task")
+            task = ctx.shared.pop("_bulk_task")
+            cap = max(0.0, min(15 * 60, ctx.time_left() - 18 * 60))
+            done, _ = await asyncio.wait({task}, timeout=cap)
+            if not done:
+                task.cancel()  # roles/sub-units fall back to per-company calls within the budget
+                ctx.shared.setdefault("bulk_report", {})["timeout"] = f"bulk download not finished within {cap:.0f}s"
         tasks = []
         names = []
         for name, pymod, kind, tier, phase in enabled:
@@ -251,20 +266,39 @@ async def run_batch(orgnrs: list[str], config: RunConfig, invalid: list[dict[str
     ctx = RunContext(config)
     companies = [CompanyResult(o) for o in orgnrs]
     previous = previous or {}
-    if previous:
-        times = [p.get("run", {}).get("completed_at") for p in previous.values() if p.get("run")]
-        if times:
-            ctx.shared["previous_checked_at"] = min(t for t in times if t)
+    times = [t for p in previous.values() if isinstance(p.get("run"), dict) and (t := p["run"].get("completed_at"))]
+    if times:
+        ctx.shared["previous_checked_at"] = min(times)
     # Hard wall-clock guard: whatever a module or host does, stop gathering with enough time left to
-    # assemble and write one envelope per company.
+    # assemble and write one envelope per company. SIGTERM/SIGINT also only stop the research.
     reserve_s = min(180.0, 30.0 + 0.08 * len(companies))
     timings: dict[str, int] = {}
+    loop = asyncio.get_running_loop()
+    work = asyncio.ensure_future(run_modules(ctx, companies))
+    installed = []
+    for sig in (signal.SIGTERM, signal.SIGINT):
+        try:
+            loop.add_signal_handler(sig, work.cancel)
+            installed.append(sig)
+        except (NotImplementedError, RuntimeError, ValueError):
+            pass
     try:
-        timings = await asyncio.wait_for(run_modules(ctx, companies),
-                                         timeout=max(20.0, config.time_budget_s - reserve_s))
-    except asyncio.TimeoutError:
+        timings = await asyncio.wait_for(work, timeout=max(20.0, ctx.time_left() - reserve_s))
+    except (TimeoutError, asyncio.TimeoutError):
         ctx.shared["timed_out"] = True
+    except asyncio.CancelledError:
+        cur = asyncio.current_task()
+        if cur is not None and cur.cancelling():
+            raise
+        ctx.shared["interrupted"] = True
+    except Exception as exc:  # never lose the batch to one bug
+        ctx.shared["run_error"] = f"{type(exc).__name__}: {exc}"
     finally:
+        for sig in installed:
+            try:
+                loop.remove_signal_handler(sig)
+            except Exception:
+                pass
         task = ctx.shared.pop("_bulk_task", None)
         if task is not None and not task.done():
             task.cancel()
@@ -272,11 +306,13 @@ async def run_batch(orgnrs: list[str], config: RunConfig, invalid: list[dict[str
             await asyncio.wait_for(ctx.client.aclose(), timeout=10)
         except Exception:
             pass
+    why = ("run interrupted (signal)" if ctx.shared.get("interrupted") else
+           f"run error: {ctx.shared['run_error']}" if ctx.shared.get("run_error") else "run time budget exhausted")
     for c in companies:
         for name, *_rest in MODULES:
             if ctx.module_enabled(name) and name not in c.modules and (
                     name == "registry" or c.data.get("identity", {}).get("match_status") == "exact"):
-                c.outcome(ModuleOutcome(name, "failed", note="not checked: run time budget exhausted"))
+                c.outcome(ModuleOutcome(name, "failed", note=f"not checked: {why}"))
         if "identity" not in c.data:
             c.data["identity"] = {"match_status": "error", "confidence": 0.0, "method": "none",
                                   "checks": [{"name": "registry_lookup", "passed": False,
@@ -313,13 +349,44 @@ def failed_envelope(orgnr: str, run_id: str, started: str, completed: str, messa
 
 
 def read_previous(path: Path | None) -> dict[str, dict[str, Any]]:
+    """Previous envelopes by organisation number. Unparseable lines are skipped; placeholder envelopes
+    from an interrupted run ("run did not complete") fall back to the newest archived run in history/."""
     out: dict[str, dict[str, Any]] = {}
     if not path or not Path(path).exists():
         return out
-    with Path(path).open(encoding="utf-8") as fh:
+    placeholders: set[str] = set()
+    for env in _iter_envelopes(Path(path)):
+        org = str(env.get("organisation_number"))
+        if _is_placeholder(env):
+            placeholders.add(org)
+            continue
+        out[org] = env
+    if placeholders:
+        hist = Path(path).parent / "history"
+        for run_dir in sorted(hist.glob("*/"), key=lambda d: d.stat().st_mtime, reverse=True) if hist.exists() else []:
+            for env in _iter_envelopes(run_dir / "envelopes.jsonl"):
+                org = str(env.get("organisation_number"))
+                if org in placeholders and org not in out and not _is_placeholder(env):
+                    out[org] = env
+    return out
+
+
+def _is_placeholder(env: dict[str, Any]) -> bool:
+    return (env.get("run") or {}).get("terminal_status") == "failed" and any(
+        "run did not complete" in (e.get("message") or "") for e in env.get("errors") or [])
+
+
+def _iter_envelopes(path: Path):
+    if not path.exists():
+        return
+    with path.open(encoding="utf-8", errors="replace") as fh:
         for line in fh:
             line = line.strip()
-            if line:
+            if not line:
+                continue
+            try:
                 env = json.loads(line)
-                out[str(env.get("organisation_number"))] = env
-    return out
+            except json.JSONDecodeError:
+                continue
+            if isinstance(env, dict) and env.get("organisation_number"):
+                yield env

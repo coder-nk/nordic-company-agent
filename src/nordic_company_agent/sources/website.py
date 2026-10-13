@@ -196,6 +196,7 @@ async def _live_leads(ctx, st: _State, rec: dict, checked: set[str], tried: set[
     if not getattr(ctx.config, "live_discovery", False) or MAX_REQUESTS - st.spent < 2:
         return []
     if not ctx.allow("discovery", 3):
+        st.budget_hit = True  # not checked for lack of budget: must not read as "no website exists"
         return []
     cands = [(k, d) for k, d in C.candidates(rec) if k != "registry_website" and k not in checked]
     cands = [(k, d) for k, d in cands if _site_key(d) not in tried][:MAX_DNS_CANDIDATES]

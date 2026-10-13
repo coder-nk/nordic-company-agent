@@ -849,41 +849,55 @@ async def _load_snapshot(ctx: RunContext, wanted: set[str]) -> tuple[dict[str, d
     return {o: cache["rows"][o] for o in wanted if o in cache["rows"]}, cache
 
 
+BATCH_RETRY_DELAYS = (2.0, 5.0, 10.0)   # tests set this to zeros
+
+
 async def _live_batch(ctx: RunContext, orgnrs: list[str]) -> tuple[dict[str, _Live], dict[str, _ChunkState]]:
     live: dict[str, _Live] = {}
     states: dict[str, _ChunkState] = {}
 
-    async def one(chunk: list[str]) -> None:
+    async def attempt(chunk: list[str]) -> "_ChunkState":
         url = f"{BASE}/enheter?organisasjonsnummer={','.join(chunk)}&size={len(chunk)}"
         if not ctx.allow(TIER, 1):
-            st = _ChunkState("budget", BUDGET_NOTE, url)
-        else:
-            try:
-                res = await ctx.get(url, tier=TIER, source=MODULE, headers=ACCEPT_JSON, max_bytes=BATCH_MAX_BYTES)
-            except Exception as exc:
-                st = _ChunkState("failed", f"batch lookup failed: {type(exc).__name__}: {exc}"[:300], url)
-            else:
-                if res.status != 200 or res.truncated:
-                    state = outcome_state_for_status(res.status) if res.status != 200 else "failed"
-                    st = _ChunkState("blocked" if state == "blocked" else "failed",
-                                     f"batch lookup returned HTTP {res.status}" + (" (truncated)" if res.truncated else ""),
-                                     url, res.status)
-                else:
-                    retrieved_at = utc_iso(res.retrieved_at)
-                    ctx.snapshots.save_result(res, retrieved_at)
-                    text = decode_text(res.content)
-                    wanted = set(chunk)
-                    for s, e in array_elements(text, "/_embedded/enheter"):
-                        rtext = text[s:e]
-                        rec = json.loads(rtext)
-                        o = str(rec.get("organisasjonsnummer") or "")
-                        if o not in wanted:
-                            continue  # never attach a record to a number we did not ask for
-                        rbytes = rtext.encode("utf-8")
-                        sha = ctx.snapshots.save(rbytes, url=enhet_url(o), retrieved_at=retrieved_at,
-                                                 content_type="application/json")
-                        live[o] = _Live(o, rtext, sha, loads_decimal(rtext), rec, retrieved_at, url, res.status)
-                    st = _ChunkState("ok", None, url, res.status)
+            return _ChunkState("budget", BUDGET_NOTE, url)
+        try:
+            res = await ctx.get(url, tier=TIER, source=MODULE, headers=ACCEPT_JSON, max_bytes=BATCH_MAX_BYTES,
+                                timeout=40.0)
+        except Exception as exc:
+            return _ChunkState("failed", f"batch lookup failed: {type(exc).__name__}: {exc}"[:300], url)
+        if res.status != 200 or res.truncated:
+            state = outcome_state_for_status(res.status) if res.status != 200 else "failed"
+            return _ChunkState("blocked" if state == "blocked" else "failed",
+                               f"batch lookup returned HTTP {res.status}" + (" (truncated)" if res.truncated else ""),
+                               url, res.status)
+        retrieved_at = utc_iso(res.retrieved_at)
+        ctx.snapshots.save_result(res, retrieved_at)
+        text = decode_text(res.content)
+        wanted = set(chunk)
+        for s_, e_ in array_elements(text, "/_embedded/enheter"):
+            rtext = text[s_:e_]
+            rec = json.loads(rtext)
+            o = str(rec.get("organisasjonsnummer") or "")
+            if o not in wanted:
+                continue  # never attach a record to a number we did not ask for
+            rbytes = rtext.encode("utf-8")
+            sha = ctx.snapshots.save(rbytes, url=enhet_url(o), retrieved_at=retrieved_at,
+                                     content_type="application/json")
+            live[o] = _Live(o, rtext, sha, loads_decimal(rtext), rec, retrieved_at, url, res.status)
+        return _ChunkState("ok", None, url, res.status)
+
+    async def one(chunk: list[str], depth: int = 0) -> None:
+        # The batch lookup anchors identity for every company: retry with backoff, then split.
+        st = await attempt(chunk)
+        for delay in BATCH_RETRY_DELAYS:
+            if st.state in ("ok", "budget", "blocked") or ctx.time_left() < delay + 120:
+                break
+            await asyncio.sleep(delay)
+            st = await attempt(chunk)
+        if st.state == "failed" and len(chunk) > 1 and depth < 3 and ctx.time_left() > 180:
+            half = len(chunk) // 2
+            await asyncio.gather(one(chunk[:half], depth + 1), one(chunk[half:], depth + 1))
+            return
         for o in chunk:
             states[o] = st
 

@@ -34,8 +34,9 @@ def _source_evidence(c: CompanyResult, module: str, ctx: RunContext) -> list[Evi
         if e.get("url") == out.source_url:
             snap = d
             break
+    from .envelope import utc_iso
     return [Evidence(source_url=out.source_url, source_class="module_check", source_name=module,
-                     retrieved_at=out.retrieved_at or "", content_sha256=snap, http_status=out.http_status,
+                     retrieved_at=out.retrieved_at or utc_iso(), content_sha256=snap, http_status=out.http_status,
                      extraction_method=f"{module}@check", claim_span=None, locator=None)]
 
 

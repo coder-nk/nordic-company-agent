@@ -35,6 +35,7 @@ class RunConfig:
     website_max_pages: int = 6
     live_discovery: bool = True                  # try candidate domains at run time when not cached
     bulk_mode: str = "auto"                      # auto | always | never: nightly bulk files for roles/sub-units
+    started_monotonic: float | None = None       # process start; the time budget is measured from here
     save_snapshots: bool = True
 
     @staticmethod
@@ -102,10 +103,8 @@ class Planner:
             return False
         if self.client.time_left() < 20:
             return False
-        own_left = max(0, self.reservations.get(tier, 0) - self.spent.get(tier, 0))
-        if n <= own_left:
-            return True
-        # Beyond its own share a tier may borrow only from budget that no higher tier still needs.
+        # A tier may spend only what no unfinished higher-priority tier still needs. (No "own share"
+        # shortcut: earlier overspend by any tier must never come out of a higher tier's reservation.)
         return self.client.remaining - self._reserved_above(tier) - n >= 0
 
     def charge(self, tier: str, n: int = 1) -> None:
@@ -209,7 +208,7 @@ CURRENT_MODULE: contextvars.ContextVar[str | None] = contextvars.ContextVar("nca
 class RunContext:
     def __init__(self, config: RunConfig, client: BudgetedClient | None = None):
         self.config = config
-        self.started = time.monotonic()
+        self.started = config.started_monotonic if config.started_monotonic is not None else time.monotonic()
         deadline = self.started + config.time_budget_s
         self.client = client or BudgetedClient(max_requests=config.max_requests, deadline=deadline)
         if client is not None and client.deadline is None:

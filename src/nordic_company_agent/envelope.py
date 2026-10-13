@@ -91,6 +91,21 @@ def short_hash(*parts: Any, n: int = 12) -> str:
     return hashlib.sha1("\x1f".join(canonical(p) for p in parts).encode("utf-8")).hexdigest()[:n]
 
 
+_ID_LIST_RX = __import__("re").compile(r"((?:%2C|,|\+|%20| )?(?:\d{3}(?:\+|%20| )?\d{3}(?:\+|%20| )?\d{3})){6,}")
+
+
+def shorten_batch_url(url: str, limit: int = 240) -> str:
+    """Multi-id batch URLs (up to 1,000 org numbers) are abbreviated in evidence to keep envelopes small;
+    the full request URL is kept in the source-snapshot index of the run."""
+    if len(url) <= limit:
+        return url
+    def repl(m):
+        n = len(__import__("re").findall(r"\d{3}(?:\+|%20| )?\d{3}(?:\+|%20| )?\d{3}", m.group(0)))
+        return f"<{n} organisation numbers>"
+    short = _ID_LIST_RX.sub(repl, url)
+    return short if len(short) <= limit * 2 else short[:limit] + "…"
+
+
 @dataclass
 class Evidence:
     source_url: str
@@ -120,7 +135,7 @@ class Evidence:
                   "licence", "retrieved_via"):
             v = getattr(self, k)
             if v is not None and v != "":
-                d[k] = v
+                d[k] = shorten_batch_url(v) if k == "retrieved_via" else v
         return d
 
 

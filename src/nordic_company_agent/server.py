@@ -117,8 +117,9 @@ def make_handler(store: Store):
                 return self._send(200, env)
             # static viewer
             rel = "/".join(parts) or "index.html"
-            f = (store.root / "site" / rel).resolve()
-            if str(f).startswith(str((store.root / "site").resolve())) and f.is_file():
+            site_root = (store.root / "site").resolve()
+            f = (site_root / rel).resolve()
+            if f.is_relative_to(site_root) and f.is_file():
                 ctype = "text/html" if f.suffix == ".html" else ("application/javascript" if f.suffix == ".js" else "text/plain")
                 return self._send(200, f.read_bytes(), ctype)
             return self._send(404, {"error": "not found"})
@@ -130,7 +131,11 @@ def make_handler(store: Store):
                 ok, bad = self._orgnrs(body)
                 if not ok:
                     return self._send(400, {"error": "no valid organisation_numbers", "invalid": bad})
-                envs = _research(store, ok, body.get("max_requests"))
+                if len(ok) > 1100:
+                    return self._send(400, {"error": "at most 1,100 organisation numbers per request"})
+                mr = body.get("max_requests")
+                mr = int(mr) if isinstance(mr, int) and 0 < mr <= 20000 else None
+                envs = _research(store, ok, mr)
                 return self._send(200, {"envelopes": envs, "invalid": bad})
             if u.path == "/refresh":
                 ok, bad = self._orgnrs(body)

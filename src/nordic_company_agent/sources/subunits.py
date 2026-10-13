@@ -212,6 +212,8 @@ async def _from_bulk(ctx: RunContext, company: CompanyResult, bulk: dict[str, An
     evs_all = []
     for it in chosen:
         v = {k: it["value"].get(k) for k in ("organisation_number", "name", "address", "industry", "employees", "started")}
+        if it["value"].get("employees_range"):
+            v["employees_range"] = it["value"]["employees_range"]
         sub = v["organisation_number"]
         rsha = ctx.snapshots.save(it["text"].encode("utf-8"), url=underenhet_url(sub), retrieved_at=retrieved_at,
                                   content_type="application/json")

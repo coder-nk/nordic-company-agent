@@ -15,8 +15,12 @@ removed before anything is stored.
 from __future__ import annotations
 
 import asyncio
+import contextlib
 import gzip
 import json
+import shutil
+import tempfile
+import threading
 import time
 from pathlib import Path
 from typing import Any
@@ -28,11 +32,13 @@ SUBUNITS_URL = "https://data.brreg.no/enhetsregisteret/api/underenheter/lastned"
 MIN_TIME_LEFT_S = 15 * 60          # never start a bulk download with less run time than this
 
 
-def _parse_roles(path: Path, wanted: set[str]) -> dict[str, bytes]:
+def _parse_roles(path: Path, wanted: set[str], stop: threading.Event | None = None) -> dict[str, bytes]:
     import ijson
     out: dict[str, bytes] = {}
     with gzip.open(path, "rb") as fh:
         for item in ijson.items(fh, "item", use_float=True):
+            if stop is not None and stop.is_set():
+                raise RuntimeError("cancelled")
             org = str(item.get("organisasjonsnummer") or "")
             if org in wanted:
                 out[org] = json.dumps(item, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
@@ -41,11 +47,13 @@ def _parse_roles(path: Path, wanted: set[str]) -> dict[str, bytes]:
     return out
 
 
-def _parse_subunits(path: Path, wanted: set[str]) -> dict[str, list[bytes]]:
+def _parse_subunits(path: Path, wanted: set[str], stop: threading.Event | None = None) -> dict[str, list[bytes]]:
     import ijson
     out: dict[str, list[bytes]] = {o: [] for o in wanted}
     with gzip.open(path, "rb") as fh:
         for item in ijson.items(fh, "item", use_float=True):
+            if stop is not None and stop.is_set():
+                raise RuntimeError("cancelled")
             parent = str(item.get("overordnetEnhet") or "")
             if parent in out:
                 out[parent].append(json.dumps(item, ensure_ascii=False, separators=(",", ":")).encode("utf-8"))
@@ -59,8 +67,14 @@ async def prepare(ctx: Any, companies: list[CompanyResult], kinds: set[str]) -> 
               if (c.data.get("identity") or {}).get("match_status") == "exact"}
     if not wanted:
         return report
-    bulk_dir = Path(ctx.config.out_dir) / "bulk"
-    bulk_dir.mkdir(parents=True, exist_ok=True)
+    try:
+        # Temporary location outside the output folder; always removed (the roles file holds birth
+        # dates of every role holder in Norway and must never be left behind).
+        bulk_dir = Path(tempfile.mkdtemp(prefix="nca-bulk-"))
+    except OSError as exc:
+        report["error"] = f"no temp dir: {exc}"
+        return report
+    stop = threading.Event()
 
     async def one(kind: str, url: str, parser, accept: str) -> None:
         t0 = time.monotonic()
@@ -69,13 +83,18 @@ async def prepare(ctx: Any, companies: list[CompanyResult], kinds: set[str]) -> 
                 report[kind] = {"status": "skipped", "reason": "time or budget"}
                 return
             path = bulk_dir / f"{kind}.json.gz"
-            meta = await ctx.client.download(url, path, source=f"bulk_{kind}", headers={"Accept": accept})
+            meta = await ctx.client.download(url, path, source=f"bulk_{kind}", headers={"Accept": accept},
+                                             max_seconds=max(60.0, min(14 * 60, ctx.time_left() - 18 * 60)))
             ctx.planner.charge("registry", 1)
             ctx.batch_requests[f"bulk_{kind}"] += 1
             if meta["status"] != 200:
                 report[kind] = {"status": "failed", "http_status": meta["status"]}
                 return
-            data = await asyncio.to_thread(parser, path, wanted)
+            try:
+                data = await asyncio.to_thread(parser, path, wanted, stop)
+            except asyncio.CancelledError:
+                stop.set()
+                raise
             info = {"url": url, "final_url": meta["final_url"], "retrieved_at": utc_iso(meta["retrieved_at"]),
                     "retrieved_dt": meta["retrieved_at"],
                     "last_modified": meta["headers"].get("last-modified"), "etag": meta["headers"].get("etag"),
@@ -83,12 +102,11 @@ async def prepare(ctx: Any, companies: list[CompanyResult], kinds: set[str]) -> 
             ctx.shared[f"bulk_{kind}"] = info
             report[kind] = {"status": "ok", "bytes": meta["bytes"], "matched": sum(1 for v in data.values() if v),
                             "seconds": round(time.monotonic() - t0, 1)}
-            try:
-                path.unlink()  # do not keep person data from other entities on disk
-            except OSError:
-                pass
         except Exception as exc:  # fall back to per-company API calls
             report[kind] = {"status": "failed", "error": f"{type(exc).__name__}: {exc}"[:200]}
+        finally:
+            with contextlib.suppress(OSError):
+                (bulk_dir / f"{kind}.json.gz").unlink()
 
     tasks = []
     if "roles" in kinds:
@@ -96,6 +114,10 @@ async def prepare(ctx: Any, companies: list[CompanyResult], kinds: set[str]) -> 
     if "subunits" in kinds:
         # This path needs a gzip Accept header; with application/json it is routed to /underenheter/{orgnr}.
         tasks.append(one("subunits", SUBUNITS_URL, _parse_subunits, "application/gzip"))
-    await asyncio.gather(*tasks)
-    ctx.shared["bulk_report"] = report
+    try:
+        await asyncio.gather(*tasks)
+    finally:
+        stop.set()
+        shutil.rmtree(bulk_dir, ignore_errors=True)
+        ctx.shared["bulk_report"] = report
     return report
