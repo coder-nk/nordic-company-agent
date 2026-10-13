@@ -92,7 +92,12 @@ USELESS_TITLES = {"hjem", "home", "forside", "framside", "startside", "start", "
 # Injected SEO spam on compromised sites ("Our Partner casaapostas.org") must never become a company description.
 SPAM_DESC_RX = re.compile(r"(?:casino|apostas|bet(?:ting)?\b|slot|poker|gambl|kasino|viagra|cialis|porn|escort|"
                           r"payday|loan offer|bitcoin|forex|our partner|sponsored by|backlink)", re.I)
-DOMAIN_TOKEN_RX = re.compile(r"\b((?:[a-z0-9-]+\.)+(?:com|net|org|no|info|biz|io|xyz|top|site|online|club|bet))\b", re.I)
+DOMAIN_TOKEN_RX = re.compile(r"(?<![\w@.-])((?:[\w-]+\.)+(?:com|net|org|no|info|biz|io|xyz|top|site|online|club|bet|se|dk|eu))\b", re.I)
+# agency credits and chain boilerplate are never a company description (policy F)
+DESC_CREDIT_RX = re.compile(r"web\s?design|nettside(?:r)?\s+(?:av|fra|levert)|levert\s+av|utviklet\s+av|powered\s+by|"
+                            r"designet\s+av|laget\s+av|design\s*(?:og|&)\s*utvikling|webbyrå|web\s+agency", re.I)
+DESC_CHAIN_RX = re.compile(r"interflora|\ben\s+del\s+av\b|\bkjeden\b|\bkjede\b|franchise|\bmedlem\s+av\b|"
+                           r"\bpart\s+of\b|\bmember\s+of\b", re.I)
 
 
 def _spammy(text: str, site_domain: str | None) -> bool:
@@ -130,6 +135,7 @@ INVOICE_LOCALS = {"faktura", "fakturamottak", "fakturaer", "invoice", "invoices"
                   "noreply", "no-reply", "donotreply", "do-not-reply", "postmaster", "webmaster", "abuse", "privacy",
                   "personvern", "gdpr", "dpo"}
 
+COUNTRY_WORDS = {"norge", "norway", "norden", "nordic", "nordics", "scandinavia", "skandinavia", "scandinavian"}
 _FOLD = str.maketrans({"æ": "ae", "ø": "o", "å": "a", "ä": "a", "ö": "o", "ü": "u", "é": "e", "è": "e"})
 
 
@@ -190,6 +196,13 @@ def name_profile(name: str, form: str | None = None) -> NameProfile:
                 optional.add(w.lower())
     base = dist or [t for t in core if not t.isdigit()] or core
     required = [t for t in base if t not in optional] or base
+    # country words distinguish a national company from its foreign group ("TODAY MOBILITY NORWAY AS" is not
+    # "Today Mobility"): they are required name tokens
+    for w in re.findall(r"[a-zæøå]+", (name or "").lower()):
+        if w in COUNTRY_WORDS and w not in required and w not in optional:
+            required.append(w)
+            if w not in core:
+                core.append(w)
     return NameProfile(name=name, core=core, required=required, optional=sorted(optional & set(core)),
                        distinctive=bool(dist))
 
@@ -262,6 +275,10 @@ class PageInfo:
     named_orgnrs: list[tuple[str, str]] = field(default_factory=list)   # (name text before a labelled orgnr, orgnr)
     site_links: list[tuple[str, str]] = field(default_factory=list)     # "<X> nettside/website" anchors
     tel_anchors: list[tuple[str, str]] = field(default_factory=list)    # (tel: href number, visible anchor text)
+    mailto_anchors: list[tuple[str, str]] = field(default_factory=list)  # (mailto: address, visible anchor text)
+    ownership: list[str] = field(default_factory=list)                  # ownership / group statements
+    country_list: bool = False                                          # list of country offices
+    all_foreign_regs: list[str] = field(default_factory=list)           # foreign registration numbers, any text
 
     def head_text(self) -> str:
         """Site-declared text outside the body: title, meta description/author, og:*, JSON-LD names/contacts."""
@@ -429,16 +446,14 @@ def _owner_statements(text: str, footer: str, orgs: list[dict]) -> list[dict]:
     legalName - each with the org number printed right after it (if any)."""
     out: list[dict] = []
     for src in (footer or "", text or ""):
+        all_ents = [e for e in X.legal_entities(src, prefix_forms=True) if not PROVIDER_RX.search(e["key"])
+                    and not X.CREDIT_RX.search(src[max(0, e["start"] - 30):e["start"]])]
         for cm in _COPY_RX.finditer(src):
-            win0, win1 = max(0, cm.start() - 70), min(len(src), cm.end() + 90)
-            win = src[win0:win1]
-            ents = [e for e in X.legal_entities(win, prefix_forms=True) if not PROVIDER_RX.search(e["key"])
-                    and not X.CREDIT_RX.search(win[max(0, e["start"] - 30):e["start"]])]
+            ents = [e for e in all_ents if cm.start() - 70 <= e["end"] and e["start"] <= cm.end() + 90]
             if not ents:
                 continue
-            pos = cm.start() - win0
-            e = min(ents, key=lambda e: min(abs(e["start"] - pos), abs(e["end"] - pos)))
-            after = src[win0 + e["end"]: win0 + e["end"] + 60]
+            e = min(ents, key=lambda e: min(abs(e["start"] - cm.start()), abs(e["end"] - cm.start())))
+            after = src[e["end"]: e["end"] + 60]
             om = next((d for mm, d in _labelled_orgnrs(after)), None)
             if not any(o["key"] == e["key"] for o in out):
                 out.append({"name": e["name"], "key": e["key"], "words": e["words"], "foreign": e["foreign"], "orgnr": om})
@@ -451,6 +466,66 @@ def _owner_statements(text: str, footer: str, orgs: list[dict]) -> list[dict]:
                 out.append({"name": ln.strip(), "key": k, "words": X.entity_words(ln), "foreign": X.legal_form_is_foreign(ln),
                             "orgnr": next(iter(ids)) if len(ids) == 1 else None})
     return out[:6]
+
+
+# --------------------------------------------------------------------------- group / foreign-parent signals
+_GROUP_WORD = (r"(?:Group|GROUP|Gruppen|GRUPPEN|Groupe|Gruppe|konsern\w*|Konsern\w*|Holding|HOLDING|Industries|"
+               r"Industrier|kjede\w*|Kjede\w*|familien|AB|ASA|AS|Oy|Oyj|ApS|A/S|GmbH|Ltd|Inc|LLC|plc|B\.?V\.?|N\.?V\.?)")
+OWNERSHIP_RX = re.compile(
+    r"(?P<phrase>\b(?:eies|eid|drives|driftes|ledes)\s+(?:og\s+drives\s+)?av\b|"
+    r"\ber\s+(?:en\s+)?(?:del|medlem)\s+av\b|\bdel\s+av\s+konsernet\b|\bi\s+[\wÆØÅæøå-]+-?konsernet\b|"
+    r"\bdatterselskap\s+(?:av|til|under|i)\b|\b(?:wholly[- ]owned\s+)?subsidiary\s+of\b|\bmember\s+of\b|"
+    r"\bpart\s+of\b|\btilhører\s+(?:nå\s+)?|\bheleid\s+av\b|\bowned\s+by\b|\boperated\s+by\b|"
+    r"\bgjennom\s+sin\s+norske\s+filial\b|\bnorsk\s+filial\s+av\b|\bfilial\s+av\b|"
+    r"\bsiden\s+(?:driftes|drives|eies)\s+av\b|\bet\s+selskap\s+i\b)", re.I)
+_STRONG_PHRASE_RX = re.compile(r"filial|siden\s+(?:driftes|drives|eies)|eies\s+av|heleid|owned\s+by|subsidiary|"
+                               r"datterselskap|operated\s+by", re.I)
+COUNTRY_RX = re.compile(r"\b(Norge|Norway|Sverige|Sweden|Danmark|Denmark|Finland|Suomi|Tyskland|Germany|Deutschland|"
+                        r"Spania|Spain|España|Polen|Poland|Polska|Storbritannia|United Kingdom|England|USA|Nederland|"
+                        r"Netherlands|Frankrike|France|Italia|Italy|Island|Iceland|Estland|Estonia|Litauen|Lithuania|"
+                        r"Latvia|Latvija|Kina|China|Belgia|Belgium|Østerrike|Austria|Sveits|Switzerland)\b")
+FOREIGN_CONTACT_RX = re.compile(r"(?:\+|00)\s?(?:46|45|49|34|358|48|44|1|31|33|39|354|372|370|371|86|32|43|41)[\s\-]?\d|"
+                                r"@[\w.-]+\.(?:se|dk|de|fi|es|pl|uk|nl|fr|it|is|ee|lt|lv|cn|be|at|ch)\b", re.I)
+FOREIGN_TLDS = {"se", "dk", "fi", "de", "uk", "pl", "nl", "fr", "es", "it", "ee", "lt", "lv", "is", "at", "ch", "be",
+                "us", "cz", "hu", "pt", "ie", "eu"}
+FOREIGN_LOCALES = {"sv", "se", "sv-se", "da", "dk", "da-dk", "fi", "fi-fi", "de", "de-de", "pl", "nl", "nl-nl", "nl-be",
+                   "fr", "es", "it", "cs", "hu", "pt", "et", "lt", "lv", "is", "en-gb", "en-us", "uk", "us", "gb"}
+
+
+def _ownership_phrases(text: str) -> list[str]:
+    """Ownership statements naming a group/parent: 'Vi tilhører nå DENSIQ Group', 'er en del av Latour Industries AB',
+    'eier merkenavnet ... gjennom sin norske filial', 'Siden driftes av X'."""
+    out = []
+    for m in OWNERSHIP_RX.finditer(text or ""):
+        obj = text[m.end():m.end() + 70]
+        filial = bool(re.search(r"filial|siden\s+(?:driftes|drives|eies)", m.group("phrase"), re.I))
+        if filial or re.search(r"^\s*(?:the\s+|nå\s+)?[A-ZÆØÅ][\wÆØÅæøå&'.\- ]{0,50}?\b" + _GROUP_WORD + r"\b", obj) or \
+                re.search(r"konsernet", m.group("phrase"), re.I):
+            out.append(_ws(text[max(0, m.start() - 40):m.end() + 70]))
+    return out[:6]
+
+
+def _country_office_list(text: str) -> bool:
+    """>= 3 countries within 250 chars together with foreign phone numbers / e-mail domains: a list of country offices."""
+    ms = list(COUNTRY_RX.finditer(text or ""))
+    for j, m in enumerate(ms):
+        win_end = m.start() + 250
+        names = {mm.group(1).lower() for mm in ms[j:] if mm.start() <= win_end}
+        if len(names) >= 3 and len(FOREIGN_CONTACT_RX.findall(text[m.start():win_end])) >= 2:
+            return True
+    return False
+
+
+def _visible_text(html: str) -> str:
+    """Visible text only: scripts, styles, templates, comments and hidden elements removed."""
+    tree = LexborHTMLParser(html)
+    for sel in ("script", "style", "noscript", "template", "svg", "[hidden]",
+                "[style*='display:none']", "[style*='display: none']", "[style*='visibility:hidden']",
+                "[style*='visibility: hidden']", ".sr-only", ".visually-hidden", ".screen-reader-text"):
+        for n in tree.css(sel):
+            n.decompose()
+    body = tree.body or tree.root
+    return re.sub(r"\s+", " ", body.text(separator=" ") if body else "").strip()
 
 
 def analyse_page(page: Page, target: str, name: str = "", idx: int = 0) -> PageInfo:
@@ -475,20 +550,35 @@ def analyse_page(page: Page, target: str, name: str = "", idx: int = 0) -> PageI
     own_words = X.entity_words(name) if name else []
     own_core = {w for w in own_words if len(w) >= 3 and not w.isdigit()}
     own_foreign = X.legal_form_is_foreign(name) if name else False
-    labelled_others = [(m.start(), m.end(), d) for m, d in _labelled_orgnrs(text) if d != target]
-    for m in trx.finditer(text):
+    _nrx0 = X.legal_name_rx(name) if name else None
+    # the exact legal name printed right before the number is its label ("Leo Bemanning AS · 934 354 710")
+    name_label_rx = re.compile("(?:" + _nrx0.pattern + r")[\s,·•|–\-:(]{0,6}$") if _nrx0 else None
+    vis = _visible_text(html)
+    labelled_others = [(m.start(), m.end(), d) for m, d in _labelled_orgnrs(vis) if d != target]
+    text_for_hits = vis
+    for m in trx.finditer(text_for_hits):
+        text = text_for_hits                             # (span/flags computed on visible text)
         before = text[max(0, m.start() - 45):m.start()]
         after = text[m.end():m.end() + 6]
         kw = bool(X.ORG_KEYWORD_RX.search(before)) or bool(re.search(r"NO[\s.\-]?$", before)) or \
-            bool(re.match(r"[\s.\-]?MVA", after, re.I))
-        credit = bool(X.CREDIT_RX.search(text[max(0, m.start() - 80):m.end() + 40]))
+            bool(re.match(r"[\s.\-]?MVA", after, re.I)) or \
+            bool(re.search(r"\b(?:org|org\.?\s*n[or]|reg|vat)\.?\s*[:#.]*\s*$", before, re.I)) or \
+            bool(re.search(r"(?:selskaps)?registrerings?(?:nr|nummer)\.?\s*[:#.]*\s*$|\behf\s*[:.]?\s*(?:0192:|9908:)?\s*$|"
+                           r"foretaksregisteret\s*[:#.]*\s*$", before, re.I)) or \
+            bool(re.search(r"(?:organi[sz]ation|company|business|registration)\s+(?:reg(?:istration)?\.?\s+)?"
+                           r"(?:number|no|nr)\.?\s*[:#.]*\s*$", before, re.I)) or \
+            bool(name_label_rx and name_label_rx.search(text[max(0, m.start() - 90):m.start()]))
+        phrase = re.split(r"\s[|·•]\s|\s[–—-]\s|\.\s|\n", text[max(0, m.start() - 80):m.start()])[-1]
+        cm = list(X.CREDIT_RX.finditer(phrase))
+        credit = bool(cm) and not (_nrx0 and _nrx0.search(phrase[cm[-1].end():]))
         # `list`: another labelled org number within 150 chars (a list of group companies / processors)
         lst = any(abs(s0 - m.start()) <= 150 or abs(e0 - m.end()) <= 150 for s0, e0, _ in labelled_others)
         # `misnamed`: the legal name printed right before the number (within 80 chars) is another entity
-        win0 = max(0, m.start() - 80)
+        win0 = max(0, m.start() - 180)
         sp0 = text.find(" ", win0, m.start())
         win0 = sp0 + 1 if (win0 > 0 and sp0 != -1) else win0           # start at a word boundary
-        prev = [e for e in X.legal_entities(text[win0:m.start()], prefix_forms=True)]
+        seg = text[win0:m.start()]
+        prev = [e for e in X.legal_entities(seg, prefix_forms=True) if e["end"] >= len(seg) - 80]
         misnamed = None
         if prev and own_words:
             e = max(prev, key=lambda e: e["end"])
@@ -496,7 +586,9 @@ def analyse_page(page: Page, target: str, name: str = "", idx: int = 0) -> PageI
             if not X.is_target_entity(e, own_words, own_foreign) and not (set(e["words"]) & set(own_core)):
                 misnamed = e["name"]
         hits.append({"src": "text", "kw": kw, "credit": credit, "list": lst, "misnamed": misnamed,
-                     "span": _window(text, m.start(), m.end()), "locator": "text"})
+                     "span": _window(text, m.start(), m.end()), "locator": "text",
+                     "pre": text[max(0, m.start() - 220):m.end()]})
+    text = X.plain_text(html)
     if target in x.get("brreg_links", []):
         mm = re.search(r"""href\s*=\s*["']([^"']*(?:brreg\.no|proff\.no|purehelp\.no|forvalt\.no)[^"']*?"""
                        + target + r"""[^"']*)["']""", html, re.I)
@@ -530,7 +622,11 @@ def analyse_page(page: Page, target: str, name: str = "", idx: int = 0) -> PageI
                     foreign_regs=X.foreign_registrations(owner_text),
                     name_block=nblock, exact_named=exact_named, owners=owners, named_orgnrs=named_orgnrs,
                     site_links=site_links,
-                    tel_anchors=[tuple(t) for t in x.get("tel_anchors", [])])
+                    tel_anchors=[tuple(t) for t in x.get("tel_anchors", [])],
+                    mailto_anchors=[(unquote((a.attributes.get("href") or "")[7:].split("?")[0]).strip().lower(),
+                                     _ws(a.text(separator=" "))) for a in tree.css('a[href^="mailto:"]')],
+                    ownership=_ownership_phrases(text), country_list=_country_office_list(text),
+                    all_foreign_regs=X.foreign_registrations(text))
 
 
 # --------------------------------------------------------------------------- site identity helpers
@@ -554,6 +650,11 @@ def site_base(start_url: str, final_url: str) -> tuple[str, bool]:
     if cross and path not in ("", "/") and not re.fullmatch(r"/(?:index|default)\.[a-z]{2,5}", path, re.I):
         final_sub = True
     subpath = start_sub or (final_sub and start_dom != final_dom)
+    # never publish a URL wider than the filed one: a filed language path (todaymobility.com/no/) is kept
+    if not subpath and start_path not in ("", "/") and not re.fullmatch(r"/(?:index|default)\.[a-z]{2,5}", start_path, re.I) \
+            and (st.hostname or "").lower().removeprefix("www.") == host.removeprefix("www.") \
+            and path.lower().startswith(start_path.rstrip("/").lower()):
+        return f"{scheme}://{host}{start_path}", True
     if not subpath:
         return f"{scheme}://{host}/", False
     base = path
@@ -766,6 +867,8 @@ class Verdict:
     foreign_owner: str | None = None            # L2 only: site names another legal entity as owner
     misnamed: list[str] = field(default_factory=list)          # entities named right before the target's number
     hosted: bool = False                        # filed domain redirects to a site-builder host
+    group_signals: list[str] = field(default_factory=list)     # foreign-parent / group / chain signals
+    shared_reg_phones: list[str] = field(default_factory=list) # registry phones also filed by other org numbers
     site_links: list[str] = field(default_factory=list)        # "<company> nettside" links to another domain
     other_entities: list[str] = field(default_factory=list)   # sibling / foreign legal entities named on the site
     foreign_regs: list[str] = field(default_factory=list)
@@ -808,6 +911,73 @@ def _owner_context_hit(i: PageInfo, h: dict, prof: NameProfile) -> bool:
         return False
     return bool(i.x.get("target_in_footer")) or i.page.kind in OWNER_PAGE_KINDS or \
         (bool(prof.required) and all(token_in(t, h["span"]) for t in prof.required))
+
+
+CONTROLLER_RX = re.compile(r"behandlingsansvarlig\w*|ansvarlig\s+for\s+behandlingen|kontrollør|data\s+controller|"
+                           r"\bcontroller\b|\bselger\b|\bseller\b|eier\s+av\s+(?:nett)?(?:sted|side)\w*|"
+                           r"(?:nettstedet|nettsiden|siden|websiden)\s+(?:eies|drives|driftes)\s+av|"
+                           r"\bvarene\s+selges\s+av\b|\bavtalen\s+inngås\s+med\b", re.I)
+
+
+def _title_segments(infos: list["PageInfo"]) -> list[str]:
+    return sorted({sg.strip() for i0 in infos for t0 in (i0.title, i0.meta.get("og:site_name", ""))
+                   for sg in re.split(r"\s+[–—|·•:\-]\s+|\s*\|\s*", t0 or "") if sg.strip()})
+
+
+def _group_signals(ok: list["PageInfo"], v: "Verdict", prof: NameProfile, own_words: list[str],
+                   own_core: set[str], own_foreign: bool, form: str | None, siblings: list[str],
+                   is_target=None) -> list[str]:
+    """Foreign-parent / group / chain signals over ALL fetched pages (policy C)."""
+    is_target = is_target or X.is_target_entity
+    if form == "NUF":                       # a Norwegian branch is the foreign company itself
+        return []
+    sig: list[str] = []
+    label = squash((v.domain or "").split(".")[0])
+    brand_keys = {k for k in own_core if len(k) >= 3} | ({label} if len(label) >= 3 else set())
+    base_seg = (urlsplit(v.site_url or "").path or "/").strip("/").split("/")[0].lower()
+    for i in ok:
+        sig += ["foreign registration number: " + r for r in i.all_foreign_regs]
+        owner_ctx = i.page.kind in OWNER_PAGE_KINDS
+        footer = (i.x.get("footer_excerpt", "") or "") + " " + " ".join(i.x.get("copyright") or [])
+        for e in i.entities:
+            if not e["foreign"] or PROVIDER_RX.search(e["key"]) or is_target(e, own_words, own_foreign):
+                continue
+            related = any(k in e["key"] for k in brand_keys)
+            if related or owner_ctx or (e["name"] and e["name"] in footer):
+                sig.append("foreign legal entity: " + e["name"])
+        for ph in i.ownership:
+            obj = re.split(OWNERSHIP_RX.pattern, ph, maxsplit=1, flags=re.I)[-1] if OWNERSHIP_RX.search(ph) else ph
+            if prof.required and all(token_in(t, obj) for t in prof.required) and \
+                    not re.search(r"group|gruppen|konsern|holding", obj, re.I):
+                continue                    # the object is this company itself
+            sig.append("ownership statement: " + ph)
+        if i.country_list:
+            sig.append("list of country offices")
+        locales: set[str] = set()
+        for u, _t in i.links:
+            sp = urlsplit(u)
+            h = (sp.hostname or "").lower()
+            d = X.reg_domain(h)
+            seg = (sp.path or "/").strip("/").split("/")[0].lower()
+            if d and d != v.domain and label and len(label) >= 3 and squash(d.split(".")[0]) == label:
+                tld = d.rsplit(".", 1)[-1]
+                if tld in FOREIGN_TLDS or (tld == "com" and (seg in FOREIGN_LOCALES or seg == "en")):
+                    sig.append("same brand on a foreign domain: " + d + ("/" + seg if seg else ""))
+            elif d == v.domain and v.subpath and seg and seg != base_seg and \
+                    (seg in FOREIGN_LOCALES or seg in ("en", "no", "nb", "nn")) and len(sp.path.strip("/").split("/")) <= 2:
+                locales.add(seg)
+        if any(lc in FOREIGN_LOCALES for lc in locales) or len(locales) >= 2:
+            sig.append("country/language sections of a group site: /" + "/, /".join(sorted(locales)[:4]) + "/")
+        for o in i.owners:
+            if not is_target(o, own_words, own_foreign) and not _entity_matches(o["name"], prof) and \
+                    not PROVIDER_RX.search(o["key"]):
+                sig.append("owner statement names " + o["name"])
+    sig += ["sister entity: " + n for n in siblings]
+    out: list[str] = []
+    for x in sig:
+        if x not in out:
+            out.append(x)
+    return out[:8]
 
 
 def verify(pages: list[Page], rec: dict | None, target: str, *, lead_kind: str, start_url: str,
@@ -882,13 +1052,29 @@ def verify(pages: list[Page], rec: dict | None, target: str, *, lead_kind: str, 
     own_foreign = form == "NUF" or X.legal_form_is_foreign(name)
     own_words = X.entity_words(name)
     own_core = {w for w in own_words if len(w) >= 3 and not w.isdigit()}
+    # acronyms the site gives this company right after its name ("Haugaland kontrollutvalgssekretariat HKS IKS")
+    body_words = [w for w in re.findall(r"[\wÆØÅæøå]+", name) if w.upper() not in X.NO_FORMS]
+    aliases: set[str] = set()
+    if body_words:
+        arx = re.compile(r"(?i:" + r"[\s\-]+".join(map(re.escape, body_words)) + r")\s*\(?\s*([A-ZÆØÅ]{2,6})\b")
+        for i0 in ok:
+            aliases |= {m0.group(1).lower() for m0 in arx.finditer(i0.text)
+                        if m0.group(1)[0].lower() == fold(body_words[0])[0] and len(body_words) >= 2}
+    if aliases:
+        _is_t = X.is_target_entity
+
+        def _is_target_alias(e, ow, of):
+            ws = e.get("words") or X.entity_words(e.get("name", ""))
+            return _is_t(e, ow, of) or (bool(ws) and ws[-1] in aliases)
+    else:
+        _is_target_alias = X.is_target_entity
     seen_ent: dict[str, str] = {}
     for i in ok:
         for e in i.entities:                       # siblings: anywhere on the fetched pages
-            if not X.is_target_entity(e, own_words, own_foreign) and any(k in e["key"] for k in dist_keys):
+            if not _is_target_alias(e, own_words, own_foreign) and any(k in e["key"] for k in dist_keys):
                 seen_ent.setdefault(e["key"] + ("|f" if e["foreign"] else ""), _trim_entity(e["name"], dist_keys))
         for e in i.owner_entities:                 # foreign entities: where a site states its owner
-            if not X.is_target_entity(e, own_words, own_foreign) and e["foreign"] and form != "NUF":
+            if not _is_target_alias(e, own_words, own_foreign) and e["foreign"] and form != "NUF":
                 seen_ent.setdefault(e["key"] + "|f", e["name"])
     v.other_entities = sorted(set(seen_ent.values()))[:10]
     v.foreign_regs = [] if form == "NUF" else sorted({r for i in ok for r in i.foreign_regs})[:5]
@@ -909,7 +1095,7 @@ def verify(pages: list[Page], rec: dict | None, target: str, *, lead_kind: str, 
     former0 = [h0.get("navn", "") for h0 in rec.get("historiskeNavn") or [] if isinstance(h0, dict)]
     for i0 in ok:
         for o in i0.owners:
-            if X.is_target_entity(o, own_words, own_foreign) or _entity_matches(o["name"], prof, former0):
+            if _is_target_alias(o, own_words, own_foreign) or _entity_matches(o["name"], prof, former0):
                 continue
             related = bool(set(o.get("words") or []) & (own_core | {squash((v.domain or "").split(".")[0])}))
             if (o.get("orgnr") and o["orgnr"] != target and (o["orgnr"] in others or o["orgnr"] in shared)) or \
@@ -925,7 +1111,7 @@ def verify(pages: list[Page], rec: dict | None, target: str, *, lead_kind: str, 
                    for sg in re.split(r"\s+[–—|·•:\-]\s+|\s*\|\s*", t0 or "") if sg.strip()})
     for sg in segs:
         k = X.entity_key(sg)
-        if len(k) < 6 or X.is_target_entity({"words": X.entity_words(sg), "foreign": own_foreign}, own_words, own_foreign):
+        if len(k) < 6 or _is_target_alias({"words": X.entity_words(sg), "foreign": own_foreign}, own_words, own_foreign):
             continue
         for i0 in ok:
             for before, d in i0.named_orgnrs:
@@ -940,9 +1126,56 @@ def verify(pages: list[Page], rec: dict | None, target: str, *, lead_kind: str, 
                 break
         if title_other:
             break
+    # the site is branded as the legal entity its © line names, and that entity is not this company
+    segs_all = _title_segments(ok)
+    owner_brand = next((o["name"] for i0 in ok for o in i0.owners
+                        if not _is_target_alias(o, own_words, own_foreign) and not PROVIDER_RX.search(o["key"])
+                        and len(o["key"]) >= 5 and any(o["key"] == X.entity_key(sg) or o["key"] in squash(sg)
+                                                       for sg in segs_all)), None)
+    if owner_brand and not title_other:
+        title_other = f"{owner_brand} (named as the site owner in its © line and in the site title)"
     reg_lead = lead_kind == "registry_website"
     email_lead = lead_kind == "email_domain" and "@" in registry_email(rec) and \
         X.reg_domain(registry_email(rec).split("@", 1)[1]) == v.domain
+    v.shared_reg_phones = [p for p in registry_phones(rec) if _shared(shared_contacts, "phones", p, target)]
+    # ---- C: foreign / group / chain signals on all fetched pages
+    v.group_signals = _group_signals(ok, v, prof, own_words, own_core, own_foreign, form, siblings,
+                                     is_target=_is_target_alias)
+    # ---- B: a sub-path is publishable only on the company's own brand host
+    if v.subpath and not v.hosted:
+        suffixes = [sg for sg in segs_all]
+        host_brand = any(len(squash(t)) >= 3 and squash(t) in squash((v.domain or "").split(".")[0])
+                         for t in prof.required if not t.isdigit()) or \
+            any(token_in(t, sg) for sg in suffixes for t in prof.required if len(t) >= 3 and not t.isdigit())
+        if not host_brand or shared or v.group_signals:
+            why = "the host is not the company's brand" if not host_brand else \
+                (f"the host is shared with other organisation numbers ({', '.join(shared[:4])})" if shared else
+                 "group/foreign signals: " + "; ".join(v.group_signals[:3]))
+            v.reason = f"{v.site_url} is a section of another site ({why}); not the company's own website"
+            return v
+        if HOMEISH_PATH_RX.match(urlsplit(v.site_url).path or "/"):
+            v.exclusive = True               # the company's own brand host, published at its language section
+    # ---- A: L1 proof only from a visible, keyword-labelled, single-company hit or a name-matched JSON-LD id
+    def _eligible(i0: PageInfo, h0: dict) -> bool:
+        if h0.get("misnamed") or h0.get("credit"):
+            return False
+        if h0["src"] == "text":
+            return bool(h0["kw"]) and not h0.get("list")
+        if h0["src"] == "jsonld":
+            return any(target in _jsonld_ids(o) and any(isinstance(o.get(k), str) and name_matches(o[k], prof)
+                                                         for k in ("name", "legalName")) for o in i0.orgs)
+        return False
+    found = [(i0, h0) for i0, h0 in found if _eligible(i0, h0)]
+    if v.group_signals and found:
+        nrx_g = X.legal_name_rx(name)
+        named = [(i0, h0) for i0, h0 in found if nrx_g and h0["src"] == "text" and
+                 (nrx_g.search(h0.get("pre") or h0["span"]) or (i0.block and nrx_g.search(i0.block.get("block_text", ""))))]
+        if not named or v.subpath:
+            v.reason = ("group/foreign site (" + "; ".join(v.group_signals[:3]) + "): the org number is not in a block "
+                        f"naming {name or 'the company'}" + (" and the URL is a section of the group site" if v.subpath else ""))
+            return v
+        found = named
+        v.strict_block = True
     if owner_parent and (found or reg_lead):
         v.reason = (f"parent/group site: owner statement names {owner_parent}, which the site or the host's "
                     f"registry filings show as another organisation")
@@ -955,13 +1188,14 @@ def verify(pages: list[Page], rec: dict | None, target: str, *, lead_kind: str, 
                     "not proof that the site is this company's")
         return v
     if found:
-        i, h = min(found, key=lambda ih: (_HIT_RANK.get((ih[1]["src"], ih[1]["kw"]), 9), bool(ih[1].get("list")),
-                                          ih[0].idx))
+        i, h = min(found, key=lambda ih: (_HIT_RANK.get((ih[1]["src"], ih[1]["kw"]), 9), ih[0].idx))
         if all(hh["credit"] for _, hh in found) and not v.dominant:
             v.reason = (f"org number appears on {i.url} only in a web-agency/credit context, "
                         "and the site is not branded as the company")
             return v
-        if v.restricted and not reg_lead and not v.dominant:
+        nrx_r = X.legal_name_rx(name)
+        named_hit = bool(nrx_r) and any(hh["src"] == "text" and nrx_r.search(hh.get("pre") or hh["span"]) for _, hh in found)
+        if v.restricted and not reg_lead and not v.dominant and not named_hit:
             ctx = f"other organisation numbers ({', '.join(others[:5])})" if others else \
                 f"a host shared with other organisation numbers ({', '.join(shared[:5])})"
             v.reason = (f"org number printed on {i.url}, but the site also shows {ctx} and is not branded as "
@@ -991,7 +1225,9 @@ def verify(pages: list[Page], rec: dict | None, target: str, *, lead_kind: str, 
         if shared:
             note.append(f"{v.host} also hosts other organisation numbers' sites")
         if v.subpath:
-            note.append(f"company section {v.site_url} of a shared host")
+            note.append(f"published at its section {v.site_url}")
+        if v.strict_block:
+            note.append("group/foreign signals (" + "; ".join(v.group_signals[:2]) + "): facts only from the company's own block")
         v.reason = f"organisation number printed on {i.url}" + (" (" + "; ".join(note) + ")" if note else "")
         return v
     # ------------------------------------------------------------------ no org number: L2 or ambiguous
@@ -1050,29 +1286,43 @@ def verify(pages: list[Page], rec: dict | None, target: str, *, lead_kind: str, 
     owner = next((ent for i in ok for ent in _owner_entities(i) if not _entity_matches(ent, prof, former)), None)
     # A registry phone/address shared with sister organisations only corroborates when the site carries this
     # company's exact full name in its title / og:site_name / JSON-LD name (it is not a sibling's or the group's).
-    corr = corroborate(ok, rec, v.domain or "", shared_contacts=None if v.exact_strong else shared_contacts,
-                       target=target)
+    corr = corroborate(ok, rec, v.domain or "", shared_contacts=shared_contacts, target=target)
     v.corroboration = corr
-    if v.other_entities or v.foreign_regs:
+    if v.other_entities or v.foreign_regs or v.group_signals:
         # Precision first: a site that names other legal entities (sister/group companies, foreign registrations)
-        # and does not print this company's organisation number is a group site, not this company's own
-        # official website. L2 is refused outright (an L1 proof is required on such sites).
-        what = ", ".join((v.other_entities + v.foreign_regs)[:4])
+        # or carries group/foreign-parent signals and does not print this company's organisation number is a
+        # group site, not this company's own official website. L2 is refused outright.
+        what = ", ".join((v.other_entities + v.foreign_regs + v.group_signals)[:4])
         v.reason = (f"site names other legal entities ({what}) and does not print this organisation number: "
                     "treated as a group site, not the company's own website")
         return v
-    if False:  # kept for reference: the former block-based acceptance on group sites
-        blk = next((i.name_block for i in ok if i.name_block and i.name_block.get("isolated")), None)
-        reg_ph = set(registry_phones(rec))
-        ok_blk = bool(blk) and (any(p in reg_ph for p in blk.get("phones", [])) or
-                                any(_nat8(t) in reg_ph for t in blk.get("tel_links", [])) or
-                                (bool(registry_email(rec)) and registry_email(rec) in blk.get("emails", [])))
-        if not ok_blk:
-            what = ", ".join((v.other_entities + v.foreign_regs)[:4])
-            v.reason = (f"site names other legal entities ({what}); no block of {name or 'the company'} with its "
-                        "registry phone or e-mail")
-            return v
-        v.strict_block = True
+    # ---- D: L2 needs an exact registry contact, the full legal name in owner text and a checked legal page
+    if not (corr["email_match"] or corr["phone_match"]):
+        v.reason = ("no exact registry e-mail or (unshared) registry phone on the site; an e-mail domain match alone "
+                    "does not identify the company")
+        return v
+    nrx_l = X.legal_name_rx(name)
+    owner_texts = [i.x.get("footer_excerpt", "") or "" for i in ok] + \
+        [i.text for i in ok if i.page.kind in OWNER_PAGE_KINDS + ("legal",)]
+    if not (nrx_l and any(nrx_l.search(t) for t in owner_texts)):
+        v.reason = (f"the full legal name {name!r} (with its legal form) is not in the site's footer, contact or "
+                    "imprint text")
+        return v
+    legal_pages = [i for i in ok if i.page.kind in ("privacy", "terms", "impressum", "legal")]
+    if not legal_pages:
+        v.reason = "privacy/terms/imprint page not found or not checked; L2 needs it"
+        return v
+    for i in legal_pages:
+        for m in CONTROLLER_RX.finditer(i.text):
+            win = i.text[max(0, m.start() - 120):m.end() + 160]
+            ents = [e for e in X.legal_entities(win, prefix_forms=True) if not PROVIDER_RX.search(e["key"])]
+            if not ents:
+                continue
+            pos = m.start() - max(0, m.start() - 120)
+            e = min(ents, key=lambda e: min(abs(e["start"] - pos), abs(e["end"] - pos)))
+            if not _is_target_alias(e, own_words, own_foreign) and not _entity_matches(e["name"], prof):
+                v.reason = f"the {i.page.kind} page names {e['name']} as controller/seller/owner, not {name}"
+                return v
     if owner:
         # A sibling/parent named as owner: only an overwhelming registry match keeps the registry-filed site,
         # and then facts are restricted to values equal to the registry record.
@@ -1290,6 +1540,70 @@ def canonical_social(platform: str, url: str) -> tuple[str, str] | None:
     return None
 
 
+# capitalised words that start labels, headings and menu items - not a person's first or last name
+NOT_NAME_WORDS = {"contact", "us", "kontakt", "oss", "ring", "telefon", "tlf", "mobil", "send", "email", "epost",
+                  "e-post", "adresse", "besøk", "besok", "kundeservice", "hovedkontor", "avdeling", "sentralbord",
+                  "åpningstider", "apningstider", "call", "phone", "office", "kontor", "support", "salg", "sales",
+                  "service", "post", "info", "booking", "bestilling", "vakt", "døgnvakt", "akutt", "faks", "fax",
+                  "org", "nr", "mva", "visit", "find", "finn", "the", "our", "vår", "vårt", "våre", "ta", "spør",
+                  "chat", "whatsapp", "sms", "kontaktinformasjon", "kontaktinfo", "telefonnummer", "nummer"}
+COMMON_NOUNS = {
+    "gullsmed", "gullsmeden", "ridesenter", "ridesenteret", "rideskole", "bakeri", "bakeriet", "baker", "bakeren",
+    "frisor", "frisoren", "frisorsalong", "salong", "salongen", "tannlege", "tannlegen", "tannklinikk", "legekontor",
+    "legesenter", "fysioterapi", "fysioterapeut", "kafe", "kafeen", "cafe", "butikk", "butikken", "verksted",
+    "verkstedet", "bilverksted", "snekker", "snekkeren", "rorlegger", "rorleggeren", "elektriker", "elektrikeren",
+    "maler", "maleren", "blomster", "blomsterbutikk", "florist", "hotell", "hotellet", "restaurant", "restauranten",
+    "pizzeria", "puben", "garden", "gardsbutikk", "skole", "skolen", "barnehage", "barnehagen", "kirke", "kirken",
+    "menighet", "idrettslag", "klubb", "klubben", "trening", "treningssenter", "yoga", "dekk", "dekksenter",
+    "bilforhandler", "eiendomsmegler", "megler", "regnskap", "regnskapskontor", "advokat", "advokatene", "arkitekt",
+    "arkitektene", "byggmester", "entreprenor", "transport", "taxi", "renhold", "vaktmester", "apotek", "optiker",
+    "optikeren", "klinikk", "klinikken", "spa", "massasje", "interior", "mote", "sko", "sport", "sportsbutikk",
+    "camping", "hytte", "hytter", "marina", "brygge", "bryggen", "kunst", "galleri", "galleriet", "musikk", "studio",
+    "foto", "fotograf", "media", "reklame", "trykk", "trykkeri", "catering", "kantine", "matbutikk", "dyreklinikk",
+    "veterinar", "hundeskole", "hagesenter", "planteskole", "gartner", "gartneri", "fiske", "jakt", "varmepumpe",
+    "solcelle", "elbil", "bil", "bilen", "bilutleie", "utleie", "hjem", "hjemmet", "huset", "norge", "norway",
+}
+FOREIGN_GLUED_FORMS = ("gmbh", "aps", "oyj", "ltd", "inc", "llc", "plc", "ab", "oy", "ag", "bv")
+
+
+def social_handle_ok(handle: str, prof: NameProfile, label: str | None, form: str | None = None) -> bool:
+    """Policy G: distinctive (non-generic) name tokens - or the company's own exclusive domain label when it carries
+    a name token - cover >= 60 % of the handle; no glued foreign legal-form suffix on the brand (densiqab); not a
+    generic word plus <= 2 characters (gullsmedm, ridesenteret)."""
+    h = squash(unquote(handle or "")).lstrip("@")
+    h = re.sub(r"\d{6,}$", "", h)
+    if h.endswith("as") and len(h) > 6:
+        h2 = h[:-2]
+    else:
+        h2 = h
+    if len(h2) < 3:
+        return False
+    dist = [fold(t) for t in prof.required if t not in X.GENERIC_TOKENS and not t.isdigit()]
+    dist = [squash(t) for t in dist if len(squash(t)) >= 2]
+    brands = set(dist) | ({prof.joined_required} if len(prof.joined_required) >= 4 else set())
+    lab = label if (label and len(label) >= 3 and any(t in label or label in t for t in dist if len(t) >= 3)) else None
+    if lab:
+        brands.add(lab)
+    if form != "NUF":
+        for suf in FOREIGN_GLUED_FORMS:
+            if h2.endswith(suf) and h2[:-len(suf)] in brands | {squash(t) for t in prof.core}:
+                return False
+    for w in (X.GENERIC_TOKENS | COMMON_NOUNS):
+        w = squash(w)
+        if len(w) >= 4 and (h2.startswith(w) or h2.endswith(w)) and len(h2) - len(w) <= 2:
+            return False
+    covered = [0] * len(h2)
+    toks = sorted({t for t in dist if len(t) >= 2} | ({lab} if lab else set()), key=len, reverse=True)
+    for t in toks:
+        for cand in {t, t[:-1] if (len(t) >= 6 and t.endswith("s")) else t}:
+            j = h2.find(cand)
+            while j != -1:
+                for k in range(j, j + len(cand)):
+                    covered[k] = 1
+                j = h2.find(cand, j + 1)
+    return sum(covered) >= 0.6 * len(h2)
+
+
 def social_matches(url: str, prof: NameProfile, label: str | None) -> bool:
     """Stricter than extract.social_matches_company: the matching name part must dominate the handle, so
     sponsor/umbrella handles that merely contain a place name (visitbergen) are rejected."""
@@ -1445,8 +1759,9 @@ def collect_facts(v: Verdict, rec: dict | None) -> list[Fact]:
         for i in (home, proof_i):
             for key, loc in (("description", 'meta[name="description"]'), ("og:description", 'meta[property="og:description"]')):
                 d = i.meta.get(key)
-                if d and len(d) >= 15 and d.strip().lower() != (i.title or "").strip().lower() and \
-                        not PLACEHOLDER_DESC_RX.search(d) and not _spammy(d, v.domain):
+                if d and len(d.strip()) >= 25 and d.strip().lower() != (i.title or "").strip().lower() and \
+                        not PLACEHOLDER_DESC_RX.search(d) and not _spammy(d, v.domain) and \
+                        not DESC_CREDIT_RX.search(d) and not DESC_CHAIN_RX.search(d):
                     facts.append(Fact("website_description", d.strip(), i.idx, loc, _clip(d)))
                     break
             if any(f.field == "website_description" for f in facts):
@@ -1496,7 +1811,9 @@ def collect_facts(v: Verdict, rec: dict | None) -> list[Fact]:
     addr = None
     name_blocks = [(i, i.name_block) for i in ok if i.name_block and i.name_block.get("isolated")]
     if v.strict_block:
-        blocks = name_blocks
+        nrx_b = X.legal_name_rx(rec.get("navn") or prof.name)
+        blocks = name_blocks + [(i, i.block) for i in ok if i.block and i.block.get("isolated") and nrx_b and
+                                nrx_b.search(i.block.get("block_text", ""))]
     else:
         blocks = [(i, i.block) for i in ok if i.block and i.block.get("isolated")]
         if restricted:
@@ -1545,8 +1862,34 @@ def collect_facts(v: Verdict, rec: dict | None) -> list[Fact]:
     for i, b in blocks:
         for e in b.get("emails", []):
             cand_emails.append((e, i, True))
+    def href_mismatch(i: PageInfo, e: str) -> bool:
+        """<a href="mailto:post@aspectomarine.no">post@aspecto.no</a>: href and visible address differ."""
+        for href, txt in i.mailto_anchors:
+            shown = [x.lower() for x in X.EMAIL_RX.findall(txt or "")]
+            if shown and (href == e or e in shown) and href not in shown:
+                return True
+        return False
+
+    own_words_e = X.entity_words(rec.get("navn") or prof.name)
+    own_foreign_e = X.legal_form_is_foreign(rec.get("navn") or prof.name)
+
+    def other_entity_near(i: PageInfo, e: str) -> bool:
+        for m in re.finditer(re.escape(e), i.text, re.I):
+            before = i.text[max(0, m.start() - 70):m.start()]
+            for ent in X.legal_entities(before, prefix_forms=True):
+                if not X.is_target_entity(ent, own_words_e, own_foreign_e) and ent["end"] > len(before) - 50:
+                    return True
+        return False
+
+    def named_domain(dom: str) -> bool:
+        lab = squash(dom.split(".")[0])
+        return (len(prof.joined_required) >= 4 and prof.joined_required in lab) or \
+            any(len(squash(t)) >= 4 and squash(t) in lab for t in prof.required if t not in X.GENERIC_TOKENS)
+
     for e, i, in_block in cand_emails:
         if e in seen or X.PLACEHOLDER_EMAIL_RX.search(e) or not X.EMAIL_RX.fullmatch(e):
+            continue
+        if href_mismatch(i, e) or other_entity_near(i, e):
             continue
         # Only generic role mailboxes are published (never a person's mailbox, even when it is the registry
         # e-mail: that one is already published from Brreg as registry_email).
@@ -1567,16 +1910,14 @@ def collect_facts(v: Verdict, rec: dict | None) -> list[Fact]:
         if restricted and not (in_block or equal_reg):
             continue
         if equal_reg:
-            ok_e = True
+            ok_e = dom == v.domain or named_domain(dom)
         else:
             site_dom = (dom == v.domain) and (v.exclusive or in_block)
-            # off-domain block e-mail: only on a domain that carries the company name (no foreign entity in block)
-            named_dom = len(prof.joined_required) >= 4 and prof.joined_required in squash(dom.split(".")[0])
-            ok_e = site_dom or (reg_em_dom and dom == reg_em_dom and reg_em_dom not in X.FREEMAIL) or \
-                (in_block and dom not in X.FREEMAIL and named_dom)
+            # off-site domain: only the registry e-mail's own domain, and only if it carries the company name
+            ok_e = site_dom or (bool(reg_em_dom) and dom == reg_em_dom and reg_em_dom not in X.FREEMAIL and
+                                named_domain(dom))
             if v.level in ("L2", "L2e"):
-                ok_e = (dom == v.domain or (reg_em_dom and dom == reg_em_dom and reg_em_dom not in X.FREEMAIL)) and \
-                    (in_block or not v.strict_block)
+                ok_e = dom == v.domain and (in_block or not v.strict_block)
         if not ok_e:
             continue
         loc, span = email_span(i, e)
@@ -1587,34 +1928,58 @@ def collect_facts(v: Verdict, rec: dict | None) -> list[Fact]:
         facts.append(Fact("contact_email", e, i.idx, loc, span, qualifier=e))
         seen.add(e)
 
-    # ---- phone: registry-equal > org-number block > tel: link > JSON-LD > keyword-labelled text; max 3
+    # ---- phone (policy E): only (1) tel: links whose visible text is the same number, (2) keyword-labelled
+    # numbers inside the company's own block, (3) the registry phone - never postbox/postcode/invoice lines,
+    # shared registry numbers outside the company's named block, numbers next to another entity or another
+    # domain's e-mail, a person's number, fax, foreign numbers or stale tel: hrefs. Max 3.
     ph: dict[str, tuple] = {}
+    nrx_f = X.legal_name_rx(rec.get("navn") or prof.name)
+    shared_ph = set(v.shared_reg_phones)
 
     def add_phone(prio: int, raw: str, i: PageInfo, loc: str, span: str) -> None:
         e164 = normalize_phone(raw)
-        if e164 and not e164.startswith("+47") and prio != 0 and v.form != "NUF":
-            return                                     # foreign office / sister-company numbers
-        if e164 and (e164 not in ph or prio < ph[e164][0]):
+        if not e164 or not e164.startswith("+47"):
+            return
+        if e164 not in ph or prio < ph[e164][0]:
             ph[e164] = (prio, i.idx, loc, span)
 
     def tel_span(i: PageInfo, t: str) -> str:
         return raw_window(i.page.html, "tel:" + t, 20, 60) or raw_window(i.page.html, t, 40, 40) or t
 
-    def best_text_span(text: str, p8: str) -> str:
-        spans = []
+    def occurrences(text: str, p8: str) -> list[re.Match]:
         rx = r"(?<![\d])(?:(?:\+|00)\s?47[\s.\-]?|\(\+47\)\s?)?" + r"[\s.\-  ]?".join(p8) + r"(?![\d])"
-        for m in re.finditer(rx, text):
-            spans.append(_window(text, m.start(), m.end(), 60, 30))
-        def personal_mails(w: str) -> int:
-            return sum(1 for e in X.EMAIL_RX.findall(w)
-                       if re.split(r"[._\-+]", e.split("@", 1)[0].lower())[0] not in ROLE_LOCALS)
-        spans.sort(key=lambda w: (personal_mails(w), len(w)))
-        return spans[0] if spans else p8
+        return list(re.finditer(rx, text))
+
+    own_words_f = X.entity_words(rec.get("navn") or prof.name)
+    own_foreign_f = X.legal_form_is_foreign(rec.get("navn") or prof.name)
+
+    def bad_context(text: str, p8: str) -> bool:
+        """postbox/postcode, invoice line, fax, another entity's name or another domain's e-mail, a person."""
+        for m in occurrences(text, p8):
+            before = text[max(0, m.start() - 60):m.start()]
+            after = text[m.end():m.end() + 60]
+            if re.search(r"(?:postboks|post\s?box|boks|pb\.?)\s*$", before[-14:], re.I) or \
+                    re.match(r"\d{4}\s\d{4}$", m.group(0).strip()) and re.match(r"\s+[A-ZÆØÅ][a-zæøå]", after):
+                return True                                # "Postboks 3222 7439 Trondheim"
+            if INVOICE_CONTEXT_RX.search(before[-40:]) or X.FAX_BEFORE_RX.search(before[-22:]):
+                return True
+            for e in X.legal_entities(before, prefix_forms=True):
+                if not X.is_target_entity(e, own_words_f, own_foreign_f) and e["end"] > len(before) - 45:
+                    return True                            # "Butikk – Tak og Ventilasjon AS ... Tlf"
+            for em in X.EMAIL_RX.findall(after):
+                d = X.reg_domain(em.split("@", 1)[1].lower())
+                if d not in (v.domain, reg_em_dom):
+                    return True                            # another entity's line (post@forskerforsikring.no)
+            pm = re.search(r"(?:^|[\s,:–-])([A-ZÆØÅ][a-zæøå]+)(?:\s+[A-ZÆØÅ]\.?)?\s+([A-ZÆØÅ][a-zæøå]+)"
+                           r"(?:[\s,–-]+[\wæøå ]{0,25})?[:\s]*$", before[-45:])
+            if pm and not ({pm.group(1).lower(), pm.group(2).lower()} & NOT_NAME_WORDS) and \
+                    not re.search(r"(?i)(telefon|tlf|sentralbord|kontor|hovednummer|kundeservice)[:\s]*$", before[-20:]):
+                return True                                # "Ola Nordmann, vaktmester: 912 34 567"
+        return False
 
     def staff_context(text: str, p8: str) -> bool:
         """Number listed next to a person (personal e-mail within 45 chars): a staff line, not a company line."""
-        rx = r"(?<![\d])" + r"[\s.\-  ]?".join(p8) + r"(?![\d])"
-        for m in re.finditer(rx, text):
+        for m in occurrences(text, p8):
             win = text[max(0, m.start() - 45): m.end() + 45]
             for e in X.EMAIL_RX.findall(win):
                 e = e.lower()
@@ -1627,82 +1992,56 @@ def collect_facts(v: Verdict, rec: dict | None) -> list[Fact]:
         return bool(p8) and p8[0] in "49"
 
     def foreign_nationals(i: PageInfo) -> set[str]:
-        """National parts of foreign tel: links (tel:+4570225959 -> 70225959): never re-read them as +47."""
         out = set()
         for t in i.x.get("tel_links", []):
             if re.match(r"\s*(?:\+|00)\s?(?!47)\d", t):
-                d = re.sub(r"\D", "", t)
-                out.add(d[-8:])
+                out.add(re.sub(r"\D", "", t)[-8:])
         return out
 
-    def stale_href(i: PageInfo, t: str) -> bool:
-        """<a href="tel:57884350">37 02 41 88</a>: the href is template residue - drop it."""
+    def visible_tel(i: PageInfo, t: str) -> bool:
+        """<a href="tel:X">X</a>: the visible text shows the same number (no invisible/stale hrefs)."""
         hd = re.sub(r"\D", "", t)[-8:]
-        for href, txt in i.tel_anchors:
-            if href.strip() == t.strip():
-                td = re.sub(r"\D", "", txt or "")
-                if len(td) >= 8 and td[-8:] != hd:
-                    return True
-        return False
+        anchors = [txt for href, txt in i.tel_anchors if href.strip() == t.strip()]
+        return any(re.sub(r"\D", "", txt or "")[-8:] == hd for txt in anchors)
 
-    block_ph = {(re.sub(r"\D", "", p)[-8:], i.idx) for i, b in blocks for p in b.get("phones", []) + b.get("tel_links", [])}
+    def named_block(b: dict) -> bool:
+        return bool(nrx_f) and bool(nrx_f.search(b.get("block_text", "")))
+
+    def usable(p8: str, text: str, i: PageInfo, in_named_block: bool) -> bool:
+        if not p8 or p8 in foreign_nationals(i):
+            return False
+        reg = p8 in reg_ph
+        if reg and p8 in shared_ph and not in_named_block:
+            return False                                   # a switchboard other organisations also file
+        if not reg and mobile(p8):
+            return False                                   # never a person's mobile
+        return not bad_context(text, p8) and (reg or not staff_context(text, p8))
+
     for i, b in blocks:
         btxt = b.get("block_text", "")
         bname = "legal-name block" if b.get("kind") == "legal_name" else "org-number block"
-        fn = foreign_nationals(i)
+        nb = named_block(b)
         for p in b.get("tel_links", []):
             n8 = _nat8(p)
-            if n8 not in reg_ph and ((n8 and staff_context(btxt, n8)) or stale_href(i, p)):
-                continue
-            add_phone(0 if n8 in reg_ph else 1, p, i, f'a[href^="tel:"] ({bname})', tel_span(i, p))
-        for p in b.get("phones", []):
-            if p not in reg_ph and (staff_context(btxt, p) or p in fn):
-                continue
-            add_phone(0 if p in reg_ph else 1, p, i, f"text ({bname})", best_text_span(btxt, p))
-    for i in ok:
-        tels = i.x.get("tel_links", [])
-        directory = len({_nat8(t) or t for t in tels}) > 3          # staff directory page
-        fn = foreign_nationals(i)
-        for t in tels:
-            n8 = _nat8(t)
-            equal_reg = bool(n8) and n8 in reg_ph
-            if equal_reg:
-                add_phone(0, t, i, 'a[href^="tel:"]', tel_span(i, t))
-                continue
-            if stale_href(i, t):
-                continue
-            if restricted and (n8, i.idx) not in block_ph:
-                continue
-            if v.level in ("L2", "L2e") and i.page.kind != "contact":
-                continue
-            if (n8, i.idx) in block_ph:
-                continue                                   # already taken from the block
-            if directory or mobile(n8) or (n8 and staff_context(i.text, n8)):
-                continue
-            add_phone(2, t, i, 'a[href^="tel:"]', tel_span(i, t))
-        for tp in text_phones(i.text):
-            if tp["fax"] or tp["credit"] or (tp["digits"] in fn and tp["digits"] not in reg_ph):
-                continue
-            equal_reg = tp["digits"] in reg_ph
-            if equal_reg:
-                add_phone(0, tp["raw"], i, "text", best_text_span(i.text, tp["digits"]))
-                continue
-            if restricted or not tp["kw"]:
-                continue
-            if v.level in ("L2", "L2e") and i.page.kind != "contact":
-                continue
-            if mobile(tp["digits"]) or staff_context(i.text, tp["digits"]):
-                continue                                   # staff mobile / named-person lines are not company lines
-            add_phone(4, tp["raw"], i, "text", tp["span"])
-        if not restricted:
-            for o in i.orgs:
-                if org_matches(o, target, prof) and isinstance(o.get("telephone"), str):
-                    tel = o["telephone"]
-                    n8 = _nat8(tel)
-                    if v.level in ("L2", "L2e") and n8 not in reg_ph:
-                        continue
-                    add_phone(0 if n8 in reg_ph else 3, tel, i, 'script[type="application/ld+json"] telephone',
-                              raw_window(i.page.html, tel, 30, 30) or tel)
+            if n8 and visible_tel(i, p) and usable(n8, i.text, i, nb):
+                add_phone(0 if n8 in reg_ph else 1, p, i, f'a[href^="tel:"] ({bname})', tel_span(i, p))
+        for tp in text_phones(btxt):
+            if (tp["kw"] or tp["digits"] in reg_ph) and usable(tp["digits"], btxt, i, nb) and \
+                    usable(tp["digits"], i.text, i, nb):
+                add_phone(0 if tp["digits"] in reg_ph else 1, tp["raw"], i, f"text ({bname})", tp["span"])
+    if not v.strict_block:
+        for i in ok:
+            for t in i.x.get("tel_links", []):
+                n8 = _nat8(t)
+                if not n8 or not visible_tel(i, t):
+                    continue
+                if (restricted or v.level in ("L2", "L2e")) and n8 not in reg_ph:
+                    continue
+                if usable(n8, i.text, i, False):
+                    add_phone(0 if n8 in reg_ph else 2, t, i, 'a[href^="tel:"]', tel_span(i, t))
+            for tp in text_phones(i.text):
+                if tp["digits"] in reg_ph and not tp["fax"] and usable(tp["digits"], i.text, i, False):
+                    add_phone(0, tp["raw"], i, "text", tp["span"])
     for e164, (_prio, idx, loc, span) in sorted(ph.items(), key=lambda kv: (kv[1][0], kv[0]))[:3]:
         facts.append(Fact("contact_phone", e164, idx, loc, span, qualifier=e164))
 
@@ -1726,7 +2065,8 @@ def collect_facts(v: Verdict, rec: dict | None) -> list[Fact]:
                 in_block = (can[0], i.idx) in block_socials
                 if restricted and not v.exact_strong and not in_block:
                     continue
-                if not social_matches(can[0], prof, label if not restricted else None):
+                if not social_matches(can[0], prof, label if not restricted else None) or \
+                        not social_handle_ok(can[1], prof, label if not restricted else None, v.form):
                     continue
                 if v.form != "NUF" and (FOREIGN_HANDLE_RX.search(squash(can[1])) or
                                         (FOREIGN_FORM_HANDLE_RX.search(unquote(can[1])) and
@@ -1748,7 +2088,7 @@ def collect_facts(v: Verdict, rec: dict | None) -> list[Fact]:
                         continue
                     can = canonical_social(platform, m.group(0))
                     if can and can[0] not in so_seen and not X.PLATFORM_SOCIAL_RX.search(can[0]) and \
-                            social_matches(can[0], prof, label) and \
+                            social_matches(can[0], prof, label) and social_handle_ok(can[1], prof, label, v.form) and \
                             (v.form == "NUF" or not (FOREIGN_HANDLE_RX.search(squash(can[1])) or
                                                      FOREIGN_FORM_HANDLE_RX.search(unquote(can[1])))):
                         so_seen.add(can[0])
@@ -1781,8 +2121,63 @@ def collect_facts(v: Verdict, rec: dict | None) -> list[Fact]:
             _, u, i, txt = best
             href_span = raw_window(i.page.html, urlsplit(u).path or u, 40, 80) or f"{txt} -> {u}"
             facts.append(Fact("careers_page", u, i.idx, "a[href]", href_span))
+    facts = anchor_spans(facts, v)
     facts.sort(key=Fact.sort_key)
     return facts
+
+
+def _value_needles(f: "Fact") -> list[str]:
+    val = f.value
+    if f.field == "contact_phone":
+        d = str(val)[-8:]
+        return [d]
+    if f.field == "social_profile":
+        return [unquote(str(val.get("handle", ""))).lower(), str(val.get("handle", "")).lower()]
+    if f.field in ("careers_page", "logo_url"):
+        sp = urlsplit(str(val))
+        return [str(val).lower(), unquote(sp.path or "").rstrip("/").lower() or str(val).lower()]
+    return [_ws(str(val)).lower()[:60]]
+
+
+def _span_has(f: "Fact", span: str) -> bool:
+    sp = _ws(unquote(span or "")).lower()
+    if f.field == "contact_phone":
+        return str(f.value)[-8:] in re.sub(r"\D", "", sp)
+    if f.field == "contact_email" and "reversed" in (f.locator or ""):
+        return str(f.value)[::-1].lower() in sp or str(f.value).lower() in sp
+    return any(n and n in sp for n in _value_needles(f))
+
+
+def anchor_spans(facts: list["Fact"], v: Verdict) -> list["Fact"]:
+    """Every fact's evidence span must contain its value: re-anchor on the value in the page's visible text or
+    raw HTML, and drop the fact when the value cannot be found verbatim."""
+    out = []
+    for f in facts:
+        if _span_has(f, f.span):
+            out.append(f)
+            continue
+        i = v.infos[f.page]
+        new = None
+        if f.field == "contact_phone":
+            d = str(f.value)[-8:]
+            m = phone_in_text(d, i.text)
+            if m:
+                new = _window(i.text, m.start(), m.end(), 60, 40)
+            else:
+                mm = re.search(r"tel:\s*(?:\+?47)?\s*" + r"[\s.\-]?".join(d), i.page.html)
+                new = raw_window(i.page.html, mm.group(0), 30, 60) if mm else None
+        else:
+            for n in _value_needles(f):
+                if not n:
+                    continue
+                new = text_window(i.text, n) or raw_window(i.page.html, n, 50, 80)
+                if new and _span_has(f, new):
+                    break
+                new = None
+        if new and _span_has(f, new):
+            f.span = new
+            out.append(f)
+    return out
 
 
 def feed_url(v: Verdict) -> str | None:

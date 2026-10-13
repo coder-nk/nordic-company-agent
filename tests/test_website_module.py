@@ -104,13 +104,9 @@ def test_l2_wix_site_without_platform_socials(tmp_path):
     ctx = make_ctx(tmp_path)
     c = run_site(ctx, "879887682", {"https://www.nmg.no/": httpx.Response(200, text=fx("company_websites__L2_wix"),
                                                                           headers=HTML)}, hosts=("www.nmg.no",))
-    assert c.modules["website"].availability == "available"
-    site = claims(c, "official_website")[0]
-    assert site.value == "https://www.nmg.no/" and site.confidence == 0.85
-    assert site.match_basis == "registry_website_corroborated"
-    assert values(c, "contact_email") == ["post@nmg.no"]
-    assert values(c, "social_profile") == []
-    assert values(c, "brand_name") == ["New Media Generation"]
+    # policy D: no privacy/terms/imprint page and the legal name is not in owner text -> not published
+    assert c.modules["website"].availability == "ambiguous"
+    assert values(c, "social_profile") == [] and values(c, "official_website") == []
 
 
 def test_cache_lead_fetches_home_and_proof_page_and_feed(tmp_path):

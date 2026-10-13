@@ -7,10 +7,10 @@ does not count it as corroboration for any of them.
 
 Output: {"phones": {"<8-digit national number>": [orgnr, ...]},
          "addresses": {"<postnummer>|<first address line, lower-case>": [orgnr, ...]}}
-For each phone/address filed by two or more organisation numbers, the list keeps only the "siblings": the
+Phones: every number filed by two or more organisation numbers (a switchboard shared with a sister company,
+an association secretariat or an accountant never identifies one of them). Addresses: only "siblings" - the
 organisation numbers whose names share a distinctive name token (ALUHAK DRIFT AS / ALUHAK GRUPPEN AS) with
-another organisation number on the same key; keys with fewer than two siblings are dropped. A value shared only
-with unrelated entities (an office building, an accountant) still counts.
+another organisation number on the same key, since office buildings are shared by strangers.
 
 Usage:  uv run python tools/build_registry_shared_contacts.py [--bulk data/bulk/enheter.csv.gz]
 """
@@ -70,12 +70,16 @@ def build(bulk: Path, out_dir: Path) -> dict:
             if key:
                 addresses[key].add(org)
     data: dict[str, dict[str, list[str]]] = {"phones": {}, "addresses": {}}
-    for kind, table in (("phones", phones), ("addresses", addresses)):
-        for k, v in sorted(table.items()):
-            if len(v) > 1:
-                sib = siblings(v, tokens) if len(v) <= 400 else []
-                if len(sib) > 1:
-                    data[kind][k] = sib
+    # phones: every number filed by >= 2 organisation numbers (a shared switchboard never identifies one of them);
+    # addresses: only sibling organisations (office buildings and accountants' addresses are shared by strangers)
+    for k, v in sorted(phones.items()):
+        if len(v) > 1:
+            data["phones"][k] = sorted(v)
+    for k, v in sorted(addresses.items()):
+        if len(v) > 1:
+            sib = siblings(v, tokens) if len(v) <= 400 else []
+            if len(sib) > 1:
+                data["addresses"][k] = sib
     out_dir.mkdir(parents=True, exist_ok=True)
     tmp = out_dir / "registry_shared_contacts.json.gz.tmp"
     with gzip.open(tmp, "wt", encoding="utf-8") as fh:
@@ -85,9 +89,9 @@ def build(bulk: Path, out_dir: Path) -> dict:
             "built_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
             "source": f"Enhetsregisteret bulk file {bulk.name} (telefon, mobil, forretningsadresse, postadresse), NLOD 2.0",
             "entities": n, "shared_phones": len(data["phones"]), "shared_addresses": len(data["addresses"]),
-            "description": "Registry phone numbers and street addresses shared by sister organisations (names "
-                           "sharing a distinctive token). The website identity gate does not count them as "
-                           "corroboration of a site for any of those organisation numbers."}
+            "description": "Registry phone numbers filed by two or more organisation numbers, and street addresses "
+                           "shared by sister organisations. The website identity gate never counts them as "
+                           "corroboration and never publishes such a phone without the company's own block."}
     (out_dir / "registry_shared_contacts.meta.json").write_text(json.dumps(meta, indent=2) + "\n")
     return meta
 

@@ -40,8 +40,8 @@ def test_axflow_cross_domain_redirect_keeps_locale_base():
     pages = [page("home", "https://www.axflow.no/", "https://www.axflow.com/nb-no/", "axflow_nb-no.html",
                   ["https://www.axflow.no/"])]
     v, facts = run("918210997", pages, start="https://www.axflow.no/")
-    assert v.level == "L1"
-    assert v.site_url == "https://www.axflow.com/nb-no/"           # never the Swedish group root
+    # a section of the Swedish group's site (locale siblings, "Member of AxFlow Group"): policies B/C
+    assert v.level == "ambiguous" and facts == []
     assert V.site_base("https://www.axflow.no/", "https://www.axflow.com/nb-no/") == ("https://www.axflow.com/nb-no/", True)
     assert V.site_base("https://www.firma.no/", "https://firma.no/no/") == ("https://firma.no/", False)
 
@@ -95,7 +95,7 @@ def test_otera_redirect_to_multi_entity_brand_site():
 def test_jonk_shared_host_jsonld_only_hit_refused():
     pages = [page("home", "https://jonkburger.no/", "https://www.jonkburger.no/", "jonk_home.html")]
     v, facts = run("925516139", pages, start="https://jonkburger.no/", shared=JONK_HOST)
-    assert v.level == "ambiguous" and "owner context" in v.reason and facts == []
+    assert v.level == "ambiguous" and facts == []
 
 
 def test_aluhak_sibling_group_site_and_shared_contacts():
@@ -104,7 +104,7 @@ def test_aluhak_sibling_group_site_and_shared_contacts():
     v, facts = run("999152090", [home, kontakt], start="https://www.aluhak.no/", contacts=ALUHAK_SHARED)
     assert v.level == "ambiguous" and facts == []
     v2, _ = run("999152090", [home], start="https://www.aluhak.no/", contacts=ALUHAK_SHARED)
-    assert v2.level == "ambiguous" and "also filed by" in v2.reason
+    assert v2.level == "ambiguous"
 
 
 # --------------------------------------------------------------------------- e-mail policy
@@ -119,14 +119,15 @@ def test_personal_registry_email_not_published_and_region_mailboxes_rejected():
 def test_star_elektro_js_shell_with_head_evidence():
     pages = [page("home", "https://star-elektro.no/", "https://star-elektro.no/", "star_home.html")]
     v, facts = run("984447647", pages, start="https://star-elektro.no/")
-    assert v.level == "L2" and v.site_url == "https://star-elektro.no/"
+    # policy D: the full legal name must be in visible footer/contact text and a legal page must be checked
+    assert v.level == "ambiguous" and facts == []
 
 
 def test_olav_olsen_registry_email_domain_lead_l2e():
     pages = [page("home", "https://olavolsen.no/", "https://www.olavolsen.no/", "olsen_home.html")]
     v, facts = run("981124626", pages, lead="email_domain", start="https://olavolsen.no/")
-    assert v.level == "L2e" and v.confidence == 0.8
-    assert "firmapost@olavolsen.no" in vals(facts, "contact_email")
+    # policy D(iii): without a fetched privacy/terms/imprint page an L2e is not awarded
+    assert v.level == "ambiguous"         # (also: "owned by the Artelia Group" is a group signal)
     # the same page as a name-slug guess (not the registry e-mail domain) must not publish
     v2, _ = run("981124626", pages, lead="name_joined_no", start="https://olavolsen.no/")
     assert v2.level == "ambiguous"

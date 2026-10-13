@@ -46,7 +46,7 @@ MAX_LIVE_CANDIDATES = 2
 MAX_DNS_CANDIDATES = 6
 DNS_TIMEOUT = 5.0
 MAX_NEWS = 10
-SUBPAGE_ORDER = ("contact", "about", "terms", "privacy", "impressum")
+SUBPAGE_ORDER = ("contact", "privacy", "terms", "impressum", "about")   # a legal page is needed for L2
 STATE_RANK = {"available": 0, "ambiguous": 1, "blocked": 2, "not_available": 3, "failed": 4}
 FEED_ACCEPT = "application/rss+xml, application/atom+xml, application/xml;q=0.9, text/xml;q=0.8, */*;q=0.5"
 BUDGET_NOTE = "not checked: request budget reserved for higher-priority sources"

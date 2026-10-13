@@ -167,6 +167,7 @@ def parse_jsonld(tree):
     return out, errors
 
 ORG_TYPES_RX = re.compile(r"Organization|Corporation|LocalBusiness|Store|Restaurant|Service|Dentist|Physician|Clinic|"
+                          r"AutoRepair|AutoDealer|AutoBodyShop|Contractor|Salon|Repair|Dealer|Company|Business|"
                           r"Contractor|Agency|Office|Shop|Hotel|LodgingBusiness|NGO|EducationalOrganization|"
                           r"GovernmentOrganization|SportsOrganization|Attorney|LegalService|AccountingService|"
                           r"Electrician|Plumber|HomeAndConstructionBusiness|AutomotiveBusiness|MedicalBusiness|"
@@ -627,7 +628,8 @@ _FORMS_RX = (r"AS|ASA|ANS|DA|SA|BA|KS|NUF|IKS|KF|ENK|BRL|AB|ApS|APS|A/S|EHF|ehf\
              r"Ltd\.?|LTD\.?|Limited|LIMITED|LLC|Inc\.?|INC\.?|B\.V\.|BV|N\.V\.|NV|S\.r\.l\.|Srl|SRL|S\.p\.A\.|SpA|"
              r"S\.A\.|SAS|SARL|PLC|plc|LLP|Pty\.? Ltd\.?|Pvt\.? Ltd\.?|Private Limited|Private Ltd\.?|"
              r"Sp\. z o\.o\.|sp\. z o\.o\.|SP\. Z O\.O\.|S\.L\.|s\.r\.o\.|Kft\.?|AE|SIA|UAB|OÜ")
-_WORD = r"[A-ZÆØÅÄÖÜÉ0-9][\wÆØÅæøåÄÖÜäöüÉé&'’.\-!]*"
+_WORD = (r"(?!(?:AS|ASA|ANS|DA|SA|BA|KS|NUF|IKS|KF|ENK|AB|ApS|GmbH|Ltd|Oy|BV|AG)(?![\wÆØÅæøå]))"
+         r"[A-ZÆØÅÄÖÜÉ0-9][\wÆØÅæøåÄÖÜäöüÉé&'’.\-!]*")
 ENTITY_RX = re.compile(
     r"(?<![\wÆØÅæøå])(?P<name>" + _WORD + r"(?:(?:\s+(?:og|and|&|of|for|i)\s+|\s+|\s*&\s*|\s*\(\w+\)\s*)" + _WORD +
     r"){0,5})\s*,?\s+(?P<form>" + _FORMS_RX + r")(?![\wÆØÅæøå])")
@@ -638,7 +640,9 @@ FOREIGN_REG_RX = re.compile(
     r"organisationsnummer\s*:?\s*\d{6}-\d{4}|org\.?\s*nr\.?\s*:?\s*\d{6}-\d{4}|"
     r"\bcvr(?:-nr\.?|\s*nr\.?|-nummer)?\s*:?\s*\d{8}\b|\bkrs\s*:?\s*\d{10}\b|\bnip\s*:?\s*\d{3}-?\d{3}-?\d{2}-?\d{2}\b|"
     r"\by-tunnus\b|\bhrb\s*\d{3,}|\bhandelsregister\b|\bkvk\b(?:-nummer)?\s*:?\s*\d{8}|\bsire[nt]\s*:?\s*\d{9}|"
-    r"\babn\s*:?\s*\d{2}\s?\d{3}|\bvat\s*(?:reg\.?\s*)?(?:no|number)?\.?\s*:?\s*(?:gb|de|se|dk|pl|fi|nl|fr|it|es|ie|be|at)\s?\d{6,})",
+    r"\babn\s*:?\s*\d{2}\s?\d{3}|\bvat\s*(?:reg\.?\s*)?(?:no|number)?\.?\s*:?\s*(?:gb|de|se|dk|pl|fi|nl|fr|it|es|ie|be|at)\s?\d{6,}|"
+    r"(?:organisasjonsnummer|organisationsnummer|organisaatio|registreringsnummer|org\.?\s*n[or]\.?|reg\.?\s*no\.?)\s*[:.]?\s*"
+    r"\d{6}-\d{4}|\b(?:y-tunnus|fo-nummer)\s*:?\s*\d{7}-\d\b|\bSE\s?\d{10}01\b|\bDK\s?\d{8}\b|\bFI\s?\d{8}\b)",
     re.I)
 _FORM_WORDS = {"as", "asa", "ans", "da", "sa", "ba", "ks", "nuf", "iks", "kf", "enk", "brl", "ab", "aps", "a/s", "ehf",
                "oy", "oyj", "gmbh", "ag", "ltd", "limited", "llc", "inc", "bv", "nv", "srl", "spa", "sas", "sarl", "plc",
@@ -686,13 +690,26 @@ def is_target_entity(e: dict, own_words: list[str], own_foreign: bool = False) -
         return True
     if len(w) > len(own_words) and w[-len(own_words):] == own_words:
         return True
+    # junk-prefixed mention whose trailing words join to the name ("FØLG OSS PÅ FACEBOOK Proarkitekt AS")
+    if any("".join(w[j:]) == "".join(own_words) for j in range(1, len(w))):
+        return True
     # middle initials ("Gunnar T. Høvik AS" for GUNNAR HØVIK AS)
     w2 = [t for t in w if len(t) > 1]
     o2 = [t for t in own_words if len(t) > 1]
     if o2 and (w2 == o2 or (len(w2) > len(o2) and w2[-len(o2):] == o2)):
         return True
     # one-letter typos in long words ("Rjuken Hotell AS" for RJUKAN HOTELL AS)
-    return len(w2) == len(o2) > 0 and all(a == b or (len(b) >= 5 and _edit1(a, b)) for a, b in zip(w2, o2))
+    if len(w2) == len(o2) > 0 and all(a == b or (len(b) >= 5 and _edit1(a, b)) for a, b in zip(w2, o2)):
+        return True
+    # one extra middle name ("Lars Ueland Kobro AS" for LARS KOBRO AS) - never a business/group word
+    if len(o2) >= 2 and len(w2) == len(o2) + 1 and w2[0] == o2[0] and w2[-1] == o2[-1]:
+        extra = [t for t in w2 if t not in o2]
+        return len(extra) == 1 and extra[0] not in GENERIC_TOKENS and extra[0] not in _GROUPISH
+    return False
+
+
+_GROUPISH = {"holding", "holdings", "group", "gruppen", "invest", "eiendom", "norge", "norway", "nordic", "sverige",
+             "danmark", "finland", "international", "management", "drift", "service", "services", "capital"}
 
 
 def _edit1(a: str, b: str) -> bool:
@@ -746,19 +763,25 @@ def legal_entities(text: str, prefix_forms: bool = False) -> list[dict]:
         # drop leading generic words that start a sentence/label ("Kontakt", "Copyright", "Org")
         name = re.sub(r"^(?:(?:Copyright|Kontakt|Contact|Om|About|Levert av|Faktura|Org\.?(?:nr)?\.?|Tlf\.?|"
                       r"E-post|Email|Adresse|Address|Velkommen til|Welcome to)\s+)+", "", name)
+        name = re.sub(r"^(?:(?:19|20)\d\d\s+)+(?=\S)", "", name)     # "© 2026 Park Amusement AS"
         key = entity_key(name)
         if not key or len(key) < 2 or not re.search(r"[a-z]", key):
             continue
-        if set(entity_words(name)) <= _LABEL_NAME_WORDS or (m.group("form").lower().startswith("ehf") and
-                                                            re.search(r"faktur|invoice|send", name, re.I)):
+        if set(entity_words(name)) <= _LABEL_NAME_WORDS or (m.group("form").lower().startswith("ehf") and (
+                re.search(r"faktur|invoice|send|organisasjonsnummer|org\.?\s*n|\d", name + " " + raw_before[-30:], re.I))):
             continue                                       # "Fakturaadresse EHF", "Send faktura som EHF"
         if re.search(r"(?:\bv/|\btidl\.?|\btidligere|\bformerly|\bfør|\bav|\bby|\bfra)\s*[:(]?\s*$", raw_before, re.I) or \
                 re.search(r"\bc/o\b[^.|\n]{0,30}$", raw_before, re.I):
             continue                                       # c/o address, former name or "løsninger av X AS" credit
         form = m.group("form")
+        foreign = form.upper().rstrip(".") not in NO_FORMS
+        if form.upper() == "A/S":      # Danish A/S, but also the old Norwegian spelling: foreign only with DK context
+            aft = re.split(r"\.\s|\||\n", (text or "")[m.end():m.end() + 70])[0]
+            bef = re.split(r"\.\s|\||\n", (text or "")[max(0, m.start() - 60):m.start()])[-1]
+            foreign = bool(re.search(r"\bDK\b|DK-\d|Danmark|Denmark|CVR", bef + " " + aft))
         out.append({"name": f"{name} {form}", "form": form, "key": key, "words": entity_words(name),
                     "start": m.start(), "end": m.end(),
-                    "foreign": form.upper().rstrip(".") not in NO_FORMS,
+                    "foreign": foreign,
                     "span": re.sub(r"\s+", " ", text[max(0, m.start() - 40):m.end() + 60]).strip()})
     return out
 
