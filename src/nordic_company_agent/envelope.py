@@ -235,7 +235,7 @@ FAMILIES: dict[str, tuple[str, ...]] = {
     ),
     "hiring": ("job_posting", "active_job_count", "hiring_status"),
     "public_activity": (
-        "news_item", "website_update", "registry_event", "role_change_event", "state_aid_grant",
+        "news_item", "news_page", "website_update", "registry_event", "role_change_event", "state_aid_grant",
         "research_grant", "tax_incentive_project", "encyclopedia_entry", "wikidata_item", "stock_listing",
     ),
 }

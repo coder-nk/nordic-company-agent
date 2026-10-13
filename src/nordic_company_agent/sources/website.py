@@ -52,7 +52,7 @@ FEED_ACCEPT = "application/rss+xml, application/atom+xml, application/xml;q=0.9,
 BUDGET_NOTE = "not checked: request budget reserved for higher-priority sources"
 FIELD_ORDER = ("official_website", "website_verification", "website_title", "website_description", "brand_name",
                "logo_url", "website_language", "website_address", "contact_email", "contact_phone", "social_profile",
-               "careers_page", "news_item")
+               "careers_page", "news_item", "news_page")
 
 
 # --------------------------------------------------------------------------- data
@@ -133,10 +133,14 @@ async def _run(ctx, company: CompanyResult) -> None:
                 break
     best = _choose(results)
     news: list[dict] = []
+    st_news_link: list[str | None] = [None]
     feed_ev: tuple[V.Page, str] | None = None
     if best is not None and best.state == "available" and best.verdict is not None:
         news, feed_ev = await _news(ctx, st, best.verdict)
-    _emit(ctx, company, rec, st, results, best, news, feed_ev, reg_note)
+        if not news:
+            news, feed_ev, news_link = await _news_page(ctx, st, best.verdict)
+            st_news_link[0] = news_link
+    _emit(ctx, company, rec, st, results, best, news, feed_ev, reg_note, news_link=st_news_link[0])
 
 
 # --------------------------------------------------------------------------- leads
@@ -561,7 +565,7 @@ def parse_feed(data: bytes, feed_url: str, accept_url) -> list[dict]:
         raw_date = next((dates[k] for k in ("pubdate", "published", "date", "issued", "updated", "modified")
                          if dates.get(k)), None)
         dt = _parse_date(raw_date)
-        if not (title and link and dt):
+        if not (title and link and dt) or PLACEHOLDER_TITLE_RX.search(title):
             continue
         url = urljoin(feed_url, link)
         if not url.startswith(("http://", "https://")) or not accept_url(url):
@@ -570,6 +574,115 @@ def parse_feed(data: bytes, feed_url: str, accept_url) -> list[dict]:
         out.setdefault(url, {"title": title[:300], "url": url, "published": utc_iso(dt), "span": span})
     items = sorted(out.values(), key=lambda it: (it["published"], it["url"]), reverse=True)
     return items[:MAX_NEWS]
+
+
+PLACEHOLDER_TITLE_RX = re.compile(r"^\W*(hello world|hei verden|hallo verden|sample page|eksempelside|"
+                                  r"uncategori[sz]ed|ukategorisert|test(?:innlegg| post)?|lorem ipsum)\b", re.I)
+NEWS_PATH_RX = re.compile(r"/(?:news|nyheter|aktuelt|artikler|blogg?|presse|press|nytt|pressemeldinger)(?:/|$)", re.I)
+_NO_MONTHS = {"januar": 1, "februar": 2, "mars": 3, "april": 4, "mai": 5, "juni": 6, "juli": 7, "august": 8,
+              "september": 9, "oktober": 10, "november": 11, "desember": 12, "january": 1, "february": 2,
+              "march": 3, "may": 5, "june": 6, "july": 7, "october": 10, "december": 12}
+_DATE_RXS = (
+    re.compile(r"(?<!\d)(20\d\d)-(\d\d)-(\d\d)(?!\d)"),
+    re.compile(r"(?<!\d)(\d{1,2})\.(\d{1,2})\.(20\d\d)(?!\d)"),
+    re.compile(r"(?<!\d)(\d{1,2})\.?\s+(januar|februar|mars|april|mai|juni|juli|august|september|oktober|november|"
+               r"desember|january|february|march|may|june|july|october|december)\s+(20\d\d)", re.I),
+)
+
+
+def _find_date(text: str) -> str | None:
+    for i, rx in enumerate(_DATE_RXS):
+        m = rx.search(text or "")
+        if not m:
+            continue
+        try:
+            if i == 0:
+                y, mo, d = int(m.group(1)), int(m.group(2)), int(m.group(3))
+            elif i == 1:
+                d, mo, y = int(m.group(1)), int(m.group(2)), int(m.group(3))
+            else:
+                d, mo, y = int(m.group(1)), _NO_MONTHS[m.group(2).lower()], int(m.group(3))
+            dt = datetime(y, mo, d, tzinfo=timezone.utc)
+        except (ValueError, KeyError):
+            continue
+        if datetime(1995, 1, 1, tzinfo=timezone.utc) <= dt <= datetime.now(timezone.utc) + timedelta(days=2):
+            return dt.date().isoformat()
+    return None
+
+
+def news_section_link(v: V.Verdict) -> str | None:
+    """Same-site link to the company's news/press/blog section on the verified home page."""
+    if not v.published or not v.infos or not v.site_url:
+        return None
+    best = None
+    for href, txt in v.infos[0].links:
+        u = urljoin(v.infos[0].url, href).split("#")[0]
+        if not u.startswith(("http://", "https://")) or not NEWS_PATH_RX.search(urlsplit(u).path or ""):
+            continue
+        if not V.under_base(u, v.site_url, v.subpath, v.exclusive):
+            continue
+        depth = len([p for p in urlsplit(u).path.split("/") if p])
+        if best is None or depth < best[0]:
+            best = (depth, u)
+    return best[1] if best else None
+
+
+def parse_news_page(html_text: str, page_url: str, accept_url, section_path: str) -> list[dict]:
+    """Article links under the news section, with the nearest visible date (if any)."""
+    from selectolax.lexbor import LexborHTMLParser
+    tree = LexborHTMLParser(html_text)
+    out: dict[str, dict] = {}
+    base = (section_path or "/").rstrip("/")
+    for a in tree.css("a[href]"):
+        href = (a.attributes.get("href") or "").strip()
+        u = urljoin(page_url, href).split("#")[0]
+        sp = urlsplit(u)
+        if not u.startswith(("http://", "https://")) or not accept_url(u):
+            continue
+        path = (sp.path or "/").rstrip("/")
+        if not path.lower().startswith(base.lower() + "/") or path.lower() == base.lower():
+            continue
+        if re.search(r"/(?:page|side|kategori|category|tag|arkiv|archive)(?:/|$)|\?page=", u, re.I):
+            continue
+        title = re.sub(r"\s+", " ", a.text(separator=" ", strip=True) or a.attributes.get("title") or "").strip()
+        if len(title) < 12 or len(title) > 200 or PLACEHOLDER_TITLE_RX.search(title):
+            continue
+        date = None
+        node = a
+        for _ in range(4):
+            if node is None:
+                break
+            t = node.css_first("time[datetime]")
+            if t is not None:
+                date = _find_date(t.attributes.get("datetime") or "") or date
+            if date is None:
+                date = _find_date(node.text(separator=" ", strip=True)[:400])
+            if date:
+                break
+            node = node.parent
+        if u not in out:
+            span = V.raw_window(html_text, href, 120, 160) or title
+            out[u] = {"title": title, "url": u, "published": date, "span": span}
+    items = sorted(out.values(), key=lambda it: (it["published"] or "", it["url"]), reverse=True)
+    return items[:MAX_NEWS]
+
+
+async def _news_page(ctx, st: _State, v: V.Verdict) -> tuple[list[dict], tuple[V.Page, str] | None, str | None]:
+    """Fallback when there is no feed: the verified site's news section (one extra request)."""
+    link = news_section_link(v)
+    if not link or st.spent >= MAX_REQUESTS or not ctx.allow("website_secondary", 1):
+        return [], None, link
+    res, code, msg = await _get(ctx, st, link, tier="website_secondary")
+    if res is None or not res.ok:
+        return [], None, link
+    retrieved_at = utc_iso(res.retrieved_at)
+    sha = ctx.snapshots.save_result(res, retrieved_at)
+    page = V.Page("news", res.url, res.final_url, res.status, res.text, sha, retrieved_at, list(res.redirects),
+                  res.headers.get("content-type", ""))
+    _record(st, -1, page)
+    items = parse_news_page(res.text, res.final_url, lambda u: V.under_base(u, v.site_url or "", v.subpath, v.exclusive),
+                            urlsplit(res.final_url).path or urlsplit(link).path)
+    return items, (page, "a[href]"), link
 
 
 async def _news(ctx, st: _State, v: V.Verdict) -> tuple[list[dict], tuple[V.Page, str] | None]:
@@ -707,14 +820,15 @@ def _display(field_name: str, value: Any) -> str | None:
     if field_name == "social_profile":
         return f"{value['platform']}: {value['url']}"
     if field_name == "news_item":
-        return f"{value['published'][:10]} {value['title']}"
+        return f"{(value.get('published') or 'undated')[:10]} {value['title']}"
     if field_name == "website_verification":
         return f"{value['level']} ({value['method']})"
     return None
 
 
 def _emit(ctx, company: CompanyResult, rec: dict, st: _State, results: list[LeadResult], best: LeadResult | None,
-          news: list[dict], feed_ev: tuple[V.Page, str] | None, reg_note: str | None) -> None:
+          news: list[dict], feed_ev: tuple[V.Page, str] | None, reg_note: str | None,
+          news_link: str | None = None) -> None:
     claims: list[Claim] = []
     data: dict[str, Any] = {"level": None, "url": None, "domain": None, "pages": st.records, "title": None,
                             "description": None, "emails": [], "phones": [], "socials": [], "careers": None,
@@ -795,10 +909,18 @@ def _emit(ctx, company: CompanyResult, rec: dict, st: _State, results: list[Lead
         fpage, root = feed_ev
         for it in news:
             val = {"title": it["title"], "url": it["url"], "published": it["published"]}
+            pub = (it["published"] or "")[:10] or None
             claims.append(Claim(field="news_item", value=val,
-                                evidence=[_ev(fpage, root, it["span"], effective_at=it["published"][:10])],
+                                evidence=[_ev(fpage, root, it["span"], effective_at=pub)],
                                 qualifier=it["url"], confidence=conf, display=_display("news_item", val),
-                                effective_at=it["published"][:10], method=METHOD, match_basis=basis))
+                                effective_at=pub, method=METHOD, match_basis=basis,
+                                note=None if pub else "no date shown next to the link on the news page"))
+    if news_link:
+        hp = v.infos[0].page
+        claims.append(Claim(field="news_page", value=news_link,
+                            evidence=[_ev(hp, "a[href]", V.raw_window(hp.html, urlsplit(news_link).path or news_link,
+                                                                         60, 80) or news_link)],
+                            confidence=conf, display=news_link, method=METHOD, match_basis=basis))
     order = {f: i for i, f in enumerate(FIELD_ORDER)}
     claims.sort(key=lambda c: (order.get(c.field, 99), c.qualifier or "", V._ws(str(c.value))))
     company.add(claims)
