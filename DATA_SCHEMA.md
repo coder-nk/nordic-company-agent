@@ -28,7 +28,8 @@ refresh                  {checked_at, previous_run_id, previous_checked_at, regi
                           policy, content_hash}
 errors[]                 {module, state, message, url}
 operations               {requests, requests_by_module, runtime_ms, third_party_cost_usd: 0.0}
-licences[]               attribution strings for every source used (NLOD 2.0, CC0, NAV terms, ...)
+licences                 {licence_id: full attribution text} for every licence cited by evidence
+                          (NLOD-2.0, CC0-1.0-GLEIF, CC0-1.0-Wikidata, NAV-API-terms, company-site-quote)
 ```
 
 ## Claim
@@ -70,7 +71,7 @@ source_class     official_registry | official_registry_bulk | official_registry_
                  official_annual_account_copies | official_signature_prokura | official_state_aid_register |
                  official_public_jobs_feed | official_lei_registry | open_knowledge_base | company_owned |
                  company_linked_profile
-source_name, retrieved_at (ISO UTC), effective_at, http_status, final_url, licence
+source_name, retrieved_at (ISO UTC), effective_at, http_status, final_url, licence (id into envelope.licences)
 content_sha256   SHA-256 of the raw response bytes (snapshot stored under the same hash)
 claim_span       verbatim fragment of the source containing the value
 locator          JSON pointer (/forretningsadresse/adresse/0), page location, or feed item

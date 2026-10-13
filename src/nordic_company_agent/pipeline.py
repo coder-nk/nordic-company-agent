@@ -344,7 +344,7 @@ def failed_envelope(orgnr: str, run_id: str, started: str, completed: str, messa
         "sections": {}, "modules": {}, "claims": [], "evidence": [], "source_snapshots": [], "changes": [],
         "refresh": {}, "errors": [{"module": "agent", "state": "failed", "message": message}],
         "operations": {"requests": 0, "runtime_ms": 0, "third_party_cost_usd": 0.0},
-        "licences": [],
+        "licences": {},
     }
 
 

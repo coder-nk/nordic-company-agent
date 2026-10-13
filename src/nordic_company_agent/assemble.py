@@ -194,7 +194,9 @@ def assemble_envelope(ctx: RunContext, c: CompanyResult, *, run_id: str, started
     }
     by_mod = c.data.get("_requests_by_module", {})
     n_batch = max(1, len(ctx.shared.get("_batch_size_hint", [])) or 1)
-    licences = sorted({e.get("licence") for e in evidence.values() if e.get("licence")})
+    from .envelope import LICENCE_TEXTS
+    lic_ids = sorted({e.get("licence") for e in evidence.values() if e.get("licence")})
+    licences = {i: LICENCE_TEXTS.get(i, i) for i in lic_ids}
     status = "completed" if identity.get("match_status") in ("exact", "subunit", "deleted", "not_found", "invalid") else "failed"
     env = {
         "schema_version": ENVELOPE_SCHEMA,
@@ -216,7 +218,7 @@ def assemble_envelope(ctx: RunContext, c: CompanyResult, *, run_id: str, started
         "operations": {"requests": c.requests, "requests_by_module": by_mod,
                        "runtime_ms": sum((c.data.get("_module_ms") or {}).values()),
                        "third_party_cost_usd": 0.0},
-        "licences": licences or [NLOD],
+        "licences": licences or {"NLOD-2.0": NLOD},
     }
     _ = (CC0_GLEIF, CC0_WIKIDATA, COMPANY_SITE, NAV_TERMS, n_batch, field_family)
     return env

@@ -200,7 +200,7 @@ def _company_page(env: dict[str, Any]) -> str:
         out.append(f'<span class="pill {cls}">{_e(m)}: {_e(st.get("availability"))}</span>')
     ops = env.get("operations") or {}
     out.append(f'<p class="small muted">Requests for this company: {_e(ops.get("requests"))} · third-party cost ${_e(ops.get("third_party_cost_usd"))} · '
-               f'licences: {_e("; ".join(env.get("licences", [])))}</p></section>')
+               f'licences: {_e("; ".join((env.get("licences") or {}).values() if isinstance(env.get("licences"), dict) else env.get("licences") or []))}</p></section>')
     out.append('</main><footer>nordic-company-agent · deterministic, no LLM · data from Brønnøysundregistrene (NLOD 2.0), '
                'GLEIF (CC0), Wikidata (CC0), NAV Arbeidsplassen, company-owned websites</footer></body></html>')
     return "".join(out)

@@ -48,6 +48,12 @@ NAV_TERMS = "NAV arbeidsplassen job-ad feed, https://arbeidsplassen.nav.no/vilka
 COMPANY_SITE = "Company-owned public web page; fetched once, robots.txt honoured; quoted as evidence only"
 
 
+# Evidence carries a short licence id; the envelope lists the full attribution text once per id.
+LICENCE_IDS = {NLOD: "NLOD-2.0", CC0_GLEIF: "CC0-1.0-GLEIF", CC0_WIKIDATA: "CC0-1.0-Wikidata",
+               NAV_TERMS: "NAV-API-terms", COMPANY_SITE: "company-site-quote"}
+LICENCE_TEXTS = {v: k for k, v in LICENCE_IDS.items()}
+
+
 def utc_iso(dt: datetime | None = None) -> str:
     dt = dt or datetime.now(timezone.utc)
     if dt.tzinfo is None:
@@ -135,7 +141,11 @@ class Evidence:
                   "licence", "retrieved_via"):
             v = getattr(self, k)
             if v is not None and v != "":
-                d[k] = shorten_batch_url(v) if k == "retrieved_via" else v
+                if k == "retrieved_via":
+                    v = shorten_batch_url(v)
+                elif k == "licence":
+                    v = LICENCE_IDS.get(v, v)
+                d[k] = v
         return d
 
 
