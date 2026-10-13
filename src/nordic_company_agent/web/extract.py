@@ -44,11 +44,11 @@ PHONE_KW_RX = re.compile(r"(tlf|telefon|tel\b|phone|mob(?:il)?|ring\b|sentralbor
 SOCIAL_RX = {
     "linkedin": re.compile(r"https?://(?:[a-z]{2,3}\.)?linkedin\.com/(company|school|showcase)/([^/?#\s\"']+)", re.I),
     "linkedin_person": re.compile(r"https?://(?:[a-z]{2,3}\.)?linkedin\.com/in/([^/?#\s\"']+)", re.I),
-    "facebook": re.compile(r"https?://(?:www\.|m\.|web\.|business\.|[a-z]{2}-[a-z]{2}\.)?(?:facebook|fb)\.com/(?!sharer|share|dialog|plugins|tr\b|tr\?|l\.php|policy|privacy|help|login|events/|groups/|ads\b|business\b|watch\b|hashtag|photo|story\.php|permalink)((?:profile\.php\?id=\d+)|(?:(?:p|pg|pages)/[^?#\s\"']+)|[A-Za-z0-9.\-_%]+)", re.I),
-    "instagram": re.compile(r"https?://(?:www\.)?instagram\.com/(?!p/|reel/|explore/|accounts/|share)([A-Za-z0-9._]+)", re.I),
+    "facebook": re.compile(r"https?://(?:www\.|m\.|web\.|business\.|[a-z]{2}-[a-z]{2}\.)?(?:facebook|fb)\.com/(?!sharer|share|dialog|plugins|tr\b|tr\?|l\.php|policy|privacy|help|login|events/|groups/|ads\b|business\b|watch\b|hashtag|photo|story\.php|permalink)((?:profile\.php\?id=\d+)|(?:(?:p|pg|pages)/[^?#\s\"']+)|[^/?#\s\"'<>]+)", re.I),
+    "instagram": re.compile(r"https?://(?:www\.)?instagram\.com/(?!p/|reel/|explore/|accounts/|share)([^/?#\s\"'<>]+)", re.I),
     "twitter": re.compile(r"https?://(?:www\.)?(?:twitter|x)\.com/(?!share|intent|home|search|hashtag|i/|en\b|no\b|nb\b|login|signup|tos|privacy)([A-Za-z0-9_]{1,15})(?![\w])", re.I),
     "youtube": re.compile(r"https?://(?:www\.|m\.)?youtube\.com/((?:channel|c|user)/[^/?#\s\"']+|@[^/?#\s\"']+)", re.I),
-    "tiktok": re.compile(r"https?://(?:www\.)?tiktok\.com/(@[A-Za-z0-9._]+)", re.I),
+    "tiktok": re.compile(r"https?://(?:www\.)?tiktok\.com/(@[^/?#\s\"'<>]+)", re.I),
 }
 PARKING_HOSTS = ("sedo.", "sedoparking", "parkingcrew", "bodis.", "dan.com", "afternic", "hugedomains", "undeveloped.",
                  "domainmarket", "parked", "parkering", "above.com", "uniregistry", "sav.com", "namebright",
@@ -275,6 +275,8 @@ def extract_page(html: str, url: str, target: str | None = None, legal_name: str
         res["other_orgnrs_kw"] = sorted({f["orgnr"] for f in found if f["kw"] and f["orgnr"] != target})
     # --- contact facts
     mailto, tel = [], []
+    res["tel_anchors"] = sorted({(unquote(h.split(":", 1)[1]).strip(), t) for h, t in links
+                                 if h.lower().startswith(("tel:", "callto:"))})
     for href, txt in links:
         if href.lower().startswith("mailto:"):
             mailto.append(unquote(href[7:].split("?")[0]).strip().lower())
@@ -364,14 +366,57 @@ def brreg_links(html: str):
     """Org numbers that appear inside links to registry/lookup sites (strong self-identification signal)."""
     return sorted({m.group(1) for m in BRREG_LINK_RX.finditer(html) if mod11_ok(m.group(1))})
 
-def orgnr_block(html: str, target: str, max_len: int = 700):
+FOREIGN_CC_BEFORE_RX = re.compile(r"(?:\+|00)\s?(?!47)\d{1,3}\s?(?:\(0\)\s?)?[\s.\-]*$")
+FAX_BEFORE_RX = re.compile(r"(?:tele)?fa(?:x|ks)\b[^0-9]{0,14}$", re.I)
+FOREIGN_POSTCODE_RX = re.compile(r"(?<![\w-])(?:DK|SE|S|FI|SF|D|DE|UK|GB|PL|NL|IS|EE|LT|LV)-\s?\d{3,5}\b")
+
+
+def block_phones(text: str, exclude: str = "") -> list[str]:
+    """8-digit Norwegian numbers in a text block: not foreign-prefixed (+45 7020 3455 is Danish, never +47),
+    not fax lines, not part of the org number."""
+    out = set()
+    for m in PHONE_RX.finditer(text or ""):
+        d = re.sub(r"\D", "", m.group("num"))
+        if len(d) != 8 or (exclude and d in exclude):
+            continue
+        if not m.group("cc") and FOREIGN_CC_BEFORE_RX.search(text[max(0, m.start() - 14):m.start()]):
+            continue
+        if FAX_BEFORE_RX.search(text[max(0, m.start() - 22):m.start()]):
+            continue
+        out.add(d)
+    return sorted(out)
+
+
+def _foreign_bits(txt: str, target: str | None, own_words: list[str] | None, own_foreign: bool = False) -> list[str]:
+    """Signals that a text block also describes another legal entity: another valid org number, another legal
+    entity name (when the target's legal name is known), a foreign registration number or a foreign postcode."""
+    bits = []
+    for m in ORGNR_RX.finditer(txt):
+        d = re.sub(r"\D", "", m.group("num"))
+        if mod11_ok(d) and d != target:
+            bits.append("orgnr:" + d)
+    if own_words:
+        for e in legal_entities(txt, prefix_forms=True):
+            if not is_target_entity(e, own_words, own_foreign):
+                bits.append("entity:" + e["name"])
+    if FOREIGN_REG_RX.search(txt):
+        bits.append("foreign_registration")
+    if FOREIGN_POSTCODE_RX.search(txt):
+        bits.append("foreign_postcode")
+    return bits
+
+
+def orgnr_block(html: str, target: str, max_len: int = 700, legal_name: str | None = None):
     """Find the smallest DOM block containing the target orgnr, grow it while it stays < max_len chars and
-    contains no OTHER valid orgnr. Facts (emails/phones/address-ish lines) inside this block can be attributed
+    contains no OTHER valid orgnr, no other legal-entity name (when `legal_name` is given), no foreign registration
+    number and no foreign postcode. Facts (emails/phones/address-ish lines) inside this block can be attributed
     to the target with high confidence even on multi-company pages."""
     tree = LexborHTMLParser(html)
     for sel in ("script", "style", "noscript", "template", "svg"):
         for n in tree.css(sel): n.decompose()
     trx = target_rx(target)
+    own_key = entity_words(legal_name) if legal_name else None
+    own_foreign = legal_form_is_foreign(legal_name) if legal_name else False
     best = None
     for node in (tree.body.traverse() if tree.body else []):
         t = node.text(separator=" ")
@@ -379,13 +424,10 @@ def orgnr_block(html: str, target: str, max_len: int = 700):
             best = node
     if best is None:
         return None
-    def other_orgnrs(txt):
-        return {re.sub(r"\D", "", m.group("num")) for m in ORGNR_RX.finditer(txt)
-                if mod11_ok(re.sub(r"\D", "", m.group("num"))) and re.sub(r"\D", "", m.group("num")) != target}
     block = best
     while block.parent is not None and block.parent.tag not in ("html", "body"):
         pt = block.parent.text(separator=" ")
-        if len(pt) > max_len or other_orgnrs(pt):
+        if len(pt) > max_len or _foreign_bits(pt, target, own_key, own_foreign):
             break
         block = block.parent
     btxt = re.sub(r"\s+", " ", block.text(separator=" ")).strip()
@@ -404,16 +446,19 @@ def orgnr_block(html: str, target: str, max_len: int = 700):
             rev = (n.text(strip=True) or "")[::-1]
             if EMAIL_RX.fullmatch(rev):
                 obf.add(rev.lower())
-    hrefs = sorted({(a.attributes.get("href") or "").strip() for a in block.css("a[href]")} - {""})
+    anchors = [((a.attributes.get("href") or "").strip(), a.text(separator=" ", strip=True)) for a in block.css("a[href]")]
+    hrefs = sorted({h for h, _ in anchors} - {""})
     emails = sorted({e.lower() for e in EMAIL_RX.findall(btxt)} | obf |
                     {unquote(m).lower() for m in re.findall(r'href=["\']mailto:([^"\'?]+)', bhtml, re.I)})
-    phones = sorted({re.sub(r"\D", "", m.group("num")) for m in PHONE_RX.finditer(btxt)
-                     if len(re.sub(r"\D", "", m.group("num"))) == 8 and re.sub(r"\D", "", m.group("num")) not in target})
     post = re.findall(r"(?<!\d)(\d{4})\s+([A-ZÆØÅ][A-Za-zÆØÅæøå\-]+(?:\s[A-ZÆØÅ][A-Za-zÆØÅæøå\-]+)?)", btxt)
+    bits = _foreign_bits(btxt, target, own_key, own_foreign)
     return {"block_tag": block.tag, "block_text": btxt[:max_len], "emails": [e for e in emails if not PLACEHOLDER_EMAIL_RX.search(e)],
-            "phones": phones, "postcode_place": post[:3], "isolated": not other_orgnrs(btxt),
+            "phones": block_phones(btxt, target), "postcode_place": post[:3], "isolated": not bits,
+            "foreign_bits": bits[:5],
             "links": [h for h in hrefs if not h.lower().startswith(("mailto:", "tel:", "javascript:", "#"))],
-            "tel_links": sorted({unquote(h.split(":", 1)[1]).strip() for h in hrefs if h.lower().startswith(("tel:", "callto:"))})}
+            "tel_links": sorted({unquote(h.split(":", 1)[1]).strip() for h in hrefs if h.lower().startswith(("tel:", "callto:"))}),
+            "tel_anchors": sorted({(unquote(h.split(":", 1)[1]).strip(), t) for h, t in anchors
+                                   if h.lower().startswith(("tel:", "callto:"))})}
 
 
 # Social handles owned by site builders / themes / hosts: never attribute to the customer company
@@ -582,7 +627,7 @@ _FORMS_RX = (r"AS|ASA|ANS|DA|SA|BA|KS|NUF|IKS|KF|ENK|BRL|AB|ApS|APS|A/S|EHF|ehf\
              r"Ltd\.?|LTD\.?|Limited|LIMITED|LLC|Inc\.?|INC\.?|B\.V\.|BV|N\.V\.|NV|S\.r\.l\.|Srl|SRL|S\.p\.A\.|SpA|"
              r"S\.A\.|SAS|SARL|PLC|plc|LLP|Pty\.? Ltd\.?|Pvt\.? Ltd\.?|Private Limited|Private Ltd\.?|"
              r"Sp\. z o\.o\.|sp\. z o\.o\.|SP\. Z O\.O\.|S\.L\.|s\.r\.o\.|Kft\.?|AE|SIA|UAB|OÜ")
-_WORD = r"[A-ZÆØÅÄÖÜÉ0-9][\wÆØÅæøåÄÖÜäöüÉé&'’.\-]*"
+_WORD = r"[A-ZÆØÅÄÖÜÉ0-9][\wÆØÅæøåÄÖÜäöüÉé&'’.\-!]*"
 ENTITY_RX = re.compile(
     r"(?<![\wÆØÅæøå])(?P<name>" + _WORD + r"(?:(?:\s+(?:og|and|&|of|for|i)\s+|\s+|\s*&\s*|\s*\(\w+\)\s*)" + _WORD +
     r"){0,5})\s*,?\s+(?P<form>" + _FORMS_RX + r")(?![\wÆØÅæøå])")
@@ -601,14 +646,22 @@ _FORM_WORDS = {"as", "asa", "ans", "da", "sa", "ba", "ks", "nuf", "iks", "kf", "
 _KEY_FOLD = str.maketrans({"æ": "ae", "ø": "o", "å": "a", "ä": "a", "ö": "o", "ü": "u", "é": "e", "è": "e"})
 
 
-def entity_key(name: str) -> str:
-    """Comparable key of a legal name: case/diacritics/punctuation and legal-form words removed, '&' = 'og'.
-    Country words are kept: 'YABIMO Norge AS' and 'YABIMO AS' are different legal entities."""
+def entity_words(name: str) -> list[str]:
+    """Name tokens of a legal name: case/diacritics/punctuation and legal-form words removed, '&' = 'og'."""
     n = unicodedata.normalize("NFKC", name or "").lower().translate(_KEY_FOLD).replace("&", " og ").replace("+", " og ")
     n = re.sub(r"\b(?:sp\.?\s*z\s*o\.?\s*o\.?|a/s|s\.r\.l\.|s\.p\.a\.|b\.v\.|n\.v\.|s\.a\.|pty\.?\s*ltd\.?|pvt\.?\s*ltd\.?)",
                " ", n)
-    toks = [t for t in re.findall(r"[a-z0-9]+", n) if t not in _FORM_WORDS and t not in ("og", "and")]
-    return "".join(toks)
+    toks = []
+    for t in re.findall(r"[a-z0-9]+", n):
+        m = re.fullmatch(r"((?:19|20)\d\d)([a-z]{3,}.*)", t)       # "2026Noma" (copyright year glued to the name)
+        toks.extend([m.group(1), m.group(2)] if m else [t])
+    return [t for t in toks if t not in _FORM_WORDS and t not in ("og", "and")]
+
+
+def entity_key(name: str) -> str:
+    """Comparable key of a legal name (see entity_words). Country words are kept: 'YABIMO Norge AS' and
+    'YABIMO AS' are different legal entities."""
+    return "".join(entity_words(name))
 
 
 def same_entity(key: str, own_key: str, foreign: bool | None = None, own_foreign: bool | None = None) -> bool:
@@ -622,17 +675,71 @@ def same_entity(key: str, own_key: str, foreign: bool | None = None, own_foreign
     return key == own_key or (len(own_key) >= 5 and key.endswith(own_key))
 
 
+def is_target_entity(e: dict, own_words: list[str], own_foreign: bool = False) -> bool:
+    """Does entity mention `e` (from legal_entities) name the target? Same name words, possibly preceded by
+    captured junk ('Registrer CV Oslo Stavanger Fabi AS', '2026 Keel AS', 'Norway Hydreco Hydraulics Norway AS');
+    a foreign legal form never names a Norwegian-form company."""
+    if not own_words or e.get("foreign", False) != own_foreign:
+        return False
+    w = e.get("words") or entity_words(e.get("name", ""))
+    if w == own_words or "".join(w) == "".join(own_words):
+        return True
+    if len(w) > len(own_words) and w[-len(own_words):] == own_words:
+        return True
+    # middle initials ("Gunnar T. Høvik AS" for GUNNAR HØVIK AS)
+    w2 = [t for t in w if len(t) > 1]
+    o2 = [t for t in own_words if len(t) > 1]
+    if o2 and (w2 == o2 or (len(w2) > len(o2) and w2[-len(o2):] == o2)):
+        return True
+    # one-letter typos in long words ("Rjuken Hotell AS" for RJUKAN HOTELL AS)
+    return len(w2) == len(o2) > 0 and all(a == b or (len(b) >= 5 and _edit1(a, b)) for a, b in zip(w2, o2))
+
+
+def _edit1(a: str, b: str) -> bool:
+    """Levenshtein distance <= 1."""
+    if abs(len(a) - len(b)) > 1:
+        return False
+    if len(a) == len(b):
+        return sum(x != y for x, y in zip(a, b)) <= 1
+    if len(a) > len(b):
+        a, b = b, a
+    i = 0
+    while i < len(a) and a[i] == b[i]:
+        i += 1
+    return a[i:] == b[i + 1:]
+
+
 def legal_form_is_foreign(legal_name: str) -> bool:
     words = re.findall(r"[\wÆØÅæøå/.]+", legal_name or "")
     return not (words and words[-1].upper().rstrip(".") in NO_FORMS)
 
 
-def legal_entities(text: str) -> list[dict]:
-    """Legal entities named in text: [{"name","form","key","span","foreign"}] (name + legal-form token)."""
+_LABEL_WORDS = (r"(?:Org|ORG|Tlf|TLF|Tel|Telefon|E-post|Epost|Email|E-mail|Adresse|Postboks|Besøk|Mva|MVA|Foretak|"
+                r"Kontakt|Faks|Fax)\b")
+_LABEL_NAME_WORDS = {"faktura", "fakturaadresse", "fakturering", "fakturamottak", "send", "sendes", "via", "som",
+                     "kun", "eller", "motta", "mottak", "format", "adresse", "epost", "post", "elektronisk", "vi",
+                     "onsker", "invoice", "invoices", "billing", "please", "send", "to", "kontakt", "info"}
+PREFIX_ENTITY_RX = re.compile(r"(?<![\wÆØÅæøå])(?P<form>Stiftelsen|STIFTELSEN|Sameiet|SAMEIET|Borettslaget|BORETTSLAGET|"
+                              r"Andelslaget|ANDELSLAGET)\s+(?P<name>(?!" + _LABEL_WORDS + r")[A-ZÆØÅ][\wÆØÅæøå&'’\-]*"
+                              r"(?:\s+(?!" + _LABEL_WORDS + r")[A-ZÆØÅ][\wÆØÅæøå&'’\-]*){0,4})")
+
+
+def legal_entities(text: str, prefix_forms: bool = False) -> list[dict]:
+    """Legal entities named in text: [{"name","form","key","span","foreign"}] (name + legal-form token).
+    With `prefix_forms`, also Norwegian prefix-named entities ("Stiftelsen ReturGass", "Sameiet Solsiden")."""
     out = []
+    if prefix_forms:
+        for m in PREFIX_ENTITY_RX.finditer(text or ""):
+            if re.match(r"\s+(?:av|for|i|og|på|til|ved|in|of|for|and)\s", (text or "")[m.end():m.end() + 6]):
+                continue                                   # "Stiftelsen Kritikk av kunst ...": name continues
+            nm = f"{m.group('form')} {m.group('name')}".strip()
+            out.append({"name": nm, "form": m.group("form"), "key": entity_key(nm), "words": entity_words(nm),
+                        "foreign": False,
+                        "start": m.start(), "end": m.end(),
+                        "span": re.sub(r"\s+", " ", text[max(0, m.start() - 40):m.end() + 60]).strip()})
     for m in ENTITY_RX.finditer(text or ""):
-        before = (text or "")[max(0, m.start() - 40):m.start()]
-        before = before[max(before.rfind(c) for c in "©|.\n") + 1:]      # same phrase only
+        raw_before = (text or "")[max(0, m.start() - 40):m.start()]
+        before = raw_before[max(raw_before.rfind(c) for c in "©|.\n") + 1:]      # same phrase only
         if CREDIT_RX.search(before + " " + m.group(0)) or re.search(r"\btheme|\bplugin|\btemplate", before + m.group(0), re.I):
             continue                                       # web agency / theme credit, not the site owner
         name = m.group("name").strip(" ,")
@@ -640,10 +747,17 @@ def legal_entities(text: str) -> list[dict]:
         name = re.sub(r"^(?:(?:Copyright|Kontakt|Contact|Om|About|Levert av|Faktura|Org\.?(?:nr)?\.?|Tlf\.?|"
                       r"E-post|Email|Adresse|Address|Velkommen til|Welcome to)\s+)+", "", name)
         key = entity_key(name)
-        if not key or len(key) < 2:
+        if not key or len(key) < 2 or not re.search(r"[a-z]", key):
             continue
+        if set(entity_words(name)) <= _LABEL_NAME_WORDS or (m.group("form").lower().startswith("ehf") and
+                                                            re.search(r"faktur|invoice|send", name, re.I)):
+            continue                                       # "Fakturaadresse EHF", "Send faktura som EHF"
+        if re.search(r"(?:\bv/|\btidl\.?|\btidligere|\bformerly|\bfør|\bav|\bby|\bfra)\s*[:(]?\s*$", raw_before, re.I) or \
+                re.search(r"\bc/o\b[^.|\n]{0,30}$", raw_before, re.I):
+            continue                                       # c/o address, former name or "løsninger av X AS" credit
         form = m.group("form")
-        out.append({"name": f"{name} {form}", "form": form, "key": key,
+        out.append({"name": f"{name} {form}", "form": form, "key": key, "words": entity_words(name),
+                    "start": m.start(), "end": m.end(),
                     "foreign": form.upper().rstrip(".") not in NO_FORMS,
                     "span": re.sub(r"\s+", " ", text[max(0, m.start() - 40):m.end() + 60]).strip()})
     return out
@@ -680,7 +794,7 @@ def name_block(html: str, legal_name: str, target: str | None = None, max_len: i
     nrx = legal_name_rx(legal_name)
     if nrx is None:
         return None
-    own = entity_key(legal_name)
+    own_words = entity_words(legal_name)
     own_foreign = legal_form_is_foreign(legal_name)
     tree = LexborHTMLParser(html)
     for sel in ("script", "style", "noscript", "template", "svg"):
@@ -696,7 +810,7 @@ def name_block(html: str, legal_name: str, target: str | None = None, max_len: i
         return None
 
     def foreign_bits(txt: str) -> bool:
-        if any(not same_entity(e["key"], own, e["foreign"], own_foreign) for e in legal_entities(txt)):
+        if any(not is_target_entity(e, own_words, own_foreign) for e in legal_entities(txt)):
             return True
         for m in ORGNR_RX.finditer(txt):
             d = re.sub(r"\D", "", m.group("num"))
@@ -724,8 +838,7 @@ def name_block(html: str, legal_name: str, target: str | None = None, max_len: i
     hrefs = sorted({(a.attributes.get("href") or "").strip() for a in block.css("a[href]")} - {""})
     emails = sorted({e.lower() for e in EMAIL_RX.findall(btxt)} | obf |
                     {unquote(m).lower() for m in re.findall(r'href=["\']mailto:([^"\'?]+)', bhtml, re.I)})
-    phones = sorted({re.sub(r"\D", "", m.group("num")) for m in PHONE_RX.finditer(btxt)
-                     if len(re.sub(r"\D", "", m.group("num"))) == 8})
+    phones = block_phones(btxt, target or "")
     return {"block_tag": block.tag, "block_text": btxt[:max_len], "emails": [e for e in emails if not PLACEHOLDER_EMAIL_RX.search(e)],
             "phones": phones, "isolated": not foreign_bits(btxt), "kind": "legal_name",
             "links": [h for h in hrefs if not h.lower().startswith(("mailto:", "tel:", "javascript:", "#"))],

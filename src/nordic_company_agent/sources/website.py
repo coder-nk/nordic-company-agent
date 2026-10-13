@@ -108,7 +108,9 @@ async def _run(ctx, company: CompanyResult) -> None:
     leads, cache_checked, reg_note = _leads(ctx, company, rec)
     results: list[LeadResult] = []
     tried_sites: set[str] = set()
-    for lead in leads:
+    pending = list(leads)
+    while pending:
+        lead = pending.pop(0)
         key = _site_key(lead.fetch_url)
         if key in tried_sites or _site_key(lead.start) in tried_sites:
             continue
@@ -120,6 +122,12 @@ async def _run(ctx, company: CompanyResult) -> None:
         results.append(r)
         if r.state == "available":
             break
+        # a parent's/partner's site that links "<company> nettside" to another domain: follow that link once
+        # (only an org number printed there can verify it: the lead is not registry-filed)
+        if r.verdict is not None and r.verdict.site_links and lead.source != "link":
+            for u in r.verdict.site_links[:1]:
+                if _site_key(u) not in tried_sites:
+                    pending.insert(0, Lead("site_link", "link", u, u, False))
     if not any(r.state == "available" for r in results) and rec:
         live = await _live_leads(ctx, st, rec, cache_checked, tried_sites)
         for lead in live:
