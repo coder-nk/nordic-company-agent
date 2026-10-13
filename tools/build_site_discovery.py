@@ -379,6 +379,7 @@ def phase_join() -> None:
     for f in crawl_files():
         for r in read_jsonl(f):
             by_key[r["key"]] = r  # last write wins on re-crawls
+    dns_nx = {r["key"] for r in read_jsonl(WORK / "dns.jsonl") if not r.get("ok")}
     CACHE.mkdir(parents=True, exist_ok=True)
     n_comp = n_hit = 0
     kinds = Counter()
@@ -393,6 +394,8 @@ def phase_join() -> None:
             for kind, d in c["cands"]:
                 r = by_key.get(d)
                 if r is None:
+                    if d in dns_nx:
+                        checked.append(kind)  # neither the domain nor www.<domain> resolves
                     continue
                 checked.append(kind)
                 for p in r.get("pages", []):

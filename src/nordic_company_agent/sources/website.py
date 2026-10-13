@@ -199,12 +199,12 @@ async def _resolves(host: str) -> bool:
 async def _live_leads(ctx, st: _State, rec: dict, checked: set[str], tried: set[str]) -> list[Lead]:
     if not getattr(ctx.config, "live_discovery", False) or MAX_REQUESTS - st.spent < 2:
         return []
-    if not ctx.allow("discovery", 3):
-        st.budget_hit = True  # not checked for lack of budget: must not read as "no website exists"
-        return []
     cands = [(k, d) for k, d in C.candidates(rec) if k != "registry_website" and k not in checked]
     cands = [(k, d) for k, d in cands if _site_key(d) not in tried][:MAX_DNS_CANDIDATES]
     if not cands:
+        return []  # every candidate was already checked by the offline discovery crawl
+    if not ctx.allow("discovery", 3):
+        st.budget_hit = True  # not checked for lack of budget: must not read as "no website exists"
         return []
     hosts: list[tuple[str, str, str]] = []
     for k, d in cands:
@@ -854,8 +854,19 @@ def _emit(ctx, company: CompanyResult, rec: dict, st: _State, results: list[Lead
         parts = ["no website lead: no registry website, no discovery-cache lead"]
         if reg_note:
             parts = [reg_note]
+        try:
+            meta = ctx.caches.meta("site_discovery") or {}
+            rows = ctx.caches.jsonl_index("site_discovery").get(company.organisation_number, [])
+        except Exception:
+            meta, rows = {}, []
+        chk = sorted({k for r in rows for k in (r.get("checked") or [])})
+        if chk:
+            parts.append(f"offline discovery (declared cache built {str(meta.get('built_at', ''))[:10]}) checked "
+                         f"{len(chk)} candidate domain kind(s) ({', '.join(chk[:4])}{'…' if len(chk) > 4 else ''}): "
+                         "none prints this organisation number")
         if getattr(ctx.config, "live_discovery", False) and rec:
-            parts.append("no live candidate domain resolved" if not st.budget_hit else BUDGET_NOTE + " (live discovery)")
+            parts.append("no unchecked live candidate domain resolved" if not st.budget_hit
+                         else BUDGET_NOTE + " (live discovery)")
         reason = "; ".join(parts)
         if st.budget_hit and not st.records:
             state, reason = "failed", BUDGET_NOTE
