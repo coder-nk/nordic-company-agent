@@ -180,6 +180,11 @@ async def run_modules(ctx: RunContext, companies: list[CompanyResult]) -> dict[s
         for name in names:
             timings[name] = timings.get(name, 0) + int((time.monotonic() - t0) * 1000)
         if ph == 0:
+            try:
+                from .contact_sharing import label_shared
+                label_shared(ctx, companies)
+            except Exception as exc:  # labelling is best-effort; never break the run
+                ctx.shared["contact_sharing_error"] = f"{type(exc).__name__}: {exc}"
             # Identity is known now: size the per-tier budget for this batch, and decide whether the
             # nightly bulk files are cheaper than per-company roles/sub-unit calls.
             res = plan_reservations(ctx, companies)

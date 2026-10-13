@@ -1523,10 +1523,12 @@ def verify(pages: list[Page], rec: dict | None, target: str, *, lead_kind: str, 
             return v
     # ---- B: a sub-path is publishable only on the company's own brand host
     if v.subpath and not v.hosted:
-        suffixes = [sg for sg in segs_all]
-        host_brand = any(len(squash(t)) >= 3 and squash(t) in squash((v.domain or "").split(".")[0])
-                         for t in prof.required if not t.isdigit()) or \
-            any(token_in(t, sg) for sg in suffixes for t in prof.required if len(t) >= 3 and not t.isdigit())
+        # the REGISTRABLE-DOMAIN LABEL must carry a distinctive name token; a section's own <title> never counts
+        # (gjenbruken.no/miljo/ titled 'Miljø' is a section of the parent's chain site, not NLM MILJØ AS's own)
+        dlab = squash((v.domain or "").split(".")[0])
+        host_brand = any(len(squash(t)) >= 3 and squash(t) in dlab for t in _distinctive_tokens(prof)
+                         if not t.isdigit() and fold(t) not in places) or \
+            (len(prof.joined) >= 5 and prof.joined in dlab)
         if not host_brand or shared or v.group_signals:
             why = "the host is not the company's brand" if not host_brand else \
                 (f"the host is shared with other organisation numbers ({', '.join(shared[:4])})" if shared else
