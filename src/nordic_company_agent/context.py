@@ -52,7 +52,7 @@ class RunConfig:
 ALL_MODULES = (
     "registry", "registry_feed", "roles", "subunits", "group", "accounts", "account_copies",
     "authorisations", "website", "social_profiles", "news", "jobs", "wikidata", "gleif", "state_aid",
-    "grants",
+    "grants", "public_records",
 )
 
 # Spending tiers in priority order. The planner gives each tier a share of the request budget;

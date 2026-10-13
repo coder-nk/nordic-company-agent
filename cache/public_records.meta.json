@@ -1,0 +1,128 @@
+{
+ "built_at": "2026-10-13T16:56:17Z",
+ "built_by": "tools/build_public_records_cache.py",
+ "companies": {
+  "food_inspection": 5659,
+  "research_grant": 3504,
+  "skattefunn": 12875
+ },
+ "companies_any": 19355,
+ "counts": {
+  "food_inspection": 30120,
+  "research_grant": 10271,
+  "skattefunn": 39657
+ },
+ "files": [
+  {
+   "bytes": 1744549,
+   "checked_at": "2026-10-13T16:55:11Z",
+   "etag": "\"1dd56bb4231eaa5\"",
+   "fetched_at": "2026-10-13T16:55:11Z",
+   "final_url": "https://www.forskningsradet.no/siteassets/skattefunn/tall/260902-webliste-skattefunn.xlsx",
+   "kind": "skattefunn",
+   "last_modified": "Thu, 08 Oct 2026 00:23:36 GMT",
+   "rows_kept": 6809,
+   "sha256": "8fe37e3e46bfee0fd0b029c46d854e121497d5b7a005392ad66f7b99aa4319b1",
+   "universe_rows": 6849,
+   "url": "https://www.forskningsradet.no/siteassets/skattefunn/tall/260902-webliste-skattefunn.xlsx"
+  },
+  {
+   "bytes": 12200263,
+   "checked_at": "2026-10-13T16:55:15Z",
+   "etag": "\"1dd56bb5b8e0c47\"",
+   "fetched_at": "2026-10-13T16:55:15Z",
+   "final_url": "https://www.forskningsradet.no/siteassets/skattefunn/tall/skattefunn-innsendte-soknader-2002-2024.xlsx",
+   "kind": "skattefunn",
+   "last_modified": "Thu, 08 Oct 2026 00:24:18 GMT",
+   "rows_kept": 32848,
+   "sha256": "8466f7b7a93bafc036eead0f2f418b8368d47889ab582af3fb4ad18593697cad",
+   "universe_rows": 40498,
+   "url": "https://www.forskningsradet.no/siteassets/skattefunn/tall/skattefunn-innsendte-soknader-2002-2024.xlsx"
+  },
+  {
+   "bytes": 54010790,
+   "checked_at": "2026-10-13T16:55:17Z",
+   "etag": "W/\"af47853d164bd316bf121dfd88db1047274dd1925b88e88fb29ea84863ba260c\"",
+   "fetched_at": "2026-10-13T16:55:17Z",
+   "final_url": "https://raw.githubusercontent.com/Forskningsradet/open-data/main/datasets/soknader2/dataset.csv",
+   "kind": "research_grant",
+   "last_modified": null,
+   "rows_kept": 10271,
+   "sha256": "5bd7ac2cfca44dfa6cba85bf644b172227fabf25114c28d22fa5a779f9d78485",
+   "universe_rows": 26694,
+   "url": "https://raw.githubusercontent.com/Forskningsradet/open-data/main/datasets/soknader2/dataset.csv"
+  },
+  {
+   "bytes": 15825563,
+   "checked_at": "2026-10-13T16:55:28Z",
+   "etag": "\"6acdc78d-f17a9b\"",
+   "fetched_at": "2026-10-13T16:55:28Z",
+   "final_url": "https://smilefjes.mattilsynet.no/api/tilsyn.csv",
+   "kind": "food_inspection",
+   "last_modified": "Tue, 13 Oct 2026 05:54:21 GMT",
+   "rows_kept": 30120,
+   "sha256": "df7fe033feaebd299c699e63186ad3bf7e9cb6037f6c1aeed756f8544dad3cb6",
+   "universe_rows": 37703,
+   "url": "https://smilefjes.mattilsynet.no/api/tilsyn.csv"
+  }
+ ],
+ "key": "organisation_number (the company; for food inspections the parent enhet of the inspected underenhet per Enhetsregisteret, or the enhet itself)",
+ "licences": {
+  "brreg": {
+   "id": "NLOD-2.0",
+   "text": "Sub-unit to parent mapping from Enhetsregisteret (Brønnøysundregistrene), NLOD 2.0."
+  },
+  "food_inspection": {
+   "id": "CC-BY-4.0",
+   "text": "Mattilsynet smilefjes inspection data (Smilefjestilsyn på serveringssteder). Licence: Creative Commons Attribution 4.0 per the national data catalogue (https://data.norge.no/datasets/288aa74c-e3d3-492e-9ede-e71503b3bfd9). Mattilsynet withdraws invalidated inspections from the open data and asks users to refresh daily."
+  },
+  "research_grant": {
+   "id": "NLOD-2.0",
+   "text": "Forskningsrådet open data 'Søknader - versjon 2' (https://github.com/Forskningsradet/open-data). Licence: NLOD 2.0 per the national data catalogue (https://data.norge.no/datasets/349766ba-b5fd-3a04-8d82-77ec8928d6f2); the GitHub repository has no LICENSE file. Excludes applications in the new case system Tibi."
+  },
+  "skattefunn": {
+   "id": "NLOD-2.0",
+   "text": "SkatteFUNN application lists, Norges forskningsråd. Licence: Norwegian Licence for Open Government Data (NLOD) 2.0 per the national data catalogue entry 'Innsendte søknader til Skattefunn' (https://data.norge.no/datasets/f82d3d4a-b0f8-3220-83ef-15fbd854c54f). The download page itself states no licence."
+  }
+ },
+ "max_records_per_company_per_kind": 10,
+ "name": "public_records",
+ "notes": [
+  "SkatteFUNN status: Godkjent/Søknad godkjent JA -> approved; NEI (or Søknad avslått JA) -> rejected; empty -> no_decision_recorded. date = Søknadsdato/Innsendt dato, decision_date = Vedtaksdato.",
+  "Forskningsrådet status from prosjektfase: Bevilgning -> granted, Avsluttet -> completed, Avslag -> rejected, Vurderes -> under_review, Mottatt -> received. amount = tildelt_belop verbatim, only for granted/completed projects with a positive amount (total for the whole project period). The file does not state a currency; Forskningsrådet amounts are NOK.",
+  "Food inspections: grade = total_karakter as given (0/1 smile, 2 straight mouth, 3 sad mouth per Mattilsynet's documented scale). Inspections at units that are deleted from Enhetsregisteret (no parent provable) are dropped. Mattilsynet withdraws invalidated inspections, so rebuild daily.",
+  "raw_cells: original cell values used, as strings (xlsx dates as read by openpyxl, ISO-8601).",
+  "summary: verbatim popular-science summary, cut to <= 600 characters at a word boundary (summary_truncated=true when cut; no ellipsis added).",
+  "record_id: skattefunn:soknad:<Søknadsnummer> (new system), skattefunn:prosjekt:<Prosjektnummer> (2002-2024 file), forskningsradet:<prosjektnummer>, mattilsynet:<tilsynid>.",
+  "Person fields (project leader names, gender) are never stored.",
+  "robots.txt on data.mattilsynet.no disallows https://data.mattilsynet.no/smilefjes-tilsyn.csv; not fetched"
+ ],
+ "stats": {
+  "food_inspection_invalid_orgnr": 18,
+  "food_inspection_rows": 45105,
+  "food_inspection_truncated_companies": 858,
+  "food_inspection_unmapped": 45,
+  "research_grant_invalid_orgnr": 33453,
+  "research_grant_personal_stipend_skipped": 6,
+  "research_grant_rows": 88268,
+  "research_grant_truncated_companies": 262,
+  "skattefunn_duplicate_record_id": 8,
+  "skattefunn_invalid_orgnr": 638,
+  "skattefunn_rows": 78533,
+  "skattefunn_truncated_companies": 837
+ },
+ "subunit_mapping": {
+  "checked_at": "2026-10-13T16:55:28Z",
+  "licence": "Sub-unit to parent mapping from Enhetsregisteret (Brønnøysundregistrene), NLOD 2.0.",
+  "resolved": {
+   "enhet": 131,
+   "underenhet": 7862,
+   "unknown": 10
+  },
+  "source": "https://data.brreg.no/enhetsregisteret/api/underenheter?organisasjonsnummer=<<=1000 numbers>&size=1000 (then /enheter)"
+ },
+ "universe": {
+  "file": "data/signalpost-company-universe-2025.jsonl.gz",
+  "organisation_numbers": 411160
+ }
+}

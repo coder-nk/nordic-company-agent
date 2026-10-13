@@ -52,7 +52,7 @@ import sys
 import time
 import urllib.robotparser
 from collections import Counter, defaultdict
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Any, Iterator
@@ -374,11 +374,19 @@ def clean(s: Any) -> str | None:
     return t or None
 
 
-def truncate(s: str | None, n: int = SUMMARY_MAX) -> str | None:
+def truncate(s: str | None, n: int = SUMMARY_MAX) -> tuple[str | None, bool]:
+    """Verbatim prefix of at most n characters (cut at a word boundary when possible); no ellipsis is
+    added so the stored text stays a verbatim fragment of the source cell."""
     if not s:
-        return None
+        return None, False
     s = s.strip()
-    return s if len(s) <= n else s[: n - 1].rstrip() + "…"
+    if len(s) <= n:
+        return s, False
+    cut = s[:n]
+    sp = cut.rfind(" ")
+    if sp >= n * 0.8:
+        cut = cut[:sp]
+    return cut.rstrip(), True
 
 
 # ----------------------------------------------------------------------------- SkatteFUNN
@@ -460,14 +468,20 @@ def iter_skattefunn(path: Path, url: str, sha: str, universe: set[str], stats: C
                     t = cell_text(g(k))
                     if t is not None and k in header_names:
                         raw_cells[header_names[k]] = t
-                summary = truncate(clean(g("summary")))
-                rid_num = an if an and "application_number" in header_idx else pn
-                rid_kind = "application" if an and "application_number" in header_idx else "project"
+                summary, summary_truncated = truncate(clean(g("summary")))
+                # Stable ids that do not depend on the date-stamped file name: the new application system
+                # (May 2024+) numbers applications (Søknadsnummer; Prosjektnummer only once approved), the
+                # historical file numbers projects.
+                if "application_number" in header_idx and an:
+                    rid = f"skattefunn:soknad:{an}"
+                elif pn:
+                    rid = f"skattefunn:prosjekt:{pn}"
+                else:
+                    rid = f"skattefunn:{path.stem}:row:{rownum}"
                 yield {
                     "organisation_number": org,
                     "kind": "skattefunn",
-                    "record_id": f"skattefunn:{path.stem}:{rid_kind}:{rid_num}" if rid_num else
-                                 f"skattefunn:{path.stem}:row:{rownum}",
+                    "record_id": rid,
                     "project_number": pn,
                     "application_number": an,
                     "date": iso_date(g("date")),
@@ -476,6 +490,7 @@ def iter_skattefunn(path: Path, url: str, sha: str, universe: set[str], stats: C
                     "status": status,
                     "period": {"from": fy, "to": ty} if (fy or ty) else None,
                     "summary": summary,
+                    "summary_truncated": summary_truncated or None,
                     "company_name": clean(g("company_name")),
                     "source_url": url,
                     "source_sha256": sha,
@@ -510,6 +525,9 @@ def iter_nfr(path: Path, url: str, sha: str, universe: set[str], stats: Counter)
                 return values[i] if i is not None and i < len(values) else None
 
             stats["research_grant_rows"] += 1
+            if (clean(g("prosjektansvarlig_type")) or "").lower() == "person":
+                stats["research_grant_personal_stipend_skipped"] += 1   # person-centric rows: never stored
+                continue
             org = digits(g("organisasjonsnummer"))
             if not is_valid(org):
                 stats["research_grant_invalid_orgnr"] += 1
@@ -522,7 +540,7 @@ def iter_nfr(path: Path, url: str, sha: str, universe: set[str], stats: Counter)
             amount = None
             if amount_raw is not None and status in ("granted", "completed"):
                 try:
-                    if Decimal(amount_raw) != 0:
+                    if Decimal(amount_raw) > 0:
                         amount = amount_raw
                 except InvalidOperation:
                     pass
@@ -634,7 +652,8 @@ def iter_smilefjes(path: Path, url: str, sha: str, universe: set[str], orgmap: d
 
 
 # ----------------------------------------------------------------------------- map (brreg)
-def phase_map() -> dict[str, Any]:
+def phase_map(remap_days: float = 7.0) -> dict[str, Any]:
+    """Resolve location orgnrs not yet mapped, or mapped more than `remap_days` ago (sub-units can move)."""
     downloads = load_json(DOWNLOADS, {})
     urls = (downloads.get("_selected") or {}).get("food_inspection") or []
     if not urls:
@@ -643,7 +662,10 @@ def phase_map() -> dict[str, Any]:
     path = ROOT / downloads[urls[0]]["path"]
     wanted = sorted(smilefjes_location_orgnrs(path))
     orgmap: dict[str, Any] = load_json(ORGMAP, {})
-    todo = [o for o in wanted if o not in orgmap]
+    cutoff = utc_iso(datetime.now(timezone.utc) - timedelta(days=remap_days))
+    todo = [o for o in wanted if o not in orgmap or (orgmap[o].get("checked_at") or "") < cutoff]
+    for o in todo:
+        orgmap.pop(o, None)
     log(f"map: {len(wanted)} distinct valid location orgnrs, {len(todo)} to resolve")
     if not todo:
         return orgmap
@@ -724,7 +746,11 @@ def phase_write() -> dict[str, Any]:
                 prev = by_key[key].get(rid)
                 if prev is not None:
                     stats[f"{kind}_duplicate_record_id"] += 1
-                    if _recency_key(prev) >= _recency_key(row):
+                    if (rid.startswith("skattefunn:soknad:") and row.get("project_number")
+                            and row.get("project_number") != prev.get("project_number")):
+                        # One application listed with two project numbers: keep both, deterministically.
+                        rid = row["record_id"] = f"{rid}:prosjekt:{row['project_number']}"
+                    elif _recency_key(prev) >= _recency_key(row):
                         continue
                 by_key[key][rid] = row
                 kept += 1
@@ -735,16 +761,13 @@ def phase_write() -> dict[str, Any]:
                                "universe_rows": kept, "rows_kept": 0})
     built_at = utc_iso()
     out_rows: list[dict[str, Any]] = []
-    for (org, kind), recs in by_key.items():
-        ordered = sorted(recs.values(), key=_recency_key, reverse=True)
+    for org, kind in sorted(by_key):
+        ordered = sorted(by_key[(org, kind)].values(), key=_recency_key, reverse=True)   # most recent first
         for r in ordered[:MAX_PER_KIND]:
             r["company_kind_total"] = len(ordered)
-            r["currency"] = r.get("currency")
             out_rows.append(r)
         if len(ordered) > MAX_PER_KIND:
             stats[f"{kind}_truncated_companies"] += 1
-    out_rows.sort(key=lambda r: (r["organisation_number"], r["kind"], tuple(-ord(c) for c in (r.get("date") or "")),
-                                 r["record_id"]))
     kept_by_url = Counter(r["source_url"] for r in out_rows)
     for f in files_meta:
         f["rows_kept"] = kept_by_url.get(f["url"], 0)
@@ -783,12 +806,16 @@ def phase_write() -> dict[str, Any]:
             "empty -> no_decision_recorded. date = Søknadsdato/Innsendt dato, decision_date = Vedtaksdato.",
             "Forskningsrådet status from prosjektfase: Bevilgning -> granted, Avsluttet -> completed, Avslag -> "
             "rejected, Vurderes -> under_review, Mottatt -> received. amount = tildelt_belop verbatim, only for "
-            "granted/completed projects with a non-zero amount (total for the whole project period). The file does "
+            "granted/completed projects with a positive amount (total for the whole project period). The file does "
             "not state a currency; Forskningsrådet amounts are NOK.",
             "Food inspections: grade = total_karakter as given (0/1 smile, 2 straight mouth, 3 sad mouth per "
             "Mattilsynet's documented scale). Inspections at units that are deleted from Enhetsregisteret (no parent "
             "provable) are dropped. Mattilsynet withdraws invalidated inspections, so rebuild daily.",
             "raw_cells: original cell values used, as strings (xlsx dates as read by openpyxl, ISO-8601).",
+            "summary: verbatim popular-science summary, cut to <= 600 characters at a word boundary "
+            "(summary_truncated=true when cut; no ellipsis added).",
+            "record_id: skattefunn:soknad:<Søknadsnummer> (new system), skattefunn:prosjekt:<Prosjektnummer> "
+            "(2002-2024 file), forskningsradet:<prosjektnummer>, mattilsynet:<tilsynid>.",
             "Person fields (project leader names, gender) are never stored.",
         ] + list(downloads.get("_notes") or []),
     }
@@ -815,6 +842,8 @@ def phase_status() -> None:
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("phase", choices=("all", "download", "map", "write", "status"))
+    ap.add_argument("--remap-days", type=float, default=7.0,
+                    help="re-resolve sub-unit -> parent mappings older than this many days (default 7)")
     args = ap.parse_args()
     t0 = time.monotonic()
     if args.phase == "status":
@@ -823,7 +852,7 @@ def main() -> None:
     if args.phase in ("all", "download"):
         phase_download()
     if args.phase in ("all", "map"):
-        phase_map()
+        phase_map(args.remap_days)
     if args.phase in ("all", "write"):
         phase_write()
     log(f"done in {time.monotonic() - t0:.1f}s")

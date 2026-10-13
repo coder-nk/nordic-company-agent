@@ -246,7 +246,8 @@ FAMILIES: dict[str, tuple[str, ...]] = {
     "hiring": ("job_posting", "active_job_count", "hiring_status"),
     "public_activity": (
         "news_item", "news_page", "website_update", "registry_event", "role_change_event", "state_aid_grant",
-        "research_grant", "tax_incentive_project", "encyclopedia_entry", "wikidata_item", "stock_listing",
+        "research_grant", "tax_incentive_project", "food_inspection", "encyclopedia_entry", "wikidata_item",
+        "stock_listing",
     ),
 }
 _FIELD_TO_FAMILY = {f: fam for fam, fields in FAMILIES.items() for f in fields}

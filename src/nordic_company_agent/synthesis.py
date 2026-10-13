@@ -24,6 +24,8 @@ UNKNOWN_LABEL = {
     "social_profile": "company-owned social profiles", "registered_workplace": "registered workplaces",
     "parent_company": "parent company", "state_aid_grant": "state-aid grants", "employees": "registered employee count",
     "news_item": "dated news on the company website", "signature_rule": "signature rule",
+    "tax_incentive_project": "R&D tax-incentive projects (SkatteFUNN)",
+    "research_grant": "Research Council of Norway applications and grants",
 }
 
 

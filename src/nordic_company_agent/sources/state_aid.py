@@ -200,7 +200,7 @@ async def _run(ctx, company: CompanyResult) -> None:
             "scheme": scheme_hit[0] if scheme_hit else scheme_id, "scheme_id": scheme_id,
             "purpose": purpose_hit[0] if purpose_hit else purpose_code,
             "instrument": instr_hit[0] if instr_hit else g.get("stoetteinstrument"),
-            "status": status_hit[0] if status_hit else (status_code.split(".", 1)[-1] or None),
+            "status": _norm_status(status_hit[0] if status_hit else (status_code.split(".", 1)[-1] or None)),
         }
         if amount is None and rng:
             lo = (rng.get("fraBeloep") or {}).get("beloep")
@@ -261,6 +261,11 @@ async def _run(ctx, company: CompanyResult) -> None:
 CACHE_NAME = "state_aid"
 
 
+def _norm_status(st):
+    """Same status text whether it came from the live API code or the dump's label."""
+    return st.strip().lower() if isinstance(st, str) and st.strip() else None
+
+
 def _from_cache(ctx, company: CompanyResult) -> bool:
     """Budget fallback: grants from the declared Støtteregisteret dump cache (0 requests).
     Returns False when no cache is available (the caller then reports 'not checked')."""
@@ -280,6 +285,7 @@ def _from_cache(ctx, company: CompanyResult) -> bool:
     claims: list[Claim] = []
     for r in rows:
         v = dict(r["value"])
+        v["status"] = _norm_status(v.get("status"))
         for k in ("amount",):
             if v.get(k) is not None:
                 v[k] = Decimal(str(v[k]))

@@ -30,6 +30,7 @@ MODULES: list[tuple[str, str, str, str, int]] = [
     ("website", "website", "company", "website_primary", 4),
     ("group", "group", "company", "group", 5),
     ("jobs", "jobs", "batch", "batch_external", 6),
+    ("public_records", "public_records", "batch", "batch_external", 6),
     ("authorisations", "authorisations", "company", "extras", 7),
     ("state_aid", "state_aid", "company", "extras", 7),
     ("account_copies", "accounts:run_copies", "company", "extras", 7),

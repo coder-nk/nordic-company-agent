@@ -1,0 +1,14 @@
+{
+  "name": "state_aid",
+  "built_at": "2026-10-13T16:55:20Z",
+  "source_url": "https://stotte.brreg.no/nb/oppslag/stoettetildeling/totalbestand/csv",
+  "source_sha256": "c2b3b6ccd3449fa37b8638320429e9904b64b2828161000ad3cec1558a1f9355",
+  "source_bytes": 306195640,
+  "source_rows": 335853,
+  "companies": 42788,
+  "rows": 252999,
+  "licence": "NLOD 2.0 (Brønnøysundregistrene)",
+  "scheme_names_from": "https://stottetiltak-registerinfo-api.app.brreg.no/api/v1/soek/stoetteordning?pageSize=10000",
+  "privacy": "recipient birth-date column dropped at read time; only organisation-number recipients kept",
+  "use": "fallback when the run budget cannot afford the live per-company Støtteregisteret search"
+}
