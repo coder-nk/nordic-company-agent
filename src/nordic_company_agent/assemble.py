@@ -40,12 +40,22 @@ def _source_evidence(c: CompanyResult, module: str, ctx: RunContext) -> list[Evi
                      extraction_method=f"{module}@check", claim_span=None, locator=None)]
 
 
+# Optional extras that the planner may skip by design on large batches. A planned budget skip is not a
+# failure of the source, so it is reported in the run report (not as a per-company 'failed' state).
+OPTIONAL_MODULES = {"account_copies", "authorisations"}
+
+
+def planned_skip(module: str, out) -> bool:
+    return (module in OPTIONAL_MODULES and out is not None and out.availability == "failed"
+            and str(out.note or "").startswith("not checked: request budget"))
+
+
 def _missing_labels(c: CompanyResult, ctx: RunContext) -> list[Claim]:
     claims: list[Claim] = []
     have = {cl.field for cl in c.claims}
     for module, field in PRIMARY_FIELD.items():
         out = c.modules.get(module)
-        if out is None or out.availability == "available" or field in have:
+        if out is None or out.availability == "available" or field in have or planned_skip(module, out):
             continue
         cl = Claim(field=field, value=None, availability=out.availability, confidence=1.0,
                    note=out.note or f"{module}: {out.availability}", method=f"{module}@outcome",
@@ -128,7 +138,13 @@ def assemble_envelope(ctx: RunContext, c: CompanyResult, *, run_id: str, started
             cd["module"] = mod
         claim_dicts.append(cd)
 
-    modules = {name: out.to_dict() for name, out in sorted(c.modules.items())}
+    modules = {}
+    for name, out in sorted(c.modules.items()):
+        if planned_skip(name, out):
+            sk = ctx.shared.setdefault("planned_skips", {})
+            sk[name] = sk.get(name, 0) + 1
+            continue
+        modules[name] = out.to_dict()
     reg_changed = (c.data.get("registry_feed") or {}).get("last_change_at")
     changes, carried = diff(previous, claim_dicts, modules, run_id=run_id, detected_at=completed_at,
                             registry_changed_at=reg_changed)

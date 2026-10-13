@@ -197,6 +197,7 @@ def cmd_run(a: argparse.Namespace) -> int:
             if result.ctx.shared.get(flag):
                 report[flag] = result.ctx.shared[flag]
         report["bulk"] = result.ctx.shared.get("bulk_report")
+        report["optional_modules_skipped_by_budget"] = result.ctx.shared.get("planned_skips", {})
         (out_dir / "run-report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2, default=str) + "\n")
         if a.report:
             Path(a.report).parent.mkdir(parents=True, exist_ok=True)
