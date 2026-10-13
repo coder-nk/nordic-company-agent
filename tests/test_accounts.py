@@ -503,8 +503,10 @@ def test_copy_years(tmp_path):
 
 
 def test_copy_rate_limit_stops_below_floor(tmp_path):
+    """With little run time left the copy call is skipped instead of waiting for the rate window."""
     async def go():
         ctx = make_ctx(tmp_path, ("accounts", "account_copies"))
+        ctx.config.time_budget_s = 300  # < 10 min left: do not wait for the rate window
         a, b = make_company("923609016", "ASA"), make_company("984851006", "ASA")
         with respx.mock(assert_all_called=False) as router:
             router.get(f"{BASE}/aarsregnskap/kopi/923609016/aar").mock(return_value=_kopi("923609016", "3"))
