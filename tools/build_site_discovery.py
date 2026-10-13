@@ -204,8 +204,9 @@ async def crawl_one(client: BudgetedClient, e: dict, host: str) -> dict:
         try:
             res = await client.get(u, source="discovery", headers={"Accept": BROWSER_ACCEPT}, respect_robots=True,
                                    public_only=True, max_bytes=1_500_000, retries=0, max_redirects=6)
-        except RobotsDisallowed:
+        except RobotsDisallowed as exc:
             rec["robots_blocked"] = True
+            rec["robots_reason"] = str(exc)[-90:]
             break
         except UnsafeURL as exc:
             errors.append(f"unsafe:{exc}"[:80])
@@ -323,6 +324,56 @@ async def phase_crawl(concurrency: int, limit: int | None, max_prio: int, shard:
 
 
 # --------------------------------------------------------------------------- phase 4
+TRANSIENT = ("ConnectTimeout", "ReadTimeout", "PoolTimeout", "WriteTimeout", "ConnectError", "RemoteProtocolError",
+             "ReadError", "crawl:TimeoutError")
+
+
+def _transient(r: dict) -> bool:
+    if r.get("pages"):
+        return False
+    if r.get("robots_blocked"):
+        return "timed out" in (r.get("robots_reason") or "timed out")  # old records lack a reason
+    errs = r.get("errors") or []
+    return bool(errs) and all(e.split(":")[0] in TRANSIENT or e.startswith("crawl:") for e in errs)
+
+
+async def phase_recrawl(concurrency: int) -> None:
+    """Re-crawl keys whose only failures were transient network errors (timeouts/connection resets)."""
+    last = {}
+    for f in crawl_files():
+        for r in read_jsonl(f):
+            last[r["key"]] = r
+    keys = {k for k, r in last.items() if _transient(r)}
+    dns_ok = {r["key"]: r["host"] for r in read_jsonl(WORK / "dns.jsonl") if r.get("ok")}
+    todo = [e for e in read_jsonl(WORK / "domains.jsonl.gz") if e["key"] in keys and e["key"] in dns_ok]
+    log(f"recrawl: {len(todo)} keys with only transient errors")
+    client = BudgetedClient(max_requests=10 ** 9, timeout=20.0, max_connections=concurrency * 2,
+                            record_calls=False, max_body_bytes=1_500_000)
+    out = (WORK / "crawl-retry.jsonl").open("a", encoding="utf-8")
+    sem = asyncio.Semaphore(concurrency)
+    stats = Counter()
+
+    async def one(e: dict) -> None:
+        async with sem:
+            try:
+                rec = await asyncio.wait_for(crawl_one(client, e, dns_ok[e["key"]]), timeout=150)
+            except Exception as exc:
+                rec = {"key": e["key"], "host": dns_ok[e["key"]], "kinds": e["kinds"], "targets": e["orgnrs"],
+                       "pages": [], "errors": ["crawl:" + type(exc).__name__]}
+            out.write(json.dumps(rec, ensure_ascii=False) + "\n")
+            stats["done"] += 1
+            stats["reach"] += bool(rec["pages"])
+            stats["hit"] += any(p.get("target_hits") for p in rec["pages"])
+
+    for i in range(0, len(todo), 1000):
+        await asyncio.gather(*(one(e) for e in todo[i:i + 1000]))
+        out.flush()
+        client._robots.clear(); client._robots_locks.clear(); client._gates.clear()
+        log(f"recrawl {min(i + 1000, len(todo))}/{len(todo)} {dict(stats)}")
+    out.close()
+    await client.aclose()
+
+
 def phase_join() -> None:
     by_key = {}
     for f in crawl_files():
@@ -403,7 +454,7 @@ def phase_domains(bulk: Path) -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("phase", choices=["candidates", "dns", "crawl", "join", "domains", "all"])
+    ap.add_argument("phase", choices=["candidates", "dns", "crawl", "recrawl", "join", "domains", "all"])
     ap.add_argument("--universe", default=str(ROOT / "data" / "signalpost-company-universe-2025.jsonl.gz"))
     ap.add_argument("--bulk", default=str(ROOT / "data" / "bulk" / "enheter.csv.gz"))
     ap.add_argument("--nameserver", default=os.environ.get("NCA_DNS", "10.184.0.11"))
@@ -420,6 +471,8 @@ def main() -> None:
         asyncio.run(phase_dns(a.nameserver, a.dns_concurrency))
     if a.phase in ("crawl", "all"):
         asyncio.run(phase_crawl(a.concurrency, a.limit, a.max_prio, a.shard, a.shards))
+    if a.phase == "recrawl":
+        asyncio.run(phase_recrawl(a.concurrency))
     if a.phase in ("join", "all"):
         phase_join()
     if a.phase in ("domains", "all"):

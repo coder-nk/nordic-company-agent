@@ -255,10 +255,32 @@ async def run_batch(orgnrs: list[str], config: RunConfig, invalid: list[dict[str
         times = [p.get("run", {}).get("completed_at") for p in previous.values() if p.get("run")]
         if times:
             ctx.shared["previous_checked_at"] = min(t for t in times if t)
+    # Hard wall-clock guard: whatever a module or host does, stop gathering with enough time left to
+    # assemble and write one envelope per company.
+    reserve_s = min(180.0, 30.0 + 0.08 * len(companies))
+    timings: dict[str, int] = {}
     try:
-        timings = await run_modules(ctx, companies)
+        timings = await asyncio.wait_for(run_modules(ctx, companies),
+                                         timeout=max(20.0, config.time_budget_s - reserve_s))
+    except asyncio.TimeoutError:
+        ctx.shared["timed_out"] = True
     finally:
-        await ctx.client.aclose()
+        task = ctx.shared.pop("_bulk_task", None)
+        if task is not None and not task.done():
+            task.cancel()
+        try:
+            await asyncio.wait_for(ctx.client.aclose(), timeout=10)
+        except Exception:
+            pass
+    for c in companies:
+        for name, *_rest in MODULES:
+            if ctx.module_enabled(name) and name not in c.modules and (
+                    name == "registry" or c.data.get("identity", {}).get("match_status") == "exact"):
+                c.outcome(ModuleOutcome(name, "failed", note="not checked: run time budget exhausted"))
+        if "identity" not in c.data:
+            c.data["identity"] = {"match_status": "error", "confidence": 0.0, "method": "none",
+                                  "checks": [{"name": "registry_lookup", "passed": False,
+                                              "detail": "registry lookup did not complete within the time budget"}]}
     completed = utc_iso()
     envelopes = []
     for c in companies:
