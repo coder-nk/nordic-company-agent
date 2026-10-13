@@ -231,7 +231,10 @@ def build_summary(claims: list[dict[str, Any]], modules: dict[str, dict[str, Any
         if npf:
             parts.append(f"a net result of {_money(npf['value'], cur)}")
         if parts:
-            txt = f"In its {yr} {scope_txt} accounts"
+            end = str(per.get("end") or "")
+            fy = f"{yr} {scope_txt} accounts" if (not end or end.endswith("-12-31")) else \
+                f"{scope_txt} accounts for the fiscal year ending {end}"
+            txt = f"In its {fy}"
             if days is not None and days < 300:
                 txt += f" (a short {days}-day period)"
             txt += " it reported " + (", ".join(parts[:-1]) + " and " + parts[-1] if len(parts) > 1 else parts[0]) + "."
