@@ -30,6 +30,13 @@ for measurement.
   * 225 evidence spans were rebuilt rather than copied (now all cut verbatim from the stored source);
   * meaningless growth figures (now suppressed for partial first years and sign changes).
 
+## Website identity-gate audits (independent, adversarial, live re-checks)
+| round | sample | published sites | wrong-company websites | wrong contact/social facts | action |
+|---|---|---|---|---|---|
+| 1 | 60 sites from profiles-1000 (first gate) | 60 | 3 (+3 doubtful) | several (regional/foreign mailboxes) | gate rules: keep locale base path after cross-domain redirects; sister/foreign-entity and shared-host rules; case-sensitive legal names; shared registry contacts don't corroborate; generic mailboxes only. L2 refused on any group site. |
+| 2 | 250 fresh companies with discovery leads | 240 (all L1) | 3 (+2 doubtful) | 7 | org numbers inside group-company lists and misnamed hits no longer prove identity; parent © footers; foreign HQ blocks; foreign phone prefixes; authority and invoice mailboxes; truncated handles |
+| 3 | 300 fresh (150 registry-site-only, 150 with leads) | *pending* | | | |
+
 ## Refresh
 * Re-running 50 companies against their previous envelopes: **0 changes** (idempotent). Sources disabled or
   failed in the second run were carried forward as `stale`, never reported as removed.
