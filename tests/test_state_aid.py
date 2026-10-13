@@ -151,3 +151,36 @@ def test_lookups_shared_across_companies(tmp_path):
         run(ctx, [a, b])
         assert search.call_count == 2 and schemes.call_count == 1
     assert [c.id for c in a.claims] == [c.id for c in b.claims]
+
+
+def test_budget_fallback_uses_declared_dump_cache(tmp_path):
+    import gzip as _gz
+    import json as _json
+    cache = tmp_path / "cache"
+    cache.mkdir()
+    row = {"organisation_number": "923609016", "record_id": "1000307993", "total_grants": 80,
+           "value": {"date": "2026-09-07", "amount": "14118201.16", "currency": "NOK", "grantor": "SKATTEETATEN",
+                     "grantor_organisation_number": "974761076", "scheme": "Regionalt DA 2026-",
+                     "scheme_id": "1000029830", "purpose": "Regionalstøtte",
+                     "instrument": "Skatte- eller avgiftsfritak", "status": "Registrert"},
+           "span_cells": ["1000307993", "923609016", "SKATTEETATEN", "07.09.2026", "14118201,16"],
+           "row_key": "csv line 42"}
+    with _gz.open(cache / "state_aid.jsonl.gz", "wt", encoding="utf-8") as fh:
+        fh.write(_json.dumps(row) + "\n")
+    (cache / "state_aid.meta.json").write_text(_json.dumps({"built_at": "2026-10-13T16:50:00Z",
+        "source_url": "https://stotte.brreg.no/nb/oppslag/stoettetildeling/totalbestand/csv", "source_sha256": "a" * 64}))
+    from nordic_company_agent.context import RunConfig, RunContext
+    from nordic_company_agent.envelope import CompanyResult as _CR
+    ctx = RunContext(RunConfig(run_id="t", out_dir=tmp_path, cache_dir=cache, max_requests=0))
+    c = _CR("923609016")
+    c.data["identity"] = {"match_status": "exact"}
+    asyncio.run(state_aid.run(ctx, c))
+    assert ctx.client.used == 0 and c.modules["state_aid"].availability == "available"
+    g = [x for x in c.claims if x.field == "state_aid_grant"][0]
+    assert g.value["amount"] == Decimal("14118201.16") and g.qualifier == "1000307993"
+    assert g.evidence[0].locator == "csv line 42" and "14118201,16" in g.evidence[0].claim_span
+    other = _CR("810034882")
+    other.data["identity"] = {"match_status": "exact"}
+    asyncio.run(state_aid.run(ctx, other))
+    assert other.modules["state_aid"].availability == "not_available"
+    asyncio.run(ctx.client.aclose())

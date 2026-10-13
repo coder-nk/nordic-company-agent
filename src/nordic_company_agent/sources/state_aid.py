@@ -140,6 +140,8 @@ async def _run(ctx, company: CompanyResult) -> None:
                                       note="identity not confirmed as an exact organisation-number match"))
         return
     if not ctx.allow(TIER, 1):
+        if _from_cache(ctx, company):
+            return
         company.outcome(ModuleOutcome(MODULE, "failed", note=BUDGET_NOTE))
         return
     body = request_body(o)
@@ -254,3 +256,55 @@ async def _run(ctx, company: CompanyResult) -> None:
         note += " (first 100 by received date checked)"
     company.outcome(ModuleOutcome(MODULE, "available", note=note, source_url=SEARCH_URL, retrieved_at=retrieved_at,
                                   http_status=res.status))
+
+
+CACHE_NAME = "state_aid"
+
+
+def _from_cache(ctx, company: CompanyResult) -> bool:
+    """Budget fallback: grants from the declared Støtteregisteret dump cache (0 requests).
+    Returns False when no cache is available (the caller then reports 'not checked')."""
+    meta = ctx.caches.meta(CACHE_NAME)
+    if not meta:
+        return False
+    rows = ctx.caches.jsonl_index(CACHE_NAME).get(company.organisation_number, [])
+    built = meta.get("built_at")
+    via = f"declared cache cache/{CACHE_NAME}.jsonl.gz (built {built} from the full register dump)"
+    if not rows:
+        company.data["state_aid"] = {"grant_count": 0, "source": "cache"}
+        company.outcome(ModuleOutcome(MODULE, "not_available", source_url=meta.get("source_url"), retrieved_at=built,
+                                      note=f"no grants with this organisation number as recipient in the "
+                                           f"Støtteregisteret dump of {built[:10] if built else 'n/a'} (live search "
+                                           f"skipped: request budget)"))
+        return True
+    claims: list[Claim] = []
+    for r in rows:
+        v = dict(r["value"])
+        for k in ("amount",):
+            if v.get(k) is not None:
+                v[k] = Decimal(str(v[k]))
+        if isinstance(v.get("amount_range"), dict):
+            v["amount_range"] = {k2: (Decimal(str(x)) if k2 in ("from", "to") and x is not None else x)
+                                 for k2, x in v["amount_range"].items()}
+        nr = r.get("record_id")
+        cur = v.get("currency")
+        disp_amt = _fmt_amount(v["amount"], cur) if v.get("amount") is not None else (
+            "amount interval" if v.get("amount_range") else "amount not stated")
+        ev = Evidence(source_url=meta.get("source_url"), source_class=OFFICIAL_STATE_AID, source_name=SOURCE_NAME,
+                      retrieved_at=built, content_sha256=meta.get("source_sha256"),
+                      claim_span=";".join(f'"{c}"' for c in r.get("span_cells") or [])[:300] or None,
+                      locator=r.get("row_key"), extraction_method=f"{VERSION}:dump_cache", page_url=grant_page(nr),
+                      effective_at=v.get("date"), licence=NLOD, retrieved_via=via)
+        claims.append(Claim(field="state_aid_grant", value=v, evidence=[ev], qualifier=nr, confidence=0.95,
+                            display=f"{v.get('date')}: {disp_amt} from {v.get('grantor') or 'n/a'}"
+                                    f" ({v.get('scheme') or 'no scheme'})",
+                            effective_at=v.get("date"), method="stoetteregisteret_dump_recipient_orgnr",
+                            note=f"from the register dump of {built[:10] if built else 'n/a'}; newer grants may exist"))
+    company.add(claims)
+    total = rows[0].get("total_grants") or len(rows)
+    company.data["state_aid"] = {"grant_count": total, "published": len(claims), "source": "cache",
+                                 "latest_date": rows[0]["value"].get("date")}
+    company.outcome(ModuleOutcome(MODULE, "available", source_url=meta.get("source_url"), retrieved_at=built,
+                                  note=f"{total} grants in the register dump of {built[:10] if built else 'n/a'} "
+                                       f"(live search skipped: request budget)"))
+    return True
