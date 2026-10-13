@@ -1,0 +1,275 @@
+{
+    "@graph": [
+        {
+            "@id": "_:b0",
+            "@type": "br:Finansinntekt"
+        },
+        {
+            "@id": "_:b1",
+            "br:morselskap": {
+                "@value": "false",
+                "@type": "xsd:boolean"
+            },
+            "br:organisasjonsform": "AS",
+            "br:organisasjonsnummer": "935450918",
+            "org:organization": {
+                "@id": "https://organization-catalog.fellesdatakatalog.digdir.no/organizations/935450918"
+            },
+            "@type": "br:Virksomhet"
+        },
+        {
+            "@id": "_:b2",
+            "@type": "br:Anleggsmidler"
+        },
+        {
+            "@id": "_:b3",
+            "@type": "br:LangsiktigGjeld"
+        },
+        {
+            "@id": "_:b4",
+            "br:finanskostnad": {
+                "@id": "_:b5"
+            },
+            "br:finansinntekt": {
+                "@id": "_:b0"
+            },
+            "br:nettoFinans": {
+                "@value": "-10436.00",
+                "@type": "xsd:decimal"
+            },
+            "@type": "br:Finansresultat"
+        },
+        {
+            "@id": "_:b5",
+            "br:sumFinanskostnad": {
+                "@value": "10436.00",
+                "@type": "xsd:decimal"
+            },
+            "br:annenRentekostnad": {
+                "@value": "10316.00",
+                "@type": "xsd:decimal"
+            },
+            "@type": "br:Finanskostnad"
+        },
+        {
+            "@id": "_:b6",
+            "br:gjeldOversikt": {
+                "@id": "_:b7"
+            },
+            "br:egenkapital": {
+                "@id": "_:b8"
+            },
+            "br:sumEgenkapitalGjeld": {
+                "@value": "4874.00",
+                "@type": "xsd:decimal"
+            },
+            "@type": "br:EgenkapitalGjeld"
+        },
+        {
+            "@id": "_:b7",
+            "br:opptjentEgenkapital": {
+                "@id": "_:b9"
+            },
+            "br:langsiktigGjeld": {
+                "@id": "_:b3"
+            },
+            "br:sumGjeld": {
+                "@value": "380909.00",
+                "@type": "xsd:decimal"
+            },
+            "@type": "br:GjeldOversikt"
+        },
+        {
+            "@id": "_:b8",
+            "br:opptjentEgenkapital": {
+                "@id": "_:b20"
+            },
+            "br:innskuttEgenkapital": {
+                "@id": "_:b12"
+            },
+            "br:sumEgenkapital": {
+                "@value": "-376035.00",
+                "@type": "xsd:decimal"
+            },
+            "@type": "br:Egenkapital"
+        },
+        {
+            "@id": "_:b9",
+            "br:sumKortsiktigGjeld": {
+                "@value": "380909.00",
+                "@type": "xsd:decimal"
+            },
+            "@type": "br:KortsiktigGjeld"
+        },
+        {
+            "@id": "_:b10",
+            "br:omloepsmidler": {
+                "@id": "_:b11"
+            },
+            "br:anleggsmidler": {
+                "@id": "_:b2"
+            },
+            "br:sumEiendeler": {
+                "@value": "4875.00",
+                "@type": "xsd:decimal"
+            },
+            "br:sumBankinnskuddOgKontanter": {
+                "@value": "4875.00",
+                "@type": "xsd:decimal"
+            },
+            "@type": "br:Eiendeler"
+        },
+        {
+            "@id": "_:b11",
+            "br:sumOmloepsmidler": {
+                "@value": "4875.00",
+                "@type": "xsd:decimal"
+            },
+            "@type": "br:Omloepsmidler"
+        },
+        {
+            "@id": "_:b12",
+            "br:sumInnskuttEgenkaptial": {
+                "@value": "23500.00",
+                "@type": "xsd:decimal"
+            },
+            "@type": "br:InnskuttEgenkapital"
+        },
+        {
+            "@id": "_:b13",
+            "schema:endDate": {
+                "@value": "2025-12-31",
+                "@type": "xsd:date"
+            },
+            "schema:startDate": {
+                "@value": "2025-03-11",
+                "@type": "xsd:date"
+            },
+            "@type": "dct:PeriodOfTime"
+        },
+        {
+            "@id": "http://data.brreg.no/regnskapsregisteret/regnskap/935450918/6695364",
+            "br:avviklingsregnskap": {
+                "@value": "false",
+                "@type": "xsd:boolean"
+            },
+            "br:virksomhet": {
+                "@id": "_:b1"
+            },
+            "@type": "br:Regnskap",
+            "br:regnskapsprinsipper": {
+                "@id": "_:b14"
+            },
+            "br:oppstillingsplan": "store",
+            "br:resultatregnskapResultat": {
+                "@id": "_:b15"
+            },
+            "br:eiendeler": {
+                "@id": "_:b10"
+            },
+            "br:revisjon": {
+                "@id": "_:b16"
+            },
+            "dct:identifier": "6695364",
+            "br:egenkapitalGjeld": {
+                "@id": "_:b6"
+            },
+            "schema:currency": "NOK",
+            "br:regnskapsperiode": {
+                "@id": "_:b13"
+            }
+        },
+        {
+            "@id": "_:b14",
+            "br:regnskapsregler": "regnskapslovenAlminneligRegler",
+            "br:smaaForetak": {
+                "@value": "true",
+                "@type": "xsd:boolean"
+            },
+            "@type": "br:Regnskapsprinsipper"
+        },
+        {
+            "@id": "_:b15",
+            "br:finansresultat": {
+                "@id": "_:b4"
+            },
+            "br:driftsresultat": {
+                "@id": "_:b18"
+            },
+            "br:ordinaertResultatFoerSkattekostnad": {
+                "@value": "-399534.00",
+                "@type": "xsd:decimal"
+            },
+            "br:aarsresultat": {
+                "@value": "-399534.00",
+                "@type": "xsd:decimal"
+            },
+            "@type": "br:ResultatregnskapResultat"
+        },
+        {
+            "@id": "_:b16",
+            "br:fravalgRevisjon": {
+                "@value": "true",
+                "@type": "xsd:boolean"
+            },
+            "br:ikkeRevidertAarsregnskap": {
+                "@value": "false",
+                "@type": "xsd:boolean"
+            },
+            "@type": "br:Revisjon"
+        },
+        {
+            "@id": "_:b17",
+            "br:sumDriftskostnad": {
+                "@value": "981530.00",
+                "@type": "xsd:decimal"
+            },
+            "br:loennskostnad": {
+                "@value": "808630.00",
+                "@type": "xsd:decimal"
+            },
+            "@type": "br:Driftskostnad"
+        },
+        {
+            "@id": "_:b18",
+            "br:driftskostnad": {
+                "@id": "_:b17"
+            },
+            "br:driftsinntekter": {
+                "@id": "_:b19"
+            },
+            "br:sumDriftsresultat": {
+                "@value": "-389098.00",
+                "@type": "xsd:decimal"
+            },
+            "@type": "br:Driftsresultat"
+        },
+        {
+            "@id": "_:b19",
+            "br:sumDriftsinntekter": {
+                "@value": "592432.00",
+                "@type": "xsd:decimal"
+            },
+            "br:salgsinntekter": {
+                "@value": "592432.00",
+                "@type": "xsd:decimal"
+            },
+            "@type": "br:Driftsinntekter"
+        },
+        {
+            "@id": "_:b20",
+            "br:sumOpptjentEgenkapital": {
+                "@value": "-399535.00",
+                "@type": "xsd:decimal"
+            },
+            "@type": "br:OpptjentEgenkapital"
+        }
+    ],
+    "@context": {
+        "br": "https://github.com/Informasjonsforvaltning/regnskapsregister-api/blob/develop/src/main/resources/ontology/regnskapsregister.owl#",
+        "schema": "http://schema.org/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "dct": "http://purl.org/dc/terms/",
+        "org": "http://www.w3.org/ns/org#"
+    }
+}

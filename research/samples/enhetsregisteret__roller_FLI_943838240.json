@@ -1,0 +1,367 @@
+{
+ "_request": {
+  "url": "https://data.brreg.no/enhetsregisteret/api/enheter/943838240/roller",
+  "status": 200,
+  "retrieved_at": "2026-10-13T11:42:20Z",
+  "headers": {
+   "vary": "Origin",
+   "x-content-type-options": "nosniff",
+   "x-xss-protection": "0",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "pragma": "no-cache",
+   "expires": "0",
+   "strict-transport-security": "max-age=157680000; includeSubDomains",
+   "x-frame-options": "DENY",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:38:14 GMT",
+   "connection": "close"
+  }
+ },
+ "body": {
+  "_links": {
+   "self": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/enheter/943838240/roller"
+   },
+   "enhet": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/enheter/943838240"
+   }
+  },
+  "rollegrupper": [
+   {
+    "roller": [
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Kaasa",
+        "fornavn": "Randi",
+        "mellomnavn": "Versto"
+       }
+      },
+      "rekkefolge": 0,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/DAGL"
+        }
+       },
+       "beskrivelse": "Daglig leder",
+       "kode": "DAGL"
+      }
+     },
+     {
+      "avregistrert": true,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Kjos",
+        "fornavn": "Stine Pernille",
+        "mellomnavn": "Hauge"
+       }
+      },
+      "rekkefolge": 1,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/DAGL"
+        }
+       },
+       "beskrivelse": "Daglig leder",
+       "kode": "DAGL"
+      }
+     }
+    ],
+    "sistEndret": "2025-10-24",
+    "type": {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/roller/rollegruppetyper/DAGL"
+      }
+     },
+     "beskrivelse": "Daglig leder",
+     "kode": "DAGL"
+    }
+   },
+   {
+    "roller": [
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Holmen",
+        "fornavn": "Martin"
+       }
+      },
+      "rekkefolge": 0,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/LEDE"
+        }
+       },
+       "beskrivelse": "Styrets leder",
+       "kode": "LEDE"
+      }
+     },
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Oulie",
+        "fornavn": "Pål-Arne"
+       }
+      },
+      "rekkefolge": 1,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/MEDL"
+        }
+       },
+       "beskrivelse": "Styremedlem",
+       "kode": "MEDL"
+      }
+     },
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Moe",
+        "fornavn": "Elin"
+       }
+      },
+      "rekkefolge": 2,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/MEDL"
+        }
+       },
+       "beskrivelse": "Styremedlem",
+       "kode": "MEDL"
+      }
+     },
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Stråtveit",
+        "fornavn": "Steffen"
+       }
+      },
+      "rekkefolge": 3,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/MEDL"
+        }
+       },
+       "beskrivelse": "Styremedlem",
+       "kode": "MEDL"
+      }
+     },
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Hjelsvold",
+        "fornavn": "Berit",
+        "mellomnavn": "Sollie"
+       }
+      },
+      "rekkefolge": 4,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/MEDL"
+        }
+       },
+       "beskrivelse": "Styremedlem",
+       "kode": "MEDL"
+      }
+     },
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Eineteig",
+        "fornavn": "Kristin"
+       }
+      },
+      "rekkefolge": 5,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/MEDL"
+        }
+       },
+       "beskrivelse": "Styremedlem",
+       "kode": "MEDL"
+      }
+     },
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Molvik",
+        "fornavn": "Leif-Helge"
+       }
+      },
+      "rekkefolge": 6,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/MEDL"
+        }
+       },
+       "beskrivelse": "Styremedlem",
+       "kode": "MEDL"
+      }
+     },
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Pedersen",
+        "fornavn": "Kjetil",
+        "mellomnavn": "Verheul"
+       }
+      },
+      "rekkefolge": 7,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/VARA"
+        }
+       },
+       "beskrivelse": "Varamedlem",
+       "kode": "VARA"
+      }
+     },
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Lundberg",
+        "fornavn": "Julie",
+        "mellomnavn": "Kynø"
+       }
+      },
+      "rekkefolge": 8,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/VARA"
+        }
+       },
+       "beskrivelse": "Varamedlem",
+       "kode": "VARA"
+      }
+     },
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Hatle",
+        "fornavn": "Hans Ole"
+       }
+      },
+      "rekkefolge": 9,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/VARA"
+        }
+       },
+       "beskrivelse": "Varamedlem",
+       "kode": "VARA"
+      }
+     }
+    ],
+    "sistEndret": "2026-09-15",
+    "type": {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/roller/rollegruppetyper/STYR"
+      }
+     },
+     "beskrivelse": "Styre",
+     "kode": "STYR"
+    }
+   },
+   {
+    "roller": [
+     {
+      "avregistrert": false,
+      "enhet": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/enheter/935174627"
+        }
+       },
+       "erSlettet": false,
+       "godkjenningsstatus": "Godkjent revisjonsforetak",
+       "navn": [
+        "KPMG AS"
+       ],
+       "organisasjonsform": {
+        "_links": {
+         "self": {
+          "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/AS"
+         }
+        },
+        "beskrivelse": "Aksjeselskap",
+        "kode": "AS"
+       },
+       "organisasjonsnummer": "935174627"
+      },
+      "rekkefolge": 0,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/REVI"
+        }
+       },
+       "beskrivelse": "Revisor",
+       "kode": "REVI"
+      }
+     }
+    ],
+    "sistEndret": "2003-06-04",
+    "type": {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/roller/rollegruppetyper/REVI"
+      }
+     },
+     "beskrivelse": "Revisor",
+     "kode": "REVI"
+    }
+   }
+  ]
+ }
+}

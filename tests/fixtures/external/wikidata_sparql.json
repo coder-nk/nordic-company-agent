@@ -1,0 +1,3112 @@
+{
+  "head" : {
+    "vars" : [ "orgnr", "item", "itemLabel", "itemDescription", "prop", "st", "rank", "value", "valueLabel", "extra" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11964312"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://no.wikipedia.org/wiki/DIPS"
+      },
+      "extra" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "DIPS"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "sitelink"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "979543883"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "DIPS"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://no.wikipedia.org/wiki/DIPS"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19379205"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://no.wikipedia.org/wiki/Lemmink%C3%A4inen_Norge"
+      },
+      "extra" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Lemminkäinen Norge"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "sitelink"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "983065309"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Lemminkäinen Norge"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://no.wikipedia.org/wiki/Lemmink%C3%A4inen_Norge"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://nn.wikipedia.org/wiki/Equinor"
+      },
+      "extra" : {
+        "xml:lang" : "nn",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "sitelink"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://nn.wikipedia.org/wiki/Equinor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk oljeselskap"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://no.wikipedia.org/wiki/Equinor"
+      },
+      "extra" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "sitelink"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://no.wikipedia.org/wiki/Equinor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk oljeselskap"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q80788"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://no.wikipedia.org/wiki/DNB_Bank"
+      },
+      "extra" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "DNB Bank"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "sitelink"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "984851006"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "DNB Bank"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://no.wikipedia.org/wiki/DNB_Bank"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk bank"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q511031"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://no.wikipedia.org/wiki/Norsk_Hydro"
+      },
+      "extra" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Norsk Hydro"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "sitelink"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "914778271"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Norsk Hydro"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://no.wikipedia.org/wiki/Norsk_Hydro"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk industrikonsern innen aluminium- og kraftproduksjon, tidligere også kunstgjødsel og petroleum"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q845632"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://no.wikipedia.org/wiki/Telenor"
+      },
+      "extra" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Telenor"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "sitelink"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "982463718"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Telenor"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://no.wikipedia.org/wiki/Telenor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "multinasjonalt teleselskap"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q80788"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/DNB_Bank"
+      },
+      "extra" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "DNB Bank"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "sitelink"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "984851006"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "DNB Bank"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://en.wikipedia.org/wiki/DNB_Bank"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk bank"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q511031"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Norsk_Hydro"
+      },
+      "extra" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Norsk Hydro"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "sitelink"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "914778271"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Norsk Hydro"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://en.wikipedia.org/wiki/Norsk_Hydro"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk industrikonsern innen aluminium- og kraftproduksjon, tidligere også kunstgjødsel og petroleum"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q845632"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Telenor"
+      },
+      "extra" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Telenor"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "sitelink"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "982463718"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Telenor"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://en.wikipedia.org/wiki/Telenor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "multinasjonalt teleselskap"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Equinor"
+      },
+      "extra" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "sitelink"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://en.wikipedia.org/wiki/Equinor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk oljeselskap"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q80788"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://nn.wikipedia.org/wiki/DNB"
+      },
+      "extra" : {
+        "xml:lang" : "nn",
+        "type" : "literal",
+        "value" : "DNB"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "sitelink"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "984851006"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "DNB Bank"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://nn.wikipedia.org/wiki/DNB"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk bank"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q511031"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://nn.wikipedia.org/wiki/Norsk_Hydro"
+      },
+      "extra" : {
+        "xml:lang" : "nn",
+        "type" : "literal",
+        "value" : "Norsk Hydro"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "sitelink"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "914778271"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Norsk Hydro"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://nn.wikipedia.org/wiki/Norsk_Hydro"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk industrikonsern innen aluminium- og kraftproduksjon, tidligere også kunstgjødsel og petroleum"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q845632"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://nn.wikipedia.org/wiki/Telenor"
+      },
+      "extra" : {
+        "xml:lang" : "nn",
+        "type" : "literal",
+        "value" : "Telenor"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "sitelink"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "982463718"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Telenor"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://nn.wikipedia.org/wiki/Telenor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "multinasjonalt teleselskap"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q80788"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P2013"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q80788-E637B87A-ACF6-485B-BE06-54E0C5F014DD"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "dnb"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "984851006"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "DNB Bank"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk bank"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "dnb"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q80788"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P1278"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q80788-2E99DC5D-F14B-4BC1-84E1-E1764BBA6F26"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "549300GKFG0RYRRQ1414"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "984851006"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "DNB Bank"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk bank"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "549300GKFG0RYRRQ1414"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q80788"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P946"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q80788-36836D47-788E-4B5D-85FC-FFA3557E115B"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "NO0010161896"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "984851006"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "DNB Bank"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk bank"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "NO0010161896"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q80788"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P2397"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q80788-0178a4d4-46ca-1acf-04e6-eb99cdf7d14b"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "UCKNvAlRIR_ixP4EWDrhxJUA"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "984851006"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "DNB Bank"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk bank"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "UCKNvAlRIR_ixP4EWDrhxJUA"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q80788"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P571"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q80788-8FBBA1F0-116E-4CFA-B42F-8F010161016F"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2002-09-10T00:00:00Z"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "984851006"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "DNB Bank"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk bank"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "2002-09-10T00:00:00Z"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q80788"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P856"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q80788-9A73437B-05EB-450E-8018-3837B4015D44"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://www.dnb.no/"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "984851006"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "DNB Bank"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk bank"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://www.dnb.no/"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q80788"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P159"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q80788-FB5F2B0D-27DF-4450-AB11-3C4013B14146"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q585"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "984851006"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "DNB Bank"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk bank"
+      },
+      "valueLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Oslo"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q80788"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P414"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q80788-127CCD39-04FC-444F-80F9-D2E1F4587A27"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q909158"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "984851006"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "DNB Bank"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk bank"
+      },
+      "valueLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Oslo Børs"
+      },
+      "extra" : {
+        "type" : "literal",
+        "value" : "DNB"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q511031"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P1278"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q511031-CB69DA8F-03D9-42D3-B936-FCE7C3DEE486"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "549300N1SDN71ZZ8BO45"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "914778271"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Norsk Hydro"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk industrikonsern innen aluminium- og kraftproduksjon, tidligere også kunstgjødsel og petroleum"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "549300N1SDN71ZZ8BO45"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q511031"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P946"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q511031-8FC139EB-89EB-468C-A06D-8D5D6C6590A1"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "NO0005052605"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "914778271"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Norsk Hydro"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk industrikonsern innen aluminium- og kraftproduksjon, tidligere også kunstgjødsel og petroleum"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "NO0005052605"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q511031"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P4264"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q511031-d0f1edb5-4600-4839-9554-276a2ee84a91"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "norsk-hydro"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "914778271"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Norsk Hydro"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk industrikonsern innen aluminium- og kraftproduksjon, tidligere også kunstgjødsel og petroleum"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "norsk-hydro"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q511031"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P2002"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q511031-0744de49-4bc4-9acc-1789-ae296432f29f"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "norskhydroasa"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "914778271"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Norsk Hydro"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk industrikonsern innen aluminium- og kraftproduksjon, tidligere også kunstgjødsel og petroleum"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "norskhydroasa"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q511031"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P2013"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q511031-3aae8392-4f42-e9b4-1c6c-7fe1be35e928"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "norskhydroasa"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "914778271"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Norsk Hydro"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk industrikonsern innen aluminium- og kraftproduksjon, tidligere også kunstgjødsel og petroleum"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "norskhydroasa"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q511031"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P2003"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q511031-44810ea1-4663-fb6a-0376-df32b2cb3b37"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "norskhydroasa"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "914778271"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Norsk Hydro"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk industrikonsern innen aluminium- og kraftproduksjon, tidligere også kunstgjødsel og petroleum"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "norskhydroasa"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q511031"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P2397"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q511031-3DC8F0E8-3F24-41CB-A204-467D3EA3F55D"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "UCEOwf5jNlgcSFdjxEZootow"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "914778271"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Norsk Hydro"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk industrikonsern innen aluminium- og kraftproduksjon, tidligere også kunstgjødsel og petroleum"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "UCEOwf5jNlgcSFdjxEZootow"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q511031"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P571"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q511031-31A8A2A5-9B03-401B-A472-25A731C4C395"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1905-12-02T00:00:00Z"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "914778271"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Norsk Hydro"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk industrikonsern innen aluminium- og kraftproduksjon, tidligere også kunstgjødsel og petroleum"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "1905-12-02T00:00:00Z"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q511031"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P856"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q511031-9EB212AD-E47A-4487-BC0B-9F95388C3B16"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://hydro.com"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "914778271"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Norsk Hydro"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk industrikonsern innen aluminium- og kraftproduksjon, tidligere også kunstgjødsel og petroleum"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://hydro.com"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q511031"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P159"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q511031-DAADD3FE-3D4D-47F1-801A-A97810CADBD8"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q585"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "914778271"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Norsk Hydro"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk industrikonsern innen aluminium- og kraftproduksjon, tidligere også kunstgjødsel og petroleum"
+      },
+      "valueLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Oslo"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q511031"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P414"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q511031-5CE4F857-E251-4827-BEFD-1E6BB3B51231"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q909158"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "914778271"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Norsk Hydro"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk industrikonsern innen aluminium- og kraftproduksjon, tidligere også kunstgjødsel og petroleum"
+      },
+      "valueLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Oslo Børs"
+      },
+      "extra" : {
+        "type" : "literal",
+        "value" : "NHY"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q845632"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P2003"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q845632-45D5B93A-894B-4668-BD68-0F6B06CF687E"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "telenorsverige"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "982463718"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Telenor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "multinasjonalt teleselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "telenorsverige"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q845632"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P4264"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q845632-48ca3218-405d-b31b-33f2-1370427d0999"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "telenor-group"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "982463718"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Telenor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "multinasjonalt teleselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "telenor-group"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q845632"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P1278"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q845632-17D9D6B3-D443-426A-9788-63F98F721847"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "549300IM1QSBY4SLPM26"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "982463718"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Telenor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "multinasjonalt teleselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "549300IM1QSBY4SLPM26"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q845632"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P946"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q845632-1DC5EA2E-7560-405A-BDC8-0E44A9C97F9C"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "NO0010063308"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "982463718"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Telenor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "multinasjonalt teleselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "NO0010063308"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q845632"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P2002"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q845632-b5868fcd-463c-97eb-bd26-3c1a305ffb31"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "telenorgroup"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "982463718"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Telenor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "multinasjonalt teleselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "telenorgroup"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q845632"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P2002"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q845632-5989849F-59B3-4E7C-9B8A-C91A37A87F52"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "TelenorGroup"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "982463718"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Telenor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "multinasjonalt teleselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "TelenorGroup"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q845632"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P2397"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q845632-EA4BC88B-5762-4B09-8BE9-B8E6C0EE100A"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "UCFhhdmypHt5Gf_ASZvLnsUQ"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "982463718"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Telenor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "multinasjonalt teleselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "UCFhhdmypHt5Gf_ASZvLnsUQ"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q845632"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P571"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q845632-EA2B94A6-03FB-4AFE-A16E-F12A8BF982F5"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1995-01-01T00:00:00Z"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "982463718"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Telenor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "multinasjonalt teleselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "1995-01-01T00:00:00Z"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q845632"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P856"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q845632-3129C606-5BFA-4ACB-BF70-3B9889EAFF21"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#PreferredRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://telenor.com"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "982463718"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Telenor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "multinasjonalt teleselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://telenor.com"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q845632"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P856"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q845632-fb42c9e3-4988-2233-2ffe-1895758705c4"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://telenor.no"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "982463718"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Telenor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "multinasjonalt teleselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://telenor.no"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q845632"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P159"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q845632-86528A58-661F-4FFD-9C43-14E28972A793"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q57076"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "982463718"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Telenor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "multinasjonalt teleselskap"
+      },
+      "valueLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Bærum"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q845632"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P414"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q845632-79AC28EC-4097-4C8E-A6C7-84751C53B34E"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q909158"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "982463718"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Telenor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "multinasjonalt teleselskap"
+      },
+      "valueLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Oslo Børs"
+      },
+      "extra" : {
+        "type" : "literal",
+        "value" : "TEL"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P2003"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q1776022-A5D2139C-92FE-494B-A6F0-76DC76563D38"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "equinor"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk oljeselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "equinor"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P2002"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q1776022-e23727b8-461b-fa73-6f2f-dbd9d2f0b47e"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "equinor"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk oljeselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "equinor"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P2013"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q1776022-d9c6d76f-4eab-0ddd-d53a-6b9cbcfa145f"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk oljeselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "Equinor"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P2002"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q1776022-fa697ac8-4eeb-37e5-1bc7-74716dfdc78b"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "Equinor_DE"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk oljeselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "Equinor_DE"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P2002"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q1776022-69ed92ba-49af-5d53-39af-86360aaa4705"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "Equinor_NA"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk oljeselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "Equinor_NA"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P2002"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q1776022-0f04e41d-4bd1-80b9-9dbf-0620ed1ee61b"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "Equinor_UK"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk oljeselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "Equinor_UK"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P2002"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q1776022-de46d246-45a6-0896-2972-689251dfab2f"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "EquinorASA"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk oljeselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "EquinorASA"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P946"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q1776022-CCCA1364-8B5A-4399-9793-7726B873DAC8"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "NO0010096985"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk oljeselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "NO0010096985"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P1278"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q1776022-BE523146-62B8-44D5-B5EB-C6FB3AC6E9A9"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "OW6OFBNCKXC4US5C7523"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk oljeselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "OW6OFBNCKXC4US5C7523"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P571"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q1776022-1f3d6a14-4747-418e-8a83-74c5ce71a900"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1972-06-14T00:00:00Z"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk oljeselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "1972-06-14T00:00:00Z"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P856"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q1776022-12f7e6c2-4010-8b90-fa57-4866b1ebd9ec"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://equinor.ar"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk oljeselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://equinor.ar"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P856"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q1776022-617ab787-4a03-11ef-df65-65c5234b21cc"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://equinor.ar/en"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk oljeselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://equinor.ar/en"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P856"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q1776022-692efae4-418a-d3fd-1324-2ff68c57611d"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://equinor.co.kr"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk oljeselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://equinor.co.kr"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P856"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q1776022-8f67315f-4c5c-4387-3ed0-8e2382350d27"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://equinor.co.kr/en"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk oljeselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://equinor.co.kr/en"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P856"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q1776022-e8a3af62-421c-ceea-ae1c-d5b4a34faf62"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://equinor.com"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk oljeselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://equinor.com"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P856"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q1776022-2882fe5c-44da-45a9-9455-820c8fe82acf"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://equinor.com.br"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk oljeselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://equinor.com.br"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P856"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q1776022-312d0a2c-43bb-9b74-6559-b38e5d154801"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://equinor.de"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk oljeselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://equinor.de"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P856"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q1776022-10d0b62b-4ada-19be-be70-8ce5f35bee6e"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://equinor.jp"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk oljeselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://equinor.jp"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P856"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q1776022-88de48b4-43c5-3dfc-4403-8431e7bca10e"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://equinor.jp/en"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk oljeselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://equinor.jp/en"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P856"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q1776022-a815735e-4d3e-5161-8a83-ae1382e66b48"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://equinor.no"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk oljeselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://equinor.no"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P856"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q1776022-30db6644-4c60-6997-6798-5a8bf5c4adac"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://equinor.pl"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk oljeselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://equinor.pl"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P856"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q1776022-2004acc5-4fef-004e-d279-fe36e3aae479"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://equinorcelticsea.co.uk"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk oljeselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://equinorcelticsea.co.uk"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P856"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q1776022-0fa5f503-48e6-ec76-f065-b842e7b83737"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://equinorstorage.de"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk oljeselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://equinorstorage.de"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P856"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q1776022-9ed1b911-4922-dc89-c0c0-a32ced0f2631"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://equinorstorage.de/en"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk oljeselskap"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://equinorstorage.de/en"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P414"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q1776022-566bd028-42b9-5260-c638-47be7f0b51b9"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q13677"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk oljeselskap"
+      },
+      "valueLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "New York Stock Exchange"
+      },
+      "extra" : {
+        "type" : "literal",
+        "value" : "EQNR"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P159"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q1776022-E741D506-14D1-47C9-A0B8-80CE5C66FB9B"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25416"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk oljeselskap"
+      },
+      "valueLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Stavanger"
+      },
+      "extra" : {
+        "type" : "literal",
+        "value" : "964965226"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P414"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q1776022-d59560b6-4681-cae0-f0d2-e44c657f783f"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q909158"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Equinor"
+      },
+      "itemDescription" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "norsk oljeselskap"
+      },
+      "valueLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Oslo Børs"
+      },
+      "extra" : {
+        "type" : "literal",
+        "value" : "EQNR"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11964312"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P1278"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q11964312-786E548F-4ACB-4E19-B55D-72FE23DD1456"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "6367001EBAEQ4T2WM033"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "979543883"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "DIPS"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "6367001EBAEQ4T2WM033"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11964312"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P571"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q11964312-dd07bbd9-4472-22eb-0358-b62c2b99dd6c"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1997-12-01T00:00:00Z"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "979543883"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "DIPS"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "1997-12-01T00:00:00Z"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11964312"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P856"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q11964312-8CD42702-62FD-4849-8527-A109E17F94B2"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "https://www.dips.com"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "979543883"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "DIPS"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "https://www.dips.com"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11964312"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P159"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q11964312-60c3fd16-48f3-314e-8fb0-696347f9c6f0"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q39383"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "979543883"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "DIPS"
+      },
+      "valueLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Bodø"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19379205"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P1278"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q19379205-147AAD45-CB97-43A2-AD18-1530C6F83E2E"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "529900LMX1QKF7XGQA66"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "983065309"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Lemminkäinen Norge"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "529900LMX1QKF7XGQA66"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19379205"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P571"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q19379205-586859c2-4fa8-ab26-4a25-4671bea05ed8"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2001-02-13T00:00:00Z"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "983065309"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Lemminkäinen Norge"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "2001-02-13T00:00:00Z"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19379205"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P856"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q19379205-F24A717F-6188-43EE-B13C-83E8E94D91E5"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "http://www.lemminkainen.no/"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "983065309"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Lemminkäinen Norge"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "http://www.lemminkainen.no/"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19379205"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P749"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q19379205-520f6ee1-4f79-5852-c6a4-fb5e2839cdeb"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1998186"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "983065309"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Lemminkäinen Norge"
+      },
+      "valueLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Lemminkäinen"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19379205"
+      },
+      "prop" : {
+        "type" : "literal",
+        "value" : "P159"
+      },
+      "st" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/statement/Q19379205-c74481e8-4a37-7410-1df0-3e3321b9f040"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5710413"
+      },
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "983065309"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Lemminkäinen Norge"
+      },
+      "valueLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Helsfyr"
+      }
+    } ]
+  }
+}

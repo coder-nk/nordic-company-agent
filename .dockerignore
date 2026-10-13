@@ -1,0 +1,7 @@
+.venv
+data/bulk
+data/work
+research/work
+out
+runs
+.git

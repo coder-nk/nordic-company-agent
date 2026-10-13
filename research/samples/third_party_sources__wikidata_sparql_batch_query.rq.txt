@@ -1,0 +1,40 @@
+SELECT ?orgnr ?item ?itemLabel ?itemDescription
+ (GROUP_CONCAT(DISTINCT ?website; separator="|") AS ?websites)
+ (SAMPLE(?inception) AS ?inception1) (SAMPLE(?dissolved) AS ?dissolved1)
+ (GROUP_CONCAT(DISTINCT ?hqLabel; separator="|") AS ?hq)
+ (GROUP_CONCAT(DISTINCT ?parentOrg; separator="|") AS ?parentOrgnrs)
+ (GROUP_CONCAT(DISTINCT ?parentLabel; separator="|") AS ?parents)
+ (GROUP_CONCAT(DISTINCT ?ceoLabel; separator="|") AS ?ceos)
+ (GROUP_CONCAT(DISTINCT ?industryLabel; separator="|") AS ?industries)
+ (GROUP_CONCAT(DISTINCT ?ticker; separator="|") AS ?tickers)
+ (GROUP_CONCAT(DISTINCT ?isin; separator="|") AS ?isins)
+ (SAMPLE(?lei) AS ?lei1) (SAMPLE(?logo) AS ?logo1)
+ (GROUP_CONCAT(DISTINCT ?fb; separator="|") AS ?facebook)
+ (GROUP_CONCAT(DISTINCT ?ig; separator="|") AS ?instagram)
+ (GROUP_CONCAT(DISTINCT ?li; separator="|") AS ?linkedin)
+ (GROUP_CONCAT(DISTINCT ?tw; separator="|") AS ?twitter)
+ (GROUP_CONCAT(DISTINCT ?yt; separator="|") AS ?youtube)
+ (SAMPLE(?nowiki) AS ?nowiki1) (SAMPLE(?enwiki) AS ?enwiki1)
+WHERE {
+  VALUES ?orgnr { "923609016" "984851006" "982463718" }
+  ?item wdt:P2333 ?orgnr .
+  OPTIONAL { ?item wdt:P856 ?website }
+  OPTIONAL { ?item wdt:P571 ?inception }
+  OPTIONAL { ?item wdt:P576 ?dissolved }
+  OPTIONAL { ?item wdt:P159 ?hqI . ?hqI rdfs:label ?hqLabel FILTER(LANG(?hqLabel)="nb") }
+  OPTIONAL { ?item wdt:P749 ?parentI . ?parentI rdfs:label ?parentLabel FILTER(LANG(?parentLabel) IN ("nb","en")) OPTIONAL { ?parentI wdt:P2333 ?parentOrg } }
+  OPTIONAL { ?item wdt:P169 ?ceoI . ?ceoI rdfs:label ?ceoLabel FILTER(LANG(?ceoLabel)="nb") }
+  OPTIONAL { ?item wdt:P452 ?indI . ?indI rdfs:label ?industryLabel FILTER(LANG(?industryLabel)="nb") }
+  OPTIONAL { ?item p:P414 ?ex . ?ex pq:P249 ?ticker }
+  OPTIONAL { ?item wdt:P946 ?isin }
+  OPTIONAL { ?item wdt:P1278 ?lei }
+  OPTIONAL { ?item wdt:P154 ?logo }
+  OPTIONAL { ?item wdt:P2013 ?fb }
+  OPTIONAL { ?item wdt:P2003 ?ig }
+  OPTIONAL { ?item wdt:P4264 ?li }
+  OPTIONAL { ?item wdt:P2002 ?tw }
+  OPTIONAL { ?item wdt:P2397 ?yt }
+  OPTIONAL { ?nowiki schema:about ?item ; schema:isPartOf <https://no.wikipedia.org/> }
+  OPTIONAL { ?enwiki schema:about ?item ; schema:isPartOf <https://en.wikipedia.org/> }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "nb,nn,en". }
+} GROUP BY ?orgnr ?item ?itemLabel ?itemDescription

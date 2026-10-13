@@ -1,0 +1,58 @@
+{
+ "_request": {
+  "url": "https://data.brreg.no/enhetsregisteret/api/enheter/971422556",
+  "status": 200,
+  "retrieved_at": "2026-10-13T11:40:06Z",
+  "headers": {
+   "vary": "Origin",
+   "x-content-type-options": "nosniff",
+   "x-xss-protection": "0",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "pragma": "no-cache",
+   "expires": "0",
+   "strict-transport-security": "max-age=157680000; includeSubDomains",
+   "x-frame-options": "DENY",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:36:00 GMT",
+   "connection": "close"
+  }
+ },
+ "body": {
+  "_links": {
+   "self": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/enheter/971422556"
+   }
+  },
+  "historiskeNavn": [
+   {
+    "fraDato": "1995-02-20 09:16:00",
+    "navn": "AKSNES KÅRE DR",
+    "tilDato": "1996-10-02 19:59:05"
+   },
+   {
+    "fraDato": "1996-10-02 19:59:05",
+    "navn": "DR KÅRE AKSNES",
+    "tilDato": "2025-09-20 06:01:05"
+   },
+   {
+    "fraDato": "2025-09-20 06:01:05",
+    "navn": "DR KÅRE AKSNES INNGÅR I DØDSBO",
+    "tilDato": "2026-10-12 06:04:27"
+   }
+  ],
+  "navn": "DR KÅRE AKSNES INNGÅR I DØDSBO",
+  "organisasjonsform": {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/ENK"
+    }
+   },
+   "beskrivelse": "Enkeltpersonforetak",
+   "kode": "ENK"
+  },
+  "organisasjonsnummer": "971422556",
+  "respons_klasse": "SlettetEnhet",
+  "slettedato": "2026-10-12"
+ }
+}

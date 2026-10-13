@@ -1,0 +1,191 @@
+{
+ "_request": {
+  "url": "https://data.brreg.no/enhetsregisteret/api/enheter/935567645/roller",
+  "status": 200,
+  "retrieved_at": "2026-10-13T11:43:44Z",
+  "headers": {
+   "vary": "Origin",
+   "x-content-type-options": "nosniff",
+   "x-xss-protection": "0",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "pragma": "no-cache",
+   "expires": "0",
+   "strict-transport-security": "max-age=157680000; includeSubDomains",
+   "x-frame-options": "DENY",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:39:39 GMT",
+   "connection": "close"
+  }
+ },
+ "body": {
+  "_links": {
+   "self": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/enheter/935567645/roller"
+   },
+   "enhet": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/enheter/935567645"
+   }
+  },
+  "rollegrupper": [
+   {
+    "roller": [
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Rønningsbakken",
+        "fornavn": "Eskil"
+       }
+      },
+      "rekkefolge": 0,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/DAGL"
+        }
+       },
+       "beskrivelse": "Daglig leder",
+       "kode": "DAGL"
+      }
+     }
+    ],
+    "sistEndret": "2025-05-27",
+    "type": {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/roller/rollegruppetyper/DAGL"
+      }
+     },
+     "beskrivelse": "Daglig leder",
+     "kode": "DAGL"
+    }
+   },
+   {
+    "roller": [
+     {
+      "avregistrert": false,
+      "bostyrer": {
+       "navn": "Adv. Tore M Famestad",
+       "postadresse": {
+        "adresse": [
+         "Håkons gate 12"
+        ],
+        "landkode": "NO",
+        "postnummer": "2317",
+        "poststed": "HAMAR"
+       },
+       "erDoed": false
+      },
+      "rekkefolge": 0,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/BOBE"
+        }
+       },
+       "beskrivelse": "Bostyrer",
+       "kode": "BOBE"
+      }
+     }
+    ],
+    "sistEndret": "2026-07-08",
+    "type": {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/roller/rollegruppetyper/BOBE"
+      }
+     },
+     "beskrivelse": "Bostyrer",
+     "kode": "BOBE"
+    }
+   },
+   {
+    "roller": [
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Rønningsbakken",
+        "fornavn": "Eskil"
+       }
+      },
+      "rekkefolge": 0,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/LEDE"
+        }
+       },
+       "beskrivelse": "Styrets leder",
+       "kode": "LEDE"
+      }
+     }
+    ],
+    "sistEndret": "2025-05-27",
+    "type": {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/roller/rollegruppetyper/STYR"
+      }
+     },
+     "beskrivelse": "Styre",
+     "kode": "STYR"
+    }
+   },
+   {
+    "roller": [
+     {
+      "avregistrert": true,
+      "enhet": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/enheter/915156975"
+        }
+       },
+       "erSlettet": false,
+       "godkjenningsstatus": "Godkjent regnskapsforetak",
+       "navn": [
+        "VALUE GROUP AS"
+       ],
+       "organisasjonsform": {
+        "_links": {
+         "self": {
+          "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/AS"
+         }
+        },
+        "beskrivelse": "Aksjeselskap",
+        "kode": "AS"
+       },
+       "organisasjonsnummer": "915156975"
+      },
+      "rekkefolge": 0,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/REGN"
+        }
+       },
+       "beskrivelse": "Regnskapsfører",
+       "kode": "REGN"
+      }
+     }
+    ],
+    "sistEndret": "2026-08-24",
+    "type": {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/roller/rollegruppetyper/REGN"
+      }
+     },
+     "beskrivelse": "Regnskapsfører",
+     "kode": "REGN"
+    }
+   }
+  ]
+ }
+}

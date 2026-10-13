@@ -1,0 +1,78 @@
+{
+ "uuid": "d93605c9-da4c-44a8-af12-4cb1c7c245db",
+ "ad_content": {
+  "uuid": "d93605c9-da4c-44a8-af12-4cb1c7c245db",
+  "published": "2026-10-10T17:13:37+02:00",
+  "expires": "2026-11-12T00:00:00+01:00",
+  "updated": "2026-10-12T08:28:31.247975+02:00",
+  "workLocations": [
+   {
+    "country": "NORGE",
+    "address": "Tryvannsveien 61",
+    "city": "OSLO",
+    "postalCode": "0791",
+    "county": "OSLO",
+    "municipal": "OSLO"
+   }
+  ],
+  "contactList": [
+   {
+    "name": "Armanto Sotas",
+    "email": "kai@tastemore.no",
+    "phone": null,
+    "role": null,
+    "title": "Daglig leder"
+   }
+  ],
+  "title": "Serveringspersonale til Vidsjå/Tårnstua i Skimore ved Tryvannstårnet",
+  "description": "<section id=\"arb-aapningstekst\">\n<p>Vi søker engasjerte og serviceinnstilte norsk/skandinavisk talende servicemedarbeidere. Du brenner for å skape gode gjesteopplevelser og har et smil om munnen selv i høyt tempo! Vil du bli en del av et trivelig og internasjonalt team på toppen av Oslo? Søk i dag!</p>\n</section>\n<section id=\"arb-serEtter\">\n<h2>Hva vi ser etter</h2>\n<h2>Hva vi ser etter</h2>\n<ul><li>\n<p><strong>Kvalifikasjoner:</strong> Relevant erfaring fra servering, kafé eller restaurant er ønskelig, men ikke et krav dersom du har rett innstilling. Er du student eller under utdannelse oppfordres du også til å søke.</p>\n</li><li>\n<p><strong>Serviceinnstilling:</strong> Du er opptatt av at gjestene skal føle seg velkomne, ivaretatt og få en strålende opplevelse.</p>\n</li><li>\n<p><strong>Arbeidskapasitet:</strong> Du trives med høyt tempo, er effektiv, strukturert og beholder roen når det er mye å gjøre.</p>\n</li><li>\n<p><strong>Personlige egenskaper:</strong> Du er utadvendt, pålitelig, løsningsorientert og en utpreget lagspiller med godt humør.</p>\n</li><li>\n<p><strong>Språk:</strong> Du kommuniserer godt på norsk og/eller skandinavisk.</p>\n</li></ul>\n</section>\n<section id=\"arb-arbeidsoppgaver\">\n<h2>Arbeidsoppgaver</h2>\n<p>Vi tilbyr spennende og varierte arbeidsoppgaver på toppen av Oslo i serveringslokalene i Skimore sitt anlegg ved Tryvannstårnet:</p>\n<ul><li>\n<p><strong>Gjestemottak og servering:</strong> Ta imot gjester med et smil, yte rask og vennlig service i kasse/skranke eller ved bordene.</p>\n</li><li>\n<p><strong>Salg og tildeling:</strong> Servering av mat og drikke (varme og kalde retter, bakverk, kaffe og drikkevarer) etter våre standarder.</p>\n</li><li>\n<p><strong>Kassahåndtering:</strong> Håndtere kassesystemer og bestillinger på en nøyaktig og effektiv måte.</p>\n</li><li>\n<p><strong>Rydding og renhold:</strong> Sørge for at serveringsarealer, bord og kaffe-/drikkestasjoner alltid fremstår rene, ryddige og innbydende.</p>\n</li><li>\n<p><strong>Arrangementsstøtte:</strong> Bidra under lukkede selskaper, eventer og firmafester i Tårnstua og Lavvoen.</p>\n</li><li>\n<p><strong>HMS og hygiene:</strong> Følge våre rutiner for hygiene, matsikkerhet og trygg servering.</p>\n</li></ul>\n</section>\n<section id=\"arb-tilbyr\">\n<h2>Vi tilbyr</h2>\n<h2>Vi tilbyr</h2>\n<ul><li>\n<p><strong>Inspirerende arbeidsmiljø:</strong> Et inkluderende, hektisk og hyggelig arbeidsmiljø med engasjerte kollegaer.</p>\n</li><li>\n<p><strong>Unik beliggenhet:</strong> En spennende arbeidsplass midt i Oslos beste friluftsområde med mange besøkende.</p>\n</li><li>\n<p><strong>Faglig utvikling:</strong> God opplæring ved oppstart og verdifull erfaring fra et hektisk og internasjonalt miljø.</p>\n</li><li>\n<p><strong>Konkurransedyktige betingelser:</strong> Lønn etter avtale og ryddige arbeidsforhold.</p>\n</li><li>\n<p><strong>Fleksibilitet:</strong> Fleksible arbeidstider tilpasset sesong og drift.</p>\n</li></ul>\n</section>\n",
+  "sourceurl": "",
+  "source": "Stillingsregistrering",
+  "applicationUrl": "",
+  "applicationDue": "2026-11-12",
+  "occupationCategories": [
+   {
+    "level1": "Reiseliv og mat",
+    "level2": "Reiseliv, hotell og overnatting"
+   }
+  ],
+  "categoryList": [
+   {
+    "categoryType": "ESCO",
+    "code": "http://data.europa.eu/esco/occupation/d5db9d5c-2ebf-4a54-a79a-1b7e7ff70471",
+    "name": "Serveringshjelp",
+    "description": "",
+    "score": 1.0
+   },
+   {
+    "categoryType": "JANZZ",
+    "code": "44733",
+    "name": "Serveringshjelp",
+    "description": "",
+    "score": 1.0
+   },
+   {
+    "categoryType": "STYRK08",
+    "code": "9412",
+    "name": "Kjøkkenassistenter",
+    "description": "",
+    "score": 1.0
+   }
+  ],
+  "jobtitle": "Serveringshjelp",
+  "link": "https://arbeidsplassen.nav.no/stillinger/stilling/d93605c9-da4c-44a8-af12-4cb1c7c245db",
+  "employer": {
+   "name": "Tårnstua As",
+   "orgnr": "971784563",
+   "description": "<p><strong>Om serveringskonseptet Tastemore</strong></p>\n<p>Vidsjå og Tårnstua er våre to populære og livlige serveringssteder beliggende øverst på Tryvann. Her tar vi imot alt fra skientusiaster og barnefamilier om vinteren til klatre- og turgjester om sommeren, samt større lukkede selskaper og arrangementer hele året.</p>\n<ul><li>\n<p><strong>Vidsjå:</strong> Vår restaurant og samlingsplass på toppen, kjent for en uformell atmosfære med fokus på internasjonale retter, saftige burgere, friske salater og ekte, hjemmelaget Pinsa.</p>\n</li><li>\n<p><strong>Tårnstua &amp; Lavvoen:</strong> Et hyggelig og lunt spisested og eget selskapslokale med fokus på god, folkelig mat, bakverk, vafler, supper og Napoleansk pizza. Lavvoen gir i tillegg en unik ramme for arrangementer, julebord og firmafester i naturskjønne omgivelser.</p>\n</li></ul>\n<p>I begge Tastemore-konsepter legger vi vekt på god mat fra bunnen av, rask betjening med et smil, og en inkluderende atmosfære midt i Oslos beste friluftsområde.</p>\n",
+   "homepage": ""
+  },
+  "engagementtype": "Sesong",
+  "extent": "Heltid",
+  "starttime": "Etter avtale",
+  "positioncount": "15",
+  "sector": "Privat"
+ },
+ "sistEndret": "2026-10-12T08:28:31.247+02:00",
+ "status": "ACTIVE"
+}

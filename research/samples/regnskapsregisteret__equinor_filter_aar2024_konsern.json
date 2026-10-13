@@ -1,0 +1,95 @@
+{
+ "request_url": "https://data.brreg.no/regnskapsregisteret/regnskap/923609016?%C3%A5r=2024&regnskapstype=KONSERN",
+ "status": 200,
+ "headers": {
+  "content-type": "application/json",
+  "transfer-encoding": "chunked",
+  "date": "Tue, 13 Oct 2026 11:55:43 GMT",
+  "strict-transport-security": "max-age=157680000; includeSubDomains"
+ },
+ "body": [
+  {
+   "id": 5667199,
+   "journalnr": "2025428073",
+   "regnskapstype": "KONSERN",
+   "virksomhet": {
+    "organisasjonsnummer": "923609016",
+    "organisasjonsform": "ASA",
+    "morselskap": true
+   },
+   "regnskapsperiode": {
+    "fraDato": "2024-01-01",
+    "tilDato": "2024-12-31"
+   },
+   "valuta": "USD",
+   "avviklingsregnskap": false,
+   "oppstillingsplan": "store",
+   "revisjon": {
+    "ikkeRevidertAarsregnskap": false,
+    "fravalgRevisjon": false
+   },
+   "regnkapsprinsipper": {
+    "smaaForetak": false,
+    "regnskapsregler": "IFRS"
+   },
+   "egenkapitalGjeld": {
+    "sumEgenkapitalGjeld": 131141000000.0,
+    "egenkapital": {
+     "sumEgenkapital": 42380000000.0,
+     "opptjentEgenkapital": {
+      "sumOpptjentEgenkapital": 38000000.0
+     },
+     "innskuttEgenkapital": {
+      "sumInnskuttEgenkaptial": 42342000000.0
+     }
+    },
+    "gjeldOversikt": {
+     "sumGjeld": 88761000000.0,
+     "kortsiktigGjeld": {
+      "sumKortsiktigGjeld": 36046000000.0
+     },
+     "langsiktigGjeld": {
+      "sumLangsiktigGjeld": 52715000000.0
+     }
+    }
+   },
+   "eiendeler": {
+    "sumVarer": 4031000000.0,
+    "sumFordringer": 17457000000.0,
+    "sumInvesteringer": 16359000000.0,
+    "sumBankinnskuddOgKontanter": 15348000000.0,
+    "sumEiendeler": 131141000000.0,
+    "omloepsmidler": {
+     "sumOmloepsmidler": 53195000000.0
+    },
+    "anleggsmidler": {
+     "sumAnleggsmidler": 77946000000.0
+    }
+   },
+   "resultatregnskapResultat": {
+    "ordinaertResultatFoerSkattekostnad": 30986000000.0,
+    "ordinaertResultatSkattekostnad": 22157000000.0,
+    "aarsresultat": 8829000000.0,
+    "finansresultat": {
+     "nettoFinans": 58000000.0,
+     "finansinntekt": {
+      "sumFinansinntekter": 1640000000.0
+     },
+     "finanskostnad": {
+      "sumFinanskostnad": 1582000000.0
+     }
+    },
+    "driftsresultat": {
+     "driftsresultat": 30928000000.0,
+     "driftsinntekter": {
+      "salgsinntekter": 102502000000.0,
+      "sumDriftsinntekter": 103774000000.0
+     },
+     "driftskostnad": {
+      "sumDriftskostnad": 72846000000.0
+     }
+    }
+   }
+  }
+ ]
+}

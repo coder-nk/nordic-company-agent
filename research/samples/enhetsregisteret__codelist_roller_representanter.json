@@ -1,0 +1,68 @@
+{
+ "_request": {
+  "url": "https://data.brreg.no/enhetsregisteret/api/roller/representanter",
+  "status": 200,
+  "retrieved_at": "2026-10-13T11:38:03Z",
+  "headers": {
+   "vary": "Origin",
+   "x-content-type-options": "nosniff",
+   "x-xss-protection": "0",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "pragma": "no-cache",
+   "expires": "0",
+   "strict-transport-security": "max-age=157680000; includeSubDomains",
+   "x-frame-options": "DENY",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:33:58 GMT",
+   "connection": "close"
+  }
+ },
+ "body": {
+  "_embedded": {
+   "representanter": [
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/autorisert-api/roller/representanter/A-AK"
+      }
+     },
+     "beskrivelse": "Representant for A-aksjonærene",
+     "kode": "A-AK"
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/autorisert-api/roller/representanter/AREP"
+      }
+     },
+     "beskrivelse": "Representant for de ansatte",
+     "kode": "AREP"
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/autorisert-api/roller/representanter/B-AK"
+      }
+     },
+     "beskrivelse": "Representant for B-aksjonærene",
+     "kode": "B-AK"
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/autorisert-api/roller/representanter/C-AK"
+      }
+     },
+     "beskrivelse": "Representant for C-aksjonærene",
+     "kode": "C-AK"
+    }
+   ]
+  },
+  "_links": {
+   "self": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/roller/representanter"
+   }
+  }
+ }
+}

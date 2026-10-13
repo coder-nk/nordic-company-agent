@@ -1,0 +1,115 @@
+{
+ "ENK without accounts": {
+  "request_url": "https://data.brreg.no/regnskapsregisteret/regnskap/933365573",
+  "status": 404,
+  "headers": {
+   "content-length": "0",
+   "date": "Tue, 13 Oct 2026 11:55:30 GMT",
+   "strict-transport-security": "max-age=157680000; includeSubDomains"
+  },
+  "body": ""
+ },
+ "FLI forening without accounts": {
+  "request_url": "https://data.brreg.no/regnskapsregisteret/regnskap/916627939",
+  "status": 404,
+  "headers": {
+   "content-length": "0",
+   "date": "Tue, 13 Oct 2026 11:55:30 GMT",
+   "strict-transport-security": "max-age=157680000; includeSubDomains"
+  },
+  "body": ""
+ },
+ "new AS registered 2026-09 no accounts yet": {
+  "request_url": "https://data.brreg.no/regnskapsregisteret/regnskap/938386080",
+  "status": 404,
+  "headers": {
+   "content-length": "0",
+   "date": "Tue, 13 Oct 2026 11:55:31 GMT",
+   "strict-transport-security": "max-age=157680000; includeSubDomains"
+  },
+  "body": ""
+ },
+ "OSLO KOMMUNE (KOMM)": {
+  "request_url": "https://data.brreg.no/regnskapsregisteret/regnskap/958935420",
+  "status": 404,
+  "headers": {
+   "content-length": "0",
+   "date": "Tue, 13 Oct 2026 11:55:32 GMT",
+   "strict-transport-security": "max-age=157680000; includeSubDomains"
+  },
+  "body": ""
+ },
+ "FLI with sisteInnsendteAarsregnskap=2011 (beyond retention)": {
+  "request_url": "https://data.brreg.no/regnskapsregisteret/regnskap/975820645",
+  "status": 404,
+  "headers": {
+   "content-length": "0",
+   "date": "Tue, 13 Oct 2026 11:55:33 GMT",
+   "strict-transport-security": "max-age=157680000; includeSubDomains"
+  },
+  "body": ""
+ },
+ "non-existent org number": {
+  "request_url": "https://data.brreg.no/regnskapsregisteret/regnskap/976820479",
+  "status": 404,
+  "headers": {
+   "content-length": "0",
+   "date": "Tue, 13 Oct 2026 11:55:34 GMT",
+   "strict-transport-security": "max-age=157680000; includeSubDomains"
+  },
+  "body": ""
+ },
+ "invalid org number": {
+  "request_url": "https://data.brreg.no/regnskapsregisteret/regnskap/abc",
+  "status": 404,
+  "headers": {
+   "content-length": "0",
+   "date": "Tue, 13 Oct 2026 11:55:35 GMT",
+   "strict-transport-security": "max-age=157680000; includeSubDomains"
+  },
+  "body": ""
+ },
+ "Equinor ?år=2019 (outside 3-filing window)": {
+  "request_url": "https://data.brreg.no/regnskapsregisteret/regnskap/923609016?%C3%A5r=2019",
+  "status": 404,
+  "headers": {
+   "content-length": "0",
+   "date": "Tue, 13 Oct 2026 11:55:36 GMT",
+   "strict-transport-security": "max-age=157680000; includeSubDomains"
+  },
+  "body": ""
+ },
+ "Equinor ?regnskapstype=selskap (lowercase)": {
+  "request_url": "https://data.brreg.no/regnskapsregisteret/regnskap/923609016?regnskapstype=selskap",
+  "status": 400,
+  "headers": {
+   "content-length": "0",
+   "date": "Tue, 13 Oct 2026 11:55:40 GMT",
+   "strict-transport-security": "max-age=157680000; includeSubDomains"
+  },
+  "body": ""
+ },
+ "Accept text/html": {
+  "request_url": "https://data.brreg.no/regnskapsregisteret/regnskap/923609016",
+  "status": 406,
+  "headers": {
+   "accept": "application/json, application/xml, application/ld+json, application/rdf+json, application/rdf+xml, text/turtle",
+   "content-type": "text/html;charset=UTF-8",
+   "content-language": "en",
+   "content-length": "281",
+   "date": "Tue, 13 Oct 2026 11:55:41 GMT",
+   "strict-transport-security": "max-age=157680000; includeSubDomains"
+  },
+  "body": "<html><body><h1>Whitelabel Error Page</h1><p>This application has no explicit mapping for /error, so you are seeing this as a fallback.</p><div id='created'>Tue Oct 13 13:55:41 CEST 2026</div><div>There was an unexpected error (type=Not Acceptable, status=406).</div></body></html>"
+ },
+ "CSV with Accept application/json": {
+  "request_url": "https://data.brreg.no/regnskapsregisteret/regnskap/917507899/csv",
+  "status": 400,
+  "headers": {
+   "content-length": "0",
+   "date": "Tue, 13 Oct 2026 11:55:42 GMT",
+   "strict-transport-security": "max-age=157680000; includeSubDomains"
+  },
+  "body": ""
+ }
+}

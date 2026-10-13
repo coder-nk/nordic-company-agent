@@ -1,0 +1,117 @@
+{
+ "_request": {
+  "url": "https://data.brreg.no/enhetsregisteret/api/enheter/971524960/roller",
+  "status": 200,
+  "retrieved_at": "2026-10-13T11:42:54Z",
+  "headers": {
+   "vary": "Origin",
+   "x-content-type-options": "nosniff",
+   "x-xss-protection": "0",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "pragma": "no-cache",
+   "expires": "0",
+   "strict-transport-security": "max-age=157680000; includeSubDomains",
+   "x-frame-options": "DENY",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:38:48 GMT",
+   "connection": "close"
+  }
+ },
+ "body": {
+  "_links": {
+   "self": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/enheter/971524960/roller"
+   },
+   "enhet": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/enheter/971524960"
+   }
+  },
+  "rollegrupper": [
+   {
+    "roller": [
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Grimstad",
+        "fornavn": "Jo Kyrre"
+       }
+      },
+      "rekkefolge": 0,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/DAGL"
+        }
+       },
+       "beskrivelse": "Daglig leder",
+       "kode": "DAGL"
+      }
+     }
+    ],
+    "sistEndret": "2022-08-08",
+    "type": {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/roller/rollegruppetyper/DAGL"
+      }
+     },
+     "beskrivelse": "Daglig leder",
+     "kode": "DAGL"
+    }
+   },
+   {
+    "roller": [
+     {
+      "avregistrert": false,
+      "enhet": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/enheter/986252932"
+        }
+       },
+       "erSlettet": false,
+       "navn": [
+        "DIREKTORATET FOR FORVALTNING OG",
+        "ØKONOMISTYRING"
+       ],
+       "organisasjonsform": {
+        "_links": {
+         "self": {
+          "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/ORGL"
+         }
+        },
+        "beskrivelse": "Organisasjonsledd",
+        "kode": "ORGL"
+       },
+       "organisasjonsnummer": "986252932"
+      },
+      "rekkefolge": 0,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/REGN"
+        }
+       },
+       "beskrivelse": "Regnskapsfører",
+       "kode": "REGN"
+      }
+     }
+    ],
+    "sistEndret": "2016-10-11",
+    "type": {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/roller/rollegruppetyper/REGN"
+      }
+     },
+     "beskrivelse": "Regnskapsfører",
+     "kode": "REGN"
+    }
+   }
+  ]
+ }
+}

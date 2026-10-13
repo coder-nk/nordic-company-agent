@@ -1,0 +1,107 @@
+{
+ "_request": {
+  "url": "https://data.brreg.no/enhetsregisteret/api/enheter/971526939",
+  "status": 200,
+  "retrieved_at": "2026-10-13T11:43:53Z",
+  "headers": {
+   "vary": "Origin",
+   "x-content-type-options": "nosniff",
+   "x-xss-protection": "0",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "pragma": "no-cache",
+   "expires": "0",
+   "strict-transport-security": "max-age=157680000; includeSubDomains",
+   "x-frame-options": "DENY",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:39:48 GMT",
+   "connection": "close"
+  }
+ },
+ "body": {
+  "_links": {
+   "self": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/enheter/971526939"
+   }
+  },
+  "aktivitet": [
+   "Politisk virksomhet."
+  ],
+  "antallAnsatte": 53,
+  "epostadresse": "post@arbeiderpartiet.no",
+  "erIKonsern": false,
+  "forretningsadresse": {
+   "adresse": [
+    "Youngstorget 2 A",
+    "5. etg"
+   ],
+   "kommune": "OSLO",
+   "kommunenummer": "0301",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "0181",
+   "poststed": "OSLO"
+  },
+  "harRegistrertAntallAnsatte": true,
+  "historiskeNavn": [
+   {
+    "fraDato": "1995-02-20 08:55:00",
+    "navn": "DET NORSKE ARBEIDERPARTI",
+    "tilDato": "2011-09-21 13:44:42"
+   }
+  ],
+  "hjemmeside": "www.arbeiderpartiet.no",
+  "institusjonellSektorkode": {
+   "beskrivelse": "Ideelle organisasjoner",
+   "kode": "7000"
+  },
+  "konkurs": false,
+  "maalform": "Bokmål",
+  "naeringskode1": {
+   "beskrivelse": "Aktiviteter i partipolitiske organisasjoner",
+   "kode": "94.920"
+  },
+  "naeringskode2": {
+   "beskrivelse": "Lotteri- og gamblingvirksomhet",
+   "kode": "92.000"
+  },
+  "navn": "ARBEIDERPARTIET",
+  "organisasjonsform": {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/FLI"
+    }
+   },
+   "beskrivelse": "Forening/lag/innretning",
+   "kode": "FLI"
+  },
+  "organisasjonsnummer": "971526939",
+  "paategninger": [],
+  "postadresse": {
+   "adresse": [
+    "Postboks 8743 Youngstorget"
+   ],
+   "kommune": "OSLO",
+   "kommunenummer": "0301",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "0028",
+   "poststed": "OSLO"
+  },
+  "registreringsdatoAntallAnsatteEnhetsregisteret": "2026-07-15",
+  "registreringsdatoAntallAnsatteNAVAaregisteret": "2026-07-10",
+  "registreringsdatoEnhetsregisteret": "1995-02-20",
+  "registreringsdatoPartiregisteret": "2003-02-04",
+  "registrertIForetaksregisteret": false,
+  "registrertIFrivillighetsregisteret": false,
+  "registrertIMvaregisteret": false,
+  "registrertIPartiregisteret": true,
+  "registrertIStiftelsesregisteret": false,
+  "respons_klasse": "Enhet",
+  "sisteInnsendteAarsregnskap": "2025",
+  "stiftelsesdato": "1900-01-01",
+  "telefon": "24 14 40 00",
+  "underAvvikling": false,
+  "underTvangsavviklingEllerTvangsopplosning": false
+ }
+}

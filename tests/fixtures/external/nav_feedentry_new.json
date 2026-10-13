@@ -1,0 +1,78 @@
+{
+ "uuid": "55555555-5555-4555-8555-555555555555",
+ "ad_content": {
+  "uuid": "55555555-5555-4555-8555-555555555555",
+  "published": "2026-10-13T09:00:00+02:00",
+  "expires": "2099-11-12T00:00:00+01:00",
+  "updated": "2026-10-12T08:28:31.247975+02:00",
+  "workLocations": [
+   {
+    "country": "NORGE",
+    "address": "Forusbeen 50",
+    "city": "STAVANGER",
+    "postalCode": "4035",
+    "county": "ROGALAND",
+    "municipal": "STAVANGER"
+   }
+  ],
+  "contactList": [
+   {
+    "name": "Kari Nordmann",
+    "email": "kari.nordmann@example.no",
+    "phone": "+47 99 99 99 99",
+    "role": null,
+    "title": "Rekrutteringsrådgiver"
+   }
+  ],
+  "title": "Senior ingeniør, havvind",
+  "description": "<p>Stillingsbeskrivelse (forkortet testfixture).</p>",
+  "sourceurl": "",
+  "source": "Stillingsregistrering",
+  "applicationUrl": "",
+  "applicationDue": "2026-11-12",
+  "occupationCategories": [
+   {
+    "level1": "Reiseliv og mat",
+    "level2": "Reiseliv, hotell og overnatting"
+   }
+  ],
+  "categoryList": [
+   {
+    "categoryType": "ESCO",
+    "code": "http://data.europa.eu/esco/occupation/d5db9d5c-2ebf-4a54-a79a-1b7e7ff70471",
+    "name": "Serveringshjelp",
+    "description": "",
+    "score": 1.0
+   },
+   {
+    "categoryType": "JANZZ",
+    "code": "44733",
+    "name": "Serveringshjelp",
+    "description": "",
+    "score": 1.0
+   },
+   {
+    "categoryType": "STYRK08",
+    "code": "9412",
+    "name": "Kjøkkenassistenter",
+    "description": "",
+    "score": 1.0
+   }
+  ],
+  "jobtitle": "Serveringshjelp",
+  "link": "https://arbeidsplassen.nav.no/stillinger/stilling/55555555-5555-4555-8555-555555555555",
+  "employer": {
+   "name": "Equinor ASA",
+   "orgnr": "923609016",
+   "description": "",
+   "homepage": ""
+  },
+  "engagementtype": "Sesong",
+  "extent": "Heltid",
+  "starttime": "Etter avtale",
+  "positioncount": "2",
+  "sector": "Privat"
+ },
+ "sistEndret": "2026-10-13T09:00:00.000+02:00",
+ "status": "ACTIVE"
+}

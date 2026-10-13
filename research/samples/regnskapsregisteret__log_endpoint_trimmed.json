@@ -1,0 +1,32 @@
+{
+ "note": "GET /regnskapsregisteret/regnskap/log trimmed: first 5 and last 20 of 2222 entries",
+ "first": [
+  "20180102202758-masse.xml",
+  "20180103202854-masse.xml",
+  "20180104202936-masse.xml",
+  "20180108202845-masse.xml",
+  "20180109202724-masse.xml"
+ ],
+ "last": [
+  "20260915205149-masse.xml",
+  "20260916204814-masse.xml",
+  "20260917205128-masse.xml",
+  "20260919151648-masse.xml",
+  "20260921210044-masse.xml",
+  "20260922205654-masse.xml",
+  "20260923205517-masse.xml",
+  "20260924224215-masse.xml",
+  "20260926151309-masse.xml",
+  "20260928204618-masse.xml",
+  "20260929204547-masse.xml",
+  "20260930204137-masse.xml",
+  "20261001204719-masse.xml",
+  "20261003150954-masse.xml",
+  "20261005204336-masse.xml",
+  "20261006204208-masse.xml",
+  "20261007205139-masse.xml",
+  "20261008205338-masse.xml",
+  "20261010150320-masse.xml",
+  "20261012204150-masse.xml"
+ ]
+}

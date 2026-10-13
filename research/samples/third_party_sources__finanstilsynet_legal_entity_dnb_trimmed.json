@@ -1,0 +1,2908 @@
+{
+ "hitsReturned": 1,
+ "legalEntities": [
+  {
+   "legalEntityId": 98973,
+   "parentId": null,
+   "legalEntityType": "Company",
+   "finanstilsynetId": "FT00068800",
+   "organisationNumber": "984851006",
+   "leiCode": "549300GKFG0RYRRQ1414",
+   "auditorNumber": null,
+   "name": "DNB BANK ASA",
+   "licences": [
+    {
+     "licensedEntity": {
+      "legalEntityId": 181270,
+      "legalEntityName": "TRYG FORSIKRING A/S"
+     },
+     "serviceProviderId": 98973,
+     "licenceType": {
+      "code": "SKADEFORSI",
+      "name": {
+       "norwegian": "Skadeforsikringsforetak",
+       "english": "Non-life insurance company"
+      },
+      "description": {
+       "norwegian": "Lov 10. april 2015 nr. 17 om finansforetak og finanskonsern § 3-2  jf. § 2-14",
+       "english": null
+      }
+     },
+     "licenceClassification": null,
+     "supervisoryAuthority": {
+      "country": {
+       "iso3": "DNK",
+       "name": {
+        "norwegian": "Danmark",
+        "english": "Denmark"
+       }
+      },
+      "legalEntityId": 104919,
+      "legalEntityName": "Finanstilsynet"
+     },
+     "hasSecurity": null,
+     "registeredDate": "2024-02-05T00:00:00",
+     "serviceProviderType": "Agent",
+     "remarks": null,
+     "services": [],
+     "borderCrossingActivity": [
+      {
+       "homeCountry": {
+        "iso3": "DNK",
+        "name": {
+         "norwegian": "Danmark",
+         "english": "Denmark"
+        }
+       },
+       "service": {
+        "serviceId": 574,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "1. Ulykke",
+         "english": "1. Accident"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 98973,
+          "legalEntityName": "DNB BANK ASA"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "DNK",
+        "name": {
+         "norwegian": "Danmark",
+         "english": "Denmark"
+        }
+       },
+       "service": {
+        "serviceId": 380,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "2. Sykdom",
+         "english": "2. Sickness"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 98973,
+          "legalEntityName": "DNB BANK ASA"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "DNK",
+        "name": {
+         "norwegian": "Danmark",
+         "english": "Denmark"
+        }
+       },
+       "service": {
+        "serviceId": 659,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "3. Landkjøretøy",
+         "english": "3. Land vehicles"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 98973,
+          "legalEntityName": "DNB BANK ASA"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "DNK",
+        "name": {
+         "norwegian": "Danmark",
+         "english": "Denmark"
+        }
+       },
+       "service": {
+        "serviceId": 389,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "4. Jernbanekjøretøy",
+         "english": "4. Railway vehicles"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 98973,
+          "legalEntityName": "DNB BANK ASA"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "DNK",
+        "name": {
+         "norwegian": "Danmark",
+         "english": "Denmark"
+        }
+       },
+       "service": {
+        "serviceId": 539,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "5. Luftfartøy",
+         "english": "5. Aircraft"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 98973,
+          "legalEntityName": "DNB BANK ASA"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "DNK",
+        "name": {
+         "norwegian": "Danmark",
+         "english": "Denmark"
+        }
+       },
+       "service": {
+        "serviceId": 377,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "6. Fartøy",
+         "english": "6. Ships"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 98973,
+          "legalEntityName": "DNB BANK ASA"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "DNK",
+        "name": {
+         "norwegian": "Danmark",
+         "english": "Denmark"
+        }
+       },
+       "service": {
+        "serviceId": 664,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "7. Godstransport",
+         "english": "7. Transport of goods"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 98973,
+          "legalEntityName": "DNB BANK ASA"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "DNK",
+        "name": {
+         "norwegian": "Danmark",
+         "english": "Denmark"
+        }
+       },
+       "service": {
+        "serviceId": 168,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "8. Brann- og naturskader",
+         "english": "8. Fire and natural forces"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 98973,
+          "legalEntityName": "DNB BANK ASA"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "DNK",
+        "name": {
+         "norwegian": "Danmark",
+         "english": "Denmark"
+        }
+       },
+       "service": {
+        "serviceId": 10,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "9. Eiendom og eiendeler",
+         "english": "9. Property"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 98973,
+          "legalEntityName": "DNB BANK ASA"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "DNK",
+        "name": {
+         "norwegian": "Danmark",
+         "english": "Denmark"
+        }
+       },
+       "service": {
+        "serviceId": 153,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "10. Ansvar, landkjøretøy",
+         "english": "10. Land vehicle liability"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 98973,
+          "legalEntityName": "DNB BANK ASA"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "DNK",
+        "name": {
+         "norwegian": "Danmark",
+         "english": "Denmark"
+        }
+       },
+       "service": {
+        "serviceId": 458,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "11. Ansvar, luftfartøy",
+         "english": "11. Aircraft liability"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 98973,
+          "legalEntityName": "DNB BANK ASA"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "DNK",
+        "name": {
+         "norwegian": "Danmark",
+         "english": "Denmark"
+        }
+       },
+       "service": {
+        "serviceId": 583,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "12. Ansvar, fartøy",
+         "english": "12. Liability for ships"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 98973,
+          "legalEntityName": "DNB BANK ASA"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "DNK",
+        "name": {
+         "norwegian": "Danmark",
+         "english": "Denmark"
+        }
+       },
+       "service": {
+        "serviceId": 38,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "13. Alminnelig ansvar",
+         "english": "13. General liabillity"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 98973,
+          "legalEntityName": "DNB BANK ASA"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "DNK",
+        "name": {
+         "norwegian": "Danmark",
+         "english": "Denmark"
+        }
+       },
+       "service": {
+        "serviceId": 84,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "14. Kreditt",
+         "english": "14. Credit"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 98973,
+          "legalEntityName": "DNB BANK ASA"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "DNK",
+        "name": {
+         "norwegian": "Danmark",
+         "english": "Denmark"
+        }
+       },
+       "service": {
+        "serviceId": 213,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "15. Kausjon",
+         "english": "15. Suretyship"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 98973,
+          "legalEntityName": "DNB BANK ASA"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "DNK",
+        "name": {
+         "norwegian": "Danmark",
+         "english": "Denmark"
+        }
+       },
+       "service": {
+        "serviceId": 643,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "16. Div. økonomiske tap",
+         "english": "16. Miscellaneous financial loss"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 98973,
+          "legalEntityName": "DNB BANK ASA"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "DNK",
+        "name": {
+         "norwegian": "Danmark",
+         "english": "Denmark"
+        }
+       },
+       "service": {
+        "serviceId": 246,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "17. Rettshjelpsforsikring",
+         "english": "17. Legal expenses"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 98973,
+          "legalEntityName": "DNB BANK ASA"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "DNK",
+        "name": {
+         "norwegian": "Danmark",
+         "english": "Denmark"
+        }
+       },
+       "service": {
+        "serviceId": 538,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "18. Assistanse",
+         "english": "18. Assistance"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 98973,
+          "legalEntityName": "DNB BANK ASA"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      }
+     ],
+     "cooperationGroups": null,
+     "roles": null,
+     "agentsOrBranches": [],
+     "accreditedAuditors": null,
+     "auditorFor": null,
+     "accreditedAuditorsDetailed": null
+    },
+    {
+     "licensedEntity": {
+      "legalEntityId": 196317,
+      "legalEntityName": "AXA FRANCE VIE"
+     },
+     "serviceProviderId": 98973,
+     "licenceType": {
+      "code": "LIVSFORSIK",
+      "name": {
+       "norwegian": "Livsforsikringsforetak",
+       "english": "Life insurance company"
+      },
+      "description": {
+       "norwegian": "Lov 10. april 2015 nr. 17 om finansforetak og finanskonsern § 3-2  jf. § 2-13",
+       "english": null
+      }
+     },
+     "licenceClassification": null,
+     "supervisoryAuthority": {
+      "country": {
+       "iso3": "FRA",
+       "name": {
+        "norwegian": "Frankrike",
+        "english": "France"
+       }
+      },
+      "legalEntityId": 113479,
+      "legalEntityName": "Autorité de contrôle prudentiel et de résolution Banque de France (ACPR)"
+     },
+     "hasSecurity": null,
+     "registeredDate": "2025-03-19T00:00:00",
+     "serviceProviderType": "Agent",
+     "remarks": null,
+     "services": [],
+     "borderCrossingActivity": [
+      {
+       "homeCountry": {
+        "iso3": "FRA",
+        "name": {
+         "norwegian": "Frankrike",
+         "english": "France"
+        }
+       },
+       "service": {
+        "serviceId": 227,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-13",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "2. Sykdom (personforsikring)",
+         "english": "2. Sickness"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 98973,
+          "legalEntityName": "DNB BANK ASA"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "FRA",
+        "name": {
+         "norwegian": "Frankrike",
+         "english": "France"
+        }
+       },
+       "service": {
+        "serviceId": 125,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-13",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "I.a) (1) Kapitalforsikring til utbetaling ved død",
+         "english": "I.a) (1) Capital insurance for payment in the event of death"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 98973,
+          "legalEntityName": "DNB BANK ASA"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "FRA",
+        "name": {
+         "norwegian": "Frankrike",
+         "english": "France"
+        }
+       },
+       "service": {
+        "serviceId": 202,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-13",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "I.a) (2) Kapitalforsikring til utbetaling ved fastsatt alder",
+         "english": "I.a) (2) Capital insurance for payment on survival at a stipulated age"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 98973,
+          "legalEntityName": "DNB BANK ASA"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "FRA",
+        "name": {
+         "norwegian": "Frankrike",
+         "english": "France"
+        }
+       },
+       "service": {
+        "serviceId": 54,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-13",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "I.a) (3) Kapitalforsikring til utbetaling ved død eller fastsatt alder",
+         "english": "I.a) (3) Capital insurance for payment in the event of death or on survival at a stipulated age"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 98973,
+          "legalEntityName": "DNB BANK ASA"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      }
+     ],
+     "cooperationGroups": null,
+     "roles": null,
+     "agentsOrBranches": [],
+     "accreditedAuditors": null,
+     "auditorFor": null,
+     "accreditedAuditorsDetailed": null
+    },
+    {
+     "licensedEntity": {
+      "legalEntityId": 196316,
+      "legalEntityName": "AXA FRANCE IARD"
+     },
+     "serviceProviderId": 98973,
+     "licenceType": {
+      "code": "SKADEFORSI",
+      "name": {
+       "norwegian": "Skadeforsikringsforetak",
+       "english": "Non-life insurance company"
+      },
+      "description": {
+       "norwegian": "Lov 10. april 2015 nr. 17 om finansforetak og finanskonsern § 3-2  jf. § 2-14",
+       "english": null
+      }
+     },
+     "licenceClassification": null,
+     "supervisoryAuthority": {
+      "country": {
+       "iso3": "FRA",
+       "name": {
+        "norwegian": "Frankrike",
+        "english": "France"
+       }
+      },
+      "legalEntityId": 113479,
+      "legalEntityName": "Autorité de contrôle prudentiel et de résolution Banque de France (ACPR)"
+     },
+     "hasSecurity": null,
+     "registeredDate": "2025-03-19T00:00:00",
+     "serviceProviderType": "Agent",
+     "remarks": null,
+     "services": [],
+     "borderCrossingActivity": [
+      {
+       "homeCountry": {
+        "iso3": "FRA",
+        "name": {
+         "norwegian": "Frankrike",
+         "english": "France"
+        }
+       },
+       "service": {
+        "serviceId": 643,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "16. Div. økonomiske tap",
+         "english": "16. Miscellaneous financial loss"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 98973,
+          "legalEntityName": "DNB BANK ASA"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      }
+     ],
+     "cooperationGroups": null,
+     "roles": null,
+     "agentsOrBranches": [],
+     "accreditedAuditors": null,
+     "auditorFor": null,
+     "accreditedAuditorsDetailed": null
+    },
+    {
+     "licensedEntity": {
+      "legalEntityId": 98973,
+      "legalEntityName": "DNB BANK ASA"
+     },
+     "serviceProviderId": 98973,
+     "licenceType": {
+      "code": "FORAGNTFTK",
+      "name": {
+       "norwegian": "Forsikringsagentforetak",
+       "english": "Insurance agency"
+      },
+      "description": {
+       "norwegian": "Dette er et register over agenter som formidler forsikringer på vegne av norske og utenlandske forsikringsforetak. ",
+       "english": "This is a register of agents acting on behalf of Norwegian and foreign insurance companies. "
+      }
+     },
+     "licenceClassification": null,
+     "supervisoryAuthority": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 98961,
+      "legalEntityName": "FINANSTILSYNET"
+     },
+     "hasSecurity": null,
+     "registeredDate": "2022-11-16T00:00:00",
+     "serviceProviderType": "Licensed",
+     "remarks": null,
+     "services": [],
+     "borderCrossingActivity": [
+      {
+       "homeCountry": {
+        "iso3": "NOR",
+        "name": {
+         "norwegian": "Norge",
+         "english": "Norway"
+        }
+       },
+       "service": null,
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "DNK",
+          "name": {
+           "norwegian": "Danmark",
+           "english": "Denmark"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 238468,
+          "legalEntityName": "DNB FINANS BANK ASA, FILIAL AF DNB BANK ASA, NORGE"
+         },
+         "serviceProviderType": "Branch"
+        }
+       ]
+      }
+     ],
+     "cooperationGroups": null,
+     "roles": null,
+     "agentsOrBranches": [
+      {
+       "serviceProviderType": "Branch",
+       "country": {
+        "iso3": "DNK",
+        "name": {
+         "norwegian": "Danmark",
+         "english": "Denmark"
+        }
+       },
+       "legalEntityId": 238468,
+       "legalEntityName": "DNB FINANS BANK ASA, FILIAL AF DNB BANK ASA, NORGE"
+      }
+     ],
+     "accreditedAuditors": null,
+     "auditorFor": null,
+     "accreditedAuditorsDetailed": null
+    },
+    {
+     "licensedEntity": {
+      "legalEntityId": 98973,
+      "legalEntityName": "DNB BANK ASA"
+     },
+     "serviceProviderId": 98973,
+     "licenceType": {
+      "code": "FFOR",
+      "name": {
+       "norwegian": "Verdipapirforetak",
+       "english": "Investment firm"
+      },
+      "description": {
+       "norwegian": "Verdipapirforetak med tillatelse til å yte investeringstjenester",
+       "english": null
+      }
+     },
+     "licenceClassification": null,
+     "supervisoryAuthority": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 98961,
+      "legalEntityName": "FINANSTILSYNET"
+     },
+     "hasSecurity": null,
+     "registeredDate": "2002-09-12T00:00:00",
+     "serviceProviderType": "Licensed",
+     "remarks": null,
+     "services": [
+      {
+       "serviceId": 116,
+       "groupName": {
+        "norwegian": "Investeringstjenester, jf. verdipapirhandelloven § 2-1 (1)",
+        "english": "1. Investment services and activities, Securities Trading Act § 2-1 (1)"
+       },
+       "serviceName": {
+        "norwegian": "Nr 1: Mottak og formidling av ordre knyttet til ett eller flere finansielle instrumenter",
+        "english": "No 1: Reception and transmission of orders in relation to one or more financial instruments"
+       },
+       "serviceCode": null,
+       "serviceInstruments": []
+      },
+      {
+       "serviceId": 313,
+       "groupName": {
+        "norwegian": "Investeringstjenester, jf. verdipapirhandelloven § 2-1 (1)",
+        "english": "1. Investment services and activities, Securities Trading Act § 2-1 (1)"
+       },
+       "serviceName": {
+        "norwegian": "Nr 2: Utførelse av ordre på vegne av kunde",
+        "english": "No 2: Execution of orders on behalf of clients"
+       },
+       "serviceCode": null,
+       "serviceInstruments": []
+      },
+      {
+       "serviceId": 597,
+       "groupName": {
+        "norwegian": "Investeringstjenester, jf. verdipapirhandelloven § 2-1 (1)",
+        "english": "1. Investment services and activities, Securities Trading Act § 2-1 (1)"
+       },
+       "serviceName": {
+        "norwegian": "Nr 3: Omsetning av finansielle instrumenter for egen regning",
+        "english": "No 3: Dealing in financial instruments on own account"
+       },
+       "serviceCode": null,
+       "serviceInstruments": []
+      },
+      {
+       "serviceId": 55,
+       "groupName": {
+        "norwegian": "Investeringstjenester, jf. verdipapirhandelloven § 2-1 (1)",
+        "english": "1. Investment services and activities, Securities Trading Act § 2-1 (1)"
+       },
+       "serviceName": {
+        "norwegian": "Nr 5: Investeringsrådgivning",
+        "english": "No 5: Investment advice"
+       },
+       "serviceCode": null,
+       "serviceInstruments": []
+      },
+      {
+       "serviceId": 184,
+       "groupName": {
+        "norwegian": "Investeringstjenester, jf. verdipapirhandelloven § 2-1 (1)",
+        "english": "1. Investment services and activities, Securities Trading Act § 2-1 (1)"
+       },
+       "serviceName": {
+        "norwegian": "Nr 6: Fulltegningsgar. for fin. instrumenter el. plassering av fin. instrumenter med fulltegningsgar",
+        "english": "No 6: Underwriting of fin. instruments or placing of fin. instruments on a firm commitment basis"
+       },
+       "serviceCode": null,
+       "serviceInstruments": []
+      },
+      {
+       "serviceId": 40,
+       "groupName": {
+        "norwegian": "Investeringstjenester, jf. verdipapirhandelloven § 2-1 (1)",
+        "english": "1. Investment services and activities, Securities Trading Act § 2-1 (1)"
+       },
+       "serviceName": {
+        "norwegian": "Nr 7: Plassering av finansielle instrumenter der foretaket ikke avgir fulltegningsgaranti",
+        "english": "No 7: Placing of financial instruments without a firm commitment basis"
+       },
+       "serviceCode": null,
+       "serviceInstruments": []
+      },
+      {
+       "serviceId": 239,
+       "groupName": {
+        "norwegian": "Tilknyttede tjenester, jf. verdipapirhandelloven § 2-6 (1)",
+        "english": "2. Ancillary services, Securities Trading Act § 2-6 (1)"
+       },
+       "serviceName": {
+        "norwegian": "Nr 1: Oppbevaring og administrasjon av finansielle instrumenter på kunders vegne",
+        "english": "No 1: Safekeeping and administration of financial instruments on behalf of clients"
+       },
+       "serviceCode": null,
+       "serviceInstruments": []
+      },
+      {
+       "serviceId": 508,
+       "groupName": {
+        "norwegian": "Tilknyttede tjenester, jf. verdipapirhandelloven § 2-6 (1)",
+        "english": "2. Ancillary services, Securities Trading Act § 2-6 (1)"
+       },
+       "serviceName": {
+        "norwegian": "Nr 3: Rådgivning om kapitalstruktur, strategi o.l.; rådgivning og tjenester ved  fusjoner og oppkjøp",
+        "english": "No 3: Advice on capital structure, strategy et al.; advice and services re. to mergers and purchases"
+       },
+       "serviceCode": null,
+       "serviceInstruments": []
+      },
+      {
+       "serviceId": 337,
+       "groupName": {
+        "norwegian": "Tilknyttede tjenester, jf. verdipapirhandelloven § 2-6 (1)",
+        "english": "2. Ancillary services, Securities Trading Act § 2-6 (1)"
+       },
+       "serviceName": {
+        "norwegian": "Nr 4: Tjenester tilknyttet valutavirksomhet i forbindelse med ytelse av investeringstjeneste",
+        "english": "No 4: Foreign exchange services connected to the provision of investment services"
+       },
+       "serviceCode": null,
+       "serviceInstruments": []
+      },
+      {
+       "serviceId": 541,
+       "groupName": {
+        "norwegian": "Tilknyttede tjenester, jf. verdipapirhandelloven § 2-6 (1)",
+        "english": "2. Ancillary services, Securities Trading Act § 2-6 (1)"
+       },
+       "serviceName": {
+        "norwegian": "Nr 5: Utarbeidelse og formidling av investeringsanbefalinger, finansielle analyser o.l.",
+        "english": "No 5: Preparation and provision of investment recommendations, financial analyses et a"
+       },
+       "serviceCode": null,
+       "serviceInstruments": []
+      },
+      {
+       "serviceId": 385,
+       "groupName": {
+        "norwegian": "Tilknyttede tjenester, jf. verdipapirhandelloven § 2-6 (1)",
+        "english": "2. Ancillary services, Securities Trading Act § 2-6 (1)"
+       },
+       "serviceName": {
+        "norwegian": "Nr 6: Tjenester tilknyttet fulltegningsgaranti",
+        "english": "No 6: Services related to underwriting"
+       },
+       "serviceCode": null,
+       "serviceInstruments": []
+      },
+      {
+       "serviceId": 226,
+       "groupName": {
+        "norwegian": "Tilknyttede tjenester, jf. verdipapirhandelloven § 2-6 (1)",
+        "english": "2. Ancillary services, Securities Trading Act § 2-6 (1)"
+       },
+       "serviceName": {
+        "norwegian": "Nr 7: Tjenester tilknyttet underliggende til derivater ved investerings- eller tilknyttede tjeneste",
+        "english": "No 7: Services related to underlying of derivatives connected to investment and ancillary services"
+       },
+       "serviceCode": null,
+       "serviceInstruments": []
+      }
+     ],
+     "borderCrossingActivity": [
+      {
+       "homeCountry": {
+        "iso3": "NOR",
+        "name": {
+         "norwegian": "Norge",
+         "english": "Norway"
+        }
+       },
+       "service": {
+        "serviceId": 116,
+        "groupName": {
+         "norwegian": "Investeringstjenester, jf. verdipapirhandelloven § 2-1 (1)",
+         "english": "1. Investment services and activities, Securities Trading Act § 2-1 (1)"
+        },
+        "serviceName": {
+         "norwegian": "Nr 1: Mottak og formidling av ordre knyttet til ett eller flere finansielle instrumenter",
+         "english": "No 1: Reception and transmission of orders in relation to one or more financial instruments"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "FIN",
+          "name": {
+           "norwegian": "Finland",
+           "english": "Finland"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 198992,
+          "legalEntityName": "DNB BANK ASA, FILIAL I FINLAND"
+         },
+         "serviceProviderType": "Branch"
+        },
+        {
+         "hostCountry": {
+          "iso3": "SGP",
+          "name": {
+           "norwegian": "Singapore",
+           "english": "Singapore"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 216718,
+          "legalEntityName": "DNB BANK ASA, FILIAL I SINGAPORE"
+         },
+         "serviceProviderType": "Branch"
+        },
+        {
+         "hostCountry": {
+          "iso3": "GBR",
+          "name": {
+           "norwegian": "Storbritannia",
+           "english": "United Kingdom"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 198996,
+          "legalEntityName": "DNB BANK ASA, FILIAL I STORBRITANNIA"
+         },
+         "serviceProviderType": "Branch"
+        },
+        {
+         "hostCountry": {
+          "iso3": "USA",
+          "name": {
+           "norwegian": "USA",
+           "english": "United States of America"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 231679,
+          "legalEntityName": "DNB BANK ASA, FILIAL I NEW YORK"
+         },
+         "serviceProviderType": "Branch"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "NOR",
+        "name": {
+         "norwegian": "Norge",
+         "english": "Norway"
+        }
+       },
+       "service": {
+        "serviceId": 313,
+        "groupName": {
+         "norwegian": "Investeringstjenester, jf. verdipapirhandelloven § 2-1 (1)",
+         "english": "1. Investment services and activities, Securities Trading Act § 2-1 (1)"
+        },
+        "serviceName": {
+         "norwegian": "Nr 2: Utførelse av ordre på vegne av kunde",
+         "english": "No 2: Execution of orders on behalf of clients"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "FIN",
+          "name": {
+           "norwegian": "Finland",
+           "english": "Finland"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 198992,
+          "legalEntityName": "DNB BANK ASA, FILIAL I FINLAND"
+         },
+         "serviceProviderType": "Branch"
+        },
+        {
+         "hostCountry": {
+          "iso3": "SGP",
+          "name": {
+           "norwegian": "Singapore",
+           "english": "Singapore"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 216718,
+          "legalEntityName": "DNB BANK ASA, FILIAL I SINGAPORE"
+         },
+         "serviceProviderType": "Branch"
+        },
+        {
+         "hostCountry": {
+          "iso3": "GBR",
+          "name": {
+           "norwegian": "Storbritannia",
+           "english": "United Kingdom"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 198996,
+          "legalEntityName": "DNB BANK ASA, FILIAL I STORBRITANNIA"
+         },
+         "serviceProviderType": "Branch"
+        },
+        {
+         "hostCountry": {
+          "iso3": "USA",
+          "name": {
+           "norwegian": "USA",
+           "english": "United States of America"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 231679,
+          "legalEntityName": "DNB BANK ASA, FILIAL I NEW YORK"
+         },
+         "serviceProviderType": "Branch"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "NOR",
+        "name": {
+         "norwegian": "Norge",
+         "english": "Norway"
+        }
+       },
+       "service": {
+        "serviceId": 597,
+        "groupName": {
+         "norwegian": "Investeringstjenester, jf. verdipapirhandelloven § 2-1 (1)",
+         "english": "1. Investment services and activities, Securities Trading Act § 2-1 (1)"
+        },
+        "serviceName": {
+         "norwegian": "Nr 3: Omsetning av finansielle instrumenter for egen regning",
+         "english": "No 3: Dealing in financial instruments on own account"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "FIN",
+          "name": {
+           "norwegian": "Finland",
+           "english": "Finland"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 198992,
+          "legalEntityName": "DNB BANK ASA, FILIAL I FINLAND"
+         },
+         "serviceProviderType": "Branch"
+        },
+        {
+         "hostCountry": {
+          "iso3": "SGP",
+          "name": {
+           "norwegian": "Singapore",
+           "english": "Singapore"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 216718,
+          "legalEntityName": "DNB BANK ASA, FILIAL I SINGAPORE"
+         },
+         "serviceProviderType": "Branch"
+        },
+        {
+         "hostCountry": {
+          "iso3": "GBR",
+          "name": {
+           "norwegian": "Storbritannia",
+           "english": "United Kingdom"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 198996,
+          "legalEntityName": "DNB BANK ASA, FILIAL I STORBRITANNIA"
+         },
+         "serviceProviderType": "Branch"
+        },
+        {
+         "hostCountry": {
+          "iso3": "USA",
+          "name": {
+           "norwegian": "USA",
+           "english": "United States of America"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 231679,
+          "legalEntityName": "DNB BANK ASA, FILIAL I NEW YORK"
+         },
+         "serviceProviderType": "Branch"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "NOR",
+        "name": {
+         "norwegian": "Norge",
+         "english": "Norway"
+        }
+       },
+       "service": {
+        "serviceId": 55,
+        "groupName": {
+         "norwegian": "Investeringstjenester, jf. verdipapirhandelloven § 2-1 (1)",
+         "english": "1. Investment services and activities, Securities Trading Act § 2-1 (1)"
+        },
+        "serviceName": {
+         "norwegian": "Nr 5: Investeringsrådgivning",
+         "english": "No 5: Investment advice"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "SGP",
+          "name": {
+           "norwegian": "Singapore",
+           "english": "Singapore"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 216718,
+          "legalEntityName": "DNB BANK ASA, FILIAL I SINGAPORE"
+         },
+         "serviceProviderType": "Branch"
+        },
+        {
+         "hostCountry": {
+          "iso3": "GBR",
+          "name": {
+           "norwegian": "Storbritannia",
+           "english": "United Kingdom"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 198996,
+          "legalEntityName": "DNB BANK ASA, FILIAL I STORBRITANNIA"
+         },
+         "serviceProviderType": "Branch"
+        },
+        {
+         "hostCountry": {
+          "iso3": "USA",
+          "name": {
+           "norwegian": "USA",
+           "english": "United States of America"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 231679,
+          "legalEntityName": "DNB BANK ASA, FILIAL I NEW YORK"
+         },
+         "serviceProviderType": "Branch"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "NOR",
+        "name": {
+         "norwegian": "Norge",
+         "english": "Norway"
+        }
+       },
+       "service": {
+        "serviceId": 184,
+        "groupName": {
+         "norwegian": "Investeringstjenester, jf. verdipapirhandelloven § 2-1 (1)",
+         "english": "1. Investment services and activities, Securities Trading Act § 2-1 (1)"
+        },
+        "serviceName": {
+         "norwegian": "Nr 6: Fulltegningsgar. for fin. instrumenter el. plassering av fin. instrumenter med fulltegningsgar",
+         "english": "No 6: Underwriting of fin. instruments or placing of fin. instruments on a firm commitment basis"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "SGP",
+          "name": {
+           "norwegian": "Singapore",
+           "english": "Singapore"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 216718,
+          "legalEntityName": "DNB BANK ASA, FILIAL I SINGAPORE"
+         },
+         "serviceProviderType": "Branch"
+        },
+        {
+         "hostCountry": {
+          "iso3": "GBR",
+          "name": {
+           "norwegian": "Storbritannia",
+           "english": "United Kingdom"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 198996,
+          "legalEntityName": "DNB BANK ASA, FILIAL I STORBRITANNIA"
+         },
+         "serviceProviderType": "Branch"
+        },
+        {
+         "hostCountry": {
+          "iso3": "USA",
+          "name": {
+           "norwegian": "USA",
+           "english": "United States of America"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 231679,
+          "legalEntityName": "DNB BANK ASA, FILIAL I NEW YORK"
+         },
+         "serviceProviderType": "Branch"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "NOR",
+        "name": {
+         "norwegian": "Norge",
+         "english": "Norway"
+        }
+       },
+       "service": {
+        "serviceId": 40,
+        "groupName": {
+         "norwegian": "Investeringstjenester, jf. verdipapirhandelloven § 2-1 (1)",
+         "english": "1. Investment services and activities, Securities Trading Act § 2-1 (1)"
+        },
+        "serviceName": {
+         "norwegian": "Nr 7: Plassering av finansielle instrumenter der foretaket ikke avgir fulltegningsgaranti",
+         "english": "No 7: Placing of financial instruments without a firm commitment basis"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "SGP",
+          "name": {
+           "norwegian": "Singapore",
+           "english": "Singapore"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 216718,
+          "legalEntityName": "DNB BANK ASA, FILIAL I SINGAPORE"
+         },
+         "serviceProviderType": "Branch"
+        },
+        {
+         "hostCountry": {
+          "iso3": "GBR",
+          "name": {
+           "norwegian": "Storbritannia",
+           "english": "United Kingdom"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 198996,
+          "legalEntityName": "DNB BANK ASA, FILIAL I STORBRITANNIA"
+         },
+         "serviceProviderType": "Branch"
+        },
+        {
+         "hostCountry": {
+          "iso3": "USA",
+          "name": {
+           "norwegian": "USA",
+           "english": "United States of America"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 231679,
+          "legalEntityName": "DNB BANK ASA, FILIAL I NEW YORK"
+         },
+         "serviceProviderType": "Branch"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "NOR",
+        "name": {
+         "norwegian": "Norge",
+         "english": "Norway"
+        }
+       },
+       "service": {
+        "serviceId": 239,
+        "groupName": {
+         "norwegian": "Tilknyttede tjenester, jf. verdipapirhandelloven § 2-6 (1)",
+         "english": "2. Ancillary services, Securities Trading Act § 2-6 (1)"
+        },
+        "serviceName": {
+         "norwegian": "Nr 1: Oppbevaring og administrasjon av finansielle instrumenter på kunders vegne",
+         "english": "No 1: Safekeeping and administration of financial instruments on behalf of clients"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "SGP",
+          "name": {
+           "norwegian": "Singapore",
+           "english": "Singapore"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 216718,
+          "legalEntityName": "DNB BANK ASA, FILIAL I SINGAPORE"
+         },
+         "serviceProviderType": "Branch"
+        },
+        {
+         "hostCountry": {
+          "iso3": "GBR",
+          "name": {
+           "norwegian": "Storbritannia",
+           "english": "United Kingdom"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 198996,
+          "legalEntityName": "DNB BANK ASA, FILIAL I STORBRITANNIA"
+         },
+         "serviceProviderType": "Branch"
+        },
+        {
+         "hostCountry": {
+          "iso3": "USA",
+          "name": {
+           "norwegian": "USA",
+           "english": "United States of America"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 231679,
+          "legalEntityName": "DNB BANK ASA, FILIAL I NEW YORK"
+         },
+         "serviceProviderType": "Branch"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "NOR",
+        "name": {
+         "norwegian": "Norge",
+         "english": "Norway"
+        }
+       },
+       "service": {
+        "serviceId": 508,
+        "groupName": {
+         "norwegian": "Tilknyttede tjenester, jf. verdipapirhandelloven § 2-6 (1)",
+         "english": "2. Ancillary services, Securities Trading Act § 2-6 (1)"
+        },
+        "serviceName": {
+         "norwegian": "Nr 3: Rådgivning om kapitalstruktur, strategi o.l.; rådgivning og tjenester ved  fusjoner og oppkjøp",
+         "english": "No 3: Advice on capital structure, strategy et al.; advice and services re. to mergers and purchases"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "SGP",
+          "name": {
+           "norwegian": "Singapore",
+           "english": "Singapore"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 216718,
+          "legalEntityName": "DNB BANK ASA, FILIAL I SINGAPORE"
+         },
+         "serviceProviderType": "Branch"
+        },
+        {
+         "hostCountry": {
+          "iso3": "GBR",
+          "name": {
+           "norwegian": "Storbritannia",
+           "english": "United Kingdom"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 198996,
+          "legalEntityName": "DNB BANK ASA, FILIAL I STORBRITANNIA"
+         },
+         "serviceProviderType": "Branch"
+        },
+        {
+         "hostCountry": {
+          "iso3": "USA",
+          "name": {
+           "norwegian": "USA",
+           "english": "United States of America"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 231679,
+          "legalEntityName": "DNB BANK ASA, FILIAL I NEW YORK"
+         },
+         "serviceProviderType": "Branch"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "NOR",
+        "name": {
+         "norwegian": "Norge",
+         "english": "Norway"
+        }
+       },
+       "service": {
+        "serviceId": 337,
+        "groupName": {
+         "norwegian": "Tilknyttede tjenester, jf. verdipapirhandelloven § 2-6 (1)",
+         "english": "2. Ancillary services, Securities Trading Act § 2-6 (1)"
+        },
+        "serviceName": {
+         "norwegian": "Nr 4: Tjenester tilknyttet valutavirksomhet i forbindelse med ytelse av investeringstjeneste",
+         "english": "No 4: Foreign exchange services connected to the provision of investment services"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "SGP",
+          "name": {
+           "norwegian": "Singapore",
+           "english": "Singapore"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 216718,
+          "legalEntityName": "DNB BANK ASA, FILIAL I SINGAPORE"
+         },
+         "serviceProviderType": "Branch"
+        },
+        {
+         "hostCountry": {
+          "iso3": "GBR",
+          "name": {
+           "norwegian": "Storbritannia",
+           "english": "United Kingdom"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 198996,
+          "legalEntityName": "DNB BANK ASA, FILIAL I STORBRITANNIA"
+         },
+         "serviceProviderType": "Branch"
+        },
+        {
+         "hostCountry": {
+          "iso3": "USA",
+          "name": {
+           "norwegian": "USA",
+           "english": "United States of America"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 231679,
+          "legalEntityName": "DNB BANK ASA, FILIAL I NEW YORK"
+         },
+         "serviceProviderType": "Branch"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "NOR",
+        "name": {
+         "norwegian": "Norge",
+         "english": "Norway"
+        }
+       },
+       "service": {
+        "serviceId": 541,
+        "groupName": {
+         "norwegian": "Tilknyttede tjenester, jf. verdipapirhandelloven § 2-6 (1)",
+         "english": "2. Ancillary services, Securities Trading Act § 2-6 (1)"
+        },
+        "serviceName": {
+         "norwegian": "Nr 5: Utarbeidelse og formidling av investeringsanbefalinger, finansielle analyser o.l.",
+         "english": "No 5: Preparation and provision of investment recommendations, financial analyses et a"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "SGP",
+          "name": {
+           "norwegian": "Singapore",
+           "english": "Singapore"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 216718,
+          "legalEntityName": "DNB BANK ASA, FILIAL I SINGAPORE"
+         },
+         "serviceProviderType": "Branch"
+        },
+        {
+         "hostCountry": {
+          "iso3": "GBR",
+          "name": {
+           "norwegian": "Storbritannia",
+           "english": "United Kingdom"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 198996,
+          "legalEntityName": "DNB BANK ASA, FILIAL I STORBRITANNIA"
+         },
+         "serviceProviderType": "Branch"
+        },
+        {
+         "hostCountry": {
+          "iso3": "USA",
+          "name": {
+           "norwegian": "USA",
+           "english": "United States of America"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 231679,
+          "legalEntityName": "DNB BANK ASA, FILIAL I NEW YORK"
+         },
+         "serviceProviderType": "Branch"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "NOR",
+        "name": {
+         "norwegian": "Norge",
+         "english": "Norway"
+        }
+       },
+       "service": {
+        "serviceId": 385,
+        "groupName": {
+         "norwegian": "Tilknyttede tjenester, jf. verdipapirhandelloven § 2-6 (1)",
+         "english": "2. Ancillary services, Securities Trading Act § 2-6 (1)"
+        },
+        "serviceName": {
+         "norwegian": "Nr 6: Tjenester tilknyttet fulltegningsgaranti",
+         "english": "No 6: Services related to underwriting"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "SGP",
+          "name": {
+           "norwegian": "Singapore",
+           "english": "Singapore"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 216718,
+          "legalEntityName": "DNB BANK ASA, FILIAL I SINGAPORE"
+         },
+         "serviceProviderType": "Branch"
+        },
+        {
+         "hostCountry": {
+          "iso3": "GBR",
+          "name": {
+           "norwegian": "Storbritannia",
+           "english": "United Kingdom"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 198996,
+          "legalEntityName": "DNB BANK ASA, FILIAL I STORBRITANNIA"
+         },
+         "serviceProviderType": "Branch"
+        },
+        {
+         "hostCountry": {
+          "iso3": "USA",
+          "name": {
+           "norwegian": "USA",
+           "english": "United States of America"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 231679,
+          "legalEntityName": "DNB BANK ASA, FILIAL I NEW YORK"
+         },
+         "serviceProviderType": "Branch"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "NOR",
+        "name": {
+         "norwegian": "Norge",
+         "english": "Norway"
+        }
+       },
+       "service": {
+        "serviceId": 226,
+        "groupName": {
+         "norwegian": "Tilknyttede tjenester, jf. verdipapirhandelloven § 2-6 (1)",
+         "english": "2. Ancillary services, Securities Trading Act § 2-6 (1)"
+        },
+        "serviceName": {
+         "norwegian": "Nr 7: Tjenester tilknyttet underliggende til derivater ved investerings- eller tilknyttede tjeneste",
+         "english": "No 7: Services related to underlying of derivatives connected to investment and ancillary services"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "SGP",
+          "name": {
+           "norwegian": "Singapore",
+           "english": "Singapore"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 216718,
+          "legalEntityName": "DNB BANK ASA, FILIAL I SINGAPORE"
+         },
+         "serviceProviderType": "Branch"
+        },
+        {
+         "hostCountry": {
+          "iso3": "SWE",
+          "name": {
+           "norwegian": "Sverige",
+           "english": "Sweden"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 198995,
+          "legalEntityName": "DNB BANK ASA, FILIAL I SVERIGE"
+         },
+         "serviceProviderType": "Branch"
+        },
+        {
+         "hostCountry": {
+          "iso3": "GBR",
+          "name": {
+           "norwegian": "Storbritannia",
+           "english": "United Kingdom"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 198996,
+          "legalEntityName": "DNB BANK ASA, FILIAL I STORBRITANNIA"
+         },
+         "serviceProviderType": "Branch"
+        },
+        {
+         "hostCountry": {
+          "iso3": "USA",
+          "name": {
+           "norwegian": "USA",
+           "english": "United States of America"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 231679,
+          "legalEntityName": "DNB BANK ASA, FILIAL I NEW YORK"
+         },
+         "serviceProviderType": "Branch"
+        }
+       ]
+      }
+     ],
+     "cooperationGroups": null,
+     "roles": null,
+     "agentsOrBranches": [
+      {
+       "serviceProviderType": "Branch",
+       "country": {
+        "iso3": "FIN",
+        "name": {
+         "norwegian": "Finland",
+         "english": "Finland"
+        }
+       },
+       "legalEntityId": 198992,
+       "legalEntityName": "DNB BANK ASA, FILIAL I FINLAND"
+      },
+      {
+       "serviceProviderType": "Branch",
+       "country": {
+        "iso3": "USA",
+        "name": {
+         "norwegian": "USA",
+         "english": "United States of America"
+        }
+       },
+       "legalEntityId": 231679,
+       "legalEntityName": "DNB BANK ASA, FILIAL I NEW YORK"
+      },
+      {
+       "serviceProviderType": "Branch",
+       "country": {
+        "iso3": "SGP",
+        "name": {
+         "norwegian": "Singapore",
+         "english": "Singapore"
+        }
+       },
+       "legalEntityId": 216718,
+       "legalEntityName": "DNB BANK ASA, FILIAL I SINGAPORE"
+      },
+      {
+       "serviceProviderType": "Branch",
+       "country": {
+        "iso3": "GBR",
+        "name": {
+         "norwegian": "Storbritannia",
+         "english": "United Kingdom"
+        }
+       },
+       "legalEntityId": 198996,
+       "legalEntityName": "DNB BANK ASA, FILIAL I STORBRITANNIA"
+      },
+      {
+       "serviceProviderType": "Branch",
+       "country": {
+        "iso3": "SWE",
+        "name": {
+         "norwegian": "Sverige",
+         "english": "Sweden"
+        }
+       },
+       "legalEntityId": 198995,
+       "legalEntityName": "DNB BANK ASA, FILIAL I SVERIGE"
+      }
+     ],
+     "accreditedAuditors": null,
+     "auditorFor": null,
+     "accreditedAuditorsDetailed": null
+    },
+    {
+     "licensedEntity": {
+      "legalEntityId": 98973,
+      "legalEntityName": "DNB BANK ASA"
+     },
+     "serviceProviderId": 98973,
+     "licenceType": {
+      "code": "FONINOEI",
+      "name": {
+       "norwegian": "Forvalter (nominee) i norske eierregistre",
+       "english": "Nominee in Norwegian securities registers"
+      },
+      "description": {
+       "norwegian": "Godkjenning eller tillatelse knyttet til å stå registrert i et norsk aksjeeierregister, andelseierregister eller verdipapirsentral i stedet for den reelle eieren. ",
+       "english": "Approval or authorisation related to being registered in a Norwegian shareholder register, unit holder register, or central securities depository instead of the owner. "
+      }
+     },
+     "licenceClassification": null,
+     "supervisoryAuthority": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 98961,
+      "legalEntityName": "FINANSTILSYNET"
+     },
+     "hasSecurity": null,
+     "registeredDate": "2004-06-24T00:00:00",
+     "serviceProviderType": "Licensed",
+     "remarks": null,
+     "services": [
+      {
+       "serviceId": 615,
+       "groupName": {
+        "norwegian": "Allmennaksjeloven § 4-10 første ledd ",
+        "english": "1. The Public Limited Liability Companies Act section 4-10 subsection (1) "
+       },
+       "serviceName": {
+        "norwegian": "Norske aksjer og andre finansielle instrumenter som omfattes av bestemmelsen",
+        "english": "Norwegian shares and other financial instruments covered by this provision"
+       },
+       "serviceCode": null,
+       "serviceInstruments": []
+      },
+      {
+       "serviceId": 360,
+       "groupName": {
+        "norwegian": "Verdipapirfondforskriften § 13-2, jf. verdipapirfondloven § 4-10 fjerde ledd",
+        "english": "2. The Securities Funds Regulations section 13-2, cf. the Securities Funds Act section 4-10 subsection (4)"
+       },
+       "serviceName": {
+        "norwegian": "Andeler i norske verdipapirfond        ",
+        "english": "Units in Norwegian securities funds"
+       },
+       "serviceCode": null,
+       "serviceInstruments": []
+      },
+      {
+       "serviceId": 740,
+       "groupName": {
+        "norwegian": "Verdipapirsentralloven § 4-4 femte ledd  ",
+        "english": "3. The Central Securities Depositories Act section 4-4 fifth subsection "
+       },
+       "serviceName": {
+        "norwegian": "Foretaket har godkjente rettsstiftelsesregler",
+        "english": "The company has rules of establishment of legal right which are approved "
+       },
+       "serviceCode": null,
+       "serviceInstruments": []
+      }
+     ],
+     "borderCrossingActivity": [],
+     "cooperationGroups": null,
+     "roles": null,
+     "agentsOrBranches": [],
+     "accreditedAuditors": null,
+     "auditorFor": null,
+     "accreditedAuditorsDetailed": null
+    },
+    {
+     "licensedEntity": {
+      "legalEntityId": 98973,
+      "legalEntityName": "DNB BANK ASA"
+     },
+     "serviceProviderId": 98973,
+     "licenceType": {
+      "code": "DEPOTNY",
+      "name": {
+       "norwegian": "Depotmottaker",
+       "english": "Depositary"
+      },
+      "description": null
+     },
+     "licenceClassification": null,
+     "supervisoryAuthority": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 98961,
+      "legalEntityName": "FINANSTILSYNET"
+     },
+     "hasSecurity": null,
+     "registeredDate": "2012-01-01T00:00:00",
+     "serviceProviderType": "Licensed",
+     "remarks": null,
+     "services": [
+      {
+       "serviceId": 411,
+       "groupName": {
+        "norwegian": "Fondskategori",
+        "english": "Fund category"
+       },
+       "serviceName": {
+        "norwegian": "Depotmottaker for alternative investeringsfond (aifl. § 5-1)",
+        "english": "Depositary for alternative investment funds (Act on Alternative Investment Fund Managers § 5-1)"
+       },
+       "serviceCode": "DFAINF",
+       "serviceInstruments": []
+      },
+      {
+       "serviceId": 407,
+       "groupName": {
+        "norwegian": "Fondskategori",
+        "english": "Fund category"
+       },
+       "serviceName": {
+        "norwegian": "Depotmottaker for verdipapirfond (vpfl. § 10-1)",
+        "english": "Depositary for securities funds (Act on Securities Funds § 10-1)"
+       },
+       "serviceCode": "DFVPFOND",
+       "serviceInstruments": []
+      }
+     ],
+     "borderCrossingActivity": [],
+     "cooperationGroups": null,
+     "roles": null,
+     "agentsOrBranches": [],
+     "accreditedAuditors": null,
+     "auditorFor": null,
+     "accreditedAuditorsDetailed": null
+    },
+    {
+     "licensedEntity": {
+      "legalEntityId": 98973,
+      "legalEntityName": "DNB BANK ASA"
+     },
+     "serviceProviderId": 98973,
+     "licenceType": {
+      "code": "SYSTEINTER",
+      "name": {
+       "norwegian": "Systematisk internaliserer",
+       "english": "Systematic internaliser"
+      },
+      "description": null
+     },
+     "licenceClassification": null,
+     "supervisoryAuthority": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 98961,
+      "legalEntityName": "FINANSTILSYNET"
+     },
+     "hasSecurity": null,
+     "registeredDate": "2018-01-03T00:00:00",
+     "serviceProviderType": "Licensed",
+     "remarks": null,
+     "services": [
+      {
+       "serviceId": 52,
+       "groupName": {
+        "norwegian": "Finansielle instrumenter i egenkapitalsegmentet:",
+        "english": "Financial instruments in the equity segment:"
+       },
+       "serviceName": {
+        "norwegian": "Nr 1: Aksjer",
+        "english": "No 1: Shares"
+       },
+       "serviceCode": null,
+       "serviceInstruments": []
+      },
+      {
+       "serviceId": 1,
+       "groupName": {
+        "norwegian": "Finansielle instrumenter i egenkapitalsegmentet:",
+        "english": "Financial instruments in the equity segment:"
+       },
+       "serviceName": {
+        "norwegian": "Nr 3: Børshandlede fond",
+        "english": "No 3: Exchange-traded funds"
+       },
+       "serviceCode": null,
+       "serviceInstruments": []
+      },
+      {
+       "serviceId": 259,
+       "groupName": {
+        "norwegian": "Finansielle instrumenter i ikke-egenkapitalsegmentet:",
+        "english": "Financial instruments in the non-equity segment:"
+       },
+       "serviceName": {
+        "norwegian": "Nr 1: Obligasjoner",
+        "english": "No 1: Bonds"
+       },
+       "serviceCode": null,
+       "serviceInstruments": []
+      },
+      {
+       "serviceId": 375,
+       "groupName": {
+        "norwegian": "Finansielle instrumenter i ikke-egenkapitalsegmentet:",
+        "english": "Financial instruments in the non-equity segment:"
+       },
+       "serviceName": {
+        "norwegian": "Nr 7: Derivater",
+        "english": "No 7: Derivatives"
+       },
+       "serviceCode": null,
+       "serviceInstruments": []
+      }
+     ],
+     "borderCrossingActivity": [],
+     "cooperationGroups": null,
+     "roles": null,
+     "agentsOrBranches": [],
+     "accreditedAuditors": null,
+     "auditorFor": null,
+     "accreditedAuditorsDetailed": null
+    }
+   ],
+   "addresses": [
+    {
+     "type": "Business",
+     "addressLines": "Dronning Eufemias gate 30\r\n\r\n",
+     "postalCode": "0191",
+     "postalLocation": "OSLO",
+     "region": "OSLO",
+     "country": {
+      "iso3": "NOR",
+      "name": {
+       "norwegian": "Norge",
+       "english": "Norway"
+      }
+     }
+    },
+    {
+     "type": "Postal",
+     "addressLines": "Postboks 1600 Sentrum\r\n\r\n",
+     "postalCode": "0021",
+     "postalLocation": "OSLO",
+     "region": "OSLO",
+     "country": {
+      "iso3": "NOR",
+      "name": {
+       "norwegian": "Norge",
+       "english": "Norway"
+      }
+     }
+    }
+   ],
+   "links": null,
+   "relationsToOther": [
+    {
+     "relationType": {
+      "norwegian": "Depotmottaker",
+      "english": "Depositar"
+     },
+     "legalEntityItem": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 103456,
+      "legalEntityName": "STOREBRAND ASSET MANAGEMENT AS"
+     }
+    },
+    {
+     "relationType": {
+      "norwegian": "Depotmottaker",
+      "english": "Depositar"
+     },
+     "legalEntityItem": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 103458,
+      "legalEntityName": "FONDSFORVALTNING AS"
+     }
+    },
+    {
+     "relationType": {
+      "norwegian": "Depotmottaker",
+      "english": "Depositar"
+     },
+     "legalEntityItem": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 103459,
+      "legalEntityName": "PARETO ASSET MANAGEMENT AS"
+     }
+    },
+    {
+     "relationType": {
+      "norwegian": "Depotmottaker",
+      "english": "Depositar"
+     },
+     "legalEntityItem": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 103473,
+      "legalEntityName": "EIKA KAPITALFORVALTNING AS"
+     }
+    },
+    {
+     "relationType": {
+      "norwegian": "Depotmottaker",
+      "english": "Depositar"
+     },
+     "legalEntityItem": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 103483,
+      "legalEntityName": "DNB ASSET MANAGEMENT AS"
+     }
+    },
+    {
+     "relationType": {
+      "norwegian": "Depotmottaker",
+      "english": "Depositar"
+     },
+     "legalEntityItem": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 103499,
+      "legalEntityName": "ODIN FORVALTNING AS"
+     }
+    },
+    {
+     "relationType": {
+      "norwegian": "Depotmottaker",
+      "english": "Depositar"
+     },
+     "legalEntityItem": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 103502,
+      "legalEntityName": "HOLBERG FONDSFORVALTNING AS"
+     }
+    },
+    {
+     "relationType": {
+      "norwegian": "Depotmottaker",
+      "english": "Depositar"
+     },
+     "legalEntityItem": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 106292,
+      "legalEntityName": "BOREA ASSET MANAGEMENT AS"
+     }
+    },
+    {
+     "relationType": {
+      "norwegian": "Depotmottaker",
+      "english": "Depositar"
+     },
+     "legalEntityItem": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 107188,
+      "legalEntityName": "NORSE FORVALTNING AS"
+     }
+    },
+    {
+     "relationType": {
+      "norwegian": "Depotmottaker",
+      "english": "Depositar"
+     },
+     "legalEntityItem": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 108339,
+      "legalEntityName": "HOLMEN FONDSFORVALTNING AS"
+     }
+    },
+    {
+     "relationType": {
+      "norwegian": "Depotmottaker",
+      "english": "Depositar"
+     },
+     "legalEntityItem": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 113882,
+      "legalEntityName": "ANAXO FORVALTNING AS"
+     }
+    },
+    {
+     "relationType": {
+      "norwegian": "Depotmottaker",
+      "english": "Depositar"
+     },
+     "legalEntityItem": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 114142,
+      "legalEntityName": "PARETO ALTERNATIVE INVESTMENTS AS"
+     }
+    },
+    {
+     "relationType": {
+      "norwegian": "Depotmottaker",
+      "english": "Depositar"
+     },
+     "legalEntityItem": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 178459,
+      "legalEntityName": "DNB NÆRINGSEIENDOM AS"
+     }
+    },
+    {
+     "relationType": {
+      "norwegian": "Depotmottaker",
+      "english": "Depositar"
+     },
+     "legalEntityItem": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 187260,
+      "legalEntityName": "SALT CAPITAL AS"
+     }
+    },
+    {
+     "relationType": {
+      "norwegian": "Depotmottaker",
+      "english": "Depositar"
+     },
+     "legalEntityItem": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 207636,
+      "legalEntityName": "ELGAR KAPITALFORVALTNING AS"
+     }
+    },
+    {
+     "relationType": {
+      "norwegian": "Depotmottaker",
+      "english": "Depositar"
+     },
+     "legalEntityItem": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 211653,
+      "legalEntityName": "NRP ANAXO MANAGEMENT AS"
+     }
+    },
+    {
+     "relationType": {
+      "norwegian": "Depotmottaker",
+      "english": "Depositar"
+     },
+     "legalEntityItem": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 220169,
+      "legalEntityName": "AC MANAGEMENT AS"
+     }
+    },
+    {
+     "relationType": {
+      "norwegian": "Depotmottaker",
+      "english": "Depositar"
+     },
+     "legalEntityItem": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 221721,
+      "legalEntityName": "HVITSTEN AS"
+     }
+    },
+    {
+     "relationType": {
+      "norwegian": "Depotmottaker",
+      "english": "Depositar"
+     },
+     "legalEntityItem": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 253666,
+      "legalEntityName": "TOLUMA AS"
+     }
+    },
+    {
+     "relationType": {
+      "norwegian": "Depotmottaker",
+      "english": "Depositar"
+     },
+     "legalEntityItem": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 254546,
+      "legalEntityName": "STOREBRAND REAL ESTATE AS"
+     }
+    },
+    {
+     "relationType": {
+      "norwegian": "Depotmottaker",
+      "english": "Depositar"
+     },
+     "legalEntityItem": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 257372,
+      "legalEntityName": "NORDVEGEN KAPITAL AS"
+     }
+    }
+   ],
+   "participants": null,
+   "participatesIn": null,
+   "remarks": null
+  }
+ ]
+}

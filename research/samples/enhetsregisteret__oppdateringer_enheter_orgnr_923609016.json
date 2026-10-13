@@ -1,0 +1,597 @@
+{
+ "_request": {
+  "url": "https://data.brreg.no/enhetsregisteret/api/oppdateringer/enheter?organisasjonsnummer=923609016&size=50&sort=id,DESC",
+  "status": 200,
+  "retrieved_at": "2026-10-13T11:49:01Z",
+  "headers": {
+   "vary": "Origin",
+   "x-content-type-options": "nosniff",
+   "x-xss-protection": "0",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "pragma": "no-cache",
+   "expires": "0",
+   "strict-transport-security": "max-age=157680000; includeSubDomains",
+   "x-frame-options": "DENY",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:44:55 GMT",
+   "connection": "close"
+  }
+ },
+ "body": {
+  "_embedded": {
+   "oppdaterteEnheter": [
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2026-09-14T22:03:45.964Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 25205460,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2026-08-18T18:00:17.195Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 25107591,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2026-08-12T22:01:52.644Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 25067148,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2026-07-15T22:04:17.728Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 24866490,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2026-07-02T22:00:22.145Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 24767418,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2026-06-13T15:02:49.718Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 24610298,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2026-05-12T22:01:47.722Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 24407437,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2026-04-14T22:05:38.327Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 24146813,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2026-03-12T23:03:46.489Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 24006244,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2026-02-12T23:05:40.047Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 23848336,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2026-01-13T23:16:41.598Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 23636236,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2025-12-13T18:28:31.559Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 23509524,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2025-11-13T09:47:25.220Z",
+     "endringstype": "Ukjent",
+     "oppdateringsid": 22615233,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2025-11-12T23:04:46.318Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 22252940,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2025-10-15T22:08:16.349Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 22168999,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2025-09-13T15:21:14.664Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 22062245,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2025-08-12T22:09:16.003Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 21964067,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2025-07-14T22:05:56.668Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 21802250,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2025-07-02T04:35:12.166Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 21715199,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2025-06-12T23:06:38.920Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 21602882,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2025-05-14T01:06:19.917Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 21327004,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2025-05-14T01:04:21.523Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 21316285,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2025-05-13T18:02:21.630Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 21312711,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2025-04-14T22:07:17.052Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 21155148,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2025-04-08T12:37:10.747Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 20988906,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2025-04-08T12:29:15.061Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 20867960,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2025-04-08T12:01:42.714Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 20763908,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2025-04-08T11:53:02.756Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 20630358,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2025-04-08T11:46:58.542Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 20533553,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2025-04-08T11:36:51.548Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 20415762,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2025-03-13T01:22:29.822Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 20324039,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2025-02-12T23:07:12.082Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 20222447,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2025-01-14T00:33:15.827Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 20078083,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2024-12-12T23:05:50.166Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 20023641,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2024-11-17T05:32:57.838Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 19943503,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2024-10-14T19:52:13.739Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 19844404,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2024-09-12T21:17:13.422Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 19749694,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2024-08-13T19:40:41.031Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 19642317,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2024-07-13T13:13:57.055Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 19461099,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2024-07-02T04:15:10.987Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 19365738,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2024-06-29T14:37:44.631Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 19341138,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2024-06-11T20:06:22.975Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 19229233,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2024-05-14T19:43:16.142Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 19100195,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2024-04-13T13:11:21.826Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 18993596,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2024-03-12T20:40:56.318Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 18886110,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2024-02-13T20:28:35.798Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 18808551,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2024-01-13T14:04:55.826Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 18704749,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2023-12-12T21:29:32.083Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 18274829,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2023-11-14T21:33:31.910Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 18201017,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2023-10-12T19:52:14.604Z",
+     "endringstype": "Endring",
+     "oppdateringsid": 18079444,
+     "organisasjonsnummer": "923609016"
+    }
+   ]
+  },
+  "_links": {
+   "first": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/oppdateringer/enheter?organisasjonsnummer=923609016&page=0&size=50&sort=id,desc"
+   },
+   "self": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/oppdateringer/enheter?organisasjonsnummer=923609016&size=50&sort=id,DESC"
+   },
+   "next": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/oppdateringer/enheter?organisasjonsnummer=923609016&page=1&size=50&sort=id,desc"
+   },
+   "last": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/oppdateringer/enheter?organisasjonsnummer=923609016&page=3&size=50&sort=id,desc"
+   }
+  },
+  "page": {
+   "number": 0,
+   "size": 50,
+   "totalElements": 179,
+   "totalPages": 4
+  }
+ }
+}

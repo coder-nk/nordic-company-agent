@@ -1,0 +1,85 @@
+{
+ "DNB BANK ASA (BANK)": {
+  "request_url": "https://data.brreg.no/regnskapsregisteret/regnskap/984851006",
+  "status": 500,
+  "headers": {
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:55:25 GMT",
+   "set-cookie": "39e0c30276f55a547493f407ab90ed9c=d9136871ccfc427cd6ae91ddd1a30938; path=/; HttpOnly; Secure; SameSite=None, BIGipServer~OCP-prd~ocp01.prd.base.brreg.no-router-443=1023577098.47873.0000; path=/; Httponly; Secure",
+   "strict-transport-security": "max-age=157680000; includeSubDomains"
+  },
+  "body": {
+   "timestamp": "2026-10-13T11:55:25.649+0000",
+   "status": "500",
+   "error": "Internal Server Error",
+   "message": "Regnskapet inneholder en oppstillingsplan som ikke er stottet (BANK)",
+   "path": "/regnskapsregisteret/regnskap/984851006",
+   "trace": "eee40d40-29d4-4675-b52b-0fcdf38c4d18"
+  }
+ },
+ "GJENSIDIGE FORSIKRING ASA (SKADE)": {
+  "request_url": "https://data.brreg.no/regnskapsregisteret/regnskap/995568217",
+  "status": 500,
+  "headers": {
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:55:26 GMT",
+   "strict-transport-security": "max-age=157680000; includeSubDomains"
+  },
+  "body": {
+   "timestamp": "2026-10-13T11:55:26.535+0000",
+   "status": "500",
+   "error": "Internal Server Error",
+   "message": "Regnskapet inneholder en oppstillingsplan som ikke er stottet (SKADE)",
+   "path": "/regnskapsregisteret/regnskap/995568217",
+   "trace": "599ea570-ec7c-4ce5-a085-fbd142af76e8"
+  }
+ },
+ "STOREBRAND LIVSFORSIKRING AS (LIV)": {
+  "request_url": "https://data.brreg.no/regnskapsregisteret/regnskap/958995369",
+  "status": 500,
+  "headers": {
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:55:27 GMT",
+   "strict-transport-security": "max-age=157680000; includeSubDomains"
+  },
+  "body": {
+   "timestamp": "2026-10-13T11:55:27.420+0000",
+   "status": "500",
+   "error": "Internal Server Error",
+   "message": "Regnskapet inneholder en oppstillingsplan som ikke er stottet (LIV)",
+   "path": "/regnskapsregisteret/regnskap/958995369",
+   "trace": "129306c1-4415-4b48-9944-dbb14f2d179f"
+  }
+ },
+ "AKER PENSJONSKASSE (PENSJ)": {
+  "request_url": "https://data.brreg.no/regnskapsregisteret/regnskap/979276699",
+  "status": 500,
+  "headers": {
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:55:28 GMT",
+   "strict-transport-security": "max-age=157680000; includeSubDomains"
+  },
+  "body": {
+   "timestamp": "2026-10-13T11:55:28.305+0000",
+   "status": "500",
+   "error": "Internal Server Error",
+   "message": "Regnskapet inneholder en oppstillingsplan som ikke er stottet (PENSJ)",
+   "path": "/regnskapsregisteret/regnskap/979276699",
+   "trace": "fd60cb6b-baf3-4f67-be9d-96a0c8ddfcad"
+  }
+ },
+ "DNB BANK ASA with ?år=2025&regnskapstype=SELSKAP": {
+  "request_url": "https://data.brreg.no/regnskapsregisteret/regnskap/984851006?%C3%A5r=2025&regnskapstype=SELSKAP",
+  "status": 404,
+  "headers": {
+   "content-length": "0",
+   "date": "Tue, 13 Oct 2026 11:55:29 GMT",
+   "strict-transport-security": "max-age=157680000; includeSubDomains"
+  },
+  "body": ""
+ }
+}

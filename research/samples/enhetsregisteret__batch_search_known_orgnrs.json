@@ -1,0 +1,633 @@
+{
+ "_request": {
+  "url": "https://data.brreg.no/enhetsregisteret/api/enheter?organisasjonsnummer=923609016,984851006,976820479,914778271,971524960,974760673,982463718,000000000&size=100",
+  "status": 200,
+  "retrieved_at": "2026-10-13T11:38:17Z",
+  "headers": {
+   "vary": "Origin",
+   "x-content-type-options": "nosniff",
+   "x-xss-protection": "0",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "pragma": "no-cache",
+   "expires": "0",
+   "strict-transport-security": "max-age=157680000; includeSubDomains",
+   "x-frame-options": "DENY",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:34:12 GMT",
+   "connection": "close"
+  }
+ },
+ "body": {
+  "_embedded": {
+   "enheter": [
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/984851006"
+      }
+     },
+     "aktivitet": [
+      "Alle forretninger og tjenester som det er vanlig eller naturlig at en",
+      "bank utfører."
+     ],
+     "antallAnsatte": 7353,
+     "erIKonsern": true,
+     "forretningsadresse": {
+      "adresse": [
+       "Dronning Eufemias gate 30"
+      ],
+      "kommune": "OSLO",
+      "kommunenummer": "0301",
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "0191",
+      "poststed": "OSLO"
+     },
+     "frivilligMvaRegistrertBeskrivelser": [
+      "Utleier av bygg eller anlegg"
+     ],
+     "harRegistrertAntallAnsatte": true,
+     "historiskeNavn": [
+      {
+       "fraDato": "2002-09-12 16:22:48",
+       "navn": "GJENSIDIGE NOR SPAREBANK ASA",
+       "tilDato": "2004-01-19 09:15:52"
+      },
+      {
+       "fraDato": "2004-01-19 09:15:52",
+       "navn": "DNB NOR BANK ASA",
+       "tilDato": "2011-11-11 08:45:34"
+      }
+     ],
+     "hjemmeside": "www.dnb.no",
+     "institusjonellSektorkode": {
+      "beskrivelse": "Banker",
+      "kode": "3200"
+     },
+     "kapital": {
+      "antallAksjer": 1440664864,
+      "belop": 18008310800.0,
+      "innfortDato": "2026-06-17",
+      "type": "Aksjekapital",
+      "valuta": "NOK"
+     },
+     "konkurs": false,
+     "maalform": "Bokmål",
+     "mobil": "91504800",
+     "naeringskode1": {
+      "beskrivelse": "Banker og kredittforetak",
+      "kode": "64.190"
+     },
+     "navn": "DNB BANK ASA",
+     "organisasjonsform": {
+      "_links": {
+       "self": {
+        "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/ASA"
+       }
+      },
+      "beskrivelse": "Allmennaksjeselskap",
+      "kode": "ASA"
+     },
+     "organisasjonsnummer": "984851006",
+     "paategninger": [],
+     "postadresse": {
+      "adresse": [
+       "Postboks 1600 Sentrum"
+      ],
+      "kommune": "OSLO",
+      "kommunenummer": "0301",
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "0021",
+      "poststed": "OSLO"
+     },
+     "registreringsdatoAntallAnsatteEnhetsregisteret": "2026-09-14",
+     "registreringsdatoAntallAnsatteNAVAaregisteret": "2026-09-10",
+     "registreringsdatoEnhetsregisteret": "2002-09-12",
+     "registreringsdatoForetaksregisteret": "2002-09-12",
+     "registreringsdatoFrivilligMerverdiavgiftsregisteret": "2014-01-27",
+     "registreringsdatoMerverdiavgiftsregisteret": "2002-09-01",
+     "registreringsdatoMerverdiavgiftsregisteretEnhetsregisteret": "2006-10-23",
+     "registrertIForetaksregisteret": true,
+     "registrertIFrivillighetsregisteret": false,
+     "registrertIMvaregisteret": true,
+     "registrertIPartiregisteret": false,
+     "registrertIStiftelsesregisteret": false,
+     "respons_klasse": "Enhet",
+     "sisteInnsendteAarsregnskap": "2025",
+     "stiftelsesdato": "2002-09-10",
+     "underAvvikling": false,
+     "underTvangsavviklingEllerTvangsopplosning": false,
+     "vedtektsdato": "2026-04-21",
+     "vedtektsfestetFormaal": [
+      "Å drive bank-, finansierings- og investeringstjenestevirksomhet, samt",
+      "virksomhet som har en naturlig tilknytning til dette, og å inneha",
+      "eierinteresser eller være deltaker i andre foretak innenfor rammen av",
+      "den til enhver tid gjeldende lovgivning."
+     ]
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "aktivitet": [
+      "Selv, eller gjennom deltakelse i eller sammen med andre selskaper å",
+      "utvikle, produsere og markedsføre ulike former for energi, avledede",
+      "produkter og tjenester, samt annen virksomhet. Utleie av bygg og",
+      "anlegg."
+     ],
+     "antallAnsatte": 21272,
+     "erIKonsern": true,
+     "forretningsadresse": {
+      "adresse": [
+       "Forusbeen 50"
+      ],
+      "kommune": "STAVANGER",
+      "kommunenummer": "1103",
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "4035",
+      "poststed": "STAVANGER"
+     },
+     "frivilligMvaRegistrertBeskrivelser": [
+      "Utleier av bygg eller anlegg"
+     ],
+     "harRegistrertAntallAnsatte": true,
+     "historiskeNavn": [
+      {
+       "fraDato": "1995-03-12 16:23:00",
+       "navn": "Den norske stats oljeselskap a.s",
+       "tilDato": "2001-05-11 08:32:09"
+      },
+      {
+       "fraDato": "2001-05-11 08:32:09",
+       "navn": "STATOIL ASA",
+       "tilDato": "2007-10-01 06:44:33"
+      },
+      {
+       "fraDato": "2007-10-01 06:44:33",
+       "navn": "STATOILHYDRO ASA",
+       "tilDato": "2009-11-02 07:56:24"
+      },
+      {
+       "fraDato": "2009-11-02 07:56:24",
+       "navn": "STATOIL ASA",
+       "tilDato": "2018-05-16 07:05:45"
+      }
+     ],
+     "hjemmeside": "www.equinor.com",
+     "institusjonellSektorkode": {
+      "beskrivelse": "Statlig eide aksjeselskaper mv.",
+      "kode": "1120"
+     },
+     "kapital": {
+      "antallAksjer": 2390749040,
+      "belop": 5976872600.0,
+      "innfortDato": "2026-07-02",
+      "type": "Aksjekapital",
+      "valuta": "NOK"
+     },
+     "konkurs": false,
+     "maalform": "Bokmål",
+     "naeringskode1": {
+      "beskrivelse": "Utvinning av råolje",
+      "kode": "06.100"
+     },
+     "naeringskode2": {
+      "beskrivelse": "Utvinning av naturgass",
+      "kode": "06.200"
+     },
+     "naeringskode3": {
+      "beskrivelse": "Produksjon av raffinerte petroleumsprodukter og fossile brenselsprodukter",
+      "kode": "19.200"
+     },
+     "navn": "EQUINOR ASA",
+     "organisasjonsform": {
+      "_links": {
+       "self": {
+        "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/ASA"
+       }
+      },
+      "beskrivelse": "Allmennaksjeselskap",
+      "kode": "ASA"
+     },
+     "organisasjonsnummer": "923609016",
+     "paategninger": [],
+     "postadresse": {
+      "adresse": [
+       "Postboks 8500"
+      ],
+      "kommune": "STAVANGER",
+      "kommunenummer": "1103",
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "4035",
+      "poststed": "STAVANGER"
+     },
+     "registreringsdatoAntallAnsatteEnhetsregisteret": "2026-09-14",
+     "registreringsdatoAntallAnsatteNAVAaregisteret": "2026-09-10",
+     "registreringsdatoEnhetsregisteret": "1995-03-12",
+     "registreringsdatoForetaksregisteret": "1988-04-28",
+     "registreringsdatoFrivilligMerverdiavgiftsregisteret": "2022-09-20",
+     "registreringsdatoMerverdiavgiftsregisteret": "1989-07-01",
+     "registreringsdatoMerverdiavgiftsregisteretEnhetsregisteret": "2022-09-20",
+     "registrertIForetaksregisteret": true,
+     "registrertIFrivillighetsregisteret": false,
+     "registrertIMvaregisteret": true,
+     "registrertIPartiregisteret": false,
+     "registrertIStiftelsesregisteret": false,
+     "respons_klasse": "Enhet",
+     "sisteInnsendteAarsregnskap": "2025",
+     "stiftelsesdato": "1972-09-18",
+     "telefon": "51 99 00 00",
+     "underAvvikling": false,
+     "underTvangsavviklingEllerTvangsopplosning": false,
+     "vedtektsdato": "2026-05-12",
+     "vedtektsfestetFormaal": [
+      "Å utvikle, produsere og markedsføre ulike former for energi, avledede",
+      "produkter og tjenester, samt annen virksomhet. Virksomheten kan også",
+      "drives gjennom deltakelse i eller i samarbeid med andre selskaper."
+     ]
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/914778271"
+      }
+     },
+     "aktivitet": [
+      "Drive industri, handel og transport, og å nyttig-",
+      "gjøre energi og råstofforekomster, samt å drive",
+      "annen virksomhet i forbindelse med disse formål.",
+      "Virksomheten kan også drives ved deltagelse i",
+      "eller i samarbeid med andre foretagender."
+     ],
+     "antallAnsatte": 400,
+     "epostadresse": "corporate@hydro.com",
+     "erIKonsern": true,
+     "forretningsadresse": {
+      "adresse": [
+       "Drammensveien 264"
+      ],
+      "kommune": "OSLO",
+      "kommunenummer": "0301",
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "0283",
+      "poststed": "OSLO"
+     },
+     "frivilligMvaRegistrertBeskrivelser": [
+      "Utleier av bygg eller anlegg"
+     ],
+     "harRegistrertAntallAnsatte": true,
+     "historiskeNavn": [],
+     "hjelpeenhetskode": {
+      "beskrivelse": "Hovedkontortjenester",
+      "kode": "70.100"
+     },
+     "hjemmeside": "www.hydro.com",
+     "institusjonellSektorkode": {
+      "beskrivelse": "Private aksjeselskaper mv.",
+      "kode": "2100"
+     },
+     "kapital": {
+      "antallAksjer": 1978489136,
+      "belop": 2172381071.33,
+      "innfortDato": "2025-06-27",
+      "type": "Aksjekapital",
+      "valuta": "NOK"
+     },
+     "konkurs": false,
+     "maalform": "Bokmål",
+     "naeringskode1": {
+      "beskrivelse": "Produksjon av aluminium",
+      "kode": "24.420"
+     },
+     "navn": "Norsk Hydro ASA",
+     "organisasjonsform": {
+      "_links": {
+       "self": {
+        "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/ASA"
+       }
+      },
+      "beskrivelse": "Allmennaksjeselskap",
+      "kode": "ASA"
+     },
+     "organisasjonsnummer": "914778271",
+     "paategninger": [],
+     "postadresse": {
+      "adresse": [
+       "Postboks 980 Skøyen"
+      ],
+      "kommune": "OSLO",
+      "kommunenummer": "0301",
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "0240",
+      "poststed": "OSLO"
+     },
+     "registreringsdatoAntallAnsatteEnhetsregisteret": "2026-09-14",
+     "registreringsdatoAntallAnsatteNAVAaregisteret": "2026-09-10",
+     "registreringsdatoEnhetsregisteret": "1995-02-19",
+     "registreringsdatoForetaksregisteret": "1988-03-09",
+     "registreringsdatoFrivilligMerverdiavgiftsregisteret": "2016-09-07",
+     "registreringsdatoMerverdiavgiftsregisteret": "1970-01-01",
+     "registreringsdatoMerverdiavgiftsregisteretEnhetsregisteret": "2005-10-22",
+     "registrertIForetaksregisteret": true,
+     "registrertIFrivillighetsregisteret": false,
+     "registrertIMvaregisteret": true,
+     "registrertIPartiregisteret": false,
+     "registrertIStiftelsesregisteret": false,
+     "respons_klasse": "Enhet",
+     "sisteInnsendteAarsregnskap": "2025",
+     "stiftelsesdato": "1905-12-02",
+     "telefon": "22 53 81 00",
+     "underAvvikling": false,
+     "underTvangsavviklingEllerTvangsopplosning": false,
+     "vedtektsdato": "2025-05-09",
+     "vedtektsfestetFormaal": [
+      "Drive industri, handel og transport, og å nyttig-",
+      "gjøre energi og råstofforekomster, samt å drive",
+      "annen virksomhet i forbindelse med disse formål.",
+      "Virksomheten kan også drives ved deltagelse i",
+      "eller i samarbeid med andre foretagender."
+     ]
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/974760673"
+      },
+      "overordnetEnhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/912660680"
+      }
+     },
+     "aktivitet": [
+      "Registeretat."
+     ],
+     "antallAnsatte": 487,
+     "epostadresse": "firmapost@brreg.no",
+     "erIKonsern": false,
+     "forretningsadresse": {
+      "adresse": [
+       "Havnegata 48"
+      ],
+      "kommune": "BRØNNØY",
+      "kommunenummer": "1813",
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "8900",
+      "poststed": "BRØNNØYSUND"
+     },
+     "harRegistrertAntallAnsatte": true,
+     "historiskeNavn": [
+      {
+       "fraDato": "1998-01-16 20:22:18",
+       "navn": "BRØNNØYSUNDREGISTRENE",
+       "tilDato": "1999-09-10 18:51:43"
+      }
+     ],
+     "hjemmeside": "www.brreg.no",
+     "institusjonellSektorkode": {
+      "beskrivelse": "Statsforvaltningen",
+      "kode": "6100"
+     },
+     "konkurs": false,
+     "maalform": "Bokmål",
+     "naeringskode1": {
+      "beskrivelse": "Generell offentlig administrasjon",
+      "kode": "84.110"
+     },
+     "navn": "REGISTERENHETEN I BRØNNØYSUND",
+     "organisasjonsform": {
+      "_links": {
+       "self": {
+        "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/ORGL"
+       }
+      },
+      "beskrivelse": "Organisasjonsledd",
+      "kode": "ORGL"
+     },
+     "organisasjonsnummer": "974760673",
+     "overordnetEnhet": "912660680",
+     "paategninger": [],
+     "postadresse": {
+      "adresse": [
+       "Postboks 900"
+      ],
+      "kommune": "BRØNNØY",
+      "kommunenummer": "1813",
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "8910",
+      "poststed": "BRØNNØYSUND"
+     },
+     "registreringsdatoAntallAnsatteEnhetsregisteret": "2026-09-14",
+     "registreringsdatoAntallAnsatteNAVAaregisteret": "2026-09-10",
+     "registreringsdatoEnhetsregisteret": "1995-08-09",
+     "registrertIForetaksregisteret": false,
+     "registrertIFrivillighetsregisteret": false,
+     "registrertIMvaregisteret": false,
+     "registrertIPartiregisteret": false,
+     "registrertIStiftelsesregisteret": false,
+     "respons_klasse": "Enhet",
+     "telefon": "75 00 75 09",
+     "underAvvikling": false,
+     "underTvangsavviklingEllerTvangsopplosning": false
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/971524960"
+      }
+     },
+     "aktivitet": [
+      "Stortinget"
+     ],
+     "antallAnsatte": 605,
+     "epostadresse": "stortinget.postmottak@stortinget.no",
+     "erIKonsern": false,
+     "forretningsadresse": {
+      "adresse": [
+       "Karl Johans gate 22"
+      ],
+      "kommune": "OSLO",
+      "kommunenummer": "0301",
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "0026",
+      "poststed": "OSLO"
+     },
+     "harRegistrertAntallAnsatte": true,
+     "historiskeNavn": [
+      {
+       "fraDato": "1995-08-09 15:11:00",
+       "navn": "STORTINGETS REGNSKAPSFØRER",
+       "tilDato": "1998-10-15 20:29:11"
+      }
+     ],
+     "hjemmeside": "www.stortinget.no/",
+     "institusjonellSektorkode": {
+      "beskrivelse": "Statsforvaltningen",
+      "kode": "6100"
+     },
+     "konkurs": false,
+     "maalform": "Bokmål",
+     "naeringskode1": {
+      "beskrivelse": "Generell offentlig administrasjon",
+      "kode": "84.110"
+     },
+     "navn": "STORTINGET",
+     "organisasjonsform": {
+      "_links": {
+       "self": {
+        "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/STAT"
+       }
+      },
+      "beskrivelse": "Staten",
+      "kode": "STAT"
+     },
+     "organisasjonsnummer": "971524960",
+     "paategninger": [],
+     "postadresse": {
+      "adresse": [
+       "Postboks 1700 Sentrum"
+      ],
+      "kommune": "OSLO",
+      "kommunenummer": "0301",
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "0026",
+      "poststed": "OSLO"
+     },
+     "registreringsdatoAntallAnsatteEnhetsregisteret": "2026-10-12",
+     "registreringsdatoAntallAnsatteNAVAaregisteret": "2026-10-10",
+     "registreringsdatoEnhetsregisteret": "1995-08-09",
+     "registreringsdatoMerverdiavgiftsregisteret": "2002-05-01",
+     "registreringsdatoMerverdiavgiftsregisteretEnhetsregisteret": "2002-06-25",
+     "registrertIForetaksregisteret": false,
+     "registrertIFrivillighetsregisteret": false,
+     "registrertIMvaregisteret": true,
+     "registrertIPartiregisteret": false,
+     "registrertIStiftelsesregisteret": false,
+     "respons_klasse": "Enhet",
+     "telefon": "23 31 30 50",
+     "underAvvikling": false,
+     "underTvangsavviklingEllerTvangsopplosning": false
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/982463718"
+      }
+     },
+     "aktivitet": [
+      "Telekommunikasjonsvirksomhet."
+     ],
+     "antallAnsatte": 374,
+     "erIKonsern": true,
+     "forretningsadresse": {
+      "adresse": [
+       "Snarøyveien 30"
+      ],
+      "kommune": "BÆRUM",
+      "kommunenummer": "3201",
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "1360",
+      "poststed": "FORNEBU"
+     },
+     "frivilligMvaRegistrertBeskrivelser": [
+      "Utleier av bygg eller anlegg"
+     ],
+     "harRegistrertAntallAnsatte": true,
+     "historiskeNavn": [],
+     "hjelpeenhetskode": {
+      "beskrivelse": "Hovedkontortjenester",
+      "kode": "70.100"
+     },
+     "hjemmeside": "www.telenor.no/",
+     "institusjonellSektorkode": {
+      "beskrivelse": "Statlig eide aksjeselskaper mv.",
+      "kode": "1120"
+     },
+     "kapital": {
+      "antallAksjer": 1368349989,
+      "belop": 8210099934.0,
+      "innfortDato": "2024-06-28",
+      "type": "Aksjekapital",
+      "valuta": "NOK"
+     },
+     "konkurs": false,
+     "maalform": "Bokmål",
+     "naeringskode1": {
+      "beskrivelse": "Kabelbasert, satellittbasert og trådløs telekommunikasjon",
+      "kode": "61.100"
+     },
+     "navn": "TELENOR ASA",
+     "organisasjonsform": {
+      "_links": {
+       "self": {
+        "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/ASA"
+       }
+      },
+      "beskrivelse": "Allmennaksjeselskap",
+      "kode": "ASA"
+     },
+     "organisasjonsnummer": "982463718",
+     "paategninger": [],
+     "postadresse": {
+      "adresse": [
+       "Postboks 800"
+      ],
+      "kommune": "BÆRUM",
+      "kommunenummer": "3201",
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "1331",
+      "poststed": "FORNEBU"
+     },
+     "registreringsdatoAntallAnsatteEnhetsregisteret": "2026-09-14",
+     "registreringsdatoAntallAnsatteNAVAaregisteret": "2026-09-10",
+     "registreringsdatoEnhetsregisteret": "2000-10-06",
+     "registreringsdatoForetaksregisteret": "2000-10-06",
+     "registreringsdatoFrivilligMerverdiavgiftsregisteret": "2021-08-31",
+     "registreringsdatoMerverdiavgiftsregisteret": "2000-09-01",
+     "registreringsdatoMerverdiavgiftsregisteretEnhetsregisteret": "2007-01-23",
+     "registrertIForetaksregisteret": true,
+     "registrertIFrivillighetsregisteret": false,
+     "registrertIMvaregisteret": true,
+     "registrertIPartiregisteret": false,
+     "registrertIStiftelsesregisteret": false,
+     "respons_klasse": "Enhet",
+     "sisteInnsendteAarsregnskap": "2025",
+     "stiftelsesdato": "2000-07-21",
+     "telefon": "67 89 00 00",
+     "underAvvikling": false,
+     "underTvangsavviklingEllerTvangsopplosning": false,
+     "vedtektsdato": "2026-05-19",
+     "vedtektsfestetFormaal": [
+      "Telekommunikasjonsvirksomhet og annen virksomhet som har sammenheng",
+      "med dette. Virksomheten kan utøves av selskapet selv, av",
+      "datterselskaper, eller gjennom deltakelse i andre selskaper eller i",
+      "samarbeid med andre."
+     ]
+    }
+   ]
+  },
+  "_links": {
+   "self": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/enheter?organisasjonsnummer=923609016,984851006,976820479,914778271,971524960,974760673,982463718,000000000&size=100"
+   }
+  },
+  "page": {
+   "number": 0,
+   "size": 100,
+   "totalElements": 6,
+   "totalPages": 1
+  }
+ }
+}

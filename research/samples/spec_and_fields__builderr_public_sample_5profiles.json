@@ -1,0 +1,2855 @@
+[
+ {
+  "org": "979543883",
+  "name": "DIPS AS",
+  "form": "AS",
+  "employees": 365,
+  "municipality": "BODØ",
+  "industryCode": "62.200",
+  "industry": "Konsulentvirksomhet tilknyttet informasjonsteknologi og forvaltning og drift av it-systemer",
+  "website": null,
+  "adverse": false,
+  "slice": "preserved_eligible",
+  "split": "development",
+  "latestAccounts": "2025",
+  "registrySource": "https://data.brreg.no/enhetsregisteret/api/enheter/lastned/csv",
+  "registry": {
+   "status": "available",
+   "source": "https://data.brreg.no/enhetsregisteret/api/enheter/lastned/csv",
+   "sourceClass": "official_registry_bulk",
+   "retrievedAt": "2026-08-22T08:27:06.511032Z",
+   "effectiveAt": null,
+   "hash": "0f6c43feba23b0dc232613e505c3a7ce28f503011a3a61343ba41abc25a83629",
+   "rowKey": "979543883"
+  },
+  "accounting": {
+   "status": "available",
+   "source": "https://www.brreg.no/en/submission-of-annual-accounts/reporting-obligations-to-the-register-of-company-accounts/who-has-an-accounting-obligation/",
+   "sourceClass": "official_rule_interpretation",
+   "retrievedAt": "2026-08-22T08:27:28.686206Z",
+   "effectiveAt": "2024-08-09",
+   "hash": "b94e22c6da7667d1ae10db3dcb20f1b279634a1ce07b21111fc0f56758b3b6fb",
+   "rowKey": "979543883",
+   "value": {
+    "classification": "filing_observed",
+    "legal_form": "AS",
+    "latest_submitted_accounts": "2025",
+    "reason": "The registry snapshot reports a latest submitted annual-account year.",
+    "ruleset_version": "brreg_accounting_obligation_rules_2024-08-09_v1"
+   }
+  },
+  "financial": {
+   "status": "available",
+   "source": "https://data.brreg.no/regnskapsregisteret/regnskap/979543883",
+   "sourceClass": "official_annual_accounts",
+   "retrievedAt": "2026-08-22T08:31:55.754877Z",
+   "effectiveAt": null,
+   "hash": "1a2103f1cf3282f618b6ce90e55a3cd5f337cddd496a49c2978173b0669f841f",
+   "rowKey": null,
+   "records": [
+    {
+     "record_id": 6942396,
+     "account_type": "SELSKAP",
+     "period": {
+      "fraDato": "2025-01-01",
+      "tilDato": "2025-12-31"
+     },
+     "currency": "NOK",
+     "revenue": 790400865.0,
+     "operating_result": 192626830.0,
+     "profit_before_tax": 209029046.0,
+     "annual_result": 163960244.0,
+     "assets": 1016374717.0,
+     "equity": 355836228.0,
+     "debt": 660538489.0
+    }
+   ]
+  },
+  "financialHistory": {
+   "status": "available",
+   "source": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/979543883/aar",
+   "sourceClass": "official_annual_account_copies",
+   "retrievedAt": "2026-08-22T09:18:52.711643Z",
+   "effectiveAt": null,
+   "hash": "b7bcd20d8a4607bc9ca49fbdfebf5e51cb31e39858edb985dc98a82e8d2b7cd1",
+   "rowKey": null,
+   "pdfs": [
+    {
+     "year": "2025",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/979543883/2025"
+    },
+    {
+     "year": "2024",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/979543883/2024"
+    },
+    {
+     "year": "2023",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/979543883/2023"
+    },
+    {
+     "year": "2022",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/979543883/2022"
+    },
+    {
+     "year": "2021",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/979543883/2021"
+    },
+    {
+     "year": "2020",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/979543883/2020"
+    },
+    {
+     "year": "2019",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/979543883/2019"
+    },
+    {
+     "year": "2018",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/979543883/2018"
+    },
+    {
+     "year": "2017",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/979543883/2017"
+    },
+    {
+     "year": "2016",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/979543883/2016"
+    },
+    {
+     "year": "2015",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/979543883/2015"
+    },
+    {
+     "year": "2014",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/979543883/2014"
+    },
+    {
+     "year": "2013",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/979543883/2013"
+    },
+    {
+     "year": "2012",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/979543883/2012"
+    },
+    {
+     "year": "2011",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/979543883/2011"
+    }
+   ]
+  },
+  "roles": {
+   "status": "available",
+   "source": "https://data.brreg.no/enhetsregisteret/api/enheter/979543883/roller",
+   "sourceClass": "official_roles",
+   "retrievedAt": "2026-08-22T08:31:56.723533Z",
+   "effectiveAt": null,
+   "hash": "60daa02126086bb824b843a2a3dbf964865334e7f2413f150af83d0546d9a172",
+   "rowKey": null,
+   "items": [
+    {
+     "name": "Thomas Smedsrud",
+     "organisation_number": null,
+     "role_code": "DAGL",
+     "role": "Daglig leder",
+     "group_code": "DAGL",
+     "group": "Daglig leder",
+     "last_changed": "2023-08-01",
+     "inactive": false
+    },
+    {
+     "name": "Arve Ree",
+     "organisation_number": null,
+     "role_code": "LEDE",
+     "role": "Styrets leder",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2026-02-10",
+     "inactive": false
+    },
+    {
+     "name": "Kolbjørn Haarr",
+     "organisation_number": null,
+     "role_code": "MEDL",
+     "role": "Styremedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2026-02-10",
+     "inactive": false
+    },
+    {
+     "name": "Anne-Grete Hjelle Strøm-Erichsen",
+     "organisation_number": null,
+     "role_code": "MEDL",
+     "role": "Styremedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2026-02-10",
+     "inactive": false
+    },
+    {
+     "name": "Annette Hole Sjøborg",
+     "organisation_number": null,
+     "role_code": "MEDL",
+     "role": "Styremedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2026-02-10",
+     "inactive": false
+    },
+    {
+     "name": "Øystein Sikora Ingstad",
+     "organisation_number": null,
+     "role_code": "MEDL",
+     "role": "Styremedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2026-02-10",
+     "inactive": false
+    },
+    {
+     "name": "Liv Elise Saue Tøftum",
+     "organisation_number": null,
+     "role_code": "MEDL",
+     "role": "Styremedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2026-02-10",
+     "inactive": false
+    },
+    {
+     "name": "Sverre Coucheron",
+     "organisation_number": null,
+     "role_code": "MEDL",
+     "role": "Styremedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2026-02-10",
+     "inactive": false
+    },
+    {
+     "name": "Alexander Tangevold Theodorsen",
+     "organisation_number": null,
+     "role_code": "MEDL",
+     "role": "Styremedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2026-02-10",
+     "inactive": false
+    },
+    {
+     "name": "Margrethe Haugen",
+     "organisation_number": null,
+     "role_code": "VARA",
+     "role": "Varamedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2026-02-10",
+     "inactive": false
+    },
+    {
+     "name": "Therese Wiik Jahnsen",
+     "organisation_number": null,
+     "role_code": "VARA",
+     "role": "Varamedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2026-02-10",
+     "inactive": false
+    },
+    {
+     "name": "Anne Lise Øiesvold",
+     "organisation_number": null,
+     "role_code": "VARA",
+     "role": "Varamedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2026-02-10",
+     "inactive": false
+    },
+    {
+     "name": [
+      "CEDRA NORGE BOREALIS AS"
+     ],
+     "organisation_number": "936295800",
+     "role_code": "REVI",
+     "role": "Revisor",
+     "group_code": "REVI",
+     "group": "Revisor",
+     "last_changed": "2026-08-13",
+     "inactive": false
+    }
+   ]
+  },
+  "locations": {
+   "status": "available",
+   "source": "https://data.brreg.no/enhetsregisteret/api/underenheter?overordnetEnhet=979543883&size=1000",
+   "sourceClass": "official_subunits",
+   "retrievedAt": "2026-08-22T08:31:58.715381Z",
+   "effectiveAt": null,
+   "hash": "0455124aa6e04619aa5272ba235aa5a631d82ca97ab604dc2be75eeb0e9c30e1",
+   "rowKey": null,
+   "items": [
+    {
+     "organisation_number": "916610181",
+     "name": "DIPS AS AVD BERGEN",
+     "address": {
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "5013",
+      "poststed": "BERGEN",
+      "adresse": [
+       "Strandgaten 9"
+      ],
+      "kommune": "BERGEN",
+      "kommunenummer": "4601"
+     },
+     "industry": {
+      "kode": "62.200",
+      "beskrivelse": "Konsulentvirksomhet tilknyttet informasjonsteknologi og forvaltning og drift av it-systemer"
+     },
+     "employees": 12
+    },
+    {
+     "organisation_number": "979563132",
+     "name": "DIPS AS AVD BODØ",
+     "address": {
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "8006",
+      "poststed": "BODØ",
+      "adresse": [
+       "Jernbaneveien 85"
+      ],
+      "kommune": "BODØ",
+      "kommunenummer": "1804"
+     },
+     "industry": {
+      "kode": "62.200",
+      "beskrivelse": "Konsulentvirksomhet tilknyttet informasjonsteknologi og forvaltning og drift av it-systemer"
+     },
+     "employees": 145
+    },
+    {
+     "organisation_number": "991415998",
+     "name": "DIPS AS AVD FØRDE",
+     "address": {
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "6810",
+      "poststed": "FØRDE",
+      "adresse": [
+       "Øvre Presteholten 10"
+      ],
+      "kommune": "SUNNFJORD",
+      "kommunenummer": "4647"
+     },
+     "industry": {
+      "kode": "62.200",
+      "beskrivelse": "Konsulentvirksomhet tilknyttet informasjonsteknologi og forvaltning og drift av it-systemer"
+     },
+     "employees": null
+    },
+    {
+     "organisation_number": "991415955",
+     "name": "DIPS AS AVD OSLO",
+     "address": {
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "0191",
+      "poststed": "OSLO",
+      "adresse": [
+       "Dronning Eufemias gate 14"
+      ],
+      "kommune": "OSLO",
+      "kommunenummer": "0301"
+     },
+     "industry": {
+      "kode": "62.200",
+      "beskrivelse": "Konsulentvirksomhet tilknyttet informasjonsteknologi og forvaltning og drift av it-systemer"
+     },
+     "employees": 103
+    },
+    {
+     "organisation_number": "992788712",
+     "name": "DIPS AS AVD TROMSØ",
+     "address": {
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "9010",
+      "poststed": "TROMSØ",
+      "adresse": [
+       "Stakkevollvegen 39"
+      ],
+      "kommune": "TROMSØ",
+      "kommunenummer": "5501"
+     },
+     "industry": {
+      "kode": "62.200",
+      "beskrivelse": "Konsulentvirksomhet tilknyttet informasjonsteknologi og forvaltning og drift av it-systemer"
+     },
+     "employees": 65
+    },
+    {
+     "organisation_number": "991415963",
+     "name": "DIPS AS AVD TRONDHEIM",
+     "address": {
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "7042",
+      "poststed": "TRONDHEIM",
+      "adresse": [
+       "5. etasje",
+       "Beddingen 10"
+      ],
+      "kommune": "TRONDHEIM",
+      "kommunenummer": "5001"
+     },
+     "industry": {
+      "kode": "62.200",
+      "beskrivelse": "Konsulentvirksomhet tilknyttet informasjonsteknologi og forvaltning og drift av it-systemer"
+     },
+     "employees": 39
+    }
+   ]
+  },
+  "web": {
+   "status": "available",
+   "source": "https://www.dips.com/",
+   "sourceClass": "registry_linked_company_website",
+   "retrievedAt": "2026-08-22T08:32:05.157138Z",
+   "effectiveAt": null,
+   "hash": "2b50c26fc845cbc897087c9bee1c57c6a38fb29112a53c6e318c58b6edcb18b2",
+   "rowKey": null,
+   "value": {
+    "requested_url": "https://www.dips.com/",
+    "final_url": "https://www.dips.com/",
+    "registered_domain": "dips.com",
+    "title": "DIPS - Ledende leverandør av e-helse til helsetjenesten",
+    "description": "DIPS utvikler helseteknologi og skaper løsninger for helsepersonell i norske sykehus og kommuner.",
+    "main_text_excerpt": "Siden 1987 har DIPS utviklet journalsystem for helsepersonell, pasienter og norske forhold",
+    "social_links": [
+     {
+      "platform": "facebook",
+      "url": "https://facebook.com/dips.no"
+     },
+     {
+      "platform": "instagram",
+      "url": "https://instagram.com/dips_as"
+     },
+     {
+      "platform": "linkedin",
+      "url": "https://linkedin.com/company/dips-asa"
+     },
+     {
+      "platform": "youtube",
+      "url": "https://youtube.com/user/DIPSASA"
+     }
+    ],
+    "structured_organisations": [],
+    "content_sha256": "2b50c26fc845cbc897087c9bee1c57c6a38fb29112a53c6e318c58b6edcb18b2",
+    "extraction_state": "js_fallback_candidate",
+    "pages": [
+     {
+      "url": "https://www.dips.com/",
+      "title": "DIPS - Ledende leverandør av e-helse til helsetjenesten",
+      "main_text_excerpt": "Siden 1987 har DIPS utviklet journalsystem for helsepersonell, pasienter og norske forhold",
+      "content_sha256": "2b50c26fc845cbc897087c9bee1c57c6a38fb29112a53c6e318c58b6edcb18b2"
+     },
+     {
+      "url": "https://www.dips.com/om-oss",
+      "title": "Om DIPS - Bli bedre kjent med oss",
+      "main_text_excerpt": "Om oss\nVi leverer e-helse\nDIPS AS er et programvarehus som utvikler samfunnskritisk helseteknologi og leverer digitale arbeidsverktøy til norske sykehus. Vår aller viktigste ressurs er våre 400 medarbeidere.\nMed et mangfold av ansatte, kunder og partnere fremmer vi innovasjon og brukervennlighet. Sammen skaper vi løsninger som gir klinisk verdi for over 100 000 brukere i helsetjenesten.\nVi er en sentral del av Kernel-konsernet, og Norges ledende leverandør av e-helse.\nDIPS – utviklet for helsepersonell, pasienter og norske forhold siden 1987.\nLøsninger for Helse-Norge\nVi utvikler verktøy som virkelighetens helter bruker hver dag i kampen om bedre helse. Våre løsninger ivaretar behovene for administrasjon og dokumentasjon av pasientbehandling i spesialist- og i kommunehelsetjenesten, i tillegg til spesialistløsninger innenfor radiologi og til laboratorier.\nVi utvikler også løsninger for samhandling mellom helseforetak og samarbeidende virksomheter i Norge. To av tre norske legekontorer bruker samhandlingsløsninger fra oss.\nEffektivisering i praksis\nVåre løsninger bidrar til at helsepersonell kan realisere effektiviseringsgevinster i sin drift, samtidig som de forbedrer kvaliteten i pasientbehandlingen og øker pasientsikkerheten.\nDen siste tiden har det pågått en omfattende videreutvikling av vår journalplattform og utvikling av vårt tredje generasjons journalsystem DIPS Arena. Arena gir klinikerne et bedre og mer slagkraftig arbeidsverktøy, og har et moderne brukergrensesnitt som enkelt kan tilpasses de ulike brukerne i klinikken.\nSom en del av arbeidet utvikles det støtte for kliniske prosesser og for strukturert informasjon.\nVi er norskeide\n– og stolte av det, og har landets desidert største utviklingsmiljø innen e-helse.\nMed hovedkontor i Bodø samt kontorer i Oslo, Bergen, Straume, Trondheim og Tromsø, er vi totalt ca. 360 ansatte.\nHistorien om DIPS\nPå midten av 80-tallet ønsket Nordland Sentralsykehus i Bodø seg et system som kunne løse behovet for et moderne pasientadministrativt datasystem. Det var lite som tilsa at dette skulle være starten på en IKT-revolusjon i norske sykehus.\nSamfunnsansvar\nVi jobber for å være en bærekraftig samfunnsaktør, med fokus på å skape positive ringvirkninger rundt oss. Ut over samfunnsansvaret som naturlig ligger i vår kjernevirksomhet har vi tre fokusområder vi jobber etter:\n- Kunnskap\n- Bærekraft\n- Samarbeid",
+      "content_sha256": "ade551ce8b7bb3b80de4541c2f9375d6eeabe2372b5ef46b87227d91536151c3"
+     },
+     {
+      "url": "https://www.dips.com/om-oss/presse",
+      "title": "Presserom og kontaktinformasjon for DIPS AS og DIPS Front AS",
+      "main_text_excerpt": "Presseinformasjon\nPressebilder\nLast ned pressebildene her\nVi leverer e-helse\nDIPS AS er et programvarehus som utvikler samfunnskritisk helseteknologi og leverer digitale arbeidsverktøy til norske sykehus. Vår aller viktigste ressurs er våre 360 medarbeidere.\nMed et mangfold av ansatte, kunder og partnere fremmer vi innovasjon og brukervennlighet. Sammen skaper vi løsninger som gir klinisk verdi for over 100 000 brukere i helsetjenesten.\nVi er en sentral del av Kernel-konsernet, og Norges ledende leverandør av e-helse.",
+      "content_sha256": "c41c0b13eda99b7f99a646dae66fbd8742ed937c5b342ef8d855ea2436823abe"
+     },
+     {
+      "url": "https://www.dips.com/kontakt",
+      "title": "Ta kontakt | Vil du komme i kontakt med oss i DIPS eller DIPS Front?",
+      "main_text_excerpt": "Vil du komme i kontakt med oss?\nVåre kontorer finner du her:\n- Bodø, hovedkontor DIPS:\n Jernbaneveien 85, 5. etasje, 8006 Bodø\nPostadresse: Postboks 1435, 8037 Bodø\n- Oslo:\nTrelastgata 3, 14. etasje, 0191 Oslo\n- Trondheim:\nBeddingen 10, 5. etasje, 7042 Trondheim\n- Tromsø: \n Stakkevollvegen 39, 5. etasje, 9010 Tromsø\nPostadresse: Postboks 3645, 9278 Tromsø\n- Bergen: \nRådhusgaten 4, 5014 Bergen\nØvrig kontaktinformasjon:\n- Telefon sentralbord: 75 59 20 00\n- Telefon kundeservice: 75 59 22 00\n- E-post DIPS: post@dips.no\nBrukerstøtte og supportsaker kan ikke meldes her. Ved hjelp til DIPS programvare - kontakt intern IT eller lokal forvaltning ved ditt sykehus.",
+      "content_sha256": "1f63398a6b9e539bc9fed3b10cc5b32189edda5452df508a180a7e67af51a9dc"
+     },
+     {
+      "url": "https://www.dips.com/kontakt-felles",
+      "title": "Kontakt oss | Vil du komme i kontakt med oss i DIPS eller DIPS Front?",
+      "main_text_excerpt": "Ta kontakt med oss\nVåre kontorer finner du her:\n- Bodø, hovedkontor DIPS:\n Jernbaneveien 85, 5. etasje, 8006 Bodø\nPostadresse: Postboks 1435, 8037 Bodø\n- Oslo:\nTrelastgata 3, 14. etasje, 0191 Oslo\n- Trondheim:\nBeddingen 10, 5. etasje, 7042 Trondheim\n- Tromsø: \n Stakkevollvegen 39, 5. etasje, 9010 Tromsø\nPostadresse: Postboks 3645, 9278 Tromsø\n- Bergen: \nStrandgaten 11, 3. etasje, 5013 Bergen\nØvrig kontaktinformasjon:\n- Telefon sentralbord: 75 59 20 00\n- Telefon kundeservice: 75 59 22 00\n- E-post DIPS: post@dips.no\nBrukerstøtte og supportsaker kan ikke meldes her. Ved hjelp til DIPS programvare - kontakt intern IT eller lokal forvaltning ved ditt sykehus.",
+      "content_sha256": "ca1d7c6a66ca8e9621dc60709c12584ecc1c8f17ac8dbde325ed992393e7a5ad"
+     }
+    ],
+    "crawl_errors": [],
+    "identity_assessment": {
+     "status": "exact",
+     "score": 0.95,
+     "publishable": true,
+     "legal_name_tokens": [
+      "dips"
+     ],
+     "matched_tokens": [
+      "dips"
+     ],
+     "reasons": [
+      "registry-linked site has exact legal identity plus organisation/contact corroboration"
+     ],
+     "method": "deterministic_name_org_contact_evidence_v3",
+     "promotion_proof": [
+      {
+       "type": "all_legal_name_tokens",
+       "passed": true
+      },
+      {
+       "type": "organisation_number",
+       "passed": false
+      },
+      {
+       "type": "registry_email",
+       "passed": true
+      },
+      {
+       "type": "registry_phone",
+       "passed": true
+      },
+      {
+       "type": "registry_address",
+       "passed": true
+      }
+     ]
+    },
+    "discovered_social_links": [
+     {
+      "platform": "facebook",
+      "url": "https://facebook.com/dips.no"
+     },
+     {
+      "platform": "instagram",
+      "url": "https://instagram.com/dips_as"
+     },
+     {
+      "platform": "linkedin",
+      "url": "https://linkedin.com/company/dips-asa"
+     },
+     {
+      "platform": "youtube",
+      "url": "https://youtube.com/user/DIPSASA"
+     }
+    ],
+    "social_link_assessments": [
+     {
+      "platform": "facebook",
+      "url": "https://facebook.com/dips.no",
+      "identity_score": 0.98,
+      "publishable": true,
+      "matched_tokens": [
+       "dips"
+      ],
+      "reason": "normalized legal-name sequence appears in the social handle",
+      "method": "deterministic_social_handle_identity_v1"
+     },
+     {
+      "platform": "instagram",
+      "url": "https://instagram.com/dips_as",
+      "identity_score": 0.98,
+      "publishable": true,
+      "matched_tokens": [
+       "dips"
+      ],
+      "reason": "normalized legal-name sequence appears in the social handle",
+      "method": "deterministic_social_handle_identity_v1"
+     },
+     {
+      "platform": "linkedin",
+      "url": "https://linkedin.com/company/dips-asa",
+      "identity_score": 0.98,
+      "publishable": true,
+      "matched_tokens": [
+       "dips"
+      ],
+      "reason": "normalized legal-name sequence appears in the social handle",
+      "method": "deterministic_social_handle_identity_v1"
+     },
+     {
+      "platform": "youtube",
+      "url": "https://youtube.com/user/DIPSASA",
+      "identity_score": 0.98,
+      "publishable": true,
+      "matched_tokens": [
+       "dips"
+      ],
+      "reason": "normalized legal-name sequence appears in the social handle",
+      "method": "deterministic_social_handle_identity_v1"
+     }
+    ]
+   }
+  },
+  "liveStatus": "available",
+  "changes": [],
+  "external": {
+   "handles": [
+    {
+     "platform": "facebook",
+     "url": "https://facebook.com/dips.no",
+     "rightsStatus": "approved"
+    },
+    {
+     "platform": "instagram",
+     "url": "https://instagram.com/dips_as",
+     "rightsStatus": "approved"
+    },
+    {
+     "platform": "linkedin",
+     "url": "https://linkedin.com/company/dips-asa",
+     "rightsStatus": "approved"
+    },
+    {
+     "platform": "youtube",
+     "url": "https://youtube.com/user/DIPSASA",
+     "rightsStatus": "approved"
+    }
+   ],
+   "linkedin": {
+    "available": true,
+    "profile": {
+     "followers": 12830,
+     "visible_employees": 466,
+     "employee_size_label": "201–500 ansatte",
+     "linkedin_organisation_ids": [
+      "34270"
+     ],
+     "website": "http://www.dips.no",
+     "industry": "Programvareutvikling",
+     "headquarters": "Bodø, Nordland",
+     "snapshot_path": "work/cache/linkedin-profile-v5/372feb7a86d6783907fe7207b688cc5968d073055b732300c662a2a8056b2624.html",
+     "source": "https://www.linkedin.com/company/dips-as",
+     "retrievedAt": "2026-08-23T09:14:25.855208Z",
+     "hash": "372feb7a86d6783907fe7207b688cc5968d073055b732300c662a2a8056b2624",
+     "rightsStatus": "experimental",
+     "sourceClass": "professional_network"
+    },
+    "workforce": {
+     "employees": 466,
+     "employee_size_label": "201–500 ansatte",
+     "scope": "linkedin_profiles_associated_with_company_page",
+     "snapshot_path": "work/cache/linkedin-profile-v5/372feb7a86d6783907fe7207b688cc5968d073055b732300c662a2a8056b2624.html",
+     "source": "https://www.linkedin.com/company/dips-as",
+     "retrievedAt": "2026-08-23T09:14:25.855208Z",
+     "hash": "372feb7a86d6783907fe7207b688cc5968d073055b732300c662a2a8056b2624",
+     "rightsStatus": "experimental",
+     "sourceClass": "professional_network"
+    },
+    "posts": [
+     {
+      "likes": 16,
+      "comments": 1,
+      "date_published": "2026-08-14T06:49:07.066Z",
+      "snapshot_path": "work/cache/linkedin-profile-v5/372feb7a86d6783907fe7207b688cc5968d073055b732300c662a2a8056b2624.html",
+      "text": "Visste du at KI-agenter nå kan bruke komplekse datasystemer på en måte som etterligner mennesker; med mus og tastatur?\n\nI denne dypdykk-artikkelen om Computer-Using-Agents deler Eivind Holt, tech lead DIPS forskning og innovasjon, innsikt i et av de mest spennende teknologiområdene akkurat nå.\n\nHer kan du blant annet lære om:\n\n💡 Hvordan hundrevis av KI-agenter kan teste og kvalitetssikre journalsystemet DIPS Arena.\n\n💡 Hvordan syntetiske journaler og KI-agenter kan skape mer realistiske testmiljøer, med simulerte pasientforløp og roller som sykepleier, lege og helsesekretær.\n\n💡 Hva denne nye formen for avansert testing og kvalitetssikring betyr for DIPS og norsk helsesektor.\n\n💡 Skjemopptak som demonstrerer teknologien i praksis.\n\n💡 Gevinster, kostnader og begrensninger ved bruk av oppdiktede journaler og testbrukere.\n\n💡 Eivinds meninger om hvor utviklingen går videre.\n\nVi anbefaler også å sjekke ut vår [d:pod] der Eivind forteller om dette. Søk opp «Kode med mening» der du lytter til podkast, eller se på YouTube 👉 https://lnkd.in/eYAwKwYJ",
+      "source": "https://no.linkedin.com/posts/dips-as_hva-koster-det-n%C3%A5r-ki-agenten-klikker-for-activity-7493921630738460672--qgC",
+      "retrievedAt": "2026-08-23T09:14:25.855208Z",
+      "hash": "372feb7a86d6783907fe7207b688cc5968d073055b732300c662a2a8056b2624",
+      "rightsStatus": "experimental",
+      "sourceClass": "professional_network"
+     },
+     {
+      "likes": 96,
+      "comments": 1,
+      "date_published": "2026-08-12T12:02:00.302Z",
+      "snapshot_path": "work/cache/linkedin-profile-v5/372feb7a86d6783907fe7207b688cc5968d073055b732300c662a2a8056b2624.html",
+      "text": "Takk for engasjementet under Arendalsuka!\n\nI dag samlet vi klinikere, beslutningstakere, forskere og teknologer til tre samtaler om KI i helsetjenesten.\n\n– Hvordan balanserer vi innovasjon med trygghet og tillit?\n– Når KI skal spare tid – hvem skal da gjøre mindre?\n– Hva har vi lært etter ett år med generativ KI i norske sykehus?\n\nSamtalene gikk fra sikkerhet og innovasjon, via arbeidsdeling, til konkrete erfaringer med generativ KI i norske sykehus. Diskusjonene viste at mulighetene er store, men at god innføring krever samarbeid, tillit og et tydelig blikk på klinisk nytte. Vi gleder oss til å fortsette samtalene!\n\nTakk til Fredrik Solvang og Harald M. Dobloug som modererte diskusjonene!\n\nTakk til alle på scenen som bidro med meninger, perspektiver og erfaringer!\n\nTakk til det engasjerte publikumet i Arendal og alle ~1100 som fulgte med digitalt!\n\nGikk du glipp av dette? Se opptakene her:\n\n🎥 Debatt med Fredrik Solvang: KI-dilemmaet i helsesektoren – risiko eller innovasjon?\nAlle vil ha kunstig intelligens som er sikker, innovativ og klar for klinisk bruk. Men hva kreves egentlig før KI kan tas trygt i bruk i spesialisthelsetjenesten? Se samtalen om hvordan vi kan balansere innovasjon, ansvar og tillit – og hva som må til for at KI-løsninger skal bli en trygg del av en klinisk hverdag. \nhttps://lnkd.in/eqUknbt6 \n\n🎥 Panelsamtale med Fredrik Solvang: Når KI skal spare tid – hvem skal gjøre mindre?\nKunstig intelligens løftes frem som en av nøklene til å møte noen av helsetjenestens største utfordringer. Teknologien skal avlaste klinikere, effektivisere arbeidsprosesser og bidra til å håndtere en voksende personellkrise.\nMen dersom KI faktisk skal gi effekt, må vi også våge å diskutere konsekvensene og hva effektivisering betyr i praksis. Hvilke oppgaver vil forsvinne? Hvilke roller vil endres? Hvor skal gevinstene tas ut – og hvem skal betale for innføringen?\nhttps://lnkd.in/eqtbE_2R \n\n🎥 KI som klinisk kollega: Ett år med generativ KI i norske sykehus\nGenerativ KI er ikke lenger bare pilot og PowerPoint. Flere norske sykehus har allerede tatt teknologien inn i klinisk hverdag. Men hva skjer når KI faktisk møter pasientflyt, tidspress, journalføring og kliniske vurderinger?\nHer får du konkrete erfaringer fra Helse Vest etter ett år med generativ KI i bruk på norske sykehus. Har teknologien frigjort tid? Hvor går grensen mellom nyttig støtte og ny risiko? Og er den største risikoen fremover egentlig å ta KI i bruk – eller å la være?\nhttps://lnkd.in/eWWCHEP4\n \nPå scenen:\nKristine Dahl Steidel Tobias Linge Hareide Rune Simensen\nLisbeth Sommervoll Erik Magnus Sæther Alfred Bjørlo Thomas Smedsrud\nHarald M. Dobloug Ishita Barua, MD PhD Cecilie Sneberg Grøtteland Andreas Auensen Søren Skår\n \nI salen fra DIPS:\nErlend Krogstad Line Krauss-Larsen Stine Mariell Hanssen Hanne Gunby Krister Jom Skoglund Christian Falkenberg-Jensen Thomas S. Bratteteig",
+      "source": "https://no.linkedin.com/posts/dips-as_takk-for-engasjementet-under-arendalsuka-activity-7493275595708022785-pHTO",
+      "retrievedAt": "2026-08-23T09:14:25.855208Z",
+      "hash": "372feb7a86d6783907fe7207b688cc5968d073055b732300c662a2a8056b2624",
+      "rightsStatus": "experimental",
+      "sourceClass": "professional_network"
+     },
+     {
+      "likes": 50,
+      "comments": 2,
+      "date_published": "2026-08-09T07:15:02.222Z",
+      "snapshot_path": "work/cache/linkedin-profile-v5/372feb7a86d6783907fe7207b688cc5968d073055b732300c662a2a8056b2624.html",
+      "text": "Hvordan skal KI faktisk brukes i helsetjenesten?\n \nUnder Arendalsuka inviterer DIPS til tre samtaler om spørsmålene som vil prege helsetjenesten fremover:\n– Hvordan balanserer vi innovasjon, sikkerhet og tillit?\n– Hvis KI skal frigjøre tid – hva skal vi gjøre mindre av?\n– Hva kan vi lære av ett år med generativ KI i norske sykehus?\n\nBli med når vi samler ledere, klinikere, teknologer og beslutningstakere til debatt, erfaringsdeling og konkrete perspektiver på KI i klinisk hverdag.\n\n📅12. august\n🎥 Alt kan følges digitalt\n📍Tollbodgaten 1, 3. etg.\n\n🕣08:30-09:15\nFrokostdebatt med Fredrik Solvang: KI-dilemmaet i helsesektoren – risiko eller innovasjon?\n\nAlle vil ha kunstig intelligens som er sikker, innovativ og klar for klinisk bruk. Men hva kreves egentlig før KI kan tas trygt i bruk i spesialisthelsetjenesten? Bli med når Fredrik Solvang leder en samtale om hvordan vi kan balansere innovasjon, ansvar og tillit – og hva som må til for at KI-løsninger skal bli en trygg del av klinisk hverdag.\n\nKristine Dahl Steidel Tobias Linge Hareide Rune Simensen\n\nStrøm, legg til i din kalender og les mer: https://lnkd.in/e2Hzrhvf\n\n🕙10:00-10:40 \nPanelsamtale med Fredrik Solvang: Når KI skal spare tid – hvem skal gjøre mindre?\n\nKunstig intelligens løftes frem som en av nøklene til å møte noen av helsetjenestens største utfordringer. Teknologien skal avlaste klinikere, effektivisere arbeidsprosesser og bidra til å håndtere en voksende personellkrise.\nMen dersom KI faktisk skal gi effekt, må vi også våge å diskutere konsekvensene og hva effektivisering betyr i praksis. Hvilke oppgaver vil forsvinne? Hvilke roller vil endres? Hvor skal gevinstene tas ut – og hvem skal betale for innføringen?\n\nLisbeth Sommervoll Erik Magnus Sæther Alfred Bjørlo Thomas Smedsrud\n\nStrøm, legg til i din kalender og les mer: https://lnkd.in/dnX8z2mK\n\n🕚11:00-11:45 \nKI som klinisk kollega: Ett år med generativ KI i norske sykehus\n\nGenerativ KI er ikke lenger bare pilot og PowerPoint. Flere norske sykehus har allerede tatt teknologien inn i klinisk hverdag. Men hva skjer når KI faktisk møter pasientflyt, tidspress, journalføring og kliniske vurderinger?\nHer får du konkrete erfaringer fra Helse Vest etter ett år med generativ KI i bruk på norske sykehus. Har teknologien frigjort tid? Hvor går grensen mellom nyttig støtte og ny risiko? Og er den største risikoen fremover egentlig å ta KI i bruk – eller å la være?\n\nHarald M. Dobloug Ishita Barua, MD PhD Cecilie Sneberg Grøtteland Andreas Auensen Søren Skår\n\nStrøm, legg til i din kalender og les mer: https://lnkd.in/eGtK5gVR\n\nChristian Falkenberg-Jensen Thomas S. Bratteteig Hanne Gunby Line Krauss-Larsen Stine Mariell Hanssen Erlend Krogstad Krister Jom Skoglund",
+      "source": "https://no.linkedin.com/posts/dips-as_v%C3%A5rt-program-for-arendalsuka-se-lenker-activity-7492116214194802688-Pzkl",
+      "retrievedAt": "2026-08-23T09:14:25.855208Z",
+      "hash": "372feb7a86d6783907fe7207b688cc5968d073055b732300c662a2a8056b2624",
+      "rightsStatus": "experimental",
+      "sourceClass": "professional_network"
+     },
+     {
+      "likes": 115,
+      "comments": 1,
+      "date_published": "2026-08-07T13:44:19.166Z",
+      "snapshot_path": "work/cache/linkedin-profile-v5/372feb7a86d6783907fe7207b688cc5968d073055b732300c662a2a8056b2624.html",
+      "text": "KI er på full fart inn i norske sykehus. Men hva betyr det egentlig i praksis?\n\nEr det trygt å bruke? Hvor havner dataene? Og vil KI endre, eller kanskje til og med overta, deler av legenes arbeid?\n\nSammen med vår egen Harald M. Dobloug og blant andre Ishita Barua, MD PhD inviterer vi til en ærlig og viktig samtale om erfaringene etter ett år med generativ KI i norske sykehus.\n\nDette arrangementet passer for alle som er opptatt av teknologi, helse, tillit og fremtidens arbeidsliv i helsetjenesten.\n\nDelta fysisk, eller følg arrangementet digitalt 🎥\n\n📅 Onsdag 12. august\n📍 Tollboden 1, 3. etasje, Arendal\n\nKI som klinisk kollega – ett år med generativ KI i norske sykehus\n🕚 11:00–11:45\nhttps://lnkd.in/diyKyfzJ\n\n#Arendalsuka #EnablingEfficientHealthcare",
+      "source": "https://no.linkedin.com/posts/dips-as_arendalsuka-enablingefficienthealthcare-activity-7491489404545409024-2kcX",
+      "retrievedAt": "2026-08-23T09:14:25.855208Z",
+      "hash": "372feb7a86d6783907fe7207b688cc5968d073055b732300c662a2a8056b2624",
+      "rightsStatus": "experimental",
+      "sourceClass": "professional_network"
+     },
+     {
+      "likes": 59,
+      "comments": 2,
+      "date_published": "2026-08-04T13:27:49.238Z",
+      "snapshot_path": "work/cache/linkedin-profile-v5/372feb7a86d6783907fe7207b688cc5968d073055b732300c662a2a8056b2624.html",
+      "text": "Generativ KI er ikke lenger bare pilot og PowerPoint. Flere norske sykehus har allerede tatt teknologien inn i klinisk hverdag. Men hva skjer når KI faktisk møter pasientflyt, tidspress, journalføring og kliniske vurderinger?\n\nI denne sesjonen får du konkrete erfaringer fra Helse Vest etter ett år med generativ KI i bruk på norske sykehus. Har teknologien frigjort tid? Oppleves den som en reell avlastning for klinikere? Hvor går grensen mellom nyttig støtte og ny risiko? Og er den største risikoen fremover egentlig å ta KI i bruk – eller å la være?\n\nDu får også se hvordan DIPS jobber med ny teknologi som kan gjøre KI til en enda mer integrert del av den kliniske arbeidsflaten – direkte i journalen, tett på arbeidsflyten og tilgjengelig når helsepersonell trenger den.\n\nDato: 12. august \nTid: 11:00-11:45\nSted: Tollbodgaten 1, 3. etg\nFølg sesjonen LIVE her: https://lnkd.in/e5vu4-eD\n\nSe opptaket her: https://lnkd.in/eWWCHEP4\n\nAndreas Auensen Ishita Barua, MD PhD Harald M. Dobloug Cecilie Sneberg Grøtteland Søren Skår",
+      "source": "https://no.linkedin.com/posts/dips-as_generativ-ki-er-ikke-lenger-bare-pilot-og-activity-7490398088885506048-w6nl",
+      "retrievedAt": "2026-08-23T09:14:25.855208Z",
+      "hash": "372feb7a86d6783907fe7207b688cc5968d073055b732300c662a2a8056b2624",
+      "rightsStatus": "experimental",
+      "sourceClass": "professional_network"
+     },
+     {
+      "likes": 41,
+      "comments": 1,
+      "date_published": "2026-08-04T13:26:43.442Z",
+      "snapshot_path": "work/cache/linkedin-profile-v5/372feb7a86d6783907fe7207b688cc5968d073055b732300c662a2a8056b2624.html",
+      "text": "Kunstig intelligens løftes frem som en av nøklene til å møte noen av helsetjenestens største utfordringer. Teknologien skal avlaste klinikere, effektivisere arbeidsprosesser og bidra til å håndtere en voksende personellkrise.\n\nMen dersom KI faktisk skal gi effekt, må vi også våge å diskutere konsekvensene og hva effektivisering betyr i praksis.\n\nHer får du høre sentrale stemmer fra helsesektoren og leverandørsiden diskutere konsekvensene av KI i helsetjenesten: Hvilke oppgaver vil forsvinne? Hvilke roller vil endres? Hvor skal gevinstene tas ut – og hvem skal betale for innføringen?\n\nBli med på en åpen samtale ledet av Fredrik Solvang om hvordan KI vil påvirke arbeidsdeling, ressursbruk og prioriteringer i helsetjenesten.\n\nDato: onsdag 12. august\nTid: 10:00-10:40\nSted: Tollbodgaten 1, 3. etg.\nFølg sesjonen LIVE her: https://lnkd.in/eYyKu9mU\n\nSe opptaket her: https://lnkd.in/eqtbE_2R\n\nLisbeth Sommervoll Erik Magnus Sæther Alfred Bjørlo Thomas Smedsrud",
+      "source": "https://no.linkedin.com/posts/dips-as_kunstig-intelligens-l%C3%B8ftes-frem-som-en-av-activity-7490397812971528192-phKV",
+      "retrievedAt": "2026-08-23T09:14:25.855208Z",
+      "hash": "372feb7a86d6783907fe7207b688cc5968d073055b732300c662a2a8056b2624",
+      "rightsStatus": "experimental",
+      "sourceClass": "professional_network"
+     },
+     {
+      "likes": 46,
+      "comments": 2,
+      "date_published": "2026-08-04T13:25:13.530Z",
+      "snapshot_path": "work/cache/linkedin-profile-v5/372feb7a86d6783907fe7207b688cc5968d073055b732300c662a2a8056b2624.html",
+      "text": "Alle vil ha kunstig intelligens som er sikker, innovativ og klar for klinisk bruk. Men hva kreves egentlig før KI kan tas trygt i bruk i spesialisthelsetjenesten?\n\nI denne lederdebatten får du høre sentrale aktører fra ulike sider av bordet diskutere de vanskelige avveiningene: De beste modellene leveres ofte gjennom utenlandske skyleverandører, data må holdes innenfor trygge rammer, lagring skal minimeres – og løsningene må samtidig ha høy oppetid, redundans og sikkerhet.\n\nBli med når Fredrik Solvang leder en samtale om hvordan vi kan balansere innovasjon, ansvar og tillit – og hva som må til for at KI-løsninger skal bli en trygg del av klinisk hverdag.\n\nDato: onsdag 12. august\nTid: 08:30 - 09:15\nSted: Tollbodgaten 1, 3. etg \nFølg sesjonen LIVE her: https://lnkd.in/eV9cFYk8\n\nSe opptaket her: https://lnkd.in/eqUknbt6\n\nRune Simensen Kristine Dahl Steidel Tobias Linge Hareide",
+      "source": "https://no.linkedin.com/posts/dips-as_alle-vil-ha-kunstig-intelligens-som-er-sikker-activity-7490397435844861954-NUeI",
+      "retrievedAt": "2026-08-23T09:14:25.855208Z",
+      "hash": "372feb7a86d6783907fe7207b688cc5968d073055b732300c662a2a8056b2624",
+      "rightsStatus": "experimental",
+      "sourceClass": "professional_network"
+     },
+     {
+      "likes": 19,
+      "comments": 0,
+      "date_published": "2026-07-03T08:00:34.410Z",
+      "snapshot_path": "work/cache/linkedin-profile-v5/372feb7a86d6783907fe7207b688cc5968d073055b732300c662a2a8056b2624.html",
+      "text": "Spar tid og gjør arbeidshverdagen enklere med Arena Mobil📱\n \nLær hvordan du enkelt lager egne merknader om pasientene dine. \n\nDet blir litt som en papirlapp du noterer på gjennom dagen, bare at den alltid er tilgjengelig og synkronisert både på mobil og desktop. \n\nSe flere korte tips og triks videoer 👉 https://lnkd.in/e6Efcs35\n\n#EnablingEfficientHealthCare #ArenaMobil #ehelse #DIPSArena",
+      "source": "https://no.linkedin.com/posts/dips-as_enablingefficienthealthcare-arenamobil-activity-7478719322824114176-Wlfe",
+      "retrievedAt": "2026-08-23T09:14:25.855208Z",
+      "hash": "372feb7a86d6783907fe7207b688cc5968d073055b732300c662a2a8056b2624",
+      "rightsStatus": "experimental",
+      "sourceClass": "professional_network"
+     },
+     {
+      "likes": 34,
+      "comments": 0,
+      "date_published": "2026-07-02T17:23:51.238Z",
+      "snapshot_path": "work/cache/linkedin-profile-v5/372feb7a86d6783907fe7207b688cc5968d073055b732300c662a2a8056b2624.html",
+      "text": "Endelig skjer det! 👏\n\nDigitalt helsekort for gravide er et viktig steg mot mer sammenhengende og trygg svangerskapsomsorg. Vi er stolte over å bidra til å realisere denne løsningen sammen med Norsk helsenett SF og resten av sektoren. \n\nNår informasjon flyter sømløst mellom fastlege, jordmor og sykehus, får både den gravide og helsepersonell en enklere og tryggere hverdag. 💙",
+      "source": "https://no.linkedin.com/posts/dips-as_endelig-skjer-det-digitalt-helsekort-activity-7478498689095966720-nAgJ",
+      "retrievedAt": "2026-08-23T09:14:25.855208Z",
+      "hash": "372feb7a86d6783907fe7207b688cc5968d073055b732300c662a2a8056b2624",
+      "rightsStatus": "experimental",
+      "sourceClass": "professional_network"
+     }
+    ],
+    "jobs": []
+   }
+  },
+  "coverage": {
+   "score": 5,
+   "total": 5,
+   "label": "Strong coverage",
+   "dimensions": [
+    {
+     "key": "company",
+     "label": "Company record",
+     "available": true
+    },
+    {
+     "key": "financials",
+     "label": "Financials",
+     "available": true
+    },
+    {
+     "key": "people_places",
+     "label": "People & locations",
+     "available": true
+    },
+    {
+     "key": "website",
+     "label": "Company website",
+     "available": true
+    },
+    {
+     "key": "footprint",
+     "label": "Public footprint",
+     "available": true
+    }
+   ]
+  },
+  "richness": 43
+ },
+ {
+  "org": "975536440",
+  "name": "ENERGISENTERET DA",
+  "form": "DA",
+  "employees": 21,
+  "municipality": "LILLEHAMMER",
+  "industryCode": "93.291",
+  "industry": "Opplevelsesaktiviteter",
+  "website": null,
+  "adverse": false,
+  "slice": "financial_filer_population",
+  "split": "held_out",
+  "latestAccounts": "2025",
+  "registrySource": "https://data.brreg.no/enhetsregisteret/api/enheter/lastned/csv",
+  "registry": {
+   "status": "available",
+   "source": "https://data.brreg.no/enhetsregisteret/api/enheter/lastned/csv",
+   "sourceClass": "official_registry_bulk",
+   "retrievedAt": "2026-08-22T10:39:12.133076Z",
+   "effectiveAt": null,
+   "hash": "0f6c43feba23b0dc232613e505c3a7ce28f503011a3a61343ba41abc25a83629",
+   "rowKey": "975536440"
+  },
+  "accounting": {
+   "status": "available",
+   "source": "https://www.brreg.no/en/submission-of-annual-accounts/reporting-obligations-to-the-register-of-company-accounts/who-has-an-accounting-obligation/",
+   "sourceClass": "official_rule_interpretation",
+   "retrievedAt": "2026-08-22T10:39:23.059329Z",
+   "effectiveAt": "2024-08-09",
+   "hash": "b94e22c6da7667d1ae10db3dcb20f1b279634a1ce07b21111fc0f56758b3b6fb",
+   "rowKey": "975536440",
+   "value": {
+    "classification": "filing_observed",
+    "legal_form": "DA",
+    "latest_submitted_accounts": "2025",
+    "reason": "The registry snapshot reports a latest submitted annual-account year.",
+    "ruleset_version": "brreg_accounting_obligation_rules_2024-08-09_v1"
+   }
+  },
+  "financial": {
+   "status": "available",
+   "source": "https://data.brreg.no/regnskapsregisteret/regnskap/975536440",
+   "sourceClass": "official_annual_accounts",
+   "retrievedAt": "2026-08-22T10:55:59.896895Z",
+   "effectiveAt": null,
+   "hash": "50822258ee38d3e948f13cfa99212d64fe2cd89e6462c227156858104cedca07",
+   "rowKey": null,
+   "records": [
+    {
+     "record_id": 6884440,
+     "account_type": "SELSKAP",
+     "period": {
+      "fraDato": "2025-01-01",
+      "tilDato": "2025-12-31"
+     },
+     "currency": "NOK",
+     "revenue": 8278937.0,
+     "operating_result": -1075234.0,
+     "profit_before_tax": -1079528.0,
+     "annual_result": -1079528.0,
+     "assets": 1944782.0,
+     "equity": 325517.0,
+     "debt": 1619265.0
+    }
+   ]
+  },
+  "financialHistory": {
+   "status": "available",
+   "source": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/975536440/aar",
+   "sourceClass": "official_annual_account_copies",
+   "retrievedAt": "2026-08-22T10:57:00.244786Z",
+   "effectiveAt": null,
+   "hash": "b7bcd20d8a4607bc9ca49fbdfebf5e51cb31e39858edb985dc98a82e8d2b7cd1",
+   "rowKey": null,
+   "pdfs": [
+    {
+     "year": "2025",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/975536440/2025"
+    },
+    {
+     "year": "2024",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/975536440/2024"
+    },
+    {
+     "year": "2023",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/975536440/2023"
+    },
+    {
+     "year": "2022",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/975536440/2022"
+    },
+    {
+     "year": "2021",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/975536440/2021"
+    },
+    {
+     "year": "2020",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/975536440/2020"
+    },
+    {
+     "year": "2019",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/975536440/2019"
+    },
+    {
+     "year": "2018",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/975536440/2018"
+    },
+    {
+     "year": "2017",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/975536440/2017"
+    },
+    {
+     "year": "2016",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/975536440/2016"
+    },
+    {
+     "year": "2015",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/975536440/2015"
+    },
+    {
+     "year": "2014",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/975536440/2014"
+    },
+    {
+     "year": "2013",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/975536440/2013"
+    },
+    {
+     "year": "2012",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/975536440/2012"
+    },
+    {
+     "year": "2011",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/975536440/2011"
+    }
+   ]
+  },
+  "roles": {
+   "status": "available",
+   "source": "https://data.brreg.no/enhetsregisteret/api/enheter/975536440/roller",
+   "sourceClass": "official_roles",
+   "retrievedAt": "2026-08-22T10:57:01.279623Z",
+   "effectiveAt": null,
+   "hash": "0e3121905a8bc9ab181ba419f23b125e338ed492b06a1e1bd513d43fde218b47",
+   "rowKey": null,
+   "items": [
+    {
+     "name": "Bjørn Kleiven",
+     "organisation_number": null,
+     "role_code": "DAGL",
+     "role": "Daglig leder",
+     "group_code": "DAGL",
+     "group": "Daglig leder",
+     "last_changed": "2003-11-17",
+     "inactive": false
+    },
+    {
+     "name": [
+      "HAFSLUND KRAFT INNLANDET AS"
+     ],
+     "organisation_number": "887396752",
+     "role_code": "DTPR",
+     "role": "Deltaker med delt ansvar",
+     "group_code": "DELT",
+     "group": "Deltakere",
+     "last_changed": "2022-11-09",
+     "inactive": false
+    },
+    {
+     "name": [
+      "GUDBRANDSDAL ENERGI HOLDING AS"
+     ],
+     "organisation_number": "914888956",
+     "role_code": "DTPR",
+     "role": "Deltaker med delt ansvar",
+     "group_code": "DELT",
+     "group": "Deltakere",
+     "last_changed": "2022-11-09",
+     "inactive": false
+    },
+    {
+     "name": [
+      "AS EIDEFOSS"
+     ],
+     "organisation_number": "911305631",
+     "role_code": "DTPR",
+     "role": "Deltaker med delt ansvar",
+     "group_code": "DELT",
+     "group": "Deltakere",
+     "last_changed": "2022-11-09",
+     "inactive": false
+    },
+    {
+     "name": [
+      "KLIVE AS"
+     ],
+     "organisation_number": "923436596",
+     "role_code": "DTPR",
+     "role": "Deltaker med delt ansvar",
+     "group_code": "DELT",
+     "group": "Deltakere",
+     "last_changed": "2022-11-09",
+     "inactive": false
+    },
+    {
+     "name": [
+      "VOKKS AS"
+     ],
+     "organisation_number": "980271412",
+     "role_code": "DTPR",
+     "role": "Deltaker med delt ansvar",
+     "group_code": "DELT",
+     "group": "Deltakere",
+     "last_changed": "2022-11-09",
+     "inactive": false
+    },
+    {
+     "name": [
+      "REN RØROS AS"
+     ],
+     "organisation_number": "915591302",
+     "role_code": "DTPR",
+     "role": "Deltaker med delt ansvar",
+     "group_code": "DELT",
+     "group": "Deltakere",
+     "last_changed": "2022-11-09",
+     "inactive": false
+    },
+    {
+     "name": [
+      "SKJÅK VASSKRAFT AS"
+     ],
+     "organisation_number": "825700382",
+     "role_code": "DTPR",
+     "role": "Deltaker med delt ansvar",
+     "group_code": "DELT",
+     "group": "Deltakere",
+     "last_changed": "2022-11-09",
+     "inactive": false
+    },
+    {
+     "name": [
+      "ØVRE OTTA DA"
+     ],
+     "organisation_number": "987969059",
+     "role_code": "DTPR",
+     "role": "Deltaker med delt ansvar",
+     "group_code": "DELT",
+     "group": "Deltakere",
+     "last_changed": "2022-11-09",
+     "inactive": false
+    },
+    {
+     "name": [
+      "OPPLANDSKRAFT DA"
+     ],
+     "organisation_number": "944237631",
+     "role_code": "DTPR",
+     "role": "Deltaker med delt ansvar",
+     "group_code": "DELT",
+     "group": "Deltakere",
+     "last_changed": "2022-11-09",
+     "inactive": false
+    },
+    {
+     "name": [
+      "EIDSIVA ENERGI AS"
+     ],
+     "organisation_number": "983424082",
+     "role_code": "DTPR",
+     "role": "Deltaker med delt ansvar",
+     "group_code": "DELT",
+     "group": "Deltakere",
+     "last_changed": "2022-11-09",
+     "inactive": false
+    },
+    {
+     "name": "Hans Sandbu",
+     "organisation_number": null,
+     "role_code": "LEDE",
+     "role": "Styrets leder",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2026-08-15",
+     "inactive": false
+    },
+    {
+     "name": "Torje Høyesveen",
+     "organisation_number": null,
+     "role_code": "MEDL",
+     "role": "Styremedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2026-08-15",
+     "inactive": false
+    },
+    {
+     "name": "Einar Hoff",
+     "organisation_number": null,
+     "role_code": "MEDL",
+     "role": "Styremedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2026-08-15",
+     "inactive": false
+    },
+    {
+     "name": "Anne Sofie Handegard Askvig",
+     "organisation_number": null,
+     "role_code": "MEDL",
+     "role": "Styremedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2026-08-15",
+     "inactive": false
+    },
+    {
+     "name": "Per Arne Torbjørnsdal",
+     "organisation_number": null,
+     "role_code": "MEDL",
+     "role": "Styremedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2026-08-15",
+     "inactive": false
+    },
+    {
+     "name": "Ole Gunerius Farmen",
+     "organisation_number": null,
+     "role_code": "VARA",
+     "role": "Varamedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2026-08-15",
+     "inactive": false
+    },
+    {
+     "name": "Stig Morten Løken",
+     "organisation_number": null,
+     "role_code": "VARA",
+     "role": "Varamedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2026-08-15",
+     "inactive": false
+    },
+    {
+     "name": "Ina Engh Nordgren",
+     "organisation_number": null,
+     "role_code": "VARA",
+     "role": "Varamedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2026-08-15",
+     "inactive": false
+    },
+    {
+     "name": "Cathrine Lie",
+     "organisation_number": null,
+     "role_code": "VARA",
+     "role": "Varamedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2026-08-15",
+     "inactive": false
+    },
+    {
+     "name": "Ole Kristian Ryen",
+     "organisation_number": null,
+     "role_code": "VARA",
+     "role": "Varamedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2026-08-15",
+     "inactive": false
+    },
+    {
+     "name": [
+      "CEDRA NORGE BOREALIS AS"
+     ],
+     "organisation_number": "936295800",
+     "role_code": "REVI",
+     "role": "Revisor",
+     "group_code": "REVI",
+     "group": "Revisor",
+     "last_changed": "2026-07-10",
+     "inactive": false
+    },
+    {
+     "name": [
+      "SNØHETTA REGNSKAP ØYER AS"
+     ],
+     "organisation_number": "912751082",
+     "role_code": "REGN",
+     "role": "Regnskapsfører",
+     "group_code": "REGN",
+     "group": "Regnskapsfører",
+     "last_changed": "2025-09-29",
+     "inactive": false
+    }
+   ]
+  },
+  "locations": {
+   "status": "available",
+   "source": "https://data.brreg.no/enhetsregisteret/api/underenheter?overordnetEnhet=975536440&size=1000",
+   "sourceClass": "official_subunits",
+   "retrievedAt": "2026-08-22T10:57:03.229768Z",
+   "effectiveAt": null,
+   "hash": "3b8e1f483963fcc08c91b5efe690df12f1dbcd180ebc88154d63e0bb0ba5a84c",
+   "rowKey": null,
+   "items": [
+    {
+     "organisation_number": "979828160",
+     "name": "ENERGISENTERET",
+     "address": {
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "2625",
+      "poststed": "FÅBERG",
+      "adresse": [
+       "Fossekrovegen 28"
+      ],
+      "kommune": "LILLEHAMMER",
+      "kommunenummer": "3405"
+     },
+     "industry": {
+      "kode": "93.291",
+      "beskrivelse": "Opplevelsesaktiviteter"
+     },
+     "employees": 21
+    }
+   ]
+  },
+  "web": {
+   "status": "available",
+   "source": "https://eis.no/",
+   "sourceClass": "registry_linked_company_website",
+   "retrievedAt": "2026-08-22T10:57:15.935524Z",
+   "effectiveAt": null,
+   "hash": "4de0cc818f6813b125206fd67ff39f775d46e113f8e0aebd59cfc6ff58f0782d",
+   "rowKey": null,
+   "value": {
+    "requested_url": "https://www.eis.no/",
+    "final_url": "https://eis.no/",
+    "registered_domain": "eis.no",
+    "title": "Front Page - Energisenteret",
+    "description": "",
+    "main_text_excerpt": "I denne episoden får vi besøk av nordisk analysesjef i Volue, Gro Klæboe, for å snakke om strømmarkedet. Hvordan er det nordiske markedet, og hva skiller det fra resten av Europa? Hvorfor er det smart Read more\nSpenningen i Midt-Østen når stadig nye høyder og spørsmålet alle stiller seg er: Hva skjer hvis konflikten med Iran eskalerer til full krig? I denne episoden av Energipodden, som er spilt inn live på Wiese i Lillehammer, Read more\nI denne episoden av Energipodden snakker professor ved Institutt for elektrisk energi på NTNU, Magnus Korpås, om Klimaråd 2026. Hva foreslår rådet, hvorfor snakkes det mindre om klima enn på lenge, og hvorfor må vi Read more",
+    "social_links": [
+     {
+      "platform": "facebook",
+      "url": "https://facebook.com/Energisenteret"
+     },
+     {
+      "platform": "youtube",
+      "url": "https://youtube.com/user/energisenteret"
+     }
+    ],
+    "structured_organisations": [
+     {
+      "@type": "Organization",
+      "@id": "https://eis.no/#organization",
+      "name": "Energisenteret DA",
+      "url": "https://eis.no/",
+      "logo": {
+       "@type": "ImageObject",
+       "inLanguage": "nb-NO",
+       "@id": "https://eis.no/#/schema/logo/image/",
+       "url": "https://eis.no/wp-content/uploads/Logo_Energisenteret.png",
+       "contentUrl": "https://eis.no/wp-content/uploads/Logo_Energisenteret.png",
+       "width": 412,
+       "height": 171,
+       "caption": "Energisenteret DA"
+      },
+      "image": {
+       "@id": "https://eis.no/#/schema/logo/image/"
+      },
+      "sameAs": [
+       "https://www.facebook.com/Energisenteret/",
+       "https://www.youtube.com/user/energisenteret"
+      ]
+     }
+    ],
+    "content_sha256": "4de0cc818f6813b125206fd67ff39f775d46e113f8e0aebd59cfc6ff58f0782d",
+    "extraction_state": "static_complete",
+    "pages": [
+     {
+      "url": "https://eis.no/",
+      "title": "Front Page - Energisenteret",
+      "main_text_excerpt": "I denne episoden får vi besøk av nordisk analysesjef i Volue, Gro Klæboe, for å snakke om strømmarkedet. Hvordan er det nordiske markedet, og hva skiller det fra resten av Europa? Hvorfor er det smart Read more\nSpenningen i Midt-Østen når stadig nye høyder og spørsmålet alle stiller seg er: Hva skjer hvis konflikten med Iran eskalerer til full krig? I denne episoden av Energipodden, som er spilt inn live på Wiese i Lillehammer, Read more\nI denne episoden av Energipodden snakker professor ved Institutt for elektrisk energi på NTNU, Magnus Korpås, om Klimaråd 2026. Hva foreslår rådet, hvorfor snakkes det mindre om klima enn på lenge, og hvorfor må vi Read more",
+      "content_sha256": "4de0cc818f6813b125206fd67ff39f775d46e113f8e0aebd59cfc6ff58f0782d"
+     },
+     {
+      "url": "https://eis.no/om-oss/",
+      "title": "Om Oss - Energisenteret",
+      "main_text_excerpt": "Litt om Energisenteret\nEnergisenteret er et opplevelsessenter om vannkraft og annen fornybar energi. Vi ligger i Hunderfossen Familiepark, like nord for Lillehammer. Senteret åpnet dørene i 1990, og har siden da mottatt over 3 millioner besøkende. Om sommeren er senteret en del av tilbudet i Hunderfossen Familiepark, resten av året er vi åpne for skoleklasser og guidede omvisninger.\nUtenom sommersesongen er all undervisning og omvising på Energisenteret gratis.\nFor å komme inn på Energisenteret om sommeren, må en løse billett i Hunderfossen Familiepark.\nEnergisenteret er et selskap med delt ansvar, som har følgende eiere:\n• Akershus Energi\n• Eidsiva Energi AS\n• AS Eidefoss\n• Gudbrandsdal Energi Holding AS\n• Hafslund\n• Klive\n• Skjåk Vasskraft\n• Ren Røros\n• Opplandskraft DA\n• Tafjord\n• VOKKS\nStyret:\nHans Sandbu – Leder\nTorje Høyesveen\nGuri Vethe\nEinar Hoff\nLars Hofstad",
+      "content_sha256": "f7a7014e10197ebd46276362071db04f47649e378ec6c2c05e65e1f8cbc5e771"
+     },
+     {
+      "url": "https://eis.no/kontakt-oss/",
+      "title": "Kontakt Oss - Energisenteret",
+      "main_text_excerpt": "",
+      "content_sha256": "1ffc859688a00c7b25e22d07caf6714adb74e8fe0ee9ec3a8abd1863d3bb1d7f"
+     },
+     {
+      "url": "https://eis.no/kontaktoss/",
+      "title": "Kontakt oss - Energisenteret",
+      "main_text_excerpt": "Kontakt oss\nHer kan du finne flere alternativer for å komme i kontakt med oss.\nBesøk oss\nEnergisenteret ligger innerst i Hunderfossen Eventyrpark\nFossekrovegen 28 2625 Fåberg",
+      "content_sha256": "d1fdf9003eafe5fa29d7c0630ac0ff82777e7146276a903807cc72ef8731f274"
+     }
+    ],
+    "crawl_errors": [],
+    "identity_assessment": {
+     "status": "exact",
+     "score": 0.95,
+     "publishable": true,
+     "legal_name_tokens": [
+      "energisenteret"
+     ],
+     "matched_tokens": [
+      "energisenteret"
+     ],
+     "reasons": [
+      "single distinctive legal-name token appears in homepage identity evidence with substantive content"
+     ],
+     "method": "deterministic_name_org_evidence_v2"
+    },
+    "discovered_social_links": [
+     {
+      "platform": "facebook",
+      "url": "https://facebook.com/Energisenteret"
+     },
+     {
+      "platform": "youtube",
+      "url": "https://youtube.com/user/energisenteret"
+     }
+    ],
+    "social_link_assessments": [
+     {
+      "platform": "facebook",
+      "url": "https://facebook.com/Energisenteret",
+      "identity_score": 0.98,
+      "publishable": true,
+      "matched_tokens": [
+       "energisenteret"
+      ],
+      "reason": "normalized legal-name sequence appears in the social handle",
+      "method": "deterministic_social_handle_identity_v1"
+     },
+     {
+      "platform": "youtube",
+      "url": "https://youtube.com/user/energisenteret",
+      "identity_score": 0.98,
+      "publishable": true,
+      "matched_tokens": [
+       "energisenteret"
+      ],
+      "reason": "normalized legal-name sequence appears in the social handle",
+      "method": "deterministic_social_handle_identity_v1"
+     }
+    ]
+   }
+  },
+  "liveStatus": "available",
+  "changes": [],
+  "external": {
+   "handles": [
+    {
+     "platform": "facebook",
+     "url": "https://facebook.com/Energisenteret",
+     "rightsStatus": "approved"
+    },
+    {
+     "platform": "youtube",
+     "url": "https://youtube.com/user/energisenteret",
+     "rightsStatus": "approved"
+    },
+    {
+     "platform": "linkedin",
+     "url": "https://linkedin.com/company/energisenteret-da",
+     "rightsStatus": "experimental"
+    }
+   ],
+   "linkedin": {
+    "available": true,
+    "profile": {
+     "followers": null,
+     "visible_employees": 3,
+     "employee_size_label": "11–50 ansatte",
+     "linkedin_organisation_ids": [
+      "22690816"
+     ],
+     "website": "http://eis.no",
+     "industry": "Anlegg for fritidsaktiviteter",
+     "headquarters": "FÅBERG, Lillehammer",
+     "snapshot_path": "work/cache/financial-filer-submission-1000-linkedin-profile-v3-fuzzy-ids/c091b7dce87e85e189e12cf595f8bc2ef90fca00a77d9e7f906875550843971c.html",
+     "source": "https://www.linkedin.com/company/energisenteret-da",
+     "retrievedAt": "2026-08-23T09:41:27.556619Z",
+     "hash": "c091b7dce87e85e189e12cf595f8bc2ef90fca00a77d9e7f906875550843971c",
+     "rightsStatus": "experimental",
+     "sourceClass": "professional_network"
+    },
+    "workforce": {
+     "employees": 3,
+     "employee_size_label": "11–50 ansatte",
+     "scope": "linkedin_profiles_associated_with_company_page",
+     "snapshot_path": "work/cache/financial-filer-submission-1000-linkedin-profile-v3-fuzzy-ids/c091b7dce87e85e189e12cf595f8bc2ef90fca00a77d9e7f906875550843971c.html",
+     "source": "https://www.linkedin.com/company/energisenteret-da",
+     "retrievedAt": "2026-08-23T09:41:27.556619Z",
+     "hash": "c091b7dce87e85e189e12cf595f8bc2ef90fca00a77d9e7f906875550843971c",
+     "rightsStatus": "experimental",
+     "sourceClass": "professional_network"
+    },
+    "posts": [],
+    "jobs": []
+   }
+  },
+  "coverage": {
+   "score": 5,
+   "total": 5,
+   "label": "Strong coverage",
+   "dimensions": [
+    {
+     "key": "company",
+     "label": "Company record",
+     "available": true
+    },
+    {
+     "key": "financials",
+     "label": "Financials",
+     "available": true
+    },
+    {
+     "key": "people_places",
+     "label": "People & locations",
+     "available": true
+    },
+    {
+     "key": "website",
+     "label": "Company website",
+     "available": true
+    },
+    {
+     "key": "footprint",
+     "label": "Public footprint",
+     "available": true
+    }
+   ]
+  },
+  "richness": 39
+ },
+ {
+  "org": "971521902",
+  "name": "STIFTELSEN STEINERSKOLEN I BÆRUM",
+  "form": "STI",
+  "employees": 69,
+  "municipality": "BÆRUM",
+  "industryCode": "85.201",
+  "industry": "Ordinær grunnskoleundervisning",
+  "website": null,
+  "adverse": false,
+  "slice": "preserved_eligible",
+  "split": "development",
+  "latestAccounts": "2025",
+  "registrySource": "https://data.brreg.no/enhetsregisteret/api/enheter/lastned/csv",
+  "registry": {
+   "status": "available",
+   "source": "https://data.brreg.no/enhetsregisteret/api/enheter/lastned/csv",
+   "sourceClass": "official_registry_bulk",
+   "retrievedAt": "2026-08-22T08:27:06.511032Z",
+   "effectiveAt": null,
+   "hash": "0f6c43feba23b0dc232613e505c3a7ce28f503011a3a61343ba41abc25a83629",
+   "rowKey": "971521902"
+  },
+  "accounting": {
+   "status": "available",
+   "source": "https://www.brreg.no/en/submission-of-annual-accounts/reporting-obligations-to-the-register-of-company-accounts/who-has-an-accounting-obligation/",
+   "sourceClass": "official_rule_interpretation",
+   "retrievedAt": "2026-08-22T08:27:27.809973Z",
+   "effectiveAt": "2024-08-09",
+   "hash": "b94e22c6da7667d1ae10db3dcb20f1b279634a1ce07b21111fc0f56758b3b6fb",
+   "rowKey": "971521902",
+   "value": {
+    "classification": "filing_observed",
+    "legal_form": "STI",
+    "latest_submitted_accounts": "2025",
+    "reason": "The registry snapshot reports a latest submitted annual-account year.",
+    "ruleset_version": "brreg_accounting_obligation_rules_2024-08-09_v1"
+   }
+  },
+  "financial": {
+   "status": "available",
+   "source": "https://data.brreg.no/regnskapsregisteret/regnskap/971521902",
+   "sourceClass": "official_annual_accounts",
+   "retrievedAt": "2026-08-22T08:34:32.448721Z",
+   "effectiveAt": null,
+   "hash": "ac2ba4df45c29fba96108fa37113869917ec51ccfd936a5a74530bff098ea4e2",
+   "rowKey": null,
+   "records": [
+    {
+     "record_id": 6704750,
+     "account_type": "SELSKAP",
+     "period": {
+      "fraDato": "2025-01-01",
+      "tilDato": "2025-12-31"
+     },
+     "currency": "NOK",
+     "revenue": 41935729.0,
+     "operating_result": 3096338.0,
+     "profit_before_tax": 2463645.0,
+     "annual_result": 2463645.0,
+     "assets": 52901451.0,
+     "equity": 22711378.0,
+     "debt": 30190073.0
+    }
+   ]
+  },
+  "financialHistory": {
+   "status": "available",
+   "source": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/971521902/aar",
+   "sourceClass": "official_annual_account_copies",
+   "retrievedAt": "2026-08-22T09:26:08.936947Z",
+   "effectiveAt": null,
+   "hash": "b7bcd20d8a4607bc9ca49fbdfebf5e51cb31e39858edb985dc98a82e8d2b7cd1",
+   "rowKey": null,
+   "pdfs": [
+    {
+     "year": "2025",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/971521902/2025"
+    },
+    {
+     "year": "2024",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/971521902/2024"
+    },
+    {
+     "year": "2023",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/971521902/2023"
+    },
+    {
+     "year": "2022",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/971521902/2022"
+    },
+    {
+     "year": "2021",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/971521902/2021"
+    },
+    {
+     "year": "2020",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/971521902/2020"
+    },
+    {
+     "year": "2019",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/971521902/2019"
+    },
+    {
+     "year": "2018",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/971521902/2018"
+    },
+    {
+     "year": "2017",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/971521902/2017"
+    },
+    {
+     "year": "2016",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/971521902/2016"
+    },
+    {
+     "year": "2015",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/971521902/2015"
+    },
+    {
+     "year": "2014",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/971521902/2014"
+    },
+    {
+     "year": "2013",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/971521902/2013"
+    },
+    {
+     "year": "2012",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/971521902/2012"
+    },
+    {
+     "year": "2011",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/971521902/2011"
+    }
+   ]
+  },
+  "roles": {
+   "status": "available",
+   "source": "https://data.brreg.no/enhetsregisteret/api/enheter/971521902/roller",
+   "sourceClass": "official_roles",
+   "retrievedAt": "2026-08-22T08:34:33.451462Z",
+   "effectiveAt": null,
+   "hash": "863f0c32a06817d21499cf46f58adf33c38dcabc905530667a6b5168cecb100a",
+   "rowKey": null,
+   "items": [
+    {
+     "name": "Magdalena Beata Ziobro",
+     "organisation_number": null,
+     "role_code": "DAGL",
+     "role": "Daglig leder",
+     "group_code": "DAGL",
+     "group": "Daglig leder",
+     "last_changed": "2025-08-25",
+     "inactive": false
+    },
+    {
+     "name": "Signe Johanne Haver",
+     "organisation_number": null,
+     "role_code": "LEDE",
+     "role": "Styrets leder",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2025-08-25",
+     "inactive": false
+    },
+    {
+     "name": "Joachim Skibenes",
+     "organisation_number": null,
+     "role_code": "MEDL",
+     "role": "Styremedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2025-08-25",
+     "inactive": false
+    },
+    {
+     "name": "Maria Therese Fernander Smit",
+     "organisation_number": null,
+     "role_code": "MEDL",
+     "role": "Styremedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2025-08-25",
+     "inactive": false
+    },
+    {
+     "name": "Helene Kristine Hertwig Torjuul",
+     "organisation_number": null,
+     "role_code": "MEDL",
+     "role": "Styremedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2025-08-25",
+     "inactive": false
+    },
+    {
+     "name": "Nicolai Huseby Jakobsen",
+     "organisation_number": null,
+     "role_code": "MEDL",
+     "role": "Styremedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2025-08-25",
+     "inactive": false
+    },
+    {
+     "name": "Janicke Lem",
+     "organisation_number": null,
+     "role_code": "VARA",
+     "role": "Varamedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2025-08-25",
+     "inactive": false
+    },
+    {
+     "name": "Kristin Hesbø Eek Cherradi",
+     "organisation_number": null,
+     "role_code": "VARA",
+     "role": "Varamedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2025-08-25",
+     "inactive": false
+    },
+    {
+     "name": "Andrea Helene Bjærke",
+     "organisation_number": null,
+     "role_code": "VARA",
+     "role": "Varamedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2025-08-25",
+     "inactive": false
+    },
+    {
+     "name": "Kristin Howlid Weisser",
+     "organisation_number": null,
+     "role_code": "VARA",
+     "role": "Varamedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2025-08-25",
+     "inactive": false
+    },
+    {
+     "name": [
+      "UNIC REVISJON AS"
+     ],
+     "organisation_number": "999327885",
+     "role_code": "REVI",
+     "role": "Revisor",
+     "group_code": "REVI",
+     "group": "Revisor",
+     "last_changed": "2016-11-17",
+     "inactive": false
+    },
+    {
+     "name": [
+      "SAGA REGNSKAP ASKER OG BÆRUM AS"
+     ],
+     "organisation_number": "882571432",
+     "role_code": "REGN",
+     "role": "Regnskapsfører",
+     "group_code": "REGN",
+     "group": "Regnskapsfører",
+     "last_changed": "2019-11-12",
+     "inactive": false
+    }
+   ]
+  },
+  "locations": {
+   "status": "available",
+   "source": "https://data.brreg.no/enhetsregisteret/api/underenheter?overordnetEnhet=971521902&size=1000",
+   "sourceClass": "official_subunits",
+   "retrievedAt": "2026-08-22T08:34:35.400760Z",
+   "effectiveAt": null,
+   "hash": "112b5b8664f8a1da50493f9687c73b7f2e887fa1a926e618363aa014a24f21cf",
+   "rowKey": null,
+   "items": [
+    {
+     "organisation_number": "974122898",
+     "name": "STEINERSKOLEN I BÆRUM GRUNNSKOLEUNDERVISNING",
+     "address": {
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "1358",
+      "poststed": "JAR",
+      "adresse": [
+       "Grav Gårdsvei 5"
+      ],
+      "kommune": "BÆRUM",
+      "kommunenummer": "3201"
+     },
+     "industry": {
+      "kode": "85.201",
+      "beskrivelse": "Ordinær grunnskoleundervisning"
+     },
+     "employees": 69
+    },
+    {
+     "organisation_number": "975015785",
+     "name": "STEINERSKOLEN I BÆRUM VIDEREGÅENDE OPPLÆRING",
+     "address": {
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "1358",
+      "poststed": "JAR",
+      "adresse": [
+       "Grav Gårdsvei 5"
+      ],
+      "kommune": "BÆRUM",
+      "kommunenummer": "3201"
+     },
+     "industry": {
+      "kode": "85.310",
+      "beskrivelse": "Videregående opplæring innenfor studieforberedende utdanningsprogram"
+     },
+     "employees": null
+    }
+   ]
+  },
+  "web": {
+   "status": "available",
+   "source": "https://www.stib.no/",
+   "sourceClass": "registry_linked_company_website",
+   "retrievedAt": "2026-08-22T08:34:37.390573Z",
+   "effectiveAt": null,
+   "hash": "fd42b1d241eb60cbe4117f7e8d9aba284bb5c936fe7f8043b483aa0050a33df3",
+   "rowKey": null,
+   "value": {
+    "requested_url": "https://www.stib.no/",
+    "final_url": "https://www.stib.no/",
+    "registered_domain": "stib.no",
+    "title": "Steinerskolen i Bærum",
+    "description": "Steinerskolen i Bærum er en privat grunnskole som holder til på Grav gård.",
+    "main_text_excerpt": "Vi ønsker både nye og gamle elever velkommen til skolestart mandag 17.august 2026.\nElever og foresatte i 1. klasse møter ved Solstua 10:00\nResten av skolen (2. til 10. klasse) møtes på skoleplassen 10:00\nNår elevene går til sine klasserom sammen med klasselærer, er foreldre velkommen til kaffe/te i peisestua.\nSkoledagen er ferdig ca. kl. 1130. SFO er åpen.\nVi gleder oss til å treffe dere!\nQuisque iaculis facilisis lacinia. Mauris euismod pellentesque tellus sit amet mollis.",
+    "social_links": [
+     {
+      "platform": "facebook",
+      "url": "https://facebook.com/steinerskolenibaerum"
+     },
+     {
+      "platform": "instagram",
+      "url": "https://instagram.com/steinerskolenbaerum"
+     }
+    ],
+    "structured_organisations": [
+     {
+      "legalName": "Steinerskolen i Bærum ",
+      "address": "5 Grav Gårdsvei\nJar, Akershus, 1358\nNorway",
+      "email": "grav@steinerskolen.no",
+      "telephone": "67162270",
+      "sameAs": [
+       "http://instagram.com/steinerskolenbaerum",
+       "https://www.facebook.com/steinerskolenibaerum/"
+      ],
+      "@context": "http://schema.org",
+      "@type": "Organization"
+     },
+     {
+      "address": "5 Grav Gårdsvei\nJar, Akershus, 1358\nNorway",
+      "image": "https://static1.squarespace.com/static/56ea8338b654f9c7a02acfc1/t/57f49db4579fb32a7e66f7b1/1787033220114/",
+      "name": "Steinerskolen i Bærum ",
+      "openingHours": "Mo 08:00-16:00, Tu 08:00-16:00, We 08:00-16:00, Th 08:00-16:00, Fr 08:00-16:00, ",
+      "@context": "http://schema.org",
+      "@type": "LocalBusiness"
+     }
+    ],
+    "content_sha256": "fd42b1d241eb60cbe4117f7e8d9aba284bb5c936fe7f8043b483aa0050a33df3",
+    "extraction_state": "static_complete",
+    "pages": [
+     {
+      "url": "https://www.stib.no/",
+      "title": "Steinerskolen i Bærum",
+      "main_text_excerpt": "Vi ønsker både nye og gamle elever velkommen til skolestart mandag 17.august 2026.\nElever og foresatte i 1. klasse møter ved Solstua 10:00\nResten av skolen (2. til 10. klasse) møtes på skoleplassen 10:00\nNår elevene går til sine klasserom sammen med klasselærer, er foreldre velkommen til kaffe/te i peisestua.\nSkoledagen er ferdig ca. kl. 1130. SFO er åpen.\nVi gleder oss til å treffe dere!\nQuisque iaculis facilisis lacinia. Mauris euismod pellentesque tellus sit amet mollis.",
+      "content_sha256": "fd42b1d241eb60cbe4117f7e8d9aba284bb5c936fe7f8043b483aa0050a33df3"
+     },
+     {
+      "url": "https://www.stib.no/kontaktoss",
+      "title": "Kontakt oss — Steinerskolen i Bærum",
+      "main_text_excerpt": "Søke på ledig stilling - send søknad og CV til grav@steinerskolen.no\nHar du spørsmål send oss gjerne en mail\nKontaktinformasjon\nE-post grav(at)steinerskolen.no\nSentralbord 67 16 22 70\nSolstua 1. klasse 481 30 725\nSFO 469 30 065\nAdresse\nSteinerskolen i Bærum\nGrav Gårds vei 5\n1358 Jar\nAnnet\nForetaksnummer: 971 521 902\nBankgiro: 1254 05 08745\nFaktura til skolen sendes til stib@faktura.poweroffice.net\nHelsetjenesten\nHedda Ruud - helsesykepleier\n457 22 648   hedda.ruud(at)baerum.kommune.no\nTilstede:\nmandag, onsdag og torsdag (partallsuker)\nonsdag og torsdag (oddetallsuker)\nQuisque iaculis facilisis lacinia. Mauris euismod pellentesque tellus sit amet mollis.",
+      "content_sha256": "872472c06ee1a5544e6c1680a3caf11bc1b00847161719c2626f976b6b13da10"
+     }
+    ],
+    "crawl_errors": [],
+    "identity_assessment": {
+     "status": "exact",
+     "score": 0.95,
+     "publishable": true,
+     "legal_name_tokens": [
+      "steinerskolen",
+      "baerum"
+     ],
+     "matched_tokens": [
+      "baerum",
+      "steinerskolen"
+     ],
+     "reasons": [
+      "all normalized legal-name tokens appear together in homepage identity evidence"
+     ],
+     "method": "deterministic_name_org_evidence_v2"
+    },
+    "discovered_social_links": [
+     {
+      "platform": "facebook",
+      "url": "https://facebook.com/steinerskolenibaerum"
+     },
+     {
+      "platform": "instagram",
+      "url": "https://instagram.com/steinerskolenbaerum"
+     }
+    ],
+    "social_link_assessments": [
+     {
+      "platform": "facebook",
+      "url": "https://facebook.com/steinerskolenibaerum",
+      "identity_score": 0.9,
+      "publishable": true,
+      "matched_tokens": [
+       "steinerskolen",
+       "baerum"
+      ],
+      "reason": "most legal-name tokens appear in the social handle",
+      "method": "deterministic_social_handle_identity_v1"
+     },
+     {
+      "platform": "instagram",
+      "url": "https://instagram.com/steinerskolenbaerum",
+      "identity_score": 0.98,
+      "publishable": true,
+      "matched_tokens": [
+       "steinerskolen",
+       "baerum"
+      ],
+      "reason": "normalized legal-name sequence appears in the social handle",
+      "method": "deterministic_social_handle_identity_v1"
+     }
+    ]
+   }
+  },
+  "liveStatus": "available",
+  "changes": [],
+  "external": {
+   "handles": [
+    {
+     "platform": "facebook",
+     "url": "https://facebook.com/steinerskolenibaerum",
+     "rightsStatus": "approved"
+    },
+    {
+     "platform": "instagram",
+     "url": "https://instagram.com/steinerskolenbaerum",
+     "rightsStatus": "approved"
+    }
+   ],
+   "linkedin": {
+    "available": false,
+    "profile": {},
+    "workforce": {},
+    "posts": [],
+    "jobs": []
+   }
+  },
+  "coverage": {
+   "score": 5,
+   "total": 5,
+   "label": "Strong coverage",
+   "dimensions": [
+    {
+     "key": "company",
+     "label": "Company record",
+     "available": true
+    },
+    {
+     "key": "financials",
+     "label": "Financials",
+     "available": true
+    },
+    {
+     "key": "people_places",
+     "label": "People & locations",
+     "available": true
+    },
+    {
+     "key": "website",
+     "label": "Company website",
+     "available": true
+    },
+    {
+     "key": "footprint",
+     "label": "Public footprint",
+     "available": true
+    }
+   ]
+  },
+  "richness": 29
+ },
+ {
+  "org": "931932217",
+  "name": "HUSFLIDEN HOLMESTRAND SA",
+  "form": "SA",
+  "employees": 8,
+  "municipality": "HOLMESTRAND",
+  "industryCode": "47.510",
+  "industry": "Detaljhandel med tekstiler og utstyrsvarer",
+  "website": null,
+  "adverse": false,
+  "slice": "preserved_eligible",
+  "split": "held_out",
+  "latestAccounts": "2025",
+  "registrySource": "https://data.brreg.no/enhetsregisteret/api/enheter/lastned/csv",
+  "registry": {
+   "status": "available",
+   "source": "https://data.brreg.no/enhetsregisteret/api/enheter/lastned/csv",
+   "sourceClass": "official_registry_bulk",
+   "retrievedAt": "2026-08-22T08:27:06.511032Z",
+   "effectiveAt": null,
+   "hash": "0f6c43feba23b0dc232613e505c3a7ce28f503011a3a61343ba41abc25a83629",
+   "rowKey": "931932217"
+  },
+  "accounting": {
+   "status": "available",
+   "source": "https://www.brreg.no/en/submission-of-annual-accounts/reporting-obligations-to-the-register-of-company-accounts/who-has-an-accounting-obligation/",
+   "sourceClass": "official_rule_interpretation",
+   "retrievedAt": "2026-08-22T08:27:21.325439Z",
+   "effectiveAt": "2024-08-09",
+   "hash": "b94e22c6da7667d1ae10db3dcb20f1b279634a1ce07b21111fc0f56758b3b6fb",
+   "rowKey": "931932217",
+   "value": {
+    "classification": "filing_observed",
+    "legal_form": "SA",
+    "latest_submitted_accounts": "2025",
+    "reason": "The registry snapshot reports a latest submitted annual-account year.",
+    "ruleset_version": "brreg_accounting_obligation_rules_2024-08-09_v1"
+   }
+  },
+  "financial": {
+   "status": "available",
+   "source": "https://data.brreg.no/regnskapsregisteret/regnskap/931932217",
+   "sourceClass": "official_annual_accounts",
+   "retrievedAt": "2026-08-22T08:32:37.539392Z",
+   "effectiveAt": null,
+   "hash": "f77b58cdea53b860d94cdd1a520f1bc06c814d71917d670a6ef88f8b3092185e",
+   "rowKey": null,
+   "records": [
+    {
+     "record_id": 6385519,
+     "account_type": "SELSKAP",
+     "period": {
+      "fraDato": "2025-01-01",
+      "tilDato": "2025-12-31"
+     },
+     "currency": "NOK",
+     "revenue": 7359871.0,
+     "operating_result": -342900.0,
+     "profit_before_tax": -327736.0,
+     "annual_result": -336037.0,
+     "assets": 4767275.0,
+     "equity": 2522859.0,
+     "debt": 2244415.0
+    }
+   ]
+  },
+  "financialHistory": {
+   "status": "available",
+   "source": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/931932217/aar",
+   "sourceClass": "official_annual_account_copies",
+   "retrievedAt": "2026-08-22T09:21:10.943120Z",
+   "effectiveAt": null,
+   "hash": "b7bcd20d8a4607bc9ca49fbdfebf5e51cb31e39858edb985dc98a82e8d2b7cd1",
+   "rowKey": null,
+   "pdfs": [
+    {
+     "year": "2025",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/931932217/2025"
+    },
+    {
+     "year": "2024",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/931932217/2024"
+    },
+    {
+     "year": "2023",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/931932217/2023"
+    },
+    {
+     "year": "2022",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/931932217/2022"
+    },
+    {
+     "year": "2021",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/931932217/2021"
+    },
+    {
+     "year": "2020",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/931932217/2020"
+    },
+    {
+     "year": "2019",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/931932217/2019"
+    },
+    {
+     "year": "2018",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/931932217/2018"
+    },
+    {
+     "year": "2017",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/931932217/2017"
+    },
+    {
+     "year": "2016",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/931932217/2016"
+    },
+    {
+     "year": "2015",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/931932217/2015"
+    },
+    {
+     "year": "2014",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/931932217/2014"
+    },
+    {
+     "year": "2013",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/931932217/2013"
+    },
+    {
+     "year": "2012",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/931932217/2012"
+    },
+    {
+     "year": "2011",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/931932217/2011"
+    }
+   ]
+  },
+  "roles": {
+   "status": "available",
+   "source": "https://data.brreg.no/enhetsregisteret/api/enheter/931932217/roller",
+   "sourceClass": "official_roles",
+   "retrievedAt": "2026-08-22T08:32:38.516923Z",
+   "effectiveAt": null,
+   "hash": "063478987b206397e3e27401c1215ae2b7900d39103a472414229c1bb83dec62",
+   "rowKey": null,
+   "items": [
+    {
+     "name": "Hege Elisabeth Hammersland",
+     "organisation_number": null,
+     "role_code": "DAGL",
+     "role": "Daglig leder",
+     "group_code": "DAGL",
+     "group": "Daglig leder",
+     "last_changed": "2025-06-14",
+     "inactive": false
+    },
+    {
+     "name": "Ellen Holtan Folkestad",
+     "organisation_number": null,
+     "role_code": "LEDE",
+     "role": "Styrets leder",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2025-06-14",
+     "inactive": false
+    },
+    {
+     "name": "Tove Elisabeth Forså",
+     "organisation_number": null,
+     "role_code": "MEDL",
+     "role": "Styremedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2025-06-14",
+     "inactive": false
+    },
+    {
+     "name": "Randi Ellinor Pihl-Jonstang",
+     "organisation_number": null,
+     "role_code": "MEDL",
+     "role": "Styremedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2025-06-14",
+     "inactive": false
+    },
+    {
+     "name": "Lisbeth Horn Bakken",
+     "organisation_number": null,
+     "role_code": "MEDL",
+     "role": "Styremedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2025-06-14",
+     "inactive": false
+    },
+    {
+     "name": "Anette Karlsen",
+     "organisation_number": null,
+     "role_code": "VARA",
+     "role": "Varamedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2025-06-14",
+     "inactive": false
+    },
+    {
+     "name": "Sissel Martinsen Åsheim",
+     "organisation_number": null,
+     "role_code": "VARA",
+     "role": "Varamedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2025-06-14",
+     "inactive": false
+    },
+    {
+     "name": "Inger Christensen",
+     "organisation_number": null,
+     "role_code": "VARA",
+     "role": "Varamedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2025-06-14",
+     "inactive": false
+    },
+    {
+     "name": [
+      "BDO AS"
+     ],
+     "organisation_number": "993606650",
+     "role_code": "REVI",
+     "role": "Revisor",
+     "group_code": "REVI",
+     "group": "Revisor",
+     "last_changed": "2012-10-09",
+     "inactive": false
+    },
+    {
+     "name": [
+      "ØKORÅD VESTFOLD SA"
+     ],
+     "organisation_number": "947056654",
+     "role_code": "REGN",
+     "role": "Regnskapsfører",
+     "group_code": "REGN",
+     "group": "Regnskapsfører",
+     "last_changed": "2012-04-16",
+     "inactive": false
+    }
+   ]
+  },
+  "locations": {
+   "status": "available",
+   "source": "https://data.brreg.no/enhetsregisteret/api/underenheter?overordnetEnhet=931932217&size=1000",
+   "sourceClass": "official_subunits",
+   "retrievedAt": "2026-08-22T08:32:40.449431Z",
+   "effectiveAt": null,
+   "hash": "1104db32f2c587f13a0f1c09e1783b9c20678af7fc596753dce35be3896e5301",
+   "rowKey": null,
+   "items": [
+    {
+     "organisation_number": "971805595",
+     "name": "HUSFLIDEN HOLMESTRAND SA",
+     "address": {
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "3080",
+      "poststed": "HOLMESTRAND",
+      "adresse": [
+       "Langgaten 18"
+      ],
+      "kommune": "HOLMESTRAND",
+      "kommunenummer": "3903"
+     },
+     "industry": {
+      "kode": "47.510",
+      "beskrivelse": "Detaljhandel med tekstiler og utstyrsvarer"
+     },
+     "employees": 8
+    }
+   ]
+  },
+  "web": {
+   "status": "available",
+   "source": "https://www.norskflid.no/holmestrand/",
+   "sourceClass": "registry_linked_company_website",
+   "retrievedAt": "2026-08-22T08:32:52.702617Z",
+   "effectiveAt": null,
+   "hash": "bfeefc19018bac34ed44c7f5089d18e64e68ef9dc9ea007542bb7bb3a14ce397",
+   "rowKey": null,
+   "value": {
+    "requested_url": "https://www.norskflid.no/holmestrand",
+    "final_url": "https://www.norskflid.no/holmestrand/",
+    "registered_domain": "norskflid.no",
+    "title": "Husfliden i Holmestrand, størst på vevoppskrifter og vevgarn i Norge! - Norsk Flid nettbutikk og bunader",
+    "description": "Vi i Husfliden Holmestrand har spesialisert oss på bunader fra Vestfold, og leverer disse gjennom alle Norsk Flid Husflidens 28 butikker. Vi har stort utvalg av Oleana. Stor garn og vevavdeling!",
+    "main_text_excerpt": "Vevavdelingen MÅ bare må oppleves! Her finner du et av landets største utvalg av vevgarn, vevutstyr og mønster. Trenger du noe de ikke har i butikken, bistår våre fagfolk deg med å skaffe det. Her finner du også mønster og garn til Vestfold-teppene og -løperen.\nKlikk her FOR Å SE ALLE VÅRE BILLEDVEVMØNSTRE.\nKlikk her for Bjørg Kristiansens billedvevmønstre.\nKlikk her for å se våre egne billedvevmønstre\nFLATVEV\nKlikk her for å se bilder av innholdet i heftet INTERIØRTEKSTILER\nKlikk her for å se bilder av innholdet i heftet INTERIØRTEKSTILER 2\nKlikk her for å se bilder av innholdet i heftet KJÆRTEGN TIL HALSEN\nKlikk her for å se bilder av innholdet i heftet SKILLBRAGD/TELEMARKSTEPPER\nFARGEKART\nHer finner du fargekart for Bockens vevgarn.\nHer finner du fargekart for Raumas vevgarn.\nHer finner du fargekart for Solbergs vevgarn.",
+    "social_links": [
+     {
+      "platform": "instagram",
+      "url": "https://instagram.com/@husfliden_holmestrand"
+     }
+    ],
+    "structured_organisations": [],
+    "content_sha256": "bfeefc19018bac34ed44c7f5089d18e64e68ef9dc9ea007542bb7bb3a14ce397",
+    "extraction_state": "static_complete",
+    "pages": [
+     {
+      "url": "https://www.norskflid.no/holmestrand/",
+      "title": "Husfliden i Holmestrand, størst på vevoppskrifter og vevgarn i Norge! - Norsk Flid nettbutikk og bunader",
+      "main_text_excerpt": "Vevavdelingen MÅ bare må oppleves! Her finner du et av landets største utvalg av vevgarn, vevutstyr og mønster. Trenger du noe de ikke har i butikken, bistår våre fagfolk deg med å skaffe det. Her finner du også mønster og garn til Vestfold-teppene og -løperen.\nKlikk her FOR Å SE ALLE VÅRE BILLEDVEVMØNSTRE.\nKlikk her for Bjørg Kristiansens billedvevmønstre.\nKlikk her for å se våre egne billedvevmønstre\nFLATVEV\nKlikk her for å se bilder av innholdet i heftet INTERIØRTEKSTILER\nKlikk her for å se bilder av innholdet i heftet INTERIØRTEKSTILER 2\nKlikk her for å se bilder av innholdet i heftet KJÆRTEGN TIL HALSEN\nKlikk her for å se bilder av innholdet i heftet SKILLBRAGD/TELEMARKSTEPPER\nFARGEKART\nHer finner du fargekart for Bockens vevgarn.\nHer finner du fargekart for Raumas vevgarn.\nHer finner du fargekart for Solbergs vevgarn.",
+      "content_sha256": "bfeefc19018bac34ed44c7f5089d18e64e68ef9dc9ea007542bb7bb3a14ce397"
+     },
+     {
+      "url": "https://www.norskflid.no/om-oss/",
+      "title": "Om oss - Norsk Flid nettbutikk og bunader",
+      "main_text_excerpt": "",
+      "content_sha256": "1dbd44f130e9d3368c56b790148bb4289ff466abe436f15727fd6523809d5793"
+     },
+     {
+      "url": "https://www.norskflid.no/butikker/",
+      "title": "Butikker - Norsk Flid nettbutikk og bunader",
+      "main_text_excerpt": "Tollbodgaten 2, 4836 Arendal\n        \n        \n        \n        \n        \n            \n            Man-fre 1000 - 1800\n            Torsdag 1000 - 1800\n            Lørdag 1000 - 1600\n        \n     \n    \n    \n        \n        \n            \n            Vågsallmenningen 3, 5014 Bergen,  \n        \n        \n        \n        \n        \n            \n            Man-fre 0900 - 1700\n            Torsdag 0900 - 1900\n            Lørdag 0900 - 1500 \n        \n     \n    \n    \n        \n        \n            \n            Storgt. 5, 2408  Elverum\n        \n        \n        \n        \n        \n            \n            Man-fre 1000 - 1700\n            Torsdag 1000 - 1700\n            Lørdag 1000 - 1500\n        \n     \n    \n    \n        \n        \n            \n            Jernbaneveien 12, 2900 Fagernes\n        \n        \n        \n        \n        \n            \n            Man-fre 1000 - 1700\n            Torsdag 1000 - 1700\n            Lørdag 1000 - 1500\n        \n     \n    \n    \n        \n        \n            \n            Sentrumsvn. 120, 3550 Gol\n        \n        \n        \n        \n        \n            \n            Man-fre 1000 - 1700\n            Torsdag 1000 - 1700\n            Lørdag 1000 - 1500\n        \n     \n    \n    \n        \n        \n            \n            Langgt. 18, 3080 Holmestrand\n        \n        \n        \n        \n        \n            \n            Man-fre 09-17\n            Torsdag 09-18\n            Lørdag 09-15\n        \n     \n    \n    \n        \n        \n            \n            Torvgata 10, 3513 Hønefoss\n        \n        \n        \n        \n        \n            \n            Man-fre 1000 - 1700\n            Torsdag 1000 - 1700 \n            Lørdag 1000 - 1500\n        \n     \n    \n    \n        \n        \n            \n            Gyldenløvesgt. 6 a i Kristiansand/ Store Elvegt. 27 i Mandal,  \n        \n        \n        \n        \n        \n            \n            Man-fre 1000-1700 \n            Torsdag Kristiansand 1000-1800/ Mandal 1000-1800\n            Lørdag 1000 - 1600 \n        \n     \n    \n    \n        \n        \n            \n            Hauggt. 15, 6501 Kristiansund\n        \n        \n        \n        \n        \n            \n            Man-fre 1000 - 1630\n            Torsdag 1000 - 1800\n            Lørdag 1000 - 1400\n        \n     \n    \n    \n        \n        \n            \n            Storgata 6 , 3210 Sandefjord\n        \n        \n        \n        \n        \n            \n            Man-fre 10-17 (i Sandefjord)\n            Torsdag 10-17 (i Sandefjord)\n            Lørdag 10-15 (i Sandefjord)\n        \n     \n    \n    \n        \n        \n            \n            Lekneskroken 9a, 8370 Leknes\n        \n        \n        \n        \n        \n            \n            Man-fre 0900 - 1700\n            Torsdag 0900 - 1700\n            Lørdag 1000 - 1500 Bunadavdelingen stengt på lørdager. Åpent kun etter avtale. \n        \n     \n    \n    \n        \n        \n            \n            Håkon den Godes gt 13, 7600 Levanger\n        \n        \n        \n        \n        \n            \n            Man-fre 0930 - 1630\n            Torsdag 0930 - 1630\n            Lørdag 1000 - 1400 \n        \n     \n    \n    \n        \n        \n            \n            Jernbanegata 22, 8622 Mo i Rana\n        \n        \n        \n        \n        \n            \n            Man-fre 0900 - 1600\n            Torsdag 0900 - 1800\n            Lørdag 1000 - 1500 \n        \n     \n    \n    \n        \n        \n            \n            Storgt. 15, 6413 Molde\n        \n        \n        \n        \n        \n            \n            Man-fre 1000 - 1700\n            Torsdag 1000 - 1800\n            Lørdag 1000 - 1600 \n        \n     \n    \n    \n        \n        \n            \n            Strandgt. 36, 8656 Mosjøen\n        \n        \n        \n        \n        \n            \n            Man-fre 0900 - 1600\n            Torsdag 0900 - 1800\n            Lørdag 1000 - 1500 \n        \n     \n    \n    \n        \n        \n            \n            Ola Setromsveg 24, 7340 Oppdal\n        \n        \n        \n        \n        \n            \n            Man-fre 1000 - 1700\n            Torsdag 1000 - 1700\n            Lørdag 1000 - 1600 \n        \n     \n    \n    \n        \n        \n            \n            Storgt. 110, 3921 Porsgrunn\n        \n        \n        \n        \n        \n            \n            Man-fre 1000 - 1700\n            Torsdag 1000 - 1700\n            Lørdag 1000 - 1500 \n        \n     \n    \n    \n        \n        \n            \n            Kjellebergsvegen 3, 4747 Valle\n        \n        \n        \n        \n        \n            \n            Man-fre 1000 - 1700\n            Torsdag 1000 - 1700\n            Lørdag 1100 - 1700 (søndag 1200-1600)\n        \n     \n    \n    \n        \n        \n            \n            Nedre Hjellegate 2, 3724 Skien\n        \n        \n        \n        \n        \n            \n            Man-fre 1000 - 1700 \n            Torsdag 1000 - 1700 \n            Lørdag 1000 - 1500  \n        \n     \n    \n    \n        \n        \n            \n            Ogndalsvn. 10, 7713 Steinkjer\n        \n        \n        \n        \n        \n ",
+      "content_sha256": "be7cda9d77fcae51334b96cb034e28bd4c5e2637adef48537b9699ed1c011465"
+     },
+     {
+      "url": "https://www.norskflid.no/ressurser/kontakt-nettbutikk-og-salgsbetingelser/",
+      "title": "Kontakt nettbutikk og salgsbetingelser - Ressurser - Norsk Flid nettbutikk og bunader",
+      "main_text_excerpt": "Kontakt nettbutikk og salgsbetingelser\n            Ved kjøp av produkter gjennom Norsk Flid Husfliden sin nettbutikk, gjelder Forbrukerombudets salgsbetingelser.\nDersom din bestilling inneholder flere varer, kan den i noen tilfeller bli sendt fra flere av våre butikker. Avsenderbutikk vil fremkomme av din ordrebekreftelse, pr. varelinje. Du vil også motta e-post  med sporingslenke for hver pakke som sendes. \nDersom du har spørsmål til din ordre, ta direkte kontakt med den butikken som har sendt/skal sende din vare. https://www.norskflid.no/butikker/\nTakk for at du handler hos Norsk Flid Husfliden!",
+      "content_sha256": "32499ec3d237f420aef2c4e3e8f8c3333e8caba8ff6fef89a115131c0d51bdc5"
+     },
+     {
+      "url": "https://www.norskflid.no/team-kameleon/",
+      "title": "Team Kameleon for Norsk Flid - Produsent - Norsk Flid nettbutikk og bunader",
+      "main_text_excerpt": "Team Kameleon for Norsk Flid\n        \n        Barnebunad, bunadsposer og bunadsskjorter på nett fra Norsk Flid Husfliden\nTeam Kameleon utvikler i samarbeid med Norsk Flid, bunadsskjorter, bunadsposer og Norsk Flid barnebunad for jente og gutt.",
+      "content_sha256": "14e35bf4b0d728c50da1807a0b6c5d04bbe86933e2cfe11e6c63782d222b4666"
+     }
+    ],
+    "crawl_errors": [],
+    "identity_assessment": {
+     "status": "exact",
+     "score": 0.95,
+     "publishable": true,
+     "legal_name_tokens": [
+      "husfliden",
+      "holmestrand"
+     ],
+     "matched_tokens": [
+      "holmestrand",
+      "husfliden"
+     ],
+     "reasons": [
+      "all normalized legal-name tokens appear together in homepage identity evidence"
+     ],
+     "method": "deterministic_name_org_evidence_v2"
+    },
+    "discovered_social_links": [
+     {
+      "platform": "facebook",
+      "url": "https://facebook.com/norskflidholmestrand"
+     },
+     {
+      "platform": "instagram",
+      "url": "https://instagram.com/@husfliden_holmestrand"
+     }
+    ],
+    "social_link_assessments": [
+     {
+      "platform": "facebook",
+      "url": "https://facebook.com/norskflidholmestrand",
+      "identity_score": 0.3,
+      "publishable": false,
+      "matched_tokens": [
+       "holmestrand"
+      ],
+      "reason": "social handle lacks strong exact-entity name evidence",
+      "method": "deterministic_social_handle_identity_v1"
+     },
+     {
+      "platform": "instagram",
+      "url": "https://instagram.com/@husfliden_holmestrand",
+      "identity_score": 0.98,
+      "publishable": true,
+      "matched_tokens": [
+       "husfliden",
+       "holmestrand"
+      ],
+      "reason": "normalized legal-name sequence appears in the social handle",
+      "method": "deterministic_social_handle_identity_v1"
+     }
+    ]
+   }
+  },
+  "liveStatus": "available",
+  "changes": [],
+  "external": {
+   "handles": [
+    {
+     "platform": "instagram",
+     "url": "https://instagram.com/@husfliden_holmestrand",
+     "rightsStatus": "approved"
+    }
+   ],
+   "linkedin": {
+    "available": false,
+    "profile": {},
+    "workforce": {},
+    "posts": [],
+    "jobs": []
+   }
+  },
+  "coverage": {
+   "score": 5,
+   "total": 5,
+   "label": "Strong coverage",
+   "dimensions": [
+    {
+     "key": "company",
+     "label": "Company record",
+     "available": true
+    },
+    {
+     "key": "financials",
+     "label": "Financials",
+     "available": true
+    },
+    {
+     "key": "people_places",
+     "label": "People & locations",
+     "available": true
+    },
+    {
+     "key": "website",
+     "label": "Company website",
+     "available": true
+    },
+    {
+     "key": "footprint",
+     "label": "Public footprint",
+     "available": true
+    }
+   ]
+  },
+  "richness": 26
+ },
+ {
+  "org": "990167826",
+  "name": "STIFTELSEN NASJONAL JAZZSCENE",
+  "form": "STI",
+  "employees": 19,
+  "municipality": "OSLO",
+  "industryCode": "90.310",
+  "industry": "Drift av lokaler tilknyttet kunstnerisk virksomhet og underholdningsvirksomhet",
+  "website": null,
+  "adverse": false,
+  "slice": "financial_filer_population",
+  "split": "development",
+  "latestAccounts": "2025",
+  "registrySource": "https://data.brreg.no/enhetsregisteret/api/enheter/lastned/csv",
+  "registry": {
+   "status": "available",
+   "source": "https://data.brreg.no/enhetsregisteret/api/enheter/lastned/csv",
+   "sourceClass": "official_registry_bulk",
+   "retrievedAt": "2026-08-22T10:39:12.133076Z",
+   "effectiveAt": null,
+   "hash": "0f6c43feba23b0dc232613e505c3a7ce28f503011a3a61343ba41abc25a83629",
+   "rowKey": "990167826"
+  },
+  "accounting": {
+   "status": "available",
+   "source": "https://www.brreg.no/en/submission-of-annual-accounts/reporting-obligations-to-the-register-of-company-accounts/who-has-an-accounting-obligation/",
+   "sourceClass": "official_rule_interpretation",
+   "retrievedAt": "2026-08-22T10:39:25.104325Z",
+   "effectiveAt": "2024-08-09",
+   "hash": "b94e22c6da7667d1ae10db3dcb20f1b279634a1ce07b21111fc0f56758b3b6fb",
+   "rowKey": "990167826",
+   "value": {
+    "classification": "filing_observed",
+    "legal_form": "STI",
+    "latest_submitted_accounts": "2025",
+    "reason": "The registry snapshot reports a latest submitted annual-account year.",
+    "ruleset_version": "brreg_accounting_obligation_rules_2024-08-09_v1"
+   }
+  },
+  "financial": {
+   "status": "available",
+   "source": "https://data.brreg.no/regnskapsregisteret/regnskap/990167826",
+   "sourceClass": "official_annual_accounts",
+   "retrievedAt": "2026-08-22T10:47:38.965447Z",
+   "effectiveAt": null,
+   "hash": "272706f0ff94b221942f2ab60f700221e4d26da1dc0e276cee0c544c09fb7abe",
+   "rowKey": null,
+   "records": [
+    {
+     "record_id": 6763860,
+     "account_type": "SELSKAP",
+     "period": {
+      "fraDato": "2025-01-01",
+      "tilDato": "2025-12-31"
+     },
+     "currency": "NOK",
+     "revenue": 22168493.0,
+     "operating_result": 588189.0,
+     "profit_before_tax": 812623.0,
+     "annual_result": 812623.0,
+     "assets": 8248956.0,
+     "equity": 5983674.0,
+     "debt": 2265283.0
+    }
+   ]
+  },
+  "financialHistory": {
+   "status": "available",
+   "source": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/990167826/aar",
+   "sourceClass": "official_annual_account_copies",
+   "retrievedAt": "2026-08-22T10:48:39.334871Z",
+   "effectiveAt": null,
+   "hash": "b7bcd20d8a4607bc9ca49fbdfebf5e51cb31e39858edb985dc98a82e8d2b7cd1",
+   "rowKey": null,
+   "pdfs": [
+    {
+     "year": "2025",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/990167826/2025"
+    },
+    {
+     "year": "2024",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/990167826/2024"
+    },
+    {
+     "year": "2023",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/990167826/2023"
+    },
+    {
+     "year": "2022",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/990167826/2022"
+    },
+    {
+     "year": "2021",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/990167826/2021"
+    },
+    {
+     "year": "2020",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/990167826/2020"
+    },
+    {
+     "year": "2019",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/990167826/2019"
+    },
+    {
+     "year": "2018",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/990167826/2018"
+    },
+    {
+     "year": "2017",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/990167826/2017"
+    },
+    {
+     "year": "2016",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/990167826/2016"
+    },
+    {
+     "year": "2015",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/990167826/2015"
+    },
+    {
+     "year": "2014",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/990167826/2014"
+    },
+    {
+     "year": "2013",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/990167826/2013"
+    },
+    {
+     "year": "2012",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/990167826/2012"
+    },
+    {
+     "year": "2011",
+     "url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/990167826/2011"
+    }
+   ]
+  },
+  "roles": {
+   "status": "available",
+   "source": "https://data.brreg.no/enhetsregisteret/api/enheter/990167826/roller",
+   "sourceClass": "official_roles",
+   "retrievedAt": "2026-08-22T10:48:40.347861Z",
+   "effectiveAt": null,
+   "hash": "7cd118ec0eee3098d1e418ea4979c2627061387e0765da0dca3cd9fcbf229402",
+   "rowKey": null,
+   "items": [
+    {
+     "name": "Øyvind Larsen",
+     "organisation_number": null,
+     "role_code": "DAGL",
+     "role": "Daglig leder",
+     "group_code": "DAGL",
+     "group": "Daglig leder",
+     "last_changed": "2023-09-06",
+     "inactive": false
+    },
+    {
+     "name": "Roger Borgland Johansen",
+     "organisation_number": null,
+     "role_code": "LEDE",
+     "role": "Styrets leder",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2026-03-20",
+     "inactive": false
+    },
+    {
+     "name": "Jørn Harald Størkson",
+     "organisation_number": null,
+     "role_code": "MEDL",
+     "role": "Styremedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2026-03-20",
+     "inactive": false
+    },
+    {
+     "name": "Sissel Vera Pettersen",
+     "organisation_number": null,
+     "role_code": "MEDL",
+     "role": "Styremedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2026-03-20",
+     "inactive": false
+    },
+    {
+     "name": "Signe Krunderup Emmeluth",
+     "organisation_number": null,
+     "role_code": "MEDL",
+     "role": "Styremedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2026-03-20",
+     "inactive": false
+    },
+    {
+     "name": "Anders Løvlie",
+     "organisation_number": null,
+     "role_code": "MEDL",
+     "role": "Styremedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2026-03-20",
+     "inactive": false
+    },
+    {
+     "name": "André Kassen",
+     "organisation_number": null,
+     "role_code": "VARA",
+     "role": "Varamedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2026-03-20",
+     "inactive": false
+    },
+    {
+     "name": "Siri Berg Kvambe",
+     "organisation_number": null,
+     "role_code": "VARA",
+     "role": "Varamedlem",
+     "group_code": "STYR",
+     "group": "Styre",
+     "last_changed": "2026-03-20",
+     "inactive": false
+    },
+    {
+     "name": [
+      "LANGSETH REVISJON AS"
+     ],
+     "organisation_number": "995300796",
+     "role_code": "REVI",
+     "role": "Revisor",
+     "group_code": "REVI",
+     "group": "Revisor",
+     "last_changed": "2023-02-22",
+     "inactive": false
+    },
+    {
+     "name": [
+      "EXACTA AS"
+     ],
+     "organisation_number": "963740085",
+     "role_code": "REGN",
+     "role": "Regnskapsfører",
+     "group_code": "REGN",
+     "group": "Regnskapsfører",
+     "last_changed": "2023-10-18",
+     "inactive": false
+    }
+   ]
+  },
+  "locations": {
+   "status": "available",
+   "source": "https://data.brreg.no/enhetsregisteret/api/underenheter?overordnetEnhet=990167826&size=1000",
+   "sourceClass": "official_subunits",
+   "retrievedAt": "2026-08-22T10:48:42.348966Z",
+   "effectiveAt": null,
+   "hash": "b3455fccc8cb4cc5c55548cabdbba81289a6a3b9c276f902b4761f3ea5a7467f",
+   "rowKey": null,
+   "items": [
+    {
+     "organisation_number": "995084627",
+     "name": "STIFTELSEN NASJONAL JAZZSCENE",
+     "address": {
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "0159",
+      "poststed": "OSLO",
+      "adresse": [
+       "Grensen 18"
+      ],
+      "kommune": "OSLO",
+      "kommunenummer": "0301"
+     },
+     "industry": {
+      "kode": "90.310",
+      "beskrivelse": "Drift av lokaler tilknyttet kunstnerisk virksomhet og underholdningsvirksomhet"
+     },
+     "employees": 19
+    }
+   ]
+  },
+  "web": {
+   "status": "available",
+   "source": "https://nasjonaljazzscene.no/",
+   "sourceClass": "registry_linked_company_website",
+   "retrievedAt": "2026-08-22T10:48:52.535103Z",
+   "effectiveAt": null,
+   "hash": "0424c6a21f87225e1090168159ddd69f53571c77f75fb3da886c2c7e9269fbcc",
+   "rowKey": null,
+   "value": {
+    "requested_url": "https://www.nasjonaljazzscene.no/",
+    "final_url": "https://nasjonaljazzscene.no/",
+    "registered_domain": "nasjonaljazzscene.no",
+    "title": "Hjem - Nasjonal Jazzscene",
+    "description": "velkommen til victoria Neste konserter",
+    "main_text_excerpt": "Hopp til hovedinnhold",
+    "social_links": [
+     {
+      "platform": "facebook",
+      "url": "https://facebook.com/nasjonaljazzscene"
+     },
+     {
+      "platform": "instagram",
+      "url": "https://instagram.com/nasjonaljazzscene"
+     }
+    ],
+    "structured_organisations": [
+     {
+      "@type": "Organization",
+      "@id": "https://nasjonaljazzscene.no/#organization",
+      "name": "Nasjonal Jazzscene",
+      "url": "https://nasjonaljazzscene.no/",
+      "logo": {
+       "@type": "ImageObject",
+       "inLanguage": "nb-NO",
+       "@id": "https://nasjonaljazzscene.no/#/schema/logo/image/",
+       "url": "https://nasjonaljazzscene.no/content/uploads/2023/10/Nasjonal-jazzscene-oppdatert-2014-svart-hvit-skrift-1.svg",
+       "contentUrl": "https://nasjonaljazzscene.no/content/uploads/2023/10/Nasjonal-jazzscene-oppdatert-2014-svart-hvit-skrift-1.svg",
+       "caption": "Nasjonal Jazzscene"
+      },
+      "image": {
+       "@id": "https://nasjonaljazzscene.no/#/schema/logo/image/"
+      }
+     }
+    ],
+    "content_sha256": "0424c6a21f87225e1090168159ddd69f53571c77f75fb3da886c2c7e9269fbcc",
+    "extraction_state": "js_fallback_candidate",
+    "pages": [
+     {
+      "url": "https://nasjonaljazzscene.no/",
+      "title": "Hjem - Nasjonal Jazzscene",
+      "main_text_excerpt": "Hopp til hovedinnhold",
+      "content_sha256": "0424c6a21f87225e1090168159ddd69f53571c77f75fb3da886c2c7e9269fbcc"
+     },
+     {
+      "url": "https://nasjonaljazzscene.no/nyheter/",
+      "title": "Nyheter - Nasjonal Jazzscene",
+      "main_text_excerpt": "Radka Toneff Minnepris for 2024 tildeles sangeren, komponisten, tekstforfatteren og bandlederen Torun Eriksen.  Prisen blir utdelt i forbindelse med en…",
+      "content_sha256": "a82076f6b937ec0b8ab320bb24b30f75263e74f9e9908f8927cae7c2ae59b6ae"
+     }
+    ],
+    "crawl_errors": [],
+    "identity_assessment": {
+     "status": "exact",
+     "score": 0.95,
+     "publishable": true,
+     "legal_name_tokens": [
+      "nasjonal",
+      "jazzscene"
+     ],
+     "matched_tokens": [
+      "jazzscene",
+      "nasjonal"
+     ],
+     "reasons": [
+      "all normalized legal-name tokens appear together in homepage identity evidence"
+     ],
+     "method": "deterministic_name_org_evidence_v2"
+    },
+    "discovered_social_links": [
+     {
+      "platform": "facebook",
+      "url": "https://facebook.com/nasjonaljazzscene"
+     },
+     {
+      "platform": "instagram",
+      "url": "https://instagram.com/nasjonaljazzscene"
+     },
+     {
+      "platform": "x",
+      "url": "https://x.com/JazzSceneOslo"
+     }
+    ],
+    "social_link_assessments": [
+     {
+      "platform": "facebook",
+      "url": "https://facebook.com/nasjonaljazzscene",
+      "identity_score": 0.98,
+      "publishable": true,
+      "matched_tokens": [
+       "nasjonal",
+       "jazzscene"
+      ],
+      "reason": "normalized legal-name sequence appears in the social handle",
+      "method": "deterministic_social_handle_identity_v1"
+     },
+     {
+      "platform": "instagram",
+      "url": "https://instagram.com/nasjonaljazzscene",
+      "identity_score": 0.98,
+      "publishable": true,
+      "matched_tokens": [
+       "nasjonal",
+       "jazzscene"
+      ],
+      "reason": "normalized legal-name sequence appears in the social handle",
+      "method": "deterministic_social_handle_identity_v1"
+     },
+     {
+      "platform": "x",
+      "url": "https://x.com/JazzSceneOslo",
+      "identity_score": 0.3,
+      "publishable": false,
+      "matched_tokens": [
+       "jazzscene"
+      ],
+      "reason": "social handle lacks strong exact-entity name evidence",
+      "method": "deterministic_social_handle_identity_v1"
+     }
+    ]
+   }
+  },
+  "liveStatus": "available",
+  "changes": [],
+  "external": {
+   "handles": [
+    {
+     "platform": "facebook",
+     "url": "https://facebook.com/nasjonaljazzscene",
+     "rightsStatus": "approved"
+    },
+    {
+     "platform": "instagram",
+     "url": "https://instagram.com/nasjonaljazzscene",
+     "rightsStatus": "approved"
+    }
+   ],
+   "linkedin": {
+    "available": false,
+    "profile": {},
+    "workforce": {},
+    "posts": [],
+    "jobs": []
+   }
+  },
+  "coverage": {
+   "score": 5,
+   "total": 5,
+   "label": "Strong coverage",
+   "dimensions": [
+    {
+     "key": "company",
+     "label": "Company record",
+     "available": true
+    },
+    {
+     "key": "financials",
+     "label": "Financials",
+     "available": true
+    },
+    {
+     "key": "people_places",
+     "label": "People & locations",
+     "available": true
+    },
+    {
+     "key": "website",
+     "label": "Company website",
+     "available": true
+    },
+    {
+     "key": "footprint",
+     "label": "Public footprint",
+     "available": true
+    }
+   ]
+  },
+  "richness": 26
+ }
+]

@@ -1,0 +1,249 @@
+{
+ "_note": "first 3 objects of GET /enhetsregisteret/api/enheter/lastned (enheter_alle.json.gz, 210MB gz, JSON array, non-HAL: 'links' instead of '_links')",
+ "items": [
+  {
+   "links": [],
+   "organisasjonsnummer": "810034882",
+   "navn": "SANDNES ELEKTRISKE AS",
+   "organisasjonsform": {
+    "links": [],
+    "kode": "AS",
+    "beskrivelse": "Aksjeselskap"
+   },
+   "historiskeNavn": [
+    {
+     "navn": "SANDNES ELEKTRISKE FORRETNING AS",
+     "fraDato": "1995-02-19 16:52:00",
+     "tilDato": "2024-02-15 12:54:30"
+    }
+   ],
+   "postadresse": {
+    "land": "Norge",
+    "landkode": "NO",
+    "postnummer": "4301",
+    "poststed": "SANDNES",
+    "adresse": [
+     "Postboks 32"
+    ],
+    "kommune": "SANDNES",
+    "kommunenummer": "1108"
+   },
+   "registreringsdatoEnhetsregisteret": "1995-02-19",
+   "registrertIMvaregisteret": true,
+   "naeringskode1": {
+    "kode": "43.210",
+    "beskrivelse": "Elektrisk installasjonsarbeid"
+   },
+   "naeringskode2": {
+    "kode": "27.510",
+    "beskrivelse": "Produksjon av elektriske husholdningsmaskiner og -apparater"
+   },
+   "naeringskode3": {
+    "kode": "95.220",
+    "beskrivelse": "Reparasjon og vedlikehold av husholdningsvarer og hageredskaper"
+   },
+   "antallAnsatte": 11,
+   "harRegistrertAntallAnsatte": true,
+   "registreringsdatoMerverdiavgiftsregisteret": "1977-07-01",
+   "registreringsdatoMerverdiavgiftsregisteretEnhetsregisteret": "1995-02-19",
+   "registreringsdatoAntallAnsatteEnhetsregisteret": "2026-07-15",
+   "registreringsdatoAntallAnsatteNAVAaregisteret": "2026-07-10",
+   "epostadresse": "post@sandneselektriske.no",
+   "telefon": "51 68 57 00",
+   "forretningsadresse": {
+    "land": "Norge",
+    "landkode": "NO",
+    "postnummer": "4307",
+    "poststed": "SANDNES",
+    "adresse": [
+     "Strandgata 21"
+    ],
+    "kommune": "SANDNES",
+    "kommunenummer": "1108"
+   },
+   "stiftelsesdato": "1977-06-15",
+   "institusjonellSektorkode": {
+    "kode": "2100",
+    "beskrivelse": "Private aksjeselskaper mv."
+   },
+   "registrertIForetaksregisteret": true,
+   "registrertIStiftelsesregisteret": false,
+   "registrertIFrivillighetsregisteret": false,
+   "sisteInnsendteAarsregnskap": "2025",
+   "konkurs": false,
+   "underAvvikling": false,
+   "underTvangsavviklingEllerTvangsopplosning": false,
+   "maalform": "Bokmål",
+   "vedtektsdato": "2026-02-19",
+   "vedtektsfestetFormaal": [
+    "Drive handel, installasjons og servicevirksomhet, eller annen",
+    "virksomhet forbundet med dette, samt delta i annen virksomhet."
+   ],
+   "aktivitet": [
+    "Handel og innstallasjonsvirksomhet, eller annen virksomhet forbundet",
+    "med dette, samt delta I annen virksomhet."
+   ],
+   "registreringsdatoForetaksregisteret": "1990-02-21",
+   "registrertIPartiregisteret": false,
+   "paategninger": [],
+   "erIKonsern": false,
+   "kapital": {
+    "belop": 2375000.0,
+    "antallAksjer": 9500,
+    "type": "Aksjekapital",
+    "valuta": "NOK",
+    "innfortDato": "2026-05-13"
+   },
+   "respons_klasse": "Enhet"
+  },
+  {
+   "links": [],
+   "organisasjonsnummer": "810059672",
+   "navn": "AASEN & FARSTAD AS",
+   "organisasjonsform": {
+    "links": [],
+    "kode": "AS",
+    "beskrivelse": "Aksjeselskap"
+   },
+   "historiskeNavn": [],
+   "registreringsdatoEnhetsregisteret": "1995-02-19",
+   "registrertIMvaregisteret": false,
+   "naeringskode1": {
+    "kode": "68.200",
+    "beskrivelse": "Utleie av egen eller leid fast eiendom"
+   },
+   "harRegistrertAntallAnsatte": false,
+   "telefon": "71 23 24 56",
+   "mobil": "41643007",
+   "forretningsadresse": {
+    "land": "Norge",
+    "landkode": "NO",
+    "postnummer": "6460",
+    "poststed": "EIDSVÅG I ROMSDAL",
+    "adresse": [
+     "Sjøgardsvegen 8"
+    ],
+    "kommune": "MOLDE",
+    "kommunenummer": "1506"
+   },
+   "stiftelsesdato": "1965-06-26",
+   "institusjonellSektorkode": {
+    "kode": "2100",
+    "beskrivelse": "Private aksjeselskaper mv."
+   },
+   "registrertIForetaksregisteret": true,
+   "registrertIStiftelsesregisteret": false,
+   "registrertIFrivillighetsregisteret": false,
+   "sisteInnsendteAarsregnskap": "2025",
+   "konkurs": false,
+   "underAvvikling": false,
+   "underTvangsavviklingEllerTvangsopplosning": false,
+   "maalform": "Bokmål",
+   "vedtektsdato": "1997-01-20",
+   "vedtektsfestetFormaal": [
+    "Utleievirksomhet, fortrinnsvis av forretnings-",
+    "eiendommer."
+   ],
+   "aktivitet": [
+    "Utleie av forretningseiendommer."
+   ],
+   "registreringsdatoForetaksregisteret": "1989-05-23",
+   "registrertIPartiregisteret": false,
+   "paategninger": [],
+   "fravalgRevisjonDato": "2015-07-24",
+   "erIKonsern": false,
+   "kapital": {
+    "belop": 100000.0,
+    "type": "Aksjekapital",
+    "valuta": "NOK",
+    "innfortDato": "1989-05-23"
+   },
+   "respons_klasse": "Enhet"
+  },
+  {
+   "links": [],
+   "organisasjonsnummer": "810094532",
+   "navn": "ALSTRAY AS",
+   "organisasjonsform": {
+    "links": [],
+    "kode": "AS",
+    "beskrivelse": "Aksjeselskap"
+   },
+   "historiskeNavn": [
+    {
+     "navn": "AKSJESELSKAPET AGDERPOSTEN",
+     "fraDato": "1995-03-12 12:27:00",
+     "tilDato": "2006-01-07 14:34:39"
+    },
+    {
+     "navn": "AGDERPOSTEN MEDIER AS",
+     "fraDato": "2006-01-07 14:34:39",
+     "tilDato": "2025-01-07 17:18:34"
+    }
+   ],
+   "registreringsdatoEnhetsregisteret": "1995-03-12",
+   "registrertIMvaregisteret": true,
+   "frivilligMvaRegistrertBeskrivelser": [
+    "Utleier av bygg eller anlegg"
+   ],
+   "naeringskode1": {
+    "kode": "68.200",
+    "beskrivelse": "Utleie av egen eller leid fast eiendom"
+   },
+   "hjelpeenhetskode": {
+    "kode": "70.100",
+    "beskrivelse": "Hovedkontortjenester"
+   },
+   "harRegistrertAntallAnsatte": false,
+   "registreringsdatoFrivilligMerverdiavgiftsregisteret": "2015-01-14",
+   "registreringsdatoMerverdiavgiftsregisteret": "1970-01-01",
+   "registreringsdatoMerverdiavgiftsregisteretEnhetsregisteret": "1995-03-12",
+   "epostadresse": "nilsgauslaa@gmail.com",
+   "mobil": "975 84 725",
+   "forretningsadresse": {
+    "land": "Norge",
+    "landkode": "NO",
+    "postnummer": "4848",
+    "poststed": "ARENDAL",
+    "adresse": [
+     "Stoaveien 11"
+    ],
+    "kommune": "ARENDAL",
+    "kommunenummer": "4203"
+   },
+   "stiftelsesdato": "1919-09-18",
+   "institusjonellSektorkode": {
+    "kode": "2100",
+    "beskrivelse": "Private aksjeselskaper mv."
+   },
+   "registrertIForetaksregisteret": true,
+   "registrertIStiftelsesregisteret": false,
+   "registrertIFrivillighetsregisteret": false,
+   "sisteInnsendteAarsregnskap": "2025",
+   "konkurs": false,
+   "underAvvikling": false,
+   "underTvangsavviklingEllerTvangsopplosning": false,
+   "maalform": "Bokmål",
+   "vedtektsdato": "2024-11-28",
+   "vedtektsfestetFormaal": [
+    "Drive virksomhet innenfor investeringer i og forvaltning av eiendom og",
+    "andre formuesgjenstander."
+   ],
+   "aktivitet": [
+    "Holdingselskap."
+   ],
+   "registreringsdatoForetaksregisteret": "1990-05-16",
+   "registrertIPartiregisteret": false,
+   "paategninger": [],
+   "erIKonsern": true,
+   "kapital": {
+    "belop": 30096.0,
+    "antallAksjer": 396,
+    "type": "Aksjekapital",
+    "valuta": "NOK",
+    "innfortDato": "2023-11-07"
+   },
+   "respons_klasse": "Enhet"
+  }
+ ]
+}

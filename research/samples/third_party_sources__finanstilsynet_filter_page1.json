@@ -1,0 +1,1823 @@
+{
+ "page": 1,
+ "total": 8510,
+ "hitsReturned": 50,
+ "legalEntities": [
+  {
+   "legalEntityId": 106372,
+   "parentId": null,
+   "legalEntityType": "Company",
+   "finanstilsynetId": "FT00076199",
+   "organisationNumber": "991937099",
+   "leiCode": null,
+   "auditorNumber": null,
+   "name": "1+1 REGNSKAP AS",
+   "licences": [
+    {
+     "licensedEntity": {
+      "legalEntityId": 106372,
+      "legalEntityName": "1+1 REGNSKAP AS"
+     },
+     "serviceProviderId": 106372,
+     "licenceType": {
+      "code": "REGS",
+      "name": {
+       "norwegian": "Regnskapsselskap",
+       "english": "External accounting firm"
+      },
+      "description": {
+       "norwegian": "Godkjent regnskapsselskap med rett til å påta seg regnskapsoppdrag.",
+       "english": "Approved external accounting firm licensed to undertake accounting assignments."
+      }
+     },
+     "licenceClassification": null,
+     "supervisoryAuthority": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 98961,
+      "legalEntityName": "FINANSTILSYNET"
+     },
+     "hasSecurity": null,
+     "registeredDate": "2007-12-10T00:00:00",
+     "serviceProviderType": "Licensed",
+     "remarks": null,
+     "services": [],
+     "borderCrossingActivity": [],
+     "cooperationGroups": null,
+     "roles": null,
+     "agentsOrBranches": null,
+     "accreditedAuditors": null,
+     "auditorFor": null,
+     "accreditedAuditorsDetailed": null
+    }
+   ],
+   "addresses": [
+    {
+     "type": "Business",
+     "addressLines": "Damsgårdsveien 167\r\n\r\n",
+     "postalCode": "5160",
+     "postalLocation": "LAKSEV�G",
+     "region": "VESTLAND",
+     "country": {
+      "iso3": "NOR",
+      "name": {
+       "norwegian": "Norge",
+       "english": "Norway"
+      }
+     }
+    },
+    {
+     "type": "Postal",
+     "addressLines": "Postboks 1424 Oasen\r\n\r\n",
+     "postalCode": "5844",
+     "postalLocation": "BERGEN",
+     "region": "VESTLAND",
+     "country": {
+      "iso3": "NOR",
+      "name": {
+       "norwegian": "Norge",
+       "english": "Norway"
+      }
+     }
+    }
+   ],
+   "links": null,
+   "relationsToOther": null,
+   "participants": null,
+   "participatesIn": null,
+   "remarks": null
+  },
+  {
+   "legalEntityId": 221260,
+   "parentId": null,
+   "legalEntityType": "Company",
+   "finanstilsynetId": "FT00132238",
+   "organisationNumber": "919223510",
+   "leiCode": null,
+   "auditorNumber": null,
+   "name": "1BEDRIFT.NO AS",
+   "licences": [
+    {
+     "licensedEntity": {
+      "legalEntityId": 221260,
+      "legalEntityName": "1BEDRIFT.NO AS"
+     },
+     "serviceProviderId": 221260,
+     "licenceType": {
+      "code": "TILAVVIR",
+      "name": {
+       "norwegian": "Tilbyder av virksomhetstjenester",
+       "english": "Company service providers"
+      },
+      "description": {
+       "norwegian": "Autorisert tilbyder av virksomhetstjenester med rett til å drive virksomhet etter § 42 i hvitvaskingsloven (lov om tiltak mot hvitvasking og terrorfinansiering av 01. juni 2018)",
+       "english": "Provider of trust and company services, authorised to operate in accordance with the Anti-Money Laundering Act section 42 (Act relating to Measures to Combat Money Laundering and Terrorist Financing of 1st June 2018)"
+      }
+     },
+     "licenceClassification": null,
+     "supervisoryAuthority": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 98961,
+      "legalEntityName": "FINANSTILSYNET"
+     },
+     "hasSecurity": null,
+     "registeredDate": "2022-05-23T00:00:00",
+     "serviceProviderType": "Licensed",
+     "remarks": null,
+     "services": [
+      {
+       "serviceId": 350,
+       "groupName": {
+        "norwegian": "Tjenester etter hvitvaskingsloven § 2 første ledd  bokstav j",
+        "english": "Services pursuant to the Anti-Money Laundering Act Section 2, first subsection, letter j"
+       },
+       "serviceName": {
+        "norwegian": "1. Opprette selskap eller annen juridisk person",
+        "english": "1.\tthe formation of companies or other legal entities"
+       },
+       "serviceCode": null,
+       "serviceInstruments": []
+      },
+      {
+       "serviceId": 281,
+       "groupName": {
+        "norwegian": "Tjenester etter hvitvaskingsloven § 2 første ledd  bokstav j",
+        "english": "Services pursuant to the Anti-Money Laundering Act Section 2, first subsection, letter j"
+       },
+       "serviceName": {
+        "norwegian": "3. Stille til rådighet forretningsadresse, administrativ adresse eller postadresse og tilknyttet tjeneste for selskap, annen juridisk person eller juridisk arrangement",
+        "english": "3. providing a business address, administrative address or correspondence address and related services for a company, or any other legal entity or legal arrangement"
+       },
+       "serviceCode": null,
+       "serviceInstruments": []
+      }
+     ],
+     "borderCrossingActivity": [],
+     "cooperationGroups": null,
+     "roles": null,
+     "agentsOrBranches": null,
+     "accreditedAuditors": null,
+     "auditorFor": null,
+     "accreditedAuditorsDetailed": null
+    }
+   ],
+   "addresses": [
+    {
+     "type": "Business",
+     "addressLines": "Hasleveien 28A\r\n\r\n",
+     "postalCode": "0571",
+     "postalLocation": "OSLO",
+     "region": "OSLO",
+     "country": {
+      "iso3": "NOR",
+      "name": {
+       "norwegian": "Norge",
+       "english": "Norway"
+      }
+     }
+    },
+    {
+     "type": "Postal",
+     "addressLines": "c/o Norus Accounting AS\r\nHasleveien 28A\r\n",
+     "postalCode": "0571",
+     "postalLocation": "OSLO",
+     "region": "OSLO",
+     "country": {
+      "iso3": "NOR",
+      "name": {
+       "norwegian": "Norge",
+       "english": "Norway"
+      }
+     }
+    }
+   ],
+   "links": null,
+   "relationsToOther": null,
+   "participants": null,
+   "participatesIn": null,
+   "remarks": null
+  },
+  {
+   "legalEntityId": 101995,
+   "parentId": null,
+   "legalEntityType": "Company",
+   "finanstilsynetId": "FT00071822",
+   "organisationNumber": "951240435",
+   "leiCode": null,
+   "auditorNumber": null,
+   "name": "2R DATA OG REGNSKAP AS",
+   "licences": [
+    {
+     "licensedEntity": {
+      "legalEntityId": 101995,
+      "legalEntityName": "2R DATA OG REGNSKAP AS"
+     },
+     "serviceProviderId": 101995,
+     "licenceType": {
+      "code": "REGS",
+      "name": {
+       "norwegian": "Regnskapsselskap",
+       "english": "External accounting firm"
+      },
+      "description": {
+       "norwegian": "Godkjent regnskapsselskap med rett til å påta seg regnskapsoppdrag.",
+       "english": "Approved external accounting firm licensed to undertake accounting assignments."
+      }
+     },
+     "licenceClassification": null,
+     "supervisoryAuthority": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 98961,
+      "legalEntityName": "FINANSTILSYNET"
+     },
+     "hasSecurity": null,
+     "registeredDate": "2003-04-09T00:00:00",
+     "serviceProviderType": "Licensed",
+     "remarks": null,
+     "services": [],
+     "borderCrossingActivity": [],
+     "cooperationGroups": null,
+     "roles": null,
+     "agentsOrBranches": null,
+     "accreditedAuditors": null,
+     "auditorFor": null,
+     "accreditedAuditorsDetailed": null
+    }
+   ],
+   "addresses": [
+    {
+     "type": "Business",
+     "addressLines": "Storgata 18\r\n\r\n",
+     "postalCode": "2000",
+     "postalLocation": "LILLESTR�M",
+     "region": "AKERSHUS",
+     "country": {
+      "iso3": "NOR",
+      "name": {
+       "norwegian": "Norge",
+       "english": "Norway"
+      }
+     }
+    },
+    {
+     "type": "Postal",
+     "addressLines": "Postboks 174\r\n\r\n",
+     "postalCode": "2001",
+     "postalLocation": "LILLESTR�M",
+     "region": "AKERSHUS",
+     "country": {
+      "iso3": "NOR",
+      "name": {
+       "norwegian": "Norge",
+       "english": "Norway"
+      }
+     }
+    }
+   ],
+   "links": null,
+   "relationsToOther": null,
+   "participants": null,
+   "participatesIn": null,
+   "remarks": null
+  },
+  {
+   "legalEntityId": 240262,
+   "parentId": null,
+   "legalEntityType": "Company",
+   "finanstilsynetId": "FT00149850",
+   "organisationNumber": "918755675",
+   "leiCode": null,
+   "auditorNumber": null,
+   "name": "3B AUTO AS",
+   "licences": [
+    {
+     "licensedEntity": {
+      "legalEntityId": 240262,
+      "legalEntityName": "3B AUTO AS"
+     },
+     "serviceProviderId": 240262,
+     "licenceType": {
+      "code": "AKSFORAGV",
+      "name": {
+       "norwegian": "Aksessorisk forsikringsagentvirksomhet",
+       "english": "Ancillary agent activities"
+      },
+      "description": {
+       "norwegian": "Med aksessorisk forsikringsagentvirksomhet menes foretak som utøver forsikringsformidling i tillegg til annen yrkesmessig hovedvirksomhet og som oppfyller øvrige vilkår i forsikringsformidlingsloven § 2-4. ",
+       "english": "Accessory insurance agent activities mean activities that carry out insurance mediation in addition to other professional main activities and that fulfills other conditions in the Act on Insurance Mediation § 2-4. "
+      }
+     },
+     "licenceClassification": null,
+     "supervisoryAuthority": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 98961,
+      "legalEntityName": "FINANSTILSYNET"
+     },
+     "hasSecurity": null,
+     "registeredDate": "2024-04-15T00:00:00",
+     "serviceProviderType": "Licensed",
+     "remarks": null,
+     "services": [],
+     "borderCrossingActivity": [],
+     "cooperationGroups": null,
+     "roles": null,
+     "agentsOrBranches": null,
+     "accreditedAuditors": null,
+     "auditorFor": null,
+     "accreditedAuditorsDetailed": null
+    },
+    {
+     "licensedEntity": {
+      "legalEntityId": 240262,
+      "legalEntityName": "3B AUTO AS"
+     },
+     "serviceProviderId": 240262,
+     "licenceType": {
+      "code": "LFORMIDL",
+      "name": {
+       "norwegian": "Låneformidling",
+       "english": "Intermediator of loans"
+      },
+      "description": null
+     },
+     "licenceClassification": null,
+     "supervisoryAuthority": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 98961,
+      "legalEntityName": "FINANSTILSYNET"
+     },
+     "hasSecurity": null,
+     "registeredDate": "2025-11-21T00:00:00",
+     "serviceProviderType": "Licensed",
+     "remarks": null,
+     "services": [
+      {
+       "serviceId": 781,
+       "groupName": {
+        "norwegian": "Låneformidlingsloven § 2-4 jf. § 2-1 (2)",
+        "english": "Credit Intermediaries Act section 2-4 cf. section 2-1 (2)"
+       },
+       "serviceName": {
+        "norwegian": "Aksessorisk låneformidler av andre lån enn boliglån",
+        "english": "Ancillary credit intermediary"
+       },
+       "serviceCode": "AKLAANBO",
+       "serviceInstruments": []
+      }
+     ],
+     "borderCrossingActivity": [],
+     "cooperationGroups": null,
+     "roles": null,
+     "agentsOrBranches": null,
+     "accreditedAuditors": null,
+     "auditorFor": null,
+     "accreditedAuditorsDetailed": null
+    },
+    {
+     "licensedEntity": {
+      "legalEntityId": 99367,
+      "legalEntityName": "SPAREBANK 1 FINANS MIDT-NORGE AS"
+     },
+     "serviceProviderId": 240262,
+     "licenceType": {
+      "code": "FINF",
+      "name": {
+       "norwegian": "Finansieringsforetak",
+       "english": "Finance company"
+      },
+      "description": {
+       "norwegian": "Lov 10. april 2015 nr. 17 om finansforetak og finanskonsern § 3-2 jf. § 2-9",
+       "english": "Act on financial institutions and financial groups 2015 § § 3-2 cf. § 2-9"
+      }
+     },
+     "licenceClassification": null,
+     "supervisoryAuthority": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 98961,
+      "legalEntityName": "FINANSTILSYNET"
+     },
+     "hasSecurity": null,
+     "registeredDate": "2025-11-21T00:00:00",
+     "serviceProviderType": "Agent",
+     "remarks": null,
+     "services": [
+      {
+       "serviceId": 560,
+       "groupName": {
+        "norwegian": "Lov 10. april 2015 nr. 17 om finansforetak og finanskonsern § 3-2 jf. § 2-9",
+        "english": null
+       },
+       "serviceName": {
+        "norwegian": "a) leasing, factoring og annen finansieringsvirksomhet",
+        "english": null
+       },
+       "serviceCode": "LESFACFINVIRK",
+       "serviceInstruments": []
+      }
+     ],
+     "borderCrossingActivity": [],
+     "cooperationGroups": null,
+     "roles": null,
+     "agentsOrBranches": null,
+     "accreditedAuditors": null,
+     "auditorFor": null,
+     "accreditedAuditorsDetailed": null
+    },
+    {
+     "licensedEntity": {
+      "legalEntityId": 196829,
+      "legalEntityName": "IF SKADEFÖRSÄKRING AB (PUBL)"
+     },
+     "serviceProviderId": 240262,
+     "licenceType": {
+      "code": "SKADEFORSI",
+      "name": {
+       "norwegian": "Skadeforsikringsforetak",
+       "english": "Non-life insurance company"
+      },
+      "description": {
+       "norwegian": "Lov 10. april 2015 nr. 17 om finansforetak og finanskonsern § 3-2  jf. § 2-14",
+       "english": null
+      }
+     },
+     "licenceClassification": null,
+     "supervisoryAuthority": {
+      "country": {
+       "iso3": "SWE",
+       "name": {
+        "norwegian": "Sverige",
+        "english": "Sweden"
+       }
+      },
+      "legalEntityId": 104936,
+      "legalEntityName": "Finansinspektionen"
+     },
+     "hasSecurity": null,
+     "registeredDate": "2024-04-15T00:00:00",
+     "serviceProviderType": "Agent",
+     "remarks": null,
+     "services": [],
+     "borderCrossingActivity": [
+      {
+       "homeCountry": {
+        "iso3": "SWE",
+        "name": {
+         "norwegian": "Sverige",
+         "english": "Sweden"
+        }
+       },
+       "service": {
+        "serviceId": 574,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "1. Ulykke",
+         "english": "1. Accident"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 240262,
+          "legalEntityName": "3B AUTO AS"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "SWE",
+        "name": {
+         "norwegian": "Sverige",
+         "english": "Sweden"
+        }
+       },
+       "service": {
+        "serviceId": 380,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "2. Sykdom",
+         "english": "2. Sickness"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 240262,
+          "legalEntityName": "3B AUTO AS"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "SWE",
+        "name": {
+         "norwegian": "Sverige",
+         "english": "Sweden"
+        }
+       },
+       "service": {
+        "serviceId": 659,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "3. Landkjøretøy",
+         "english": "3. Land vehicles"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 240262,
+          "legalEntityName": "3B AUTO AS"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "SWE",
+        "name": {
+         "norwegian": "Sverige",
+         "english": "Sweden"
+        }
+       },
+       "service": {
+        "serviceId": 389,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "4. Jernbanekjøretøy",
+         "english": "4. Railway vehicles"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 240262,
+          "legalEntityName": "3B AUTO AS"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "SWE",
+        "name": {
+         "norwegian": "Sverige",
+         "english": "Sweden"
+        }
+       },
+       "service": {
+        "serviceId": 539,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "5. Luftfartøy",
+         "english": "5. Aircraft"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 240262,
+          "legalEntityName": "3B AUTO AS"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "SWE",
+        "name": {
+         "norwegian": "Sverige",
+         "english": "Sweden"
+        }
+       },
+       "service": {
+        "serviceId": 377,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "6. Fartøy",
+         "english": "6. Ships"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 240262,
+          "legalEntityName": "3B AUTO AS"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "SWE",
+        "name": {
+         "norwegian": "Sverige",
+         "english": "Sweden"
+        }
+       },
+       "service": {
+        "serviceId": 664,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "7. Godstransport",
+         "english": "7. Transport of goods"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 240262,
+          "legalEntityName": "3B AUTO AS"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "SWE",
+        "name": {
+         "norwegian": "Sverige",
+         "english": "Sweden"
+        }
+       },
+       "service": {
+        "serviceId": 168,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "8. Brann- og naturskader",
+         "english": "8. Fire and natural forces"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 240262,
+          "legalEntityName": "3B AUTO AS"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "SWE",
+        "name": {
+         "norwegian": "Sverige",
+         "english": "Sweden"
+        }
+       },
+       "service": {
+        "serviceId": 10,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "9. Eiendom og eiendeler",
+         "english": "9. Property"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 240262,
+          "legalEntityName": "3B AUTO AS"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "SWE",
+        "name": {
+         "norwegian": "Sverige",
+         "english": "Sweden"
+        }
+       },
+       "service": {
+        "serviceId": 153,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "10. Ansvar, landkjøretøy",
+         "english": "10. Land vehicle liability"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 240262,
+          "legalEntityName": "3B AUTO AS"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "SWE",
+        "name": {
+         "norwegian": "Sverige",
+         "english": "Sweden"
+        }
+       },
+       "service": {
+        "serviceId": 458,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "11. Ansvar, luftfartøy",
+         "english": "11. Aircraft liability"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 240262,
+          "legalEntityName": "3B AUTO AS"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "SWE",
+        "name": {
+         "norwegian": "Sverige",
+         "english": "Sweden"
+        }
+       },
+       "service": {
+        "serviceId": 583,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "12. Ansvar, fartøy",
+         "english": "12. Liability for ships"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 240262,
+          "legalEntityName": "3B AUTO AS"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "SWE",
+        "name": {
+         "norwegian": "Sverige",
+         "english": "Sweden"
+        }
+       },
+       "service": {
+        "serviceId": 38,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "13. Alminnelig ansvar",
+         "english": "13. General liabillity"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 240262,
+          "legalEntityName": "3B AUTO AS"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "SWE",
+        "name": {
+         "norwegian": "Sverige",
+         "english": "Sweden"
+        }
+       },
+       "service": {
+        "serviceId": 84,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "14. Kreditt",
+         "english": "14. Credit"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 240262,
+          "legalEntityName": "3B AUTO AS"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "SWE",
+        "name": {
+         "norwegian": "Sverige",
+         "english": "Sweden"
+        }
+       },
+       "service": {
+        "serviceId": 213,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "15. Kausjon",
+         "english": "15. Suretyship"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 240262,
+          "legalEntityName": "3B AUTO AS"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "SWE",
+        "name": {
+         "norwegian": "Sverige",
+         "english": "Sweden"
+        }
+       },
+       "service": {
+        "serviceId": 643,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "16. Div. økonomiske tap",
+         "english": "16. Miscellaneous financial loss"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 240262,
+          "legalEntityName": "3B AUTO AS"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "SWE",
+        "name": {
+         "norwegian": "Sverige",
+         "english": "Sweden"
+        }
+       },
+       "service": {
+        "serviceId": 246,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "17. Rettshjelpsforsikring",
+         "english": "17. Legal expenses"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 240262,
+          "legalEntityName": "3B AUTO AS"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "SWE",
+        "name": {
+         "norwegian": "Sverige",
+         "english": "Sweden"
+        }
+       },
+       "service": {
+        "serviceId": 538,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+         "english": null
+        },
+        "serviceName": {
+         "norwegian": "18. Assistanse",
+         "english": "18. Assistance"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 240262,
+          "legalEntityName": "3B AUTO AS"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      }
+     ],
+     "cooperationGroups": null,
+     "roles": null,
+     "agentsOrBranches": null,
+     "accreditedAuditors": null,
+     "auditorFor": null,
+     "accreditedAuditorsDetailed": null
+    }
+   ],
+   "addresses": [
+    {
+     "type": "Business",
+     "addressLines": "Furlandsvegen 24\r\n\r\n",
+     "postalCode": "6390",
+     "postalLocation": "VESTNES",
+     "region": "MØRE OG ROMSDAL",
+     "country": {
+      "iso3": "NOR",
+      "name": {
+       "norwegian": "Norge",
+       "english": "Norway"
+      }
+     }
+    }
+   ],
+   "links": null,
+   "relationsToOther": null,
+   "participants": null,
+   "participatesIn": null,
+   "remarks": null
+  },
+  {
+   "legalEntityId": 259956,
+   "parentId": null,
+   "legalEntityType": "Company",
+   "finanstilsynetId": "FT00168326",
+   "organisationNumber": "984216572",
+   "leiCode": null,
+   "auditorNumber": null,
+   "name": "3D-BEDRIFT AS",
+   "licences": [
+    {
+     "licensedEntity": {
+      "legalEntityId": 259956,
+      "legalEntityName": "3D-BEDRIFT AS"
+     },
+     "serviceProviderId": 259956,
+     "licenceType": {
+      "code": "AKSFORAGV",
+      "name": {
+       "norwegian": "Aksessorisk forsikringsagentvirksomhet",
+       "english": "Ancillary agent activities"
+      },
+      "description": {
+       "norwegian": "Med aksessorisk forsikringsagentvirksomhet menes foretak som utøver forsikringsformidling i tillegg til annen yrkesmessig hovedvirksomhet og som oppfyller øvrige vilkår i forsikringsformidlingsloven § 2-4. ",
+       "english": "Accessory insurance agent activities mean activities that carry out insurance mediation in addition to other professional main activities and that fulfills other conditions in the Act on Insurance Mediation § 2-4. "
+      }
+     },
+     "licenceClassification": null,
+     "supervisoryAuthority": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 98961,
+      "legalEntityName": "FINANSTILSYNET"
+     },
+     "hasSecurity": null,
+     "registeredDate": "2026-09-02T00:00:00",
+     "serviceProviderType": "Licensed",
+     "remarks": null,
+     "services": [],
+     "borderCrossingActivity": [],
+     "cooperationGroups": null,
+     "roles": null,
+     "agentsOrBranches": null,
+     "accreditedAuditors": null,
+     "auditorFor": null,
+     "accreditedAuditorsDetailed": null
+    },
+    {
+     "licensedEntity": {
+      "legalEntityId": 99349,
+      "legalEntityName": "HELP FORSIKRING AS"
+     },
+     "serviceProviderId": 259956,
+     "licenceType": {
+      "code": "SKADEFORSI",
+      "name": {
+       "norwegian": "Skadeforsikringsforetak",
+       "english": "Non-life insurance company"
+      },
+      "description": {
+       "norwegian": "Lov 10. april 2015 nr. 17 om finansforetak og finanskonsern § 3-2  jf. § 2-14",
+       "english": null
+      }
+     },
+     "licenceClassification": null,
+     "supervisoryAuthority": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 98961,
+      "legalEntityName": "FINANSTILSYNET"
+     },
+     "hasSecurity": null,
+     "registeredDate": "2026-09-02T00:00:00",
+     "serviceProviderType": "Agent",
+     "remarks": null,
+     "services": [
+      {
+       "serviceId": 643,
+       "groupName": {
+        "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+        "english": null
+       },
+       "serviceName": {
+        "norwegian": "16. Div. økonomiske tap",
+        "english": "16. Miscellaneous financial loss"
+       },
+       "serviceCode": null,
+       "serviceInstruments": []
+      },
+      {
+       "serviceId": 246,
+       "groupName": {
+        "norwegian": "Finansforetaksloven § 3-2 jf. § 2-14",
+        "english": null
+       },
+       "serviceName": {
+        "norwegian": "17. Rettshjelpsforsikring",
+        "english": "17. Legal expenses"
+       },
+       "serviceCode": null,
+       "serviceInstruments": []
+      }
+     ],
+     "borderCrossingActivity": [],
+     "cooperationGroups": null,
+     "roles": null,
+     "agentsOrBranches": null,
+     "accreditedAuditors": null,
+     "auditorFor": null,
+     "accreditedAuditorsDetailed": null
+    }
+   ],
+   "addresses": [
+    {
+     "type": "Postal",
+     "addressLines": "Postboks 465",
+     "postalCode": "1401",
+     "postalLocation": "SKI",
+     "region": "AKERSHUS",
+     "country": {
+      "iso3": "NOR",
+      "name": {
+       "norwegian": "Norge",
+       "english": "Norway"
+      }
+     }
+    },
+    {
+     "type": "Business",
+     "addressLines": "Industriveien 24",
+     "postalCode": "1424",
+     "postalLocation": "SKI",
+     "region": "AKERSHUS",
+     "country": {
+      "iso3": "NOR",
+      "name": {
+       "norwegian": "Norge",
+       "english": "Norway"
+      }
+     }
+    }
+   ],
+   "links": null,
+   "relationsToOther": null,
+   "participants": null,
+   "participatesIn": null,
+   "remarks": null
+  },
+  {
+   "legalEntityId": 243901,
+   "parentId": null,
+   "legalEntityType": "Company",
+   "finanstilsynetId": "FT00153511",
+   "organisationNumber": "922597715",
+   "leiCode": null,
+   "auditorNumber": null,
+   "name": "3SPANN V/MALENE STORDAHL",
+   "licences": [
+    {
+     "licensedEntity": {
+      "legalEntityId": 243901,
+      "legalEntityName": "3SPANN V/MALENE STORDAHL"
+     },
+     "serviceProviderId": 243901,
+     "licenceType": {
+      "code": "LFORMIDL",
+      "name": {
+       "norwegian": "Låneformidling",
+       "english": "Intermediator of loans"
+      },
+      "description": null
+     },
+     "licenceClassification": null,
+     "supervisoryAuthority": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 98961,
+      "legalEntityName": "FINANSTILSYNET"
+     },
+     "hasSecurity": null,
+     "registeredDate": "2024-07-01T00:00:00",
+     "serviceProviderType": "Licensed",
+     "remarks": null,
+     "services": [
+      {
+       "serviceId": 781,
+       "groupName": {
+        "norwegian": "Låneformidlingsloven § 2-4 jf. § 2-1 (2)",
+        "english": "Credit Intermediaries Act section 2-4 cf. section 2-1 (2)"
+       },
+       "serviceName": {
+        "norwegian": "Aksessorisk låneformidler av andre lån enn boliglån",
+        "english": "Ancillary credit intermediary"
+       },
+       "serviceCode": "AKLAANBO",
+       "serviceInstruments": []
+      }
+     ],
+     "borderCrossingActivity": [],
+     "cooperationGroups": null,
+     "roles": null,
+     "agentsOrBranches": null,
+     "accreditedAuditors": null,
+     "auditorFor": null,
+     "accreditedAuditorsDetailed": null
+    },
+    {
+     "licensedEntity": {
+      "legalEntityId": 193319,
+      "legalEntityName": "RESURS BANK AKTIEBOLAG"
+     },
+     "serviceProviderId": 243901,
+     "licenceType": {
+      "code": "BANK",
+      "name": {
+       "norwegian": "Bank",
+       "english": "Bank"
+      },
+      "description": {
+       "norwegian": "Lov 10. april 2015 nr. 17 om finansforetak og finanskonsern § 3-2 jf. § 2-7",
+       "english": "Act on financial institutions and financial groups 2015 § § 3-2 cf. § 2-7"
+      }
+     },
+     "licenceClassification": null,
+     "supervisoryAuthority": {
+      "country": {
+       "iso3": "SWE",
+       "name": {
+        "norwegian": "Sverige",
+        "english": "Sweden"
+       }
+      },
+      "legalEntityId": 104936,
+      "legalEntityName": "Finansinspektionen"
+     },
+     "hasSecurity": null,
+     "registeredDate": "2024-07-01T00:00:00",
+     "serviceProviderType": "Agent",
+     "remarks": null,
+     "services": [],
+     "borderCrossingActivity": [
+      {
+       "homeCountry": {
+        "iso3": "SWE",
+        "name": {
+         "norwegian": "Sverige",
+         "english": "Sweden"
+        }
+       },
+       "service": {
+        "serviceId": 78,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-7",
+         "english": "Act on financial institutions and financial groups § 3-2 cf. § 2-7."
+        },
+        "serviceName": {
+         "norwegian": "2. Utlånsvirksomhet",
+         "english": "2. Lending"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 243901,
+          "legalEntityName": "3SPANN V/MALENE STORDAHL"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "SWE",
+        "name": {
+         "norwegian": "Sverige",
+         "english": "Sweden"
+        }
+       },
+       "service": {
+        "serviceId": 653,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-7",
+         "english": "Act on financial institutions and financial groups § 3-2 cf. § 2-7."
+        },
+        "serviceName": {
+         "norwegian": "3. Finansiell leasing",
+         "english": "3. Financial leasing"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 243901,
+          "legalEntityName": "3SPANN V/MALENE STORDAHL"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "SWE",
+        "name": {
+         "norwegian": "Sverige",
+         "english": "Sweden"
+        }
+       },
+       "service": {
+        "serviceId": 164,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-7",
+         "english": "Act on financial institutions and financial groups § 3-2 cf. § 2-7."
+        },
+        "serviceName": {
+         "norwegian": "5. Utstedelse og forvaltning av betalingsmidler (kredittkort mv.)",
+         "english": "5. Issuing and administering of payments (credit cards etc.)"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 243901,
+          "legalEntityName": "3SPANN V/MALENE STORDAHL"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      },
+      {
+       "homeCountry": {
+        "iso3": "SWE",
+        "name": {
+         "norwegian": "Sverige",
+         "english": "Sweden"
+        }
+       },
+       "service": {
+        "serviceId": 404,
+        "groupName": {
+         "norwegian": "Finansforetaksloven § 3-2 jf. § 2-7",
+         "english": "Act on financial institutions and financial groups § 3-2 cf. § 2-7."
+        },
+        "serviceName": {
+         "norwegian": "6. Garantier og sikkerhetsstillelser",
+         "english": "6. Guarantees and commitments"
+        },
+        "serviceCode": null,
+        "serviceInstruments": []
+       },
+       "borderCrossings": [
+        {
+         "hostCountry": {
+          "iso3": "NOR",
+          "name": {
+           "norwegian": "Norge",
+           "english": "Norway"
+          }
+         },
+         "transitCountry": null,
+         "serviceProvider": {
+          "legalEntityId": 243901,
+          "legalEntityName": "3SPANN V/MALENE STORDAHL"
+         },
+         "serviceProviderType": "Agent"
+        }
+       ]
+      }
+     ],
+     "cooperationGroups": null,
+     "roles": null,
+     "agentsOrBranches": null,
+     "accreditedAuditors": null,
+     "auditorFor": null,
+     "accreditedAuditorsDetailed": null
+    }
+   ],
+   "addresses": [
+    {
+     "type": "Business",
+     "addressLines": "c/o Malene Stordahl\r\nMæselvegen 198\r\n",
+     "postalCode": "4646",
+     "postalLocation": "FINSLAND",
+     "region": "AGDER",
+     "country": {
+      "iso3": "NOR",
+      "name": {
+       "norwegian": "Norge",
+       "english": "Norway"
+      }
+     }
+    }
+   ],
+   "links": null,
+   "relationsToOther": null,
+   "participants": null,
+   "participatesIn": null,
+   "remarks": null
+  },
+  {
+   "legalEntityId": 250365,
+   "parentId": null,
+   "legalEntityType": "Company",
+   "finanstilsynetId": "FT00158467",
+   "organisationNumber": "933445992",
+   "leiCode": null,
+   "auditorNumber": null,
+   "name": "3TL REGNSKAP AS",
+   "licences": [
+    {
+     "licensedEntity": {
+      "legalEntityId": 250365,
+      "legalEntityName": "3TL REGNSKAP AS"
+     },
+     "serviceProviderId": 250365,
+     "licenceType": {
+      "code": "REGS",
+      "name": {
+       "norwegian": "Regnskapsselskap",
+       "english": "External accounting firm"
+      },
+      "description": {
+       "norwegian": "Godkjent regnskapsselskap med rett til å påta seg regnskapsoppdrag.",
+       "english": "Approved external accounting firm licensed to undertake accounting assignments."
+      }
+     },
+     "licenceClassification": null,
+     "supervisoryAuthority": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 98961,
+      "legalEntityName": "FINANSTILSYNET"
+     },
+     "hasSecurity": null,
+     "registeredDate": "2025-02-18T00:00:00",
+     "serviceProviderType": "Licensed",
+     "remarks": null,
+     "services": [],
+     "borderCrossingActivity": [],
+     "cooperationGroups": null,
+     "roles": null,
+     "agentsOrBranches": null,
+     "accreditedAuditors": null,
+     "auditorFor": null,
+     "accreditedAuditorsDetailed": null
+    }
+   ],
+   "addresses": [
+    {
+     "type": "Business",
+     "addressLines": "Breimyrkollen 6\r\n\r\n",
+     "postalCode": "4628",
+     "postalLocation": "KRISTIANSAND S",
+     "region": "AGDER",
+     "country": {
+      "iso3": "NOR",
+      "name": {
+       "norwegian": "Norge",
+       "english": "Norway"
+      }
+     }
+    }
+   ],
+   "links": null,
+   "relationsToOther": null,
+   "participants": null,
+   "participatesIn": null,
+   "remarks": null
+  },
+  {
+   "legalEntityId": 108661,
+   "parentId": null,
+   "legalEntityType": "Company",
+   "finanstilsynetId": "FT00078488",
+   "organisationNumber": "898805182",
+   "leiCode": null,
+   "auditorNumber": null,
+   "name": "4 YOU REGNSKAP AS",
+   "licences": [
+    {
+     "licensedEntity": {
+      "legalEntityId": 108661,
+      "legalEntityName": "4 YOU REGNSKAP AS"
+     },
+     "serviceProviderId": 108661,
+     "licenceType": {
+      "code": "REGS",
+      "name": {
+       "norwegian": "Regnskapsselskap",
+       "english": "External accounting firm"
+      },
+      "description": {
+       "norwegian": "Godkjent regnskapsselskap med rett til å påta seg regnskapsoppdrag.",
+       "english": "Approved external accounting firm licensed to undertake accounting assignments."
+      }
+     },
+     "licenceClassification": null,
+     "supervisoryAuthority": {
+      "country": {
+       "iso3": "NOR",
+       "name": {
+        "norwegian": "Norge",
+        "english": "Norway"
+       }
+      },
+      "legalEntityId": 98961,
+      "legalEntityName": "FINANSTILSYNET"
+     },
+     "hasSecurity": null,
+     "registeredDate": "2012-10-04T00:00:00",
+     "serviceProviderType": "Licensed",
+     "remarks": null,
+     "services": [],
+     "borderCrossingActivity": [],
+     "cooperationGroups": null,
+     "roles": null,
+     "agentsOrBranches": null,
+     "accreditedAuditors": null,
+     "auditorFor": null,
+     "accreditedAuditorsDetailed": null
+    }
+   ],
+   "addresses": [
+    {
+     "type": "Business",
+     "addressLines": "O.H Bangs vei 54-58\r\nOppgang A",
+     "postalCode": "1363",
+     "postalLocation": "H�VIK",
+     "region": "AKERSHUS",
+     "country": {
+      "iso3": "NOR",
+      "name": {
+       "norwegian": "Norge",
+       "english": "Norway"
+      }
+     }
+    }
+   ],
+   "links": null,
+   "relationsToOther": null,
+   "participants": null,
+   "participatesIn": null,
+   "remarks": null
+  }
+ ]
+}

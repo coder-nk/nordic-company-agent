@@ -1,0 +1,482 @@
+{
+ "_note": "first 3 objects of GET /enhetsregisteret/api/roller/totalbestand (roller_*.json.gz, 130MB gz, JSON array, includes organisasjonsnummer per element)",
+ "items": [
+  {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/810034882/roller"
+    },
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/810034882"
+    }
+   },
+   "organisasjonsnummer": "810034882",
+   "rollegrupper": [
+    {
+     "roller": [
+      {
+       "avregistrert": false,
+       "person": {
+        "erDoed": false,
+        "fodselsdato": "1900-01-01",
+        "navn": {
+         "etternavn": "Aarrestad",
+         "fornavn": "Morten"
+        }
+       },
+       "rekkefolge": 0,
+       "type": {
+        "_links": {
+         "self": {
+          "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/DAGL"
+         }
+        },
+        "beskrivelse": "Daglig leder",
+        "kode": "DAGL"
+       }
+      }
+     ],
+     "sistEndret": "2016-07-11",
+     "type": {
+      "_links": {
+       "self": {
+        "href": "https://data.brreg.no/enhetsregisteret/api/roller/rollegruppetyper/DAGL"
+       }
+      },
+      "beskrivelse": "Daglig leder",
+      "kode": "DAGL"
+     }
+    },
+    {
+     "roller": [
+      {
+       "avregistrert": false,
+       "person": {
+        "erDoed": false,
+        "fodselsdato": "1900-01-01",
+        "navn": {
+         "etternavn": "Aarrestad",
+         "fornavn": "Jan Marton"
+        }
+       },
+       "rekkefolge": 0,
+       "type": {
+        "_links": {
+         "self": {
+          "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/LEDE"
+         }
+        },
+        "beskrivelse": "Styrets leder",
+        "kode": "LEDE"
+       }
+      },
+      {
+       "avregistrert": false,
+       "person": {
+        "erDoed": false,
+        "fodselsdato": "1900-01-01",
+        "navn": {
+         "etternavn": "Aarrestad",
+         "fornavn": "Morten"
+        }
+       },
+       "rekkefolge": 1,
+       "type": {
+        "_links": {
+         "self": {
+          "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/MEDL"
+         }
+        },
+        "beskrivelse": "Styremedlem",
+        "kode": "MEDL"
+       }
+      },
+      {
+       "avregistrert": false,
+       "person": {
+        "erDoed": false,
+        "fodselsdato": "1900-01-01",
+        "navn": {
+         "etternavn": "Hadland",
+         "fornavn": "Livar"
+        }
+       },
+       "rekkefolge": 2,
+       "type": {
+        "_links": {
+         "self": {
+          "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/MEDL"
+         }
+        },
+        "beskrivelse": "Styremedlem",
+        "kode": "MEDL"
+       },
+       "valgtAv": {
+        "beskrivelse": "Representant for A-aksjonærene",
+        "kode": "A-AK"
+       }
+      }
+     ],
+     "sistEndret": "2024-02-15",
+     "type": {
+      "_links": {
+       "self": {
+        "href": "https://data.brreg.no/enhetsregisteret/api/roller/rollegruppetyper/STYR"
+       }
+      },
+      "beskrivelse": "Styre",
+      "kode": "STYR"
+     }
+    },
+    {
+     "roller": [
+      {
+       "avregistrert": false,
+       "enhet": {
+        "_links": {
+         "self": {
+          "href": "https://data.brreg.no/enhetsregisteret/api/enheter/997039904"
+         }
+        },
+        "erSlettet": false,
+        "godkjenningsstatus": "Godkjent revisjonsforetak",
+        "navn": [
+         "ØKSENDAL REVISJON AS"
+        ],
+        "organisasjonsform": {
+         "_links": {
+          "self": {
+           "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/AS"
+          }
+         },
+         "beskrivelse": "Aksjeselskap",
+         "kode": "AS"
+        },
+        "organisasjonsnummer": "997039904"
+       },
+       "rekkefolge": 0,
+       "type": {
+        "_links": {
+         "self": {
+          "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/REVI"
+         }
+        },
+        "beskrivelse": "Revisor",
+        "kode": "REVI"
+       }
+      }
+     ],
+     "sistEndret": "2011-12-14",
+     "type": {
+      "_links": {
+       "self": {
+        "href": "https://data.brreg.no/enhetsregisteret/api/roller/rollegruppetyper/REVI"
+       }
+      },
+      "beskrivelse": "Revisor",
+      "kode": "REVI"
+     }
+    },
+    {
+     "roller": [
+      {
+       "avregistrert": false,
+       "enhet": {
+        "_links": {
+         "self": {
+          "href": "https://data.brreg.no/enhetsregisteret/api/enheter/926732072"
+         }
+        },
+        "erSlettet": false,
+        "godkjenningsstatus": "Godkjent regnskapsforetak",
+        "navn": [
+         "ACCOUNT GROUP AS"
+        ],
+        "organisasjonsform": {
+         "_links": {
+          "self": {
+           "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/AS"
+          }
+         },
+         "beskrivelse": "Aksjeselskap",
+         "kode": "AS"
+        },
+        "organisasjonsnummer": "926732072"
+       },
+       "rekkefolge": 0,
+       "type": {
+        "_links": {
+         "self": {
+          "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/REGN"
+         }
+        },
+        "beskrivelse": "Regnskapsfører",
+        "kode": "REGN"
+       }
+      }
+     ],
+     "sistEndret": "2023-01-30",
+     "type": {
+      "_links": {
+       "self": {
+        "href": "https://data.brreg.no/enhetsregisteret/api/roller/rollegruppetyper/REGN"
+       }
+      },
+      "beskrivelse": "Regnskapsfører",
+      "kode": "REGN"
+     }
+    }
+   ]
+  },
+  {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/810059672/roller"
+    },
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/810059672"
+    }
+   },
+   "organisasjonsnummer": "810059672",
+   "rollegrupper": [
+    {
+     "roller": [
+      {
+       "avregistrert": false,
+       "person": {
+        "erDoed": false,
+        "fodselsdato": "1900-01-01",
+        "navn": {
+         "etternavn": "Farstad",
+         "fornavn": "Svein Olav"
+        }
+       },
+       "rekkefolge": 0,
+       "type": {
+        "_links": {
+         "self": {
+          "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/DAGL"
+         }
+        },
+        "beskrivelse": "Daglig leder",
+        "kode": "DAGL"
+       }
+      }
+     ],
+     "sistEndret": "2010-09-07",
+     "type": {
+      "_links": {
+       "self": {
+        "href": "https://data.brreg.no/enhetsregisteret/api/roller/rollegruppetyper/DAGL"
+       }
+      },
+      "beskrivelse": "Daglig leder",
+      "kode": "DAGL"
+     }
+    },
+    {
+     "roller": [
+      {
+       "avregistrert": false,
+       "person": {
+        "erDoed": false,
+        "fodselsdato": "1900-01-01",
+        "navn": {
+         "etternavn": "Farstad",
+         "fornavn": "Svein Olav"
+        }
+       },
+       "rekkefolge": 0,
+       "type": {
+        "_links": {
+         "self": {
+          "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/LEDE"
+         }
+        },
+        "beskrivelse": "Styrets leder",
+        "kode": "LEDE"
+       }
+      },
+      {
+       "avregistrert": false,
+       "person": {
+        "erDoed": false,
+        "fodselsdato": "1900-01-01",
+        "navn": {
+         "etternavn": "Farstad",
+         "fornavn": "Anita Paulin"
+        }
+       },
+       "rekkefolge": 1,
+       "type": {
+        "_links": {
+         "self": {
+          "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/VARA"
+         }
+        },
+        "beskrivelse": "Varamedlem",
+        "kode": "VARA"
+       }
+      }
+     ],
+     "sistEndret": "2005-02-12",
+     "type": {
+      "_links": {
+       "self": {
+        "href": "https://data.brreg.no/enhetsregisteret/api/roller/rollegruppetyper/STYR"
+       }
+      },
+      "beskrivelse": "Styre",
+      "kode": "STYR"
+     }
+    },
+    {
+     "roller": [
+      {
+       "avregistrert": false,
+       "enhet": {
+        "_links": {
+         "self": {
+          "href": "https://data.brreg.no/enhetsregisteret/api/enheter/996197468"
+         }
+        },
+        "erSlettet": false,
+        "godkjenningsstatus": "Godkjent regnskapsforetak",
+        "navn": [
+         "REGNSKAPSKONTORET TOVE HUNDSETH"
+        ],
+        "organisasjonsform": {
+         "_links": {
+          "self": {
+           "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/ENK"
+          }
+         },
+         "beskrivelse": "Enkeltpersonforetak",
+         "kode": "ENK"
+        },
+        "organisasjonsnummer": "996197468"
+       },
+       "rekkefolge": 0,
+       "type": {
+        "_links": {
+         "self": {
+          "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/REGN"
+         }
+        },
+        "beskrivelse": "Regnskapsfører",
+        "kode": "REGN"
+       }
+      }
+     ],
+     "sistEndret": "2011-12-17",
+     "type": {
+      "_links": {
+       "self": {
+        "href": "https://data.brreg.no/enhetsregisteret/api/roller/rollegruppetyper/REGN"
+       }
+      },
+      "beskrivelse": "Regnskapsfører",
+      "kode": "REGN"
+     }
+    }
+   ]
+  },
+  {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/810094532/roller"
+    },
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/810094532"
+    }
+   },
+   "organisasjonsnummer": "810094532",
+   "rollegrupper": [
+    {
+     "roller": [
+      {
+       "avregistrert": false,
+       "person": {
+        "erDoed": false,
+        "fodselsdato": "1900-01-01",
+        "navn": {
+         "etternavn": "Sijthoff",
+         "fornavn": "Willem Fredrik"
+        }
+       },
+       "rekkefolge": 0,
+       "type": {
+        "_links": {
+         "self": {
+          "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/LEDE"
+         }
+        },
+        "beskrivelse": "Styrets leder",
+        "kode": "LEDE"
+       }
+      }
+     ],
+     "sistEndret": "2020-06-10",
+     "type": {
+      "_links": {
+       "self": {
+        "href": "https://data.brreg.no/enhetsregisteret/api/roller/rollegruppetyper/STYR"
+       }
+      },
+      "beskrivelse": "Styre",
+      "kode": "STYR"
+     }
+    },
+    {
+     "roller": [
+      {
+       "avregistrert": false,
+       "enhet": {
+        "_links": {
+         "self": {
+          "href": "https://data.brreg.no/enhetsregisteret/api/enheter/935416779"
+         }
+        },
+        "erSlettet": false,
+        "godkjenningsstatus": "Godkjent revisjonsforetak",
+        "navn": [
+         "CEDRA NORGE AS"
+        ],
+        "organisasjonsform": {
+         "_links": {
+          "self": {
+           "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/AS"
+          }
+         },
+         "beskrivelse": "Aksjeselskap",
+         "kode": "AS"
+        },
+        "organisasjonsnummer": "935416779"
+       },
+       "rekkefolge": 0,
+       "type": {
+        "_links": {
+         "self": {
+          "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/REVI"
+         }
+        },
+        "beskrivelse": "Revisor",
+        "kode": "REVI"
+       }
+      }
+     ],
+     "sistEndret": "2025-09-16",
+     "type": {
+      "_links": {
+       "self": {
+        "href": "https://data.brreg.no/enhetsregisteret/api/roller/rollegruppetyper/REVI"
+       }
+      },
+      "beskrivelse": "Revisor",
+      "kode": "REVI"
+     }
+    }
+   ]
+  }
+ ]
+}

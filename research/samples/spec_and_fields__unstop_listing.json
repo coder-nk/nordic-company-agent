@@ -1,0 +1,23 @@
+{
+ "source": "https://unstop.com/api/public/competition/1754883",
+ "retrieved_at": "2026-10-13",
+ "title": "Signalpost: Build An Agent That Finds Company Information",
+ "start_date": "2026-09-12T22:30:00+05:30",
+ "end_date": "2026-10-17T22:29:48+05:30",
+ "details_text": "What to Build\nGive your agent a Norwegian company number. It searches permitted public sources and returns company facts, source links and dates. Make sure each fact belongs to the right company and keep profiles current.\nWhat to Submit\nAt least 1,000 company profiles\nYour repository link\nExact commit hash\nOne command to run it\nModel/API details\nExpected run costs\nHow We Test and Score\nEvery agent receives the same 100 random companies each day. Find useful information (35 points), match it correctly with evidence (30), update correctly (20), give useful explanations (10), and make it easy to use (5). For coverage, we compare what your agent finds with a checked collection built from submissions and Builderr crawlers.\nTo qualify: at least 65/100 overall, 21/35 coverage, and all published accuracy, evidence and execution requirements. A material wrong-company publication or fabricated financial value fails the entry. Qualified agents are ranked by their average score across completed daily tests.\nDaily limits: 45 minutes, 2,000 outbound requests and $10 in declared external API costs. Development and API usage can incur costs.\nRewards\n$2,000 main cash prizes: $1,200 / $500 / $300. Separate $500 JBOX bonus: $250 / $150 / $100 for qualifying agents built with JBOX. Awards require qualification; participation does not guarantee a prize or job.\nHow to Enter\nBuild your agent, then email your code and required files to submit@builderr.ai. This online challenge is hosted and evaluated on Builderr. Students and professionals may participate under the published eligibility and team rules. AI coding tools are welcome; working code is required.\n",
+ "prizes_inr": [
+  [
+   "1st",
+   120000
+  ],
+  [
+   "2nd",
+   50000
+  ],
+  [
+   "3rd",
+   30000
+  ]
+ ],
+ "submission_round_text": "\nRegister and share your project link on Unstop by 17 October, 11:59 PM IST. Send the complete Signalpost entry to submit@builderr.ai. Builderr accepts code revisions until 18 October and runs the competition through 21 October.\n"
+}

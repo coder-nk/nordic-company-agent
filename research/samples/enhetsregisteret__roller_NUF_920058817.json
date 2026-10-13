@@ -1,0 +1,165 @@
+{
+ "_request": {
+  "url": "https://data.brreg.no/enhetsregisteret/api/enheter/920058817/roller",
+  "status": 200,
+  "retrieved_at": "2026-10-13T11:42:16Z",
+  "headers": {
+   "vary": "Origin",
+   "x-content-type-options": "nosniff",
+   "x-xss-protection": "0",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "pragma": "no-cache",
+   "expires": "0",
+   "strict-transport-security": "max-age=157680000; includeSubDomains",
+   "x-frame-options": "DENY",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:38:11 GMT",
+   "connection": "close"
+  }
+ },
+ "body": {
+  "_links": {
+   "self": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/enheter/920058817/roller"
+   },
+   "enhet": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/enheter/920058817"
+   }
+  },
+  "rollegrupper": [
+   {
+    "roller": [
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Espevik",
+        "fornavn": "Lars"
+       }
+      },
+      "rekkefolge": 0,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/DAGL"
+        }
+       },
+       "beskrivelse": "Daglig leder",
+       "kode": "DAGL"
+      }
+     }
+    ],
+    "sistEndret": "2024-12-30",
+    "type": {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/roller/rollegruppetyper/DAGL"
+      }
+     },
+     "beskrivelse": "Daglig leder",
+     "kode": "DAGL"
+    }
+   },
+   {
+    "roller": [
+     {
+      "avregistrert": false,
+      "enhet": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/enheter/987009713"
+        }
+       },
+       "erSlettet": false,
+       "godkjenningsstatus": "Godkjent revisjonsforetak",
+       "navn": [
+        "PRICEWATERHOUSECOOPERS AS"
+       ],
+       "organisasjonsform": {
+        "_links": {
+         "self": {
+          "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/AS"
+         }
+        },
+        "beskrivelse": "Aksjeselskap",
+        "kode": "AS"
+       },
+       "organisasjonsnummer": "987009713"
+      },
+      "rekkefolge": 0,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/REVI"
+        }
+       },
+       "beskrivelse": "Revisor",
+       "kode": "REVI"
+      }
+     }
+    ],
+    "sistEndret": "2017-12-20",
+    "type": {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/roller/rollegruppetyper/REVI"
+      }
+     },
+     "beskrivelse": "Revisor",
+     "kode": "REVI"
+    }
+   },
+   {
+    "roller": [
+     {
+      "avregistrert": false,
+      "enhet": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/enheter/920156762"
+        }
+       },
+       "erSlettet": false,
+       "navn": [
+        "NORDEA BANK ABP"
+       ],
+       "organisasjonsform": {
+        "_links": {
+         "self": {
+          "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/UTLA"
+         }
+        },
+        "beskrivelse": "Utenlandsk enhet",
+        "kode": "UTLA"
+       },
+       "organisasjonsnummer": "920156762"
+      },
+      "rekkefolge": 0,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/HFOR"
+        }
+       },
+       "beskrivelse": "Oppl om foretaket i hjemlandet",
+       "kode": "HFOR"
+      }
+     }
+    ],
+    "sistEndret": "2017-12-20",
+    "type": {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/roller/rollegruppetyper/HFOR"
+      }
+     },
+     "beskrivelse": "Hovedforetak",
+     "kode": "HFOR"
+    }
+   }
+  ]
+ }
+}

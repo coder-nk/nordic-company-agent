@@ -1,0 +1,94 @@
+{
+ "_request": {
+  "url": "https://data.brreg.no/enhetsregisteret/api/enheter/938661723",
+  "status": 200,
+  "retrieved_at": "2026-10-13T11:43:57Z",
+  "headers": {
+   "vary": "Origin",
+   "x-content-type-options": "nosniff",
+   "x-xss-protection": "0",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "pragma": "no-cache",
+   "expires": "0",
+   "strict-transport-security": "max-age=157680000; includeSubDomains",
+   "x-frame-options": "DENY",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:39:51 GMT",
+   "connection": "close"
+  }
+ },
+ "body": {
+  "_links": {
+   "self": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/enheter/938661723"
+   }
+  },
+  "aktivitet": [
+   "Kjøp og salg av egen fast eiendom."
+  ],
+  "erIKonsern": false,
+  "forretningsadresse": {
+   "adresse": [
+    "Åsvegen 57"
+   ],
+   "kommune": "TROMSØ",
+   "kommunenummer": "5501",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "9020",
+   "poststed": "TROMSDALEN"
+  },
+  "fravalgRevisjonBeslutningsDato": "2026-09-01",
+  "fravalgRevisjonDato": "2026-10-12",
+  "harRegistrertAntallAnsatte": false,
+  "historiskeNavn": [],
+  "institusjonellSektorkode": {
+   "beskrivelse": "Private aksjeselskaper mv.",
+   "kode": "2100"
+  },
+  "kapital": {
+   "antallAksjer": 100,
+   "belop": 1000000.0,
+   "innfortDato": "2026-10-12",
+   "type": "Aksjekapital",
+   "valuta": "NOK"
+  },
+  "konkurs": false,
+  "maalform": "Bokmål",
+  "naeringskode1": {
+   "beskrivelse": "Kjøp og salg av egen fast eiendom",
+   "kode": "68.110"
+  },
+  "navn": "ABE EIENDOM AS",
+  "organisasjonsform": {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/AS"
+    }
+   },
+   "beskrivelse": "Aksjeselskap",
+   "kode": "AS"
+  },
+  "organisasjonsnummer": "938661723",
+  "paategninger": [],
+  "registreringsdatoEnhetsregisteret": "2026-10-12",
+  "registreringsdatoForetaksregisteret": "2026-10-12",
+  "registrertIForetaksregisteret": true,
+  "registrertIFrivillighetsregisteret": false,
+  "registrertIMvaregisteret": false,
+  "registrertIPartiregisteret": false,
+  "registrertIStiftelsesregisteret": false,
+  "respons_klasse": "Enhet",
+  "stiftelsesdato": "2026-09-01",
+  "underAvvikling": false,
+  "underTvangsavviklingEllerTvangsopplosning": false,
+  "vedtektsdato": "2026-09-01",
+  "vedtektsfestetFormaal": [
+   "Selskapets formål er kjøp, salg, eie, utvikling, rehabilitering,",
+   "forvaltning og utleie av fast eiendom, herunder korttids- og",
+   "langtidsutleie, samt investering i andre selskaper og annen virksomhet",
+   "som naturlig står i forbindelse med dette."
+  ]
+ }
+}

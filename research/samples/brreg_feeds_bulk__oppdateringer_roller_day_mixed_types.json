@@ -1,0 +1,602 @@
+[
+ {
+  "data": {
+   "organisasjonsnummer": "934152891"
+  },
+  "id": "4709795",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/934152891/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T04:00:40.039Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "917841942"
+  },
+  "id": "4709796",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/917841942/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T04:00:40.202Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "926955039"
+  },
+  "id": "4709797",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/926955039/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T04:00:40.357Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "937973772"
+  },
+  "id": "4709798",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/937973772/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T04:00:40.529Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "935247101"
+  },
+  "id": "4709799",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/935247101/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T04:00:40.704Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "936595693"
+  },
+  "id": "4709800",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/936595693/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T04:00:40.855Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "936404839"
+  },
+  "id": "4709801",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/936404839/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T04:00:41.021Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "997398173"
+  },
+  "id": "4709802",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/997398173/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T04:00:41.166Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "922197938"
+  },
+  "id": "4709803",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/922197938/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T04:00:41.332Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "997694295"
+  },
+  "id": "4709804",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/997694295/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T04:00:41.544Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "923816887"
+  },
+  "id": "4709805",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/923816887/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T04:00:41.697Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "886319282"
+  },
+  "id": "4709806",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/886319282/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T04:00:41.849Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "924575263"
+  },
+  "id": "4709807",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/924575263/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T04:00:42.018Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "915020445"
+  },
+  "id": "4709808",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/915020445/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T04:00:42.165Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "935679249"
+  },
+  "id": "4709809",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/935679249/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T04:05:10.189Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "985916071"
+  },
+  "id": "4709810",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/985916071/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T04:05:10.355Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "938313334"
+  },
+  "id": "4709811",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/938313334/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T04:05:10.508Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "990736804"
+  },
+  "id": "4709812",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/990736804/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T04:05:10.675Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "833220292"
+  },
+  "id": "4709813",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/833220292/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T04:05:10.906Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "938657971"
+  },
+  "id": "4709814",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/938657971/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T04:05:11.093Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "837174112"
+  },
+  "id": "4709815",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/837174112/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T04:05:11.379Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "938657998"
+  },
+  "id": "4709816",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/938657998/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T04:05:11.512Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "928438880"
+  },
+  "id": "4709817",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/928438880/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T04:05:11.664Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "889159332"
+  },
+  "id": "4709818",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/889159332/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T04:05:11.811Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "838207782"
+  },
+  "id": "4709819",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/838207782/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T04:05:11.951Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "929055691"
+  },
+  "id": "4709820",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/929055691/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T04:05:12.217Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "923864733"
+  },
+  "id": "4709821",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/923864733/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T04:05:12.371Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "971422556"
+  },
+  "id": "4709822",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/971422556/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T04:05:14.748Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "981073045"
+  },
+  "id": "4709823",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/981073045/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T04:30:10.182Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "834336022"
+  },
+  "id": "4709824",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/834336022/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T04:55:10.270Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "938658064"
+  },
+  "id": "4709825",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/938658064/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T05:05:10.220Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "938658072"
+  },
+  "id": "4709826",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/938658072/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T05:05:10.365Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "938658129"
+  },
+  "id": "4709827",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/938658129/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T05:10:10.292Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "938658137"
+  },
+  "id": "4709828",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/938658137/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T05:10:10.443Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "938658161"
+  },
+  "id": "4709829",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/938658161/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T05:10:10.597Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "938658226"
+  },
+  "id": "4709830",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/938658226/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T05:15:10.373Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "938658234"
+  },
+  "id": "4709831",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/938658234/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T05:15:10.509Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "938551723"
+  },
+  "id": "4709832",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/938551723/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T05:25:10.749Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "938615470"
+  },
+  "id": "4709833",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/938615470/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T05:30:10.311Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "938615489"
+  },
+  "id": "4709834",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/938615489/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T05:30:10.567Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "948510235"
+  },
+  "id": "4709835",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/948510235/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T05:35:10.200Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "938615543"
+  },
+  "id": "4709836",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/938615543/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T05:35:10.346Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "938616043"
+  },
+  "id": "4709837",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/938616043/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T05:35:10.533Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "938616272"
+  },
+  "id": "4709838",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/938616272/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T05:35:10.763Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "938616361"
+  },
+  "id": "4709839",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/938616361/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T05:35:10.909Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "938616493"
+  },
+  "id": "4709840",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/938616493/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T05:35:11.052Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "938616906"
+  },
+  "id": "4709841",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/938616906/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T05:35:11.268Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "938616914"
+  },
+  "id": "4709842",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/938616914/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T05:35:11.411Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "938617104"
+  },
+  "id": "4709843",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/938617104/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T05:35:11.552Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "938617163"
+  },
+  "id": "4709844",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/938617163/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T05:35:11.686Z",
+  "type": "no.brreg.enhetsregisteret.rolle.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "823560192"
+  },
+  "id": "4710256",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/823560192/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T08:05:11.375Z",
+  "type": "no.brreg.enhetsregisteret.rolle.enhet.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "894110902"
+  },
+  "id": "4710257",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/894110902/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T08:05:11.375Z",
+  "type": "no.brreg.enhetsregisteret.rolle.enhet.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "914227844"
+  },
+  "id": "4710258",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/914227844/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T08:05:11.375Z",
+  "type": "no.brreg.enhetsregisteret.rolle.enhet.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "922411581"
+  },
+  "id": "4710259",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/922411581/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T08:05:11.375Z",
+  "type": "no.brreg.enhetsregisteret.rolle.enhet.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "928657310"
+  },
+  "id": "4710260",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/928657310/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T08:05:11.375Z",
+  "type": "no.brreg.enhetsregisteret.rolle.enhet.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "930215813"
+  },
+  "id": "4710261",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/930215813/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T08:05:11.375Z",
+  "type": "no.brreg.enhetsregisteret.rolle.enhet.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "932158957"
+  },
+  "id": "4710262",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/932158957/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T08:05:11.375Z",
+  "type": "no.brreg.enhetsregisteret.rolle.enhet.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "933875121"
+  },
+  "id": "4710263",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/933875121/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T08:05:11.375Z",
+  "type": "no.brreg.enhetsregisteret.rolle.enhet.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "934391381"
+  },
+  "id": "4710264",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/934391381/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T08:05:11.375Z",
+  "type": "no.brreg.enhetsregisteret.rolle.enhet.oppdatert"
+ },
+ {
+  "data": {
+   "organisasjonsnummer": "988999776"
+  },
+  "id": "4710265",
+  "source": "https://data.brreg.no/enhetsregisteret/api/enheter/988999776/roller",
+  "specversion": "1.0",
+  "time": "2026-10-12T08:05:11.375Z",
+  "type": "no.brreg.enhetsregisteret.rolle.enhet.oppdatert"
+ }
+]

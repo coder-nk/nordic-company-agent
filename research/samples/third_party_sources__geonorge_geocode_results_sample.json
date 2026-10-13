@@ -1,0 +1,78 @@
+{
+ "note": "geocode results (structured strategy v1) for random universe companies; see research md for v2 adressetekst strategy",
+ "results": [
+  {
+   "status": "available",
+   "method": "structured_exact",
+   "url": "https://ws.geonorge.no/adresser/v1/sok?adressenavn=Glynitveien&nummer=30&postnummer=1400&treffPerSide=5&utkoordsys=4258&filtrer=adresser.adressetekst%2Cadresser.adressenavn%2Cadresser.nummer%2Cadresser.bokstav%2Cadresser.postnummer%2Cadresser.kommunenummer%2Cadresser.representasjonspunkt%2Cadresser.objtype%2Cadresser.oppdateringsdato",
+   "hit": {
+    "adressetekst": "Glynitveien 30",
+    "adressenavn": "Glynitveien",
+    "nummer": 30,
+    "bokstav": "",
+    "postnummer": "1400",
+    "kommunenummer": "3207",
+    "representasjonspunkt": {
+     "epsg": "EPSG:4258",
+     "lat": 59.71847908095776,
+     "lon": 10.862641971038762
+    },
+    "objtype": "Vegadresse",
+    "oppdateringsdato": "2024-01-01T00:00:00"
+   },
+   "orgnr": "950049596",
+   "addr": [
+    "c/o Usbl Follo",
+    "Glynitveien 30"
+   ]
+  },
+  {
+   "status": "available",
+   "method": "structured_exact",
+   "url": "https://ws.geonorge.no/adresser/v1/sok?adressenavn=Brobekkveien&nummer=38&postnummer=0598&treffPerSide=5&utkoordsys=4258&filtrer=adresser.adressetekst%2Cadresser.adressenavn%2Cadresser.nummer%2Cadresser.bokstav%2Cadresser.postnummer%2Cadresser.kommunenummer%2Cadresser.representasjonspunkt%2Cadresser.objtype%2Cadresser.oppdateringsdato",
+   "hit": {
+    "adressetekst": "Brobekkveien 38",
+    "adressenavn": "Brobekkveien",
+    "nummer": 38,
+    "bokstav": "",
+    "postnummer": "0598",
+    "kommunenummer": "0301",
+    "representasjonspunkt": {
+     "epsg": "EPSG:4258",
+     "lat": 59.938868957170634,
+     "lon": 10.826317011484626
+    },
+    "objtype": "Vegadresse",
+    "oppdateringsdato": "2020-06-15T18:02:11"
+   },
+   "orgnr": "920901948",
+   "addr": [
+    "Brobekkveien 38"
+   ]
+  },
+  {
+   "status": "available",
+   "method": "structured_exact",
+   "url": "https://ws.geonorge.no/adresser/v1/sok?adressenavn=Kjets%C3%A5vegen&nummer=18&postnummer=4737&treffPerSide=5&utkoordsys=4258&filtrer=adresser.adressetekst%2Cadresser.adressenavn%2Cadresser.nummer%2Cadresser.bokstav%2Cadresser.postnummer%2Cadresser.kommunenummer%2Cadresser.representasjonspunkt%2Cadresser.objtype%2Cadresser.oppdateringsdato",
+   "hit": {
+    "adressetekst": "Kjetsåvegen 18",
+    "adressenavn": "Kjetsåvegen",
+    "nummer": 18,
+    "bokstav": "",
+    "postnummer": "4737",
+    "kommunenummer": "4219",
+    "representasjonspunkt": {
+     "epsg": "EPSG:4258",
+     "lat": 58.55036936206455,
+     "lon": 7.767345309312786
+    },
+    "objtype": "Vegadresse",
+    "oppdateringsdato": "2020-06-15T16:21:28"
+   },
+   "orgnr": "914404347",
+   "addr": [
+    "Kjetsåvegen 18"
+   ]
+  }
+ ]
+}

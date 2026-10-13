@@ -1,0 +1,275 @@
+{
+ "_request": {
+  "url": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper",
+  "status": 200,
+  "retrieved_at": "2026-10-13T11:37:59Z",
+  "headers": {
+   "vary": "Origin",
+   "x-content-type-options": "nosniff",
+   "x-xss-protection": "0",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "pragma": "no-cache",
+   "expires": "0",
+   "strict-transport-security": "max-age=157680000; includeSubDomains",
+   "x-frame-options": "DENY",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:33:54 GMT",
+   "connection": "close"
+  }
+ },
+ "body": {
+  "_embedded": {
+   "rolletyper": [
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/autorisert-api/roller/rolletyper/ADOS"
+      }
+     },
+     "beskrivelse": "Administrativ enhet - offentlig sektor",
+     "kode": "ADOS"
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/autorisert-api/roller/rolletyper/BEST"
+      }
+     },
+     "beskrivelse": "Bestyrende reder",
+     "kode": "BEST"
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/autorisert-api/roller/rolletyper/BOBE"
+      }
+     },
+     "beskrivelse": "Bostyrer",
+     "kode": "BOBE"
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/autorisert-api/roller/rolletyper/DAGL"
+      }
+     },
+     "beskrivelse": "Daglig leder",
+     "kode": "DAGL"
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/autorisert-api/roller/rolletyper/DTPR"
+      }
+     },
+     "beskrivelse": "Deltaker med proratarisk ansvar (delt ansvar)",
+     "kode": "DTPR"
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/autorisert-api/roller/rolletyper/DTSO"
+      }
+     },
+     "beskrivelse": "Deltaker med solidarisk ansvar (fullt ansvarlig)",
+     "kode": "DTSO"
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/autorisert-api/roller/rolletyper/EIKM"
+      }
+     },
+     "beskrivelse": "Eierkommune",
+     "kode": "EIKM"
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/autorisert-api/roller/rolletyper/FFØR"
+      }
+     },
+     "beskrivelse": "Forretningsfører",
+     "kode": "FFØR"
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/autorisert-api/roller/rolletyper/HFOR"
+      }
+     },
+     "beskrivelse": "Opplysninger om foretaket i hjemlandet",
+     "kode": "HFOR"
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/autorisert-api/roller/rolletyper/HLSE"
+      }
+     },
+     "beskrivelse": "Helseforetak",
+     "kode": "HLSE"
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/autorisert-api/roller/rolletyper/INNH"
+      }
+     },
+     "beskrivelse": "Innehaver",
+     "kode": "INNH"
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/autorisert-api/roller/rolletyper/KDEB"
+      }
+     },
+     "beskrivelse": "Konkursdebitor",
+     "kode": "KDEB"
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/autorisert-api/roller/rolletyper/KENK"
+      }
+     },
+     "beskrivelse": "Den personlige konkursen angår",
+     "kode": "KENK"
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/autorisert-api/roller/rolletyper/KIRK"
+      }
+     },
+     "beskrivelse": "Inngår i kirkelig fellesråd",
+     "kode": "KIRK"
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/autorisert-api/roller/rolletyper/KOMP"
+      }
+     },
+     "beskrivelse": "Komplementar",
+     "kode": "KOMP"
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/autorisert-api/roller/rolletyper/KONT"
+      }
+     },
+     "beskrivelse": "Kontaktperson",
+     "kode": "KONT"
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/autorisert-api/roller/rolletyper/KTRF"
+      }
+     },
+     "beskrivelse": "Inngår i kontorfellesskap",
+     "kode": "KTRF"
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/autorisert-api/roller/rolletyper/LEDE"
+      }
+     },
+     "beskrivelse": "Styrets leder",
+     "kode": "LEDE"
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/autorisert-api/roller/rolletyper/MEDL"
+      }
+     },
+     "beskrivelse": "Styremedlem",
+     "kode": "MEDL"
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/autorisert-api/roller/rolletyper/NEST"
+      }
+     },
+     "beskrivelse": "Nestleder",
+     "kode": "NEST"
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/autorisert-api/roller/rolletyper/OBS"
+      }
+     },
+     "beskrivelse": "Observatør",
+     "kode": "OBS"
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/autorisert-api/roller/rolletyper/OPMV"
+      }
+     },
+     "beskrivelse": "er særskilt oppdelt enhet til",
+     "kode": "OPMV"
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/autorisert-api/roller/rolletyper/ORGL"
+      }
+     },
+     "beskrivelse": "Organisasjonsledd i offentlig sektor",
+     "kode": "ORGL"
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/autorisert-api/roller/rolletyper/REGN"
+      }
+     },
+     "beskrivelse": "Regnskapsfører",
+     "kode": "REGN"
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/autorisert-api/roller/rolletyper/REPR"
+      }
+     },
+     "beskrivelse": "Norsk representant for utenlandsk enhet",
+     "kode": "REPR"
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/autorisert-api/roller/rolletyper/REVI"
+      }
+     },
+     "beskrivelse": "Revisor",
+     "kode": "REVI"
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/autorisert-api/roller/rolletyper/VARA"
+      }
+     },
+     "beskrivelse": "Varamedlem",
+     "kode": "VARA"
+    }
+   ]
+  },
+  "_links": {
+   "self": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper"
+   }
+  }
+ }
+}

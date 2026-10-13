@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+data/bulk/
+data/work/
+research/work/
+out/
+runs/
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+research/builderr_starter_kit/

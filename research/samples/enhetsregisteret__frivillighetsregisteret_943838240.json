@@ -1,0 +1,77 @@
+{
+ "_request": {
+  "url": "https://data.brreg.no/frivillighetsregisteret/api/frivillige-organisasjoner/943838240",
+  "status": 200,
+  "retrieved_at": "2026-10-13T11:49:44Z",
+  "headers": {
+   "vary": "Origin",
+   "x-content-type-options": "nosniff",
+   "x-xss-protection": "0",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "pragma": "no-cache",
+   "expires": "0",
+   "strict-transport-security": "max-age=157680000; includeSubDomains",
+   "x-frame-options": "DENY",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:45:39 GMT",
+   "connection": "close"
+  }
+ },
+ "body": {
+  "organisasjonsnummer": "943838240",
+  "frivilligOrganisasjonsstatus": "frivilligOrganisasjonsstatus.innfoert",
+  "kontonummer": "93651170352",
+  "innfoertDato": "2009-01-08",
+  "foersteGangInnfoert": "2009-01-08",
+  "grasrotandel": {
+   "deltarI": false,
+   "utestengelsesperiode": null
+  },
+  "regnskapsrapportering": {
+   "harPaatattSegRapporteringsplikt": false,
+   "avslutningsdatoForRegnskapsperiode": null,
+   "sistInnsendteAarsregnskap": null
+  },
+  "vedtekter": {
+   "frivilligRegistrerteVedtekter": false,
+   "sistOppdaterteVedtekter": null
+  },
+  "icnpoKategorier": [
+   {
+    "kategori": "ICNPOKategori.rekreasjonOgSosialeForeninger",
+    "icnpoNummer": "1300",
+    "navn": null,
+    "rekkefoelge": 1,
+    "_links": {
+     "NOB": {
+      "href": "https://data.brreg.no/frivillighetsregisteret/api/icnpo-kategorier?spraak=NOB"
+     },
+     "NNO": {
+      "href": "https://data.brreg.no/frivillighetsregisteret/api/icnpo-kategorier?spraak=NNO"
+     }
+    }
+   },
+   {
+    "kategori": "ICNPOKategori.barneOgUngdomsorganisasjoner",
+    "icnpoNummer": "13100",
+    "navn": null,
+    "rekkefoelge": 2,
+    "_links": {
+     "NOB": {
+      "href": "https://data.brreg.no/frivillighetsregisteret/api/icnpo-kategorier?spraak=NOB"
+     },
+     "NNO": {
+      "href": "https://data.brreg.no/frivillighetsregisteret/api/icnpo-kategorier?spraak=NNO"
+     }
+    }
+   }
+  ],
+  "paategninger": [],
+  "_links": {
+   "self": {
+    "href": "https://data.brreg.no/frivillighetsregisteret/api/frivillige-organisasjoner/943838240"
+   }
+  }
+ }
+}

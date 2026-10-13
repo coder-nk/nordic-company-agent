@@ -1,0 +1,221 @@
+{
+ "_request": {
+  "url": "https://data.brreg.no/enhetsregisteret/api/enheter/993231223/roller",
+  "status": 200,
+  "retrieved_at": "2026-10-13T11:42:43Z",
+  "headers": {
+   "vary": "Origin",
+   "x-content-type-options": "nosniff",
+   "x-xss-protection": "0",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "pragma": "no-cache",
+   "expires": "0",
+   "strict-transport-security": "max-age=157680000; includeSubDomains",
+   "x-frame-options": "DENY",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:38:37 GMT",
+   "connection": "close"
+  }
+ },
+ "body": {
+  "_links": {
+   "self": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/enheter/993231223/roller"
+   },
+   "enhet": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/enheter/993231223"
+   }
+  },
+  "rollegrupper": [
+   {
+    "roller": [
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Fosshaug",
+        "fornavn": "Alexander",
+        "mellomnavn": "Torkildsen"
+       }
+      },
+      "rekkefolge": 0,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/DAGL"
+        }
+       },
+       "beskrivelse": "Daglig leder",
+       "kode": "DAGL"
+      }
+     }
+    ],
+    "sistEndret": "2026-04-11",
+    "type": {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/roller/rollegruppetyper/DAGL"
+      }
+     },
+     "beskrivelse": "Daglig leder",
+     "kode": "DAGL"
+    }
+   },
+   {
+    "roller": [
+     {
+      "ansvarsandel": "1/4",
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Krohn-Hansen",
+        "fornavn": "Marie"
+       }
+      },
+      "rekkefolge": 0,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/DTPR"
+        }
+       },
+       "beskrivelse": "Deltaker med delt ansvar",
+       "kode": "DTPR"
+      }
+     },
+     {
+      "ansvarsandel": "1/4",
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Meyer",
+        "fornavn": "Charlotte"
+       }
+      },
+      "rekkefolge": 1,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/DTPR"
+        }
+       },
+       "beskrivelse": "Deltaker med delt ansvar",
+       "kode": "DTPR"
+      }
+     },
+     {
+      "ansvarsandel": "1/4",
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Fosshaug",
+        "fornavn": "Alexander",
+        "mellomnavn": "Torkildsen"
+       }
+      },
+      "rekkefolge": 2,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/DTPR"
+        }
+       },
+       "beskrivelse": "Deltaker med delt ansvar",
+       "kode": "DTPR"
+      }
+     },
+     {
+      "ansvarsandel": "1/4",
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Myklebust",
+        "fornavn": "Alf David Antoni"
+       }
+      },
+      "rekkefolge": 3,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/DTPR"
+        }
+       },
+       "beskrivelse": "Deltaker med delt ansvar",
+       "kode": "DTPR"
+      }
+     }
+    ],
+    "sistEndret": "2024-06-10",
+    "type": {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/roller/rollegruppetyper/DELT"
+      }
+     },
+     "beskrivelse": "Deltakere",
+     "kode": "DELT"
+    }
+   },
+   {
+    "roller": [
+     {
+      "avregistrert": false,
+      "enhet": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/enheter/983338917"
+        }
+       },
+       "erSlettet": false,
+       "godkjenningsstatus": "Godkjent regnskapsforetak",
+       "navn": [
+        "AZETS INSIGHT AS"
+       ],
+       "organisasjonsform": {
+        "_links": {
+         "self": {
+          "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/AS"
+         }
+        },
+        "beskrivelse": "Aksjeselskap",
+        "kode": "AS"
+       },
+       "organisasjonsnummer": "983338917"
+      },
+      "rekkefolge": 0,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/REGN"
+        }
+       },
+       "beskrivelse": "Regnskapsfører",
+       "kode": "REGN"
+      }
+     }
+    ],
+    "sistEndret": "2026-06-05",
+    "type": {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/roller/rollegruppetyper/REGN"
+      }
+     },
+     "beskrivelse": "Regnskapsfører",
+     "kode": "REGN"
+    }
+   }
+  ]
+ }
+}

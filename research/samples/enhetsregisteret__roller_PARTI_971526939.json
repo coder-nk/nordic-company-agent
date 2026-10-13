@@ -1,0 +1,545 @@
+{
+ "_request": {
+  "url": "https://data.brreg.no/enhetsregisteret/api/enheter/971526939/roller",
+  "status": 200,
+  "retrieved_at": "2026-10-13T11:43:55Z",
+  "headers": {
+   "vary": "Origin",
+   "x-content-type-options": "nosniff",
+   "x-xss-protection": "0",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "pragma": "no-cache",
+   "expires": "0",
+   "strict-transport-security": "max-age=157680000; includeSubDomains",
+   "x-frame-options": "DENY",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:39:50 GMT",
+   "connection": "close"
+  }
+ },
+ "body": {
+  "_links": {
+   "self": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/enheter/971526939/roller"
+   },
+   "enhet": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/enheter/971526939"
+   }
+  },
+  "rollegrupper": [
+   {
+    "roller": [
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Støre",
+        "fornavn": "Jonas",
+        "mellomnavn": "Gahr"
+       }
+      },
+      "rekkefolge": 0,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/LEDE"
+        }
+       },
+       "beskrivelse": "Styrets leder",
+       "kode": "LEDE"
+      }
+     },
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Nord",
+        "fornavn": "Mette"
+       }
+      },
+      "rekkefolge": 1,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/MEDL"
+        }
+       },
+       "beskrivelse": "Styremedlem",
+       "kode": "MEDL"
+      }
+     },
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Følsvik",
+        "fornavn": "Peggy Anita",
+        "mellomnavn": "Hessen"
+       }
+      },
+      "rekkefolge": 2,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/MEDL"
+        }
+       },
+       "beskrivelse": "Styremedlem",
+       "kode": "MEDL"
+      }
+     },
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Lindov",
+        "fornavn": "Ahmed"
+       }
+      },
+      "rekkefolge": 3,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/MEDL"
+        }
+       },
+       "beskrivelse": "Styremedlem",
+       "kode": "MEDL"
+      }
+     },
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Nordtun",
+        "fornavn": "Kari",
+        "mellomnavn": "Nessa"
+       }
+      },
+      "rekkefolge": 4,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/MEDL"
+        }
+       },
+       "beskrivelse": "Styremedlem",
+       "kode": "MEDL"
+      }
+     },
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Martinsen-Evje",
+        "fornavn": "Sindre Jens"
+       }
+      },
+      "rekkefolge": 5,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/MEDL"
+        }
+       },
+       "beskrivelse": "Styremedlem",
+       "kode": "MEDL"
+      }
+     },
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Gharahkhani",
+        "fornavn": "Masud"
+       }
+      },
+      "rekkefolge": 6,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/MEDL"
+        }
+       },
+       "beskrivelse": "Styremedlem",
+       "kode": "MEDL"
+      }
+     },
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Hansen",
+        "fornavn": "Kristina",
+        "mellomnavn": "Sigurdsdottir"
+       }
+      },
+      "rekkefolge": 7,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/MEDL"
+        }
+       },
+       "beskrivelse": "Styremedlem",
+       "kode": "MEDL"
+      }
+     },
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Skjæran",
+        "fornavn": "Bjørnar",
+        "mellomnavn": "Selnes"
+       }
+      },
+      "rekkefolge": 8,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/MEDL"
+        }
+       },
+       "beskrivelse": "Styremedlem",
+       "kode": "MEDL"
+      }
+     },
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Brenna",
+        "fornavn": "Tonje"
+       }
+      },
+      "rekkefolge": 9,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/MEDL"
+        }
+       },
+       "beskrivelse": "Styremedlem",
+       "kode": "MEDL"
+      }
+     },
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Vestre",
+        "fornavn": "Jan Christian"
+       }
+      },
+      "rekkefolge": 10,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/MEDL"
+        }
+       },
+       "beskrivelse": "Styremedlem",
+       "kode": "MEDL"
+      }
+     },
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Opsal",
+        "fornavn": "Kari-Anne"
+       }
+      },
+      "rekkefolge": 11,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/MEDL"
+        }
+       },
+       "beskrivelse": "Styremedlem",
+       "kode": "MEDL"
+      }
+     },
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Hoem",
+        "fornavn": "Astrid Willa",
+        "mellomnavn": "Eide"
+       }
+      },
+      "rekkefolge": 12,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/MEDL"
+        }
+       },
+       "beskrivelse": "Styremedlem",
+       "kode": "MEDL"
+      }
+     },
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Vågslid",
+        "fornavn": "Lene"
+       }
+      },
+      "rekkefolge": 13,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/MEDL"
+        }
+       },
+       "beskrivelse": "Styremedlem",
+       "kode": "MEDL"
+      }
+     },
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Selnes",
+        "fornavn": "Lise"
+       }
+      },
+      "rekkefolge": 14,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/MEDL"
+        }
+       },
+       "beskrivelse": "Styremedlem",
+       "kode": "MEDL"
+      }
+     },
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Raaen",
+        "fornavn": "Emil"
+       }
+      },
+      "rekkefolge": 15,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/MEDL"
+        }
+       },
+       "beskrivelse": "Styremedlem",
+       "kode": "MEDL"
+      }
+     },
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Davies",
+        "fornavn": "Stian Jean",
+        "mellomnavn": "Opedal"
+       }
+      },
+      "rekkefolge": 16,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/MEDL"
+        }
+       },
+       "beskrivelse": "Styremedlem",
+       "kode": "MEDL"
+      }
+     },
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Klinkenberg",
+        "fornavn": "Ann Jeanett"
+       }
+      },
+      "rekkefolge": 17,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/MEDL"
+        }
+       },
+       "beskrivelse": "Styremedlem",
+       "kode": "MEDL"
+      }
+     },
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Vasvik",
+        "fornavn": "Truls"
+       }
+      },
+      "rekkefolge": 18,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/MEDL"
+        }
+       },
+       "beskrivelse": "Styremedlem",
+       "kode": "MEDL"
+      }
+     },
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Støstad",
+        "fornavn": "Rune"
+       }
+      },
+      "rekkefolge": 19,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/MEDL"
+        }
+       },
+       "beskrivelse": "Styremedlem",
+       "kode": "MEDL"
+      }
+     },
+     {
+      "avregistrert": false,
+      "person": {
+       "erDoed": false,
+       "fodselsdato": "1900-01-01",
+       "navn": {
+        "etternavn": "Skjervø",
+        "fornavn": "Gaute",
+        "mellomnavn": "Børstad"
+       }
+      },
+      "rekkefolge": 20,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/MEDL"
+        }
+       },
+       "beskrivelse": "Styremedlem",
+       "kode": "MEDL"
+      }
+     }
+    ],
+    "sistEndret": "2026-01-20",
+    "type": {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/roller/rollegruppetyper/STYR"
+      }
+     },
+     "beskrivelse": "Styre",
+     "kode": "STYR"
+    }
+   },
+   {
+    "roller": [
+     {
+      "avregistrert": false,
+      "enhet": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/enheter/976389387"
+        }
+       },
+       "erSlettet": false,
+       "godkjenningsstatus": "Godkjent revisjonsforetak",
+       "navn": [
+        "ERNST & YOUNG AS"
+       ],
+       "organisasjonsform": {
+        "_links": {
+         "self": {
+          "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/AS"
+         }
+        },
+        "beskrivelse": "Aksjeselskap",
+        "kode": "AS"
+       },
+       "organisasjonsnummer": "976389387"
+      },
+      "rekkefolge": 0,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/REVI"
+        }
+       },
+       "beskrivelse": "Revisor",
+       "kode": "REVI"
+      }
+     }
+    ],
+    "sistEndret": "2000-10-07",
+    "type": {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/roller/rollegruppetyper/REVI"
+      }
+     },
+     "beskrivelse": "Revisor",
+     "kode": "REVI"
+    }
+   }
+  ]
+ }
+}

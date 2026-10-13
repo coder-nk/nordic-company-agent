@@ -1,0 +1,21 @@
+{
+ "_request": {
+  "url": "https://data.brreg.no/enhetsregisteret/api/enheter/971422556/roller",
+  "status": 404,
+  "retrieved_at": "2026-10-13T11:40:07Z",
+  "headers": {
+   "vary": "Origin",
+   "x-content-type-options": "nosniff",
+   "x-xss-protection": "0",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "pragma": "no-cache",
+   "expires": "0",
+   "strict-transport-security": "max-age=157680000; includeSubDomains",
+   "x-frame-options": "DENY",
+   "content-length": "0",
+   "date": "Tue, 13 Oct 2026 11:36:02 GMT",
+   "connection": "close"
+  }
+ },
+ "body": null
+}

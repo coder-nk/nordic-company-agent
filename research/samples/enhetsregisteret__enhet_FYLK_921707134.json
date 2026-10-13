@@ -1,0 +1,100 @@
+{
+ "_request": {
+  "url": "https://data.brreg.no/enhetsregisteret/api/enheter/921707134",
+  "status": 200,
+  "retrieved_at": "2026-10-13T11:42:48Z",
+  "headers": {
+   "vary": "Origin",
+   "x-content-type-options": "nosniff",
+   "x-xss-protection": "0",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "pragma": "no-cache",
+   "expires": "0",
+   "strict-transport-security": "max-age=157680000; includeSubDomains",
+   "x-frame-options": "DENY",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:38:43 GMT",
+   "connection": "close"
+  }
+ },
+ "body": {
+  "_links": {
+   "self": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/enheter/921707134"
+   }
+  },
+  "aktivitet": [
+   "Fylkeskommune"
+  ],
+  "antallAnsatte": 3878,
+  "epostadresse": "postmottak@agderfk.no",
+  "erIKonsern": false,
+  "forretningsadresse": {
+   "adresse": [
+    "Tordenskjolds gate 25"
+   ],
+   "kommune": "KRISTIANSAND",
+   "kommunenummer": "4204",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "4612",
+   "poststed": "KRISTIANSAND S"
+  },
+  "harRegistrertAntallAnsatte": true,
+  "historiskeNavn": [
+   {
+    "fraDato": "2018-11-12 21:14:02",
+    "navn": "NYE AGDER FYLKESKOMMUNE FRA 01.01.2020 UNDER FORHÅNDSREGISTRERING",
+    "tilDato": "2019-11-18 09:51:09"
+   }
+  ],
+  "institusjonellSektorkode": {
+   "beskrivelse": "Kommuneforvaltningen",
+   "kode": "6500"
+  },
+  "konkurs": false,
+  "maalform": "Bokmål",
+  "naeringskode1": {
+   "beskrivelse": "Generell offentlig administrasjon",
+   "kode": "84.110"
+  },
+  "navn": "AGDER FYLKESKOMMUNE",
+  "organisasjonsform": {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/FYLK"
+    }
+   },
+   "beskrivelse": "Fylkeskommune",
+   "kode": "FYLK"
+  },
+  "organisasjonsnummer": "921707134",
+  "paategninger": [],
+  "postadresse": {
+   "adresse": [
+    "Postboks 788 Stoa"
+   ],
+   "kommune": "ARENDAL",
+   "kommunenummer": "4203",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "4809",
+   "poststed": "ARENDAL"
+  },
+  "registreringsdatoAntallAnsatteEnhetsregisteret": "2026-09-14",
+  "registreringsdatoAntallAnsatteNAVAaregisteret": "2026-09-10",
+  "registreringsdatoEnhetsregisteret": "2018-11-12",
+  "registreringsdatoMerverdiavgiftsregisteret": "2020-01-01",
+  "registreringsdatoMerverdiavgiftsregisteretEnhetsregisteret": "2019-11-23",
+  "registrertIForetaksregisteret": false,
+  "registrertIFrivillighetsregisteret": false,
+  "registrertIMvaregisteret": true,
+  "registrertIPartiregisteret": false,
+  "registrertIStiftelsesregisteret": false,
+  "respons_klasse": "Enhet",
+  "telefon": "38 05 00 00",
+  "underAvvikling": false,
+  "underTvangsavviklingEllerTvangsopplosning": false
+ }
+}

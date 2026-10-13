@@ -1,0 +1,1515 @@
+{
+ "_note": "curated from /oppdateringer/enheter?dato=2026-10-12T00:00:00.000Z&updatedBefore=2026-10-12T23:59:59.999Z&size=10000&includeChanges=true (8739 entries that day: Endring 8200, Ny 391, Sletting 142, Fjernet 6)",
+ "oppdaterteEnheter": [
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/935252369"
+    }
+   },
+   "dato": "2026-10-12T04:05:11.715Z",
+   "endringer": [
+    {
+     "op": "add",
+     "path": "/historiskeNavn/0",
+     "value": {
+      "fraDato": "2025-03-23 14:05:02",
+      "navn": "MARIUS AGA ANKERVOLD",
+      "tilDato": "2026-10-12 06:00:55"
+     }
+    },
+    {
+     "op": "replace",
+     "path": "/navn",
+     "value": "ANKERVOLD & RAUNHOLM MEKANISKE"
+    }
+   ],
+   "endringstype": "Endring",
+   "oppdateringsid": 25316062,
+   "organisasjonsnummer": "935252369"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/829314312"
+    }
+   },
+   "dato": "2026-10-12T04:05:11.715Z",
+   "endringer": [
+    {
+     "op": "replace",
+     "path": "/forretningsadresse/adresse/0",
+     "value": "Stølsvegen 20"
+    },
+    {
+     "op": "remove",
+     "path": "/forretningsadresse/adresse/1"
+    },
+    {
+     "op": "replace",
+     "path": "/forretningsadresse/kommune",
+     "value": "BERGEN"
+    },
+    {
+     "op": "replace",
+     "path": "/forretningsadresse/kommunenummer",
+     "value": "4601"
+    },
+    {
+     "op": "replace",
+     "path": "/forretningsadresse/postnummer",
+     "value": "5260"
+    },
+    {
+     "op": "replace",
+     "path": "/forretningsadresse/poststed",
+     "value": "INDRE ARNA"
+    },
+    {
+     "op": "add",
+     "path": "/postadresse",
+     "value": {
+      "adresse": [
+       "c/o Eivind Njaastad",
+       "Stølsvegen 20"
+      ],
+      "kommune": "BERGEN",
+      "kommunenummer": "4601",
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "5260",
+      "poststed": "INDRE ARNA"
+     }
+    }
+   ],
+   "endringstype": "Endring",
+   "oppdateringsid": 25316066,
+   "organisasjonsnummer": "829314312"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/917485321"
+    }
+   },
+   "dato": "2026-10-12T04:05:11.715Z",
+   "endringer": [
+    {
+     "op": "replace",
+     "path": "/forretningsadresse/adresse/0",
+     "value": "Friervegen 115"
+    },
+    {
+     "op": "replace",
+     "path": "/forretningsadresse/kommune",
+     "value": "PORSGRUNN"
+    },
+    {
+     "op": "replace",
+     "path": "/forretningsadresse/kommunenummer",
+     "value": "4001"
+    },
+    {
+     "op": "replace",
+     "path": "/forretningsadresse/postnummer",
+     "value": "3940"
+    },
+    {
+     "op": "replace",
+     "path": "/forretningsadresse/poststed",
+     "value": "PORSGRUNN"
+    }
+   ],
+   "endringstype": "Endring",
+   "oppdateringsid": 25316078,
+   "organisasjonsnummer": "917485321"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/938169004"
+    }
+   },
+   "dato": "2026-10-12T04:05:11.715Z",
+   "endringer": [
+    {
+     "op": "replace",
+     "path": "/forretningsadresse/adresse/0",
+     "value": "Kjørkjelinna 20"
+    },
+    {
+     "op": "replace",
+     "path": "/forretningsadresse/kommune",
+     "value": "ØSTRE TOTEN"
+    },
+    {
+     "op": "replace",
+     "path": "/forretningsadresse/kommunenummer",
+     "value": "3442"
+    },
+    {
+     "op": "replace",
+     "path": "/forretningsadresse/postnummer",
+     "value": "2848"
+    },
+    {
+     "op": "replace",
+     "path": "/forretningsadresse/poststed",
+     "value": "SKREIA"
+    }
+   ],
+   "endringstype": "Endring",
+   "oppdateringsid": 25316089,
+   "organisasjonsnummer": "938169004"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/938346194"
+    }
+   },
+   "dato": "2026-10-12T05:05:10.731Z",
+   "endringer": [
+    {
+     "op": "replace",
+     "path": "/naeringskode1/beskrivelse",
+     "value": "Drift av restauranter"
+    },
+    {
+     "op": "replace",
+     "path": "/naeringskode1/kode",
+     "value": "56.110"
+    }
+   ],
+   "endringstype": "Endring",
+   "oppdateringsid": 25316109,
+   "organisasjonsnummer": "938346194"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/928897303"
+    }
+   },
+   "dato": "2026-10-12T05:10:10.718Z",
+   "endringer": [
+    {
+     "op": "replace",
+     "path": "/naeringskode1/beskrivelse",
+     "value": "Bedriftsrådgivning og annen administrativ rådgivning"
+    },
+    {
+     "op": "replace",
+     "path": "/naeringskode1/kode",
+     "value": "70.200"
+    }
+   ],
+   "endringstype": "Endring",
+   "oppdateringsid": 25316112,
+   "organisasjonsnummer": "928897303"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/938207771"
+    }
+   },
+   "dato": "2026-10-12T05:10:11.942Z",
+   "endringer": [
+    {
+     "op": "replace",
+     "path": "/naeringskode1/beskrivelse",
+     "value": "Utvikling og salg av byggeprosjekter"
+    },
+    {
+     "op": "replace",
+     "path": "/naeringskode1/kode",
+     "value": "68.120"
+    }
+   ],
+   "endringstype": "Endring",
+   "oppdateringsid": 25316113,
+   "organisasjonsnummer": "938207771"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/922729344"
+    }
+   },
+   "dato": "2026-10-12T05:15:11.859Z",
+   "endringer": [
+    {
+     "op": "replace",
+     "path": "/aktivitet/0",
+     "value": "bookingløsninger og CRM-systemer for bedrifter og privatpersoner."
+    },
+    {
+     "op": "replace",
+     "path": "/aktivitet/1",
+     "value": "Utvikling, design og drift av nettsider, nettbutikker,"
+    },
+    {
+     "op": "add",
+     "path": "/historiskeNavn/0",
+     "value": {
+      "fraDato": "2019-05-10 09:43:52",
+      "navn": "SS BODY MIND SPIRIT SINDRE SYNNEVÅG",
+      "tilDato": "2026-10-12 07:14:30"
+     }
+    },
+    {
+     "op": "replace",
+     "path": "/navn",
+     "value": "SYNNEVÅG LABS"
+    }
+   ],
+   "endringstype": "Endring",
+   "oppdateringsid": 25316123,
+   "organisasjonsnummer": "922729344"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/837240212"
+    }
+   },
+   "dato": "2026-10-12T05:30:11.656Z",
+   "endringer": [
+    {
+     "op": "add",
+     "path": "/historiskeNavn/1",
+     "value": {
+      "fraDato": "2026-10-04 22:44:22",
+      "navn": "CRAZY DAD V/ROAR JÅSUND",
+      "tilDato": "2026-10-12 07:29:17"
+     }
+    },
+    {
+     "op": "replace",
+     "path": "/navn",
+     "value": "R. JÅSUND"
+    }
+   ],
+   "endringstype": "Endring",
+   "oppdateringsid": 25316133,
+   "organisasjonsnummer": "837240212"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/997808304"
+    }
+   },
+   "dato": "2026-10-12T05:45:11.998Z",
+   "endringer": [
+    {
+     "op": "replace",
+     "path": "/forretningsadresse/adresse/0",
+     "value": "Strandveien 33"
+    },
+    {
+     "op": "remove",
+     "path": "/forretningsadresse/adresse/1"
+    },
+    {
+     "op": "remove",
+     "path": "/forretningsadresse/adresse/1"
+    },
+    {
+     "op": "remove",
+     "path": "/hjemmeside"
+    },
+    {
+     "op": "add",
+     "path": "/postadresse",
+     "value": {
+      "adresse": [
+       "Robert K. Nilsen",
+       "c/o RAKE arbeidsfellesskap",
+       "Strandveien 33"
+      ],
+      "kommune": "TRONDHEIM",
+      "kommunenummer": "5001",
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "7067",
+      "poststed": "TRONDHEIM"
+     }
+    }
+   ],
+   "endringstype": "Endring",
+   "oppdateringsid": 25316154,
+   "organisasjonsnummer": "997808304"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/924866691"
+    }
+   },
+   "dato": "2026-10-12T06:10:12.029Z",
+   "endringer": [
+    {
+     "op": "replace",
+     "path": "/underAvvikling",
+     "value": true
+    },
+    {
+     "op": "add",
+     "path": "/underAvviklingDato",
+     "value": "2026-10-12"
+    }
+   ],
+   "endringstype": "Endring",
+   "oppdateringsid": 25316206,
+   "organisasjonsnummer": "924866691"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/930050822"
+    }
+   },
+   "dato": "2026-10-12T07:00:11.231Z",
+   "endringer": [
+    {
+     "op": "add",
+     "path": "/epostadresse",
+     "value": "bedrift@kbbl.bu.no"
+    },
+    {
+     "op": "add",
+     "path": "/hjemmeside",
+     "value": "www.kbbl.bu.no"
+    },
+    {
+     "op": "add",
+     "path": "/mobil",
+     "value": "+4797554900"
+    },
+    {
+     "op": "add",
+     "path": "/postadresse",
+     "value": {
+      "adresse": [
+       "c/o Kongsberg Boligbyggelag",
+       "Christian Augusts gate 4"
+      ],
+      "kommune": "KONGSBERG",
+      "kommunenummer": "3303",
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "3611",
+      "poststed": "KONGSBERG"
+     }
+    }
+   ],
+   "endringstype": "Endring",
+   "oppdateringsid": 25316305,
+   "organisasjonsnummer": "930050822"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/993003778"
+    }
+   },
+   "dato": "2026-10-12T07:25:10.628Z",
+   "endringer": [
+    {
+     "op": "replace",
+     "path": "/underAvvikling",
+     "value": true
+    },
+    {
+     "op": "add",
+     "path": "/underAvviklingDato",
+     "value": "2026-10-12"
+    }
+   ],
+   "endringstype": "Endring",
+   "oppdateringsid": 25316481,
+   "organisasjonsnummer": "993003778"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/988755281"
+    }
+   },
+   "dato": "2026-10-12T07:55:11.750Z",
+   "endringer": [
+    {
+     "op": "replace",
+     "path": "/underAvvikling",
+     "value": true
+    },
+    {
+     "op": "add",
+     "path": "/underAvviklingDato",
+     "value": "2026-10-12"
+    }
+   ],
+   "endringstype": "Endring",
+   "oppdateringsid": 25316620,
+   "organisasjonsnummer": "988755281"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/995306433"
+    }
+   },
+   "dato": "2026-10-12T08:05:11.930Z",
+   "endringer": [
+    {
+     "op": "replace",
+     "path": "/kapital/belop",
+     "value": 1100000.0
+    },
+    {
+     "op": "replace",
+     "path": "/kapital/innfortDato",
+     "value": "2026-10-12"
+    },
+    {
+     "op": "replace",
+     "path": "/vedtektsdato",
+     "value": "2026-09-25"
+    }
+   ],
+   "endringstype": "Endring",
+   "oppdateringsid": 25316641,
+   "organisasjonsnummer": "995306433"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/922052778"
+    }
+   },
+   "dato": "2026-10-12T08:05:11.930Z",
+   "endringer": [
+    {
+     "op": "remove",
+     "path": "/aktivitet"
+    },
+    {
+     "op": "remove",
+     "path": "/epostadresse"
+    },
+    {
+     "op": "remove",
+     "path": "/erIKonsern"
+    },
+    {
+     "op": "remove",
+     "path": "/forretningsadresse"
+    },
+    {
+     "op": "remove",
+     "path": "/harRegistrertAntallAnsatte"
+    },
+    {
+     "op": "remove",
+     "path": "/historiskeNavn"
+    },
+    {
+     "op": "remove",
+     "path": "/hjemmeside"
+    },
+    {
+     "op": "remove",
+     "path": "/institusjonellSektorkode"
+    },
+    {
+     "op": "remove",
+     "path": "/konkurs"
+    },
+    {
+     "op": "remove",
+     "path": "/maalform"
+    },
+    {
+     "op": "remove",
+     "path": "/mobil"
+    },
+    {
+     "op": "remove",
+     "path": "/naeringskode1"
+    },
+    {
+     "op": "remove",
+     "path": "/navn"
+    },
+    {
+     "op": "remove",
+     "path": "/organisasjonsform"
+    },
+    {
+     "op": "remove",
+     "path": "/paategninger"
+    },
+    {
+     "op": "remove",
+     "path": "/registreringsdatoEnhetsregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registreringsdatoForetaksregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIForetaksregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIFrivillighetsregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIMvaregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIPartiregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIStiftelsesregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/respons_klasse"
+    },
+    {
+     "op": "remove",
+     "path": "/underAvvikling"
+    },
+    {
+     "op": "remove",
+     "path": "/underTvangsavviklingEllerTvangsopplosning"
+    },
+    {
+     "op": "add",
+     "path": "/slettedato",
+     "value": "2026-10-12"
+    }
+   ],
+   "endringstype": "Endring",
+   "oppdateringsid": 25316650,
+   "organisasjonsnummer": "922052778"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/927484102"
+    }
+   },
+   "dato": "2026-10-12T08:10:12.245Z",
+   "endringer": [
+    {
+     "op": "remove",
+     "path": "/aktivitet"
+    },
+    {
+     "op": "remove",
+     "path": "/epostadresse"
+    },
+    {
+     "op": "remove",
+     "path": "/erIKonsern"
+    },
+    {
+     "op": "remove",
+     "path": "/forretningsadresse"
+    },
+    {
+     "op": "remove",
+     "path": "/harRegistrertAntallAnsatte"
+    },
+    {
+     "op": "remove",
+     "path": "/historiskeNavn"
+    },
+    {
+     "op": "remove",
+     "path": "/institusjonellSektorkode"
+    },
+    {
+     "op": "remove",
+     "path": "/konkurs"
+    },
+    {
+     "op": "remove",
+     "path": "/maalform"
+    },
+    {
+     "op": "remove",
+     "path": "/mobil"
+    },
+    {
+     "op": "remove",
+     "path": "/naeringskode1"
+    },
+    {
+     "op": "remove",
+     "path": "/navn"
+    },
+    {
+     "op": "remove",
+     "path": "/organisasjonsform"
+    },
+    {
+     "op": "remove",
+     "path": "/paategninger"
+    },
+    {
+     "op": "remove",
+     "path": "/registreringsdatoEnhetsregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registreringsdatoForetaksregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIForetaksregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIFrivillighetsregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIMvaregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIPartiregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIStiftelsesregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/respons_klasse"
+    },
+    {
+     "op": "remove",
+     "path": "/underAvvikling"
+    },
+    {
+     "op": "remove",
+     "path": "/underTvangsavviklingEllerTvangsopplosning"
+    },
+    {
+     "op": "add",
+     "path": "/slettedato",
+     "value": "2026-10-12"
+    }
+   ],
+   "endringstype": "Endring",
+   "oppdateringsid": 25316667,
+   "organisasjonsnummer": "927484102"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/931524577"
+    }
+   },
+   "dato": "2026-10-12T08:25:12.266Z",
+   "endringer": [
+    {
+     "op": "remove",
+     "path": "/aktivitet"
+    },
+    {
+     "op": "remove",
+     "path": "/erIKonsern"
+    },
+    {
+     "op": "remove",
+     "path": "/forretningsadresse"
+    },
+    {
+     "op": "remove",
+     "path": "/harRegistrertAntallAnsatte"
+    },
+    {
+     "op": "remove",
+     "path": "/historiskeNavn"
+    },
+    {
+     "op": "remove",
+     "path": "/institusjonellSektorkode"
+    },
+    {
+     "op": "remove",
+     "path": "/konkurs"
+    },
+    {
+     "op": "remove",
+     "path": "/maalform"
+    },
+    {
+     "op": "remove",
+     "path": "/naeringskode1"
+    },
+    {
+     "op": "remove",
+     "path": "/navn"
+    },
+    {
+     "op": "remove",
+     "path": "/organisasjonsform"
+    },
+    {
+     "op": "remove",
+     "path": "/paategninger"
+    },
+    {
+     "op": "remove",
+     "path": "/registreringsdatoEnhetsregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registreringsdatoForetaksregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIForetaksregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIFrivillighetsregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIMvaregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIPartiregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIStiftelsesregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/respons_klasse"
+    },
+    {
+     "op": "remove",
+     "path": "/underAvvikling"
+    },
+    {
+     "op": "remove",
+     "path": "/underTvangsavviklingEllerTvangsopplosning"
+    },
+    {
+     "op": "add",
+     "path": "/slettedato",
+     "value": "2026-10-12"
+    }
+   ],
+   "endringstype": "Endring",
+   "oppdateringsid": 25316718,
+   "organisasjonsnummer": "931524577"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/986312145"
+    }
+   },
+   "dato": "2026-10-12T08:30:12.169Z",
+   "endringer": [
+    {
+     "op": "replace",
+     "path": "/kapital/belop",
+     "value": 4030000.0
+    },
+    {
+     "op": "replace",
+     "path": "/kapital/innfortDato",
+     "value": "2026-10-12"
+    },
+    {
+     "op": "replace",
+     "path": "/vedtektsdato",
+     "value": "2026-06-17"
+    }
+   ],
+   "endringstype": "Endring",
+   "oppdateringsid": 25316734,
+   "organisasjonsnummer": "986312145"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/938070350"
+    }
+   },
+   "dato": "2026-10-12T08:45:12.172Z",
+   "endringer": [
+    {
+     "op": "replace",
+     "path": "/kapital/belop",
+     "value": 60000.0
+    },
+    {
+     "op": "replace",
+     "path": "/kapital/innfortDato",
+     "value": "2026-10-12"
+    },
+    {
+     "op": "replace",
+     "path": "/vedtektsdato",
+     "value": "2026-09-02"
+    }
+   ],
+   "endringstype": "Endring",
+   "oppdateringsid": 25316800,
+   "organisasjonsnummer": "938070350"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/927086824"
+    }
+   },
+   "dato": "2026-10-12T12:50:12.162Z",
+   "endringer": [
+    {
+     "op": "remove",
+     "path": "/aktivitet"
+    },
+    {
+     "op": "remove",
+     "path": "/erIKonsern"
+    },
+    {
+     "op": "remove",
+     "path": "/forretningsadresse"
+    },
+    {
+     "op": "remove",
+     "path": "/harRegistrertAntallAnsatte"
+    },
+    {
+     "op": "remove",
+     "path": "/historiskeNavn"
+    },
+    {
+     "op": "remove",
+     "path": "/institusjonellSektorkode"
+    },
+    {
+     "op": "remove",
+     "path": "/konkurs"
+    },
+    {
+     "op": "remove",
+     "path": "/maalform"
+    },
+    {
+     "op": "remove",
+     "path": "/naeringskode1"
+    },
+    {
+     "op": "remove",
+     "path": "/navn"
+    },
+    {
+     "op": "remove",
+     "path": "/organisasjonsform"
+    },
+    {
+     "op": "remove",
+     "path": "/paategninger"
+    },
+    {
+     "op": "remove",
+     "path": "/registreringsdatoEnhetsregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registreringsdatoForetaksregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIForetaksregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIFrivillighetsregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIMvaregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIPartiregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIStiftelsesregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/respons_klasse"
+    },
+    {
+     "op": "remove",
+     "path": "/underAvvikling"
+    },
+    {
+     "op": "remove",
+     "path": "/underTvangsavviklingEllerTvangsopplosning"
+    },
+    {
+     "op": "add",
+     "path": "/slettedato",
+     "value": "2026-10-12"
+    }
+   ],
+   "endringstype": "Endring",
+   "oppdateringsid": 25317448,
+   "organisasjonsnummer": "927086824"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/924917474"
+    }
+   },
+   "dato": "2026-10-12T12:55:12.140Z",
+   "endringer": [
+    {
+     "op": "remove",
+     "path": "/aktivitet"
+    },
+    {
+     "op": "remove",
+     "path": "/erIKonsern"
+    },
+    {
+     "op": "remove",
+     "path": "/forretningsadresse"
+    },
+    {
+     "op": "remove",
+     "path": "/harRegistrertAntallAnsatte"
+    },
+    {
+     "op": "remove",
+     "path": "/historiskeNavn"
+    },
+    {
+     "op": "remove",
+     "path": "/institusjonellSektorkode"
+    },
+    {
+     "op": "remove",
+     "path": "/konkurs"
+    },
+    {
+     "op": "remove",
+     "path": "/maalform"
+    },
+    {
+     "op": "remove",
+     "path": "/naeringskode1"
+    },
+    {
+     "op": "remove",
+     "path": "/navn"
+    },
+    {
+     "op": "remove",
+     "path": "/organisasjonsform"
+    },
+    {
+     "op": "remove",
+     "path": "/paategninger"
+    },
+    {
+     "op": "remove",
+     "path": "/registreringsdatoEnhetsregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registreringsdatoForetaksregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registreringsdatoMerverdiavgiftsregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registreringsdatoMerverdiavgiftsregisteretEnhetsregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIForetaksregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIFrivillighetsregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIMvaregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIPartiregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIStiftelsesregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/respons_klasse"
+    },
+    {
+     "op": "remove",
+     "path": "/underAvvikling"
+    },
+    {
+     "op": "remove",
+     "path": "/underTvangsavviklingEllerTvangsopplosning"
+    },
+    {
+     "op": "add",
+     "path": "/slettedato",
+     "value": "2026-10-12"
+    }
+   ],
+   "endringstype": "Endring",
+   "oppdateringsid": 25317466,
+   "organisasjonsnummer": "924917474"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/932126397"
+    }
+   },
+   "dato": "2026-10-12T14:00:12.181Z",
+   "endringer": [
+    {
+     "op": "remove",
+     "path": "/aktivitet"
+    },
+    {
+     "op": "remove",
+     "path": "/erIKonsern"
+    },
+    {
+     "op": "remove",
+     "path": "/forretningsadresse"
+    },
+    {
+     "op": "remove",
+     "path": "/harRegistrertAntallAnsatte"
+    },
+    {
+     "op": "remove",
+     "path": "/historiskeNavn"
+    },
+    {
+     "op": "remove",
+     "path": "/institusjonellSektorkode"
+    },
+    {
+     "op": "remove",
+     "path": "/konkurs"
+    },
+    {
+     "op": "remove",
+     "path": "/maalform"
+    },
+    {
+     "op": "remove",
+     "path": "/naeringskode1"
+    },
+    {
+     "op": "remove",
+     "path": "/navn"
+    },
+    {
+     "op": "remove",
+     "path": "/organisasjonsform"
+    },
+    {
+     "op": "remove",
+     "path": "/paategninger"
+    },
+    {
+     "op": "remove",
+     "path": "/registreringsdatoEnhetsregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registreringsdatoForetaksregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registreringsdatoMerverdiavgiftsregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registreringsdatoMerverdiavgiftsregisteretEnhetsregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIForetaksregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIFrivillighetsregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIMvaregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIPartiregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIStiftelsesregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/respons_klasse"
+    },
+    {
+     "op": "remove",
+     "path": "/underAvvikling"
+    },
+    {
+     "op": "remove",
+     "path": "/underTvangsavviklingEllerTvangsopplosning"
+    },
+    {
+     "op": "add",
+     "path": "/slettedato",
+     "value": "2026-10-12"
+    }
+   ],
+   "endringstype": "Endring",
+   "oppdateringsid": 25317682,
+   "organisasjonsnummer": "932126397"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923822348"
+    }
+   },
+   "dato": "2026-10-12T14:50:12.088Z",
+   "endringer": [
+    {
+     "op": "remove",
+     "path": "/aktivitet"
+    },
+    {
+     "op": "remove",
+     "path": "/erIKonsern"
+    },
+    {
+     "op": "remove",
+     "path": "/forretningsadresse"
+    },
+    {
+     "op": "remove",
+     "path": "/harRegistrertAntallAnsatte"
+    },
+    {
+     "op": "remove",
+     "path": "/historiskeNavn"
+    },
+    {
+     "op": "remove",
+     "path": "/institusjonellSektorkode"
+    },
+    {
+     "op": "remove",
+     "path": "/konkurs"
+    },
+    {
+     "op": "remove",
+     "path": "/maalform"
+    },
+    {
+     "op": "remove",
+     "path": "/naeringskode1"
+    },
+    {
+     "op": "remove",
+     "path": "/navn"
+    },
+    {
+     "op": "remove",
+     "path": "/organisasjonsform"
+    },
+    {
+     "op": "remove",
+     "path": "/paategninger"
+    },
+    {
+     "op": "remove",
+     "path": "/postadresse"
+    },
+    {
+     "op": "remove",
+     "path": "/registreringsdatoEnhetsregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registreringsdatoForetaksregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIForetaksregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIFrivillighetsregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIMvaregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIPartiregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/registrertIStiftelsesregisteret"
+    },
+    {
+     "op": "remove",
+     "path": "/respons_klasse"
+    },
+    {
+     "op": "remove",
+     "path": "/underAvvikling"
+    },
+    {
+     "op": "remove",
+     "path": "/underTvangsavviklingEllerTvangsopplosning"
+    },
+    {
+     "op": "add",
+     "path": "/slettedato",
+     "value": "2026-10-12"
+    }
+   ],
+   "endringstype": "Endring",
+   "oppdateringsid": 25317729,
+   "organisasjonsnummer": "923822348"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/831871822"
+    }
+   },
+   "dato": "2026-10-12T22:16:18.171Z",
+   "endringer": [
+    {
+     "op": "remove",
+     "path": "/tvangsopplostPgaManglendeRegnskapDato"
+    },
+    {
+     "op": "replace",
+     "path": "/underTvangsavviklingEllerTvangsopplosning",
+     "value": false
+    }
+   ],
+   "endringstype": "Endring",
+   "oppdateringsid": 25318378,
+   "organisasjonsnummer": "831871822"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/925533157"
+    }
+   },
+   "dato": "2026-10-12T22:16:18.171Z",
+   "endringer": [
+    {
+     "op": "remove",
+     "path": "/tvangsopplostPgaManglendeRegnskapDato"
+    },
+    {
+     "op": "replace",
+     "path": "/underTvangsavviklingEllerTvangsopplosning",
+     "value": false
+    }
+   ],
+   "endringstype": "Endring",
+   "oppdateringsid": 25318381,
+   "organisasjonsnummer": "925533157"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/994744305"
+    }
+   },
+   "dato": "2026-10-12T22:16:18.171Z",
+   "endringer": [
+    {
+     "op": "replace",
+     "path": "/konkurs",
+     "value": true
+    },
+    {
+     "op": "add",
+     "path": "/konkursdato",
+     "value": "2026-10-12"
+    }
+   ],
+   "endringstype": "Endring",
+   "oppdateringsid": 25318384,
+   "organisasjonsnummer": "994744305"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/920878083"
+    }
+   },
+   "dato": "2026-10-12T22:16:18.172Z",
+   "endringer": [
+    {
+     "op": "replace",
+     "path": "/konkurs",
+     "value": true
+    },
+    {
+     "op": "add",
+     "path": "/konkursdato",
+     "value": "2026-10-12"
+    }
+   ],
+   "endringstype": "Endring",
+   "oppdateringsid": 25318390,
+   "organisasjonsnummer": "920878083"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/926085964"
+    }
+   },
+   "dato": "2026-10-12T22:16:18.172Z",
+   "endringer": [
+    {
+     "op": "replace",
+     "path": "/konkurs",
+     "value": true
+    },
+    {
+     "op": "add",
+     "path": "/konkursdato",
+     "value": "2026-10-12"
+    }
+   ],
+   "endringstype": "Endring",
+   "oppdateringsid": 25318391,
+   "organisasjonsnummer": "926085964"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/938657971"
+    }
+   },
+   "dato": "2026-10-12T04:05:11.715Z",
+   "endringstype": "Ny",
+   "oppdateringsid": 25316065,
+   "organisasjonsnummer": "938657971"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/837174112"
+    }
+   },
+   "dato": "2026-10-12T04:05:11.715Z",
+   "endringstype": "Sletting",
+   "oppdateringsid": 25316068,
+   "organisasjonsnummer": "837174112"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/938657998"
+    }
+   },
+   "dato": "2026-10-12T04:05:11.715Z",
+   "endringstype": "Ny",
+   "oppdateringsid": 25316069,
+   "organisasjonsnummer": "938657998"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/934516451"
+    }
+   },
+   "dato": "2026-10-12T22:16:18.171Z",
+   "endringstype": "Fjernet",
+   "oppdateringsid": 25318372,
+   "organisasjonsnummer": "934516451"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/932274736"
+    }
+   },
+   "dato": "2026-10-12T22:16:18.171Z",
+   "endringstype": "Fjernet",
+   "oppdateringsid": 25318373,
+   "organisasjonsnummer": "932274736"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/837174112"
+    }
+   },
+   "dato": "2026-10-12T04:05:11.715Z",
+   "endringstype": "Sletting",
+   "oppdateringsid": 25316068,
+   "organisasjonsnummer": "837174112"
+  },
+  {
+   "_links": {
+    "enhet": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/enheter/971422556"
+    }
+   },
+   "dato": "2026-10-12T04:05:13.703Z",
+   "endringstype": "Sletting",
+   "oppdateringsid": 25316105,
+   "organisasjonsnummer": "971422556"
+  }
+ ]
+}

@@ -1,0 +1,99 @@
+{
+ "_request": {
+  "url": "https://data.brreg.no/enhetsregisteret/api/enheter/984549520",
+  "status": 200,
+  "retrieved_at": "2026-10-13T11:42:33Z",
+  "headers": {
+   "vary": "Origin",
+   "x-content-type-options": "nosniff",
+   "x-xss-protection": "0",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "pragma": "no-cache",
+   "expires": "0",
+   "strict-transport-security": "max-age=157680000; includeSubDomains",
+   "x-frame-options": "DENY",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:38:28 GMT",
+   "connection": "close"
+  }
+ },
+ "body": {
+  "_links": {
+   "self": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/enheter/984549520"
+   }
+  },
+  "aktivitet": [
+   "Ta vare på Abildsø Gård som nasjonal kulturarv (fredet av",
+   "Riksantikvaren i 1997), og benytte den til samfunnsnyttige formål."
+  ],
+  "antallAnsatte": 20,
+  "erIKonsern": false,
+  "forretningsadresse": {
+   "adresse": [
+    "Enebakkveien 210A"
+   ],
+   "kommune": "OSLO",
+   "kommunenummer": "0301",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "0680",
+   "poststed": "OSLO"
+  },
+  "harRegistrertAntallAnsatte": true,
+  "historiskeNavn": [
+   {
+    "fraDato": "2002-06-29 14:54:19",
+    "navn": "ABILDSØ COOPERATION",
+    "tilDato": "2011-10-11 20:51:38"
+   }
+  ],
+  "hjemmeside": "www.abildso.org",
+  "institusjonellSektorkode": {
+   "beskrivelse": "Ideelle organisasjoner",
+   "kode": "7000"
+  },
+  "kapital": {
+   "belop": 200000.0,
+   "fulltInnbetalt": true,
+   "innbetalt": 200000.0,
+   "innfortDato": "2026-02-17",
+   "type": "Grunnkapital",
+   "valuta": "NOK"
+  },
+  "konkurs": false,
+  "maalform": "Bokmål",
+  "naeringskode1": {
+   "beskrivelse": "Aktiviteter i andre medlemsorganisasjoner ellers",
+   "kode": "94.992"
+  },
+  "navn": "ABILDSØ GÅRD STI",
+  "organisasjonsform": {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/STI"
+    }
+   },
+   "beskrivelse": "Stiftelse",
+   "kode": "STI"
+  },
+  "organisasjonsnummer": "984549520",
+  "paategninger": [],
+  "registreringsdatoAntallAnsatteEnhetsregisteret": "2026-09-14",
+  "registreringsdatoAntallAnsatteNAVAaregisteret": "2026-09-10",
+  "registreringsdatoEnhetsregisteret": "2002-06-29",
+  "registreringsdatoFrivillighetsregisteret": "2014-10-07",
+  "registrertIForetaksregisteret": false,
+  "registrertIFrivillighetsregisteret": true,
+  "registrertIMvaregisteret": false,
+  "registrertIPartiregisteret": false,
+  "registrertIStiftelsesregisteret": true,
+  "respons_klasse": "Enhet",
+  "sisteInnsendteAarsregnskap": "2024",
+  "stiftelsesdato": "2002-03-18",
+  "telefon": "23 16 88 80",
+  "underAvvikling": false,
+  "underTvangsavviklingEllerTvangsopplosning": false
+ }
+}

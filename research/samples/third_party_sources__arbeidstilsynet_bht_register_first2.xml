@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Register xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Metadata>
+    <RegisterXSD>RegisterXML6.xsd</RegisterXSD>
+    <DatoTidGenerert>2026-10-12T01:15:00.5283379+02:00</DatoTidGenerert>
+  </Metadata>
+  <Registernavn>BHT</Registernavn>
+  <Filtrering Avgrensning="VedGodkjenning" />
+  <Virksomhet>
+    <Hovedenhet>
+      <Organisasjonsnummer>944357866</Organisasjonsnummer>
+      <Organisasjonsform>Aksjeselskap</Organisasjonsform>
+      <Navn>BEDRIFTSHELSEN AS</Navn>
+      <Næringskoder>
+        <Kode verdi="86.992">Forebyggende helsearbeid</Kode>
+        <Kode verdi="70.200">Bedriftsrådgivning og annen administrativ rådgivning</Kode>
+      </Næringskoder>
+      <Godkjenningsstatus>Godkjent</Godkjenningsstatus>
+      <Kontaktinformasjon>
+        <Telefon>33 13 75 00</Telefon>
+        <Mobil />
+        <Webadresse />
+      </Kontaktinformasjon>
+      <Stedsinformasjon>
+        <Postadresse>
+          <Adresselinje1 />
+          <Adresselinje2 />
+          <Postnummer />
+          <Poststed />
+          <Landkode />
+          <Land />
+        </Postadresse>
+        <Forretningsadresse>
+          <Adresselinje1>Nedre Fritzøegate 1-3</Adresselinje1>
+          <Adresselinje2 />
+          <Postnummer>3264</Postnummer>
+          <Poststed>LARVIK</Poststed>
+          <Kommunenummer>3909</Kommunenummer>
+          <Kommunenavn>LARVIK</Kommunenavn>
+          <Fylkesnummer>39</Fylkesnummer>
+          <Fylkesnavn>Vestfold</Fylkesnavn>
+          <Landkode>NO</Landkode>
+          <Land>Norge</Land>
+        </Forretningsadresse>
+      </Stedsinformasjon>
+    </Hovedenhet>
+    <Underenheter>
+      <Avdeling Avgrensning="VedGodkjenning">
+        <Organisasjonsnummer>916708556</Organisasjonsnummer>
+        <Navn>BEDRIFTSHELSEN HERØYA</Navn>
+        <Næringskoder>
+          <Kode verdi="86.992">Forebyggende helsearbeid</Kode>
+        </Næringskoder>
+        <Stedsinformasjon>
+          <Postadresse>
+            <Adresselinje1>Nedre Fritzøegate 1</Adresselinje1>
+            <Adresselinje2 />
+            <Postnummer>3264</Postnummer>
+            <Poststed>LARVIK</Poststed>
+            <Landkode>NO</Landkode>
+            <Land>Norge</Land>
+          </Postadresse>
+          <Forretningsadresse>
+            <Adresselinje1>Hydrovegen 91</Adresselinje1>
+            <Adresselinje2 />
+            <Postnummer>3936</Postnummer>
+            <Poststed>PORSGRUNN</Poststed>
+            <Kommunenummer>4001</Kommunenummer>
+            <Kommunenavn>PORSGRUNN</Kommunenavn>
+            <Fylkesnummer>40</Fylkesnummer>
+            <Fylkesnavn>Telemark</Fylkesnavn>
+            <Landkode>NO</Landkode>
+            <Land>Norge</Land>
+          </Forretningsadresse>
+        </Stedsinformasjon>
+      </Avdeling>
+      <Avdeling Avgrensning="VedGodkjenning">
+        <Organisasjonsnummer>972157279</Organisasjonsnummer>
+        <Navn>BEDRIFTSHELSEN LARVIK (10)</Navn>
+        <Næringskoder>
+          <Kode verdi="86.992">Forebyggende helsearbeid</Kode>
+        </Næringskoder>
+        <Stedsinformasjon>
+          <Postadresse>
+            <Adresselinje1 />
+            <Adresselinje2 />
+            <Postnummer />
+            <Poststed />
+            <Landkode />
+            <Land />
+          </Postadresse>
+          <Forretningsadresse>
+            <Adresselinje1>Nedre Fritzøegate 1-3</Adresselinje1>
+            <Adresselinje2 />
+            <Postnummer>3264</Postnummer>
+            <Poststed>LARVIK</Poststed>
+            <Kommunenummer>3909</Kommunenummer>
+            <Kommunenavn>LARVIK</Kommunenavn>
+            <Fylkesnummer>39</Fylkesnummer>
+            <Fylkesnavn>Vestfold</Fylkesnavn>
+            <Landkode>NO</Landkode>
+            <Land>Norge</Land>
+          </Forretningsadresse>
+        </Stedsinformasjon>
+      </Avdeling>
+      <Avdeling Avgrensning="VedGodkjenning">
+        <Organisasjonsnummer>973450271</Organisasjonsnummer>
+        <Navn>BEDRIFTSHELSEN SANDEFJORD</Navn>
+        <Næringskoder>
+          <Kode verdi="86.992">Forebyggende helsearbeid</Kode>
+        </Næringskoder>
+        <Stedsinformasjon>
+          <Postadresse>
+            <Adresselinje1>Nedre Fritzøegate 1-3</Adresselinje1>
+            <Adresselinje2 />
+            <Postnummer>3264</Postnummer>
+            <Poststed>LARVIK</Poststed>
+            <Landkode>NO</Landkode>
+            <Land>Norge</Land>
+          </Postadresse>
+          <Forretningsadresse>
+            <Adresselinje1>Nedre Movei 4</Adresselinje1>
+            <Adresselinje2 />
+            <Postnummer>3215</Postnummer>
+            <Poststed>SANDEFJORD</Poststed>
+            <Kommunenummer>3907</Kommunenummer>
+            <Kommunenavn>SANDEFJORD</Kommunenavn>
+            <Fylkesnummer>39</Fylkesnummer>
+            <Fylkesnavn>Vestfold</Fylkesnavn>
+            <Landkode>NO</Landkode>
+            <Land>Norge</Land>
+          </Forretningsadresse>
+        </Stedsinformasjon>
+      </Avdeling>
+      <Avdeling Avgrensning="VedGodkjenning">
+        <Organisasjonsnummer>973463217</Organisasjonsnummer>
+        <Navn>BEDRIFTSHELSEN BØ</Navn>
+        <Næringskoder>
+          <Kode verdi="86.992">Forebyggende helsearbeid</Kode>
+        </Næringskoder>
+        <Stedsinformasjon>
+          <Postadresse>
+            <Adresselinje1>Nedre Fritzøegate 1-3</Adresselinje1>
+            <Adresselinje2 />
+            <Postnummer>3264</Postnummer>
+            <Poststed>LARVIK</Poststed>
+            <Landkode>NO</Landkode>
+            <Land>Norge</Land>
+          </Postadresse>
+          <Forretningsadresse>
+            <Adresselinje1>Valenvegen 2</Adresselinje1>
+            <Adresselinje2 />
+            <Postnummer>3802</Postnummer>
+            <Poststed>BØ I TELEMARK</Poststed>
+            <Kommunenummer>4020</Kommunenummer>
+            <Kommunenavn>MIDT-TELEMARK</Kommunenavn>
+            <Fylkesnummer>40</Fylkesnummer>
+            <Fylkesnavn>Telemark</Fylkesnavn>
+            <Landkode>NO</Landkode>
+            <Land>Norge</Land>
+          </Forretningsadresse>
+        </Stedsinformasjon>
+      </Avdeling>
+      <Avdeling Avgrensning="VedGodkjenning">
+        <Organisasjonsnummer>986529225</Organisasjonsnummer>
+        <Navn>BEDRIFTSHELSEN BAMBLE (30)</Navn>
+        <Næringskoder>
+          <Kode verdi="86.992">Forebyggende helsearbeid</Kode>
+        </Næringskoder>
+        <Stedsinformasjon>
+          <Postadresse>
+            <Adresselinje1 />
+            <Adresselinje2 />
+            <Postnummer />
+            <Poststed />
+            <Landkode />
+            <Land />
+          </Postadresse>
+          <Forretningsadresse>
+            <Adresselinje1>Rafnes</Adresselinje1>
+            <Adresselinje2 />
+            <Postnummer>3966</Postnummer>
+            <Poststed>STATHELLE</Poststed>
+            <Kommunenummer>4012</Kommunenummer>
+            <Kommunenavn>BAMBLE</Kommunenavn>
+            <Fylkesnummer>40</Fylkesnummer>
+            <Fylkesnavn>Telemark</Fylkesnavn>
+            <Landkode>NO</Landkode>
+            <Land>Norge</Land>
+          </Forretningsadresse>
+        </Stedsinformasjon>
+      </Avdeling>
+      <Avdeling Avgrensning="VedGodkjenning">
+        <Organisasjonsnummer>986529292</Organisasjonsnummer>
+        <Navn>BEDRIFTSHELSEN AS TØNSBERG</Navn>
+        <Næringskoder>
+          <Kode verdi="86.992">Forebyggende helsearbeid</Kode>
+        </Næringskoder>
+        <Stedsinformasjon>
+          <Postadresse>
+            <Adresselinje1>Nedre Fritzøegate 1-3</Adresselinje1>
+            <Adresselinje2 />
+            <Postnummer>3264</Postnummer>
+            <Poststed>LARVIK</Poststed>
+            <Landkode>NO</Landkode>
+            <Land>Norge</Land>
+          </Postadresse>
+          <Forretningsadresse>
+            <Adresselinje1>Åshaugveien 68</Adresselinje1>
+            <Adresselinje2 />
+            <Postnummer>3170</Postnummer>
+            <Poststed>SEM</Poststed>
+            <Kommunenummer>3905</Kommunenummer>
+            <Kommunenavn>TØNSBERG</Kommunenavn>
+            <Fylkesnummer>39</Fylkesnummer>
+            <Fylkesnavn>Vestfold</Fylkesnavn>
+            <Landkode>NO</Landkode>
+            <Land>Norge</Land>
+          </Forretningsadresse>
+        </Stedsinformasjon>
+      </Avdeling>
+      <Avdeling Avgrensning="Nei">
+        <Organisasjonsnummer>987829060</Organisasjonsnummer>
+        <Navn>BEDRIFTSNAVIGATOR</Navn>
+        <Næringskoder>
+          <Kode verdi="70.200">Bedriftsrådgivning og annen administrativ rådgivning</Kode>
+        </Næringskoder>
+        <Stedsinformasjon>
+          <Postadresse>
+            <Adresselinje1 />
+            <Adresselinje2 />
+            <Postnummer />
+            <Poststed />
+            <Landkode />
+            <Land />
+          </Postadresse>
+          <Forretningsadresse>
+            <Adresselinje1>Nedre Fritzøegate 1 - 3</Adresselinje1>
+            <Adresselinje2 />
+            <Postnummer>3264</Postnummer>
+            <Poststed>LARVIK</Poststed>
+            <Kommunenummer>3909</Kommunenummer>
+            <Kommunenavn>LARVIK</Kommunenavn>
+            <Fylkesnummer>39</Fylkesnummer>
+            <Fylkesnavn>Vestfold</Fylkesnavn>
+            <Landkode>NO</Landkode>
+            <Land>Norge</Land>
+          </Forretningsadresse>
+        </Stedsinformasjon>
+      </Avdeling>
+    </Underenheter>
+  </Virksomhet>
+  <Virksomhet>
+    <Hovedenhet>
+      <Organisasjonsnummer>971475560</Organisasjonsnummer>
+      <Organisasjonsform>Samvirkeforetak</Organisasjonsform>
+      <Navn>BHT-GRUPPEN SA</Navn>
+      <Næringskoder>
+        <Kode verdi="86.992">Forebyggende helsearbeid</Kode>
+      </Næringskoder>
+      <Godkjenningsstatus>Godkjent</Godkjenningsstatus>
+      <Kontaktinformasjon>
+        <Telefon>23 15 88 50</Telefon>
+        <Mobil>926 39 759</Mobil>
+        <Webadresse>www.bht-gruppen.no</Webadresse>
+      </Kontaktinformasjon>
+      <Stedsinformasjon>
+        <Postadresse>
+          <Adresselinje1 />
+          <Adresselinje2 />
+          <Postnummer />
+          <Poststed />
+          <Landkode />
+          <Land />
+        </Postadresse>
+        <Forretningsadresse>
+          <Adresselinje1>Storgata 32</Adresselinje1>
+          <Adresselinje2 />
+          <Postnummer>0184</Postnummer>
+          <Poststed>OSLO</Poststed>
+          <Kommunenummer>0301</Kommunenummer>
+          <Kommunenavn>OSLO</Kommunenavn>
+          <Fylkesnummer>3</Fylkesnummer>
+          <Fylkesnavn>Oslo</Fylkesnavn>
+          <Landkode>NO</Landkode>
+          <Land>Norge</Land>
+        </Forretningsadresse>
+      </Stedsinformasjon>
+    </Hovedenhet>
+    <Underenheter>
+      <Avdeling Avgrensning="VedGodkjenning">
+        <Organisasjonsnummer>973450077</Organisasjonsnummer>
+        <Navn>BHT-GRUPPEN SA AVD OSLO</Navn>
+        <Næringskoder>
+          <Kode verdi="86.992">Forebyggende helsearbeid</Kode>
+        </Næringskoder>
+        <Stedsinformasjon>
+          <Postadresse>
+            <Adresselinje1 />
+            <Adresselinje2 />
+            <Postnummer />
+            <Poststed />
+            <Landkode />
+            <Land />
+          </Postadresse>
+          <Forretningsadresse>
+            <Adresselinje1>Storgata 32</Adresselinje1>
+            <Adresselinje2 />
+            <Postnummer>0184</Postnummer>
+            <Poststed>OSLO</Poststed>
+            <Kommunenummer>0301</Kommunenummer>
+            <Kommunenavn>OSLO</Kommunenavn>
+            <Fylkesnummer>3</Fylkesnummer>
+            <Fylkesnavn>Oslo</Fylkesnavn>
+            <Landkode>NO</Landkode>
+            <Land>Norge</Land>
+          </Forretningsadresse>
+        </Stedsinformasjon>
+      </Avdeling>
+      <Avdeling Avgrensning="VedGodkjenning">
+        <Organisasjonsnummer>973897233</Organisasjonsnummer>
+        <Navn>BHT-GRUPPEN SA AVD TRONDHEIM</Navn>
+        <Næringskoder>
+          <Kode verdi="86.992">Forebyggende helsearbeid</Kode>
+        </Næringskoder>
+        <Stedsinformasjon>
+          <Postadresse>
+            <Adresselinje1 />
+            <Adresselinje2 />
+            <Postnummer />
+            <Poststed />
+            <Landkode />
+            <Land />
+          </Postadresse>
+          <Forretningsadresse>
+            <Adresselinje1>Sluppenvegen 12B</Adresselinje1>
+            <Adresselinje2 />
+            <Postnummer>7037</Postnummer>
+            <Poststed>TRONDHEIM</Poststed>
+            <Kommunenummer>5001</Kommunenummer>
+            <Kommunenavn>TRONDHEIM</Kommunenavn>
+            <Fylkesnummer>50</Fylkesnummer>
+            <Fylkesnavn>Trøndelag</Fylkesnavn>
+            <Landkode>NO</Landkode>
+            <Land>Norge</Land>
+          </Forretningsadresse>
+        </Stedsinformasjon>
+      </Avdeling>
+    </Underenheter>
+  </Virksomhet>
+</Register>

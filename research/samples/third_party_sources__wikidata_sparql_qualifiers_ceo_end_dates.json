@@ -1,0 +1,465 @@
+{
+  "head" : {
+    "vars" : [ "orgnr", "item", "prop", "value", "valueLabel", "start", "end", "rank" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "914778271"
+      },
+      "prop" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/P169"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q511031"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q62114985"
+      },
+      "valueLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Hilde Merete Aasheim"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "start" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2018-01-01T00:00:00Z"
+      },
+      "end" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2023-05-13T00:00:00Z"
+      }
+    }, {
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "914778271"
+      },
+      "prop" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/P169"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q511031"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q124844057"
+      },
+      "valueLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Eivind Kallevik"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "start" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2023-05-13T00:00:00Z"
+      }
+    }, {
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "914778271"
+      },
+      "prop" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/P1128"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q511031"
+      },
+      "value" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "type" : "literal",
+        "value" : "31000"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "31000"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "start" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2022-01-01T00:00:00Z"
+      }
+    }, {
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "914778271"
+      },
+      "prop" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/P2003"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q511031"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "norskhydroasa"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "norskhydroasa"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      }
+    }, {
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "prop" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/P169"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28047991"
+      },
+      "valueLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Anders Opedal"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "start" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2020-11-02T00:00:00Z"
+      }
+    }, {
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "prop" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/P1128"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "value" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "type" : "literal",
+        "value" : "20000"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "20000"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "start" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2019-10-01T00:00:00Z"
+      }
+    }, {
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "prop" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/P2003"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "equinor"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "equinor"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      }
+    }, {
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "923609016"
+      },
+      "prop" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/P2139"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1776022"
+      },
+      "value" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "type" : "literal",
+        "value" : "103770000000"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "103770000000"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "start" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2024-01-01T00:00:00Z"
+      }
+    }, {
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "982463718"
+      },
+      "prop" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/P169"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q845632"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7513372"
+      },
+      "valueLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Sigve Brekke"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "start" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2015-08-17T00:00:00Z"
+      },
+      "end" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2024-11-30T00:00:00Z"
+      }
+    }, {
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "982463718"
+      },
+      "prop" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/P169"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q845632"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q17058205"
+      },
+      "valueLabel" : {
+        "xml:lang" : "nb",
+        "type" : "literal",
+        "value" : "Benedicte Schilbred Fasmer"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "start" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2024-12-01T00:00:00Z"
+      }
+    }, {
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "982463718"
+      },
+      "prop" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/P1128"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q845632"
+      },
+      "value" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "type" : "literal",
+        "value" : "33000"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "33000"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "start" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2012-01-01T00:00:00Z"
+      }
+    }, {
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "982463718"
+      },
+      "prop" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/P1128"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q845632"
+      },
+      "value" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "type" : "literal",
+        "value" : "20000"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "20000"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#PreferredRank"
+      },
+      "start" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2020-01-01T00:00:00Z"
+      }
+    }, {
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "982463718"
+      },
+      "prop" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/P2003"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q845632"
+      },
+      "value" : {
+        "type" : "literal",
+        "value" : "telenorsverige"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "telenorsverige"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      }
+    }, {
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "982463718"
+      },
+      "prop" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/P2139"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q845632"
+      },
+      "value" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "type" : "literal",
+        "value" : "90000000000"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "90000000000"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      },
+      "start" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2006-01-01T00:00:00Z"
+      }
+    }, {
+      "orgnr" : {
+        "type" : "literal",
+        "value" : "982463718"
+      },
+      "prop" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/P2139"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q845632"
+      },
+      "value" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "type" : "literal",
+        "value" : "113700000000"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "113700000000"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#PreferredRank"
+      },
+      "start" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2019-01-01T00:00:00Z"
+      }
+    } ]
+  }
+}

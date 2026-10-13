@@ -1,0 +1,167 @@
+{
+ "_request": {
+  "url": "https://data.brreg.no/enhetsregisteret/api/roller/enheter/987009713/juridiskeroller?size=5",
+  "status": 200,
+  "retrieved_at": "2026-10-13T11:49:18Z",
+  "headers": {
+   "vary": "Origin",
+   "x-content-type-options": "nosniff",
+   "x-xss-protection": "0",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "pragma": "no-cache",
+   "expires": "0",
+   "strict-transport-security": "max-age=157680000; includeSubDomains",
+   "x-frame-options": "DENY",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:45:13 GMT",
+   "connection": "close"
+  }
+ },
+ "body": {
+  "organisasjonsnummer": "987009713",
+  "erSlettet": false,
+  "enheter": [
+   {
+    "navn": "STOREBRAND TILLERTORGET AS",
+    "organisasjonsnummer": "810412402",
+    "roller": [
+     {
+      "avregistrert": false,
+      "rekkefolge": 0,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/REVI"
+        }
+       },
+       "beskrivelse": "Revisor",
+       "kode": "REVI"
+      }
+     }
+    ],
+    "_links": {
+     "roller": {
+      "href": "https://data.brreg.no/enhetsregisteret/api/enheter/810412402/roller"
+     },
+     "enhet": {
+      "href": "https://data.brreg.no/enhetsregisteret/api/enheter/810412402"
+     }
+    }
+   },
+   {
+    "navn": "BLOKKEN SKIPSVERFT EIENDOM AS",
+    "organisasjonsnummer": "810684402",
+    "roller": [
+     {
+      "avregistrert": false,
+      "rekkefolge": 0,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/REVI"
+        }
+       },
+       "beskrivelse": "Revisor",
+       "kode": "REVI"
+      }
+     }
+    ],
+    "_links": {
+     "roller": {
+      "href": "https://data.brreg.no/enhetsregisteret/api/enheter/810684402/roller"
+     },
+     "enhet": {
+      "href": "https://data.brreg.no/enhetsregisteret/api/enheter/810684402"
+     }
+    }
+   },
+   {
+    "navn": "ELOPAK ASA",
+    "organisasjonsnummer": "811413682",
+    "roller": [
+     {
+      "avregistrert": false,
+      "rekkefolge": 0,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/REVI"
+        }
+       },
+       "beskrivelse": "Revisor",
+       "kode": "REVI"
+      }
+     }
+    ],
+    "_links": {
+     "roller": {
+      "href": "https://data.brreg.no/enhetsregisteret/api/enheter/811413682/roller"
+     },
+     "enhet": {
+      "href": "https://data.brreg.no/enhetsregisteret/api/enheter/811413682"
+     }
+    }
+   },
+   {
+    "navn": "ZIRQ CABLES AS",
+    "organisasjonsnummer": "811577022",
+    "roller": [
+     {
+      "avregistrert": false,
+      "rekkefolge": 0,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/REVI"
+        }
+       },
+       "beskrivelse": "Revisor",
+       "kode": "REVI"
+      }
+     }
+    ],
+    "_links": {
+     "roller": {
+      "href": "https://data.brreg.no/enhetsregisteret/api/enheter/811577022/roller"
+     },
+     "enhet": {
+      "href": "https://data.brreg.no/enhetsregisteret/api/enheter/811577022"
+     }
+    }
+   },
+   {
+    "navn": "LOFOTPRODUKT OSLO PRODUKSJON AS",
+    "organisasjonsnummer": "811651532",
+    "roller": [
+     {
+      "avregistrert": false,
+      "rekkefolge": 0,
+      "type": {
+       "_links": {
+        "self": {
+         "href": "https://data.brreg.no/enhetsregisteret/api/roller/rolletyper/REVI"
+        }
+       },
+       "beskrivelse": "Revisor",
+       "kode": "REVI"
+      }
+     }
+    ],
+    "_links": {
+     "roller": {
+      "href": "https://data.brreg.no/enhetsregisteret/api/enheter/811651532/roller"
+     },
+     "enhet": {
+      "href": "https://data.brreg.no/enhetsregisteret/api/enheter/811651532"
+     }
+    }
+   }
+  ],
+  "_links": {
+   "next": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/roller/enheter/987009713/juridiskeroller?searchAfter=811651532&size=5"
+   }
+  }
+ }
+}

@@ -1,0 +1,29 @@
+{
+ "sample_size": 500,
+ "seed": 20261013,
+ "universe": "signalpost-company-universe-2025",
+ "measured_at": "2026-10-13",
+ "windows": {
+  "30d": "2026-09-13T00:00:00.000Z",
+  "90d": "2026-07-15T00:00:00.000Z",
+  "365d": "2025-10-13T00:00:00.000Z"
+ },
+ "results": {
+  "30d": {
+   "enheter_orgs_with_update": 59,
+   "enheter_update_events": 65,
+   "roller_orgs_with_event": 44
+  },
+  "90d": {
+   "enheter_orgs_with_update": 186,
+   "enheter_update_events": 262,
+   "roller_orgs_with_event": 80
+  },
+  "365d": {
+   "enheter_orgs_with_update": 500,
+   "enheter_update_events": 1602,
+   "roller_orgs_with_event": 277
+  }
+ },
+ "requests": 47
+}

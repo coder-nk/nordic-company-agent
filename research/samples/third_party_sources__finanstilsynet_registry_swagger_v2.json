@@ -1,0 +1,2845 @@
+{
+  "x-generator": "NSwag v14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))",
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API for Finanstilsynet's registry",
+    "description": "This API delivers information about legal entities (persons or companies)\r\nwith licences that are used when operating in Norway, or licences approved by Finanstilsynet and used\r\nabroad. The same information can be found, in a human-readable format, in\r\n[Finanstilsynet's registry](https://www.finanstilsynet.no/en/finanstilsynets-registry/) (Norwegian: *Virksomhetsregisteret*).\r\n\r\n## General info about paged results\r\nFor paged results, we return a maximum of 300 pages with\r\n50 results per page. This means that we cannot guarantee\r\nthat we return all possible results for broad queries.\r\n\r\n## Rate limiting\r\nThe API is rate limited to prevent abuse and to ensure that all clients can access the API. The default rate limit is\r\n1000\r\nrequests per 60\r\nseconds per client IP address.\r\n\r\nThe json report endpoint has a stricter limit of 5\r\nrequests per 60\r\nseconds per client IP address.\r\n\r\n## Caching\r\nResponses from GET endpoints are cached for up to\r\n3600\r\nseconds. Identical requests within this period return the same result, even if the registry has been updated in the meantime.\r\nCached responses still count towards the rate limit. `/legal-entities` (by ids) and the custom reports (`/report` and\r\n`/report/json`) are not cached.\r\n\r\n## Versioning\r\nThe API is versioned with v2 returning an extended version of LicenceTypesDetails from\r\n'/licence-types'. In addition, several extra properties was been added to `/filter` and `/search`\r\nin both versions of the API. The extra properties can be used to narrow down the hits returned.\r\n\r\nAs some of the extensions are breaking changes we saw it necessary to introduce API versioning.\r\nVersion v1 will still be supported for the time being, but we do recommend that all consumers\r\nstart using v2.\r\n",
+    "contact": {
+      "name": "API Support",
+      "url": "https://www.finanstilsynet.no/en/finanstilsynets-registry",
+      "email": "virksomhetsregisteret@finanstilsynet.no"
+    },
+    "version": "2.0",
+    "x-logo": {
+      "url": "/registry/img/logo_api.svg",
+      "backgroundColor": "#FFFFFF",
+      "altText": "Finanstilsynet"
+    }
+  },
+  "servers": [
+    {
+      "url": "/registry/v2"
+    }
+  ],
+  "paths": {
+    "/county-numbers": {
+      "get": {
+        "tags": [
+          "Legal entities and licences"
+        ],
+        "summary": "Get county numbers",
+        "description": "Returns a list of all county numbers used in the registry, provided that at least one legal entity is registered in that county.",
+        "operationId": "PublicApi_GetCountyNumbers",
+        "responses": {
+          "400": {
+            "description": ""
+          },
+          "500": {
+            "description": ""
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "Type": "",
+                  "Title": "Rate limit exceeded",
+                  "Status": 429,
+                  "Detail": "Occurs when the client exceeds the rate limit.",
+                  "Instance": null
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/County"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/country-codes": {
+      "get": {
+        "tags": [
+          "Legal entities and licences"
+        ],
+        "summary": "Get countries",
+        "description": "Returns a list of all countries used in the registry, provided that at least one legal entity is registered in that country.",
+        "operationId": "PublicApi_GetCountries",
+        "responses": {
+          "400": {
+            "description": ""
+          },
+          "500": {
+            "description": ""
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "Type": "",
+                  "Title": "Rate limit exceeded",
+                  "Status": 429,
+                  "Detail": "Occurs when the client exceeds the rate limit.",
+                  "Instance": null
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Country"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/legal-entities/search": {
+      "get": {
+        "tags": [
+          "Legal entities and licences"
+        ],
+        "summary": "Search for legal entities",
+        "description": "Returns a paged list of persons or companies matching the given search query and filters.",
+        "operationId": "PublicApi_SearchForLegalEntities",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": true,
+            "description": "An entity identifier or (a part of) a natural name/company name.",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 1
+          },
+          {
+            "name": "licenceTypes",
+            "in": "query",
+            "style": "form",
+            "explode": true,
+            "description": "List of licence type identifiers. To obtain a complete list of valid identifiers, use [Get licence types](#operation/PublicApi_GetLicenceTypes)",
+            "schema": {
+              "type": "array",
+              "nullable": true,
+              "items": {
+                "type": "string"
+              }
+            },
+            "x-position": 2
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "The requested page size. Use when customizing pagination.",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 50,
+              "maximum": 50.0,
+              "minimum": 1.0
+            },
+            "x-position": 3
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The requested page number. Use when fetching elements from a search result exceeding one page size.",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "maximum": 300.0,
+              "minimum": 1.0
+            },
+            "x-position": 4
+          },
+          {
+            "name": "countyNumbers",
+            "in": "query",
+            "style": "form",
+            "explode": true,
+            "description": "The requested county numbers. To obtain a complete list of valid county numbers, use [Get county numbers](#operation/PublicApi_GetCountyNumbers).",
+            "schema": {
+              "type": "array",
+              "nullable": true,
+              "items": {
+                "type": "string"
+              }
+            },
+            "x-position": 5
+          },
+          {
+            "name": "countryCodes",
+            "in": "query",
+            "style": "form",
+            "explode": true,
+            "description": "The requested country codes. To obtain a complete list of valid country codes, use [Get country codes](#operation/PublicApi_GetCountries).",
+            "schema": {
+              "type": "array",
+              "nullable": true,
+              "items": {
+                "type": "string"
+              }
+            },
+            "x-position": 6
+          },
+          {
+            "name": "entityType",
+            "in": "query",
+            "description": "The requested entity type.",
+            "schema": {
+              "oneOf": [
+                {
+                  "nullable": true,
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/LegalEntityType"
+                    }
+                  ]
+                }
+              ]
+            },
+            "x-position": 7
+          },
+          {
+            "name": "serviceGroupIds",
+            "in": "query",
+            "style": "form",
+            "explode": true,
+            "description": "The requested service group ids.",
+            "schema": {
+              "type": "array",
+              "nullable": true,
+              "items": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "x-position": 8
+          },
+          {
+            "name": "serviceIds",
+            "in": "query",
+            "style": "form",
+            "explode": true,
+            "description": "The requested service ids.",
+            "schema": {
+              "type": "array",
+              "nullable": true,
+              "items": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "x-position": 9
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": ""
+          },
+          "500": {
+            "description": ""
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "Type": "",
+                  "Title": "Rate limit exceeded",
+                  "Status": 429,
+                  "Detail": "Occurs when the client exceeds the rate limit.",
+                  "Instance": null
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedLegalEntitySearchResults"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/legal-entities/filter": {
+      "get": {
+        "tags": [
+          "Legal entities and licences"
+        ],
+        "summary": "Search and filter legal entities",
+        "description": "Returns a paged list of persons or companies that are currently granted at least one of the given licence types and matches the other filter settings. A maximum of 50 entities can be returned in a single request.",
+        "operationId": "PublicApi_FilterLegalEntities",
+        "parameters": [
+          {
+            "name": "licenceTypes",
+            "in": "query",
+            "style": "form",
+            "explode": true,
+            "description": "List of licence type identifiers. To obtain a complete list of valid identifiers, use [Get licence types](#operation/PublicApi_GetLicenceTypes)",
+            "schema": {
+              "type": "array",
+              "nullable": true,
+              "items": {
+                "type": "string"
+              }
+            },
+            "x-position": 1
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "description": "An entity identifier or (a part of) a natural name/company name. The default is no filter.",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 2
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The requested page number, when the result is paged.",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "maximum": 300.0,
+              "minimum": 1.0
+            },
+            "x-position": 3
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "The requested page size. Use when customizing pagination.",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 50,
+              "maximum": 50.0,
+              "minimum": 1.0
+            },
+            "x-position": 4
+          },
+          {
+            "name": "countyNumbers",
+            "in": "query",
+            "style": "form",
+            "explode": true,
+            "description": "The requested county numbers. To obtain a complete list of valid county numbers, use [Get county numbers](#operation/PublicApi_GetCountyNumbers).",
+            "schema": {
+              "type": "array",
+              "nullable": true,
+              "items": {
+                "type": "string"
+              }
+            },
+            "x-position": 5
+          },
+          {
+            "name": "countryCodes",
+            "in": "query",
+            "style": "form",
+            "explode": true,
+            "description": "The requested country codes. To obtain a complete list of valid country codes, use [Get country codes](#operation/PublicApi_GetCountries).",
+            "schema": {
+              "type": "array",
+              "nullable": true,
+              "items": {
+                "type": "string"
+              }
+            },
+            "x-position": 6
+          },
+          {
+            "name": "entityType",
+            "in": "query",
+            "description": "The requested entity type.",
+            "schema": {
+              "oneOf": [
+                {
+                  "nullable": true,
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/LegalEntityType"
+                    }
+                  ]
+                }
+              ]
+            },
+            "x-position": 7
+          },
+          {
+            "name": "serviceGroupIds",
+            "in": "query",
+            "style": "form",
+            "explode": true,
+            "description": "The requested service group ids.",
+            "schema": {
+              "type": "array",
+              "nullable": true,
+              "items": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "x-position": 8
+          },
+          {
+            "name": "serviceIds",
+            "in": "query",
+            "style": "form",
+            "explode": true,
+            "description": "The requested service ids.",
+            "schema": {
+              "type": "array",
+              "nullable": true,
+              "items": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "x-position": 9
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": ""
+          },
+          "500": {
+            "description": ""
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "Type": "",
+                  "Title": "Rate limit exceeded",
+                  "Status": 429,
+                  "Detail": "Occurs when the client exceeds the rate limit.",
+                  "Instance": null
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedLegalEntityResults"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/legal-entities": {
+      "get": {
+        "tags": [
+          "Legal entities and licences"
+        ],
+        "summary": "Get legal entities by ids",
+        "description": "Returns a list of legal entities (persons or companies) matching the provided ids.",
+        "operationId": "PublicApi_GetLegalEntitiesById",
+        "parameters": [
+          {
+            "name": "ids",
+            "in": "query",
+            "style": "form",
+            "explode": true,
+            "required": true,
+            "description": "A list of legal entity identifiers.",
+            "schema": {
+              "type": "array",
+              "maxItems": 10000,
+              "minItems": 1,
+              "nullable": true,
+              "items": {
+                "type": "integer",
+                "format": "int64"
+              }
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": ""
+          },
+          "500": {
+            "description": ""
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "Type": "",
+                  "Title": "Rate limit exceeded",
+                  "Status": 429,
+                  "Detail": "Occurs when the client exceeds the rate limit.",
+                  "Instance": null
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LegalEntityResults"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/licence-types": {
+      "get": {
+        "tags": [
+          "Legal entities and licences"
+        ],
+        "summary": "Get licence types",
+        "description": "Returns a list of all licence types used in the registry, provided that at least one legal entity is granted the licence.",
+        "operationId": "PublicApi_GetLicenceTypes",
+        "responses": {
+          "400": {
+            "description": ""
+          },
+          "500": {
+            "description": ""
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "Type": "",
+                  "Title": "Rate limit exceeded",
+                  "Status": 429,
+                  "Detail": "Occurs when the client exceeds the rate limit.",
+                  "Instance": null
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ExtendedLicenceTypeDetails"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/report": {
+      "post": {
+        "tags": [
+          "Reports"
+        ],
+        "summary": "Get a filtered spreadsheet report of service providers and their licences.",
+        "description": "Based on the parameter options this endpoint will return a subset of service providers and their licence information as a json result. This endpoint has a rate limit of 5 requests per minute",
+        "operationId": "Report_GetFilePost",
+        "requestBody": {
+          "x-name": "filter",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LicenceExcelReportRequestFilter"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "400": {
+            "description": ""
+          },
+          "500": {
+            "description": ""
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "Type": "",
+                  "Title": "Rate limit exceeded",
+                  "Status": 429,
+                  "Detail": "Occurs when the client exceeds the rate limit.",
+                  "Instance": null
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Reports"
+        ],
+        "summary": "Get a filtered spreadsheet report of service providers and their licences.",
+        "description": "Based on the parameter options, this endpoint will return a customized spreadsheet report. This endpoint has a rate limit of 5 requests per minute",
+        "operationId": "Report_GetReportFile",
+        "parameters": [
+          {
+            "name": "licenceCodes",
+            "in": "query",
+            "style": "form",
+            "explode": true,
+            "description": "Valid licence type identifiers",
+            "schema": {
+              "type": "array",
+              "nullable": true,
+              "items": {
+                "type": "string"
+              }
+            },
+            "x-position": 1
+          },
+          {
+            "name": "serviceIds",
+            "in": "query",
+            "style": "form",
+            "explode": true,
+            "description": "Service type identifiers",
+            "schema": {
+              "type": "array",
+              "nullable": true,
+              "items": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "x-position": 2
+          },
+          {
+            "name": "countyNumber",
+            "in": "query",
+            "description": "A valid county number",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            },
+            "x-position": 3
+          },
+          {
+            "name": "countryCode",
+            "in": "query",
+            "description": "A valid country code",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 4
+          },
+          {
+            "name": "passporting",
+            "in": "query",
+            "description": "Passporting option",
+            "schema": {
+              "oneOf": [
+                {
+                  "nullable": true,
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/PassportingOption"
+                    }
+                  ]
+                }
+              ]
+            },
+            "x-position": 5
+          },
+          {
+            "name": "includedProviderTypes",
+            "in": "query",
+            "style": "form",
+            "explode": true,
+            "description": "List of valid service provider types. Add requested types to filter, leave blank for no filtering.",
+            "schema": {
+              "type": "array",
+              "nullable": true,
+              "items": {
+                "$ref": "#/components/schemas/ServiceProviderType"
+              }
+            },
+            "x-position": 6
+          },
+          {
+            "name": "language",
+            "in": "query",
+            "description": "A valid language identifier",
+            "schema": {
+              "type": "string",
+              "default": "no",
+              "nullable": true
+            },
+            "x-position": 7
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": ""
+          },
+          "500": {
+            "description": ""
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "Type": "",
+                  "Title": "Rate limit exceeded",
+                  "Status": 429,
+                  "Detail": "Occurs when the client exceeds the rate limit.",
+                  "Instance": null
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/report/json": {
+      "post": {
+        "tags": [
+          "Reports"
+        ],
+        "summary": "Get a filtered json report of service providers and their licences.",
+        "description": "Based on the parameter options this endpoint will return a subset of service providers and their licence information as a json result. This endpoint has a rate limit of 5 requests per minute",
+        "operationId": "Report_GetJsonFilePOST",
+        "requestBody": {
+          "x-name": "filter",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LicenceReportRequestFilter"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "400": {
+            "description": ""
+          },
+          "500": {
+            "description": ""
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "Type": "",
+                  "Title": "Rate limit exceeded",
+                  "Status": 429,
+                  "Detail": "Occurs when the client exceeds the rate limit.",
+                  "Instance": null
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedReportResultsOfReportJsonViewModel"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Reports"
+        ],
+        "summary": "Get a filtered json report of service providers and their licences.",
+        "description": "Based on the parameter options this endpoint will return a subset of service providers and their licence information as a json result. This endpoint has a rate limit of 5 requests per minute",
+        "operationId": "Report_GetJsonFileGET",
+        "parameters": [
+          {
+            "name": "licenceCodes",
+            "in": "query",
+            "style": "form",
+            "explode": true,
+            "description": "Valid licence type identifiers",
+            "schema": {
+              "type": "array",
+              "nullable": true,
+              "items": {
+                "type": "string"
+              }
+            },
+            "x-position": 1
+          },
+          {
+            "name": "serviceIds",
+            "in": "query",
+            "style": "form",
+            "explode": true,
+            "description": "Service type identifiers",
+            "schema": {
+              "type": "array",
+              "nullable": true,
+              "items": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "x-position": 2
+          },
+          {
+            "name": "countyNumber",
+            "in": "query",
+            "description": "A valid county number",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            },
+            "x-position": 3
+          },
+          {
+            "name": "passporting",
+            "in": "query",
+            "description": "Passporting option",
+            "schema": {
+              "nullable": true,
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/PassportingOption"
+                }
+              ]
+            },
+            "x-position": 4
+          },
+          {
+            "name": "countryCode",
+            "in": "query",
+            "description": "A valid country code",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 5
+          },
+          {
+            "name": "includedProviderTypes",
+            "in": "query",
+            "style": "form",
+            "explode": true,
+            "description": "List of valid service provider types. Add requested types to filter, leave blank for no filtering.",
+            "schema": {
+              "type": "array",
+              "nullable": true,
+              "items": {
+                "$ref": "#/components/schemas/ServiceProviderType"
+              }
+            },
+            "x-position": 6
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "The requested page size. Use when customizing pagination.",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 50,
+              "maximum": 1000.0,
+              "minimum": 1.0
+            },
+            "x-position": 7
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The requested page number. Use when fetching elements from a search result exceeding one page size.",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "maximum": 300.0,
+              "minimum": 1.0
+            },
+            "x-position": 8
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": ""
+          },
+          "500": {
+            "description": ""
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "Type": "",
+                  "Title": "Rate limit exceeded",
+                  "Status": 429,
+                  "Detail": "Occurs when the client exceeds the rate limit.",
+                  "Instance": null
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedReportResultsOfReportJsonViewModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/report/standard/areas": {
+      "get": {
+        "tags": [
+          "Reports"
+        ],
+        "summary": "Get all standard report areas.",
+        "description": "Returns a list of all the standard report areas that can be used in the standard report endpoints.",
+        "operationId": "Report_GetStandardReportAreas",
+        "responses": {
+          "400": {
+            "description": ""
+          },
+          "500": {
+            "description": ""
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "Type": "",
+                  "Title": "Rate limit exceeded",
+                  "Status": 429,
+                  "Detail": "Occurs when the client exceeds the rate limit.",
+                  "Instance": null
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StandardReportArea"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/report/standard/json": {
+      "get": {
+        "tags": [
+          "Reports"
+        ],
+        "summary": "Get standard reports on activity within a selection of areas.",
+        "description": "Deprecated. Use the area-specific endpoints. The response schema varies with the selected area. Returns a paged result containing standard report with holders of the licences for nominees, or for domestic service providers within either banking or insurance.",
+        "operationId": "Report_GetStandardJsonReport",
+        "parameters": [
+          {
+            "name": "area",
+            "in": "query",
+            "required": true,
+            "description": "The identifier for predefind report types.",
+            "schema": {
+              "$ref": "#/components/schemas/StandardReportType"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "The requested page size (1.. 1000). Use when customizing pagination.",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 50,
+              "maximum": 1000.0,
+              "minimum": 1.0
+            },
+            "x-position": 2
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The requested page number. Use when fetching elements from a search result exceeding one page size. Default value is no page, returning all rows",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "maximum": 300.0,
+              "minimum": 1.0,
+              "nullable": true
+            },
+            "x-position": 3
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": ""
+          },
+          "500": {
+            "description": ""
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "Type": "",
+                  "Title": "Rate limit exceeded",
+                  "Status": 429,
+                  "Detail": "Occurs when the client exceeds the rate limit.",
+                  "Instance": null
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/report/standard/bank/json": {
+      "get": {
+        "tags": [
+          "Reports"
+        ],
+        "summary": "Get standard domestic banking activity report.",
+        "description": "Returns a paged result containing holders of the licences for domestic service providers within banking.",
+        "operationId": "Report_GetStandardBankJsonReport",
+        "parameters": [
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "The requested page size (1.. 1000). Use when customizing pagination.",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 50,
+              "maximum": 1000.0,
+              "minimum": 1.0
+            },
+            "x-position": 1
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The requested page number. Use when fetching elements from a search result exceeding one page size. Default value is no page, returning all rows",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "maximum": 300.0,
+              "minimum": 1.0,
+              "nullable": true
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": ""
+          },
+          "500": {
+            "description": ""
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "Type": "",
+                  "Title": "Rate limit exceeded",
+                  "Status": 429,
+                  "Detail": "Occurs when the client exceeds the rate limit.",
+                  "Instance": null
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedReportResultsOfReportJsonViewModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/report/standard/insurance/json": {
+      "get": {
+        "tags": [
+          "Reports"
+        ],
+        "summary": "Get standard domestic insurance activity report.",
+        "description": "Returns a paged result containing holders of the licences for domestic service providers within insurance.",
+        "operationId": "Report_GetStandardInsuranceJsonReport",
+        "parameters": [
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "The requested page size (1.. 1000). Use when customizing pagination.",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 50,
+              "maximum": 1000.0,
+              "minimum": 1.0
+            },
+            "x-position": 1
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The requested page number. Use when fetching elements from a search result exceeding one page size. Default value is no page, returning all rows",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "maximum": 300.0,
+              "minimum": 1.0,
+              "nullable": true
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": ""
+          },
+          "500": {
+            "description": ""
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "Type": "",
+                  "Title": "Rate limit exceeded",
+                  "Status": 429,
+                  "Detail": "Occurs when the client exceeds the rate limit.",
+                  "Instance": null
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedReportResultsOfReportJsonViewModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/report/standard/nominee/json": {
+      "get": {
+        "tags": [
+          "Reports"
+        ],
+        "summary": "Get the standard report on nominees.",
+        "description": "Returns a paged result containing standard report with holders of the licences for nominees.",
+        "operationId": "Report_GetStandardNomineeJsonReport",
+        "parameters": [
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "The requested page size (1.. 1000). Use when customizing pagination.",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 50,
+              "maximum": 1000.0,
+              "minimum": 1.0
+            },
+            "x-position": 1
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The requested page number. Use when fetching elements from a search result exceeding one page size. Default value is no page, returning all rows",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "maximum": 300.0,
+              "minimum": 1.0,
+              "nullable": true
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": ""
+          },
+          "500": {
+            "description": ""
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "Type": "",
+                  "Title": "Rate limit exceeded",
+                  "Status": 429,
+                  "Detail": "Occurs when the client exceeds the rate limit.",
+                  "Instance": null
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedReportResultsOfNomineeReportJsonViewModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/report/standard": {
+      "get": {
+        "tags": [
+          "Reports"
+        ],
+        "summary": "Get a standard report",
+        "description": "Returns a standard report with holders of the licences within a specified area.",
+        "operationId": "Report_GetStandardReportFile",
+        "parameters": [
+          {
+            "name": "reportType",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/StandardReportType"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "no",
+              "nullable": true
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": ""
+          },
+          "500": {
+            "description": ""
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "Type": "",
+                  "Title": "Rate limit exceeded",
+                  "Status": 429,
+                  "Detail": "Occurs when the client exceeds the rate limit.",
+                  "Instance": null
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ProblemDetails": {
+        "type": "object",
+        "additionalProperties": {
+          "nullable": true
+        },
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "County": {
+        "type": "object",
+        "description": "Object containing county details",
+        "additionalProperties": false,
+        "properties": {
+          "countyNumber": {
+            "type": "integer",
+            "description": "The Id of the county",
+            "format": "int32"
+          },
+          "countyName": {
+            "type": "string",
+            "description": "The name of the county",
+            "nullable": true
+          }
+        }
+      },
+      "Country": {
+        "type": "object",
+        "description": "Information about a country.",
+        "additionalProperties": false,
+        "properties": {
+          "iso3": {
+            "type": "string",
+            "description": "The unique three-letter country code, as defined in ISO 3166-1 alpha-3.",
+            "nullable": true
+          },
+          "name": {
+            "description": "The name of the country.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TranslatedTerm"
+              }
+            ]
+          }
+        }
+      },
+      "TranslatedTerm": {
+        "type": "object",
+        "description": "A fixed term with translation",
+        "additionalProperties": false,
+        "properties": {
+          "norwegian": {
+            "type": "string",
+            "description": "Norwegian translation",
+            "nullable": true
+          },
+          "english": {
+            "type": "string",
+            "description": "English translation",
+            "nullable": true
+          }
+        }
+      },
+      "PagedLegalEntitySearchResults": {
+        "type": "object",
+        "description": "The result of searching for legal entities.",
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "type": "integer",
+            "description": "The page number returned.",
+            "format": "int32"
+          },
+          "total": {
+            "type": "integer",
+            "description": "The total number of legal entities that match the query.",
+            "format": "int32"
+          },
+          "hitsReturned": {
+            "type": "integer",
+            "description": "The number of elements in this result.",
+            "format": "int32"
+          },
+          "legalEntities": {
+            "type": "array",
+            "description": "The elements returned in this result.",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/LegalEntitySearchItem"
+            }
+          }
+        }
+      },
+      "LegalEntitySearchItem": {
+        "type": "object",
+        "description": "Contains basic information about a legal entity.",
+        "additionalProperties": false,
+        "properties": {
+          "legalEntityId": {
+            "type": "integer",
+            "description": "An entity identifier for the legal entity",
+            "format": "int64"
+          },
+          "legalEntityType": {
+            "description": "The type of entity.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/LegalEntityType"
+              }
+            ]
+          },
+          "finanstilsynetId": {
+            "type": "string",
+            "description": "Finanstilsynet provides an identifier for all companies and persons that are in the registry. The identifier has the format of `FT00000000'.",
+            "nullable": true
+          },
+          "organisationNumber": {
+            "type": "string",
+            "description": "The organisation number of the entity. Applies to Norwegian (registered) companies only.",
+            "nullable": true
+          },
+          "leiCode": {
+            "type": "string",
+            "description": "Applies to companies only. This is the international company code required to operate in some financial markets.",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "The natural name of a person, or the company name.",
+            "nullable": true
+          }
+        }
+      },
+      "LegalEntityType": {
+        "type": "string",
+        "description": "",
+        "x-enumNames": [
+          "Company",
+          "Person"
+        ],
+        "enum": [
+          "Company",
+          "Person"
+        ]
+      },
+      "PagedLegalEntityResults": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/LegalEntityResults"
+          },
+          {
+            "type": "object",
+            "description": "The result of searching for legal entities.",
+            "additionalProperties": false,
+            "properties": {
+              "page": {
+                "type": "integer",
+                "description": "The page number returned.",
+                "format": "int32"
+              },
+              "total": {
+                "type": "integer",
+                "description": "The total number of legal entities that match the query.",
+                "format": "int32"
+              }
+            }
+          }
+        ]
+      },
+      "LegalEntityResults": {
+        "type": "object",
+        "description": "The result of fetching legal entities.",
+        "additionalProperties": false,
+        "properties": {
+          "hitsReturned": {
+            "type": "integer",
+            "description": "The number of legal entities in this result.",
+            "format": "int32"
+          },
+          "legalEntities": {
+            "type": "array",
+            "description": "The list of legal entities.",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/LegalEntity"
+            }
+          }
+        }
+      },
+      "LegalEntity": {
+        "type": "object",
+        "description": "Contains all the information available about a legal entity.",
+        "additionalProperties": false,
+        "properties": {
+          "legalEntityId": {
+            "type": "integer",
+            "description": "An entity identifier for the legal entity",
+            "format": "int64"
+          },
+          "parentId": {
+            "type": "integer",
+            "description": "The entity identifier refering to the parent/main company of the legal entity (if any).",
+            "format": "int64",
+            "nullable": true
+          },
+          "legalEntityType": {
+            "description": "The type of entity.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/LegalEntityType"
+              }
+            ]
+          },
+          "finanstilsynetId": {
+            "type": "string",
+            "description": "Finanstilsynet provides an identifier for all companies and persons that are in the registry. The identifier has the format of `FT00000000'.",
+            "nullable": true
+          },
+          "organisationNumber": {
+            "type": "string",
+            "description": "The organisation number of the entity. Applies to Norwegian (registered) companies only.",
+            "nullable": true
+          },
+          "leiCode": {
+            "type": "string",
+            "description": "Applies to companies only. This is the international company code required to operate in some financial markets.",
+            "nullable": true
+          },
+          "auditorNumber": {
+            "type": "string",
+            "description": "Applies to Auditor-licencees only. This is the official auditor number assigned when the auditor becomes a registered auditor.",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "The natural name of a person, or the company name.",
+            "nullable": true
+          },
+          "licences": {
+            "type": "array",
+            "description": "A list of all active licences under which the legal entity can provide services.",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/Licence"
+            }
+          },
+          "addresses": {
+            "type": "array",
+            "description": "The registered addresses for the entity",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/Address"
+            }
+          },
+          "links": {
+            "type": "array",
+            "description": "A list of links/URLs to the company.",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/Link"
+            }
+          },
+          "relationsToOther": {
+            "type": "array",
+            "description": "A list of relations this entity has with other companies.",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/EntityRelation"
+            }
+          },
+          "participants": {
+            "type": "array",
+            "description": "A list of participants of this company. Mostly used for Auditor/accountant-licencees.",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/LegalEntityReference"
+            }
+          },
+          "participatesIn": {
+            "type": "array",
+            "description": "A list of companies this entity participates in. Mostly used for Auditor/accountant-licencees.",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/LegalEntityReference"
+            }
+          },
+          "remarks": {
+            "description": "Any additional information about the legal entity",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TranslatedTerm"
+              }
+            ]
+          }
+        }
+      },
+      "Licence": {
+        "type": "object",
+        "description": "Information about a licence. The licence can either be granted directly to an entity, or it can be used by a branch or an agent of a licence holder.",
+        "additionalProperties": false,
+        "properties": {
+          "licensedEntity": {
+            "description": "The legal entity granted the licences.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/LegalEntityReference"
+              }
+            ]
+          },
+          "serviceProviderId": {
+            "type": "integer",
+            "description": "The legal entity providing the service. This can be a different entity than the licensed entity.",
+            "format": "int64"
+          },
+          "licenceType": {
+            "description": "The type of licence.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/LicenceType"
+              }
+            ]
+          },
+          "licenceClassification": {
+            "description": "Any subclassification of the licence, if applicable.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/LicenceClassification"
+              }
+            ]
+          },
+          "supervisoryAuthority": {
+            "description": "The legal authority granting and regulating this licence.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/LegalEntityItem"
+              }
+            ]
+          },
+          "hasSecurity": {
+            "type": "boolean",
+            "description": "Status for any required financial security for this licence.",
+            "nullable": true
+          },
+          "registeredDate": {
+            "type": "string",
+            "description": "The registration date of this licence.",
+            "format": "date-time"
+          },
+          "serviceProviderType": {
+            "description": "The relation this service provider has to the licence.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ServiceProviderType"
+              }
+            ]
+          },
+          "remarks": {
+            "description": "Any relevant remarks to the granted licence",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TranslatedTerm"
+              }
+            ]
+          },
+          "services": {
+            "type": "array",
+            "description": "Lists any services granted within this licence. Only populated if Finanstilsynet is the supervisory authority for this licence.",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/LicenceService"
+            }
+          },
+          "borderCrossingActivity": {
+            "type": "array",
+            "description": "Lists any border-crossing activity related to Norway registered on this licence.",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/BorderCrossingActivity"
+            }
+          },
+          "cooperationGroups": {
+            "type": "array",
+            "description": "Any cooperation groups for the licence. Applicable to auditors and auditor companies.",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/CooperationGroup"
+            }
+          },
+          "roles": {
+            "type": "array",
+            "description": "A list of roles related to the licence, in context of the current service provider.",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/RelationType"
+            }
+          },
+          "agentsOrBranches": {
+            "type": "array",
+            "description": "A list of agents or branches using the granted licence. Only applies when the ServiceProviderType is 'Licensed'.",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/AgentOrBranch"
+            }
+          },
+          "accreditedAuditors": {
+            "type": "array",
+            "description": "A list of auditors connected to this auditor company. Applies to auditor licences only.",
+            "deprecated": true,
+            "x-deprecatedMessage": "Replaced by AccreditedAuditorsDetailed.",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/LegalEntityReference"
+            }
+          },
+          "auditorFor": {
+            "type": "array",
+            "description": "A list of legal entities for which the service provider provides audits.",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/LegalEntityReference"
+            }
+          },
+          "accreditedAuditorsDetailed": {
+            "type": "array",
+            "description": "A list of auditors connected to this auditor company. Applies to auditor licences only.",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/AccreditedAuditor"
+            }
+          }
+        }
+      },
+      "LegalEntityReference": {
+        "type": "object",
+        "description": "A reference to a legal entity in the registry.",
+        "additionalProperties": false,
+        "properties": {
+          "legalEntityId": {
+            "type": "integer",
+            "description": "The entity identifier for the legal entity.",
+            "format": "int64"
+          },
+          "legalEntityName": {
+            "type": "string",
+            "description": "The natural name or company name",
+            "nullable": true
+          }
+        }
+      },
+      "LicenceType": {
+        "type": "object",
+        "description": "Information on a licence type.",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "The identifier for the licence type.",
+            "nullable": true
+          },
+          "name": {
+            "description": "The name of the licence type.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TranslatedTerm"
+              }
+            ]
+          },
+          "description": {
+            "description": "A short description of the licence, possibly stating the legal framwork under which it is granted.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TranslatedTerm"
+              }
+            ]
+          }
+        }
+      },
+      "LicenceClassification": {
+        "type": "object",
+        "description": "Information about the classifications for a licence type. Each licence can have zero or one classification at any given time. Classifications are used solely for Auditor-licences.",
+        "additionalProperties": false,
+        "properties": {
+          "licenceClassificationId": {
+            "type": "integer",
+            "description": "The identifier for the classification type.",
+            "format": "int32"
+          },
+          "code": {
+            "type": "string",
+            "description": "An alphanumerical code for the classification.",
+            "nullable": true
+          },
+          "name": {
+            "description": "A short description of the classification",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TranslatedTerm"
+              }
+            ]
+          }
+        }
+      },
+      "LegalEntityItem": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/LegalEntityReference"
+          },
+          {
+            "type": "object",
+            "description": "A reference to a legal entity in the registry, including its country.",
+            "additionalProperties": false,
+            "properties": {
+              "country": {
+                "description": "The country of residence for the legal entity.",
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/Country"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "ServiceProviderType": {
+        "type": "string",
+        "description": "",
+        "x-enumNames": [
+          "Licensed",
+          "Branch",
+          "Agent",
+          "SoleProprietorship"
+        ],
+        "enum": [
+          "Licensed",
+          "Branch",
+          "Agent",
+          "SoleProprietorship"
+        ]
+      },
+      "LicenceService": {
+        "type": "object",
+        "description": "Information about a service within a licence.",
+        "additionalProperties": false,
+        "properties": {
+          "serviceId": {
+            "type": "integer",
+            "description": "The service type id.",
+            "format": "int32"
+          },
+          "groupName": {
+            "description": "The name of the service group.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TranslatedTerm"
+              }
+            ]
+          },
+          "serviceName": {
+            "description": "The name of the service.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TranslatedTerm"
+              }
+            ]
+          },
+          "serviceCode": {
+            "type": "string",
+            "description": "The service type code.",
+            "nullable": true
+          },
+          "serviceInstruments": {
+            "type": "array",
+            "description": "Lists any financial instruments within this service",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/ServiceInstrument"
+            }
+          }
+        }
+      },
+      "ServiceInstrument": {
+        "type": "object",
+        "description": "Information about financial instruments within a service.",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "The instrument type code.",
+            "nullable": true
+          },
+          "name": {
+            "description": "The name of the financial instrument type.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TranslatedTerm"
+              }
+            ]
+          },
+          "description": {
+            "description": "The description of the financial instrument type.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TranslatedTerm"
+              }
+            ]
+          }
+        }
+      },
+      "BorderCrossingActivity": {
+        "type": "object",
+        "description": "Information about the border-crossing of a licence service, originating from a home contry, to one or more host countries.",
+        "additionalProperties": false,
+        "properties": {
+          "homeCountry": {
+            "description": "The home country, i.e. the country in which the service originates. Is the same as the country of the licence's supervisory authority.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Country"
+              }
+            ]
+          },
+          "service": {
+            "description": "The service being border-crossed. The field is null if and only if the licence type does not have a specified set of services. In that case the services are defined implicitly by the licence type, and are border-crossed together.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/LicenceService"
+              }
+            ]
+          },
+          "borderCrossings": {
+            "type": "array",
+            "description": "Each item in this list represents a border-crossing of the service to one host country, by one service provider (either the licence holder itself or an agent or branch). Note that the service may be border-crossed to the same country by multiple service providers.",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/BorderCrossingActivityDetails"
+            }
+          }
+        }
+      },
+      "BorderCrossingActivityDetails": {
+        "type": "object",
+        "description": "Details regarding a border-crossing activity. An activity consists of a provider and a host contry. If the service is provided through a third contry, this transit country is included in the registration.",
+        "additionalProperties": false,
+        "properties": {
+          "hostCountry": {
+            "description": "The host country, i.e. the country in which the service is being provided",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Country"
+              }
+            ]
+          },
+          "transitCountry": {
+            "description": "If not null: The service provider is located in a third country, different from both the home- and host countries, and the service is being transited through that country.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Country"
+              }
+            ]
+          },
+          "serviceProvider": {
+            "description": "The legal entity which provides the service in the host country.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/LegalEntityReference"
+              }
+            ]
+          },
+          "serviceProviderType": {
+            "description": "The service provider's relation to the licence.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ServiceProviderType"
+              }
+            ]
+          }
+        }
+      },
+      "CooperationGroup": {
+        "type": "object",
+        "description": "References/link to the cooperation group.",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "description": "The type of references",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CooperationGroupType"
+              }
+            ]
+          },
+          "uri": {
+            "type": "string",
+            "description": "The URI for the cooperation group.",
+            "nullable": true
+          }
+        }
+      },
+      "CooperationGroupType": {
+        "type": "string",
+        "description": "",
+        "x-enumNames": [
+          "Email",
+          "Url"
+        ],
+        "enum": [
+          "Email",
+          "Url"
+        ]
+      },
+      "RelationType": {
+        "type": "object",
+        "description": "A group of legal entities that all have the same relation to the current legal entity.",
+        "additionalProperties": false,
+        "properties": {
+          "description": {
+            "description": "A description of the relation type.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TranslatedTerm"
+              }
+            ]
+          },
+          "relatedEntities": {
+            "type": "array",
+            "description": "A list of legal entities having the same relation type.",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/LegalEntityItem"
+            }
+          }
+        }
+      },
+      "AgentOrBranch": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/LegalEntityItem"
+          },
+          {
+            "type": "object",
+            "description": "Reference to a legal entity in the registry, including country and the service provider type (i.e. Agent or Branch).",
+            "additionalProperties": false,
+            "properties": {
+              "serviceProviderType": {
+                "description": "Service provider type",
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/ServiceProviderType"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "AccreditedAuditor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/LegalEntityReference"
+          },
+          {
+            "type": "object",
+            "description": "A reference to a licenced auditor associated with the company.",
+            "additionalProperties": false,
+            "properties": {
+              "isEngagementPartner": {
+                "type": "boolean",
+                "description": "Whether the auditor is responsible for an audit engagement."
+              }
+            }
+          }
+        ]
+      },
+      "Address": {
+        "type": "object",
+        "description": "Defines an address for a legal entity.",
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "description": "Defines the address type.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/AddressType"
+              }
+            ]
+          },
+          "addressLines": {
+            "type": "string",
+            "description": "Detail lines for the address, e.g. house/suite, street name and number, postal code (for most of the non-norwegian addresses)",
+            "nullable": true
+          },
+          "postalCode": {
+            "type": "string",
+            "description": "The postal code. Mostly used for domestic addresses, but is also supplied for some foreign addresses",
+            "nullable": true
+          },
+          "postalLocation": {
+            "type": "string",
+            "description": "Used for Town/postal names. Will have the official name for norwegian postal codes, for foreign addresses the data is manually added and not validated.",
+            "nullable": true
+          },
+          "region": {
+            "type": "string",
+            "description": "Region (\"fylke\") where this postal code is located",
+            "nullable": true
+          },
+          "country": {
+            "description": "The country for the legal entity. For some legal entities this is the only part of the address we know, and is added to assist in detecting border-crossing activities.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Country"
+              }
+            ]
+          }
+        }
+      },
+      "AddressType": {
+        "type": "string",
+        "description": "",
+        "x-enumNames": [
+          "Business",
+          "Postal"
+        ],
+        "enum": [
+          "Business",
+          "Postal"
+        ]
+      },
+      "Link": {
+        "type": "object",
+        "description": "An external reference related to a licence. Used for references to \"Forsikringsagentregisteret\" or \"Finansagentregisteret\".",
+        "additionalProperties": false,
+        "properties": {
+          "title": {
+            "description": "A header/title describing what the Url is pointing to",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TranslatedTerm"
+              }
+            ]
+          },
+          "englishUrl": {
+            "type": "string",
+            "description": "The actual URL to the english reference site.",
+            "nullable": true
+          },
+          "norwegianUrl": {
+            "type": "string",
+            "description": "The actual URL to the norwegian reference site.",
+            "nullable": true
+          }
+        }
+      },
+      "EntityRelation": {
+        "type": "object",
+        "description": "Information about the relation a legal entity has to another entity.",
+        "additionalProperties": false,
+        "properties": {
+          "relationType": {
+            "description": "The nature of the relation.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TranslatedTerm"
+              }
+            ]
+          },
+          "legalEntityItem": {
+            "description": "A link to the related legal entity.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/LegalEntityItem"
+              }
+            ]
+          }
+        }
+      },
+      "ExtendedLicenceTypeDetails": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ExtendedLicenceType"
+          },
+          {
+            "type": "object",
+            "description": "Information on a licence type, including which classifications and services might occur for licences of the type.",
+            "additionalProperties": false,
+            "properties": {
+              "possibleClassifications": {
+                "type": "array",
+                "description": "If non-empty, instances of the licence type must have one of these classifications.",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/LicenceClassification"
+                }
+              },
+              "possibleServiceGroups": {
+                "type": "array",
+                "description": "If non-empty, instances of the licence type could be granted one or more of the services in each of the service groups.",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/ExtendedLicenceServiceGroup"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "ExtendedLicenceServiceGroup": {
+        "type": "object",
+        "description": "Information about a group of services within a Licence type.",
+        "additionalProperties": false,
+        "properties": {
+          "serviceGroupId": {
+            "type": "integer",
+            "description": "The id of the service group.",
+            "format": "int32"
+          },
+          "groupName": {
+            "description": "The name of the service group.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TranslatedTerm"
+              }
+            ]
+          },
+          "possibleServices": {
+            "type": "array",
+            "description": "List of services in the group.",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/ExtendedLicenceService"
+            }
+          }
+        }
+      },
+      "ExtendedLicenceService": {
+        "type": "object",
+        "description": "Information about a service within a service group.",
+        "additionalProperties": false,
+        "properties": {
+          "serviceId": {
+            "type": "integer",
+            "description": "The service id.",
+            "format": "int32"
+          },
+          "serviceName": {
+            "description": "The name of the service.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TranslatedTerm"
+              }
+            ]
+          },
+          "serviceCode": {
+            "type": "string",
+            "description": "The service type code.",
+            "nullable": true
+          }
+        }
+      },
+      "ExtendedLicenceType": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/LicenceType"
+          },
+          {
+            "type": "object",
+            "description": "Information on a licence type.",
+            "additionalProperties": false,
+            "properties": {
+              "licenceGroupId": {
+                "type": "integer",
+                "description": "The id of the licence group.",
+                "format": "int32"
+              },
+              "licenceGroupName": {
+                "description": "The name of the licence group.",
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/TranslatedTerm"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "LicenceExcelReportRequestFilter": {
+        "type": "object",
+        "description": "Filter model for the Report endpoint",
+        "additionalProperties": false,
+        "properties": {
+          "licenceCodes": {
+            "type": "array",
+            "description": "Valid licence type identifiers",
+            "nullable": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "serviceIds": {
+            "type": "array",
+            "description": "Service type identifiers",
+            "nullable": true,
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "countyNumber": {
+            "type": "integer",
+            "description": "A valid county number",
+            "format": "int32",
+            "nullable": true
+          },
+          "passporting": {
+            "description": "Passporting option",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/PassportingOption"
+              }
+            ]
+          },
+          "countryCode": {
+            "type": "string",
+            "description": "A valid country code",
+            "nullable": true
+          },
+          "includedProviderTypes": {
+            "type": "array",
+            "description": "List of valid service provider types. Add requested types to filter, leave blank for no filtering.",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/ServiceProviderType"
+            }
+          },
+          "language": {
+            "type": "string",
+            "description": "The requested language. Only applicable for Excel output.",
+            "nullable": true
+          }
+        }
+      },
+      "PassportingOption": {
+        "type": "string",
+        "description": "",
+        "x-enumNames": [
+          "Outbound",
+          "Inbound",
+          "Domestic"
+        ],
+        "enum": [
+          "Outbound",
+          "Inbound",
+          "Domestic"
+        ]
+      },
+      "PagedReportResultsOfReportJsonViewModel": {
+        "type": "object",
+        "description": "A page of the results.",
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "type": "integer",
+            "description": "The page number returned.",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "description": "The total number of pages.",
+            "format": "int32"
+          },
+          "total": {
+            "type": "integer",
+            "description": "The total number of rows.",
+            "format": "int32"
+          },
+          "hitsReturned": {
+            "type": "integer",
+            "description": "The number of elements in this result.",
+            "format": "int32"
+          },
+          "data": {
+            "type": "array",
+            "description": "The elements returned in this result.",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/ReportJsonViewModel"
+            }
+          }
+        }
+      },
+      "ReportJsonViewModel": {
+        "type": "object",
+        "description": "The report row definition",
+        "additionalProperties": false,
+        "properties": {
+          "licenceOwner": {
+            "description": "The legal entity holding the licence",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ReportLegalEntityViewModel"
+              }
+            ]
+          },
+          "serviceProvider": {
+            "description": "The entity providing services through the licence",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ReportLegalEntityViewModel"
+              }
+            ]
+          },
+          "licence": {
+            "description": "The licence",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ReportLicenceViewModel"
+              }
+            ]
+          },
+          "borderCrossingActivity": {
+            "description": "A list of country to which the service is provided.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Country"
+              }
+            ]
+          }
+        }
+      },
+      "ReportLegalEntityViewModel": {
+        "type": "object",
+        "description": "The object providing details on a legal entity in a report result, related to a licence",
+        "additionalProperties": false,
+        "properties": {
+          "serviceProviderType": {
+            "description": "The type of service provider related to the licence in th",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ServiceProviderType"
+              }
+            ]
+          },
+          "legalEntityId": {
+            "type": "integer",
+            "description": "The legal entity id of the service provider.",
+            "format": "int64"
+          },
+          "legalEntityName": {
+            "type": "string",
+            "description": "The name of the legal entity of the service provider.",
+            "nullable": true
+          },
+          "legalEntityNumber": {
+            "type": "string",
+            "description": "The legal entity number of the service provider, for companies registered in Norway.",
+            "nullable": true
+          },
+          "finanstilsynetId": {
+            "type": "string",
+            "description": "The number issued by Finanstilsynet forthis legal entity.",
+            "nullable": true
+          },
+          "leiCode": {
+            "type": "string",
+            "description": "The provided LEI code of this legal entity (if known).",
+            "nullable": true
+          },
+          "auditorNumber": {
+            "type": "string",
+            "description": "The Auditor number provided by Finanstilsynet (if relevant).",
+            "nullable": true
+          },
+          "legalEntityType": {
+            "description": "The type of legal entity (i.e. Person or Company)",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/LegalEntityType"
+              }
+            ]
+          },
+          "country": {
+            "description": "The country of the service provided",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Country"
+              }
+            ]
+          },
+          "county": {
+            "description": "The county of the service provided (if norwegian).",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/County"
+              }
+            ]
+          }
+        }
+      },
+      "ReportLicenceViewModel": {
+        "type": "object",
+        "description": "The object providing details on a licence definition in a report result",
+        "additionalProperties": false,
+        "properties": {
+          "supervisoryAuthority": {
+            "description": "The supervisory authority",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/LegalEntityItem"
+              }
+            ]
+          },
+          "licenceTypeCode": {
+            "type": "string",
+            "description": "The licence type code",
+            "nullable": true
+          },
+          "licenceTypeName": {
+            "description": "The name/title of licence",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TranslatedTerm"
+              }
+            ]
+          },
+          "classification": {
+            "description": "The name and Id of the current classification",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/LicenceClassification"
+              }
+            ]
+          },
+          "service": {
+            "description": "The name and Id of the provided service",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/LicenceService"
+              }
+            ]
+          },
+          "registeredDate": {
+            "type": "string",
+            "description": "Date of last registration/approval of licence",
+            "format": "date-time"
+          }
+        }
+      },
+      "LicenceReportRequestFilter": {
+        "type": "object",
+        "description": "Filter model for the Report endpoint",
+        "additionalProperties": false,
+        "properties": {
+          "licenceCodes": {
+            "type": "array",
+            "description": "Valid licence type identifiers",
+            "nullable": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "serviceIds": {
+            "type": "array",
+            "description": "Service type identifiers",
+            "nullable": true,
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "countyNumber": {
+            "type": "integer",
+            "description": "A valid county number",
+            "format": "int32",
+            "nullable": true
+          },
+          "passporting": {
+            "description": "Passporting option",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/PassportingOption"
+              }
+            ]
+          },
+          "countryCode": {
+            "type": "string",
+            "description": "A valid country code",
+            "nullable": true
+          },
+          "includedProviderTypes": {
+            "type": "array",
+            "description": "List of valid service provider types. Add requested types to filter, leave blank for no filtering.",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/ServiceProviderType"
+            }
+          },
+          "pageSize": {
+            "type": "integer",
+            "description": "The requested page size. Use when customizing pagination.",
+            "format": "int32",
+            "maximum": 1000.0,
+            "minimum": 1.0
+          },
+          "page": {
+            "type": "integer",
+            "description": "The requested page number. Use when fetching elements from a search result exceeding one page size.",
+            "format": "int32",
+            "maximum": 300.0,
+            "minimum": 1.0
+          },
+          "language": {
+            "type": "string",
+            "description": "The requested language. Only applicable for Excel output.",
+            "nullable": true
+          }
+        }
+      },
+      "StandardReportArea": {
+        "type": "object",
+        "description": "Contains Id and description of a standard report type",
+        "additionalProperties": false,
+        "properties": {
+          "area": {
+            "description": "Code for the standard report",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/StandardReportType"
+              }
+            ]
+          },
+          "name": {
+            "description": "Descriptive name for the standard report.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TranslatedTerm"
+              }
+            ]
+          }
+        }
+      },
+      "StandardReportType": {
+        "type": "string",
+        "description": "",
+        "x-enumNames": [
+          "Nominee",
+          "DomesticActivityBank",
+          "DomesticActivityInsurance"
+        ],
+        "enum": [
+          "Nominee",
+          "DomesticActivityBank",
+          "DomesticActivityInsurance"
+        ]
+      },
+      "PagedReportResultsOfNomineeReportJsonViewModel": {
+        "type": "object",
+        "description": "A page of the results.",
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "type": "integer",
+            "description": "The page number returned.",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "description": "The total number of pages.",
+            "format": "int32"
+          },
+          "total": {
+            "type": "integer",
+            "description": "The total number of rows.",
+            "format": "int32"
+          },
+          "hitsReturned": {
+            "type": "integer",
+            "description": "The number of elements in this result.",
+            "format": "int32"
+          },
+          "data": {
+            "type": "array",
+            "description": "The elements returned in this result.",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/NomineeReportJsonViewModel"
+            }
+          }
+        }
+      },
+      "NomineeReportJsonViewModel": {
+        "type": "object",
+        "description": "The resulting view of a Nominee-report row.",
+        "additionalProperties": false,
+        "properties": {
+          "licenceOwner": {
+            "description": "The legal entity holding the licence",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ReportLegalEntityViewModel"
+              }
+            ]
+          },
+          "hasStocks": {
+            "type": "boolean",
+            "description": "."
+          },
+          "hasOtherFinancialInstruments": {
+            "type": "boolean",
+            "description": "."
+          },
+          "hasShares": {
+            "type": "boolean",
+            "description": "."
+          }
+        }
+      }
+    }
+  }
+}

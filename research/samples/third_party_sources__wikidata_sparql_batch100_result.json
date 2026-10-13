@@ -1,0 +1,910 @@
+{
+ "head": {
+  "vars": [
+   "orgnr",
+   "item",
+   "itemLabel",
+   "itemDescription",
+   "websites",
+   "inception1",
+   "dissolved1",
+   "hq",
+   "parentOrgnrs",
+   "parents",
+   "ceos",
+   "industries",
+   "tickers",
+   "isins",
+   "lei1",
+   "logo1",
+   "facebook",
+   "instagram",
+   "linkedin",
+   "twitter",
+   "youtube",
+   "nowiki1",
+   "enwiki1"
+  ]
+ },
+ "results": {
+  "bindings": [
+   {
+    "orgnr": {
+     "type": "literal",
+     "value": "923609016"
+    },
+    "item": {
+     "type": "uri",
+     "value": "http://www.wikidata.org/entity/Q1776022"
+    },
+    "itemLabel": {
+     "xml:lang": "nb",
+     "type": "literal",
+     "value": "Equinor"
+    },
+    "itemDescription": {
+     "xml:lang": "nb",
+     "type": "literal",
+     "value": "norsk oljeselskap"
+    },
+    "websites": {
+     "type": "literal",
+     "value": "https://equinor.jp/en|https://equinor.jp|https://equinor.de|https://equinor.com.br|https://equinor.com|https://equinor.co.kr/en|https://equinor.co.kr|https://equinor.ar/en|https://equinor.ar|https://equinorstorage.de/en|https://equinorstorage.de|https://equinorcelticsea.co.uk|https://equinor.pl|https://equinor.no"
+    },
+    "inception1": {
+     "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+     "type": "literal",
+     "value": "1972-06-14T00:00:00Z"
+    },
+    "hq": {
+     "type": "literal",
+     "value": "Stavanger"
+    },
+    "parentOrgnrs": {
+     "type": "literal",
+     "value": ""
+    },
+    "parents": {
+     "type": "literal",
+     "value": ""
+    },
+    "ceos": {
+     "type": "literal",
+     "value": "Anders Opedal"
+    },
+    "industries": {
+     "type": "literal",
+     "value": "petroleumsindustri"
+    },
+    "tickers": {
+     "type": "literal",
+     "value": "EQNR"
+    },
+    "isins": {
+     "type": "literal",
+     "value": "NO0010096985"
+    },
+    "lei1": {
+     "type": "literal",
+     "value": "OW6OFBNCKXC4US5C7523"
+    },
+    "logo1": {
+     "type": "uri",
+     "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Equinor.svg"
+    },
+    "facebook": {
+     "type": "literal",
+     "value": "Equinor"
+    },
+    "instagram": {
+     "type": "literal",
+     "value": "equinor"
+    },
+    "linkedin": {
+     "type": "literal",
+     "value": ""
+    },
+    "twitter": {
+     "type": "literal",
+     "value": "Equinor_DE|Equinor_NA|Equinor_UK|EquinorASA|equinor"
+    },
+    "youtube": {
+     "type": "literal",
+     "value": ""
+    },
+    "nowiki1": {
+     "type": "uri",
+     "value": "https://no.wikipedia.org/wiki/Equinor"
+    },
+    "enwiki1": {
+     "type": "uri",
+     "value": "https://en.wikipedia.org/wiki/Equinor"
+    }
+   },
+   {
+    "orgnr": {
+     "type": "literal",
+     "value": "984851006"
+    },
+    "item": {
+     "type": "uri",
+     "value": "http://www.wikidata.org/entity/Q80788"
+    },
+    "itemLabel": {
+     "xml:lang": "nb",
+     "type": "literal",
+     "value": "DNB Bank"
+    },
+    "itemDescription": {
+     "xml:lang": "nb",
+     "type": "literal",
+     "value": "norsk bank"
+    },
+    "websites": {
+     "type": "literal",
+     "value": "https://www.dnb.no/"
+    },
+    "inception1": {
+     "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+     "type": "literal",
+     "value": "2002-09-10T00:00:00Z"
+    },
+    "hq": {
+     "type": "literal",
+     "value": ""
+    },
+    "parentOrgnrs": {
+     "type": "literal",
+     "value": ""
+    },
+    "parents": {
+     "type": "literal",
+     "value": ""
+    },
+    "ceos": {
+     "type": "literal",
+     "value": "Kjerstin Braathen"
+    },
+    "industries": {
+     "type": "literal",
+     "value": "finansielle tjenester"
+    },
+    "tickers": {
+     "type": "literal",
+     "value": "DNB"
+    },
+    "isins": {
+     "type": "literal",
+     "value": "NO0010161896"
+    },
+    "lei1": {
+     "type": "literal",
+     "value": "549300GKFG0RYRRQ1414"
+    },
+    "logo1": {
+     "type": "uri",
+     "value": "http://commons.wikimedia.org/wiki/Special:FilePath/DNB%20Logo.svg"
+    },
+    "facebook": {
+     "type": "literal",
+     "value": "dnb"
+    },
+    "instagram": {
+     "type": "literal",
+     "value": ""
+    },
+    "linkedin": {
+     "type": "literal",
+     "value": ""
+    },
+    "twitter": {
+     "type": "literal",
+     "value": ""
+    },
+    "youtube": {
+     "type": "literal",
+     "value": "UCKNvAlRIR_ixP4EWDrhxJUA"
+    },
+    "nowiki1": {
+     "type": "uri",
+     "value": "https://no.wikipedia.org/wiki/DNB_Bank"
+    },
+    "enwiki1": {
+     "type": "uri",
+     "value": "https://en.wikipedia.org/wiki/DNB_Bank"
+    }
+   },
+   {
+    "orgnr": {
+     "type": "literal",
+     "value": "971524960"
+    },
+    "item": {
+     "type": "uri",
+     "value": "http://www.wikidata.org/entity/Q109016"
+    },
+    "itemLabel": {
+     "xml:lang": "nb",
+     "type": "literal",
+     "value": "Stortinget"
+    },
+    "itemDescription": {
+     "xml:lang": "nb",
+     "type": "literal",
+     "value": "Norges nasjonalforsamling"
+    },
+    "websites": {
+     "type": "literal",
+     "value": "https://stortinget.no"
+    },
+    "inception1": {
+     "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+     "type": "literal",
+     "value": "1814-01-01T00:00:00Z"
+    },
+    "hq": {
+     "type": "literal",
+     "value": "Stortingsbygningen"
+    },
+    "parentOrgnrs": {
+     "type": "literal",
+     "value": ""
+    },
+    "parents": {
+     "type": "literal",
+     "value": ""
+    },
+    "ceos": {
+     "type": "literal",
+     "value": ""
+    },
+    "industries": {
+     "type": "literal",
+     "value": ""
+    },
+    "tickers": {
+     "type": "literal",
+     "value": ""
+    },
+    "isins": {
+     "type": "literal",
+     "value": ""
+    },
+    "logo1": {
+     "type": "uri",
+     "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Coat%20of%20arms%20of%20the%20Storting%20%28monochromatic%29.svg"
+    },
+    "facebook": {
+     "type": "literal",
+     "value": "stortinget"
+    },
+    "instagram": {
+     "type": "literal",
+     "value": "stortinget"
+    },
+    "linkedin": {
+     "type": "literal",
+     "value": ""
+    },
+    "twitter": {
+     "type": "literal",
+     "value": "Stortinget"
+    },
+    "youtube": {
+     "type": "literal",
+     "value": ""
+    },
+    "nowiki1": {
+     "type": "uri",
+     "value": "https://no.wikipedia.org/wiki/Stortinget"
+    },
+    "enwiki1": {
+     "type": "uri",
+     "value": "https://en.wikipedia.org/wiki/Storting"
+    }
+   },
+   {
+    "orgnr": {
+     "type": "literal",
+     "value": "914778271"
+    },
+    "item": {
+     "type": "uri",
+     "value": "http://www.wikidata.org/entity/Q511031"
+    },
+    "itemLabel": {
+     "xml:lang": "nb",
+     "type": "literal",
+     "value": "Norsk Hydro"
+    },
+    "itemDescription": {
+     "xml:lang": "nb",
+     "type": "literal",
+     "value": "norsk industrikonsern innen aluminium- og kraftproduksjon, tidligere også kunstgjødsel og petroleum"
+    },
+    "websites": {
+     "type": "literal",
+     "value": "https://hydro.com"
+    },
+    "inception1": {
+     "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+     "type": "literal",
+     "value": "1905-12-02T00:00:00Z"
+    },
+    "hq": {
+     "type": "literal",
+     "value": ""
+    },
+    "parentOrgnrs": {
+     "type": "literal",
+     "value": ""
+    },
+    "parents": {
+     "type": "literal",
+     "value": ""
+    },
+    "ceos": {
+     "type": "literal",
+     "value": "Hilde Merete Aasheim|Eivind Kallevik"
+    },
+    "industries": {
+     "type": "literal",
+     "value": "kraftindustri|aluminiumsindustri"
+    },
+    "tickers": {
+     "type": "literal",
+     "value": "NHY"
+    },
+    "isins": {
+     "type": "literal",
+     "value": "NO0005052605"
+    },
+    "lei1": {
+     "type": "literal",
+     "value": "549300N1SDN71ZZ8BO45"
+    },
+    "logo1": {
+     "type": "uri",
+     "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Norsk%20Hydro.svg"
+    },
+    "facebook": {
+     "type": "literal",
+     "value": "norskhydroasa"
+    },
+    "instagram": {
+     "type": "literal",
+     "value": "norskhydroasa"
+    },
+    "linkedin": {
+     "type": "literal",
+     "value": "norsk-hydro"
+    },
+    "twitter": {
+     "type": "literal",
+     "value": "norskhydroasa"
+    },
+    "youtube": {
+     "type": "literal",
+     "value": "UCEOwf5jNlgcSFdjxEZootow"
+    },
+    "nowiki1": {
+     "type": "uri",
+     "value": "https://no.wikipedia.org/wiki/Norsk_Hydro"
+    },
+    "enwiki1": {
+     "type": "uri",
+     "value": "https://en.wikipedia.org/wiki/Norsk_Hydro"
+    }
+   },
+   {
+    "orgnr": {
+     "type": "literal",
+     "value": "982463718"
+    },
+    "item": {
+     "type": "uri",
+     "value": "http://www.wikidata.org/entity/Q845632"
+    },
+    "itemLabel": {
+     "xml:lang": "nb",
+     "type": "literal",
+     "value": "Telenor"
+    },
+    "itemDescription": {
+     "xml:lang": "nb",
+     "type": "literal",
+     "value": "multinasjonalt teleselskap"
+    },
+    "websites": {
+     "type": "literal",
+     "value": "https://telenor.com"
+    },
+    "inception1": {
+     "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+     "type": "literal",
+     "value": "1995-01-01T00:00:00Z"
+    },
+    "hq": {
+     "type": "literal",
+     "value": "Bærum"
+    },
+    "parentOrgnrs": {
+     "type": "literal",
+     "value": ""
+    },
+    "parents": {
+     "type": "literal",
+     "value": ""
+    },
+    "ceos": {
+     "type": "literal",
+     "value": "Sigve Brekke|Benedicte Schilbred Fasmer"
+    },
+    "industries": {
+     "type": "literal",
+     "value": "telekommunikasjonsbransjen"
+    },
+    "tickers": {
+     "type": "literal",
+     "value": "TEL"
+    },
+    "isins": {
+     "type": "literal",
+     "value": "NO0010063308"
+    },
+    "lei1": {
+     "type": "literal",
+     "value": "549300IM1QSBY4SLPM26"
+    },
+    "logo1": {
+     "type": "uri",
+     "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Telenor%20Group%20Logo.svg"
+    },
+    "facebook": {
+     "type": "literal",
+     "value": ""
+    },
+    "instagram": {
+     "type": "literal",
+     "value": "telenorsverige"
+    },
+    "linkedin": {
+     "type": "literal",
+     "value": "telenor-group"
+    },
+    "twitter": {
+     "type": "literal",
+     "value": "telenorgroup|TelenorGroup"
+    },
+    "youtube": {
+     "type": "literal",
+     "value": "UCFhhdmypHt5Gf_ASZvLnsUQ"
+    },
+    "nowiki1": {
+     "type": "uri",
+     "value": "https://no.wikipedia.org/wiki/Telenor"
+    },
+    "enwiki1": {
+     "type": "uri",
+     "value": "https://en.wikipedia.org/wiki/Telenor"
+    }
+   },
+   {
+    "orgnr": {
+     "type": "literal",
+     "value": "974760673"
+    },
+    "item": {
+     "type": "uri",
+     "value": "http://www.wikidata.org/entity/Q1770101"
+    },
+    "itemLabel": {
+     "xml:lang": "nb",
+     "type": "literal",
+     "value": "Brønnøysundregistrene"
+    },
+    "itemDescription": {
+     "xml:lang": "nb",
+     "type": "literal",
+     "value": "norsk forvaltningsorgan og registreringsmyndighet"
+    },
+    "websites": {
+     "type": "literal",
+     "value": "https://www.brreg.no/"
+    },
+    "inception1": {
+     "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+     "type": "literal",
+     "value": "1988-01-01T00:00:00Z"
+    },
+    "hq": {
+     "type": "literal",
+     "value": "Brønnøysund"
+    },
+    "parentOrgnrs": {
+     "type": "literal",
+     "value": "912660680"
+    },
+    "parents": {
+     "type": "literal",
+     "value": "Nærings- og fiskeridepartementet|Ministry of Trade, Industry and Fisheries"
+    },
+    "ceos": {
+     "type": "literal",
+     "value": ""
+    },
+    "industries": {
+     "type": "literal",
+     "value": "register"
+    },
+    "tickers": {
+     "type": "literal",
+     "value": ""
+    },
+    "isins": {
+     "type": "literal",
+     "value": ""
+    },
+    "lei1": {
+     "type": "literal",
+     "value": "5967007LIEEXZX4LPK21"
+    },
+    "logo1": {
+     "type": "uri",
+     "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Brreg%20logo.svg"
+    },
+    "facebook": {
+     "type": "literal",
+     "value": "brreg"
+    },
+    "instagram": {
+     "type": "literal",
+     "value": ""
+    },
+    "linkedin": {
+     "type": "literal",
+     "value": "bronnoysundregistrene"
+    },
+    "twitter": {
+     "type": "literal",
+     "value": ""
+    },
+    "youtube": {
+     "type": "literal",
+     "value": ""
+    },
+    "nowiki1": {
+     "type": "uri",
+     "value": "https://no.wikipedia.org/wiki/Br%C3%B8nn%C3%B8ysundregistrene"
+    },
+    "enwiki1": {
+     "type": "uri",
+     "value": "https://en.wikipedia.org/wiki/Br%C3%B8nn%C3%B8ysund_Register_Centre"
+    }
+   },
+   {
+    "orgnr": {
+     "type": "literal",
+     "value": "995189186"
+    },
+    "item": {
+     "type": "uri",
+     "value": "http://www.wikidata.org/entity/Q11990541"
+    },
+    "itemLabel": {
+     "xml:lang": "nb",
+     "type": "literal",
+     "value": "NLA Høgskolen"
+    },
+    "itemDescription": {
+     "xml:lang": "nb",
+     "type": "literal",
+     "value": "norsk privat høyskole"
+    },
+    "websites": {
+     "type": "literal",
+     "value": "https://nla.no/en|https://nla.no"
+    },
+    "inception1": {
+     "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+     "type": "literal",
+     "value": "1968-01-01T00:00:00Z"
+    },
+    "hq": {
+     "type": "literal",
+     "value": "Bergen kommune"
+    },
+    "parentOrgnrs": {
+     "type": "literal",
+     "value": ""
+    },
+    "parents": {
+     "type": "literal",
+     "value": ""
+    },
+    "ceos": {
+     "type": "literal",
+     "value": ""
+    },
+    "industries": {
+     "type": "literal",
+     "value": ""
+    },
+    "tickers": {
+     "type": "literal",
+     "value": ""
+    },
+    "isins": {
+     "type": "literal",
+     "value": ""
+    },
+    "facebook": {
+     "type": "literal",
+     "value": "nlahogskolen"
+    },
+    "instagram": {
+     "type": "literal",
+     "value": "nlahogskolen"
+    },
+    "linkedin": {
+     "type": "literal",
+     "value": "nla-høgskolen-22655"
+    },
+    "twitter": {
+     "type": "literal",
+     "value": "nlahogskolen"
+    },
+    "youtube": {
+     "type": "literal",
+     "value": "UCa9AoKURY90DA4hncNIYjAw"
+    },
+    "nowiki1": {
+     "type": "uri",
+     "value": "https://no.wikipedia.org/wiki/NLA_H%C3%B8gskolen"
+    },
+    "enwiki1": {
+     "type": "uri",
+     "value": "https://en.wikipedia.org/wiki/NLA_University_College"
+    }
+   },
+   {
+    "orgnr": {
+     "type": "literal",
+     "value": "958935420"
+    },
+    "item": {
+     "type": "uri",
+     "value": "http://www.wikidata.org/entity/Q5245991"
+    },
+    "itemLabel": {
+     "xml:lang": "nb",
+     "type": "literal",
+     "value": "Oslo kommune"
+    },
+    "itemDescription": {
+     "xml:lang": "nb",
+     "type": "literal",
+     "value": "norsk kommune"
+    },
+    "websites": {
+     "type": "literal",
+     "value": "https://www.oslo.kommune.no/"
+    },
+    "inception1": {
+     "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+     "type": "literal",
+     "value": "1838-01-01T00:00:00Z"
+    },
+    "hq": {
+     "type": "literal",
+     "value": "Oslo kommune"
+    },
+    "parentOrgnrs": {
+     "type": "literal",
+     "value": ""
+    },
+    "parents": {
+     "type": "literal",
+     "value": ""
+    },
+    "ceos": {
+     "type": "literal",
+     "value": ""
+    },
+    "industries": {
+     "type": "literal",
+     "value": ""
+    },
+    "tickers": {
+     "type": "literal",
+     "value": ""
+    },
+    "isins": {
+     "type": "literal",
+     "value": ""
+    },
+    "lei1": {
+     "type": "literal",
+     "value": "5967007LIEEXZXGVU850"
+    },
+    "facebook": {
+     "type": "literal",
+     "value": "Oslo"
+    },
+    "instagram": {
+     "type": "literal",
+     "value": "oslo.kommune"
+    },
+    "linkedin": {
+     "type": "literal",
+     "value": "oslo-kommune"
+    },
+    "twitter": {
+     "type": "literal",
+     "value": "Oslokommune"
+    },
+    "youtube": {
+     "type": "literal",
+     "value": ""
+    },
+    "nowiki1": {
+     "type": "uri",
+     "value": "https://no.wikipedia.org/wiki/Oslo_kommune"
+    }
+   },
+   {
+    "orgnr": {
+     "type": "literal",
+     "value": "971492996"
+    },
+    "item": {
+     "type": "uri",
+     "value": "http://www.wikidata.org/entity/Q17770581"
+    },
+    "itemLabel": {
+     "xml:lang": "nb",
+     "type": "literal",
+     "value": "Tro & Medier"
+    },
+    "websites": {
+     "type": "literal",
+     "value": "https://troogmedier.no/"
+    },
+    "inception1": {
+     "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+     "type": "literal",
+     "value": "1935-04-30T00:00:00Z"
+    },
+    "hq": {
+     "type": "literal",
+     "value": "Bergen"
+    },
+    "parentOrgnrs": {
+     "type": "literal",
+     "value": ""
+    },
+    "parents": {
+     "type": "literal",
+     "value": ""
+    },
+    "ceos": {
+     "type": "literal",
+     "value": ""
+    },
+    "industries": {
+     "type": "literal",
+     "value": ""
+    },
+    "tickers": {
+     "type": "literal",
+     "value": ""
+    },
+    "isins": {
+     "type": "literal",
+     "value": ""
+    },
+    "facebook": {
+     "type": "literal",
+     "value": ""
+    },
+    "instagram": {
+     "type": "literal",
+     "value": ""
+    },
+    "linkedin": {
+     "type": "literal",
+     "value": ""
+    },
+    "twitter": {
+     "type": "literal",
+     "value": ""
+    },
+    "youtube": {
+     "type": "literal",
+     "value": ""
+    },
+    "nowiki1": {
+     "type": "uri",
+     "value": "https://no.wikipedia.org/wiki/Tro_%26_Medier"
+    }
+   },
+   {
+    "orgnr": {
+     "type": "literal",
+     "value": "994890883"
+    },
+    "item": {
+     "type": "uri",
+     "value": "http://www.wikidata.org/entity/Q127048700"
+    },
+    "itemLabel": {
+     "xml:lang": "nb",
+     "type": "literal",
+     "value": "Stiftelsen Ungdom I Oppdrag"
+    },
+    "itemDescription": {
+     "xml:lang": "en",
+     "type": "literal",
+     "value": "Norwegian foundation"
+    },
+    "websites": {
+     "type": "literal",
+     "value": "https://www.ywam.no"
+    },
+    "inception1": {
+     "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+     "type": "literal",
+     "value": "2010-02-08T00:00:00Z"
+    },
+    "hq": {
+     "type": "literal",
+     "value": "Stange"
+    },
+    "parentOrgnrs": {
+     "type": "literal",
+     "value": ""
+    },
+    "parents": {
+     "type": "literal",
+     "value": ""
+    },
+    "ceos": {
+     "type": "literal",
+     "value": ""
+    },
+    "industries": {
+     "type": "literal",
+     "value": ""
+    },
+    "tickers": {
+     "type": "literal",
+     "value": ""
+    },
+    "isins": {
+     "type": "literal",
+     "value": ""
+    },
+    "facebook": {
+     "type": "literal",
+     "value": "ywamnorway"
+    },
+    "instagram": {
+     "type": "literal",
+     "value": "ywamnorway"
+    },
+    "linkedin": {
+     "type": "literal",
+     "value": ""
+    },
+    "twitter": {
+     "type": "literal",
+     "value": ""
+    },
+    "youtube": {
+     "type": "literal",
+     "value": "UCQpJqUzMoAoNmSXVMuQKmTQ"
+    }
+   }
+  ]
+ }
+}

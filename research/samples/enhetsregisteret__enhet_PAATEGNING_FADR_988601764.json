@@ -1,0 +1,100 @@
+{
+ "_request": {
+  "url": "https://data.brreg.no/enhetsregisteret/api/enheter/988601764",
+  "status": 200,
+  "retrieved_at": "2026-10-13T11:57:40Z",
+  "headers": {
+   "vary": "Origin",
+   "x-content-type-options": "nosniff",
+   "x-xss-protection": "0",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "pragma": "no-cache",
+   "expires": "0",
+   "strict-transport-security": "max-age=157680000; includeSubDomains",
+   "x-frame-options": "DENY",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:53:35 GMT",
+   "connection": "close"
+  }
+ },
+ "body": {
+  "_links": {
+   "self": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/enheter/988601764"
+   }
+  },
+  "aktivitet": [
+   "Detaljsalg av helsekostprodukter."
+  ],
+  "epostadresse": "kind_ja@hotmail.com",
+  "erIKonsern": false,
+  "forretningsadresse": {
+   "adresse": [],
+   "kommune": "RINGERIKE",
+   "kommunenummer": "3305",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "3533",
+   "poststed": "TYRISTRAND"
+  },
+  "harRegistrertAntallAnsatte": false,
+  "historiskeNavn": [],
+  "institusjonellSektorkode": {
+   "beskrivelse": "Personlige foretak",
+   "kode": "2300"
+  },
+  "konkurs": false,
+  "maalform": "Bokmål",
+  "naeringskode1": {
+   "beskrivelse": "Detaljhandel med nærings- og nytelsesmidler ellers",
+   "kode": "47.270"
+  },
+  "navn": "PRO BODY DA",
+  "organisasjonsform": {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/DA"
+    }
+   },
+   "beskrivelse": "Ansvarlig selskap med delt ansvar",
+   "kode": "DA"
+  },
+  "organisasjonsnummer": "988601764",
+  "paategninger": [
+   {
+    "infotype": "FADR",
+    "innfoertDato": "2026-10-08",
+    "tekst": "Foretaksregisteret har grunn til å anta at forretningsadressen er feil. Foretaket har fått pålegg om å melde endring."
+   }
+  ],
+  "postadresse": {
+   "adresse": [
+    "c/o Jan Cato Kind",
+    "Hadelandsveien 188"
+   ],
+   "kommune": "RINGERIKE",
+   "kommunenummer": "3305",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "3511",
+   "poststed": "HØNEFOSS"
+  },
+  "registreringsdatoEnhetsregisteret": "2005-10-03",
+  "registreringsdatoForetaksregisteret": "2005-10-03",
+  "registrertIForetaksregisteret": true,
+  "registrertIFrivillighetsregisteret": false,
+  "registrertIMvaregisteret": false,
+  "registrertIPartiregisteret": false,
+  "registrertIStiftelsesregisteret": false,
+  "respons_klasse": "Enhet",
+  "stiftelsesdato": "2005-08-20",
+  "telefon": "48 23 97 89",
+  "underAvvikling": false,
+  "underTvangsavviklingEllerTvangsopplosning": false,
+  "vedtektsdato": "2005-08-20",
+  "vedtektsfestetFormaal": [
+   "Detaljsalg av helsekostprodukter."
+  ]
+ }
+}

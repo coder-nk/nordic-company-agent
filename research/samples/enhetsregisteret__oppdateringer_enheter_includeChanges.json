@@ -1,0 +1,1575 @@
+{
+ "_request": {
+  "url": "https://data.brreg.no/enhetsregisteret/api/oppdateringer/enheter?dato=2026-10-12T00:00:00.000Z&size=1000&includeChanges=true",
+  "status": 200,
+  "retrieved_at": "2026-10-13T11:39:48Z",
+  "headers": {
+   "vary": "Origin",
+   "x-content-type-options": "nosniff",
+   "x-xss-protection": "0",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "pragma": "no-cache",
+   "expires": "0",
+   "strict-transport-security": "max-age=157680000; includeSubDomains",
+   "x-frame-options": "DENY",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:35:41 GMT",
+   "connection": "close"
+  }
+ },
+ "body": {
+  "_embedded": {
+   "oppdaterteEnheter": [
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/990736804"
+      }
+     },
+     "dato": "2026-10-12T04:05:11.715Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/epostadresse",
+       "value": "sagator2@outlook.com"
+      },
+      {
+       "op": "replace",
+       "path": "/mobil",
+       "value": "+4790037007"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316061,
+     "organisasjonsnummer": "990736804"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/935252369"
+      }
+     },
+     "dato": "2026-10-12T04:05:11.715Z",
+     "endringer": [
+      {
+       "op": "add",
+       "path": "/historiskeNavn/0",
+       "value": {
+        "fraDato": "2025-03-23 14:05:02",
+        "navn": "MARIUS AGA ANKERVOLD",
+        "tilDato": "2026-10-12 06:00:55"
+       }
+      },
+      {
+       "op": "replace",
+       "path": "/navn",
+       "value": "ANKERVOLD & RAUNHOLM MEKANISKE"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316062,
+     "organisasjonsnummer": "935252369"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/936700675"
+      }
+     },
+     "dato": "2026-10-12T04:05:11.715Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/aktivitet/0",
+       "value": "Utleie av personbiler (uten fører)."
+      },
+      {
+       "op": "add",
+       "path": "/aktivitet/1",
+       "value": "Transport av gods på vei."
+      },
+      {
+       "op": "add",
+       "path": "/aktivitet/2",
+       "value": "Salg av personbiler, nye og brukte."
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316064,
+     "organisasjonsnummer": "936700675"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/938657971"
+      }
+     },
+     "dato": "2026-10-12T04:05:11.715Z",
+     "endringstype": "Ny",
+     "oppdateringsid": 25316065,
+     "organisasjonsnummer": "938657971"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/829314312"
+      }
+     },
+     "dato": "2026-10-12T04:05:11.715Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/0",
+       "value": "Stølsvegen 20"
+      },
+      {
+       "op": "remove",
+       "path": "/forretningsadresse/adresse/1"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/kommune",
+       "value": "BERGEN"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/kommunenummer",
+       "value": "4601"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/postnummer",
+       "value": "5260"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/poststed",
+       "value": "INDRE ARNA"
+      },
+      {
+       "op": "add",
+       "path": "/postadresse",
+       "value": {
+        "adresse": [
+         "c/o Eivind Njaastad",
+         "Stølsvegen 20"
+        ],
+        "kommune": "BERGEN",
+        "kommunenummer": "4601",
+        "land": "Norge",
+        "landkode": "NO",
+        "postnummer": "5260",
+        "poststed": "INDRE ARNA"
+       }
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316066,
+     "organisasjonsnummer": "829314312"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/977338131"
+      }
+     },
+     "dato": "2026-10-12T04:05:11.715Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/epostadresse",
+       "value": "terjenorum@me.com"
+      },
+      {
+       "op": "remove",
+       "path": "/telefon"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316067,
+     "organisasjonsnummer": "977338131"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/837174112"
+      }
+     },
+     "dato": "2026-10-12T04:05:11.715Z",
+     "endringstype": "Sletting",
+     "oppdateringsid": 25316068,
+     "organisasjonsnummer": "837174112"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/938657998"
+      }
+     },
+     "dato": "2026-10-12T04:05:11.715Z",
+     "endringstype": "Ny",
+     "oppdateringsid": 25316069,
+     "organisasjonsnummer": "938657998"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/918471006"
+      }
+     },
+     "dato": "2026-10-12T04:05:11.715Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/aktivitet/0",
+       "value": "Programvareutvikling."
+      },
+      {
+       "op": "replace",
+       "path": "/aktivitet/1",
+       "value": "Konsulenttjenester innen IT."
+      },
+      {
+       "op": "replace",
+       "path": "/aktivitet/2",
+       "value": "Investering i aksjer og verdipapirer."
+      },
+      {
+       "op": "remove",
+       "path": "/aktivitet/3"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316073,
+     "organisasjonsnummer": "918471006"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923253653"
+      }
+     },
+     "dato": "2026-10-12T04:05:11.715Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/0",
+       "value": "Friggs vei 9"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/postnummer",
+       "value": "4846"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316076,
+     "organisasjonsnummer": "923253653"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/929825624"
+      }
+     },
+     "dato": "2026-10-12T04:05:11.715Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/0",
+       "value": "Stensås terrasse 13"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/postnummer",
+       "value": "4846"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316077,
+     "organisasjonsnummer": "929825624"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/917485321"
+      }
+     },
+     "dato": "2026-10-12T04:05:11.715Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/0",
+       "value": "Friervegen 115"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/kommune",
+       "value": "PORSGRUNN"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/kommunenummer",
+       "value": "4001"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/postnummer",
+       "value": "3940"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/poststed",
+       "value": "PORSGRUNN"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316078,
+     "organisasjonsnummer": "917485321"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/933004066"
+      }
+     },
+     "dato": "2026-10-12T04:05:11.715Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/0",
+       "value": "Ytrebygdsvegen 9"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/postnummer",
+       "value": "5251"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/poststed",
+       "value": "SØREIDGREND"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316079,
+     "organisasjonsnummer": "933004066"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/936908659"
+      }
+     },
+     "dato": "2026-10-12T04:05:11.715Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/0",
+       "value": "Gullbringvegen 30"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/postnummer",
+       "value": "3800"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316080,
+     "organisasjonsnummer": "936908659"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/925236004"
+      }
+     },
+     "dato": "2026-10-12T04:05:11.715Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/0",
+       "value": "Slåttebakkane 44"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316081,
+     "organisasjonsnummer": "925236004"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/936486940"
+      }
+     },
+     "dato": "2026-10-12T04:05:11.715Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/0",
+       "value": "Gustav Jensens gate 10"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316082,
+     "organisasjonsnummer": "936486940"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/925862347"
+      }
+     },
+     "dato": "2026-10-12T04:05:11.715Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/0",
+       "value": "Bakkegata 10B"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/postnummer",
+       "value": "8663"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316083,
+     "organisasjonsnummer": "925862347"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/913826280"
+      }
+     },
+     "dato": "2026-10-12T04:05:11.715Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/0",
+       "value": "Blåbæråsen 17"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316084,
+     "organisasjonsnummer": "913826280"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/930053228"
+      }
+     },
+     "dato": "2026-10-12T04:05:11.715Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/0",
+       "value": "Rosenhoffgata 7G"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/postnummer",
+       "value": "0569"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316085,
+     "organisasjonsnummer": "930053228"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/934993047"
+      }
+     },
+     "dato": "2026-10-12T04:05:11.715Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/0",
+       "value": "Landingsveien 11"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/postnummer",
+       "value": "0770"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316086,
+     "organisasjonsnummer": "934993047"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/921579039"
+      }
+     },
+     "dato": "2026-10-12T04:05:11.715Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/0",
+       "value": "Blakstadmarka 44"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/postnummer",
+       "value": "1386"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/poststed",
+       "value": "ASKER"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316087,
+     "organisasjonsnummer": "921579039"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/931547275"
+      }
+     },
+     "dato": "2026-10-12T04:05:11.715Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/0",
+       "value": "Stenfeltbakken 38"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316088,
+     "organisasjonsnummer": "931547275"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/938169004"
+      }
+     },
+     "dato": "2026-10-12T04:05:11.715Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/0",
+       "value": "Kjørkjelinna 20"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/kommune",
+       "value": "ØSTRE TOTEN"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/kommunenummer",
+       "value": "3442"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/postnummer",
+       "value": "2848"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/poststed",
+       "value": "SKREIA"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316089,
+     "organisasjonsnummer": "938169004"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/970933778"
+      }
+     },
+     "dato": "2026-10-12T04:05:11.715Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/0",
+       "value": "Mosseveien 71"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/postnummer",
+       "value": "1610"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/poststed",
+       "value": "FREDRIKSTAD"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316090,
+     "organisasjonsnummer": "970933778"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/925383988"
+      }
+     },
+     "dato": "2026-10-12T04:05:11.715Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/0",
+       "value": "Gjerpenlia 5"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/postnummer",
+       "value": "3035"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316091,
+     "organisasjonsnummer": "925383988"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/930679887"
+      }
+     },
+     "dato": "2026-10-12T04:05:13.703Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/0",
+       "value": "Torstadåsen 1"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/kommune",
+       "value": "ASKER"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/kommunenummer",
+       "value": "3203"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/postnummer",
+       "value": "1396"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/poststed",
+       "value": "BILLINGSTAD"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316092,
+     "organisasjonsnummer": "930679887"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/915506429"
+      }
+     },
+     "dato": "2026-10-12T04:05:13.703Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/0",
+       "value": "Dyvasvegen 102"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/postnummer",
+       "value": "7517"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/poststed",
+       "value": "HELL"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316093,
+     "organisasjonsnummer": "915506429"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/996292320"
+      }
+     },
+     "dato": "2026-10-12T04:05:13.703Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/0",
+       "value": "Torvikeidet 17"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/postnummer",
+       "value": "6320"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/poststed",
+       "value": "ISFJORDEN"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316094,
+     "organisasjonsnummer": "996292320"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/914325579"
+      }
+     },
+     "dato": "2026-10-12T04:05:13.703Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/0",
+       "value": "Observatoriegata 7D"
+      },
+      {
+       "op": "remove",
+       "path": "/forretningsadresse/adresse/1"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/kommune",
+       "value": "OSLO"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/kommunenummer",
+       "value": "0301"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/postnummer",
+       "value": "0254"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/poststed",
+       "value": "OSLO"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316095,
+     "organisasjonsnummer": "914325579"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/828929992"
+      }
+     },
+     "dato": "2026-10-12T04:05:13.703Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/0",
+       "value": "Kirkegårdsveien 15"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316096,
+     "organisasjonsnummer": "828929992"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/831873922"
+      }
+     },
+     "dato": "2026-10-12T04:05:13.703Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/1",
+       "value": "Knausen 113"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/postnummer",
+       "value": "9018"
+      },
+      {
+       "op": "replace",
+       "path": "/postadresse/adresse/0",
+       "value": "c/o FAUSTO FERREIRA"
+      },
+      {
+       "op": "replace",
+       "path": "/postadresse/adresse/1",
+       "value": "Knausen 113"
+      },
+      {
+       "op": "replace",
+       "path": "/postadresse/postnummer",
+       "value": "9018"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316097,
+     "organisasjonsnummer": "831873922"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/831873922"
+      }
+     },
+     "dato": "2026-10-12T04:05:13.703Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/1",
+       "value": "Knausen 113"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/postnummer",
+       "value": "9018"
+      },
+      {
+       "op": "replace",
+       "path": "/postadresse/adresse/0",
+       "value": "c/o FAUSTO FERREIRA"
+      },
+      {
+       "op": "replace",
+       "path": "/postadresse/adresse/1",
+       "value": "Knausen 113"
+      },
+      {
+       "op": "replace",
+       "path": "/postadresse/postnummer",
+       "value": "9018"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316098,
+     "organisasjonsnummer": "831873922"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/936720560"
+      }
+     },
+     "dato": "2026-10-12T04:05:13.703Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/0",
+       "value": "Solhaugveien 15"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/kommune",
+       "value": "BÆRUM"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/kommunenummer",
+       "value": "3201"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/postnummer",
+       "value": "1337"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/poststed",
+       "value": "SANDVIKA"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316099,
+     "organisasjonsnummer": "936720560"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/921847807"
+      }
+     },
+     "dato": "2026-10-12T04:05:13.703Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/0",
+       "value": "c/o LINDA CHARLOTTE ASLAKSEN"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/1",
+       "value": "Rienvegen 43"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/kommune",
+       "value": "SKIEN"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/kommunenummer",
+       "value": "4003"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/postnummer",
+       "value": "3737"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/poststed",
+       "value": "SKIEN"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316100,
+     "organisasjonsnummer": "921847807"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/833138472"
+      }
+     },
+     "dato": "2026-10-12T04:05:13.703Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/0",
+       "value": "Gustav Jensens gate 10"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316101,
+     "organisasjonsnummer": "833138472"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/933295052"
+      }
+     },
+     "dato": "2026-10-12T04:05:13.703Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/0",
+       "value": "Marcus Thranes vei 29B"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/kommune",
+       "value": "LØRENSKOG"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/kommunenummer",
+       "value": "3222"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/postnummer",
+       "value": "1470"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/poststed",
+       "value": "LØRENSKOG"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316102,
+     "organisasjonsnummer": "933295052"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/918723455"
+      }
+     },
+     "dato": "2026-10-12T04:05:13.703Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/0",
+       "value": "Torstadåsen 1"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/kommune",
+       "value": "ASKER"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/kommunenummer",
+       "value": "3203"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/postnummer",
+       "value": "1396"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/poststed",
+       "value": "BILLINGSTAD"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316103,
+     "organisasjonsnummer": "918723455"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/930246204"
+      }
+     },
+     "dato": "2026-10-12T04:05:13.703Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/0",
+       "value": "Odderheitunet 15"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/postnummer",
+       "value": "4639"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316104,
+     "organisasjonsnummer": "930246204"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/971422556"
+      }
+     },
+     "dato": "2026-10-12T04:05:13.703Z",
+     "endringstype": "Sletting",
+     "oppdateringsid": 25316105,
+     "organisasjonsnummer": "971422556"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/925201294"
+      }
+     },
+     "dato": "2026-10-12T04:20:10.628Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/0",
+       "value": "Nipeveien 117"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/kommune",
+       "value": "RISØR"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/kommunenummer",
+       "value": "4201"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/postnummer",
+       "value": "4957"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/poststed",
+       "value": "RISØR"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316106,
+     "organisasjonsnummer": "925201294"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923448217"
+      }
+     },
+     "dato": "2026-10-12T04:40:11.019Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/0",
+       "value": "Vabråten 20"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/kommune",
+       "value": "ASKER"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/kommunenummer",
+       "value": "3203"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/postnummer",
+       "value": "1392"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/poststed",
+       "value": "VETTRE"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316107,
+     "organisasjonsnummer": "923448217"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/834297612"
+      }
+     },
+     "dato": "2026-10-12T04:55:11.316Z",
+     "endringer": [
+      {
+       "op": "add",
+       "path": "/epostadresse",
+       "value": "dreierdriftas@gmail.com"
+      },
+      {
+       "op": "add",
+       "path": "/mobil",
+       "value": "970 56 709"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316108,
+     "organisasjonsnummer": "834297612"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/938346194"
+      }
+     },
+     "dato": "2026-10-12T05:05:10.731Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/naeringskode1/beskrivelse",
+       "value": "Drift av restauranter"
+      },
+      {
+       "op": "replace",
+       "path": "/naeringskode1/kode",
+       "value": "56.110"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316109,
+     "organisasjonsnummer": "938346194"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/938658064"
+      }
+     },
+     "dato": "2026-10-12T05:05:11.974Z",
+     "endringstype": "Ny",
+     "oppdateringsid": 25316110,
+     "organisasjonsnummer": "938658064"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/938658072"
+      }
+     },
+     "dato": "2026-10-12T05:05:11.974Z",
+     "endringstype": "Ny",
+     "oppdateringsid": 25316111,
+     "organisasjonsnummer": "938658072"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/928897303"
+      }
+     },
+     "dato": "2026-10-12T05:10:10.718Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/naeringskode1/beskrivelse",
+       "value": "Bedriftsrådgivning og annen administrativ rådgivning"
+      },
+      {
+       "op": "replace",
+       "path": "/naeringskode1/kode",
+       "value": "70.200"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316112,
+     "organisasjonsnummer": "928897303"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/938207771"
+      }
+     },
+     "dato": "2026-10-12T05:10:11.942Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/naeringskode1/beskrivelse",
+       "value": "Utvikling og salg av byggeprosjekter"
+      },
+      {
+       "op": "replace",
+       "path": "/naeringskode1/kode",
+       "value": "68.120"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316113,
+     "organisasjonsnummer": "938207771"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/938658129"
+      }
+     },
+     "dato": "2026-10-12T05:10:11.942Z",
+     "endringstype": "Ny",
+     "oppdateringsid": 25316114,
+     "organisasjonsnummer": "938658129"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/938658137"
+      }
+     },
+     "dato": "2026-10-12T05:10:11.942Z",
+     "endringstype": "Ny",
+     "oppdateringsid": 25316115,
+     "organisasjonsnummer": "938658137"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/938658161"
+      }
+     },
+     "dato": "2026-10-12T05:10:11.942Z",
+     "endringstype": "Ny",
+     "oppdateringsid": 25316116,
+     "organisasjonsnummer": "938658161"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/938207976"
+      }
+     },
+     "dato": "2026-10-12T05:15:10.742Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/naeringskode1/beskrivelse",
+       "value": "Utleie av egen eller leid fast eiendom"
+      },
+      {
+       "op": "replace",
+       "path": "/naeringskode1/kode",
+       "value": "68.200"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316117,
+     "organisasjonsnummer": "938207976"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/933328317"
+      }
+     },
+     "dato": "2026-10-12T05:15:11.859Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/naeringskode1/beskrivelse",
+       "value": "Gulvlegging og tapetsering"
+      },
+      {
+       "op": "replace",
+       "path": "/naeringskode1/kode",
+       "value": "43.330"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316118,
+     "organisasjonsnummer": "933328317"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/937319908"
+      }
+     },
+     "dato": "2026-10-12T05:15:11.859Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/naeringskode1/beskrivelse",
+       "value": "Murerarbeid"
+      },
+      {
+       "op": "replace",
+       "path": "/naeringskode1/kode",
+       "value": "43.910"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316119,
+     "organisasjonsnummer": "937319908"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/936052282"
+      }
+     },
+     "dato": "2026-10-12T05:15:11.859Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/naeringskode1/beskrivelse",
+       "value": "Bedriftsrådgivning og annen administrativ rådgivning"
+      },
+      {
+       "op": "replace",
+       "path": "/naeringskode1/kode",
+       "value": "70.200"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316120,
+     "organisasjonsnummer": "936052282"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/938658226"
+      }
+     },
+     "dato": "2026-10-12T05:15:11.859Z",
+     "endringstype": "Ny",
+     "oppdateringsid": 25316121,
+     "organisasjonsnummer": "938658226"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/938658234"
+      }
+     },
+     "dato": "2026-10-12T05:15:11.859Z",
+     "endringstype": "Ny",
+     "oppdateringsid": 25316122,
+     "organisasjonsnummer": "938658234"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/922729344"
+      }
+     },
+     "dato": "2026-10-12T05:15:11.859Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/aktivitet/0",
+       "value": "bookingløsninger og CRM-systemer for bedrifter og privatpersoner."
+      },
+      {
+       "op": "replace",
+       "path": "/aktivitet/1",
+       "value": "Utvikling, design og drift av nettsider, nettbutikker,"
+      },
+      {
+       "op": "add",
+       "path": "/historiskeNavn/0",
+       "value": {
+        "fraDato": "2019-05-10 09:43:52",
+        "navn": "SS BODY MIND SPIRIT SINDRE SYNNEVÅG",
+        "tilDato": "2026-10-12 07:14:30"
+       }
+      },
+      {
+       "op": "replace",
+       "path": "/navn",
+       "value": "SYNNEVÅG LABS"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316123,
+     "organisasjonsnummer": "922729344"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/917248877"
+      }
+     },
+     "dato": "2026-10-12T05:20:11.218Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/0",
+       "value": "Hausmania Kulturhus"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/adresse/1",
+       "value": "Hausmanns gate 34"
+      },
+      {
+       "op": "replace",
+       "path": "/forretningsadresse/postnummer",
+       "value": "0182"
+      },
+      {
+       "op": "add",
+       "path": "/postadresse",
+       "value": {
+        "adresse": [
+         "Hellvikskogsvei 87"
+        ],
+        "kommune": "NESODDEN",
+        "kommunenummer": "3212",
+        "land": "Norge",
+        "landkode": "NO",
+        "postnummer": "1459",
+        "poststed": "NESODDEN"
+       }
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316124,
+     "organisasjonsnummer": "917248877"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/937692285"
+      }
+     },
+     "dato": "2026-10-12T05:20:11.968Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/naeringskode1/beskrivelse",
+       "value": "Detaljhandel med motorvogner"
+      },
+      {
+       "op": "replace",
+       "path": "/naeringskode1/kode",
+       "value": "47.810"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316125,
+     "organisasjonsnummer": "937692285"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/927528045"
+      }
+     },
+     "dato": "2026-10-12T05:20:11.968Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/aktivitet/0",
+       "value": "med sikkerhetsinnstillinger, digitale enheter, kontoer,"
+      },
+      {
+       "op": "replace",
+       "path": "/aktivitet/1",
+       "value": "informasjonssikkerhet for familier og virksomheter. Praktisk bistand"
+      },
+      {
+       "op": "replace",
+       "path": "/aktivitet/2",
+       "value": "foreldrekontroll, personvern, sikkerhetskopiering og hjemmenettverk."
+      },
+      {
+       "op": "add",
+       "path": "/aktivitet/3",
+       "value": "Rådgivning og veiledning innen digital trygghet og"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25316126,
+     "organisasjonsnummer": "927528045"
+    }
+   ]
+  },
+  "_links": {
+   "first": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/oppdateringer/enheter?dato=2026-10-12T00:00:00.000Z&includeChanges=true&page=0&size=1000"
+   },
+   "self": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/oppdateringer/enheter?dato=2026-10-12T00:00:00.000Z&size=1000&includeChanges=true"
+   },
+   "next": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/oppdateringer/enheter?dato=2026-10-12T00:00:00.000Z&includeChanges=true&page=1&size=1000"
+   },
+   "last": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/oppdateringer/enheter?dato=2026-10-12T00:00:00.000Z&includeChanges=true&page=9&size=1000"
+   }
+  },
+  "page": {
+   "number": 0,
+   "size": 1000,
+   "totalElements": 9490,
+   "totalPages": 10
+  }
+ }
+}

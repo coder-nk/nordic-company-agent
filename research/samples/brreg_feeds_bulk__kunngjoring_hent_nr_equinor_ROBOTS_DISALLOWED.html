@@ -1,0 +1,3553 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="nb" xml:lang="nb">
+
+  <head>
+<meta charset="windows-1252"><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="keywords" content="Brønnøysundregistrene"/>
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags --><link rel="stylesheet" href="//scf.brreg.no/css/normalize.min.css"/><link rel="stylesheet" href="//scf.brreg.no/css/bootstrap.min.css?v=2"/>
+<link rel="stylesheet" href="//scf.brreg.no/css/bootstrap-fix.css"/>
+<link
+        rel="stylesheet"
+        href="//scf.brreg.no/fonts/inter/inter.css"
+        crossorigin="anonymous"
+/>
+<link rel="stylesheet" href="//scf.brreg.no/css/br.css?v=22">
+<link rel="stylesheet" href="//scf.brreg.no/css/framework.css?v=69">
+<script src="//scf.brreg.no/js/br.js?v=6" defer></script>
+<script id="frameworkScript" data-scf="//scf.brreg.no" data-www="https://www.brreg.no" data-rum="https://siem-apm-prd.app.brreg.no" data-env="prod" src="//scf.brreg.no/js/framework.js?v=66" defer></script>
+
+<link class="favicon" rel="apple-touch-icon" sizes="180x180" href="//scf.brreg.no/bilder/favicons/apple-touch-icon.png?v=2">
+<link class="favicon" rel="icon" type="image/png" sizes="32x32" href="//scf.brreg.no/bilder/favicons/favicon-32x32.png?v=2">
+<link class="favicon" rel="icon" type="image/png" sizes="16x16" href="//scf.brreg.no/bilder/favicons/favicon-16x16.png?v=2">
+<link class="favicon" rel="manifest" href="//scf.brreg.no/bilder/favicons/site.webmanifest?v=2">
+<link class="favicon" rel="mask-icon" href="//scf.brreg.no/bilder/favicons/safari-pinned-tab.svg?v=2" color="#5bbad5">
+<link class="favicon" rel="shortcut icon" href="//scf.brreg.no/bilder/favicons/favicon.ico?v=2">
+<meta class="favicon" name="msapplication-TileColor" content="#da532c">
+<meta class="favicon" name="msapplication-config" content="//scf.brreg.no/bilder/favicons/browserconfig.xml?v=2">
+<meta class="favicon" name="theme-color" content="#ffffff">
+
+<link class="favicon-dark" rel="apple-touch-icon" sizes="180x180" href="//scf.brreg.no/bilder/favicons-dark/apple-touch-icon.png">
+<link class="favicon-dark" rel="icon" type="image/png" sizes="32x32" href="//scf.brreg.no/bilder/favicons-dark/favicon-32x32.png">
+<link class="favicon-dark" rel="icon" type="image/png" sizes="16x16" href="//scf.brreg.no/bilder/favicons-dark/favicon-16x16.png">
+<link class="favicon-dark" rel="manifest" href="//scf.brreg.no/bilder/favicons-dark/site.webmanifest">
+<link class="favicon-dark" rel="mask-icon" href="//scf.brreg.no/bilder/favicons-dark/safari-pinned-tab.svg" color="#5bbad5">
+<link class="favicon-dark" rel="shortcut icon" href="//scf.brreg.no/bilder/favicons-dark/favicon.ico">
+<meta class="favicon-dark" name="msapplication-TileColor" content="#da532c">
+<meta class="favicon-dark" name="msapplication-config" content="//scf.brreg.no/bilder/favicons-dark/browserconfig.xml">
+<meta class="favicon-dark" name="theme-color" content="#ffffff">
+<meta name='ROBOTS' content='NOINDEX, NOFOLLOW'/>
+
+<title>Kunngjøringer - Brønnøysundregistrene</title>
+<script src="//scf.brreg.no/js/jquery-3.7.1.min.js"></script>
+<script src="//scf.brreg.no/js/bootstrap.min.js?v=2"></script>
+
+  </head>
+		<body id='centered-page'>
+<header class="prod main-header" lang="nb">
+    <div class="header-content">
+        <div class="shortcut-to-maincontent">
+            <a href="#maincontent" title="Hopp til innhold">Hopp til innhold</a>
+        </div>
+        <div class="header-logo">
+            <a href="https://www.brreg.no/"><img src="//scf.brreg.no/bilder/brreg_logo.svg" alt="Brønnøysundregistrene, snarvei til fremsiden"></a>
+        </div>
+        <div class="header-right">
+            <div class="header-language">
+                <div id="languageButtonHeader" role="button" tabindex="0" aria-expanded="false" aria-controls="languageHeader">
+                    <span lang="en">Language</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M10 4.75C10.4142 4.75 10.75 5.08579 10.75 5.5V6.75H13.4825C13.494 6.74973 13.5055 6.74973 13.517 6.75H16C16.4142 6.75 16.75 7.08579 16.75 7.5C16.75 7.91421 16.4142 8.25 16 8.25H14.0516C13.4168 10.1925 12.3897 11.9567 11.0571 13.4469C11.2033 13.5787 11.3526 13.7073 11.5049 13.8325C11.8248 14.0957 11.8708 14.5683 11.6076 14.8882C11.3445 15.2081 10.8719 15.2541 10.552 14.991C10.3639 14.8363 10.1799 14.677 10 14.5133C8.77421 15.6289 7.35388 16.5401 5.78846 17.1923C5.40611 17.3516 4.96701 17.1708 4.80769 16.7885C4.64838 16.4061 4.82919 15.967 5.21154 15.8077C6.59596 15.2308 7.85392 14.4283 8.94293 13.4469C7.61037 11.9567 6.58314 10.1925 5.94834 8.25H4C3.58579 8.25 3.25 7.91421 3.25 7.5C3.25 7.08579 3.58579 6.75 4 6.75H9.25V5.5C9.25 5.08579 9.58579 4.75 10 4.75ZM12.4638 8.25C11.8992 9.78019 11.0594 11.1767 10 12.3783C8.94058 11.1767 8.10077 9.78018 7.53617 8.25H12.4638ZM15.5 9.75C15.7964 9.75 16.065 9.92455 16.1854 10.1954L20.1854 19.1954C20.3536 19.5739 20.1831 20.0171 19.8046 20.1854C19.4261 20.3536 18.9829 20.1831 18.8146 19.8046L17.9015 17.75H13.0985L12.1854 19.8046C12.0171 20.1831 11.5739 20.3536 11.1954 20.1854C10.8169 20.0171 10.6464 19.5739 10.8146 19.1954L14.8146 10.1954C14.935 9.92455 15.2036 9.75 15.5 9.75ZM15.5 12.3467L17.2348 16.25H13.7652L15.5 12.3467Z" fill="#23262A"/>
+                    </svg>
+                </div>
+                <div id="closeLanguageButton" class="close-button" hidden title="Lukk språkvalg" role="button" tabindex="0" aria-expanded="true" aria-controls="languageHeader">
+                    <div class="close-search-icon">
+                        <svg version="1.1" class="header-icon"
+                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 46 46"
+                             xml:space="preserve">
+                            <g>
+                                <path class="st0" d="M1.5,46c-0.4,0-0.8-0.2-1.1-0.4C0.2,45.2,0,44.9,0,44.5s0.2-0.8,0.4-1.1L28,15.8c0.3-0.3,0.7-0.4,1.1-0.4
+                                    s0.8,0.2,1.1,0.4c0.6,0.6,0.6,1.5,0,2.1L2.6,45.5C2.3,45.8,1.9,46,1.5,46z"/>
+                            </g>
+                                                        <g>
+                                <path class="st0" d="M16.9,30.6c-0.4,0-0.8-0.2-1.1-0.4c-0.6-0.6-0.6-1.5,0-2.1L43.4,0.5C43.7,0.2,44.1,0,44.5,0s0.8,0.2,1.1,0.4
+                                    C45.8,0.7,46,1.1,46,1.5s-0.2,0.8-0.4,1.1L18,30.2C17.7,30.4,17.3,30.6,16.9,30.6z"/>
+                            </g>
+                                                        <g>
+                                <path class="st0" d="M44.5,46c-0.4,0-0.8-0.2-1.1-0.4L15.8,18c-0.6-0.6-0.6-1.5,0-2.1c0.3-0.3,0.7-0.4,1.1-0.4s0.8,0.2,1.1,0.4
+                                    l27.6,27.6c0.3,0.3,0.4,0.7,0.4,1.1c0,0.4-0.2,0.8-0.4,1.1C45.3,45.8,44.9,46,44.5,46z"/>
+                            </g>
+                                                        <g>
+                                <path class="st0" d="M29.1,30.6c-0.4,0-0.8-0.2-1.1-0.4L0.5,2.6C0.2,2.3,0,1.9,0,1.5s0.2-0.8,0.4-1.1S1.1,0,1.5,0s0.8,0.2,1.1,0.4
+                                    L30.2,28c0.3,0.3,0.4,0.7,0.4,1.1s-0.2,0.8-0.4,1.1C29.9,30.4,29.5,30.6,29.1,30.6z"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="header-search-button">
+                <div id="searchButton" role="button" tabindex="0" aria-expanded="false" aria-controls="searchformHeader">
+                    <span>Søk</span>
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="header-icon" width="22">
+                        <path class="st0" d="M10.5 3.25C6.49594 3.25 3.25 6.49594 3.25 10.5C3.25 14.5041 6.49594 17.75 10.5 17.75C12.2319 17.75 13.8219 17.1427 15.0689 16.1295L20.4801 21.5407C20.773 21.8336 21.2478 21.8336 21.5407 21.5407C21.8336 21.2478 21.8336 20.773 21.5407 20.4801L16.1295 15.0689C17.1427 13.8219 17.75 12.2319 17.75 10.5C17.75 6.49594 14.5041 3.25 10.5 3.25ZM4.75 10.5C4.75 7.32436 7.32436 4.75 10.5 4.75C13.6756 4.75 16.25 7.32436 16.25 10.5C16.25 13.6756 13.6756 16.25 10.5 16.25C7.32436 16.25 4.75 13.6756 4.75 10.5Z"></path>
+                    </svg>
+                 </div>
+                <div id="closeSearchButton" class="close-button" hidden title="Lukk søk" role="button" tabindex="0" aria-expanded="true" aria-controls="searchformHeader">
+                    <div class="close-search-icon">
+                        <svg version="1.1" class="header-icon"
+                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 46 46"
+                             xml:space="preserve">
+                            <g>
+                                <path class="st0" d="M1.5,46c-0.4,0-0.8-0.2-1.1-0.4C0.2,45.2,0,44.9,0,44.5s0.2-0.8,0.4-1.1L28,15.8c0.3-0.3,0.7-0.4,1.1-0.4
+                                    s0.8,0.2,1.1,0.4c0.6,0.6,0.6,1.5,0,2.1L2.6,45.5C2.3,45.8,1.9,46,1.5,46z"/>
+                            </g>
+                            <g>
+                                <path class="st0" d="M16.9,30.6c-0.4,0-0.8-0.2-1.1-0.4c-0.6-0.6-0.6-1.5,0-2.1L43.4,0.5C43.7,0.2,44.1,0,44.5,0s0.8,0.2,1.1,0.4
+                                    C45.8,0.7,46,1.1,46,1.5s-0.2,0.8-0.4,1.1L18,30.2C17.7,30.4,17.3,30.6,16.9,30.6z"/>
+                            </g>
+                            <g>
+                                <path class="st0" d="M44.5,46c-0.4,0-0.8-0.2-1.1-0.4L15.8,18c-0.6-0.6-0.6-1.5,0-2.1c0.3-0.3,0.7-0.4,1.1-0.4s0.8,0.2,1.1,0.4
+                                    l27.6,27.6c0.3,0.3,0.4,0.7,0.4,1.1c0,0.4-0.2,0.8-0.4,1.1C45.3,45.8,44.9,46,44.5,46z"/>
+                            </g>
+                            <g>
+                                <path class="st0" d="M29.1,30.6c-0.4,0-0.8-0.2-1.1-0.4L0.5,2.6C0.2,2.3,0,1.9,0,1.5s0.2-0.8,0.4-1.1S1.1,0,1.5,0s0.8,0.2,1.1,0.4
+                                    L30.2,28c0.3,0.3,0.4,0.7,0.4,1.1s-0.2,0.8-0.4,1.1C29.9,30.4,29.5,30.6,29.1,30.6z"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="header-log-in-button">
+                <a id="loginButton" tabindex="0" href="https://person.brreg.no/nb/minside?header=1">
+                    <span>Min side</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.25 7.5C8.25 5.42893 9.92893 3.75 12 3.75C14.0711 3.75 15.75 5.42893 15.75 7.5C15.75 9.57107 14.0711 11.25 12 11.25C9.92893 11.25 8.25 9.57107 8.25 7.5ZM12 2.25C9.10051 2.25 6.75 4.60051 6.75 7.5C6.75 10.3995 9.10051 12.75 12 12.75C14.8995 12.75 17.25 10.3995 17.25 7.5C17.25 4.60051 14.8995 2.25 12 2.25ZM8.28769 17.2877C9.27225 16.3031 10.6076 15.75 12 15.75C13.3924 15.75 14.7277 16.3031 15.7123 17.2877C16.6969 18.2723 17.25 19.6076 17.25 21C17.25 21.4142 17.5858 21.75 18 21.75C18.4142 21.75 18.75 21.4142 18.75 21C18.75 19.2098 18.0388 17.4929 16.773 16.227C15.5071 14.9612 13.7902 14.25 12 14.25C10.2098 14.25 8.4929 14.9612 7.22703 16.227C5.96116 17.4929 5.25 19.2098 5.25 21C5.25 21.4142 5.58579 21.75 6 21.75C6.41421 21.75 6.75 21.4142 6.75 21C6.75 19.6076 7.30312 18.2723 8.28769 17.2877Z" fill="#23262A"/>
+                    </svg></a>
+            </div>
+            <div class="header-menu-button">
+                <div id="openMenuButton" role="button" tabindex="0" aria-expanded="false" aria-controls="mainMenu">
+                    <span>Meny</span>
+                    <div class="menuIcon"></div>
+                </div>
+                <div id="closeMenuButton" hidden role="button" tabindex="0" aria-expanded="true" aria-controls="mainMenu">
+                    <span>Meny</span>
+                    <div class="menuIcon"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="searchformHeader" class="search-and-language search-and-language-hide">
+        <form name="headerSearchForm" action="https://www.brreg.no" method="get" accept-charset="UTF-8">
+            <h2>Søk</h2>
+            <br>
+            <div class="search-field-wrapper">
+                <input type="search" id="s" name="s" lang="no" xml:lang="no" placeholder="Søk i innhold" aria-label="Søk i innhold">
+                <button id="doSearchButton" type="submit" aria-label="Søk">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.5 3.25C6.49594 3.25 3.25 6.49594 3.25 10.5C3.25 14.5041 6.49594 17.75 10.5 17.75C12.2319 17.75 13.8219 17.1427 15.0689 16.1295L20.4801 21.5407C20.773 21.8336 21.2478 21.8336 21.5407 21.5407C21.8336 21.2478 21.8336 20.773 21.5407 20.4801L16.1295 15.0689C17.1427 13.8219 17.75 12.2319 17.75 10.5C17.75 6.49594 14.5041 3.25 10.5 3.25ZM4.75 10.5C4.75 7.32436 7.32436 4.75 10.5 4.75C13.6756 4.75 16.25 7.32436 16.25 10.5C16.25 13.6756 13.6756 16.25 10.5 16.25C7.32436 16.25 4.75 13.6756 4.75 10.5Z"></path>
+                    </svg>
+                </button>
+            </div>
+            <input type="hidden" name="lang" value="nb">
+        </form>
+    </div>
+    <div id="languageHeader" class="search-and-language search-and-language-hide notranslate">
+        <div id="spraakVelger">
+            <h2>Velg språk</h2>
+            <br><br>
+        </div>
+    </div>
+    <div id="mobileMenuSection" class="nav-side" style="display: none;">
+        <ul>
+            <li>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M10 4.75C10.4142 4.75 10.75 5.08579 10.75 5.5V6.75H13.4825C13.494 6.74973 13.5055 6.74973 13.517 6.75H16C16.4142 6.75 16.75 7.08579 16.75 7.5C16.75 7.91421 16.4142 8.25 16 8.25H14.0516C13.4168 10.1925 12.3897 11.9567 11.0571 13.4469C11.2033 13.5787 11.3526 13.7073 11.5049 13.8325C11.8248 14.0957 11.8708 14.5683 11.6076 14.8882C11.3445 15.2081 10.8719 15.2541 10.552 14.991C10.3639 14.8363 10.1799 14.677 10 14.5133C8.77421 15.6289 7.35388 16.5401 5.78846 17.1923C5.40611 17.3516 4.96701 17.1708 4.80769 16.7885C4.64838 16.4061 4.82919 15.967 5.21154 15.8077C6.59596 15.2308 7.85392 14.4283 8.94293 13.4469C7.61037 11.9567 6.58314 10.1925 5.94834 8.25H4C3.58579 8.25 3.25 7.91421 3.25 7.5C3.25 7.08579 3.58579 6.75 4 6.75H9.25V5.5C9.25 5.08579 9.58579 4.75 10 4.75ZM12.4638 8.25C11.8992 9.78019 11.0594 11.1767 10 12.3783C8.94058 11.1767 8.10077 9.78018 7.53617 8.25H12.4638ZM15.5 9.75C15.7964 9.75 16.065 9.92455 16.1854 10.1954L20.1854 19.1954C20.3536 19.5739 20.1831 20.0171 19.8046 20.1854C19.4261 20.3536 18.9829 20.1831 18.8146 19.8046L17.9015 17.75H13.0985L12.1854 19.8046C12.0171 20.1831 11.5739 20.3536 11.1954 20.1854C10.8169 20.0171 10.6464 19.5739 10.8146 19.1954L14.8146 10.1954C14.935 9.92455 15.2036 9.75 15.5 9.75ZM15.5 12.3467L17.2348 16.25H13.7652L15.5 12.3467Z" fill="#23262A"/>
+                </svg>
+                <div role="button" id="languageButtonMenu" tabindex="0" lang="en">Language</div>
+            </li>
+            <li>
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="header-icon" width="22">
+                    <path class="st0" d="M10.5 3.25C6.49594 3.25 3.25 6.49594 3.25 10.5C3.25 14.5041 6.49594 17.75 10.5 17.75C12.2319 17.75 13.8219 17.1427 15.0689 16.1295L20.4801 21.5407C20.773 21.8336 21.2478 21.8336 21.5407 21.5407C21.8336 21.2478 21.8336 20.773 21.5407 20.4801L16.1295 15.0689C17.1427 13.8219 17.75 12.2319 17.75 10.5C17.75 6.49594 14.5041 3.25 10.5 3.25ZM4.75 10.5C4.75 7.32436 7.32436 4.75 10.5 4.75C13.6756 4.75 16.25 7.32436 16.25 10.5C16.25 13.6756 13.6756 16.25 10.5 16.25C7.32436 16.25 4.75 13.6756 4.75 10.5Z"></path>
+                </svg>
+                <div role="button" id="searchButtonMenu" tabindex="0">Søk</div>
+            </li>
+            <li>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.25 7.5C8.25 5.42893 9.92893 3.75 12 3.75C14.0711 3.75 15.75 5.42893 15.75 7.5C15.75 9.57107 14.0711 11.25 12 11.25C9.92893 11.25 8.25 9.57107 8.25 7.5ZM12 2.25C9.10051 2.25 6.75 4.60051 6.75 7.5C6.75 10.3995 9.10051 12.75 12 12.75C14.8995 12.75 17.25 10.3995 17.25 7.5C17.25 4.60051 14.8995 2.25 12 2.25ZM8.28769 17.2877C9.27225 16.3031 10.6076 15.75 12 15.75C13.3924 15.75 14.7277 16.3031 15.7123 17.2877C16.6969 18.2723 17.25 19.6076 17.25 21C17.25 21.4142 17.5858 21.75 18 21.75C18.4142 21.75 18.75 21.4142 18.75 21C18.75 19.2098 18.0388 17.4929 16.773 16.227C15.5071 14.9612 13.7902 14.25 12 14.25C10.2098 14.25 8.4929 14.9612 7.22703 16.227C5.96116 17.4929 5.25 19.2098 5.25 21C5.25 21.4142 5.58579 21.75 6 21.75C6.41421 21.75 6.75 21.4142 6.75 21C6.75 19.6076 7.30312 18.2723 8.28769 17.2877Z" fill="#23262A"/>
+                </svg>
+                <a href="https://person.brreg.no/nb/minside?header=1">Min side</a>
+            </li>
+        </ul>
+    </div>
+<nav id='mainMenu' aria-label='hovedmeny' class='main-nav nav-hide'><div class='nav-wrapper'><div class='nav-side'><ul><li><img aria-hidden='true' alt='' src='https://scf.brreg.no/bilder/meny/MegaphoneSpeaking.svg'> <a href='https://www.brreg.no/registersok/kunngjoringer/'>Kunngjøringer</a></li><li><img aria-hidden='true' alt='' src='https://scf.brreg.no/bilder/meny/Calendar.svg'> <a href='https://www.brreg.no/hvordan-kan-vi-hjelpe-deg/nar-blir-saken-min-behandlet/'>Saksbehandlingstid</a></li><li><img aria-hidden='true' alt='' src='https://scf.brreg.no/bilder/meny/PersonHeadset.svg'> <a href='https://www.brreg.no/hvordan-kan-vi-hjelpe-deg/'>Kontakt oss</a></li><li><img aria-hidden='true' alt='' src='https://scf.brreg.no/bilder/meny/Download.svg'> <a href='https://w2.brreg.no/eHandelPortal/ecomsys/'>Nettbutikk</a></li><li><img aria-hidden='true' alt='' src='https://scf.brreg.no/bilder/meny/DocPencil.svg'> <a href='https://www.brreg.no/bedrift/samordnet-registermelding/'>Samordnet registermelding</a></li><li><img aria-hidden='true' alt='' src='https://scf.brreg.no/bilder/meny/Newspaper.svg'> <a href='https://www.brreg.no/nyhetsarkiv/'>Nyheter</a></li><li><img aria-hidden='true' alt='' src='https://scf.brreg.no/bilder/meny/Brreg.svg'> <a href='https://www.brreg.no/om-oss/'>Om oss</a></li></ul></div><div class='nav-box-container'><a class='nav-box' href='https://www.brreg.no/registersok/'><span class='nav-box-title'>Registersøk</span></a><a class='nav-box' href='https://www.brreg.no/aksjeselskap/'><span class='nav-box-title'>Aksjeselskap</span><br>Registrere, endre, slette</a><a class='nav-box' href='https://www.brreg.no/enkeltpersonforetak/'><span class='nav-box-title'>Enkeltpersonforetak</span><br>Registrere, endre, slette</a><a class='nav-box' href='https://www.brreg.no/lag-og-foreninger/'><span class='nav-box-title'>Lag og forening</span><br>Registrere, endre, slette</a><a class='nav-box' href='https://www.brreg.no/andre-organisasjonsformer/'><span class='nav-box-title'>Flere organisasjonsformer</span></a><a class='nav-box' href='https://www.brreg.no/innsending-av-arsregnskap/'><span class='nav-box-title'>Årsregnskap</span><br>Innsending og forsinkelsesgebyr</a><a class='nav-box' href='https://www.brreg.no/tinglysing/'><span class='nav-box-title'>Tinglysing</span></a><a class='nav-box' href='https://www.brreg.no/jegerregisteret/'><span class='nav-box-title'>Jeger</span><br>Betaling og jegeravgiftskort</a><a class='nav-box' href='https://www.brreg.no/ektepakt/'><span class='nav-box-title'>Ektepaktveileder</span></a><a class='nav-box' href='https://www.brreg.no/offentlig-sektor/'><span class='nav-box-title'>Offentlig sektor</span></a><a class='nav-box' href='https://www.brreg.no/andre-tema/'><span class='nav-box-title'>Andre tema</span></a></div></div></nav>
+</header><div class='container normal-br-link'><div class='row'>
+	<div class="col-md-12">
+<ol class='breadcrumb'> 
+<li><a href='https://www.brreg.no'>Forsiden</a> </li> 
+		<li><a href='https://www.brreg.no/registersok/'>Registersøk</a></li><li><strong>Kunngjøringer</strong></li>
+	</ol>
+	</div>
+</div>
+</div>
+<main  id="maincontent">
+<div class='container'>	<div class="row">	<div id="pagecontent" class="col-lg-12" tabindex="-1">
+		<div class='page-header'><h1>Kunngjøringer</h1></div>
+                <script>
+                    const APPID = "kunngjoring"
+                    const WL_DEFAULT_LANGUAGE = "nb";
+                    const WL_SUPPORTED_LANGUAGES = ["nb", "en"];
+
+                    window.onload = function() {
+                        document.getElementsByTagName('body')[0].setAttribute("data-appid", APPID);
+                        document.getElementsByTagName('body')[0].setAttribute("data-supported-lang", WL_SUPPORTED_LANGUAGES);
+                    }
+
+                    addEventListener("brreg:lang-change", function(e) {
+                        let languageCode = WL_SUPPORTED_LANGUAGES.includes(e.language) ? e.language : WL_DEFAULT_LANGUAGE;
+                        let langChangeForm = document.getElementById("langChangeForm");
+                        let url = window.location.href;
+                        let urlWithoutParams = url.substr(url, url.indexOf("?"));
+                        let params = new URLSearchParams(window.location.search);
+                        if (params.has("spraak")) {
+                            params.delete("spraak");
+                            let paramString = (Array.from(params).length > 0 ? "?" : "") + params.toString();
+                            url = urlWithoutParams + paramString;
+                        }
+                        langChangeForm.setAttribute("action", url);
+                        document.getElementById("languageCode").value = languageCode;
+                        langChangeForm.submit();
+                    });
+                </script>
+                <form id="langChangeForm" method="POST">
+                    <input id="languageCode" type="hidden" name="spraak">
+                </form>
+
+
+
+
+
+
+<br class='hide-on-print'>    <table class='hide-on-print' width='100%' border='0' cellpadding='0' cellspacing='0'>
+      <tr>
+        <td align='right'><button onclick="window.location.href='index.jsp?action=new';" alt='Nytt søk'>Nytt søk</button></td>
+      </tr>
+    </table>
+<table cellspacing="2" cellpadding="0" border="0" width="100%">
+<tr>
+<td nowrap>
+<p>Du&nbsp;s&oslash;kte&nbsp;p&aring;:</p>
+</td><td><img height="15" width="20" alt="" src="/bilder/transp.gif"></td><td width="100%">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="3">
+<hr size="1" width="100%">
+</td>
+</tr>
+</table><table cellspacing="2" cellpadding="0" border="0" width="100%">
+<tr>
+<td nowrap valign="top">
+<p>
+<strong>Organisasjonsnummer</strong>
+</p>
+</td><td rowspan="3"><img height="15" width="20" alt="" src="/bilder/transp.gif"></td><td width="100%">
+<p>
+<strong>923 609 016</strong> (EQUINOR ASA)</p>
+</td>
+</tr>
+<tr>
+<td colspan="3">
+<hr size="1" width="100%">
+</td>
+</tr>
+<tr>
+<td>
+<p>
+<strong>Antall&nbsp;treff</strong>
+</p>
+</td><td align="left">
+<p>
+<strong>195</strong>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="3"><img height="10" width="20" alt="" src="/bilder/transp.gif"></td>
+</tr>
+</table><table style="border-color: #999999;" cellpadding="0" cellspacing="0" border="1" width="100%">
+<tr>
+<td width="100%" valign="top">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td bgcolor="#cccccc" colspan="5"><img height="6" width="1" alt="" src="/bilder/transp.gif"></td>
+</tr>
+<tr>
+<td bgcolor="#cccccc" nowrap="true">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+</td><td bgcolor="#cccccc" nowrap="true" valign="middle">
+<p>
+<strong>Dato</strong>
+</p>
+</td><td bgcolor="#cccccc" nowrap="true">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+</td><td bgcolor="#cccccc" valign="middle">
+<p>
+<strong>Kunngj&oslash;ringstype</strong>
+</p>
+</td><td bgcolor="#cccccc" nowrap="true" width="100%">
+<p>&nbsp;</p>
+</td>
+</tr>
+<tr>
+<td bgcolor="#cccccc" colspan="5"><img height="6" width="1" alt="" src="/bilder/transp.gif"></td>
+</tr>
+<tr>
+<td bgcolor="#999999" colspan="5"><img height="1" width="1" alt="" src="/bilder/transp.gif"></td>
+</tr>
+<tr>
+<td colspan="5">
+<p>&nbsp;</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>04.09.2026</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20260000729287&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>18.08.2026</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20260000698979&amp;sokeverdi=923609016&amp;spraak=nb">Godkjent &aring;rsregnskap med b&aelig;rekraftsrapportering</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>03.07.2026</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20260000491124&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>02.07.2026</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20260000484191&amp;sokeverdi=923609016&amp;spraak=nb">Kapital</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20260000484190&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsdato</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>19.05.2026</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20260000275698&amp;sokeverdi=923609016&amp;spraak=nb">Erverv av egne aksjer-fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>18.05.2026</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20260000271912&amp;sokeverdi=923609016&amp;spraak=nb">Utdeling av utbytte - fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20260000271911&amp;sokeverdi=923609016&amp;spraak=nb">Erverv av egne aksjer-fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20260000271910&amp;sokeverdi=923609016&amp;spraak=nb">Nedsettelse av kapital</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>04.12.2025</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20250000862711&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>04.11.2025</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20250000819081&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>03.09.2025</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20250000726382&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>02.07.2025</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20250000514687&amp;sokeverdi=923609016&amp;spraak=nb">Kapital</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20250000514686&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsdato</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>01.07.2025</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20250000503729&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>21.05.2025</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20250000302366&amp;sokeverdi=923609016&amp;spraak=nb">Erverv av egne aksjer-fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>16.05.2025</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20250000276365&amp;sokeverdi=923609016&amp;spraak=nb">Utdeling av utbytte - fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20250000276364&amp;sokeverdi=923609016&amp;spraak=nb">Erverv av egne aksjer-fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20250000276363&amp;sokeverdi=923609016&amp;spraak=nb">Nedsettelse av kapital</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>13.05.2025</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20250000262851&amp;sokeverdi=923609016&amp;spraak=nb">Godkjent &aring;rsregnskap med b&aelig;rekraftsrapportering</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>17.07.2024</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20240000720284&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>02.07.2024</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20240000636189&amp;sokeverdi=923609016&amp;spraak=nb">Kapital</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20240000636188&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsdato</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>27.06.2024</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20240000611831&amp;sokeverdi=923609016&amp;spraak=nb">Godkjente &aring;rsregnskap</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>22.05.2024</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20240000432988&amp;sokeverdi=923609016&amp;spraak=nb">Erverv av egne aksjer-fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>16.05.2024</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20240000424416&amp;sokeverdi=923609016&amp;spraak=nb">Utdeling av utbytte - fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20240000424415&amp;sokeverdi=923609016&amp;spraak=nb">Erverv av egne aksjer-fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20240000424414&amp;sokeverdi=923609016&amp;spraak=nb">Nedsettelse av kapital</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>18.04.2024</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20240000361919&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>03.07.2023</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20230000438618&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>27.06.2023</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20230000412049&amp;sokeverdi=923609016&amp;spraak=nb">Kapital</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20230000412048&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsdato</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>20.06.2023</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20230000381117&amp;sokeverdi=923609016&amp;spraak=nb">Godkjente &aring;rsregnskap</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>11.05.2023</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20230000244755&amp;sokeverdi=923609016&amp;spraak=nb">Utdeling av utbytte - fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20230000244754&amp;sokeverdi=923609016&amp;spraak=nb">Erverv av egne aksjer-fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20230000244753&amp;sokeverdi=923609016&amp;spraak=nb">Nedsettelse av kapital</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>17.04.2023</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20230000188910&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>16.12.2022</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20220000788714&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>28.07.2022</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20220000532395&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>29.06.2022</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20220000389922&amp;sokeverdi=923609016&amp;spraak=nb">Kapital</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20220000389921&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsdato</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>23.06.2022</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20220000366389&amp;sokeverdi=923609016&amp;spraak=nb">Godkjente &aring;rsregnskap</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>13.05.2022</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20220000210231&amp;sokeverdi=923609016&amp;spraak=nb">Utdeling av utbytte - fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20220000210230&amp;sokeverdi=923609016&amp;spraak=nb">Erverv av egne aksjer-fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20220000210229&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsfestet form&aring;l</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20220000210228&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsdato</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20220000210227&amp;sokeverdi=923609016&amp;spraak=nb">Nedsettelse av kapital</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>19.07.2021</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20210000410866&amp;sokeverdi=923609016&amp;spraak=nb">Godkjente &aring;rsregnskap</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>14.07.2021</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20210000396999&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>29.06.2021</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20210000348699&amp;sokeverdi=923609016&amp;spraak=nb">Utdeling av utbytte - fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20210000348698&amp;sokeverdi=923609016&amp;spraak=nb">Erverv av egne aksjer-fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>02.11.2020</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20200000973599&amp;sokeverdi=923609016&amp;spraak=nb">Daglig leder</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>16.07.2020</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20200000690049&amp;sokeverdi=923609016&amp;spraak=nb">Kapital</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20200000690048&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsdato</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>07.07.2020</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20200000655500&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>09.06.2020</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20200000563559&amp;sokeverdi=923609016&amp;spraak=nb">Godkjente &aring;rsregnskap</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>26.05.2020</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20200000527655&amp;sokeverdi=923609016&amp;spraak=nb">Nedsettelse av kapital</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>19.05.2020</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20200000519696&amp;sokeverdi=923609016&amp;spraak=nb">Utdeling av utbytte - fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20200000519695&amp;sokeverdi=923609016&amp;spraak=nb">Erverv av egne aksjer-fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>12.07.2019</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20190000497386&amp;sokeverdi=923609016&amp;spraak=nb">Revisor</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>09.07.2019</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20190000476509&amp;sokeverdi=923609016&amp;spraak=nb">Godkjente &aring;rsregnskap</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>02.07.2019</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20190000432766&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>18.05.2019</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20190000233465&amp;sokeverdi=923609016&amp;spraak=nb">Utdeling av utbytte - fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20190000233464&amp;sokeverdi=923609016&amp;spraak=nb">Erverv av egne aksjer-fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>03.07.2018</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20180000408824&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>04.06.2018</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20180000284771&amp;sokeverdi=923609016&amp;spraak=nb">Godkjente &aring;rsregnskap</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>18.05.2018</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20180000235513&amp;sokeverdi=923609016&amp;spraak=nb">Utdeling av utbytte - fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20180000235512&amp;sokeverdi=923609016&amp;spraak=nb">Erverv av egne aksjer-fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>16.05.2018</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20180000232694&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsdato</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20180000232693&amp;sokeverdi=923609016&amp;spraak=nb">Foretaksnavn</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>22.03.2018</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20180000149902&amp;sokeverdi=923609016&amp;spraak=nb">Kapital</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20180000149901&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsdato</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>14.12.2017</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20170000675769&amp;sokeverdi=923609016&amp;spraak=nb">Kapital</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20170000675768&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsdato</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>21.09.2017</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20170000567435&amp;sokeverdi=923609016&amp;spraak=nb">Kapital</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20170000567434&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsdato</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>04.09.2017</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20170000544886&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>03.07.2017</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20170000347671&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>28.06.2017</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20170000328354&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>22.06.2017</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20170000302139&amp;sokeverdi=923609016&amp;spraak=nb">Kapital</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20170000302138&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsdato</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>20.06.2017</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20170000291654&amp;sokeverdi=923609016&amp;spraak=nb">Godkjente &aring;rsregnskap</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>15.05.2017</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20170000180738&amp;sokeverdi=923609016&amp;spraak=nb">Utdeling av utbytte - fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20170000180737&amp;sokeverdi=923609016&amp;spraak=nb">Erverv av egne aksjer-fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20170000180736&amp;sokeverdi=923609016&amp;spraak=nb">Fullmakt kapitalforh&oslash;yelse</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>06.04.2017</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20170000126123&amp;sokeverdi=923609016&amp;spraak=nb">Kapital</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20170000126122&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsdato</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>15.12.2016</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20160000631048&amp;sokeverdi=923609016&amp;spraak=nb">Kapital</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20160000631047&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsdato</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>31.10.2016</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20160000575122&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>22.09.2016</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20160000525443&amp;sokeverdi=923609016&amp;spraak=nb">Kapital</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20160000525442&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsdato</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>23.06.2016</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20160000263746&amp;sokeverdi=923609016&amp;spraak=nb">Kapital</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20160000263745&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsdato</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>04.06.2016</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20160000205025&amp;sokeverdi=923609016&amp;spraak=nb">Godkjente &aring;rsregnskap</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>21.05.2016</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20160000175675&amp;sokeverdi=923609016&amp;spraak=nb">Utdeling av utbytte - fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20160000175674&amp;sokeverdi=923609016&amp;spraak=nb">Erverv av egne aksjer-fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20160000175673&amp;sokeverdi=923609016&amp;spraak=nb">Fullmakt kapitalforh&oslash;yelse</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>13.04.2016</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20160000112141&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>04.12.2015</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20150000596151&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>17.09.2015</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20150000460429&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>04.07.2015</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20150000270016&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>15.06.2015</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20150000210160&amp;sokeverdi=923609016&amp;spraak=nb">Godkjente &aring;rsregnskap</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20150000210159&amp;sokeverdi=923609016&amp;spraak=nb">Godkjente &aring;rsregnskap</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>28.05.2015</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20150000169778&amp;sokeverdi=923609016&amp;spraak=nb">Utdeling av utbytte - fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20150000169777&amp;sokeverdi=923609016&amp;spraak=nb">Erverv av egne aksjer-fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>30.03.2015</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20150000091065&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>22.10.2014</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20140000515786&amp;sokeverdi=923609016&amp;spraak=nb">Daglig leder</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>09.10.2014</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20140000502160&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>20.05.2014</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20140000161925&amp;sokeverdi=923609016&amp;spraak=nb">Utdeling av utbytte - fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20140000161924&amp;sokeverdi=923609016&amp;spraak=nb">Erverv av egne aksjer-fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>17.05.2014</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20140000157393&amp;sokeverdi=923609016&amp;spraak=nb">Godkjente &aring;rsregnskap</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>23.11.2013</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20130000549818&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsdato</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>19.11.2013</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20130000545960&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>01.08.2013</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20130000327889&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>18.06.2013</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20130000215578&amp;sokeverdi=923609016&amp;spraak=nb">Godkjente &aring;rsregnskap</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>04.06.2013</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20130000189866&amp;sokeverdi=923609016&amp;spraak=nb">Erverv av egne aksjer-fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20130000189865&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsdato</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>22.09.2012</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20120000457398&amp;sokeverdi=923609016&amp;spraak=nb">Forretningsadresse</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20120000457397&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>23.06.2012</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20120000221332&amp;sokeverdi=923609016&amp;spraak=nb">Godkjente &aring;rsregnskap</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>02.06.2012</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20120000175127&amp;sokeverdi=923609016&amp;spraak=nb">Erverv av egne aksjer-fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20120000175126&amp;sokeverdi=923609016&amp;spraak=nb">Revisor</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>20.12.2011</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20110000609943&amp;sokeverdi=923609016&amp;spraak=nb">Forretningsadresse</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20110000609942&amp;sokeverdi=923609016&amp;spraak=nb">Daglig leder</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>16.08.2011</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20110000323307&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>28.06.2011</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20110000206226&amp;sokeverdi=923609016&amp;spraak=nb">Godkjente &aring;rsregnskap</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>30.05.2011</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20110000151574&amp;sokeverdi=923609016&amp;spraak=nb">Erverv av egne aksjer-fullmakt</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20110000151573&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsdato</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>19.10.2010</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20100000509932&amp;sokeverdi=923609016&amp;spraak=nb">Godkjente &aring;rsregnskap</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>21.09.2010</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20100000474664&amp;sokeverdi=923609016&amp;spraak=nb">Signatur</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20100000474663&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>03.06.2010</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20100000177248&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsdato</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>18.12.2009</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20090000519350&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsdato</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>02.11.2009</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20090000468372&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsfestet form&aring;l</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20090000468371&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsdato</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20090000468370&amp;sokeverdi=923609016&amp;spraak=nb">Foretaksnavn</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>01.10.2009</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20090000431871&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>16.07.2009</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20090000251183&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>06.07.2009</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20090000222224&amp;sokeverdi=923609016&amp;spraak=nb">Godkjente &aring;rsregnskap</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>23.06.2009</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20090000192698&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>18.06.2008</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20080000197503&amp;sokeverdi=923609016&amp;spraak=nb">Godkjente &aring;rsregnskap</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>03.05.2008</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20080000122595&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>15.10.2007</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20070000427866&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>01.10.2007</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20070000409158&amp;sokeverdi=923609016&amp;spraak=nb">Kapital</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20070000409157&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsdato</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20070000409156&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20070000409155&amp;sokeverdi=923609016&amp;spraak=nb">Foretaksnavn</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>13.09.2007</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20070000379764&amp;sokeverdi=923609016&amp;spraak=nb">Gjennomf&oslash;ring av nedsettelse av overkursfond</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20070000379763&amp;sokeverdi=923609016&amp;spraak=nb">Kapital</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20070000379762&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsdato</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>02.08.2007</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20070000264835&amp;sokeverdi=923609016&amp;spraak=nb">Godkjente &aring;rsregnskap</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>09.07.2007</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20070000210566&amp;sokeverdi=923609016&amp;spraak=nb">Nedsettelse av overkursfond</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20070000210565&amp;sokeverdi=923609016&amp;spraak=nb">Nedsettelse av kapital</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20070000210562&amp;sokeverdi=923609016&amp;spraak=nb">Fisjonsbeslutning</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>04.06.2007</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20070000144708&amp;sokeverdi=923609016&amp;spraak=nb">Fisjonsplan</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20070000144686&amp;sokeverdi=923609016&amp;spraak=nb">Fusjonsplan</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>07.10.2006</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20060000444817&amp;sokeverdi=923609016&amp;spraak=nb">Forretningsadresse</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20060000444816&amp;sokeverdi=923609016&amp;spraak=nb">Daglig leder</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>26.08.2006</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20060000356580&amp;sokeverdi=923609016&amp;spraak=nb">Kapital</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20060000356579&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>21.06.2006</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20060000220773&amp;sokeverdi=923609016&amp;spraak=nb">Godkjente &aring;rsregnskap</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>31.05.2006</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20060000180449&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsdato</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20060000180448&amp;sokeverdi=923609016&amp;spraak=nb">Nedsettelse av kapital</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>03.02.2006</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20060000048019&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>19.09.2005</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20050000314316&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>25.06.2005</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20050000165943&amp;sokeverdi=923609016&amp;spraak=nb">Forretningsadresse</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>26.05.2005</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20050000115832&amp;sokeverdi=923609016&amp;spraak=nb">Godkjente &aring;rsregnskap</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>19.08.2004</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20040000328594&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20040000328593&amp;sokeverdi=923609016&amp;spraak=nb">Daglig leder</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>26.06.2004</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20040000196208&amp;sokeverdi=923609016&amp;spraak=nb">Godkjente &aring;rsregnskap</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>23.03.2004</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20040000081673&amp;sokeverdi=923609016&amp;spraak=nb">Daglig leder</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>01.12.2003</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20030000384826&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20030000384825&amp;sokeverdi=923609016&amp;spraak=nb">Daglig leder</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>28.05.2003</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20030000118774&amp;sokeverdi=923609016&amp;spraak=nb">Godkjente &aring;rsregnskap</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>02.10.2002</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20020000325209&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>09.08.2002</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20020000269612&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>31.07.2002</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20020000241408&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>27.06.2002</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20020000164891&amp;sokeverdi=923609016&amp;spraak=nb">Godkjente &aring;rsregnskap</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>21.05.2002</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20020000116167&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsdato</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>23.06.2001</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20010000142001&amp;sokeverdi=923609016&amp;spraak=nb">Fullmakt kapitalforh&oslash;yelse</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>21.06.2001</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20010000138847&amp;sokeverdi=923609016&amp;spraak=nb">Godkjente &aring;rsregnskap</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>20.06.2001</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20010000136928&amp;sokeverdi=923609016&amp;spraak=nb">Kapital</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20010000136927&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsdato</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>11.06.2001</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20010000122133&amp;sokeverdi=923609016&amp;spraak=nb">Kapital</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20010000122131&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsdato</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>16.05.2001</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20010000100803&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsdato</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>11.05.2001</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20010000096040&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsdato</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20010000096039&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p></p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20010000096038&amp;sokeverdi=923609016&amp;spraak=nb">Foretaksnavn</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>17.04.2001</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20010000068073&amp;sokeverdi=923609016&amp;spraak=nb">Vedtektsdato</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>15.11.2000</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20000000328989&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>07.10.2000</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20000000290357&amp;sokeverdi=923609016&amp;spraak=nb">Revisor</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>13.06.2000</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20000000108423&amp;sokeverdi=923609016&amp;spraak=nb">Styre</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>15.05.2000</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_en.jsp?kid=20000000084829&amp;sokeverdi=923609016&amp;spraak=nb">Godkjente &aring;rsregnskap</a>
+</p>
+</td><td>
+<p>&nbsp;
+													</p>
+</td>
+</tr>
+<tr>
+<td colspan="5">
+<p>&nbsp;</p>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>&nbsp;</p>
+</td><td>
+<p>&nbsp;</p>
+</td><td nowrap="true">
+<p>
+<a href="hent_alle.jsp?kid=20260000729287&amp;sokeverdi=923609016&amp;spraak=nb">Vis alle kunngj&oslash;ringene for foretaket</a>
+</p>
+</td><td>
+<p>&nbsp;</p>
+</td>
+</tr>
+<tr>
+<td colspan="5">
+<p>&nbsp;</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<br class='hide-on-print'>    <table class='hide-on-print' width='100%' border='0' cellpadding='0' cellspacing='0'>
+  <tr>
+    <td align='right'><img src='/bilder/transp.gif' alt='' width='10' height='10'></td>
+  </tr>
+      <tr>
+        <td align='right'><button onclick="window.location.href='index.jsp?action=new';" alt='Nytt søk'>Nytt søk</button></td>
+      </tr>
+    </table>
+
+
+
+</div>
+</div>
+</div>
+</main>
+<footer class="main-footer" lang="nb">
+    <div id="topLinkContainer" hidden>
+        <button title="Til toppen" id="topLink">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                <path d="M56 319.9L128 319.9v128.1c0 17.69 14.33 32.02 32 32.02h64c17.67 0 32-14.34 32-32.02V319.9l72-.0311c9.578 0 18.25-5.709 22.05-14.51c3.781-8.803 1.984-19.03-4.594-26l-136-144.1c-9.062-9.602-25.84-9.602-34.91 0l-136 144.1C31.97 286.3 30.17 296.6 33.95 305.4C37.75 314.2 46.42 319.9 56 319.9zM351.1 32H31.1C14.33 32 0 46.33 0 63.1C0 81.67 14.33 96 32 96h320C369.7 96 384 81.67 384 64C384 46.33 369.7 32 351.1 32z"/>
+            </svg>
+        </button>
+    </div>
+    <div class="footer-wrapper footer-links">
+        <div class="footer-row">
+            <div class="footer-element footer-top">
+                <img id="footerLogo" src="//scf.brreg.no/bilder/brregLogoHvit.svg" alt="logo Brønnøysundregistrene">
+                <br>
+                <span class="br-web-smaller">
+                    Organisasjonsnummer:
+                    <a href="https://virksomhet.brreg.no/oppslag/enheter/974760673">
+                        <span class="brreg-nowrap">974 760 673</span>
+                    </a>
+                </span>
+            </div>
+        </div>
+        <div class="footer-row">
+            <div class="footer-element">
+                <ul>
+                    <li><a href="https://www.brreg.no/hvordan-kan-vi-hjelpe-deg/">Kontakt oss</a></li>
+                    <li><a href="https://www.brreg.no/driftsmeldinger/">Driftsmeldinger</a></li>
+                    <li><a href="https://www.brreg.no/om-oss/">Om oss</a></li>
+                    <li><a href="https://jobb.brreg.no/">Ledige stillinger</a></li>
+                </ul>
+            </div>
+            <div class="footer-element">
+                <ul>
+                    <li><a href="https://www.brreg.no/om-oss/vaer-oppmerksom-pa-svindelforsok/">Vær obs på svindel</a></li>
+                    <li><a href="https://forenkling.brreg.no/">Forenklingsbloggen</a></li>
+                    <li><a href="https://www.brreg.no/om-oss/pressetjenesten/">Presse</a></li>
+                    <li><a href="https://www.linkedin.com/company/bronnoysundregistrene/">Finn oss på LinkedIn</a></li>
+                </ul>
+            </div>
+            <div class="footer-element">
+                <ul>
+                    <li><a href="https://www.brreg.no/bruke-data-fra-bronnoysundregistrene/">Bruke data fra oss</a></li>
+                    <li><a href="https://www.brreg.no/produkter-og-tjenester/rss-feed/">RSS</a></li>
+                    <li><a href="https://www.brreg.no/personvernerklaering/">Personvernerklæring</a></li>
+                    <li><a href="https://www.brreg.no/tilgjengelighetserklaeringer/">Tilgjengelighetserklæring</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
+
+
+
+
+</html>
+</html>

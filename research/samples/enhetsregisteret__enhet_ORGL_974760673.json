@@ -1,0 +1,103 @@
+{
+ "_request": {
+  "url": "https://data.brreg.no/enhetsregisteret/api/enheter/974760673",
+  "status": 200,
+  "retrieved_at": "2026-10-13T11:42:55Z",
+  "headers": {
+   "vary": "Origin",
+   "x-content-type-options": "nosniff",
+   "x-xss-protection": "0",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "pragma": "no-cache",
+   "expires": "0",
+   "strict-transport-security": "max-age=157680000; includeSubDomains",
+   "x-frame-options": "DENY",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:38:50 GMT",
+   "connection": "close"
+  }
+ },
+ "body": {
+  "_links": {
+   "self": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/enheter/974760673"
+   },
+   "overordnetEnhet": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/enheter/912660680"
+   }
+  },
+  "aktivitet": [
+   "Registeretat."
+  ],
+  "antallAnsatte": 487,
+  "epostadresse": "firmapost@brreg.no",
+  "erIKonsern": false,
+  "forretningsadresse": {
+   "adresse": [
+    "Havnegata 48"
+   ],
+   "kommune": "BRØNNØY",
+   "kommunenummer": "1813",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "8900",
+   "poststed": "BRØNNØYSUND"
+  },
+  "harRegistrertAntallAnsatte": true,
+  "historiskeNavn": [
+   {
+    "fraDato": "1998-01-16 20:22:18",
+    "navn": "BRØNNØYSUNDREGISTRENE",
+    "tilDato": "1999-09-10 18:51:43"
+   }
+  ],
+  "hjemmeside": "www.brreg.no",
+  "institusjonellSektorkode": {
+   "beskrivelse": "Statsforvaltningen",
+   "kode": "6100"
+  },
+  "konkurs": false,
+  "maalform": "Bokmål",
+  "naeringskode1": {
+   "beskrivelse": "Generell offentlig administrasjon",
+   "kode": "84.110"
+  },
+  "navn": "REGISTERENHETEN I BRØNNØYSUND",
+  "organisasjonsform": {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/ORGL"
+    }
+   },
+   "beskrivelse": "Organisasjonsledd",
+   "kode": "ORGL"
+  },
+  "organisasjonsnummer": "974760673",
+  "overordnetEnhet": "912660680",
+  "paategninger": [],
+  "postadresse": {
+   "adresse": [
+    "Postboks 900"
+   ],
+   "kommune": "BRØNNØY",
+   "kommunenummer": "1813",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "8910",
+   "poststed": "BRØNNØYSUND"
+  },
+  "registreringsdatoAntallAnsatteEnhetsregisteret": "2026-09-14",
+  "registreringsdatoAntallAnsatteNAVAaregisteret": "2026-09-10",
+  "registreringsdatoEnhetsregisteret": "1995-08-09",
+  "registrertIForetaksregisteret": false,
+  "registrertIFrivillighetsregisteret": false,
+  "registrertIMvaregisteret": false,
+  "registrertIPartiregisteret": false,
+  "registrertIStiftelsesregisteret": false,
+  "respons_klasse": "Enhet",
+  "telefon": "75 00 75 09",
+  "underAvvikling": false,
+  "underTvangsavviklingEllerTvangsopplosning": false
+ }
+}

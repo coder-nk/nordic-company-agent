@@ -1,0 +1,188 @@
+{
+ "_ALL": {
+  "total": 1177979,
+  "active": 1165231
+ },
+ "ADOS": {
+  "total": 25,
+  "active": 25
+ },
+ "ANNA": {
+  "total": 1687,
+  "active": 1687
+ },
+ "ANS": {
+  "total": 7066,
+  "active": 6256
+ },
+ "AS": {
+  "total": 433710,
+  "active": 423269
+ },
+ "ASA": {
+  "total": 213,
+  "active": 207
+ },
+ "BA": {
+  "total": 708,
+  "active": 708
+ },
+ "BBL": {
+  "total": 44,
+  "active": 44
+ },
+ "BO": {
+  "total": 58,
+  "active": 58
+ },
+ "BRL": {
+  "total": 10242,
+  "active": 10207
+ },
+ "DA": {
+  "total": 10282,
+  "active": 9129
+ },
+ "ENK": {
+  "total": 464744,
+  "active": 464578
+ },
+ "EOFG": {
+  "total": 0,
+  "active": 0
+ },
+ "ESEK": {
+  "total": 33399,
+  "active": 33399
+ },
+ "FKF": {
+  "total": 8,
+  "active": 8
+ },
+ "FLI": {
+  "total": 129024,
+  "active": 129010
+ },
+ "FYLK": {
+  "total": 14,
+  "active": 14
+ },
+ "GFS": {
+  "total": 29,
+  "active": 29
+ },
+ "IKJP": {
+  "total": 0,
+  "active": 0
+ },
+ "IKS": {
+  "total": 220,
+  "active": 217
+ },
+ "KBO": {
+  "total": 7745,
+  "active": 7745
+ },
+ "KF": {
+  "total": 146,
+  "active": 146
+ },
+ "KIRK": {
+  "total": 1419,
+  "active": 1419
+ },
+ "KOMM": {
+  "total": 357,
+  "active": 357
+ },
+ "KS": {
+  "total": 114,
+  "active": 105
+ },
+ "KTRF": {
+  "total": 12,
+  "active": 12
+ },
+ "NUF": {
+  "total": 25839,
+  "active": 25831
+ },
+ "OPMV": {
+  "total": 105,
+  "active": 105
+ },
+ "ORGL": {
+  "total": 1599,
+  "active": 1599
+ },
+ "PERS": {
+  "total": 11,
+  "active": 11
+ },
+ "PK": {
+  "total": 72,
+  "active": 70
+ },
+ "PRE": {
+  "total": 93,
+  "active": 93
+ },
+ "SA": {
+  "total": 6852,
+  "active": 6759
+ },
+ "SAM": {
+  "total": 7294,
+  "active": 7294
+ },
+ "SE": {
+  "total": 4,
+  "active": 3
+ },
+ "SF": {
+  "total": 8,
+  "active": 8
+ },
+ "SPA": {
+  "total": 67,
+  "active": 67
+ },
+ "STAT": {
+  "total": 20,
+  "active": 20
+ },
+ "STI": {
+  "total": 5968,
+  "active": 5961
+ },
+ "SÆR": {
+  "total": 62,
+  "active": 62
+ },
+ "TVAM": {
+  "total": 11,
+  "active": 11
+ },
+ "UTLA": {
+  "total": 28326,
+  "active": 28326
+ },
+ "VPFO": {
+  "total": 382,
+  "active": 382
+ },
+ "_flags": {
+  "konkurs=true": 3259,
+  "underAvvikling=true": 8246,
+  "underTvangsavviklingEllerTvangsopplosning=true": 1435,
+  "underKonkursbehandling=true": 4694,
+  "registrertIForetaksregisteret=true": 578244,
+  "registrertIMvaregisteret=true": 411227,
+  "registrertIFrivillighetsregisteret=true": 72883,
+  "registrertIStiftelsesregisteret=true": 5967,
+  "registrertIPartiregisteret=true": 24,
+  "fraAntallAnsatte=1": 175871,
+  "fraAntallAnsatte=5": 71802
+ },
+ "_underenheter_total": 868058
+}

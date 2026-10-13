@@ -1,0 +1,93 @@
+{
+ "_request": {
+  "url": "https://data.brreg.no/enhetsregisteret/api/enheter/937614446",
+  "status": 200,
+  "retrieved_at": "2026-10-13T11:57:44Z",
+  "headers": {
+   "vary": "Origin",
+   "x-content-type-options": "nosniff",
+   "x-xss-protection": "0",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "pragma": "no-cache",
+   "expires": "0",
+   "strict-transport-security": "max-age=157680000; includeSubDomains",
+   "x-frame-options": "DENY",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:53:39 GMT",
+   "connection": "close"
+  }
+ },
+ "body": {
+  "_links": {
+   "self": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/enheter/937614446"
+   }
+  },
+  "aktivitet": [
+   "Holdingselskap."
+  ],
+  "erIKonsern": false,
+  "forretningsadresse": {
+   "adresse": [
+    "Aschehougs vei 5"
+   ],
+   "kommune": "OSLO",
+   "kommunenummer": "0301",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "0587",
+   "poststed": "OSLO"
+  },
+  "fravalgRevisjonBeslutningsDato": "2026-04-13",
+  "fravalgRevisjonDato": "2026-04-25",
+  "harRegistrertAntallAnsatte": false,
+  "historiskeNavn": [],
+  "institusjonellSektorkode": {
+   "beskrivelse": "Private aksjeselskaper mv.",
+   "kode": "2100"
+  },
+  "kapital": {
+   "antallAksjer": 30000,
+   "belop": 30000.0,
+   "innfortDato": "2026-04-25",
+   "type": "Aksjekapital",
+   "valuta": "NOK"
+  },
+  "konkurs": true,
+  "konkursdato": "2026-10-08",
+  "maalform": "Bokmål",
+  "naeringskode1": {
+   "beskrivelse": "Uoppgitt",
+   "kode": "00.000"
+  },
+  "navn": "FORTUNE AS",
+  "organisasjonsform": {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/AS"
+    }
+   },
+   "beskrivelse": "Aksjeselskap",
+   "kode": "AS"
+  },
+  "organisasjonsnummer": "937614446",
+  "paategninger": [],
+  "registreringsdatoEnhetsregisteret": "2026-04-25",
+  "registreringsdatoForetaksregisteret": "2026-04-25",
+  "registrertIForetaksregisteret": true,
+  "registrertIFrivillighetsregisteret": false,
+  "registrertIMvaregisteret": false,
+  "registrertIPartiregisteret": false,
+  "registrertIStiftelsesregisteret": false,
+  "respons_klasse": "Enhet",
+  "stiftelsesdato": "2026-04-13",
+  "underAvvikling": false,
+  "underTvangsavviklingEllerTvangsopplosning": false,
+  "vedtektsdato": "2026-04-13",
+  "vedtektsfestetFormaal": [
+   "Å eie og forvalte aksjer og andeler i andre selskaper, samt drive med",
+   "investering og annen beslektet virksomhet."
+  ]
+ }
+}

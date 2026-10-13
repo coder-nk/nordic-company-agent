@@ -1,0 +1,924 @@
+{
+ "_request": {
+  "url": "https://data.brreg.no/enhetsregisteret/api/oppdateringer/enheter?organisasjonsnummer=923609016,984851006,971524960&size=100&sort=id,DESC&includeChanges=true&dato=2026-01-01T00:00:00.000Z",
+  "status": 200,
+  "retrieved_at": "2026-10-13T11:49:03Z",
+  "headers": {
+   "vary": "Origin",
+   "x-content-type-options": "nosniff",
+   "x-xss-protection": "0",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "pragma": "no-cache",
+   "expires": "0",
+   "strict-transport-security": "max-age=157680000; includeSubDomains",
+   "x-frame-options": "DENY",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:44:57 GMT",
+   "connection": "close"
+  }
+ },
+ "body": {
+  "_embedded": {
+   "oppdaterteEnheter": [
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/971524960"
+      }
+     },
+     "dato": "2026-10-12T22:34:10.581Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/antallAnsatte",
+       "value": 605
+      },
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteEnhetsregisteret",
+       "value": "2026-10-12"
+      },
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteNAVAaregisteret",
+       "value": "2026-10-10"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25324760,
+     "organisasjonsnummer": "971524960"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/984851006"
+      }
+     },
+     "dato": "2026-09-14T22:08:40.421Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteEnhetsregisteret",
+       "value": "2026-09-14"
+      },
+      {
+       "op": "replace",
+       "path": "/antallAnsatte",
+       "value": 7353
+      },
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteNAVAaregisteret",
+       "value": "2026-09-10"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25224621,
+     "organisasjonsnummer": "984851006"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/971524960"
+      }
+     },
+     "dato": "2026-09-14T22:07:16.398Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteEnhetsregisteret",
+       "value": "2026-09-14"
+      },
+      {
+       "op": "replace",
+       "path": "/antallAnsatte",
+       "value": 606
+      },
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteNAVAaregisteret",
+       "value": "2026-09-10"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25220161,
+     "organisasjonsnummer": "971524960"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2026-09-14T22:03:45.964Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteEnhetsregisteret",
+       "value": "2026-09-14"
+      },
+      {
+       "op": "replace",
+       "path": "/antallAnsatte",
+       "value": 21272
+      },
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteNAVAaregisteret",
+       "value": "2026-09-10"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25205460,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2026-08-18T18:00:17.195Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/sisteInnsendteAarsregnskap",
+       "value": "2025"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25107591,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/984851006"
+      }
+     },
+     "dato": "2026-08-12T22:05:42.092Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteEnhetsregisteret",
+       "value": "2026-08-12"
+      },
+      {
+       "op": "replace",
+       "path": "/antallAnsatte",
+       "value": 7488
+      },
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteNAVAaregisteret",
+       "value": "2026-08-10"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25083754,
+     "organisasjonsnummer": "984851006"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2026-08-12T22:01:52.644Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteEnhetsregisteret",
+       "value": "2026-08-12"
+      },
+      {
+       "op": "replace",
+       "path": "/antallAnsatte",
+       "value": 21239
+      },
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteNAVAaregisteret",
+       "value": "2026-08-10"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25067148,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/971524960"
+      }
+     },
+     "dato": "2026-08-11T22:08:13.577Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteEnhetsregisteret",
+       "value": "2026-08-11"
+      },
+      {
+       "op": "replace",
+       "path": "/antallAnsatte",
+       "value": 604
+      },
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteNAVAaregisteret",
+       "value": "2026-08-10"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 25056710,
+     "organisasjonsnummer": "971524960"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/984851006"
+      }
+     },
+     "dato": "2026-07-15T22:07:58.131Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteEnhetsregisteret",
+       "value": "2026-07-15"
+      },
+      {
+       "op": "replace",
+       "path": "/antallAnsatte",
+       "value": 7569
+      },
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteNAVAaregisteret",
+       "value": "2026-07-10"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 24883572,
+     "organisasjonsnummer": "984851006"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2026-07-15T22:04:17.728Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteEnhetsregisteret",
+       "value": "2026-07-15"
+      },
+      {
+       "op": "replace",
+       "path": "/antallAnsatte",
+       "value": 21393
+      },
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteNAVAaregisteret",
+       "value": "2026-07-10"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 24866490,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/971524960"
+      }
+     },
+     "dato": "2026-07-14T22:06:13.797Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteEnhetsregisteret",
+       "value": "2026-07-14"
+      },
+      {
+       "op": "replace",
+       "path": "/antallAnsatte",
+       "value": 605
+      },
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteNAVAaregisteret",
+       "value": "2026-07-10"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 24843678,
+     "organisasjonsnummer": "971524960"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2026-07-02T22:00:22.145Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/vedtektsdato",
+       "value": "2026-05-12"
+      },
+      {
+       "op": "replace",
+       "path": "/kapital/antallAksjer",
+       "value": 2390749040.0
+      },
+      {
+       "op": "replace",
+       "path": "/kapital/innfortDato",
+       "value": "2026-07-02"
+      },
+      {
+       "op": "replace",
+       "path": "/kapital/belop",
+       "value": 5976872600.0
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 24767418,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/984851006"
+      }
+     },
+     "dato": "2026-06-17T22:00:52.436Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/vedtektsdato",
+       "value": "2026-04-21"
+      },
+      {
+       "op": "replace",
+       "path": "/kapital/antallAksjer",
+       "value": 1440664864
+      },
+      {
+       "op": "replace",
+       "path": "/kapital/innfortDato",
+       "value": "2026-06-17"
+      },
+      {
+       "op": "replace",
+       "path": "/kapital/belop",
+       "value": 18008310800.0
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 24655105,
+     "organisasjonsnummer": "984851006"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/984851006"
+      }
+     },
+     "dato": "2026-06-13T15:04:56.823Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteEnhetsregisteret",
+       "value": "2026-06-13"
+      },
+      {
+       "op": "replace",
+       "path": "/antallAnsatte",
+       "value": 7536
+      },
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteNAVAaregisteret",
+       "value": "2026-06-10"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 24623965,
+     "organisasjonsnummer": "984851006"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2026-06-13T15:02:49.718Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteEnhetsregisteret",
+       "value": "2026-06-13"
+      },
+      {
+       "op": "replace",
+       "path": "/antallAnsatte",
+       "value": 21467
+      },
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteNAVAaregisteret",
+       "value": "2026-06-10"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 24610298,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/971524960"
+      }
+     },
+     "dato": "2026-06-11T22:08:15.295Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteEnhetsregisteret",
+       "value": "2026-06-11"
+      },
+      {
+       "op": "replace",
+       "path": "/antallAnsatte",
+       "value": 607
+      },
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteNAVAaregisteret",
+       "value": "2026-06-10"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 24592346,
+     "organisasjonsnummer": "971524960"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/984851006"
+      }
+     },
+     "dato": "2026-05-12T22:03:16.844Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteEnhetsregisteret",
+       "value": "2026-05-12"
+      },
+      {
+       "op": "replace",
+       "path": "/antallAnsatte",
+       "value": 7491
+      },
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteNAVAaregisteret",
+       "value": "2026-05-10"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 24415313,
+     "organisasjonsnummer": "984851006"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2026-05-12T22:01:47.722Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteEnhetsregisteret",
+       "value": "2026-05-12"
+      },
+      {
+       "op": "replace",
+       "path": "/antallAnsatte",
+       "value": 21327
+      },
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteNAVAaregisteret",
+       "value": "2026-05-10"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 24407437,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/984851006"
+      }
+     },
+     "dato": "2026-04-14T22:06:51.013Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteEnhetsregisteret",
+       "value": "2026-04-14"
+      },
+      {
+       "op": "replace",
+       "path": "/antallAnsatte",
+       "value": 7495
+      },
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteNAVAaregisteret",
+       "value": "2026-04-10"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 24151882,
+     "organisasjonsnummer": "984851006"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/971524960"
+      }
+     },
+     "dato": "2026-04-14T22:06:12.851Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteEnhetsregisteret",
+       "value": "2026-04-14"
+      },
+      {
+       "op": "replace",
+       "path": "/antallAnsatte",
+       "value": 611
+      },
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteNAVAaregisteret",
+       "value": "2026-04-10"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 24149696,
+     "organisasjonsnummer": "971524960"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2026-04-14T22:05:38.327Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteEnhetsregisteret",
+       "value": "2026-04-14"
+      },
+      {
+       "op": "replace",
+       "path": "/antallAnsatte",
+       "value": 21376
+      },
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteNAVAaregisteret",
+       "value": "2026-04-10"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 24146813,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2026-03-12T23:03:46.489Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteEnhetsregisteret",
+       "value": "2026-03-12"
+      },
+      {
+       "op": "replace",
+       "path": "/antallAnsatte",
+       "value": 21408
+      },
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteNAVAaregisteret",
+       "value": "2026-03-10"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 24006244,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/984851006"
+      }
+     },
+     "dato": "2026-03-12T23:03:46.488Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteEnhetsregisteret",
+       "value": "2026-03-12"
+      },
+      {
+       "op": "replace",
+       "path": "/antallAnsatte",
+       "value": 7426
+      },
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteNAVAaregisteret",
+       "value": "2026-03-10"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 24006241,
+     "organisasjonsnummer": "984851006"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/971524960"
+      }
+     },
+     "dato": "2026-03-11T23:21:57.333Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteEnhetsregisteret",
+       "value": "2026-03-11"
+      },
+      {
+       "op": "replace",
+       "path": "/antallAnsatte",
+       "value": 608
+      },
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteNAVAaregisteret",
+       "value": "2026-03-10"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 23972713,
+     "organisasjonsnummer": "971524960"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2026-02-12T23:05:40.047Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteEnhetsregisteret",
+       "value": "2026-02-12"
+      },
+      {
+       "op": "replace",
+       "path": "/antallAnsatte",
+       "value": 21412
+      },
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteNAVAaregisteret",
+       "value": "2026-02-10"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 23848336,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/984851006"
+      }
+     },
+     "dato": "2026-02-12T23:05:40.047Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteEnhetsregisteret",
+       "value": "2026-02-12"
+      },
+      {
+       "op": "replace",
+       "path": "/antallAnsatte",
+       "value": 7444
+      },
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteNAVAaregisteret",
+       "value": "2026-02-10"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 23848332,
+     "organisasjonsnummer": "984851006"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/971524960"
+      }
+     },
+     "dato": "2026-02-11T23:09:16.183Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteEnhetsregisteret",
+       "value": "2026-02-11"
+      },
+      {
+       "op": "replace",
+       "path": "/antallAnsatte",
+       "value": 610
+      },
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteNAVAaregisteret",
+       "value": "2026-02-10"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 23819907,
+     "organisasjonsnummer": "971524960"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/984851006"
+      }
+     },
+     "dato": "2026-01-24T22:21:15.317Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/kapital/innfortDato",
+       "value": "2026-01-24"
+      },
+      {
+       "op": "replace",
+       "path": "/kapital/belop",
+       "value": 18470062312.5
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 23719573,
+     "organisasjonsnummer": "984851006"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/984851006"
+      }
+     },
+     "dato": "2026-01-22T15:25:12.197Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/kapital/innfortDato",
+       "value": "2026-01-22"
+      },
+      {
+       "op": "replace",
+       "path": "/kapital/belop",
+       "value": 17136607277.5
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 23698775,
+     "organisasjonsnummer": "984851006"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/923609016"
+      }
+     },
+     "dato": "2026-01-13T23:16:41.598Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteEnhetsregisteret",
+       "value": "2026-01-13"
+      },
+      {
+       "op": "replace",
+       "path": "/antallAnsatte",
+       "value": 21447
+      },
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteNAVAaregisteret",
+       "value": "2026-01-10"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 23636236,
+     "organisasjonsnummer": "923609016"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/984851006"
+      }
+     },
+     "dato": "2026-01-13T23:16:41.598Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteEnhetsregisteret",
+       "value": "2026-01-13"
+      },
+      {
+       "op": "replace",
+       "path": "/antallAnsatte",
+       "value": 7779
+      },
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteNAVAaregisteret",
+       "value": "2026-01-10"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 23636233,
+     "organisasjonsnummer": "984851006"
+    },
+    {
+     "_links": {
+      "enhet": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/971524960"
+      }
+     },
+     "dato": "2026-01-12T23:48:51.021Z",
+     "endringer": [
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteEnhetsregisteret",
+       "value": "2026-01-12"
+      },
+      {
+       "op": "replace",
+       "path": "/antallAnsatte",
+       "value": 602
+      },
+      {
+       "op": "replace",
+       "path": "/registreringsdatoAntallAnsatteNAVAaregisteret",
+       "value": "2026-01-10"
+      }
+     ],
+     "endringstype": "Endring",
+     "oppdateringsid": 23610348,
+     "organisasjonsnummer": "971524960"
+    }
+   ]
+  },
+  "_links": {
+   "self": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/oppdateringer/enheter?organisasjonsnummer=923609016,984851006,971524960&size=100&sort=id,DESC&includeChanges=true&dato=2026-01-01T00:00:00.000Z"
+   }
+  },
+  "page": {
+   "number": 0,
+   "size": 100,
+   "totalElements": 32,
+   "totalPages": 1
+  }
+ }
+}

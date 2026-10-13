@@ -1,0 +1,86 @@
+{
+ "_request": {
+  "url": "https://data.brreg.no/enhetsregisteret/api/enheter/993055956",
+  "status": 200,
+  "retrieved_at": "2026-10-13T11:43:31Z",
+  "headers": {
+   "vary": "Origin",
+   "x-content-type-options": "nosniff",
+   "x-xss-protection": "0",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "pragma": "no-cache",
+   "expires": "0",
+   "strict-transport-security": "max-age=157680000; includeSubDomains",
+   "x-frame-options": "DENY",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:39:26 GMT",
+   "connection": "close"
+  }
+ },
+ "body": {
+  "_links": {
+   "self": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/enheter/993055956"
+   }
+  },
+  "aktivitet": [
+   "Trålfiske etter reke og kreps."
+  ],
+  "epostadresse": "pe-torp@online.no",
+  "erIKonsern": false,
+  "forretningsadresse": {
+   "adresse": [
+    "Skoledalen 4"
+   ],
+   "kommune": "ASKER",
+   "kommunenummer": "3203",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "3482",
+   "poststed": "TOFTE"
+  },
+  "harRegistrertAntallAnsatte": false,
+  "historiskeNavn": [],
+  "institusjonellSektorkode": {
+   "beskrivelse": "Personlige foretak",
+   "kode": "2300"
+  },
+  "konkurs": false,
+  "maalform": "Bokmål",
+  "mobil": "91713117",
+  "naeringskode1": {
+   "beskrivelse": "Fiske og fangst i sjø",
+   "kode": "03.110"
+  },
+  "navn": "BRD.TORP PARTREDERI ANS",
+  "organisasjonsform": {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/PRE"
+    }
+   },
+   "beskrivelse": "Partrederi",
+   "kode": "PRE"
+  },
+  "organisasjonsnummer": "993055956",
+  "paategninger": [],
+  "registreringsdatoEnhetsregisteret": "2008-09-11",
+  "registreringsdatoForetaksregisteret": "2008-09-11",
+  "registrertIForetaksregisteret": true,
+  "registrertIFrivillighetsregisteret": false,
+  "registrertIMvaregisteret": false,
+  "registrertIPartiregisteret": false,
+  "registrertIStiftelsesregisteret": false,
+  "respons_klasse": "Enhet",
+  "sisteInnsendteAarsregnskap": "2015",
+  "stiftelsesdato": "2008-09-01",
+  "telefon": "37 79 44 82",
+  "underAvvikling": false,
+  "underTvangsavviklingEllerTvangsopplosning": false,
+  "vedtektsdato": "2008-09-01",
+  "vedtektsfestetFormaal": [
+   "Trålfiske etter reke og kreps."
+  ]
+ }
+}

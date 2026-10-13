@@ -1,0 +1,979 @@
+
+    
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="nb" xml:lang="nb">
+
+  <head>
+<meta charset="windows-1252"><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="keywords" content="Brønnøysundregistrene"/>
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags --><link rel="stylesheet" href="//scf.brreg.no/css/normalize.min.css"/><link rel="stylesheet" href="//scf.brreg.no/css/bootstrap.min.css?v=2"/>
+<link rel="stylesheet" href="//scf.brreg.no/css/bootstrap-fix.css"/>
+<link
+        rel="stylesheet"
+        href="//scf.brreg.no/fonts/inter/inter.css"
+        crossorigin="anonymous"
+/>
+<link rel="stylesheet" href="//scf.brreg.no/css/br.css?v=22">
+<link rel="stylesheet" href="//scf.brreg.no/css/framework.css?v=69">
+<script src="//scf.brreg.no/js/br.js?v=6" defer></script>
+<script id="frameworkScript" data-scf="//scf.brreg.no" data-www="https://www.brreg.no" data-rum="https://siem-apm-prd.app.brreg.no" data-env="prod" src="//scf.brreg.no/js/framework.js?v=66" defer></script>
+
+<link class="favicon" rel="apple-touch-icon" sizes="180x180" href="//scf.brreg.no/bilder/favicons/apple-touch-icon.png?v=2">
+<link class="favicon" rel="icon" type="image/png" sizes="32x32" href="//scf.brreg.no/bilder/favicons/favicon-32x32.png?v=2">
+<link class="favicon" rel="icon" type="image/png" sizes="16x16" href="//scf.brreg.no/bilder/favicons/favicon-16x16.png?v=2">
+<link class="favicon" rel="manifest" href="//scf.brreg.no/bilder/favicons/site.webmanifest?v=2">
+<link class="favicon" rel="mask-icon" href="//scf.brreg.no/bilder/favicons/safari-pinned-tab.svg?v=2" color="#5bbad5">
+<link class="favicon" rel="shortcut icon" href="//scf.brreg.no/bilder/favicons/favicon.ico?v=2">
+<meta class="favicon" name="msapplication-TileColor" content="#da532c">
+<meta class="favicon" name="msapplication-config" content="//scf.brreg.no/bilder/favicons/browserconfig.xml?v=2">
+<meta class="favicon" name="theme-color" content="#ffffff">
+
+<link class="favicon-dark" rel="apple-touch-icon" sizes="180x180" href="//scf.brreg.no/bilder/favicons-dark/apple-touch-icon.png">
+<link class="favicon-dark" rel="icon" type="image/png" sizes="32x32" href="//scf.brreg.no/bilder/favicons-dark/favicon-32x32.png">
+<link class="favicon-dark" rel="icon" type="image/png" sizes="16x16" href="//scf.brreg.no/bilder/favicons-dark/favicon-16x16.png">
+<link class="favicon-dark" rel="manifest" href="//scf.brreg.no/bilder/favicons-dark/site.webmanifest">
+<link class="favicon-dark" rel="mask-icon" href="//scf.brreg.no/bilder/favicons-dark/safari-pinned-tab.svg" color="#5bbad5">
+<link class="favicon-dark" rel="shortcut icon" href="//scf.brreg.no/bilder/favicons-dark/favicon.ico">
+<meta class="favicon-dark" name="msapplication-TileColor" content="#da532c">
+<meta class="favicon-dark" name="msapplication-config" content="//scf.brreg.no/bilder/favicons-dark/browserconfig.xml">
+<meta class="favicon-dark" name="theme-color" content="#ffffff">
+<meta name='ROBOTS' content='NOINDEX, NOFOLLOW'/>
+
+<title>Nøkkelopplysninger fra Enhetsregisteret - Brønnøysundregistrene</title>
+<script src="//scf.brreg.no/js/jquery-3.7.1.min.js"></script>
+<script src="//scf.brreg.no/js/bootstrap.min.js?v=2"></script>
+
+  </head>
+		<body id='centered-page'>
+<header class="prod main-header" lang="nb">
+    <div class="header-content">
+        <div class="shortcut-to-maincontent">
+            <a href="#maincontent" title="Hopp til innhold">Hopp til innhold</a>
+        </div>
+        <div class="header-logo">
+            <a href="https://www.brreg.no/"><img src="//scf.brreg.no/bilder/brreg_logo.svg" alt="Brønnøysundregistrene, snarvei til fremsiden"></a>
+        </div>
+        <div class="header-right">
+            <div class="header-language">
+                <div id="languageButtonHeader" role="button" tabindex="0" aria-expanded="false" aria-controls="languageHeader">
+                    <span lang="en">Language</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M10 4.75C10.4142 4.75 10.75 5.08579 10.75 5.5V6.75H13.4825C13.494 6.74973 13.5055 6.74973 13.517 6.75H16C16.4142 6.75 16.75 7.08579 16.75 7.5C16.75 7.91421 16.4142 8.25 16 8.25H14.0516C13.4168 10.1925 12.3897 11.9567 11.0571 13.4469C11.2033 13.5787 11.3526 13.7073 11.5049 13.8325C11.8248 14.0957 11.8708 14.5683 11.6076 14.8882C11.3445 15.2081 10.8719 15.2541 10.552 14.991C10.3639 14.8363 10.1799 14.677 10 14.5133C8.77421 15.6289 7.35388 16.5401 5.78846 17.1923C5.40611 17.3516 4.96701 17.1708 4.80769 16.7885C4.64838 16.4061 4.82919 15.967 5.21154 15.8077C6.59596 15.2308 7.85392 14.4283 8.94293 13.4469C7.61037 11.9567 6.58314 10.1925 5.94834 8.25H4C3.58579 8.25 3.25 7.91421 3.25 7.5C3.25 7.08579 3.58579 6.75 4 6.75H9.25V5.5C9.25 5.08579 9.58579 4.75 10 4.75ZM12.4638 8.25C11.8992 9.78019 11.0594 11.1767 10 12.3783C8.94058 11.1767 8.10077 9.78018 7.53617 8.25H12.4638ZM15.5 9.75C15.7964 9.75 16.065 9.92455 16.1854 10.1954L20.1854 19.1954C20.3536 19.5739 20.1831 20.0171 19.8046 20.1854C19.4261 20.3536 18.9829 20.1831 18.8146 19.8046L17.9015 17.75H13.0985L12.1854 19.8046C12.0171 20.1831 11.5739 20.3536 11.1954 20.1854C10.8169 20.0171 10.6464 19.5739 10.8146 19.1954L14.8146 10.1954C14.935 9.92455 15.2036 9.75 15.5 9.75ZM15.5 12.3467L17.2348 16.25H13.7652L15.5 12.3467Z" fill="#23262A"/>
+                    </svg>
+                </div>
+                <div id="closeLanguageButton" class="close-button" hidden title="Lukk språkvalg" role="button" tabindex="0" aria-expanded="true" aria-controls="languageHeader">
+                    <div class="close-search-icon">
+                        <svg version="1.1" class="header-icon"
+                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 46 46"
+                             xml:space="preserve">
+                            <g>
+                                <path class="st0" d="M1.5,46c-0.4,0-0.8-0.2-1.1-0.4C0.2,45.2,0,44.9,0,44.5s0.2-0.8,0.4-1.1L28,15.8c0.3-0.3,0.7-0.4,1.1-0.4
+                                    s0.8,0.2,1.1,0.4c0.6,0.6,0.6,1.5,0,2.1L2.6,45.5C2.3,45.8,1.9,46,1.5,46z"/>
+                            </g>
+                                                        <g>
+                                <path class="st0" d="M16.9,30.6c-0.4,0-0.8-0.2-1.1-0.4c-0.6-0.6-0.6-1.5,0-2.1L43.4,0.5C43.7,0.2,44.1,0,44.5,0s0.8,0.2,1.1,0.4
+                                    C45.8,0.7,46,1.1,46,1.5s-0.2,0.8-0.4,1.1L18,30.2C17.7,30.4,17.3,30.6,16.9,30.6z"/>
+                            </g>
+                                                        <g>
+                                <path class="st0" d="M44.5,46c-0.4,0-0.8-0.2-1.1-0.4L15.8,18c-0.6-0.6-0.6-1.5,0-2.1c0.3-0.3,0.7-0.4,1.1-0.4s0.8,0.2,1.1,0.4
+                                    l27.6,27.6c0.3,0.3,0.4,0.7,0.4,1.1c0,0.4-0.2,0.8-0.4,1.1C45.3,45.8,44.9,46,44.5,46z"/>
+                            </g>
+                                                        <g>
+                                <path class="st0" d="M29.1,30.6c-0.4,0-0.8-0.2-1.1-0.4L0.5,2.6C0.2,2.3,0,1.9,0,1.5s0.2-0.8,0.4-1.1S1.1,0,1.5,0s0.8,0.2,1.1,0.4
+                                    L30.2,28c0.3,0.3,0.4,0.7,0.4,1.1s-0.2,0.8-0.4,1.1C29.9,30.4,29.5,30.6,29.1,30.6z"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="header-search-button">
+                <div id="searchButton" role="button" tabindex="0" aria-expanded="false" aria-controls="searchformHeader">
+                    <span>Søk</span>
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="header-icon" width="22">
+                        <path class="st0" d="M10.5 3.25C6.49594 3.25 3.25 6.49594 3.25 10.5C3.25 14.5041 6.49594 17.75 10.5 17.75C12.2319 17.75 13.8219 17.1427 15.0689 16.1295L20.4801 21.5407C20.773 21.8336 21.2478 21.8336 21.5407 21.5407C21.8336 21.2478 21.8336 20.773 21.5407 20.4801L16.1295 15.0689C17.1427 13.8219 17.75 12.2319 17.75 10.5C17.75 6.49594 14.5041 3.25 10.5 3.25ZM4.75 10.5C4.75 7.32436 7.32436 4.75 10.5 4.75C13.6756 4.75 16.25 7.32436 16.25 10.5C16.25 13.6756 13.6756 16.25 10.5 16.25C7.32436 16.25 4.75 13.6756 4.75 10.5Z"></path>
+                    </svg>
+                 </div>
+                <div id="closeSearchButton" class="close-button" hidden title="Lukk søk" role="button" tabindex="0" aria-expanded="true" aria-controls="searchformHeader">
+                    <div class="close-search-icon">
+                        <svg version="1.1" class="header-icon"
+                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 46 46"
+                             xml:space="preserve">
+                            <g>
+                                <path class="st0" d="M1.5,46c-0.4,0-0.8-0.2-1.1-0.4C0.2,45.2,0,44.9,0,44.5s0.2-0.8,0.4-1.1L28,15.8c0.3-0.3,0.7-0.4,1.1-0.4
+                                    s0.8,0.2,1.1,0.4c0.6,0.6,0.6,1.5,0,2.1L2.6,45.5C2.3,45.8,1.9,46,1.5,46z"/>
+                            </g>
+                            <g>
+                                <path class="st0" d="M16.9,30.6c-0.4,0-0.8-0.2-1.1-0.4c-0.6-0.6-0.6-1.5,0-2.1L43.4,0.5C43.7,0.2,44.1,0,44.5,0s0.8,0.2,1.1,0.4
+                                    C45.8,0.7,46,1.1,46,1.5s-0.2,0.8-0.4,1.1L18,30.2C17.7,30.4,17.3,30.6,16.9,30.6z"/>
+                            </g>
+                            <g>
+                                <path class="st0" d="M44.5,46c-0.4,0-0.8-0.2-1.1-0.4L15.8,18c-0.6-0.6-0.6-1.5,0-2.1c0.3-0.3,0.7-0.4,1.1-0.4s0.8,0.2,1.1,0.4
+                                    l27.6,27.6c0.3,0.3,0.4,0.7,0.4,1.1c0,0.4-0.2,0.8-0.4,1.1C45.3,45.8,44.9,46,44.5,46z"/>
+                            </g>
+                            <g>
+                                <path class="st0" d="M29.1,30.6c-0.4,0-0.8-0.2-1.1-0.4L0.5,2.6C0.2,2.3,0,1.9,0,1.5s0.2-0.8,0.4-1.1S1.1,0,1.5,0s0.8,0.2,1.1,0.4
+                                    L30.2,28c0.3,0.3,0.4,0.7,0.4,1.1s-0.2,0.8-0.4,1.1C29.9,30.4,29.5,30.6,29.1,30.6z"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="header-log-in-button">
+                <a id="loginButton" tabindex="0" href="https://person.brreg.no/nb/minside?header=1">
+                    <span>Min side</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.25 7.5C8.25 5.42893 9.92893 3.75 12 3.75C14.0711 3.75 15.75 5.42893 15.75 7.5C15.75 9.57107 14.0711 11.25 12 11.25C9.92893 11.25 8.25 9.57107 8.25 7.5ZM12 2.25C9.10051 2.25 6.75 4.60051 6.75 7.5C6.75 10.3995 9.10051 12.75 12 12.75C14.8995 12.75 17.25 10.3995 17.25 7.5C17.25 4.60051 14.8995 2.25 12 2.25ZM8.28769 17.2877C9.27225 16.3031 10.6076 15.75 12 15.75C13.3924 15.75 14.7277 16.3031 15.7123 17.2877C16.6969 18.2723 17.25 19.6076 17.25 21C17.25 21.4142 17.5858 21.75 18 21.75C18.4142 21.75 18.75 21.4142 18.75 21C18.75 19.2098 18.0388 17.4929 16.773 16.227C15.5071 14.9612 13.7902 14.25 12 14.25C10.2098 14.25 8.4929 14.9612 7.22703 16.227C5.96116 17.4929 5.25 19.2098 5.25 21C5.25 21.4142 5.58579 21.75 6 21.75C6.41421 21.75 6.75 21.4142 6.75 21C6.75 19.6076 7.30312 18.2723 8.28769 17.2877Z" fill="#23262A"/>
+                    </svg></a>
+            </div>
+            <div class="header-menu-button">
+                <div id="openMenuButton" role="button" tabindex="0" aria-expanded="false" aria-controls="mainMenu">
+                    <span>Meny</span>
+                    <div class="menuIcon"></div>
+                </div>
+                <div id="closeMenuButton" hidden role="button" tabindex="0" aria-expanded="true" aria-controls="mainMenu">
+                    <span>Meny</span>
+                    <div class="menuIcon"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="searchformHeader" class="search-and-language search-and-language-hide">
+        <form name="headerSearchForm" action="https://www.brreg.no" method="get" accept-charset="UTF-8">
+            <h2>Søk</h2>
+            <br>
+            <div class="search-field-wrapper">
+                <input type="search" id="s" name="s" lang="no" xml:lang="no" placeholder="Søk i innhold" aria-label="Søk i innhold">
+                <button id="doSearchButton" type="submit" aria-label="Søk">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.5 3.25C6.49594 3.25 3.25 6.49594 3.25 10.5C3.25 14.5041 6.49594 17.75 10.5 17.75C12.2319 17.75 13.8219 17.1427 15.0689 16.1295L20.4801 21.5407C20.773 21.8336 21.2478 21.8336 21.5407 21.5407C21.8336 21.2478 21.8336 20.773 21.5407 20.4801L16.1295 15.0689C17.1427 13.8219 17.75 12.2319 17.75 10.5C17.75 6.49594 14.5041 3.25 10.5 3.25ZM4.75 10.5C4.75 7.32436 7.32436 4.75 10.5 4.75C13.6756 4.75 16.25 7.32436 16.25 10.5C16.25 13.6756 13.6756 16.25 10.5 16.25C7.32436 16.25 4.75 13.6756 4.75 10.5Z"></path>
+                    </svg>
+                </button>
+            </div>
+            <input type="hidden" name="lang" value="nb">
+        </form>
+    </div>
+    <div id="languageHeader" class="search-and-language search-and-language-hide notranslate">
+        <div id="spraakVelger">
+            <h2>Velg språk</h2>
+            <br><br>
+        </div>
+    </div>
+    <div id="mobileMenuSection" class="nav-side" style="display: none;">
+        <ul>
+            <li>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M10 4.75C10.4142 4.75 10.75 5.08579 10.75 5.5V6.75H13.4825C13.494 6.74973 13.5055 6.74973 13.517 6.75H16C16.4142 6.75 16.75 7.08579 16.75 7.5C16.75 7.91421 16.4142 8.25 16 8.25H14.0516C13.4168 10.1925 12.3897 11.9567 11.0571 13.4469C11.2033 13.5787 11.3526 13.7073 11.5049 13.8325C11.8248 14.0957 11.8708 14.5683 11.6076 14.8882C11.3445 15.2081 10.8719 15.2541 10.552 14.991C10.3639 14.8363 10.1799 14.677 10 14.5133C8.77421 15.6289 7.35388 16.5401 5.78846 17.1923C5.40611 17.3516 4.96701 17.1708 4.80769 16.7885C4.64838 16.4061 4.82919 15.967 5.21154 15.8077C6.59596 15.2308 7.85392 14.4283 8.94293 13.4469C7.61037 11.9567 6.58314 10.1925 5.94834 8.25H4C3.58579 8.25 3.25 7.91421 3.25 7.5C3.25 7.08579 3.58579 6.75 4 6.75H9.25V5.5C9.25 5.08579 9.58579 4.75 10 4.75ZM12.4638 8.25C11.8992 9.78019 11.0594 11.1767 10 12.3783C8.94058 11.1767 8.10077 9.78018 7.53617 8.25H12.4638ZM15.5 9.75C15.7964 9.75 16.065 9.92455 16.1854 10.1954L20.1854 19.1954C20.3536 19.5739 20.1831 20.0171 19.8046 20.1854C19.4261 20.3536 18.9829 20.1831 18.8146 19.8046L17.9015 17.75H13.0985L12.1854 19.8046C12.0171 20.1831 11.5739 20.3536 11.1954 20.1854C10.8169 20.0171 10.6464 19.5739 10.8146 19.1954L14.8146 10.1954C14.935 9.92455 15.2036 9.75 15.5 9.75ZM15.5 12.3467L17.2348 16.25H13.7652L15.5 12.3467Z" fill="#23262A"/>
+                </svg>
+                <div role="button" id="languageButtonMenu" tabindex="0" lang="en">Language</div>
+            </li>
+            <li>
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="header-icon" width="22">
+                    <path class="st0" d="M10.5 3.25C6.49594 3.25 3.25 6.49594 3.25 10.5C3.25 14.5041 6.49594 17.75 10.5 17.75C12.2319 17.75 13.8219 17.1427 15.0689 16.1295L20.4801 21.5407C20.773 21.8336 21.2478 21.8336 21.5407 21.5407C21.8336 21.2478 21.8336 20.773 21.5407 20.4801L16.1295 15.0689C17.1427 13.8219 17.75 12.2319 17.75 10.5C17.75 6.49594 14.5041 3.25 10.5 3.25ZM4.75 10.5C4.75 7.32436 7.32436 4.75 10.5 4.75C13.6756 4.75 16.25 7.32436 16.25 10.5C16.25 13.6756 13.6756 16.25 10.5 16.25C7.32436 16.25 4.75 13.6756 4.75 10.5Z"></path>
+                </svg>
+                <div role="button" id="searchButtonMenu" tabindex="0">Søk</div>
+            </li>
+            <li>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.25 7.5C8.25 5.42893 9.92893 3.75 12 3.75C14.0711 3.75 15.75 5.42893 15.75 7.5C15.75 9.57107 14.0711 11.25 12 11.25C9.92893 11.25 8.25 9.57107 8.25 7.5ZM12 2.25C9.10051 2.25 6.75 4.60051 6.75 7.5C6.75 10.3995 9.10051 12.75 12 12.75C14.8995 12.75 17.25 10.3995 17.25 7.5C17.25 4.60051 14.8995 2.25 12 2.25ZM8.28769 17.2877C9.27225 16.3031 10.6076 15.75 12 15.75C13.3924 15.75 14.7277 16.3031 15.7123 17.2877C16.6969 18.2723 17.25 19.6076 17.25 21C17.25 21.4142 17.5858 21.75 18 21.75C18.4142 21.75 18.75 21.4142 18.75 21C18.75 19.2098 18.0388 17.4929 16.773 16.227C15.5071 14.9612 13.7902 14.25 12 14.25C10.2098 14.25 8.4929 14.9612 7.22703 16.227C5.96116 17.4929 5.25 19.2098 5.25 21C5.25 21.4142 5.58579 21.75 6 21.75C6.41421 21.75 6.75 21.4142 6.75 21C6.75 19.6076 7.30312 18.2723 8.28769 17.2877Z" fill="#23262A"/>
+                </svg>
+                <a href="https://person.brreg.no/nb/minside?header=1">Min side</a>
+            </li>
+        </ul>
+    </div>
+<nav id='mainMenu' aria-label='hovedmeny' class='main-nav nav-hide'><div class='nav-wrapper'><div class='nav-side'><ul><li><img aria-hidden='true' alt='' src='https://scf.brreg.no/bilder/meny/MegaphoneSpeaking.svg'> <a href='https://www.brreg.no/registersok/kunngjoringer/'>Kunngjøringer</a></li><li><img aria-hidden='true' alt='' src='https://scf.brreg.no/bilder/meny/Calendar.svg'> <a href='https://www.brreg.no/hvordan-kan-vi-hjelpe-deg/nar-blir-saken-min-behandlet/'>Saksbehandlingstid</a></li><li><img aria-hidden='true' alt='' src='https://scf.brreg.no/bilder/meny/PersonHeadset.svg'> <a href='https://www.brreg.no/hvordan-kan-vi-hjelpe-deg/'>Kontakt oss</a></li><li><img aria-hidden='true' alt='' src='https://scf.brreg.no/bilder/meny/Download.svg'> <a href='https://w2.brreg.no/eHandelPortal/ecomsys/'>Nettbutikk</a></li><li><img aria-hidden='true' alt='' src='https://scf.brreg.no/bilder/meny/DocPencil.svg'> <a href='https://www.brreg.no/bedrift/samordnet-registermelding/'>Samordnet registermelding</a></li><li><img aria-hidden='true' alt='' src='https://scf.brreg.no/bilder/meny/Newspaper.svg'> <a href='https://www.brreg.no/nyhetsarkiv/'>Nyheter</a></li><li><img aria-hidden='true' alt='' src='https://scf.brreg.no/bilder/meny/Brreg.svg'> <a href='https://www.brreg.no/om-oss/'>Om oss</a></li></ul></div><div class='nav-box-container'><a class='nav-box' href='https://www.brreg.no/registersok/'><span class='nav-box-title'>Registersøk</span></a><a class='nav-box' href='https://www.brreg.no/aksjeselskap/'><span class='nav-box-title'>Aksjeselskap</span><br>Registrere, endre, slette</a><a class='nav-box' href='https://www.brreg.no/enkeltpersonforetak/'><span class='nav-box-title'>Enkeltpersonforetak</span><br>Registrere, endre, slette</a><a class='nav-box' href='https://www.brreg.no/lag-og-foreninger/'><span class='nav-box-title'>Lag og forening</span><br>Registrere, endre, slette</a><a class='nav-box' href='https://www.brreg.no/andre-organisasjonsformer/'><span class='nav-box-title'>Flere organisasjonsformer</span></a><a class='nav-box' href='https://www.brreg.no/innsending-av-arsregnskap/'><span class='nav-box-title'>Årsregnskap</span><br>Innsending og forsinkelsesgebyr</a><a class='nav-box' href='https://www.brreg.no/tinglysing/'><span class='nav-box-title'>Tinglysing</span></a><a class='nav-box' href='https://www.brreg.no/jegerregisteret/'><span class='nav-box-title'>Jeger</span><br>Betaling og jegeravgiftskort</a><a class='nav-box' href='https://www.brreg.no/ektepakt/'><span class='nav-box-title'>Ektepaktveileder</span></a><a class='nav-box' href='https://www.brreg.no/offentlig-sektor/'><span class='nav-box-title'>Offentlig sektor</span></a><a class='nav-box' href='https://www.brreg.no/andre-tema/'><span class='nav-box-title'>Andre tema</span></a></div></div></nav>
+</header><div class='container normal-br-link'><div class='row'>
+	<div class="col-md-12">
+<ol class='breadcrumb'> 
+<li><a href='https://www.brreg.no'>Forsiden</a> </li> 
+		<li><a href='https://www.brreg.no/registersok/'>Registersøk</a></li><li><strong>Nøkkelopplysninger fra Enhetsregisteret</strong></li>
+	</ol>
+	</div>
+</div>
+</div>
+<main  id="maincontent">
+<div class='container'>	<div class="row">	<div id="pagecontent" class="col-lg-12" tabindex="-1">
+		<div class='page-header'><h1>Nøkkelopplysninger fra Enhetsregisteret</h1></div>
+<script>
+  const APPID = "enhetWEB";
+  const WL_DEFAULT_LANGUAGE = "nb";
+  const WL_SUPPORTED_LANGUAGES = ["nb"];
+
+  window.onload = function() {
+    document.getElementsByTagName('body')[0].setAttribute("data-appid",APPID);
+
+    document.getElementsByTagName('body')[0].setAttribute("data-supported-lang", WL_SUPPORTED_LANGUAGES);
+  }
+
+  addEventListener("brreg:lang-change", function(e) {
+    let languageCode = WL_SUPPORTED_LANGUAGES.includes(e.language) ? e.language : WL_DEFAULT_LANGUAGE;
+    let langChangeForm = document.getElementById("langChangeForm");
+    let url = window.location.href;
+    let urlWithoutParams = url.substr(url,url.indexOf("?"));
+    let params = new URLSearchParams(window.location.search);
+    if (params.has("spraak")) {
+      params.delete("spraak");
+      let paramString = (Array.from(params).length > 0 ? "?" : "") + params.toString();
+      url = urlWithoutParams + paramString;
+    }
+    langChangeForm.setAttribute("action", url);
+    document.getElementById("languageCode").value = languageCode;
+    langChangeForm.submit();
+  });
+</script>
+<form id="langChangeForm" method="POST">
+  <input id="languageCode" type="hidden" name="spraak">
+</form>
+
+
+
+
+
+
+
+<script>
+  	   function kopier_orgnr(obj,tekst) {
+  	    $(".copy-confirmation-wrapper").remove();
+  	    
+  	      const confirmationWrapper = document.createElement("div");
+  	      confirmationWrapper.className = "copy-confirmation-wrapper";
+  	      const confirmation = document.createElement("span");
+  	      confirmation.className = "copy-confirmation";
+  	      let confirmationDelay = 1000;
+  	     
+  	         navigator.clipboard.writeText(tekst).then(() => {
+  	         confirmation.className += " copy-success";
+  	         confirmation.innerText = "Kopiert";
+  	      }).catch(err => {
+  	         confirmation.className += " copy-error";
+  	         confirmation.innerText = "Klarte ikke å kopiere";
+  	         confirmationDelay = 1500;
+  	      }).finally(() => {  
+  	         confirmationWrapper.appendChild(confirmation);
+  	         obj.parentNode.insertBefore(confirmationWrapper, obj);
+  	         setTimeout(fadeOutConfirmation, confirmationDelay);
+  	       });    
+  	      
+  	   }
+  	   
+  	   function fadeOutConfirmation() {
+  	     $(".copy-confirmation-wrapper").fadeOut();
+  	   }
+  	   
+  	</script><style>
+  		    .copy-confirmation-wrapper {
+  	                position: relative;
+  	                display: inLine;
+  	            }
+  	
+  	            .copy-confirmation {
+  	                padding: 3px;
+  	                color: #fff;
+  	                position: absolute;
+  	                white-space: nowrap;
+  	            }
+  	
+  	            .copy-success {
+  	                background-color: rgba(0,0,0,0.6);
+  	            }
+  	
+  	            .copy-error {
+  	                background-color: rgba(140,23,24,0.9);
+  	            }
+  	           
+	</style><div class="row">
+<div class="col-sm-4">
+<p>
+<b>Organisasjonsnummer: </b>
+</p>
+</div>
+<div class="col-sm-8">
+<p>923 609 016<img style="height: 24px" src="https://scf.brreg.no/bilder/iconer/copy-icon.png" title="Kopier" tabindex="0" role="button" onclick="kopier_orgnr(this, 923609016)"></p>
+</div>
+</div><div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p>
+<b>Navn/foretaksnavn: </b>
+</p>
+</div>
+<div class="col-sm-8">
+<p>EQUINOR ASA</p>
+</div>
+</div><div class="row">
+<div class="col-sm-4">
+<p>
+<b>Organisasjonsform: </b>
+</p>
+</div>
+<div class="col-sm-8">
+<p>Allmennaksjeselskap</p>
+</div>
+</div><div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p>
+<b>Forretningsadresse: </b>
+</p>
+</div>
+<div class="col-sm-8" style="vertical-align:top">
+<p>Forusbeen 50<br>4035 STAVANGER</p>
+</div>
+</div><div class="row">
+<div class="col-sm-4">
+<p>
+<b>Kommune: </b>
+</p>
+</div>
+<div class="col-sm-8">
+<p>STAVANGER</p>
+</div>
+</div><div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p>
+<b>Postadresse: </b>
+</p>
+</div>
+<div class="col-sm-8" style="vertical-align:top">
+<p>Postboks 8500<br>4035 STAVANGER</p>
+</div>
+</div><div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p>
+<b>Internettadresse: </b>
+</p>
+</div>
+<div class="col-sm-8">
+<p>
+<a class="normal-br-link" href="http://www.equinor.com">www.equinor.com</a>
+</p>
+</div>
+</div><div class="row">
+<div class="col-sm-4">
+<p>
+<b>Registrert i Enhetsregisteret: </b>
+</p>
+</div>
+<div class="col-sm-8">
+<p>12.03.1995</p>
+</div>
+</div><div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p>
+<b>Stiftelsesdato: </b>
+</p>
+</div>
+<div class="col-sm-8">
+<p>18.09.1972</p>
+</div>
+</div><div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p>
+<b>Daglig leder:</b>
+</p>
+</div>
+<div class="col-sm-8">
+<p>Anders Opedal</p>
+</div>
+</div><div class="row">
+<div class="col-sm-4">
+<p>
+<b>Vedtektfestet form&aring;l:</b>
+</p>
+</div>
+<div class="col-sm-8">
+<p>&Aring; utvikle, produsere og markedsf&oslash;re ulike former for energi, avledede&nbsp;
+                produkter og tjenester, samt annen virksomhet. Virksomheten kan ogs&aring;&nbsp;
+                drives gjennom deltakelse i eller i samarbeid med andre selskaper.&nbsp;
+                </p>
+</div>
+</div><div class="row">
+<div class="col-sm-4">
+<p>
+<b>Aktivitet/bransje:</b>
+</p>
+</div>
+<div class="col-sm-8">
+<p>Selv, eller gjennom deltakelse i eller sammen med andre selskaper &aring;&nbsp;
+               utvikle, produsere og markedsf&oslash;re ulike former for energi, avledede&nbsp;
+               produkter og tjenester, samt annen virksomhet. Utleie av bygg og&nbsp;
+               anlegg.&nbsp;
+               </p>
+</div>
+</div><p>
+<div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p style="height:12px">
+<b>N&aelig;ringskode(r): </b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:10px">06.100 &nbsp;Utvinning av r&aring;olje</p>
+</div>
+</div>
+<br>
+<div class="hidden-md hidden-lg">
+<br>
+</div>
+<div class="row">
+<div class="col-sm-4">
+<p style="height:12px"></p>
+</div>
+<div class="col-sm-8">
+<p style="height:10px">06.200 &nbsp;Utvinning av naturgass</p>
+</div>
+</div>
+<br>
+<div class="hidden-md hidden-lg">
+<br>
+</div>
+<div class="row">
+<div class="col-sm-4">
+<p style="height:12px"></p>
+</div>
+<div class="col-sm-8">
+<p style="height:10px">19.200 &nbsp;Produksjon av raffinerte petroleumsprodukter og fossile brenselsprodukter</p>
+</div>
+</div>
+<br>
+<div class="hidden-md hidden-lg">
+<br>
+</div>
+</p><div class="row">
+<div class="col-sm-4">
+<p>
+<b>Sektorkode: </b>
+</p>
+</div>
+<div class="col-sm-8">
+<p>1120 Statlig eide aksjeselskaper mv.</p>
+</div>
+</div><p>
+<div class="row">
+<div class="col-sm-4">
+<p style="height:12px">
+<b>S&aelig;rlige opplysninger: </b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Registrert i Foretaksregisteret</p>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4">
+<p style="height:12px"></p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Registrert i Merverdiavgiftsregisteret</p>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4">
+<p style="height:12px"></p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Frivillig registrering i Merverdiavgiftsregisteret:</p>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4">
+<p style="height:12px"></p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">- Utleier av bygg eller anlegg</p>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4">
+<p style="height:12px"></p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Registrert i NAV Aa-registeret</p>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4">
+<p style="height:12px"></p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Inng&aring;r i konsern</p>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4">
+<p style="height:12px"></p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Sist innsendte &aring;rsregnskap 2025</p>
+</div>
+</div>
+</p><p></p><p>
+<div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p style="height:12px">
+<b>Styre:</b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px"></p>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p style="height:12px">
+<b>Styrets leder:</b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Jarle Kjell Roth</p>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p style="height:12px">
+<b>Styremedlem:</b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Finn Bj&oslash;rn Ruyter
+		        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Avregistrert
+		      </p>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p style="height:12px">
+<b></b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Haakon Stephen Bruun-Hanssen</p>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p style="height:12px">
+<b></b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Fernanda Lopes Larsen</p>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p style="height:12px">
+<b></b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Hilde M&oslash;llerstad</p>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p style="height:12px">
+<b></b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Frank Indreland Gundersen</p>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p style="height:12px">
+<b></b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Geir Leon Vadheim</p>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p style="height:12px">
+<b></b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Anne Drinkwater</p>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p style="height:12px">
+<b></b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Mikael Roland Karlsson</p>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p style="height:12px">
+<b></b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Dawn Summers</p>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p style="height:12px">
+<b>Varamedlem:</b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Hans Einar Haldorsen</p>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p style="height:12px">
+<b></b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Anette Heggholmen</p>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p style="height:12px">
+<b></b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Terje Werner Hansen</p>
+</div>
+</div>
+</p><p>
+<div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p style="height:12px">
+<b>Signatur:</b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Daglig leder alene.</p>
+<div class="hidden-xs hidden-lg">
+<br>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p style="height:12px">
+<b></b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Styrets leder alene.</p>
+<div class="hidden-xs hidden-lg">
+<br>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p style="height:12px">
+<b></b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">To styremedlemmer i fellesskap.</p>
+<div class="hidden-xs hidden-lg">
+<br>
+</div>
+</div>
+</div>
+</p><div class="hidden-sm hidden-md hidden-lg">
+<br>
+</div><p>
+<div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p style="height:12px">
+<b>Prokura hver for seg:</b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Finn Lexow</p>
+<div class="hidden-xs hidden-lg">
+<br>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p style="height:12px">
+<b></b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Irene Rummelhoff</p>
+<div class="hidden-xs hidden-lg">
+<br>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p style="height:12px">
+<b></b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Anders Opedal</p>
+<div class="hidden-xs hidden-lg">
+<br>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p style="height:12px">
+<b></b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Siv Helen Rygh Torstensen</p>
+<div class="hidden-xs hidden-lg">
+<br>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p style="height:12px">
+<b></b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Kjetil Hove</p>
+<div class="hidden-xs hidden-lg">
+<br>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p style="height:12px">
+<b></b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Geir Tungesvik</p>
+<div class="hidden-xs hidden-lg">
+<br>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p style="height:12px">
+<b></b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Hege Skryseth</p>
+<div class="hidden-xs hidden-lg">
+<br>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p style="height:12px">
+<b></b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Torgrim Reitan</p>
+<div class="hidden-xs hidden-lg">
+<br>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p style="height:12px">
+<b></b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Philippe Francois Mathieu</p>
+<div class="hidden-xs hidden-lg">
+<br>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p style="height:12px">
+<b></b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Tor Stian Kj&oslash;llesdal</p>
+<div class="hidden-xs hidden-lg">
+<br>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p style="height:12px">
+<b></b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Helge Haugane</p>
+<div class="hidden-xs hidden-lg">
+<br>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p style="height:12px">
+<b></b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Camilla Salthe</p>
+<div class="hidden-xs hidden-lg">
+<br>
+</div>
+</div>
+</div>
+</p><div class="hidden-sm hidden-md hidden-lg">
+<br>
+</div><p>
+<div class="row">
+<div class="col-sm-4" style="vertical-align:top">
+<p style="height:12px">
+<b>Revisor:</b>
+</p>
+</div>
+<div class="col-sm-8">
+<p style="height:12px">Godkjent revisjonsforetak<br>
+</p>
+<p style="height:12px">Organisasjonsnummer 976 389 387<br>
+</p>
+<p style="height:12px">ERNST &amp; YOUNG AS</p>
+<p style="height:12px">Stortorvet 7</p>
+<p style="height:12px">0155  &nbsp; OSLO</p>
+</div>
+</div>
+</p><p></p><p></p><div class="row hidden-print">
+<div class="col-sm-4" style="vertical-align:top">
+<p>
+<b>Underenhet(er):</b>
+</p>
+</div>
+<div class="col-sm-8">
+<p>
+<a class="normal-br-link" href="/enhet/sok/underenh.jsp?orgnr=923609016">Oversikt over registrerte underenheter</a>
+</p>
+</div>
+</div><div class="row hidden-print">
+<hr size="1" noshade>
+</div><div align="right" class="hidden-print">
+<button onclick="window.location.href='/enhet/sok/index.jsp'" class="br-button-2 br-button-2-main">Nytt s&oslash;k</button>
+</div><div class="row hidden-print">
+<hr size="1" noshade>
+</div><div class="hidden-print">
+<p>
+<b>Flere opplysninger om virksomheten: </b>
+<br>
+	       Opplysningene over er bare et utvalg av de opplysningene Br&oslash;nn&oslash;ysundregistrene har om virksomheten du har
+	          s&oslash;kt p&aring;. Ytterlige opplysninger er tilgjengelige b&aring;de p&aring; nett og papir.</p>
+<p>
+<ul>
+<li>
+<a class="normal-br-link" href="https://virksomhet.brreg.no/nb/oppslag/enheter/923609016">Virksomhetsopplysinger</a> - erstatter tjenesten du bruker n&aring;, som er under utfasing. Der finner du mer informasjon om virksomheten samlet p&aring; ett sted.</li>
+<li>
+<a class="normal-br-link" href="/eHandelPortal/ecomsys/velg.jsp?enhetsnr=923609016&amp;action=getList">Utskrifter og attester</a> - elektronisk bestillingsl&oslash;sning.</li>
+<li>
+<a class="normal-br-link" href="/kunngjoring/hent_nr.jsp?orgnr=923609016">Kunngj&oslash;ringer</a> - oversikt over kunngj&oslash;ringer fra Br&oslash;nn&oslash;ysundregistrene. (Ikke gebyr)</li>
+<li>
+<a class="normal-br-link" href="https://data.brreg.no/rapporteringsplikter/oppslag?orgnr=923609016">Rapporteringsplikter</a> - oversikt over enhetens rapporteringsplikter. (Ikke gebyr)</li>
+</ul>
+</p>
+</div>
+
+
+
+
+</div>
+</div>
+</div>
+</main>
+<footer class="main-footer" lang="nb">
+    <div id="topLinkContainer" hidden>
+        <button title="Til toppen" id="topLink">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                <path d="M56 319.9L128 319.9v128.1c0 17.69 14.33 32.02 32 32.02h64c17.67 0 32-14.34 32-32.02V319.9l72-.0311c9.578 0 18.25-5.709 22.05-14.51c3.781-8.803 1.984-19.03-4.594-26l-136-144.1c-9.062-9.602-25.84-9.602-34.91 0l-136 144.1C31.97 286.3 30.17 296.6 33.95 305.4C37.75 314.2 46.42 319.9 56 319.9zM351.1 32H31.1C14.33 32 0 46.33 0 63.1C0 81.67 14.33 96 32 96h320C369.7 96 384 81.67 384 64C384 46.33 369.7 32 351.1 32z"/>
+            </svg>
+        </button>
+    </div>
+    <div class="footer-wrapper footer-links">
+        <div class="footer-row">
+            <div class="footer-element footer-top">
+                <img id="footerLogo" src="//scf.brreg.no/bilder/brregLogoHvit.svg" alt="logo Brønnøysundregistrene">
+                <br>
+                <span class="br-web-smaller">
+                    Organisasjonsnummer:
+                    <a href="https://virksomhet.brreg.no/oppslag/enheter/974760673">
+                        <span class="brreg-nowrap">974 760 673</span>
+                    </a>
+                </span>
+            </div>
+        </div>
+        <div class="footer-row">
+            <div class="footer-element">
+                <ul>
+                    <li><a href="https://www.brreg.no/hvordan-kan-vi-hjelpe-deg/">Kontakt oss</a></li>
+                    <li><a href="https://www.brreg.no/driftsmeldinger/">Driftsmeldinger</a></li>
+                    <li><a href="https://www.brreg.no/om-oss/">Om oss</a></li>
+                    <li><a href="https://jobb.brreg.no/">Ledige stillinger</a></li>
+                </ul>
+            </div>
+            <div class="footer-element">
+                <ul>
+                    <li><a href="https://www.brreg.no/om-oss/vaer-oppmerksom-pa-svindelforsok/">Vær obs på svindel</a></li>
+                    <li><a href="https://forenkling.brreg.no/">Forenklingsbloggen</a></li>
+                    <li><a href="https://www.brreg.no/om-oss/pressetjenesten/">Presse</a></li>
+                    <li><a href="https://www.linkedin.com/company/bronnoysundregistrene/">Finn oss på LinkedIn</a></li>
+                </ul>
+            </div>
+            <div class="footer-element">
+                <ul>
+                    <li><a href="https://www.brreg.no/bruke-data-fra-bronnoysundregistrene/">Bruke data fra oss</a></li>
+                    <li><a href="https://www.brreg.no/produkter-og-tjenester/rss-feed/">RSS</a></li>
+                    <li><a href="https://www.brreg.no/personvernerklaering/">Personvernerklæring</a></li>
+                    <li><a href="https://www.brreg.no/tilgjengelighetserklaeringer/">Tilgjengelighetserklæring</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
+
+
+
+

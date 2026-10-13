@@ -1,0 +1,740 @@
+{
+ "_request": {
+  "url": "https://data.brreg.no/enhetsregisteret/api/enheter?size=100&organisasjonsnummer=938654395,914368448,938654409,931667947,936015913,938217262,970202781,869519952,922667071,919920068,935011078,916485832,917596476,937633904,835755452,927502275,934394615,934413636,914619025,927887711,929434420,935604575,933878449,932365006,969956217,931012517,931869930,932006812,918980466,925857602,926959468,931370316,933418286,830135782,934637410,982706033,927708345,929884396,914756138,936764568,989322923,927999021,937569386,931841882,931966561,931296701,924767715,934318706,937559976,987967773,927455889,926491601,969251132,929502361,936526837,932922959,980002969,984661819,985257124,838654452,938654441,918061428,938654506,938654514,938654522,938654530,933324389,993556203,920640052,926600818,931916629,930151165,924591579,991029966,934432916,983621198,998185629,913571541,994433148,960371577,989168908,998572282,987935065,911749777,928552136,932947420,934213688,870285132,971521465,929065905,935854040,819430462,926087002,916953623,919827572,913078659,914732905,979735693,986721983,924058498",
+  "status": 200,
+  "retrieved_at": "2026-10-13T11:46:26Z",
+  "headers": {
+   "vary": "Origin",
+   "x-content-type-options": "nosniff",
+   "x-xss-protection": "0",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "pragma": "no-cache",
+   "expires": "0",
+   "strict-transport-security": "max-age=157680000; includeSubDomains",
+   "x-frame-options": "DENY",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:42:18 GMT",
+   "connection": "close"
+  }
+ },
+ "body": {
+  "_embedded": {
+   "enheter": [
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/991029966"
+      }
+     },
+     "aktivitet": [
+      "Utøvande musikar.",
+      "Elektrikartenester."
+     ],
+     "erIKonsern": false,
+     "forretningsadresse": {
+      "adresse": [
+       "Bjoavegen 833"
+      ],
+      "kommune": "VINDAFJORD",
+      "kommunenummer": "1160",
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "5582",
+      "poststed": "ØLENSVÅG"
+     },
+     "harRegistrertAntallAnsatte": false,
+     "historiskeNavn": [],
+     "institusjonellSektorkode": {
+      "beskrivelse": "Personlig næringsdrivende",
+      "kode": "8200"
+     },
+     "konkurs": false,
+     "maalform": "Nynorsk",
+     "mobil": "41230251",
+     "naeringskode1": {
+      "beskrivelse": "Utøvende kunstnerisk virksomhet og underholdningsvirksomhet innenfor musikk",
+      "kode": "90.201"
+     },
+     "navn": "ANDERS LUNDE",
+     "organisasjonsform": {
+      "_links": {
+       "self": {
+        "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/ENK"
+       }
+      },
+      "beskrivelse": "Enkeltpersonforetak",
+      "kode": "ENK"
+     },
+     "organisasjonsnummer": "991029966",
+     "paategninger": [],
+     "registreringsdatoEnhetsregisteret": "2007-03-28",
+     "registreringsdatoMerverdiavgiftsregisteret": "2025-07-01",
+     "registreringsdatoMerverdiavgiftsregisteretEnhetsregisteret": "2025-09-10",
+     "registrertIForetaksregisteret": false,
+     "registrertIFrivillighetsregisteret": false,
+     "registrertIMvaregisteret": true,
+     "registrertIPartiregisteret": false,
+     "registrertIStiftelsesregisteret": false,
+     "respons_klasse": "Enhet",
+     "telefon": "53 76 98 63",
+     "underAvvikling": false,
+     "underTvangsavviklingEllerTvangsopplosning": false
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/983621198"
+      }
+     },
+     "aktivitet": [
+      "Investering i fast eiendom."
+     ],
+     "epostadresse": "p.lonvik@sanseiendom.no",
+     "erIKonsern": false,
+     "forretningsadresse": {
+      "adresse": [
+       "Ranheimsmoen 30"
+      ],
+      "kommune": "TRONDHEIM",
+      "kommunenummer": "5001",
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "7054",
+      "poststed": "RANHEIM"
+     },
+     "fravalgRevisjonBeslutningsDato": "2017-12-30",
+     "fravalgRevisjonDato": "2018-01-17",
+     "harRegistrertAntallAnsatte": false,
+     "historiskeNavn": [
+      {
+       "fraDato": "2001-10-02 13:03:41",
+       "navn": "BAKKAUNET INVEST AS",
+       "tilDato": "2019-05-04 10:33:52"
+      },
+      {
+       "fraDato": "2019-05-04 10:33:52",
+       "navn": "TESLI INVEST AS",
+       "tilDato": "2026-10-10 07:59:45"
+      }
+     ],
+     "institusjonellSektorkode": {
+      "beskrivelse": "Private aksjeselskaper mv.",
+      "kode": "2100"
+     },
+     "kapital": {
+      "antallAksjer": 100,
+      "belop": 100000.0,
+      "innfortDato": "2001-10-02",
+      "type": "Aksjekapital",
+      "valuta": "NOK"
+     },
+     "konkurs": false,
+     "maalform": "Bokmål",
+     "mobil": "98424551",
+     "naeringskode1": {
+      "beskrivelse": "Kjøp og salg av egen fast eiendom",
+      "kode": "68.110"
+     },
+     "navn": "AQ HOLDING AS",
+     "organisasjonsform": {
+      "_links": {
+       "self": {
+        "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/AS"
+       }
+      },
+      "beskrivelse": "Aksjeselskap",
+      "kode": "AS"
+     },
+     "organisasjonsnummer": "983621198",
+     "paategninger": [],
+     "registreringsdatoEnhetsregisteret": "2001-10-02",
+     "registreringsdatoForetaksregisteret": "2001-10-02",
+     "registreringsdatoMerverdiavgiftsregisteret": "2016-05-01",
+     "registreringsdatoMerverdiavgiftsregisteretEnhetsregisteret": "2016-07-07",
+     "registrertIForetaksregisteret": true,
+     "registrertIFrivillighetsregisteret": false,
+     "registrertIMvaregisteret": true,
+     "registrertIPartiregisteret": false,
+     "registrertIStiftelsesregisteret": false,
+     "respons_klasse": "Enhet",
+     "sisteInnsendteAarsregnskap": "2025",
+     "stiftelsesdato": "2001-08-14",
+     "telefon": "73 91 75 00",
+     "underAvvikling": false,
+     "underTvangsavviklingEllerTvangsopplosning": false,
+     "vedtektsdato": "2026-08-17",
+     "vedtektsfestetFormaal": [
+      "Investering i fast eiendom og alt hva dermed står i forbindelse samt",
+      "med aksjeinnskudd eller på annen måte delta i virksomhet med",
+      "tilsvarende formål. Selskapet kan også foreta andre investeringer så",
+      "lenge dette står i naturlig sammenheng med selskapets",
+      "primærvirksomhet."
+     ]
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/932365006"
+      }
+     },
+     "aktivitet": [
+      "Rådgivning innen industri."
+     ],
+     "epostadresse": "tca97@pm.me",
+     "erIKonsern": false,
+     "forretningsadresse": {
+      "adresse": [
+       "Silurveien 43"
+      ],
+      "kommune": "OSLO",
+      "kommunenummer": "0301",
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "0380",
+      "poststed": "OSLO"
+     },
+     "harRegistrertAntallAnsatte": false,
+     "historiskeNavn": [
+      {
+       "fraDato": "2023-10-31 08:58:16",
+       "navn": "ARMES",
+       "tilDato": "2024-02-22 15:16:50"
+      }
+     ],
+     "institusjonellSektorkode": {
+      "beskrivelse": "Personlig næringsdrivende",
+      "kode": "8200"
+     },
+     "konkurs": false,
+     "maalform": "Bokmål",
+     "mobil": "451 98 139",
+     "naeringskode1": {
+      "beskrivelse": "Annen teknisk konsulentvirksomhet",
+      "kode": "71.129"
+     },
+     "navn": "ARMES ADVISORY",
+     "organisasjonsform": {
+      "_links": {
+       "self": {
+        "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/ENK"
+       }
+      },
+      "beskrivelse": "Enkeltpersonforetak",
+      "kode": "ENK"
+     },
+     "organisasjonsnummer": "932365006",
+     "paategninger": [],
+     "registreringsdatoEnhetsregisteret": "2023-10-31",
+     "registrertIForetaksregisteret": false,
+     "registrertIFrivillighetsregisteret": false,
+     "registrertIMvaregisteret": false,
+     "registrertIPartiregisteret": false,
+     "registrertIStiftelsesregisteret": false,
+     "respons_klasse": "Enhet",
+     "underAvvikling": false,
+     "underTvangsavviklingEllerTvangsopplosning": false
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/932947420"
+      }
+     },
+     "aktivitet": [
+      "Holdingselskap."
+     ],
+     "erIKonsern": false,
+     "forretningsadresse": {
+      "adresse": [
+       "Elveveien 2"
+      ],
+      "kommune": "ASKER",
+      "kommunenummer": "3203",
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "1394",
+      "poststed": "NESBRU"
+     },
+     "harRegistrertAntallAnsatte": false,
+     "historiskeNavn": [],
+     "hjelpeenhetskode": {
+      "beskrivelse": "Hovedkontortjenester",
+      "kode": "70.100"
+     },
+     "institusjonellSektorkode": {
+      "beskrivelse": "Private aksjeselskaper mv.",
+      "kode": "2100"
+     },
+     "kapital": {
+      "antallAksjer": 40000,
+      "belop": 40000.0,
+      "innfortDato": "2024-02-05",
+      "type": "Aksjekapital",
+      "valuta": "NOK"
+     },
+     "konkurs": false,
+     "maalform": "Bokmål",
+     "naeringskode1": {
+      "beskrivelse": "Rørleggerarbeid",
+      "kode": "43.221"
+     },
+     "navn": "ASKER GRUPPEN AS",
+     "organisasjonsform": {
+      "_links": {
+       "self": {
+        "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/AS"
+       }
+      },
+      "beskrivelse": "Aksjeselskap",
+      "kode": "AS"
+     },
+     "organisasjonsnummer": "932947420",
+     "paategninger": [],
+     "registreringsdatoEnhetsregisteret": "2024-02-05",
+     "registreringsdatoForetaksregisteret": "2024-02-05",
+     "registrertIForetaksregisteret": true,
+     "registrertIFrivillighetsregisteret": false,
+     "registrertIMvaregisteret": false,
+     "registrertIPartiregisteret": false,
+     "registrertIStiftelsesregisteret": false,
+     "respons_klasse": "Enhet",
+     "sisteInnsendteAarsregnskap": "2025",
+     "stiftelsesdato": "2024-01-25",
+     "underAvvikling": false,
+     "underTvangsavviklingEllerTvangsopplosning": false,
+     "vedtektsdato": "2024-01-25",
+     "vedtektsfestetFormaal": [
+      "Eie aksjer, samt deltakelse i annen virksomhet ved aksjebesittelse,",
+      "andeler og på annen måte."
+     ]
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/929065905"
+      }
+     },
+     "aktivitet": [
+      "Salg av brødbasert fastfood."
+     ],
+     "erIKonsern": false,
+     "forretningsadresse": {
+      "adresse": [
+       "c/o Big Bite Avd 301 Lagunen",
+       "Lagunen Storsenter",
+       "Laguneveien 1"
+      ],
+      "kommune": "BERGEN",
+      "kommunenummer": "4601",
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "5239",
+      "poststed": "RÅDAL"
+     },
+     "fravalgRevisjonBeslutningsDato": "2026-09-03",
+     "fravalgRevisjonDato": "2026-10-10",
+     "harRegistrertAntallAnsatte": false,
+     "historiskeNavn": [],
+     "institusjonellSektorkode": {
+      "beskrivelse": "Private aksjeselskaper mv.",
+      "kode": "2100"
+     },
+     "kapital": {
+      "antallAksjer": 30,
+      "belop": 30000.0,
+      "innfortDato": "2025-02-03",
+      "type": "Aksjekapital",
+      "valuta": "NOK"
+     },
+     "konkurs": false,
+     "maalform": "Bokmål",
+     "naeringskode1": {
+      "beskrivelse": "Drift av restauranter",
+      "kode": "56.110"
+     },
+     "navn": "BB LAGUNEN AS",
+     "organisasjonsform": {
+      "_links": {
+       "self": {
+        "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/AS"
+       }
+      },
+      "beskrivelse": "Aksjeselskap",
+      "kode": "AS"
+     },
+     "organisasjonsnummer": "929065905",
+     "paategninger": [],
+     "postadresse": {
+      "adresse": [
+       "Big Bite Avd 301 Lagunen",
+       "c/o AST Regnskap AS",
+       "Olav Tryggvasons gate 40"
+      ],
+      "kommune": "TRONDHEIM",
+      "kommunenummer": "5001",
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "7011",
+      "poststed": "TRONDHEIM"
+     },
+     "registreringsdatoEnhetsregisteret": "2022-04-12",
+     "registreringsdatoForetaksregisteret": "2022-04-12",
+     "registreringsdatoMerverdiavgiftsregisteret": "2025-01-01",
+     "registreringsdatoMerverdiavgiftsregisteretEnhetsregisteret": "2025-03-17",
+     "registrertIForetaksregisteret": true,
+     "registrertIFrivillighetsregisteret": false,
+     "registrertIMvaregisteret": true,
+     "registrertIPartiregisteret": false,
+     "registrertIStiftelsesregisteret": false,
+     "respons_klasse": "Enhet",
+     "sisteInnsendteAarsregnskap": "2025",
+     "stiftelsesdato": "2022-01-01",
+     "underAvvikling": false,
+     "underTvangsavviklingEllerTvangsopplosning": false,
+     "vedtektsdato": "2022-01-01",
+     "vedtektsfestetFormaal": [
+      "Tilberedning og servering av hurtigmat."
+     ]
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/819430462"
+      }
+     },
+     "aktivitet": [
+      "Restaurantdrift med produksjon og servering av mat, samt bardrift."
+     ],
+     "antallAnsatte": 15,
+     "epostadresse": "post@beistburger.no",
+     "erIKonsern": false,
+     "forretningsadresse": {
+      "adresse": [
+       "Prinsens gate 19"
+      ],
+      "kommune": "SANDEFJORD",
+      "kommunenummer": "3907",
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "3211",
+      "poststed": "SANDEFJORD"
+     },
+     "fravalgRevisjonBeslutningsDato": "2026-08-31",
+     "fravalgRevisjonDato": "2026-10-10",
+     "harRegistrertAntallAnsatte": true,
+     "historiskeNavn": [],
+     "hjemmeside": "www.beistburger.no",
+     "institusjonellSektorkode": {
+      "beskrivelse": "Private aksjeselskaper mv.",
+      "kode": "2100"
+     },
+     "kapital": {
+      "antallAksjer": 70700,
+      "belop": 707000.0,
+      "innfortDato": "2019-12-11",
+      "type": "Aksjekapital",
+      "valuta": "NOK"
+     },
+     "konkurs": false,
+     "maalform": "Bokmål",
+     "naeringskode1": {
+      "beskrivelse": "Drift av restauranter",
+      "kode": "56.110"
+     },
+     "navn": "BEIST BURGER & BAR AS",
+     "organisasjonsform": {
+      "_links": {
+       "self": {
+        "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/AS"
+       }
+      },
+      "beskrivelse": "Aksjeselskap",
+      "kode": "AS"
+     },
+     "organisasjonsnummer": "819430462",
+     "paategninger": [],
+     "registreringsdatoAntallAnsatteEnhetsregisteret": "2026-09-14",
+     "registreringsdatoAntallAnsatteNAVAaregisteret": "2026-09-10",
+     "registreringsdatoEnhetsregisteret": "2017-08-18",
+     "registreringsdatoForetaksregisteret": "2017-08-18",
+     "registreringsdatoMerverdiavgiftsregisteret": "2017-09-01",
+     "registreringsdatoMerverdiavgiftsregisteretEnhetsregisteret": "2017-09-13",
+     "registrertIForetaksregisteret": true,
+     "registrertIFrivillighetsregisteret": false,
+     "registrertIMvaregisteret": true,
+     "registrertIPartiregisteret": false,
+     "registrertIStiftelsesregisteret": false,
+     "respons_klasse": "Enhet",
+     "sisteInnsendteAarsregnskap": "2025",
+     "stiftelsesdato": "2017-08-03",
+     "underAvvikling": false,
+     "underTvangsavviklingEllerTvangsopplosning": false,
+     "vedtektsdato": "2019-11-01",
+     "vedtektsfestetFormaal": [
+      "Drift av bar- og serveringsvirksomhet og andre tjenester og produkter",
+      "som naturlig faller sammen med dette."
+     ]
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/982706033"
+      }
+     },
+     "aktivitet": [
+      "Jordbruk, dyrking av jordbruksvekster."
+     ],
+     "erIKonsern": false,
+     "forretningsadresse": {
+      "adresse": [
+       "Iliskauen 14"
+      ],
+      "kommune": "INDRE ØSTFOLD",
+      "kommunenummer": "3118",
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "1832",
+      "poststed": "ASKIM"
+     },
+     "harRegistrertAntallAnsatte": false,
+     "historiskeNavn": [],
+     "institusjonellSektorkode": {
+      "beskrivelse": "Personlig næringsdrivende",
+      "kode": "8200"
+     },
+     "konkurs": false,
+     "maalform": "Bokmål",
+     "naeringskode1": {
+      "beskrivelse": "Dyrking av korn, unntatt ris, belgvekster og oljeholdige vekster",
+      "kode": "01.110"
+     },
+     "navn": "BJØRN INGAR HOLMEN",
+     "organisasjonsform": {
+      "_links": {
+       "self": {
+        "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/ENK"
+       }
+      },
+      "beskrivelse": "Enkeltpersonforetak",
+      "kode": "ENK"
+     },
+     "organisasjonsnummer": "982706033",
+     "paategninger": [],
+     "registreringsdatoEnhetsregisteret": "2000-12-06",
+     "registrertIForetaksregisteret": false,
+     "registrertIFrivillighetsregisteret": false,
+     "registrertIMvaregisteret": false,
+     "registrertIPartiregisteret": false,
+     "registrertIStiftelsesregisteret": false,
+     "respons_klasse": "Enhet",
+     "telefon": "64 94 20 72",
+     "underAvvikling": false,
+     "underTvangsavviklingEllerTvangsopplosning": false
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/835755452"
+      }
+     },
+     "aktivitet": [
+      "Friluftsliv kurs og fjellføring, klatring, ski."
+     ],
+     "epostadresse": "lkbj2000@gmail.com",
+     "erIKonsern": false,
+     "forretningsadresse": {
+      "adresse": [
+       "Kvernhuslia 2A"
+      ],
+      "kommune": "MOLDE",
+      "kommunenummer": "1506",
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "6456",
+      "poststed": "SKÅLA"
+     },
+     "harRegistrertAntallAnsatte": false,
+     "historiskeNavn": [],
+     "institusjonellSektorkode": {
+      "beskrivelse": "Personlig næringsdrivende",
+      "kode": "8200"
+     },
+     "konkurs": false,
+     "maalform": "Bokmål",
+     "mobil": "40046096",
+     "naeringskode1": {
+      "beskrivelse": "Guide- og reiseledervirksomhet",
+      "kode": "79.902"
+     },
+     "navn": "BJØRNERUD GUIDING",
+     "organisasjonsform": {
+      "_links": {
+       "self": {
+        "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/ENK"
+       }
+      },
+      "beskrivelse": "Enkeltpersonforetak",
+      "kode": "ENK"
+     },
+     "organisasjonsnummer": "835755452",
+     "paategninger": [],
+     "registreringsdatoEnhetsregisteret": "2025-06-26",
+     "registrertIForetaksregisteret": false,
+     "registrertIFrivillighetsregisteret": false,
+     "registrertIMvaregisteret": false,
+     "registrertIPartiregisteret": false,
+     "registrertIStiftelsesregisteret": false,
+     "respons_klasse": "Enhet",
+     "underAvvikling": false,
+     "underTvangsavviklingEllerTvangsopplosning": false
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/979735693"
+      }
+     },
+     "aktivitet": [
+      "Håndtverk som rammeverksted, snekkeri samt salg av produkter som",
+      "naturlig hører inn under dette."
+     ],
+     "antallAnsatte": 6,
+     "erIKonsern": false,
+     "forretningsadresse": {
+      "adresse": [
+       "Maridalsveien 3 M"
+      ],
+      "kommune": "OSLO",
+      "kommunenummer": "0301",
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "0178",
+      "poststed": "OSLO"
+     },
+     "fravalgRevisjonBeslutningsDato": "2026-09-08",
+     "fravalgRevisjonDato": "2026-10-10",
+     "harRegistrertAntallAnsatte": true,
+     "historiskeNavn": [],
+     "institusjonellSektorkode": {
+      "beskrivelse": "Private aksjeselskaper mv.",
+      "kode": "2100"
+     },
+     "kapital": {
+      "antallAksjer": 100,
+      "belop": 100000.0,
+      "innfortDato": "1998-04-02",
+      "type": "Aksjekapital",
+      "valuta": "NOK"
+     },
+     "konkurs": false,
+     "maalform": "Bokmål",
+     "naeringskode1": {
+      "beskrivelse": "Produksjon av sammensatte parkettstaver",
+      "kode": "16.220"
+     },
+     "navn": "BRODINS RAMMEVERKSTED AS",
+     "organisasjonsform": {
+      "_links": {
+       "self": {
+        "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/AS"
+       }
+      },
+      "beskrivelse": "Aksjeselskap",
+      "kode": "AS"
+     },
+     "organisasjonsnummer": "979735693",
+     "paategninger": [],
+     "registreringsdatoAntallAnsatteEnhetsregisteret": "2026-05-12",
+     "registreringsdatoAntallAnsatteNAVAaregisteret": "2026-05-10",
+     "registreringsdatoEnhetsregisteret": "1998-04-02",
+     "registreringsdatoForetaksregisteret": "1998-04-02",
+     "registreringsdatoMerverdiavgiftsregisteret": "1998-03-01",
+     "registreringsdatoMerverdiavgiftsregisteretEnhetsregisteret": "1998-06-16",
+     "registrertIForetaksregisteret": true,
+     "registrertIFrivillighetsregisteret": false,
+     "registrertIMvaregisteret": true,
+     "registrertIPartiregisteret": false,
+     "registrertIStiftelsesregisteret": false,
+     "respons_klasse": "Enhet",
+     "sisteInnsendteAarsregnskap": "2025",
+     "stiftelsesdato": "1998-02-02",
+     "telefon": "22 20 17 90",
+     "underAvvikling": false,
+     "underTvangsavviklingEllerTvangsopplosning": false,
+     "vedtektsdato": "1998-02-02",
+     "vedtektsfestetFormaal": [
+      "Håndtverk som rammeverksted, snekkeri samt salg av produkter som",
+      "naturlig hører inn under dette."
+     ]
+    },
+    {
+     "_links": {
+      "self": {
+       "href": "https://data.brreg.no/enhetsregisteret/api/enheter/938654409"
+      }
+     },
+     "aktivitet": [
+      "Matlevering frå butikkar og restaurantar."
+     ],
+     "erIKonsern": false,
+     "forretningsadresse": {
+      "adresse": [
+       "Rasmus Engers vei 2B"
+      ],
+      "kommune": "OSLO",
+      "kommunenummer": "0301",
+      "land": "Norge",
+      "landkode": "NO",
+      "postnummer": "0956",
+      "poststed": "OSLO"
+     },
+     "harRegistrertAntallAnsatte": false,
+     "historiskeNavn": [],
+     "institusjonellSektorkode": {
+      "beskrivelse": "Personlig næringsdrivende",
+      "kode": "8200"
+     },
+     "konkurs": false,
+     "maalform": "Nynorsk",
+     "naeringskode1": {
+      "beskrivelse": "Andre post- og budtjenester",
+      "kode": "53.200"
+     },
+     "navn": "BTISSAM DELIVERY",
+     "organisasjonsform": {
+      "_links": {
+       "self": {
+        "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/ENK"
+       }
+      },
+      "beskrivelse": "Enkeltpersonforetak",
+      "kode": "ENK"
+     },
+     "organisasjonsnummer": "938654409",
+     "paategninger": [],
+     "registreringsdatoEnhetsregisteret": "2026-10-10",
+     "registrertIForetaksregisteret": false,
+     "registrertIFrivillighetsregisteret": false,
+     "registrertIMvaregisteret": false,
+     "registrertIPartiregisteret": false,
+     "registrertIStiftelsesregisteret": false,
+     "respons_klasse": "Enhet",
+     "underAvvikling": false,
+     "underTvangsavviklingEllerTvangsopplosning": false
+    }
+   ]
+  },
+  "_links": {
+   "self": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/enheter?size=100&organisasjonsnummer=938654395,914368448,938654409,931667947,936015913,938217262,970202781,869519952,922667071,919920068,935011078,916485832,917596476,937633904,835755452,927502275,934394615,934413636,914619025,927887711,929434420,935604575,933878449,932365006,969956217,931012517,931869930,932006812,918980466,925857602,926959468,931370316,933418286,830135782,934637410,982706033,927708345,929884396,914756138,936764568,989322923,927999021,937569386,931841882,931966561,931296701,924767715,934318706,937559976,987967773,927455889,926491601,969251132,929502361,936526837,932922959,980002969,984661819,985257124,838654452,938654441,918061428,938654506,938654514,938654522,938654530,933324389,993556203,920640052,926600818,931916629,930151165,924591579,991029966,934432916,983621198,998185629,913571541,994433148,960371577,989168908,998572282,987935065,911749777,928552136,932947420,934213688,870285132,971521465,929065905,935854040,819430462,926087002,916953623,919827572,913078659,914732905,979735693,986721983,924058498"
+   }
+  },
+  "page": {
+   "number": 0,
+   "size": 100,
+   "totalElements": 88,
+   "totalPages": 1
+  }
+ }
+}

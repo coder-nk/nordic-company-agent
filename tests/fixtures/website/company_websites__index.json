@@ -1,0 +1,1086 @@
+[
+ {
+  "file": "company_websites__L1_footer_orgnr_simple__912342344.html",
+  "orgnr": "912342344",
+  "legal_name": "EKOM AS",
+  "url": "https://ekomas.no/",
+  "page_kind": "home",
+  "bytes_raw": 96317,
+  "bytes_trimmed": 25586,
+  "trim_preserves_orgnr_signals": true,
+  "notes": "Org nr '912 342 344' in footer with address+email; clean L1 case.",
+  "expected": {
+   "target_orgnr_in_text": true,
+   "target_orgnr_in_html": true,
+   "target_formats": [
+    "3-3-3 space"
+   ],
+   "other_orgnrs_with_keyword": [],
+   "brreg_links": [],
+   "mailto": [],
+   "emails_text": [
+    "kontakt@ekomas.no"
+   ],
+   "rtl_emails": [],
+   "cf_emails": [],
+   "tel_links": [],
+   "social": {},
+   "jsonld_types": [],
+   "jsonld_orgs": [],
+   "placeholder_signals": [],
+   "title": "Ekom AS – Rådgivende elektroprosjektering",
+   "orgnr_block": {
+    "emails": [
+     "kontakt@ekomas.no"
+    ],
+    "phones": [],
+    "isolated": true,
+    "text_prefix": "E-post kontakt@ekomas.no Adresse Industriveien 9B 2021 Skedsmokorsket Organisasjonsnummer 912 342 344 Copyright © 2026 Ekom AS"
+   }
+  },
+  "expected_verdict": {
+   "level": "L1",
+   "publishable_facts": {
+    "website": "https://ekomas.no/",
+    "email": [
+     "kontakt@ekomas.no"
+    ],
+    "address_text": "Industriveien 9B 2021 Skedsmokorsket"
+   },
+   "must_not_publish": []
+  }
+ },
+ {
+  "file": "company_websites__L1_plain_orgnr_MVA_nospace__928913406.html",
+  "orgnr": "928913406",
+  "legal_name": "BILTRANSPORTEN AS",
+  "url": "https://www.biltransporten.no/",
+  "page_kind": "home",
+  "bytes_raw": 67694,
+  "bytes_trimmed": 5436,
+  "trim_preserves_orgnr_signals": true,
+  "notes": "'Orgnr:928913406MVA' (no separators, MVA glued).",
+  "expected": {
+   "target_orgnr_in_text": true,
+   "target_orgnr_in_html": true,
+   "target_formats": [
+    "plain"
+   ],
+   "other_orgnrs_with_keyword": [],
+   "brreg_links": [],
+   "mailto": [],
+   "emails_text": [
+    "post@biltransporten.no"
+   ],
+   "rtl_emails": [],
+   "cf_emails": [],
+   "tel_links": [],
+   "social": {},
+   "jsonld_types": [],
+   "jsonld_orgs": [],
+   "placeholder_signals": [
+    "tiny_text"
+   ],
+   "title": "Biltransporten AS",
+   "orgnr_block": {
+    "emails": [
+     "post@biltransporten.no"
+    ],
+    "phones": [
+     "48604900"
+    ],
+    "isolated": true,
+    "text_prefix": "Biltransporten AS Orgnr:928913406MVA Email post@biltransporten.no Contact Us 48604900"
+   }
+  },
+  "expected_verdict": {
+   "level": "L1",
+   "publishable_facts": {
+    "website": "https://www.biltransporten.no/",
+    "email": [
+     "post@biltransporten.no"
+    ],
+    "phone": [
+     "+4748604900"
+    ]
+   },
+   "must_not_publish": []
+  }
+ },
+ {
+  "file": "company_websites__L1_contact_page_NO_MVA_format__917387079.html",
+  "orgnr": "917387079",
+  "legal_name": "MF VITENSKAPELIG HØYSKOLE STI",
+  "url": "https://mf.no/kontakt",
+  "page_kind": "contact",
+  "bytes_raw": 34865,
+  "bytes_trimmed": 14619,
+  "trim_preserves_orgnr_signals": true,
+  "notes": "Only on contact page: 'Org.nr.: NO 917 387 079 MVA' in invoicing block.",
+  "expected": {
+   "target_orgnr_in_text": true,
+   "target_orgnr_in_html": true,
+   "target_formats": [
+    "3-3-3 space"
+   ],
+   "other_orgnrs_with_keyword": [],
+   "brreg_links": [],
+   "mailto": [
+    "bibliotek@mf.no",
+    "faktura@mf.no",
+    "post@mf.no",
+    "student@mf.no"
+   ],
+   "emails_text": [
+    "bibliotek@mf.no",
+    "faktura@mf.no",
+    "post@mf.no",
+    "student@mf.no"
+   ],
+   "rtl_emails": [],
+   "cf_emails": [],
+   "tel_links": [],
+   "social": {
+    "linkedin": [
+     "https://www.linkedin.com/school/mf-vitenskapelig-hoyskole"
+    ],
+    "facebook": [
+     "https://www.facebook.com/mfvitenskapelighoyskole"
+    ],
+    "instagram": [
+     "https://www.instagram.com/mfvitenskapelighoyskole"
+    ],
+    "tiktok": [
+     "https://www.tiktok.com/@mfvitenskapelighoyskole"
+    ]
+   },
+   "jsonld_types": [],
+   "jsonld_orgs": [],
+   "placeholder_signals": [],
+   "title": "Kontakt | MF vitenskapelig høyskole",
+   "orgnr_block": {
+    "emails": [
+     "faktura@mf.no"
+    ],
+    "phones": [],
+    "isolated": true,
+    "text_prefix": "Postadresse MF vitenskapelig høyskole STI Postboks 5144 Majorstuen 0302 OSLO Fakturaadresse MF vitenskapelig høyskole STI Postboks 5144 Majorstuen 0302 Oslo Bru"
+   }
+  },
+  "expected_verdict": {
+   "level": "L1",
+   "publishable_facts": {
+    "website": "https://mf.no/",
+    "email": [
+     "post@mf.no"
+    ],
+    "invoice_email": [
+     "faktura@mf.no"
+    ],
+    "social.linkedin": "https://www.linkedin.com/school/mf-vitenskapelig-hoyskole",
+    "social.facebook": "https://www.facebook.com/mfvitenskapelighoyskole",
+    "social.instagram": "https://www.instagram.com/mfvitenskapelighoyskole",
+    "social.tiktok": "https://www.tiktok.com/@mfvitenskapelighoyskole"
+   },
+   "must_not_publish": []
+  }
+ },
+ {
+  "file": "company_websites__L1_multi_company_footer__920209319.html",
+  "orgnr": "920209319",
+  "legal_name": "OS ADVOKATER DA",
+  "url": "https://www.advokateneiba47.no",
+  "page_kind": "home",
+  "bytes_raw": 91097,
+  "bytes_trimmed": 14090,
+  "trim_preserves_orgnr_signals": true,
+  "notes": "Shared office site: 3 law firms each with phone/email/orgnr. Only the block of 920 209 319 belongs to target.",
+  "expected": {
+   "target_orgnr_in_text": true,
+   "target_orgnr_in_html": true,
+   "target_formats": [
+    "3-3-3 space"
+   ],
+   "other_orgnrs_with_keyword": [
+    "933180212",
+    "991509291"
+   ],
+   "brreg_links": [],
+   "mailto": [
+    "thomas@advokat-os.no",
+    "tore@okseter.no"
+   ],
+   "emails_text": [
+    "nina@advokat-nba.no",
+    "thomas@advokat-os.no",
+    "tore@okseter.no"
+   ],
+   "rtl_emails": [],
+   "cf_emails": [],
+   "tel_links": [
+    "450 20 113",
+    "918 41 861"
+   ],
+   "social": {},
+   "jsonld_types": [
+    "LegalService"
+   ],
+   "jsonld_orgs": [
+    {
+     "@type": "LegalService",
+     "name": "Advokatene i Bygdøy Allé 47",
+     "email": "post@advokateneiba47.no"
+    }
+   ],
+   "placeholder_signals": [],
+   "title": "Juridisk ekspertise | Advokatene i Bygdøy Allé 47",
+   "orgnr_block": {
+    "emails": [
+     "thomas@advokat-os.no"
+    ],
+    "phones": [
+     "45020113"
+    ],
+    "isolated": true,
+    "text_prefix": "Os Advokater DA Besøksadresse: Bygdøy Allé 47b, 0265 Oslo Postadresse: Postboks 3247 Elisenberg, 0208 Oslo Telefon: 450 20 113 E-post: thomas@advokat-os.no Org."
+   }
+  },
+  "expected_verdict": {
+   "level": "L1-multi",
+   "publishable_facts": {
+    "website": "https://www.advokateneiba47.no",
+    "email": [
+     "thomas@advokat-os.no"
+    ],
+    "phone": [
+     "+4745020113"
+    ]
+   },
+   "must_not_publish": [
+    "tore@okseter.no",
+    "nina@advokat-nba.no",
+    "+4791841861",
+    "+4793420277",
+    "post@advokateneiba47.no (shared office JSON-LD)"
+   ]
+  }
+ },
+ {
+  "file": "company_websites__L1_privacy_with_processor_orgnrs__985946698.html",
+  "orgnr": "985946698",
+  "legal_name": "POLARFAKTA AS",
+  "url": "https://www.polarfakta.no/personvernerklaering/",
+  "page_kind": "privacy",
+  "bytes_raw": 115229,
+  "bytes_trimmed": 18589,
+  "trim_preserves_orgnr_signals": true,
+  "notes": "Privacy policy: target orgnr + 4 data-processor orgnrs (must not be attributed).",
+  "expected": {
+   "target_orgnr_in_text": true,
+   "target_orgnr_in_html": true,
+   "target_formats": [
+    "3-3-3 space"
+   ],
+   "other_orgnrs_with_keyword": [
+    "851987142",
+    "912543129",
+    "985842973",
+    "997806840"
+   ],
+   "brreg_links": [],
+   "mailto": [
+    "post@polarfakta.no"
+   ],
+   "emails_text": [
+    "patrick@polarfakta.no",
+    "post@polarfakta.no"
+   ],
+   "rtl_emails": [],
+   "cf_emails": [],
+   "tel_links": [
+    "75682600"
+   ],
+   "social": {
+    "facebook": [
+     "https://www.facebook.com/PolarfaktaAs"
+    ]
+   },
+   "jsonld_types": [],
+   "jsonld_orgs": [],
+   "placeholder_signals": [],
+   "title": "Personvernerklæring – Polarfakta",
+   "orgnr_block": {
+    "emails": [
+     "patrick@polarfakta.no"
+    ],
+    "phones": [
+     "75682618"
+    ],
+    "isolated": false,
+    "text_prefix": "Ved å kjøpe og bruke Polarfaktas produkter og tjenester eller på annen måte være i kontakt med oss vil du både i kraft av avtale og gjennom samtykke ha aksepter"
+   }
+  },
+  "expected_verdict": {
+   "level": "L1-multi",
+   "publishable_facts": {
+    "website": "https://www.polarfakta.no/",
+    "email": [
+     "post@polarfakta.no"
+    ],
+    "phone": [
+     "+4775682600"
+    ],
+    "social.facebook": "https://www.facebook.com/PolarfaktaAs"
+   },
+   "must_not_publish": [
+    "anything adjacent to 985842973/997806840/912543129/851987142 (data processors)"
+   ]
+  }
+ },
+ {
+  "file": "company_websites__L0_parked_host_page_with_host_orgnr__982182107.html",
+  "orgnr": "982182107",
+  "legal_name": "NYE NOR AS",
+  "url": "https://www.webhuset.no/parkering",
+  "page_kind": "home",
+  "bytes_raw": 73290,
+  "bytes_trimmed": 19058,
+  "trim_preserves_orgnr_signals": true,
+  "notes": "Registry hjemmeside www.nyenor.no redirects to Webhuset parking page that shows WEBHUSET AS orgnr, phone, socials.",
+  "expected": {
+   "target_orgnr_in_text": false,
+   "target_orgnr_in_html": false,
+   "target_formats": [],
+   "other_orgnrs_with_keyword": [
+    "981532848"
+   ],
+   "brreg_links": [],
+   "mailto": [],
+   "emails_text": [],
+   "rtl_emails": [],
+   "cf_emails": [],
+   "tel_links": [
+    "+4790203000"
+   ],
+   "social": {
+    "linkedin": [
+     "https://www.linkedin.com/company/webhuset-as"
+    ],
+    "facebook": [
+     "https://www.facebook.com/Webhuset"
+    ],
+    "youtube": [
+     "https://www.youtube.com/user/webhuset"
+    ]
+   },
+   "jsonld_types": [
+    "BreadcrumbList",
+    "Organization",
+    "WebSite"
+   ],
+   "jsonld_orgs": [
+    {
+     "@type": "Organization",
+     "name": "Webhuset",
+     "legalName": "Webhuset AS"
+    }
+   ],
+   "placeholder_signals": [
+    "parking_url",
+    "parked_text:parkert Domene"
+   ],
+   "title": "Domene er parkert | Webhuset",
+   "orgnr_block": null
+  },
+  "expected_verdict": {
+   "level": "L0",
+   "publishable_facts": {
+    "website_status": "parked (redirects to webhuset.no/parkering)"
+   },
+   "must_not_publish": [
+    "+4790203000",
+    "linkedin.com/company/webhuset-as",
+    "facebook.com/Webhuset",
+    "WEBHUSET AS 981532848"
+   ]
+  }
+ },
+ {
+  "file": "company_websites__L0_sister_company_orgnr_and_jsonld_taxid__982322553.html",
+  "orgnr": "982322553",
+  "legal_name": "ATTICUM NETTLØSNINGER AS",
+  "url": "https://www.atticum.no",
+  "page_kind": "home",
+  "bytes_raw": 4851,
+  "bytes_trimmed": 4714,
+  "trim_preserves_orgnr_signals": true,
+  "notes": "Site belongs to ATTICUM INCUBATOR AS (982574544) - footer + JSON-LD taxID; target absent.",
+  "expected": {
+   "target_orgnr_in_text": false,
+   "target_orgnr_in_html": false,
+   "target_formats": [],
+   "other_orgnrs_with_keyword": [
+    "982574544"
+   ],
+   "brreg_links": [],
+   "mailto": [],
+   "emails_text": [],
+   "rtl_emails": [],
+   "cf_emails": [],
+   "tel_links": [],
+   "social": {},
+   "jsonld_types": [
+    "Organization"
+   ],
+   "jsonld_orgs": [
+    {
+     "@type": "Organization",
+     "name": "Atticum",
+     "legalName": "Atticum Incubator AS",
+     "taxID": "982574544"
+    }
+   ],
+   "placeholder_signals": [],
+   "title": "Atticum — Rådgivning og digitale løsninger",
+   "orgnr_block": null
+  },
+  "expected_verdict": {
+   "level": "L0",
+   "publishable_facts": {
+    "website_status": "belongs to other org 982574544 (ATTICUM INCUBATOR AS)"
+   },
+   "must_not_publish": [
+    "JSON-LD address/taxID of Atticum Incubator AS"
+   ]
+  }
+ },
+ {
+  "file": "company_websites__L1_orgnr_only_in_brreg_link_href__932973855.html",
+  "orgnr": "932973855",
+  "legal_name": "2HD ARCHITECTURE WORKSHOP AS",
+  "url": "https://www.2hd.uk/about",
+  "page_kind": "about",
+  "bytes_raw": 166816,
+  "bytes_trimmed": 55034,
+  "trim_preserves_orgnr_signals": true,
+  "notes": "Orgnr appears only inside links to virksomhet.brreg.no (html, not text); JSON-LD has UK phone of UK sister.",
+  "expected": {
+   "target_orgnr_in_text": false,
+   "target_orgnr_in_html": true,
+   "target_formats": [],
+   "other_orgnrs_with_keyword": [
+    "997447727"
+   ],
+   "brreg_links": [
+    "932973855",
+    "997447727"
+   ],
+   "mailto": [
+    "chris@2hd.uk",
+    "hei@2hd.no",
+    "hello@2hd.uk",
+    "thibaut@2hd.no",
+    "tom@2hd.uk"
+   ],
+   "emails_text": [
+    "chris@2hd.uk",
+    "hei@2hd.no",
+    "hello@2hd.uk",
+    "thibaut@2hd.no",
+    "tom@2hd.uk"
+   ],
+   "rtl_emails": [],
+   "cf_emails": [],
+   "tel_links": [],
+   "social": {
+    "linkedin_person": [
+     "https://no.linkedin.com/in/tdevulder",
+     "https://uk.linkedin.com/in/chris-heuvel-51821a6a",
+     "https://uk.linkedin.com/in/tomhughes2hd"
+    ],
+    "facebook": [
+     "https://www.facebook.com/2hdArchitecture"
+    ],
+    "twitter": [
+     "https://twitter.com/2hd"
+    ]
+   },
+   "jsonld_types": [
+    "LocalBusiness",
+    "Organization",
+    "WebSite"
+   ],
+   "jsonld_orgs": [
+    {
+     "@type": "Organization",
+     "legalName": "2hD UK",
+     "telephone": "+44 115 941 9766",
+     "email": "hello@2hd.uk"
+    },
+    {
+     "@type": "LocalBusiness",
+     "name": "2hD UK"
+    }
+   ],
+   "placeholder_signals": [],
+   "title": "About us — 2hD Architecture Workshop",
+   "orgnr_block": null
+  },
+  "expected_verdict": {
+   "level": "L1",
+   "publishable_facts": {
+    "website": "https://www.2hd.uk/ (registered as www.2hd.no)",
+    "email": [
+     "hei@2hd.no"
+    ],
+    "social.facebook": "https://www.facebook.com/2hdArchitecture"
+   },
+   "must_not_publish": [
+    "+44 115 941 9766 (2hD UK)",
+    "hello@2hd.uk",
+    "997447727 (NUF of UK office)"
+   ]
+  }
+ },
+ {
+  "file": "company_websites__L1_plain_orgnr_rtl_reversed_email__975971554.html",
+  "orgnr": "975971554",
+  "legal_name": "ELEKTRIKERSERVICE AS",
+  "url": "https://www.elektrikerservice.no",
+  "page_kind": "home",
+  "bytes_raw": 98107,
+  "bytes_trimmed": 20801,
+  "trim_preserves_orgnr_signals": true,
+  "notes": "'Org nr: 975971554'; e-mail obfuscated with CSS direction:rtl (text 'on.ecivresrekirtkele@tsop').",
+  "expected": {
+   "target_orgnr_in_text": true,
+   "target_orgnr_in_html": true,
+   "target_formats": [
+    "plain"
+   ],
+   "other_orgnrs_with_keyword": [],
+   "brreg_links": [],
+   "mailto": [],
+   "emails_text": [],
+   "rtl_emails": [
+    "post@elektrikerservice.no"
+   ],
+   "cf_emails": [],
+   "tel_links": [
+    "95928500"
+   ],
+   "social": {},
+   "jsonld_types": [
+    "WebSite"
+   ],
+   "jsonld_orgs": [],
+   "placeholder_signals": [],
+   "title": "Elektrikerservice AS",
+   "orgnr_block": {
+    "emails": [],
+    "phones": [
+     "95928500"
+    ],
+    "isolated": true,
+    "text_prefix": "Elektrikerservice AS Elektrikerservice ble stiftet i 1987. Vi har i dag totalt 13 ansatte. Vi utfører alle slags oppdrag innenfor svak- og sterkstrøm for privat"
+   }
+  },
+  "expected_verdict": {
+   "level": "L1",
+   "publishable_facts": {
+    "website": "https://www.elektrikerservice.no",
+    "email": [
+     "post@elektrikerservice.no"
+    ],
+    "phone": [
+     "+4795928500"
+    ]
+   },
+   "must_not_publish": []
+  }
+ },
+ {
+  "file": "company_websites__L1_FLI_footer_ehf_and_socials__975576205.html",
+  "orgnr": "975576205",
+  "legal_name": "DRAMMENS TURNFORENING",
+  "url": "https://www.drammenturn.no",
+  "page_kind": "home",
+  "bytes_raw": 246671,
+  "bytes_trimmed": 64035,
+  "trim_preserves_orgnr_signals": true,
+  "notes": "'(org.nr.975 576 205)' inside EHF invoice sentence; LinkedIn/Facebook/Instagram/YouTube company links.",
+  "expected": {
+   "target_orgnr_in_text": true,
+   "target_orgnr_in_html": true,
+   "target_formats": [
+    "3-3-3 space"
+   ],
+   "other_orgnrs_with_keyword": [],
+   "brreg_links": [],
+   "mailto": [],
+   "emails_text": [
+    "dtf@faktura.poweroffice.net",
+    "post@drammenturn.no"
+   ],
+   "rtl_emails": [],
+   "cf_emails": [],
+   "tel_links": [],
+   "social": {
+    "linkedin": [
+     "https://www.linkedin.com/company/drammens-turnforening"
+    ],
+    "facebook": [
+     "https://www.facebook.com/drammenturn"
+    ],
+    "instagram": [
+     "https://www.instagram.com/drammensturnforening"
+    ],
+    "youtube": [
+     "https://www.youtube.com/@drammensturnforening6337"
+    ]
+   },
+   "jsonld_types": [],
+   "jsonld_orgs": [],
+   "placeholder_signals": [],
+   "title": "Drammens Turnforening – Turn og aktiviteter for alle i Drammen",
+   "orgnr_block": {
+    "emails": [
+     "dtf@faktura.poweroffice.net",
+     "post@drammenturn.no"
+    ],
+    "phones": [
+     "94014090"
+    ],
+    "isolated": true,
+    "text_prefix": "Drammens Turnforening Danvikgata 27 3045 Drammen +47 940 14 090 post@drammenturn.no Faktura ønskes som EHF (org.nr.975 576 205), eller dtf@faktura.poweroffice.n"
+   }
+  },
+  "expected_verdict": {
+   "level": "L1",
+   "publishable_facts": {
+    "website": "https://www.drammenturn.no",
+    "email": [
+     "post@drammenturn.no"
+    ],
+    "phone": [
+     "+4794014090"
+    ],
+    "social.linkedin": "https://www.linkedin.com/company/drammens-turnforening",
+    "social.facebook": "https://www.facebook.com/drammenturn",
+    "social.instagram": "https://www.instagram.com/drammensturnforening",
+    "social.youtube": "https://www.youtube.com/@drammensturnforening6337"
+   },
+   "must_not_publish": [
+    "dtf@faktura.poweroffice.net (invoice-scanning address, not a contact email)"
+   ]
+  }
+ },
+ {
+  "file": "company_websites__redirect_js_window_location__929237617.html",
+  "orgnr": "929237617",
+  "legal_name": "BULLGRUPPEN AS",
+  "url": "http://www.lbl.as",
+  "page_kind": "home",
+  "bytes_raw": 107,
+  "bytes_trimmed": 81,
+  "trim_preserves_orgnr_signals": true,
+  "notes": "107-byte page with window.location JS redirect to another domain; must follow client-side redirect then re-verify.",
+  "expected": {
+   "target_orgnr_in_text": false,
+   "target_orgnr_in_html": false,
+   "target_formats": [],
+   "other_orgnrs_with_keyword": [],
+   "brreg_links": [],
+   "mailto": [],
+   "emails_text": [],
+   "rtl_emails": [],
+   "cf_emails": [],
+   "tel_links": [],
+   "social": {},
+   "jsonld_types": [],
+   "jsonld_orgs": [],
+   "placeholder_signals": [
+    "tiny_text"
+   ],
+   "title": "",
+   "orgnr_block": null
+  },
+  "expected_verdict": {
+   "level": "redirect",
+   "publishable_facts": {
+    "client_redirect": "http://www.lesja-bulldozerlag.no/"
+   },
+   "must_not_publish": [
+    "facts from lesja-bulldozerlag.no unless that site shows 929237617 (it shows 913860349)"
+   ]
+  }
+ },
+ {
+  "file": "company_websites__L0_hijacked_expired_domain_cjk__976939395.html",
+  "orgnr": "976939395",
+  "legal_name": "SAKARINA ANS",
+  "url": "https://sakarina.com/",
+  "page_kind": "home2",
+  "bytes_raw": 97062,
+  "bytes_trimmed": 63862,
+  "trim_preserves_orgnr_signals": true,
+  "notes": "Expired domain now serving Chinese spam; name absent, CJK text.",
+  "expected": {
+   "target_orgnr_in_text": false,
+   "target_orgnr_in_html": false,
+   "target_formats": [],
+   "other_orgnrs_with_keyword": [],
+   "brreg_links": [],
+   "mailto": [],
+   "emails_text": [],
+   "rtl_emails": [],
+   "cf_emails": [],
+   "tel_links": [],
+   "social": {},
+   "jsonld_types": [],
+   "jsonld_orgs": [],
+   "placeholder_signals": [
+    "cjk_text"
+   ],
+   "title": "鲨鱼影视－ 跨平台支持高清电影高清播放精彩内容不断",
+   "orgnr_block": null
+  },
+  "expected_verdict": {
+   "level": "L0",
+   "publishable_facts": {
+    "website_status": "hijacked/expired domain"
+   },
+   "must_not_publish": [
+    "everything"
+   ]
+  }
+ },
+ {
+  "file": "company_websites__L0_parked_for_sale_hugedomains__984421664.html",
+  "orgnr": "984421664",
+  "legal_name": "HOPENORWAY ANDRE HOPE",
+  "url": "https://www.hugedomains.com/domain_profile.cfm?d=hopetravel.com",
+  "page_kind": "home",
+  "bytes_raw": 43472,
+  "bytes_trimmed": 29348,
+  "trim_preserves_orgnr_signals": true,
+  "notes": "Registry site redirects to HugeDomains 'for sale' page.",
+  "expected": {
+   "target_orgnr_in_text": false,
+   "target_orgnr_in_html": false,
+   "target_formats": [],
+   "other_orgnrs_with_keyword": [],
+   "brreg_links": [],
+   "mailto": [],
+   "emails_text": [],
+   "rtl_emails": [],
+   "cf_emails": [],
+   "tel_links": [
+    "1-303-893-0552"
+   ],
+   "social": {},
+   "jsonld_types": [],
+   "jsonld_orgs": [],
+   "placeholder_signals": [
+    "parking_url",
+    "parked_text:This domain is for sale"
+   ],
+   "title": "HopeTravel.com is for sale | HugeDomains",
+   "orgnr_block": null
+  },
+  "expected_verdict": {
+   "level": "L0",
+   "publishable_facts": {
+    "website_status": "parked - for sale (HugeDomains)"
+   },
+   "must_not_publish": [
+    "1-303-893-0552"
+   ]
+  }
+ },
+ {
+  "file": "company_websites__L0_cloudflare_bot_wall__882912272.html",
+  "orgnr": "882912272",
+  "legal_name": "TENT AS",
+  "url": "https://www.tent.no",
+  "page_kind": "home",
+  "bytes_raw": 5497,
+  "bytes_trimmed": 4039,
+  "trim_preserves_orgnr_signals": true,
+  "notes": "HTTP 403 Cloudflare 'Just a moment...' challenge: treat as blocked, do not retry aggressively.",
+  "expected": {
+   "target_orgnr_in_text": false,
+   "target_orgnr_in_html": false,
+   "target_formats": [],
+   "other_orgnrs_with_keyword": [],
+   "brreg_links": [],
+   "mailto": [],
+   "emails_text": [],
+   "rtl_emails": [],
+   "cf_emails": [],
+   "tel_links": [],
+   "social": {},
+   "jsonld_types": [],
+   "jsonld_orgs": [],
+   "placeholder_signals": [
+    "tiny_text",
+    "meta_refresh",
+    "bot_wall:Just a moment..."
+   ],
+   "title": "Just a moment...",
+   "orgnr_block": null
+  },
+  "expected_verdict": {
+   "level": "blocked",
+   "publishable_facts": {
+    "website_status": "bot wall (Cloudflare 403) - unknown"
+   },
+   "must_not_publish": [
+    "everything; do not mark as dead"
+   ]
+  }
+ },
+ {
+  "file": "company_websites__L1_sports_club_with_sponsor_social__979448708.html",
+  "orgnr": "979448708",
+  "legal_name": "FINNSNES IL FOTBALL",
+  "url": "https://www.fil.no/om-oss",
+  "page_kind": "about",
+  "bytes_raw": 608310,
+  "bytes_trimmed": 57419,
+  "trim_preserves_orgnr_signals": true,
+  "notes": "Orgnr on about page; Facebook link to sponsor 'exploenergi' must not be attributed.",
+  "expected": {
+   "target_orgnr_in_text": true,
+   "target_orgnr_in_html": true,
+   "target_formats": [
+    "3-3-3 space"
+   ],
+   "other_orgnrs_with_keyword": [],
+   "brreg_links": [],
+   "mailto": [
+    "fotball@fil.no"
+   ],
+   "emails_text": [
+    "fotball@fil.no"
+   ],
+   "rtl_emails": [],
+   "cf_emails": [],
+   "tel_links": [],
+   "social": {
+    "facebook": [
+     "https://www.facebook.com/FinnsnesIlFotball",
+     "https://www.facebook.com/exploenergi",
+     "https://www.facebook.com/pg/FinnsnesIlFotball/events"
+    ],
+    "instagram": [
+     "https://www.instagram.com/finnsnesil"
+    ],
+    "twitter": [
+     "https://twitter.com/filfotball"
+    ],
+    "youtube": [
+     "https://www.youtube.com/channel/UCm5QyWUIYu8lA27y8AlmGtQ"
+    ]
+   },
+   "jsonld_types": [],
+   "jsonld_orgs": [],
+   "placeholder_signals": [],
+   "title": "Om oss | Finnsnes IL",
+   "orgnr_block": {
+    "emails": [
+     "fotball@fil.no"
+    ],
+    "phones": [
+     "77842333"
+    ],
+    "isolated": true,
+    "text_prefix": "Postadresse Boks 57 9305 Finnsnes ​ Besøksadresse Idrettsveien 13 9300 Finnsnes ​ Kontakt oss Telefon: 778 42 333 Org. nr.: 979 448 708 fotball@fil.no www.fil.n"
+   }
+  },
+  "expected_verdict": {
+   "level": "L1",
+   "publishable_facts": {
+    "website": "https://www.fil.no",
+    "email": [
+     "fotball@fil.no"
+    ],
+    "phone": [
+     "+4777842333"
+    ],
+    "social.facebook": "https://www.facebook.com/FinnsnesIlFotball",
+    "social.instagram": "https://www.instagram.com/finnsnesil",
+    "social.twitter": "https://twitter.com/filfotball"
+   },
+   "must_not_publish": [
+    "https://www.facebook.com/exploenergi (sponsor)"
+   ]
+  }
+ },
+ {
+  "file": "company_websites__L2_wix_platform_socials__879887682.html",
+  "orgnr": "879887682",
+  "legal_name": "NEW MEDIA GENERATION Lage Thune Myrberget",
+  "url": "https://www.nmg.no",
+  "page_kind": "home",
+  "bytes_raw": 1175982,
+  "bytes_trimmed": 66659,
+  "trim_preserves_orgnr_signals": true,
+  "notes": "Wix site whose only social links are Wix's own (wix-com) -> reject socials; no orgnr on site.",
+  "expected": {
+   "target_orgnr_in_text": false,
+   "target_orgnr_in_html": false,
+   "target_formats": [],
+   "other_orgnrs_with_keyword": [],
+   "brreg_links": [],
+   "mailto": [],
+   "emails_text": [
+    "post@nmg.no"
+   ],
+   "rtl_emails": [],
+   "cf_emails": [],
+   "tel_links": [],
+   "social": {
+    "linkedin": [
+     "https://www.linkedin.com/company/wix-com"
+    ],
+    "facebook": [
+     "https://www.facebook.com/wix"
+    ],
+    "twitter": [
+     "https://www.twitter.com/wix"
+    ],
+    "youtube": [
+     "https://www.youtube.com/user/Wix"
+    ]
+   },
+   "jsonld_types": [
+    "WebSite"
+   ],
+   "jsonld_orgs": [],
+   "placeholder_signals": [],
+   "title": "Home | New Media Generation",
+   "orgnr_block": null
+  },
+  "expected_verdict": {
+   "level": "L2",
+   "publishable_facts": {
+    "website": "https://www.nmg.no",
+    "email": [
+     "post@nmg.no (matches registry epost)"
+    ]
+   },
+   "must_not_publish": [
+    "linkedin.com/company/wix-com",
+    "facebook.com/wix",
+    "twitter.com/wix",
+    "youtube.com/user/Wix"
+   ]
+  }
+ },
+ {
+  "file": "company_websites__L1_ENK_vat_no_jsonld__976913019.html",
+  "orgnr": "976913019",
+  "legal_name": "KOOLART John Martin Sanvik",
+  "url": "https://www.koolart.no/kontakt",
+  "page_kind": "contact",
+  "bytes_raw": 2974970,
+  "bytes_trimmed": 57303,
+  "trim_preserves_orgnr_signals": true,
+  "notes": "'MVA/VAT no. 976913019'; JSON-LD Organization with telephone/address; webshop.",
+  "expected": {
+   "target_orgnr_in_text": true,
+   "target_orgnr_in_html": true,
+   "target_formats": [
+    "plain"
+   ],
+   "other_orgnrs_with_keyword": [],
+   "brreg_links": [],
+   "mailto": [],
+   "emails_text": [
+    "info@koolart.no"
+   ],
+   "rtl_emails": [],
+   "cf_emails": [],
+   "tel_links": [],
+   "social": {
+    "facebook": [
+     "https://www.facebook.com/koolart.no"
+    ],
+    "instagram": [
+     "https://www.instagram.com/koolart_no"
+    ]
+   },
+   "jsonld_types": [
+    "BreadcrumbList",
+    "ContactPage"
+   ],
+   "jsonld_orgs": [],
+   "placeholder_signals": [],
+   "title": "Kontakt oss - Koolart",
+   "orgnr_block": {
+    "emails": [
+     "info@koolart.no"
+    ],
+    "phones": [
+     "40204030"
+    ],
+    "isolated": true,
+    "text_prefix": "Kontakt oss Koolart John Martin Sandvik Evjetun 6 Evjetun Industri område 3470 SLEMMESTAD info@koolart.no 40 20 40 30 Koolart Koolart Evjetun Industri område 34"
+   }
+  },
+  "expected_verdict": {
+   "level": "L1",
+   "publishable_facts": {
+    "website": "https://www.koolart.no",
+    "email": [
+     "info@koolart.no"
+    ],
+    "phone": [
+     "+4740204030"
+    ],
+    "social.facebook": "https://www.facebook.com/koolart.no",
+    "social.instagram": "https://www.instagram.com/koolart_no"
+   },
+   "must_not_publish": []
+  }
+ },
+ {
+  "file": "company_websites__guess_false_positive_similar_name_gmbh__992137452.html",
+  "orgnr": "992137452",
+  "legal_name": "CORE INTERNATIONAL AS",
+  "url": "http://core-international.com/",
+  "page_kind": "guess:core-international.com",
+  "bytes_raw": 10919,
+  "bytes_trimmed": 6870,
+  "trim_preserves_orgnr_signals": true,
+  "notes": "Domain guessed from name; site is Core International GmbH (Germany). Name matches, orgnr absent -> reject.",
+  "expected": {
+   "target_orgnr_in_text": false,
+   "target_orgnr_in_html": false,
+   "target_formats": [],
+   "other_orgnrs_with_keyword": [],
+   "brreg_links": [],
+   "mailto": [],
+   "emails_text": [],
+   "rtl_emails": [],
+   "cf_emails": [],
+   "tel_links": [],
+   "social": {},
+   "jsonld_types": [],
+   "jsonld_orgs": [],
+   "placeholder_signals": [],
+   "title": "Core International GmbH",
+   "orgnr_block": null
+  },
+  "expected_verdict": {
+   "level": "L0",
+   "publishable_facts": {
+    "website_status": "guessed domain - unverified (Core International GmbH)"
+   },
+   "must_not_publish": [
+    "everything"
+   ]
+  }
+ }
+]

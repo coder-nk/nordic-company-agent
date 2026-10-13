@@ -1,0 +1,571 @@
+{
+ "879887682": {
+  "epostadresse": "post@nmg.no",
+  "forretningsadresse": {
+   "adresse": [
+    "Briskebyvegen 7B"
+   ],
+   "kommune": "HAMAR",
+   "kommunenummer": "3403",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "2321",
+   "poststed": "HAMAR"
+  },
+  "hjemmeside": "www.nmg.no",
+  "mobil": "90182288",
+  "navn": "NEW MEDIA GENERATION Lage Thune Myrberget",
+  "organisasjonsform": {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/ENK"
+    }
+   },
+   "beskrivelse": "Enkeltpersonforetak",
+   "kode": "ENK"
+  },
+  "organisasjonsnummer": "879887682",
+  "telefon": "22 38 36 36"
+ },
+ "882912272": {
+  "epostadresse": "post@tent.no",
+  "forretningsadresse": {
+   "adresse": [
+    "Bedehussmauet 5"
+   ],
+   "kommune": "BERGEN",
+   "kommunenummer": "4601",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "5036",
+   "poststed": "BERGEN"
+  },
+  "hjemmeside": "www.tent.no",
+  "mobil": "402 20 446",
+  "navn": "TENT AS",
+  "organisasjonsform": {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/AS"
+    }
+   },
+   "beskrivelse": "Aksjeselskap",
+   "kode": "AS"
+  },
+  "organisasjonsnummer": "882912272",
+  "postadresse": {
+   "adresse": [
+    "Postboks 42 Birkebeinersenteret"
+   ],
+   "kommune": "BERGEN",
+   "kommunenummer": "4601",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "5831",
+   "poststed": "BERGEN"
+  },
+  "telefon": "55 32 66 40"
+ },
+ "912342344": {
+  "epostadresse": "kontakt@ekomas.no",
+  "forretningsadresse": {
+   "adresse": [
+    "Industriveien 9B"
+   ],
+   "kommune": "LILLESTRØM",
+   "kommunenummer": "3205",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "2020",
+   "poststed": "SKEDSMOKORSET"
+  },
+  "hjemmeside": "www.ekomas.no",
+  "navn": "EKOM AS",
+  "organisasjonsform": {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/AS"
+    }
+   },
+   "beskrivelse": "Aksjeselskap",
+   "kode": "AS"
+  },
+  "organisasjonsnummer": "912342344",
+  "postadresse": {
+   "adresse": [
+    "Postboks 224"
+   ],
+   "kommune": "LILLESTRØM",
+   "kommunenummer": "3205",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "2021",
+   "poststed": "SKEDSMOKORSET"
+  }
+ },
+ "917387079": {
+  "epostadresse": "post@mf.no",
+  "forretningsadresse": {
+   "adresse": [
+    "Gydas vei 4"
+   ],
+   "kommune": "OSLO",
+   "kommunenummer": "0301",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "0363",
+   "poststed": "OSLO"
+  },
+  "hjemmeside": "www.mf.no",
+  "navn": "MF VITENSKAPELIG HØYSKOLE STI",
+  "organisasjonsform": {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/STI"
+    }
+   },
+   "beskrivelse": "Stiftelse",
+   "kode": "STI"
+  },
+  "organisasjonsnummer": "917387079",
+  "postadresse": {
+   "adresse": [
+    "Postboks 5144 Majorstua"
+   ],
+   "kommune": "OSLO",
+   "kommunenummer": "0301",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "0302",
+   "poststed": "OSLO"
+  },
+  "telefon": "22 59 05 00"
+ },
+ "920209319": {
+  "epostadresse": "thomas@advokat-os.no",
+  "forretningsadresse": {
+   "adresse": [
+    "Bygdøy allé 47B"
+   ],
+   "kommune": "OSLO",
+   "kommunenummer": "0301",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "0265",
+   "poststed": "OSLO"
+  },
+  "hjemmeside": "www.advokateneiba47.no",
+  "mobil": "450 20 113",
+  "navn": "OS ADVOKATER DA",
+  "organisasjonsform": {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/DA"
+    }
+   },
+   "beskrivelse": "Ansvarlig selskap med delt ansvar",
+   "kode": "DA"
+  },
+  "organisasjonsnummer": "920209319",
+  "postadresse": {
+   "adresse": [
+    "Postboks 3247 Elisenberg"
+   ],
+   "kommune": "OSLO",
+   "kommunenummer": "0301",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "0208",
+   "poststed": "OSLO"
+  },
+  "telefon": "48 12 13 45"
+ },
+ "928913406": {
+  "epostadresse": "post@biltransporten.no",
+  "forretningsadresse": {
+   "adresse": [
+    "Honerødveien 14"
+   ],
+   "kommune": "SANDEFJORD",
+   "kommunenummer": "3907",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "3158",
+   "poststed": "ANDEBU"
+  },
+  "hjemmeside": "biltransporten.no",
+  "mobil": "486 04 900",
+  "navn": "BILTRANSPORTEN AS",
+  "organisasjonsform": {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/AS"
+    }
+   },
+   "beskrivelse": "Aksjeselskap",
+   "kode": "AS"
+  },
+  "organisasjonsnummer": "928913406"
+ },
+ "929237617": {
+  "epostadresse": "marius@lbl.as",
+  "forretningsadresse": {
+   "adresse": [
+    "Malerbakken 16"
+   ],
+   "kommune": "LILLEHAMMER",
+   "kommunenummer": "3405",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "2614",
+   "poststed": "LILLEHAMMER"
+  },
+  "hjemmeside": "www.lbl.as",
+  "mobil": "934 00 948",
+  "navn": "BULLGRUPPEN AS",
+  "organisasjonsform": {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/AS"
+    }
+   },
+   "beskrivelse": "Aksjeselskap",
+   "kode": "AS"
+  },
+  "organisasjonsnummer": "929237617"
+ },
+ "932973855": {
+  "epostadresse": "hei@2hd.no",
+  "forretningsadresse": {
+   "adresse": [
+    "Friis' gate 4"
+   ],
+   "kommune": "OSLO",
+   "kommunenummer": "0301",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "0187",
+   "poststed": "OSLO"
+  },
+  "hjemmeside": "www.2hd.no",
+  "mobil": "949 84 098",
+  "navn": "2HD ARCHITECTURE WORKSHOP AS",
+  "organisasjonsform": {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/AS"
+    }
+   },
+   "beskrivelse": "Aksjeselskap",
+   "kode": "AS"
+  },
+  "organisasjonsnummer": "932973855"
+ },
+ "975576205": {
+  "epostadresse": "post@drammenturn.no",
+  "forretningsadresse": {
+   "adresse": [
+    "Danvikgata 27"
+   ],
+   "kommune": "DRAMMEN",
+   "kommunenummer": "3301",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "3045",
+   "poststed": "DRAMMEN"
+  },
+  "hjemmeside": "www.drammenturn.no",
+  "mobil": "91540049",
+  "navn": "DRAMMENS TURNFORENING",
+  "organisasjonsform": {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/FLI"
+    }
+   },
+   "beskrivelse": "Forening/lag/innretning",
+   "kode": "FLI"
+  },
+  "organisasjonsnummer": "975576205",
+  "postadresse": {
+   "adresse": [
+    "Postboks 2200"
+   ],
+   "kommune": "DRAMMEN",
+   "kommunenummer": "3301",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "3003",
+   "poststed": "DRAMMEN"
+  }
+ },
+ "975971554": {
+  "epostadresse": "post@elektrikerservice.no",
+  "forretningsadresse": {
+   "adresse": [
+    "Innherredsveien 113"
+   ],
+   "kommune": "TRONDHEIM",
+   "kommunenummer": "5001",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "7045",
+   "poststed": "TRONDHEIM"
+  },
+  "hjemmeside": "www.elektrikerservice.no",
+  "mobil": "907 72 835",
+  "navn": "ELEKTRIKERSERVICE AS",
+  "organisasjonsform": {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/AS"
+    }
+   },
+   "beskrivelse": "Aksjeselskap",
+   "kode": "AS"
+  },
+  "organisasjonsnummer": "975971554",
+  "telefon": "95 92 85 00"
+ },
+ "976913019": {
+  "epostadresse": "martin@vwbus.no",
+  "forretningsadresse": {
+   "adresse": [
+    "Aukeveien 121"
+   ],
+   "kommune": "ASKER",
+   "kommunenummer": "3203",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "3472",
+   "poststed": "BØDALEN"
+  },
+  "hjemmeside": "www.koolart.no",
+  "mobil": "402 04 030",
+  "navn": "KOOLART John Martin Sanvik",
+  "organisasjonsform": {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/ENK"
+    }
+   },
+   "beskrivelse": "Enkeltpersonforetak",
+   "kode": "ENK"
+  },
+  "organisasjonsnummer": "976913019"
+ },
+ "976939395": {
+  "epostadresse": "jan.christensen@trollfjeld.no",
+  "forretningsadresse": {
+   "adresse": [
+    "Offersøy"
+   ],
+   "kommune": "LØDINGEN",
+   "kommunenummer": "1851",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "8412",
+   "poststed": "VESTBYGDA"
+  },
+  "hjemmeside": "sakarina.com",
+  "mobil": "90944248",
+  "navn": "SAKARINA ANS",
+  "organisasjonsform": {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/ANS"
+    }
+   },
+   "beskrivelse": "Ansvarlig selskap med solidarisk ansvar",
+   "kode": "ANS"
+  },
+  "organisasjonsnummer": "976939395",
+  "postadresse": {
+   "adresse": [
+    "Postboks 225"
+   ],
+   "kommune": "HADSEL",
+   "kommunenummer": "1866",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "8455",
+   "poststed": "STOKMARKNES"
+  },
+  "telefon": "76 93 54 19"
+ },
+ "979448708": {
+  "epostadresse": "ih@fil.no",
+  "forretningsadresse": {
+   "adresse": [
+    "Idrettsveien 13"
+   ],
+   "kommune": "SENJA",
+   "kommunenummer": "5530",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "9300",
+   "poststed": "FINNSNES"
+  },
+  "hjemmeside": "www.fil.no",
+  "mobil": "920 33 430",
+  "navn": "FINNSNES IL FOTBALL",
+  "organisasjonsform": {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/FLI"
+    }
+   },
+   "beskrivelse": "Forening/lag/innretning",
+   "kode": "FLI"
+  },
+  "organisasjonsnummer": "979448708"
+ },
+ "982182107": {
+  "epostadresse": "nyenor@nyenor.no",
+  "forretningsadresse": {
+   "adresse": [
+    "6.Etasje",
+    "Kabelgata 51"
+   ],
+   "kommune": "OSLO",
+   "kommunenummer": "0301",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "0581",
+   "poststed": "OSLO"
+  },
+  "hjemmeside": "www.nyenor.no",
+  "mobil": "924 56 269",
+  "navn": "NYE NOR AS",
+  "organisasjonsform": {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/AS"
+    }
+   },
+   "beskrivelse": "Aksjeselskap",
+   "kode": "AS"
+  },
+  "organisasjonsnummer": "982182107",
+  "telefon": "22 33 41 44"
+ },
+ "982322553": {
+  "epostadresse": "trygves@atticum.no",
+  "forretningsadresse": {
+   "adresse": [
+    "Øvre Bøkeligate 5B"
+   ],
+   "kommune": "LARVIK",
+   "kommunenummer": "3909",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "3256",
+   "poststed": "LARVIK"
+  },
+  "hjemmeside": "www.atticum.no",
+  "mobil": "907 30 073",
+  "navn": "ATTICUM NETTLØSNINGER AS",
+  "organisasjonsform": {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/AS"
+    }
+   },
+   "beskrivelse": "Aksjeselskap",
+   "kode": "AS"
+  },
+  "organisasjonsnummer": "982322553"
+ },
+ "984421664": {
+  "epostadresse": "info@hopetravel.com",
+  "forretningsadresse": {
+   "adresse": [
+    "Orionvegen 30"
+   ],
+   "kommune": "TRONDHEIM",
+   "kommunenummer": "5001",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "7037",
+   "poststed": "TRONDHEIM"
+  },
+  "hjemmeside": "www.hopetravel.com",
+  "mobil": "41505703",
+  "navn": "HOPENORWAY ANDRE HOPE",
+  "organisasjonsform": {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/ENK"
+    }
+   },
+   "beskrivelse": "Enkeltpersonforetak",
+   "kode": "ENK"
+  },
+  "organisasjonsnummer": "984421664",
+  "telefon": "73 09 91 21"
+ },
+ "985946698": {
+  "epostadresse": "post@polarfakta.no",
+  "forretningsadresse": {
+   "adresse": [
+    "Midtre gate 12"
+   ],
+   "kommune": "RANA",
+   "kommunenummer": "1833",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "8624",
+   "poststed": "MO I RANA"
+  },
+  "hjemmeside": "www.polarfakta.no",
+  "navn": "POLARFAKTA AS",
+  "organisasjonsform": {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/AS"
+    }
+   },
+   "beskrivelse": "Aksjeselskap",
+   "kode": "AS"
+  },
+  "organisasjonsnummer": "985946698",
+  "postadresse": {
+   "adresse": [
+    "Postboks 160"
+   ],
+   "kommune": "RANA",
+   "kommunenummer": "1833",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "8601",
+   "poststed": "MO I RANA"
+  },
+  "telefon": "75 68 26 00"
+ },
+ "992137452": {
+  "forretningsadresse": {
+   "adresse": [
+    "Edelgranveien 30"
+   ],
+   "kommune": "BÆRUM",
+   "kommunenummer": "3201",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "1356",
+   "poststed": "BEKKESTUA"
+  },
+  "mobil": "917 51 360",
+  "navn": "CORE INTERNATIONAL AS",
+  "organisasjonsform": {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/AS"
+    }
+   },
+   "beskrivelse": "Aksjeselskap",
+   "kode": "AS"
+  },
+  "organisasjonsnummer": "992137452",
+  "telefon": "22 43 29 00"
+ }
+}

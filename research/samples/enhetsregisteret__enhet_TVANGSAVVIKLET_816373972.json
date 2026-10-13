@@ -1,0 +1,94 @@
+{
+ "_request": {
+  "url": "https://data.brreg.no/enhetsregisteret/api/enheter/816373972",
+  "status": 200,
+  "retrieved_at": "2026-10-13T11:57:48Z",
+  "headers": {
+   "vary": "Origin",
+   "x-content-type-options": "nosniff",
+   "x-xss-protection": "0",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "pragma": "no-cache",
+   "expires": "0",
+   "strict-transport-security": "max-age=157680000; includeSubDomains",
+   "x-frame-options": "DENY",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:53:42 GMT",
+   "connection": "close"
+  }
+ },
+ "body": {
+  "_links": {
+   "self": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/enheter/816373972"
+   }
+  },
+  "aktivitet": [
+   "Utvikling og salg av treningsutstyr."
+  ],
+  "epostadresse": "matsalves89@gmail.com",
+  "erIKonsern": false,
+  "forretningsadresse": {
+   "adresse": [
+    "Varpedelet 44"
+   ],
+   "kommune": "SKIEN",
+   "kommunenummer": "4003",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "3728",
+   "poststed": "SKIEN"
+  },
+  "fravalgRevisjonDato": "2015-12-16",
+  "harRegistrertAntallAnsatte": false,
+  "historiskeNavn": [],
+  "institusjonellSektorkode": {
+   "beskrivelse": "Private aksjeselskaper mv.",
+   "kode": "2100"
+  },
+  "kapital": {
+   "antallAksjer": 150000,
+   "belop": 150000.0,
+   "innfortDato": "2015-12-16",
+   "type": "Aksjekapital",
+   "valuta": "NOK"
+  },
+  "konkurs": false,
+  "maalform": "Bokmål",
+  "naeringskode1": {
+   "beskrivelse": "Detaljhandel med sportsvarer",
+   "kode": "47.631"
+  },
+  "navn": "SPORTECH AS",
+  "organisasjonsform": {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/AS"
+    }
+   },
+   "beskrivelse": "Aksjeselskap",
+   "kode": "AS"
+  },
+  "organisasjonsnummer": "816373972",
+  "paategninger": [],
+  "registreringsdatoEnhetsregisteret": "2015-12-16",
+  "registreringsdatoForetaksregisteret": "2015-12-16",
+  "registrertIForetaksregisteret": true,
+  "registrertIFrivillighetsregisteret": false,
+  "registrertIMvaregisteret": false,
+  "registrertIPartiregisteret": false,
+  "registrertIStiftelsesregisteret": false,
+  "respons_klasse": "Enhet",
+  "sisteInnsendteAarsregnskap": "2025",
+  "stiftelsesdato": "2015-11-30",
+  "tvangsavvikletPgaManglendeSlettingDato": "2026-10-10",
+  "underAvvikling": true,
+  "underAvviklingDato": "2025-07-02",
+  "underTvangsavviklingEllerTvangsopplosning": true,
+  "vedtektsdato": "2015-11-30",
+  "vedtektsfestetFormaal": [
+   "Utvikling og salg av treningsutstyr."
+  ]
+ }
+}

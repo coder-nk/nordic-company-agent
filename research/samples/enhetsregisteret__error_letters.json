@@ -1,0 +1,38 @@
+{
+ "_request": {
+  "url": "https://data.brreg.no/enhetsregisteret/api/enheter/9ECD01011",
+  "status": 400,
+  "retrieved_at": "2026-10-13T11:44:41Z",
+  "headers": {
+   "vary": "Origin",
+   "x-content-type-options": "nosniff",
+   "x-xss-protection": "0",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "pragma": "no-cache",
+   "expires": "0",
+   "strict-transport-security": "max-age=157680000; includeSubDomains",
+   "x-frame-options": "DENY",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:40:36 GMT",
+   "connection": "close"
+  }
+ },
+ "body": {
+  "tidsstempel": 1791891636554,
+  "status": 400,
+  "feilmelding": "Feilaktig forespørsel",
+  "valideringsfeil": [
+   {
+    "feilaktigVerdi": "9ECD01011",
+    "feilmelding": "Organisasjonsnummer må være et nummer med nøyaktig 9 siffer",
+    "parametere": [
+     "{}",
+     "9ECD01011"
+    ]
+   }
+  ],
+  "sti": "/enhetsregisteret/api/enheter/9ECD01011",
+  "antallFeil": 1
+ }
+}

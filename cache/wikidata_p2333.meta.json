@@ -1,0 +1,14 @@
+{
+ "name": "wikidata_p2333",
+ "built_at": "2026-10-13T14:48:53Z",
+ "source": "Wikidata Query Service, P2333 (Norwegian organisation number)",
+ "licence": "Wikidata, CC0 1.0",
+ "endpoint": "https://query.wikidata.org/sparql",
+ "query": "SELECT ?item ?orgnr WHERE {\n  ?item p:P2333 ?st . ?st ps:P2333 ?orgnr .\n  FILTER NOT EXISTS { ?st wikibase:rank wikibase:DeprecatedRank }\n}",
+ "statements": 10501,
+ "organisation_numbers": 10403,
+ "multi_item_organisation_numbers": 91,
+ "skipped_non_9_digit_values": 0,
+ "requests": 1,
+ "use": "pre-selection only; the runtime re-reads every published fact live"
+}

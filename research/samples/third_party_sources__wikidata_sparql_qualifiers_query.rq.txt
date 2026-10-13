@@ -1,0 +1,8 @@
+SELECT ?orgnr ?item ?prop ?value ?valueLabel ?start ?end ?rank WHERE {
+  VALUES ?orgnr { "982463718" "914778271" "923609016" }
+  ?item wdt:P2333 ?orgnr .
+  VALUES (?prop ?p ?ps) { (wd:P169 p:P169 ps:P169) (wd:P2003 p:P2003 ps:P2003) (wd:P1128 p:P1128 ps:P1128) (wd:P2139 p:P2139 ps:P2139) }
+  ?item ?p ?st . ?st ?ps ?value ; wikibase:rank ?rank .
+  OPTIONAL { ?st pq:P580 ?start } OPTIONAL { ?st pq:P582 ?end } OPTIONAL { ?st pq:P585 ?start }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "nb,en". }
+} ORDER BY ?orgnr ?prop ?start

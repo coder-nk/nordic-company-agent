@@ -1,0 +1,83 @@
+{
+ "_request": {
+  "url": "https://data.brreg.no/enhetsregisteret/api/enheter/924964448",
+  "status": 200,
+  "retrieved_at": "2026-10-13T11:43:35Z",
+  "headers": {
+   "vary": "Origin",
+   "x-content-type-options": "nosniff",
+   "x-xss-protection": "0",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "pragma": "no-cache",
+   "expires": "0",
+   "strict-transport-security": "max-age=157680000; includeSubDomains",
+   "x-frame-options": "DENY",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:39:30 GMT",
+   "connection": "close"
+  }
+ },
+ "body": {
+  "_links": {
+   "self": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/enheter/924964448"
+   }
+  },
+  "aktivitet": [
+   "Felles eierskap av russebuss."
+  ],
+  "erIKonsern": false,
+  "forretningsadresse": {
+   "adresse": [],
+   "kommune": "BERGEN",
+   "kommunenummer": "4601",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "5244",
+   "poststed": "FANA"
+  },
+  "harRegistrertAntallAnsatte": false,
+  "historiskeNavn": [],
+  "konkurs": false,
+  "maalform": "Bokmål",
+  "naeringskode1": {
+   "beskrivelse": "Aktiviteter i borettslag og boligsameier",
+   "kode": "97.001"
+  },
+  "navn": "2021.BERGENSJENTENE",
+  "organisasjonsform": {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/SAM"
+    }
+   },
+   "beskrivelse": "Tingsrettslig sameie",
+   "kode": "SAM"
+  },
+  "organisasjonsnummer": "924964448",
+  "paategninger": [],
+  "postadresse": {
+   "adresse": [
+    "c/o Embla Koppen Knudsen",
+    "Nordre Gommershaugen 16A"
+   ],
+   "kommune": "BERGEN",
+   "kommunenummer": "4601",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "5254",
+   "poststed": "SANDSLI"
+  },
+  "registreringsdatoEnhetsregisteret": "2020-05-05",
+  "registrertIForetaksregisteret": false,
+  "registrertIFrivillighetsregisteret": false,
+  "registrertIMvaregisteret": false,
+  "registrertIPartiregisteret": false,
+  "registrertIStiftelsesregisteret": false,
+  "respons_klasse": "Enhet",
+  "stiftelsesdato": "2020-04-13",
+  "underAvvikling": false,
+  "underTvangsavviklingEllerTvangsopplosning": false
+ }
+}

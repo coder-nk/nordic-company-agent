@@ -1,0 +1,122 @@
+{
+ "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/923609016/aar": {
+  "request_url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/923609016/aar",
+  "status": 200,
+  "headers": {
+   "x-rate-limit-remaining": "29",
+   "vary": "Origin, Access-Control-Request-Method, Access-Control-Request-Headers",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:55:45 GMT",
+   "strict-transport-security": "max-age=157680000; includeSubDomains"
+  },
+  "body": [
+   "2011",
+   "2012",
+   "2013",
+   "2014",
+   "2015",
+   "2016",
+   "2017",
+   "2018",
+   "2019",
+   "2020",
+   "2021",
+   "2022",
+   "2023",
+   "2024",
+   "2025"
+  ]
+ },
+ "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/917507899/aar": {
+  "request_url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/917507899/aar",
+  "status": 200,
+  "headers": {
+   "x-rate-limit-remaining": "28",
+   "vary": "Origin, Access-Control-Request-Method, Access-Control-Request-Headers",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:55:47 GMT",
+   "strict-transport-security": "max-age=157680000; includeSubDomains"
+  },
+  "body": [
+   "2016",
+   "2017",
+   "2018",
+   "2019",
+   "2020",
+   "2021",
+   "2022",
+   "2023",
+   "2024",
+   "2025"
+  ]
+ },
+ "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/938386080/aar": {
+  "request_url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/938386080/aar",
+  "status": 200,
+  "headers": {
+   "x-rate-limit-remaining": "27",
+   "vary": "Origin, Access-Control-Request-Method, Access-Control-Request-Headers",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:55:49 GMT",
+   "strict-transport-security": "max-age=157680000; includeSubDomains"
+  },
+  "body": []
+ },
+ "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/984851006/aar": {
+  "request_url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/984851006/aar",
+  "status": 200,
+  "headers": {
+   "x-rate-limit-remaining": "26",
+   "vary": "Origin, Access-Control-Request-Method, Access-Control-Request-Headers",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:55:52 GMT",
+   "strict-transport-security": "max-age=157680000; includeSubDomains"
+  },
+  "body": [
+   "2011",
+   "2012",
+   "2013",
+   "2014",
+   "2015",
+   "2016",
+   "2017",
+   "2018",
+   "2019",
+   "2020",
+   "2021",
+   "2022",
+   "2023",
+   "2024",
+   "2025"
+  ]
+ },
+ "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/mellombalanse/923609016/aar": {
+  "request_url": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/mellombalanse/923609016/aar",
+  "status": 200,
+  "headers": {
+   "x-rate-limit-remaining": "25",
+   "vary": "Origin, Access-Control-Request-Method, Access-Control-Request-Headers",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:55:54 GMT",
+   "strict-transport-security": "max-age=157680000; includeSubDomains"
+  },
+  "body": []
+ },
+ "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/917507899/2011": {
+  "status": 406,
+  "headers": {
+   "x-rate-limit-remaining": "24",
+   "accept": "application/octet-stream",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:55:57 GMT",
+   "strict-transport-security": "max-age=157680000; includeSubDomains"
+  },
+  "body": "{\"timestamp\":\"2026-10-13T11:55:57.003Z\",\"status\":406,\"error\":\"Not Acceptable\",\"path\":\"/regnskapsregisteret/regnskap/aarsregnskap/kopi/917507899/2011\"}"
+ }
+}

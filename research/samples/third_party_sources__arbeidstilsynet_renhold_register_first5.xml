@@ -1,0 +1,330 @@
+<Register xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Metadata>
+    <RegisterXSD>RegisterXML6.xsd</RegisterXSD>
+    <DatoTidGenerert>2026-10-13T03:04:08.938088+02:00</DatoTidGenerert>
+  </Metadata>
+  <Registernavn>Renhold</Registernavn>
+  <Filtrering Avgrensning="Næring">
+    <Kode verdi="81.2">Rengjøringsvirksomhet</Kode>
+    <Kode verdi="81.21">Rengjøring av bygninger</Kode>
+    <Kode verdi="81.210">Rengjøring av bygninger</Kode>
+    <Kode verdi="81.22">Utvendig rengjøring av bygninger og industriell rengjøring</Kode>
+    <Kode verdi="81.220">Utvendig rengjøring av bygninger og industriell rengjøring</Kode>
+    <Kode verdi="81.29">Annen rengjøringsvirksomhet</Kode>
+  </Filtrering>
+  <Virksomhet>
+    <Hovedenhet>
+      <Organisasjonsnummer>943001820</Organisasjonsnummer>
+      <Organisasjonsform>Aksjeselskap</Organisasjonsform>
+      <Navn>TIP TOP RENHOLD AS</Navn>
+      <Næringskoder>
+        <Kode verdi="81.210">Rengjøring av bygninger</Kode>
+      </Næringskoder>
+      <Godkjenningsstatus>Godkjent med ansatte</Godkjenningsstatus>
+      <Kontaktinformasjon>
+        <Telefon>67 97 05 33</Telefon>
+        <Mobil />
+        <Webadresse />
+      </Kontaktinformasjon>
+      <Stedsinformasjon>
+        <Postadresse>
+          <Adresselinje1 />
+          <Adresselinje2 />
+          <Postnummer />
+          <Poststed />
+          <Landkode />
+          <Land />
+        </Postadresse>
+        <Forretningsadresse>
+          <Adresselinje1>Gamle Kongevei 33</Adresselinje1>
+          <Adresselinje2 />
+          <Postnummer>3040</Postnummer>
+          <Poststed>DRAMMEN</Poststed>
+          <Kommunenummer>3301</Kommunenummer>
+          <Kommunenavn>DRAMMEN</Kommunenavn>
+          <Fylkesnummer>33</Fylkesnummer>
+          <Fylkesnavn>Buskerud</Fylkesnavn>
+          <Landkode>NO</Landkode>
+          <Land>Norge</Land>
+        </Forretningsadresse>
+      </Stedsinformasjon>
+    </Hovedenhet>
+    <Underenheter>
+      <Avdeling Avgrensning="Næring">
+        <Organisasjonsnummer>972094722</Organisasjonsnummer>
+        <Navn>TIP TOP RENHOLD AS</Navn>
+        <Næringskoder>
+          <Kode verdi="81.210">Rengjøring av bygninger</Kode>
+        </Næringskoder>
+        <Stedsinformasjon>
+          <Postadresse>
+            <Adresselinje1>Magnus' gate 7</Adresselinje1>
+            <Adresselinje2 />
+            <Postnummer>0650</Postnummer>
+            <Poststed>OSLO</Poststed>
+            <Landkode>NO</Landkode>
+            <Land>Norge</Land>
+          </Postadresse>
+          <Forretningsadresse>
+            <Adresselinje1>Gamle Kongevei 33</Adresselinje1>
+            <Adresselinje2 />
+            <Postnummer>3040</Postnummer>
+            <Poststed>DRAMMEN</Poststed>
+            <Kommunenummer>3301</Kommunenummer>
+            <Kommunenavn>DRAMMEN</Kommunenavn>
+            <Fylkesnummer>33</Fylkesnummer>
+            <Fylkesnavn>Buskerud</Fylkesnavn>
+            <Landkode>NO</Landkode>
+            <Land>Norge</Land>
+          </Forretningsadresse>
+        </Stedsinformasjon>
+      </Avdeling>
+    </Underenheter>
+  </Virksomhet>
+  <Virksomhet>
+    <Hovedenhet>
+      <Organisasjonsnummer>958942192</Organisasjonsnummer>
+      <Organisasjonsform>Aksjeselskap</Organisasjonsform>
+      <Navn>SNEHVIT HOLDING AS</Navn>
+      <Næringskoder>
+        <Kode verdi="81.210">Rengjøring av bygninger</Kode>
+      </Næringskoder>
+      <Godkjenningsstatus>Ikke godkjent</Godkjenningsstatus>
+      <Kontaktinformasjon>
+        <Telefon>22 34 85 50</Telefon>
+        <Mobil>907 82 900</Mobil>
+        <Webadresse />
+      </Kontaktinformasjon>
+      <Stedsinformasjon>
+        <Postadresse>
+          <Adresselinje1 />
+          <Adresselinje2 />
+          <Postnummer />
+          <Poststed />
+          <Landkode />
+          <Land />
+        </Postadresse>
+        <Forretningsadresse>
+          <Adresselinje1>Schweigaards gate 34E</Adresselinje1>
+          <Adresselinje2 />
+          <Postnummer>0191</Postnummer>
+          <Poststed>OSLO</Poststed>
+          <Kommunenummer>0301</Kommunenummer>
+          <Kommunenavn>OSLO</Kommunenavn>
+          <Fylkesnummer>3</Fylkesnummer>
+          <Fylkesnavn>Oslo</Fylkesnavn>
+          <Landkode>NO</Landkode>
+          <Land>Norge</Land>
+        </Forretningsadresse>
+      </Stedsinformasjon>
+    </Hovedenhet>
+    <Underenheter />
+  </Virksomhet>
+  <Virksomhet>
+    <Hovedenhet>
+      <Organisasjonsnummer>997627504</Organisasjonsnummer>
+      <Organisasjonsform>Aksjeselskap</Organisasjonsform>
+      <Navn>FRISK SERVICE AS</Navn>
+      <Næringskoder>
+        <Kode verdi="81.210">Rengjøring av bygninger</Kode>
+      </Næringskoder>
+      <Godkjenningsstatus>Godkjent med ansatte</Godkjenningsstatus>
+      <Kontaktinformasjon>
+        <Telefon />
+        <Mobil />
+        <Webadresse>www.friskservice.no</Webadresse>
+      </Kontaktinformasjon>
+      <Stedsinformasjon>
+        <Postadresse>
+          <Adresselinje1 />
+          <Adresselinje2 />
+          <Postnummer />
+          <Poststed />
+          <Landkode />
+          <Land />
+        </Postadresse>
+        <Forretningsadresse>
+          <Adresselinje1>Martin Skatvedts vei 19</Adresselinje1>
+          <Adresselinje2 />
+          <Postnummer>0950</Postnummer>
+          <Poststed>OSLO</Poststed>
+          <Kommunenummer>0301</Kommunenummer>
+          <Kommunenavn>OSLO</Kommunenavn>
+          <Fylkesnummer>3</Fylkesnummer>
+          <Fylkesnavn>Oslo</Fylkesnavn>
+          <Landkode>NO</Landkode>
+          <Land>Norge</Land>
+        </Forretningsadresse>
+      </Stedsinformasjon>
+    </Hovedenhet>
+    <Underenheter>
+      <Avdeling Avgrensning="Næring">
+        <Organisasjonsnummer>997635442</Organisasjonsnummer>
+        <Navn>FRISK SERVICE AS</Navn>
+        <Næringskoder>
+          <Kode verdi="81.210">Rengjøring av bygninger</Kode>
+        </Næringskoder>
+        <Stedsinformasjon>
+          <Postadresse>
+            <Adresselinje1 />
+            <Adresselinje2 />
+            <Postnummer />
+            <Poststed />
+            <Landkode />
+            <Land />
+          </Postadresse>
+          <Forretningsadresse>
+            <Adresselinje1>Martin Skatvedts vei 19</Adresselinje1>
+            <Adresselinje2 />
+            <Postnummer>0950</Postnummer>
+            <Poststed>OSLO</Poststed>
+            <Kommunenummer>0301</Kommunenummer>
+            <Kommunenavn>OSLO</Kommunenavn>
+            <Fylkesnummer>3</Fylkesnummer>
+            <Fylkesnavn>Oslo</Fylkesnavn>
+            <Landkode>NO</Landkode>
+            <Land>Norge</Land>
+          </Forretningsadresse>
+        </Stedsinformasjon>
+      </Avdeling>
+    </Underenheter>
+  </Virksomhet>
+  <Virksomhet>
+    <Hovedenhet>
+      <Organisasjonsnummer>992629010</Organisasjonsnummer>
+      <Organisasjonsform>Enkeltpersonforetak</Organisasjonsform>
+      <Navn>NOREG RENHOLD BREDE</Navn>
+      <Næringskoder>
+        <Kode verdi="81.210">Rengjøring av bygninger</Kode>
+      </Næringskoder>
+      <Godkjenningsstatus>Godkjent uten ansatte</Godkjenningsstatus>
+      <Kontaktinformasjon>
+        <Telefon />
+        <Mobil>944 95 336</Mobil>
+        <Webadresse>www.noregrenhold.no</Webadresse>
+      </Kontaktinformasjon>
+      <Stedsinformasjon>
+        <Postadresse>
+          <Adresselinje1 />
+          <Adresselinje2 />
+          <Postnummer />
+          <Poststed />
+          <Landkode />
+          <Land />
+        </Postadresse>
+        <Forretningsadresse>
+          <Adresselinje1>Møllerløkka 125</Adresselinje1>
+          <Adresselinje2 />
+          <Postnummer>1339</Postnummer>
+          <Poststed>VØYENENGA</Poststed>
+          <Kommunenummer>3201</Kommunenummer>
+          <Kommunenavn>BÆRUM</Kommunenavn>
+          <Fylkesnummer>32</Fylkesnummer>
+          <Fylkesnavn>Akershus</Fylkesnavn>
+          <Landkode>NO</Landkode>
+          <Land>Norge</Land>
+        </Forretningsadresse>
+      </Stedsinformasjon>
+    </Hovedenhet>
+    <Underenheter>
+      <Avdeling Avgrensning="Næring">
+        <Organisasjonsnummer>992641053</Organisasjonsnummer>
+        <Navn>NOREG RENHOLD</Navn>
+        <Næringskoder>
+          <Kode verdi="81.210">Rengjøring av bygninger</Kode>
+        </Næringskoder>
+        <Stedsinformasjon>
+          <Postadresse>
+            <Adresselinje1 />
+            <Adresselinje2 />
+            <Postnummer />
+            <Poststed />
+            <Landkode />
+            <Land />
+          </Postadresse>
+          <Forretningsadresse>
+            <Adresselinje1>Møllerløkka 125</Adresselinje1>
+            <Adresselinje2 />
+            <Postnummer>1339</Postnummer>
+            <Poststed>VØYENENGA</Poststed>
+            <Kommunenummer>3201</Kommunenummer>
+            <Kommunenavn>BÆRUM</Kommunenavn>
+            <Fylkesnummer>32</Fylkesnummer>
+            <Fylkesnavn>Akershus</Fylkesnavn>
+            <Landkode>NO</Landkode>
+            <Land>Norge</Land>
+          </Forretningsadresse>
+        </Stedsinformasjon>
+      </Avdeling>
+    </Underenheter>
+  </Virksomhet>
+  <Virksomhet>
+    <Hovedenhet>
+      <Organisasjonsnummer>985357994</Organisasjonsnummer>
+      <Organisasjonsform>Enkeltpersonforetak</Organisasjonsform>
+      <Navn>FRANK'S VINDUSPUSS Frank Langseth</Navn>
+      <Næringskoder>
+        <Kode verdi="81.210">Rengjøring av bygninger</Kode>
+      </Næringskoder>
+      <Godkjenningsstatus>Godkjent uten ansatte</Godkjenningsstatus>
+      <Kontaktinformasjon>
+        <Telefon />
+        <Mobil>90983524</Mobil>
+        <Webadresse />
+      </Kontaktinformasjon>
+      <Stedsinformasjon>
+        <Postadresse>
+          <Adresselinje1 />
+          <Adresselinje2 />
+          <Postnummer />
+          <Poststed />
+          <Landkode />
+          <Land />
+        </Postadresse>
+        <Forretningsadresse>
+          <Adresselinje1>Prost Stabels vei 428</Adresselinje1>
+          <Adresselinje2 />
+          <Postnummer>2019</Postnummer>
+          <Poststed>SKEDSMOKORSET</Poststed>
+          <Kommunenummer>3205</Kommunenummer>
+          <Kommunenavn>LILLESTRØM</Kommunenavn>
+          <Fylkesnummer>32</Fylkesnummer>
+          <Fylkesnavn>Akershus</Fylkesnavn>
+          <Landkode>NO</Landkode>
+          <Land>Norge</Land>
+        </Forretningsadresse>
+      </Stedsinformasjon>
+    </Hovedenhet>
+    <Underenheter>
+      <Avdeling Avgrensning="Næring">
+        <Organisasjonsnummer>985388164</Organisasjonsnummer>
+        <Navn>FRANK'S VINDUSPUSS Frank Langseth</Navn>
+        <Næringskoder>
+          <Kode verdi="81.210">Rengjøring av bygninger</Kode>
+        </Næringskoder>
+        <Stedsinformasjon>
+          <Postadresse>
+            <Adresselinje1 />
+            <Adresselinje2 />
+            <Postnummer />
+            <Poststed />
+            <Landkode />
+            <Land />
+          </Postadresse>
+          <Forretningsadresse>
+            <Adresselinje1>Prost Stabels vei 428</Adresselinje1>
+            <Adresselinje2 />
+            <Postnummer>2019</Postnummer>
+            <Poststed>SKEDSMOKORSET</Poststed>
+            <Kommunenummer>3205</Kommunenummer>
+            <Kommunenavn>LILLESTRØM</Kommunenavn>
+            <Fylkesnummer>32</Fylkesnummer>
+            <Fylkesnavn>Akershus</Fylkesnavn>
+            <Landkode>NO</Landkode>
+            <Land>Norge</Land>
+          </Forretningsadresse>
+        </Stedsinformasjon>
+      </Avdeling>
+    </Underenheter>
+  </Virksomhet>
+</Register>

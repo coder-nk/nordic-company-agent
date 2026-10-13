@@ -1,0 +1,774 @@
+{
+ "note": "GLEIF lei-records hits for 500 random universe orgnrs (5 batched requests, both orgnr formats); first 6 records",
+ "data": [
+  {
+   "type": "lei-records",
+   "id": "549300FFQHRSTCUH6485",
+   "attributes": {
+    "lei": "549300FFQHRSTCUH6485",
+    "entity": {
+     "legalName": {
+      "name": "GUDMESTAD TRANSPORT AS",
+      "language": "no"
+     },
+     "otherNames": [],
+     "transliteratedOtherNames": [],
+     "legalAddress": {
+      "language": "no",
+      "addressLines": [
+       "Folkvordveien 30"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Sandnes",
+      "region": "NO-11",
+      "country": "NO",
+      "postalCode": "4318"
+     },
+     "headquartersAddress": {
+      "language": "no",
+      "addressLines": [
+       "Folkvordveien 30"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Sandnes",
+      "region": "NO-11",
+      "country": "NO",
+      "postalCode": "4318"
+     },
+     "registeredAt": {
+      "id": "RA000472",
+      "other": null
+     },
+     "registeredAs": "982 786 223",
+     "jurisdiction": "NO",
+     "category": "GENERAL",
+     "legalForm": {
+      "id": "YI42",
+      "other": null
+     },
+     "associatedEntity": {
+      "lei": null,
+      "name": null
+     },
+     "status": "ACTIVE",
+     "expiration": {
+      "date": null,
+      "reason": null
+     },
+     "successorEntity": {
+      "lei": null,
+      "name": null
+     },
+     "successorEntities": [],
+     "creationDate": null,
+     "subCategory": null,
+     "otherAddresses": [],
+     "eventGroups": []
+    },
+    "registration": {
+     "initialRegistrationDate": "2018-12-14T15:32:00Z",
+     "lastUpdateDate": "2023-08-02T12:22:00Z",
+     "status": "LAPSED",
+     "nextRenewalDate": "2019-12-13T15:04:00Z",
+     "managingLou": "549300O897ZC5H7CY412",
+     "corroborationLevel": "FULLY_CORROBORATED",
+     "validatedAt": {
+      "id": "RA000472",
+      "other": null
+     },
+     "validatedAs": "982 786 223",
+     "otherValidationAuthorities": []
+    },
+    "bic": null,
+    "mic": null,
+    "ocid": null,
+    "qcc": "QNO79RH00Q",
+    "gem": null,
+    "spglobal": [
+     "223392513"
+    ],
+    "conformityFlag": "NON_CONFORMING"
+   },
+   "relationships": {
+    "managing-lou": {
+     "links": {
+      "related": "https://api.gleif.org/api/v1/lei-records/549300FFQHRSTCUH6485/managing-lou"
+     }
+    },
+    "lei-issuer": {
+     "links": {
+      "related": "https://api.gleif.org/api/v1/lei-records/549300FFQHRSTCUH6485/lei-issuer"
+     }
+    },
+    "field-modifications": {
+     "links": {
+      "related": "https://api.gleif.org/api/v1/lei-records/549300FFQHRSTCUH6485/field-modifications"
+     }
+    },
+    "direct-parent": {
+     "links": {
+      "reporting-exception": "https://api.gleif.org/api/v1/lei-records/549300FFQHRSTCUH6485/direct-parent-reporting-exception"
+     }
+    },
+    "ultimate-parent": {
+     "links": {
+      "reporting-exception": "https://api.gleif.org/api/v1/lei-records/549300FFQHRSTCUH6485/ultimate-parent-reporting-exception"
+     }
+    }
+   },
+   "links": {
+    "self": "https://api.gleif.org/api/v1/lei-records/549300FFQHRSTCUH6485"
+   }
+  },
+  {
+   "type": "lei-records",
+   "id": "254900QP2MSOIEOW4P70",
+   "attributes": {
+    "lei": "254900QP2MSOIEOW4P70",
+    "entity": {
+     "legalName": {
+      "name": "SØK AS",
+      "language": "no"
+     },
+     "otherNames": [],
+     "transliteratedOtherNames": [
+      {
+       "name": "SOEK AS",
+       "language": "no",
+       "type": "PREFERRED_ASCII_TRANSLITERATED_LEGAL_NAME"
+      }
+     ],
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "Groennes 51"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "FLEKKEFJORD",
+      "region": null,
+      "country": "NO",
+      "postalCode": "4407"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "Groennes 51"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "FLEKKEFJORD",
+      "region": null,
+      "country": "NO",
+      "postalCode": "4407"
+     },
+     "registeredAt": {
+      "id": "RA000472",
+      "other": null
+     },
+     "registeredAs": "929 555 864",
+     "jurisdiction": "NO",
+     "category": "GENERAL",
+     "legalForm": {
+      "id": "YI42",
+      "other": null
+     },
+     "associatedEntity": {
+      "lei": null,
+      "name": null
+     },
+     "status": "ACTIVE",
+     "expiration": {
+      "date": null,
+      "reason": null
+     },
+     "successorEntity": {
+      "lei": null,
+      "name": null
+     },
+     "successorEntities": [],
+     "creationDate": "2022-07-01T00:00:00Z",
+     "subCategory": null,
+     "otherAddresses": [],
+     "eventGroups": []
+    },
+    "registration": {
+     "initialRegistrationDate": "2024-04-22T10:45:42Z",
+     "lastUpdateDate": "2025-04-22T13:30:07Z",
+     "status": "LAPSED",
+     "nextRenewalDate": "2025-04-22T10:45:42Z",
+     "managingLou": "5493001KJTIIGC8Y1R12",
+     "corroborationLevel": "FULLY_CORROBORATED",
+     "validatedAt": {
+      "id": "RA000472",
+      "other": null
+     },
+     "validatedAs": "929 555 864",
+     "otherValidationAuthorities": []
+    },
+    "bic": null,
+    "mic": null,
+    "ocid": null,
+    "qcc": "QNOK83VGR8",
+    "gem": null,
+    "spglobal": [
+     "1878883564"
+    ],
+    "conformityFlag": "NON_CONFORMING"
+   },
+   "relationships": {
+    "managing-lou": {
+     "links": {
+      "related": "https://api.gleif.org/api/v1/lei-records/254900QP2MSOIEOW4P70/managing-lou"
+     }
+    },
+    "lei-issuer": {
+     "links": {
+      "related": "https://api.gleif.org/api/v1/lei-records/254900QP2MSOIEOW4P70/lei-issuer"
+     }
+    },
+    "field-modifications": {
+     "links": {
+      "related": "https://api.gleif.org/api/v1/lei-records/254900QP2MSOIEOW4P70/field-modifications"
+     }
+    },
+    "direct-parent": {
+     "links": {
+      "reporting-exception": "https://api.gleif.org/api/v1/lei-records/254900QP2MSOIEOW4P70/direct-parent-reporting-exception"
+     }
+    },
+    "ultimate-parent": {
+     "links": {
+      "reporting-exception": "https://api.gleif.org/api/v1/lei-records/254900QP2MSOIEOW4P70/ultimate-parent-reporting-exception"
+     }
+    }
+   },
+   "links": {
+    "self": "https://api.gleif.org/api/v1/lei-records/254900QP2MSOIEOW4P70"
+   }
+  },
+  {
+   "type": "lei-records",
+   "id": "254900GHXISHTKUOTH81",
+   "attributes": {
+    "lei": "254900GHXISHTKUOTH81",
+    "entity": {
+     "legalName": {
+      "name": "CLARENCE PARK AS",
+      "language": "no"
+     },
+     "otherNames": [],
+     "transliteratedOtherNames": [],
+     "legalAddress": {
+      "language": "no",
+      "addressLines": [
+       "Karihaugveien 89"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "OSLO",
+      "region": null,
+      "country": "NO",
+      "postalCode": "1086"
+     },
+     "headquartersAddress": {
+      "language": "no",
+      "addressLines": [
+       "Karihaugveien 89"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "OSLO",
+      "region": null,
+      "country": "NO",
+      "postalCode": "1086"
+     },
+     "registeredAt": {
+      "id": "RA000472",
+      "other": null
+     },
+     "registeredAs": "911 841 428",
+     "jurisdiction": "NO",
+     "category": "GENERAL",
+     "legalForm": {
+      "id": "YI42",
+      "other": null
+     },
+     "associatedEntity": {
+      "lei": null,
+      "name": null
+     },
+     "status": "ACTIVE",
+     "expiration": {
+      "date": null,
+      "reason": null
+     },
+     "successorEntity": {
+      "lei": null,
+      "name": null
+     },
+     "successorEntities": [],
+     "creationDate": "2013-04-01T00:00:00Z",
+     "subCategory": null,
+     "otherAddresses": [],
+     "eventGroups": []
+    },
+    "registration": {
+     "initialRegistrationDate": "2019-07-31T15:21:32Z",
+     "lastUpdateDate": "2025-12-20T13:03:40Z",
+     "status": "ISSUED",
+     "nextRenewalDate": "2027-02-18T12:34:15Z",
+     "managingLou": "529900T8BM49AURSDO55",
+     "corroborationLevel": "FULLY_CORROBORATED",
+     "validatedAt": {
+      "id": "RA000472",
+      "other": null
+     },
+     "validatedAs": "911 841 428",
+     "otherValidationAuthorities": []
+    },
+    "bic": null,
+    "mic": null,
+    "ocid": "no/911841428",
+    "qcc": "QNOH7UV3UP",
+    "gem": null,
+    "spglobal": [
+     "631612574"
+    ],
+    "conformityFlag": "CONFORMING"
+   },
+   "relationships": {
+    "managing-lou": {
+     "links": {
+      "related": "https://api.gleif.org/api/v1/lei-records/254900GHXISHTKUOTH81/managing-lou"
+     }
+    },
+    "lei-issuer": {
+     "links": {
+      "related": "https://api.gleif.org/api/v1/lei-records/254900GHXISHTKUOTH81/lei-issuer"
+     }
+    },
+    "field-modifications": {
+     "links": {
+      "related": "https://api.gleif.org/api/v1/lei-records/254900GHXISHTKUOTH81/field-modifications"
+     }
+    },
+    "direct-parent": {
+     "links": {
+      "reporting-exception": "https://api.gleif.org/api/v1/lei-records/254900GHXISHTKUOTH81/direct-parent-reporting-exception"
+     }
+    },
+    "ultimate-parent": {
+     "links": {
+      "reporting-exception": "https://api.gleif.org/api/v1/lei-records/254900GHXISHTKUOTH81/ultimate-parent-reporting-exception"
+     }
+    }
+   },
+   "links": {
+    "self": "https://api.gleif.org/api/v1/lei-records/254900GHXISHTKUOTH81"
+   }
+  },
+  {
+   "type": "lei-records",
+   "id": "98450099782F3A6S1052",
+   "attributes": {
+    "lei": "98450099782F3A6S1052",
+    "entity": {
+     "legalName": {
+      "name": "HOVDEN SENIOR AS",
+      "language": "no"
+     },
+     "otherNames": [],
+     "transliteratedOtherNames": [],
+     "legalAddress": {
+      "language": "no",
+      "addressLines": [
+       "Kjøde 48"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "SELJE",
+      "region": "NO-46",
+      "country": "NO",
+      "postalCode": "6740"
+     },
+     "headquartersAddress": {
+      "language": "no",
+      "addressLines": [
+       "Kjøde 48"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "SELJE",
+      "region": "NO-46",
+      "country": "NO",
+      "postalCode": "6740"
+     },
+     "registeredAt": {
+      "id": "RA000472",
+      "other": null
+     },
+     "registeredAs": "974 536 986",
+     "jurisdiction": "NO",
+     "category": "GENERAL",
+     "legalForm": {
+      "id": "YI42",
+      "other": null
+     },
+     "associatedEntity": {
+      "lei": null,
+      "name": null
+     },
+     "status": "ACTIVE",
+     "expiration": {
+      "date": null,
+      "reason": null
+     },
+     "successorEntity": {
+      "lei": null,
+      "name": null
+     },
+     "successorEntities": [],
+     "creationDate": "1995-05-01T00:00:00Z",
+     "subCategory": null,
+     "otherAddresses": [],
+     "eventGroups": []
+    },
+    "registration": {
+     "initialRegistrationDate": "2019-12-09T11:16:23Z",
+     "lastUpdateDate": "2026-06-15T13:11:48Z",
+     "status": "ISSUED",
+     "nextRenewalDate": "2027-06-15T13:11:42Z",
+     "managingLou": "529900T8BM49AURSDO55",
+     "corroborationLevel": "FULLY_CORROBORATED",
+     "validatedAt": {
+      "id": "RA000472",
+      "other": null
+     },
+     "validatedAs": "974 536 986",
+     "otherValidationAuthorities": []
+    },
+    "bic": null,
+    "mic": null,
+    "ocid": "no/974536986",
+    "qcc": "QNONX5RAVX",
+    "gem": null,
+    "spglobal": [
+     "253022767"
+    ],
+    "conformityFlag": "CONFORMING"
+   },
+   "relationships": {
+    "managing-lou": {
+     "links": {
+      "related": "https://api.gleif.org/api/v1/lei-records/98450099782F3A6S1052/managing-lou"
+     }
+    },
+    "lei-issuer": {
+     "links": {
+      "related": "https://api.gleif.org/api/v1/lei-records/98450099782F3A6S1052/lei-issuer"
+     }
+    },
+    "field-modifications": {
+     "links": {
+      "related": "https://api.gleif.org/api/v1/lei-records/98450099782F3A6S1052/field-modifications"
+     }
+    },
+    "direct-parent": {
+     "links": {
+      "reporting-exception": "https://api.gleif.org/api/v1/lei-records/98450099782F3A6S1052/direct-parent-reporting-exception"
+     }
+    },
+    "ultimate-parent": {
+     "links": {
+      "reporting-exception": "https://api.gleif.org/api/v1/lei-records/98450099782F3A6S1052/ultimate-parent-reporting-exception"
+     }
+    }
+   },
+   "links": {
+    "self": "https://api.gleif.org/api/v1/lei-records/98450099782F3A6S1052"
+   }
+  },
+  {
+   "type": "lei-records",
+   "id": "98450013C0B73C0I1E31",
+   "attributes": {
+    "lei": "98450013C0B73C0I1E31",
+    "entity": {
+     "legalName": {
+      "name": "CONSARTO AS",
+      "language": "no"
+     },
+     "otherNames": [],
+     "transliteratedOtherNames": [],
+     "legalAddress": {
+      "language": "no",
+      "addressLines": [
+       "Lørenveien 69A"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "OSLO",
+      "region": "NO-03",
+      "country": "NO",
+      "postalCode": "0585"
+     },
+     "headquartersAddress": {
+      "language": "no",
+      "addressLines": [
+       "Lørenveien 69A"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "OSLO",
+      "region": "NO-03",
+      "country": "NO",
+      "postalCode": "0585"
+     },
+     "registeredAt": {
+      "id": "RA000472",
+      "other": null
+     },
+     "registeredAs": "935 094 577",
+     "jurisdiction": "NO",
+     "category": "GENERAL",
+     "legalForm": {
+      "id": "YI42",
+      "other": null
+     },
+     "associatedEntity": {
+      "lei": null,
+      "name": null
+     },
+     "status": "ACTIVE",
+     "expiration": {
+      "date": null,
+      "reason": null
+     },
+     "successorEntity": {
+      "lei": null,
+      "name": null
+     },
+     "successorEntities": [],
+     "creationDate": "2025-02-15T00:00:00Z",
+     "subCategory": null,
+     "otherAddresses": [],
+     "eventGroups": []
+    },
+    "registration": {
+     "initialRegistrationDate": "2025-07-16T06:30:33Z",
+     "lastUpdateDate": "2026-05-27T09:09:13Z",
+     "status": "ISSUED",
+     "nextRenewalDate": "2027-07-16T06:30:35Z",
+     "managingLou": "529900T8BM49AURSDO55",
+     "corroborationLevel": "FULLY_CORROBORATED",
+     "validatedAt": {
+      "id": "RA000472",
+      "other": null
+     },
+     "validatedAs": "935 094 577",
+     "otherValidationAuthorities": []
+    },
+    "bic": null,
+    "mic": null,
+    "ocid": null,
+    "qcc": "QNO9GRGGY0",
+    "gem": null,
+    "spglobal": [
+     "1953660419"
+    ],
+    "conformityFlag": "CONFORMING"
+   },
+   "relationships": {
+    "managing-lou": {
+     "links": {
+      "related": "https://api.gleif.org/api/v1/lei-records/98450013C0B73C0I1E31/managing-lou"
+     }
+    },
+    "lei-issuer": {
+     "links": {
+      "related": "https://api.gleif.org/api/v1/lei-records/98450013C0B73C0I1E31/lei-issuer"
+     }
+    },
+    "field-modifications": {
+     "links": {
+      "related": "https://api.gleif.org/api/v1/lei-records/98450013C0B73C0I1E31/field-modifications"
+     }
+    },
+    "direct-parent": {
+     "links": {
+      "reporting-exception": "https://api.gleif.org/api/v1/lei-records/98450013C0B73C0I1E31/direct-parent-reporting-exception"
+     }
+    },
+    "ultimate-parent": {
+     "links": {
+      "reporting-exception": "https://api.gleif.org/api/v1/lei-records/98450013C0B73C0I1E31/ultimate-parent-reporting-exception"
+     }
+    }
+   },
+   "links": {
+    "self": "https://api.gleif.org/api/v1/lei-records/98450013C0B73C0I1E31"
+   }
+  },
+  {
+   "type": "lei-records",
+   "id": "549300T9GFZ64IZS9L30",
+   "attributes": {
+    "lei": "549300T9GFZ64IZS9L30",
+    "entity": {
+     "legalName": {
+      "name": "FIRST BUNKERING AS",
+      "language": "no"
+     },
+     "otherNames": [],
+     "transliteratedOtherNames": [],
+     "legalAddress": {
+      "language": "no",
+      "addressLines": [
+       "Østre Strandgate 56B"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Kristiansand S",
+      "region": "NO-42",
+      "country": "NO",
+      "postalCode": "4608"
+     },
+     "headquartersAddress": {
+      "language": "no",
+      "addressLines": [
+       "Østre Strandgate 56B"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Kristiansand S",
+      "region": "NO-42",
+      "country": "NO",
+      "postalCode": "4608"
+     },
+     "registeredAt": {
+      "id": "RA000472",
+      "other": null
+     },
+     "registeredAs": "998 360 080",
+     "jurisdiction": "NO",
+     "category": "GENERAL",
+     "legalForm": {
+      "id": "YI42",
+      "other": null
+     },
+     "associatedEntity": {
+      "lei": null,
+      "name": null
+     },
+     "status": "ACTIVE",
+     "expiration": {
+      "date": null,
+      "reason": null
+     },
+     "successorEntity": {
+      "lei": null,
+      "name": null
+     },
+     "successorEntities": [],
+     "creationDate": "2012-04-18T00:00:00Z",
+     "subCategory": null,
+     "otherAddresses": [
+      {
+       "fieldType": "TransliteratedOtherAddress",
+       "language": "no",
+       "type": "AUTO_ASCII_TRANSLITERATED_LEGAL_ADDRESS",
+       "addressLines": [
+        "Ostre Strandgate 56B"
+       ],
+       "city": "Kristiansand S",
+       "region": "NO-42",
+       "country": "NO",
+       "postalCode": "4608"
+      },
+      {
+       "fieldType": "TransliteratedOtherAddress",
+       "language": "no",
+       "type": "AUTO_ASCII_TRANSLITERATED_HEADQUARTERS_ADDRESS",
+       "addressLines": [
+        "Ostre Strandgate 56B"
+       ],
+       "city": "Kristiansand S",
+       "region": "NO-42",
+       "country": "NO",
+       "postalCode": "4608"
+      }
+     ],
+     "eventGroups": []
+    },
+    "registration": {
+     "initialRegistrationDate": "2017-09-02T01:43:00Z",
+     "lastUpdateDate": "2026-06-22T13:21:00Z",
+     "status": "ISSUED",
+     "nextRenewalDate": "2027-08-20T07:39:00Z",
+     "managingLou": "549300O897ZC5H7CY412",
+     "corroborationLevel": "FULLY_CORROBORATED",
+     "validatedAt": {
+      "id": "RA000472",
+      "other": null
+     },
+     "validatedAs": "998 360 080",
+     "otherValidationAuthorities": []
+    },
+    "bic": null,
+    "mic": null,
+    "ocid": null,
+    "qcc": "QNO82JDAJA",
+    "gem": null,
+    "spglobal": [
+     "697441997"
+    ],
+    "conformityFlag": "CONFORMING"
+   },
+   "relationships": {
+    "managing-lou": {
+     "links": {
+      "related": "https://api.gleif.org/api/v1/lei-records/549300T9GFZ64IZS9L30/managing-lou"
+     }
+    },
+    "lei-issuer": {
+     "links": {
+      "related": "https://api.gleif.org/api/v1/lei-records/549300T9GFZ64IZS9L30/lei-issuer"
+     }
+    },
+    "field-modifications": {
+     "links": {
+      "related": "https://api.gleif.org/api/v1/lei-records/549300T9GFZ64IZS9L30/field-modifications"
+     }
+    },
+    "direct-parent": {
+     "links": {
+      "reporting-exception": "https://api.gleif.org/api/v1/lei-records/549300T9GFZ64IZS9L30/direct-parent-reporting-exception"
+     }
+    },
+    "ultimate-parent": {
+     "links": {
+      "reporting-exception": "https://api.gleif.org/api/v1/lei-records/549300T9GFZ64IZS9L30/ultimate-parent-reporting-exception"
+     }
+    }
+   },
+   "links": {
+    "self": "https://api.gleif.org/api/v1/lei-records/549300T9GFZ64IZS9L30"
+   }
+  }
+ ]
+}

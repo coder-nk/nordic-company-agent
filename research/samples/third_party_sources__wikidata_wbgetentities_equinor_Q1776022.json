@@ -1,0 +1,5730 @@
+{
+ "type": "item",
+ "id": "Q1776022",
+ "labels": {
+  "nn": {
+   "language": "nn",
+   "value": "Equinor"
+  },
+  "en": {
+   "language": "en",
+   "value": "Equinor ASA"
+  },
+  "nb": {
+   "language": "nb",
+   "value": "Equinor"
+  }
+ },
+ "descriptions": {
+  "en": {
+   "language": "en",
+   "value": "Norwegian oil and gas company"
+  },
+  "nb": {
+   "language": "nb",
+   "value": "norsk oljeselskap"
+  },
+  "nn": {
+   "language": "nn",
+   "value": "norsk oljeselskap"
+  }
+ },
+ "claims": {
+  "P31": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P31",
+     "hash": "70d99a128c75e28f9a851bb5ac0d401b3ca19225",
+     "datavalue": {
+      "value": {
+       "entity-type": "item",
+       "numeric-id": 21980538,
+       "id": "Q21980538"
+      },
+      "type": "wikibase-entityid"
+     },
+     "datatype": "wikibase-item"
+    },
+    "type": "statement",
+    "id": "Q1776022$3ea9dcab-48d0-0ac9-e50c-0a29a8ddbb61",
+    "rank": "normal"
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P31",
+     "hash": "adc0b886317645cd628f6bb62a14b6c120c8298f",
+     "datavalue": {
+      "value": {
+       "entity-type": "item",
+       "numeric-id": 270791,
+       "id": "Q270791"
+      },
+      "type": "wikibase-entityid"
+     },
+     "datatype": "wikibase-item"
+    },
+    "type": "statement",
+    "id": "Q1776022$0950c963-4a2f-5ea6-7e0f-65ac81bf83b9",
+    "rank": "normal"
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P31",
+     "hash": "af3410ae4f813c757b304403dd1af5becc963ebe",
+     "datavalue": {
+      "value": {
+       "entity-type": "item",
+       "numeric-id": 891723,
+       "id": "Q891723"
+      },
+      "type": "wikibase-entityid"
+     },
+     "datatype": "wikibase-item"
+    },
+    "type": "statement",
+    "id": "Q1776022$AF7EB01B-0CD9-4BCB-A9BC-2CEF8E947E6B",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "96445edd0c74078756fba6f66de4b4cf46064af1",
+      "snaks": {
+       "P4656": [
+        {
+         "snaktype": "value",
+         "property": "P4656",
+         "hash": "1d0aeb900a1b92550e42fc2d0bde0c2d0e936c46",
+         "datavalue": {
+          "value": "https://en.wikipedia.org/wiki/Category:Companies_listed_on_the_New_York_Stock_Exchange",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ],
+       "P813": [
+        {
+         "snaktype": "value",
+         "property": "P813",
+         "hash": "ec11100215a5926044c30f24900adbf61070d424",
+         "datavalue": {
+          "value": {
+           "time": "+2023-02-21T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P4656",
+       "P813"
+      ]
+     }
+    ]
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P31",
+     "hash": "4e6b00d4bbc1e1ebae7ec5cdade90c43ec94e1c8",
+     "datavalue": {
+      "value": {
+       "entity-type": "item",
+       "numeric-id": 14941854,
+       "id": "Q14941854"
+      },
+      "type": "wikibase-entityid"
+     },
+     "datatype": "wikibase-item"
+    },
+    "type": "statement",
+    "id": "Q1776022$ec5cd6f1-409c-0c75-ac73-2ad6b2ddce3c",
+    "rank": "normal"
+   }
+  ],
+  "P373": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P373",
+     "hash": "58091849c61e8500726a97b60b3339777711a58b",
+     "datavalue": {
+      "value": "Equinor",
+      "type": "string"
+     },
+     "datatype": "string"
+    },
+    "type": "statement",
+    "id": "q1776022$BD1E9DAB-1B16-4106-84FD-D4C20E498A24",
+    "rank": "normal"
+   }
+  ],
+  "P414": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P414",
+     "hash": "10919b941157200ebe2594058eee53f475fcb0d7",
+     "datavalue": {
+      "value": {
+       "entity-type": "item",
+       "numeric-id": 909158,
+       "id": "Q909158"
+      },
+      "type": "wikibase-entityid"
+     },
+     "datatype": "wikibase-item"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P249": [
+      {
+       "snaktype": "value",
+       "property": "P249",
+       "hash": "f80f4bdb12d1a779d0fbbbe169c763d59e5331eb",
+       "datavalue": {
+        "value": "EQNR",
+        "type": "string"
+       },
+       "datatype": "string"
+      }
+     ],
+     "P580": [
+      {
+       "snaktype": "value",
+       "property": "P580",
+       "hash": "342baedeb89c75d4fb62aca722f2bab2fae8e76c",
+       "datavalue": {
+        "value": {
+         "time": "+2001-06-18T00:00:00Z",
+         "timezone": 0,
+         "before": 0,
+         "after": 0,
+         "precision": 11,
+         "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+        },
+        "type": "time"
+       },
+       "datatype": "time"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P249",
+     "P580"
+    ],
+    "id": "Q1776022$d59560b6-4681-cae0-f0d2-e44c657f783f",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "10be07f6b6d71aac3ddda07b18a41854960ded03",
+      "snaks": {
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "a1b6c1882c98feeb9d09abb0516b593e881a0a1a",
+         "datavalue": {
+          "value": "https://live.euronext.com/en/product/equities/no0010096985-xosl",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P854"
+      ]
+     }
+    ]
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P414",
+     "hash": "c5a10c8d1d209809e1ceb1c56a77a53b1f3c9892",
+     "datavalue": {
+      "value": {
+       "entity-type": "item",
+       "numeric-id": 13677,
+       "id": "Q13677"
+      },
+      "type": "wikibase-entityid"
+     },
+     "datatype": "wikibase-item"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P249": [
+      {
+       "snaktype": "value",
+       "property": "P249",
+       "hash": "f80f4bdb12d1a779d0fbbbe169c763d59e5331eb",
+       "datavalue": {
+        "value": "EQNR",
+        "type": "string"
+       },
+       "datatype": "string"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P249"
+    ],
+    "id": "Q1776022$566bd028-42b9-5260-c638-47be7f0b51b9",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "96445edd0c74078756fba6f66de4b4cf46064af1",
+      "snaks": {
+       "P4656": [
+        {
+         "snaktype": "value",
+         "property": "P4656",
+         "hash": "1d0aeb900a1b92550e42fc2d0bde0c2d0e936c46",
+         "datavalue": {
+          "value": "https://en.wikipedia.org/wiki/Category:Companies_listed_on_the_New_York_Stock_Exchange",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ],
+       "P813": [
+        {
+         "snaktype": "value",
+         "property": "P813",
+         "hash": "ec11100215a5926044c30f24900adbf61070d424",
+         "datavalue": {
+          "value": {
+           "time": "+2023-02-21T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P4656",
+       "P813"
+      ]
+     }
+    ]
+   }
+  ],
+  "P159": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P159",
+     "hash": "a495d193608154f438323aedeed584302c4e9ebd",
+     "datavalue": {
+      "value": {
+       "entity-type": "item",
+       "numeric-id": 25416,
+       "id": "Q25416"
+      },
+      "type": "wikibase-entityid"
+     },
+     "datatype": "wikibase-item"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P281": [
+      {
+       "snaktype": "value",
+       "property": "P281",
+       "hash": "603527b5103ac289ff3830f885bfcee6ba06037c",
+       "datavalue": {
+        "value": "4035",
+        "type": "string"
+       },
+       "datatype": "string"
+      }
+     ],
+     "P625": [
+      {
+       "snaktype": "value",
+       "property": "P625",
+       "hash": "dc7bfa84b6567e53efbc55c7f3b48f23e6db5b79",
+       "datavalue": {
+        "value": {
+         "latitude": 58.8918,
+         "longitude": 5.71745,
+         "altitude": null,
+         "precision": 2.7777777777778e-06,
+         "globe": "http://www.wikidata.org/entity/Q2"
+        },
+        "type": "globecoordinate"
+       },
+       "datatype": "globe-coordinate"
+      }
+     ],
+     "P6375": [
+      {
+       "snaktype": "value",
+       "property": "P6375",
+       "hash": "e0ee44b9346b7c2e747f3d41ff44fc5f179f40fc",
+       "datavalue": {
+        "value": {
+         "text": "Forusbeen 50",
+         "language": "nb"
+        },
+        "type": "monolingualtext"
+       },
+       "datatype": "monolingualtext"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P281",
+     "P625",
+     "P6375"
+    ],
+    "id": "Q1776022$E741D506-14D1-47C9-A0B8-80CE5C66FB9B",
+    "rank": "normal"
+   }
+  ],
+  "P571": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P571",
+     "hash": "4a133dd2cf750f25f4c2ce4428c35f324593eb5f",
+     "datavalue": {
+      "value": {
+       "time": "+1972-06-14T00:00:00Z",
+       "timezone": 0,
+       "before": 0,
+       "after": 0,
+       "precision": 11,
+       "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+      },
+      "type": "time"
+     },
+     "datatype": "time"
+    },
+    "type": "statement",
+    "id": "Q1776022$1f3d6a14-4747-418e-8a83-74c5ce71a900",
+    "rank": "normal"
+   }
+  ],
+  "P169": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P169",
+     "hash": "6759749bc5fb9b700a1c3994785c4dd61b49b9b6",
+     "datavalue": {
+      "value": {
+       "entity-type": "item",
+       "numeric-id": 28047991,
+       "id": "Q28047991"
+      },
+      "type": "wikibase-entityid"
+     },
+     "datatype": "wikibase-item"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P580": [
+      {
+       "snaktype": "value",
+       "property": "P580",
+       "hash": "a9e261eb7851918ac90060a07695aafa0ee69eee",
+       "datavalue": {
+        "value": {
+         "time": "+2020-11-02T00:00:00Z",
+         "timezone": 0,
+         "before": 0,
+         "after": 0,
+         "precision": 11,
+         "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+        },
+        "type": "time"
+       },
+       "datatype": "time"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P580"
+    ],
+    "id": "Q1776022$fe45a2e4-408d-f25b-b35b-c6b1ae63b12b",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "cc20667588c1ba981a81be18b0be2e0400af7cb0",
+      "snaks": {
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "410d329c3c8d1ea4b9c3ff569b1c30b655d926f3",
+         "datavalue": {
+          "value": "https://www.equinor.com/en/about-us/corporate-executive-committee/anders-opedal.html",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ],
+       "P813": [
+        {
+         "snaktype": "value",
+         "property": "P813",
+         "hash": "c8fffa082c4aed7a8e961c432ee613f60e636597",
+         "datavalue": {
+          "value": {
+           "time": "+2020-04-18T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ],
+       "P123": [
+        {
+         "snaktype": "value",
+         "property": "P123",
+         "hash": "5263c09c5db1d0e91b6d797270f1945ccbaf19b8",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1776022,
+           "id": "Q1776022"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ],
+       "P1065": [
+        {
+         "snaktype": "value",
+         "property": "P1065",
+         "hash": "90653124b89d2017137bb8bdbd79c7b0838c668a",
+         "datavalue": {
+          "value": "https://web.archive.org/web/20200810064440/https://www.equinor.com/en/about-us/corporate-executive-committee/anders-opedal.html",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ],
+       "P2960": [
+        {
+         "snaktype": "value",
+         "property": "P2960",
+         "hash": "af80c6556dc0e5e9b877a14dd78d239d27d644fa",
+         "datavalue": {
+          "value": {
+           "time": "+2020-08-10T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P854",
+       "P813",
+       "P123",
+       "P1065",
+       "P2960"
+      ]
+     }
+    ]
+   }
+  ],
+  "P452": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P452",
+     "hash": "448533a657ae8ab94b9497db73505aca973388ad",
+     "datavalue": {
+      "value": {
+       "entity-type": "item",
+       "numeric-id": 862571,
+       "id": "Q862571"
+      },
+      "type": "wikibase-entityid"
+     },
+     "datatype": "wikibase-item"
+    },
+    "type": "statement",
+    "id": "Q1776022$8f8e42aa-43e9-0408-656c-b7fa8452f3c7",
+    "rank": "normal"
+   }
+  ],
+  "P856": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P856",
+     "hash": "988150b9606456589cf12fd378729935782588c0",
+     "datavalue": {
+      "value": "https://equinor.com",
+      "type": "string"
+     },
+     "datatype": "url"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P407": [
+      {
+       "snaktype": "value",
+       "property": "P407",
+       "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 1860,
+         "id": "Q1860"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ],
+     "P1001": [
+      {
+       "snaktype": "value",
+       "property": "P1001",
+       "hash": "e5b1dedd20b21dd1893dedaf3f4196e0c01aae3e",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 20,
+         "id": "Q20"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P407",
+     "P1001"
+    ],
+    "id": "Q1776022$e8a3af62-421c-ceea-ae1c-d5b4a34faf62",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "9f2eb4df006490cc1603c6b7656701bf81ea342a",
+      "snaks": {
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "9d8485d30ad1bf77993278ac1390c8c3bb695a9a",
+         "datavalue": {
+          "value": "https://equinor.com/about-us/all-sites",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P854"
+      ]
+     }
+    ]
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P856",
+     "hash": "2bac6a86b060cf66254c993d7cd9165b27cff313",
+     "datavalue": {
+      "value": "https://equinor.no",
+      "type": "string"
+     },
+     "datatype": "url"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P407": [
+      {
+       "snaktype": "value",
+       "property": "P407",
+       "hash": "606825e6b0d89c91936ce3fde73e10b917553f13",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 25167,
+         "id": "Q25167"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ],
+     "P1001": [
+      {
+       "snaktype": "value",
+       "property": "P1001",
+       "hash": "e5b1dedd20b21dd1893dedaf3f4196e0c01aae3e",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 20,
+         "id": "Q20"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P407",
+     "P1001"
+    ],
+    "id": "Q1776022$a815735e-4d3e-5161-8a83-ae1382e66b48",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "9f2eb4df006490cc1603c6b7656701bf81ea342a",
+      "snaks": {
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "9d8485d30ad1bf77993278ac1390c8c3bb695a9a",
+         "datavalue": {
+          "value": "https://equinor.com/about-us/all-sites",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P854"
+      ]
+     }
+    ]
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P856",
+     "hash": "7cfaf8f21d0dea1e44c95ff3bbd5123af115e6d8",
+     "datavalue": {
+      "value": "https://equinor.ar",
+      "type": "string"
+     },
+     "datatype": "url"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P407": [
+      {
+       "snaktype": "value",
+       "property": "P407",
+       "hash": "ffe70325d10cfc55f0dca807ed80ca0b5b97c472",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 1321,
+         "id": "Q1321"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ],
+     "P1001": [
+      {
+       "snaktype": "value",
+       "property": "P1001",
+       "hash": "9b72b1a19e0ec2ebc4fd1d6dab7a3fc313c98165",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 414,
+         "id": "Q414"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P407",
+     "P1001"
+    ],
+    "id": "Q1776022$12f7e6c2-4010-8b90-fa57-4866b1ebd9ec",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "9f2eb4df006490cc1603c6b7656701bf81ea342a",
+      "snaks": {
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "9d8485d30ad1bf77993278ac1390c8c3bb695a9a",
+         "datavalue": {
+          "value": "https://equinor.com/about-us/all-sites",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P854"
+      ]
+     }
+    ]
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P856",
+     "hash": "f304108388483bfbaa1411dcd43bb0d5622fd85c",
+     "datavalue": {
+      "value": "https://equinor.ar/en",
+      "type": "string"
+     },
+     "datatype": "url"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P407": [
+      {
+       "snaktype": "value",
+       "property": "P407",
+       "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 1860,
+         "id": "Q1860"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ],
+     "P1001": [
+      {
+       "snaktype": "value",
+       "property": "P1001",
+       "hash": "9b72b1a19e0ec2ebc4fd1d6dab7a3fc313c98165",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 414,
+         "id": "Q414"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P407",
+     "P1001"
+    ],
+    "id": "Q1776022$617ab787-4a03-11ef-df65-65c5234b21cc",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "9f2eb4df006490cc1603c6b7656701bf81ea342a",
+      "snaks": {
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "9d8485d30ad1bf77993278ac1390c8c3bb695a9a",
+         "datavalue": {
+          "value": "https://equinor.com/about-us/all-sites",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P854"
+      ]
+     }
+    ]
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P856",
+     "hash": "61075d7b28a27995d2f29e68f39875a965cfd3c1",
+     "datavalue": {
+      "value": "https://equinor.com.br",
+      "type": "string"
+     },
+     "datatype": "url"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P407": [
+      {
+       "snaktype": "value",
+       "property": "P407",
+       "hash": "ffe70325d10cfc55f0dca807ed80ca0b5b97c472",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 1321,
+         "id": "Q1321"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ],
+     "P1001": [
+      {
+       "snaktype": "value",
+       "property": "P1001",
+       "hash": "3d20fbde17d86eee981684d933e554a1bc7583eb",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 155,
+         "id": "Q155"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P407",
+     "P1001"
+    ],
+    "id": "Q1776022$2882fe5c-44da-45a9-9455-820c8fe82acf",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "9f2eb4df006490cc1603c6b7656701bf81ea342a",
+      "snaks": {
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "9d8485d30ad1bf77993278ac1390c8c3bb695a9a",
+         "datavalue": {
+          "value": "https://equinor.com/about-us/all-sites",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P854"
+      ]
+     }
+    ]
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P856",
+     "hash": "fded40df25e20a90e3fce0991353d820c32162a7",
+     "datavalue": {
+      "value": "https://equinorstorage.de",
+      "type": "string"
+     },
+     "datatype": "url"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P407": [
+      {
+       "snaktype": "value",
+       "property": "P407",
+       "hash": "46bfd327b830f66f7061ea92d1be430c135fa91f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 188,
+         "id": "Q188"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ],
+     "P1001": [
+      {
+       "snaktype": "value",
+       "property": "P1001",
+       "hash": "d2a7142f81e7bb98a2ba2275f3d89545283e3b45",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 183,
+         "id": "Q183"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P407",
+     "P1001"
+    ],
+    "id": "Q1776022$0fa5f503-48e6-ec76-f065-b842e7b83737",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "9f2eb4df006490cc1603c6b7656701bf81ea342a",
+      "snaks": {
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "9d8485d30ad1bf77993278ac1390c8c3bb695a9a",
+         "datavalue": {
+          "value": "https://equinor.com/about-us/all-sites",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P854"
+      ]
+     }
+    ]
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P856",
+     "hash": "52cf2c33cdebb1024a866f82925f0be01c188c23",
+     "datavalue": {
+      "value": "https://equinorstorage.de/en",
+      "type": "string"
+     },
+     "datatype": "url"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P407": [
+      {
+       "snaktype": "value",
+       "property": "P407",
+       "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 1860,
+         "id": "Q1860"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ],
+     "P1001": [
+      {
+       "snaktype": "value",
+       "property": "P1001",
+       "hash": "d2a7142f81e7bb98a2ba2275f3d89545283e3b45",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 183,
+         "id": "Q183"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P407",
+     "P1001"
+    ],
+    "id": "Q1776022$9ed1b911-4922-dc89-c0c0-a32ced0f2631",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "9f2eb4df006490cc1603c6b7656701bf81ea342a",
+      "snaks": {
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "9d8485d30ad1bf77993278ac1390c8c3bb695a9a",
+         "datavalue": {
+          "value": "https://equinor.com/about-us/all-sites",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P854"
+      ]
+     }
+    ]
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P856",
+     "hash": "4683762325cb8b6ddc6a4e76ec97a45472676aa4",
+     "datavalue": {
+      "value": "https://equinor.jp",
+      "type": "string"
+     },
+     "datatype": "url"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P407": [
+      {
+       "snaktype": "value",
+       "property": "P407",
+       "hash": "d858d1b9f6e6e383f38dfbe706d102f056c07312",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 5287,
+         "id": "Q5287"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ],
+     "P1001": [
+      {
+       "snaktype": "value",
+       "property": "P1001",
+       "hash": "0a6b08c61d042b6f396571e538f2537642aa7994",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 17,
+         "id": "Q17"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P407",
+     "P1001"
+    ],
+    "id": "Q1776022$10d0b62b-4ada-19be-be70-8ce5f35bee6e",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "9f2eb4df006490cc1603c6b7656701bf81ea342a",
+      "snaks": {
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "9d8485d30ad1bf77993278ac1390c8c3bb695a9a",
+         "datavalue": {
+          "value": "https://equinor.com/about-us/all-sites",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P854"
+      ]
+     }
+    ]
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P856",
+     "hash": "8b11c7c3d563600810579996b05f405f190176f5",
+     "datavalue": {
+      "value": "https://equinor.jp/en",
+      "type": "string"
+     },
+     "datatype": "url"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P407": [
+      {
+       "snaktype": "value",
+       "property": "P407",
+       "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 1860,
+         "id": "Q1860"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ],
+     "P1001": [
+      {
+       "snaktype": "value",
+       "property": "P1001",
+       "hash": "0a6b08c61d042b6f396571e538f2537642aa7994",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 17,
+         "id": "Q17"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P407",
+     "P1001"
+    ],
+    "id": "Q1776022$88de48b4-43c5-3dfc-4403-8431e7bca10e",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "9f2eb4df006490cc1603c6b7656701bf81ea342a",
+      "snaks": {
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "9d8485d30ad1bf77993278ac1390c8c3bb695a9a",
+         "datavalue": {
+          "value": "https://equinor.com/about-us/all-sites",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P854"
+      ]
+     }
+    ]
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P856",
+     "hash": "6d88a2f5f521cf2a1ccb5990786a2bd4cd455af2",
+     "datavalue": {
+      "value": "https://equinor.pl",
+      "type": "string"
+     },
+     "datatype": "url"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P407": [
+      {
+       "snaktype": "value",
+       "property": "P407",
+       "hash": "b9b821e8a9140ec208fb522e0aa113d5742f6fba",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 809,
+         "id": "Q809"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ],
+     "P1001": [
+      {
+       "snaktype": "value",
+       "property": "P1001",
+       "hash": "c986a6e2b01f934b64b439c8a37f51a42e94beff",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 36,
+         "id": "Q36"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P407",
+     "P1001"
+    ],
+    "id": "Q1776022$30db6644-4c60-6997-6798-5a8bf5c4adac",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "9f2eb4df006490cc1603c6b7656701bf81ea342a",
+      "snaks": {
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "9d8485d30ad1bf77993278ac1390c8c3bb695a9a",
+         "datavalue": {
+          "value": "https://equinor.com/about-us/all-sites",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P854"
+      ]
+     }
+    ]
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P856",
+     "hash": "9e1e52e28e7ac9a7eb20211532353b284347af12",
+     "datavalue": {
+      "value": "https://equinor.co.kr",
+      "type": "string"
+     },
+     "datatype": "url"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P407": [
+      {
+       "snaktype": "value",
+       "property": "P407",
+       "hash": "a10335a425d19169dd856e0a5f71735853eab0ab",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 9176,
+         "id": "Q9176"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ],
+     "P1001": [
+      {
+       "snaktype": "value",
+       "property": "P1001",
+       "hash": "02e95fc5c060bc984baa11f76a03a8faf39f5716",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 884,
+         "id": "Q884"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P407",
+     "P1001"
+    ],
+    "id": "Q1776022$692efae4-418a-d3fd-1324-2ff68c57611d",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "9f2eb4df006490cc1603c6b7656701bf81ea342a",
+      "snaks": {
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "9d8485d30ad1bf77993278ac1390c8c3bb695a9a",
+         "datavalue": {
+          "value": "https://equinor.com/about-us/all-sites",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P854"
+      ]
+     }
+    ]
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P856",
+     "hash": "c2d0527891c2e34747fb9eb451c380ea5ca8cc8c",
+     "datavalue": {
+      "value": "https://equinor.co.kr/en",
+      "type": "string"
+     },
+     "datatype": "url"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P407": [
+      {
+       "snaktype": "value",
+       "property": "P407",
+       "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 1860,
+         "id": "Q1860"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ],
+     "P1001": [
+      {
+       "snaktype": "value",
+       "property": "P1001",
+       "hash": "02e95fc5c060bc984baa11f76a03a8faf39f5716",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 884,
+         "id": "Q884"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P407",
+     "P1001"
+    ],
+    "id": "Q1776022$8f67315f-4c5c-4387-3ed0-8e2382350d27",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "9f2eb4df006490cc1603c6b7656701bf81ea342a",
+      "snaks": {
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "9d8485d30ad1bf77993278ac1390c8c3bb695a9a",
+         "datavalue": {
+          "value": "https://equinor.com/about-us/all-sites",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P854"
+      ]
+     }
+    ]
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P856",
+     "hash": "905071be627f4ba55cf284b145bc91ebdad7a009",
+     "datavalue": {
+      "value": "https://equinor.de",
+      "type": "string"
+     },
+     "datatype": "url"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P407": [
+      {
+       "snaktype": "value",
+       "property": "P407",
+       "hash": "46bfd327b830f66f7061ea92d1be430c135fa91f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 188,
+         "id": "Q188"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ],
+     "P1001": [
+      {
+       "snaktype": "value",
+       "property": "P1001",
+       "hash": "d2a7142f81e7bb98a2ba2275f3d89545283e3b45",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 183,
+         "id": "Q183"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P407",
+     "P1001"
+    ],
+    "id": "Q1776022$312d0a2c-43bb-9b74-6559-b38e5d154801",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "9f2eb4df006490cc1603c6b7656701bf81ea342a",
+      "snaks": {
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "9d8485d30ad1bf77993278ac1390c8c3bb695a9a",
+         "datavalue": {
+          "value": "https://equinor.com/about-us/all-sites",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P854"
+      ]
+     }
+    ]
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P856",
+     "hash": "ea25de0fbbfd4eccc97ffca058c237c9219a9791",
+     "datavalue": {
+      "value": "https://equinorcelticsea.co.uk",
+      "type": "string"
+     },
+     "datatype": "url"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P407": [
+      {
+       "snaktype": "value",
+       "property": "P407",
+       "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 1860,
+         "id": "Q1860"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ],
+     "P1001": [
+      {
+       "snaktype": "value",
+       "property": "P1001",
+       "hash": "82f548a7c7fa548608344f46f7f9a0afafd20709",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 145,
+         "id": "Q145"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P407",
+     "P1001"
+    ],
+    "id": "Q1776022$2004acc5-4fef-004e-d279-fe36e3aae479",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "9f2eb4df006490cc1603c6b7656701bf81ea342a",
+      "snaks": {
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "9d8485d30ad1bf77993278ac1390c8c3bb695a9a",
+         "datavalue": {
+          "value": "https://equinor.com/about-us/all-sites",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P854"
+      ]
+     }
+    ]
+   }
+  ],
+  "P910": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P910",
+     "hash": "5db7a9b04545630eb19a441df542882a0eab2862",
+     "datavalue": {
+      "value": {
+       "entity-type": "item",
+       "numeric-id": 8817243,
+       "id": "Q8817243"
+      },
+      "type": "wikibase-entityid"
+     },
+     "datatype": "wikibase-item"
+    },
+    "type": "statement",
+    "id": "Q1776022$A81559B8-1CED-434D-B0C6-4C9EC63D0E69",
+    "rank": "normal"
+   }
+  ],
+  "P1566": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P1566",
+     "hash": "2ac4f5bd6a1f312e731ebccd63f91ec13f022069",
+     "datavalue": {
+      "value": "8590648",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$682121B8-DFEB-4310-B73A-D98703F0E213",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "88694a0f4d1486770c269f7db16a1982f74da69d",
+      "snaks": {
+       "P248": [
+        {
+         "snaktype": "value",
+         "property": "P248",
+         "hash": "1b3ef912a2bd61e18dd43abd184337eb010b2e96",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 830106,
+           "id": "Q830106"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P248"
+      ]
+     }
+    ]
+   }
+  ],
+  "P1015": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P1015",
+     "hash": "1a0e928944a818f340972a0401ef62f4eb6c5820",
+     "datavalue": {
+      "value": "90054747",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$03f4f158-4cb0-a120-47ec-38bebd090b7d",
+    "rank": "normal"
+   }
+  ],
+  "P946": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P946",
+     "hash": "74cb7d89d4e77cefcb43e497899e08daa4095e2f",
+     "datavalue": {
+      "value": "NO0010096985",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$CCCA1364-8B5A-4399-9793-7726B873DAC8",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "9a24f7c0208b05d6be97077d855671d1dfdbc0dd",
+      "snaks": {
+       "P143": [
+        {
+         "snaktype": "value",
+         "property": "P143",
+         "hash": "d38375ffe6fe142663ff55cd783aa4df4301d83d",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 48183,
+           "id": "Q48183"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P143"
+      ]
+     }
+    ]
+   }
+  ],
+  "P1454": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P1454",
+     "hash": "d22f484811164fecb65931dd10504ccf670b537e",
+     "datavalue": {
+      "value": {
+       "entity-type": "item",
+       "numeric-id": 14942889,
+       "id": "Q14942889"
+      },
+      "type": "wikibase-entityid"
+     },
+     "datatype": "wikibase-item"
+    },
+    "type": "statement",
+    "id": "Q1776022$9562ec62-446c-552a-f0bf-d54918bdcdbb",
+    "rank": "normal"
+   }
+  ],
+  "P646": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P646",
+     "hash": "ea0c6a55b85cc688807531ab3101d658de20ca30",
+     "datavalue": {
+      "value": "/m/02rw4hw",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$19e0b67f-4e73-d0da-3198-55944d2f8b22",
+    "rank": "normal"
+   }
+  ],
+  "P2333": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P2333",
+     "hash": "fa8e6bc8abcfa991f9c68ec0879c8e7391719d7b",
+     "datavalue": {
+      "value": "923609016",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$D73D797B-5390-48E5-881F-3804F754AAC9",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "8f6d2b4a0e3da23aca841c5dfe6b7ed894bd315a",
+      "snaks": {
+       "P143": [
+        {
+         "snaktype": "value",
+         "property": "P143",
+         "hash": "c4cc8cf0417b27e19c135f9b4312453d668ab641",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 191769,
+           "id": "Q191769"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P143"
+      ]
+     }
+    ]
+   }
+  ],
+  "P355": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P355",
+     "hash": "c43ae8d2c71c7b5441e47dab2d8202216f621108",
+     "datavalue": {
+      "value": {
+       "entity-type": "item",
+       "numeric-id": 6028100,
+       "id": "Q6028100"
+      },
+      "type": "wikibase-entityid"
+     },
+     "datatype": "wikibase-item"
+    },
+    "type": "statement",
+    "id": "Q1776022$F2F5AB7B-2BA2-4C6B-9039-22381D487478",
+    "rank": "normal"
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P355",
+     "hash": "9b4dcdf614a5434a4f4034784522279d13ad9cb0",
+     "datavalue": {
+      "value": {
+       "entity-type": "item",
+       "numeric-id": 30338265,
+       "id": "Q30338265"
+      },
+      "type": "wikibase-entityid"
+     },
+     "datatype": "wikibase-item"
+    },
+    "type": "statement",
+    "id": "Q1776022$C5E12382-F095-4509-94C4-22F5C45F9C22",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "5bb4a598ce8ee1f1ee12dadd3a023d6003023276",
+      "snaks": {
+       "P2427": [
+        {
+         "snaktype": "value",
+         "property": "P2427",
+         "hash": "ec9bd0fc34225d1906f5b0b260ce2b6ddab59927",
+         "datavalue": {
+          "value": "grid.451323.2",
+          "type": "string"
+         },
+         "datatype": "external-id"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P2427"
+      ]
+     }
+    ]
+   }
+  ],
+  "P3221": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P3221",
+     "hash": "2ac7e7215f5ae0201a9e6eefa40cf1bfa5d78df5",
+     "datavalue": {
+      "value": "company/statoil-asa",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$4652921E-2840-4EEE-9381-8F79877596ED",
+    "rank": "normal"
+   }
+  ],
+  "P213": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P213",
+     "hash": "ca2cddc5d7109bc758cb1725a17ac9e0c8ce78cf",
+     "datavalue": {
+      "value": "0000000404677043",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$B55DC079-A307-4B19-B139-EE88417A97CE",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "5a761c7a986f4a5cf8cefbfc18e5a5ae5133d44b",
+      "snaks": {
+       "P248": [
+        {
+         "snaktype": "value",
+         "property": "P248",
+         "hash": "2e92dfb9200a54eef9b44e474b97c4dd6dd90461",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 53705033,
+           "id": "Q53705033"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P248"
+      ]
+     }
+    ]
+   }
+  ],
+  "P3500": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P3500",
+     "hash": "5d56a89ba0639899bb1d173d1d33cde6a3f9948c",
+     "datavalue": {
+      "value": "7608",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$1E63FD9B-4CA7-4845-97C1-9AF489A55E42",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "2834ac5da275724a6354a73d2d2a89ae956042a9",
+      "snaks": {
+       "P248": [
+        {
+         "snaktype": "value",
+         "property": "P248",
+         "hash": "654ac97d41e766b6860b1b7acd87f11a6b00c4f9",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 64159407,
+           "id": "Q64159407"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P248"
+      ]
+     }
+    ]
+   }
+  ],
+  "P3417": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P3417",
+     "hash": "17649634b186d23b7f042d6f80f4305a70a83d1b",
+     "datavalue": {
+      "value": "Statoil-company",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$594514FC-45D0-48AF-B105-1A164D6882EF",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "3b0a5bb3c1f955edce73740124f7d935698092ad",
+      "snaks": {
+       "P248": [
+        {
+         "snaktype": "value",
+         "property": "P248",
+         "hash": "3ac9682e789a3a3791d4fd088b265ea03abef101",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 51711,
+           "id": "Q51711"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P248"
+      ]
+     }
+    ]
+   }
+  ],
+  "P17": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P17",
+     "hash": "6b641ae447361ea7b9069dd798128243a1cdca37",
+     "datavalue": {
+      "value": {
+       "entity-type": "item",
+       "numeric-id": 20,
+       "id": "Q20"
+      },
+      "type": "wikibase-entityid"
+     },
+     "datatype": "wikibase-item"
+    },
+    "type": "statement",
+    "id": "Q1776022$D02B0496-8CEB-4C62-BE59-CB257931CD37",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "ac58089fe49d0af6cf99ae006f6f54b787f71944",
+      "snaks": {
+       "P2427": [
+        {
+         "snaktype": "value",
+         "property": "P2427",
+         "hash": "d16a9def64742f7cdc584b0e367f7f379f444f07",
+         "datavalue": {
+          "value": "grid.422595.d",
+          "type": "string"
+         },
+         "datatype": "external-id"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P2427"
+      ]
+     },
+     {
+      "hash": "584090533d43ccf050cfa9167f9e71a1b76c376d",
+      "snaks": {
+       "P248": [
+        {
+         "snaktype": "value",
+         "property": "P248",
+         "hash": "81ed4ba2fe1611322ce5cbd28876e5a472f428a8",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 7061260,
+           "id": "Q7061260"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ],
+       "P9201": [
+        {
+         "snaktype": "value",
+         "property": "P9201",
+         "hash": "98bb9c3a2be5ee215e98d16a5d3abf8aeeb1bee0",
+         "datavalue": {
+          "value": "52950",
+          "type": "string"
+         },
+         "datatype": "external-id"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P248",
+       "P9201"
+      ]
+     },
+     {
+      "hash": "04ee0ae14feac7a1b457f9138a0d5695d33927d8",
+      "snaks": {
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "0a4ca43b467f6c3a3abf786a1c18c80ed0efcc1c",
+         "datavalue": {
+          "value": "https://www.lobbyfacts.eu/datacard/equinor-asa?rid=4447605981-76",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P854"
+      ]
+     }
+    ]
+   }
+  ],
+  "P2002": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P2002",
+     "hash": "6ef139ade8592f6242467baaa21b5c818dd748e2",
+     "datavalue": {
+      "value": "equinor",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P6552": [
+      {
+       "snaktype": "value",
+       "property": "P6552",
+       "hash": "f9c4bd7dbc54ea09b422c80b82bf56960ac15df5",
+       "datavalue": {
+        "value": "4263130319",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      }
+     ],
+     "P1552": [
+      {
+       "snaktype": "value",
+       "property": "P1552",
+       "hash": "62f0039d240f7eeba6c6908a0d8807a6188324a1",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 28378282,
+         "id": "Q28378282"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ],
+     "P3744": [
+      {
+       "snaktype": "value",
+       "property": "P3744",
+       "hash": "05fcd79038cde4d88e50c7bd7b3da6134ccd47c7",
+       "datavalue": {
+        "value": {
+         "amount": "+13389",
+         "unit": "1"
+        },
+        "type": "quantity"
+       },
+       "datatype": "quantity"
+      }
+     ],
+     "P580": [
+      {
+       "snaktype": "value",
+       "property": "P580",
+       "hash": "e7abc3a65c9f3121223894e409cfce3475de6ca1",
+       "datavalue": {
+        "value": {
+         "time": "+2015-11-24T00:00:00Z",
+         "timezone": 0,
+         "before": 0,
+         "after": 0,
+         "precision": 11,
+         "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+        },
+        "type": "time"
+       },
+       "datatype": "time"
+      }
+     ],
+     "P585": [
+      {
+       "snaktype": "value",
+       "property": "P585",
+       "hash": "a0530210bbfb3618d85333162c9bd30d6e7e3e36",
+       "datavalue": {
+        "value": {
+         "time": "+2020-04-19T00:00:00Z",
+         "timezone": 0,
+         "before": 0,
+         "after": 0,
+         "precision": 11,
+         "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+        },
+        "type": "time"
+       },
+       "datatype": "time"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P6552",
+     "P1552",
+     "P3744",
+     "P580",
+     "P585"
+    ],
+    "id": "Q1776022$e23727b8-461b-fa73-6f2f-dbd9d2f0b47e",
+    "rank": "normal"
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P2002",
+     "hash": "666da4660620a10b066171971b751dc497612654",
+     "datavalue": {
+      "value": "Equinor_UK",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P6552": [
+      {
+       "snaktype": "value",
+       "property": "P6552",
+       "hash": "698e364172fc014848244015c2ccfb1bee323c60",
+       "datavalue": {
+        "value": "2858838833",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      }
+     ],
+     "P1552": [
+      {
+       "snaktype": "value",
+       "property": "P1552",
+       "hash": "62f0039d240f7eeba6c6908a0d8807a6188324a1",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 28378282,
+         "id": "Q28378282"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ],
+     "P3744": [
+      {
+       "snaktype": "value",
+       "property": "P3744",
+       "hash": "01d7eef8ded65719f841e6784a1ff62b1d09f4c9",
+       "datavalue": {
+        "value": {
+         "amount": "+3151",
+         "unit": "1"
+        },
+        "type": "quantity"
+       },
+       "datatype": "quantity"
+      }
+     ],
+     "P580": [
+      {
+       "snaktype": "value",
+       "property": "P580",
+       "hash": "ba39587c238d9f01eb75745bef8c7ca6208cf8bb",
+       "datavalue": {
+        "value": {
+         "time": "+2014-11-03T00:00:00Z",
+         "timezone": 0,
+         "before": 0,
+         "after": 0,
+         "precision": 11,
+         "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+        },
+        "type": "time"
+       },
+       "datatype": "time"
+      }
+     ],
+     "P585": [
+      {
+       "snaktype": "value",
+       "property": "P585",
+       "hash": "4338aad1e87905f156323b7d75faa5db4c7e7ad7",
+       "datavalue": {
+        "value": {
+         "time": "+2020-06-16T00:00:00Z",
+         "timezone": 0,
+         "before": 0,
+         "after": 0,
+         "precision": 11,
+         "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+        },
+        "type": "time"
+       },
+       "datatype": "time"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P6552",
+     "P1552",
+     "P3744",
+     "P580",
+     "P585"
+    ],
+    "id": "Q1776022$0f04e41d-4bd1-80b9-9dbf-0620ed1ee61b",
+    "rank": "normal"
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P2002",
+     "hash": "31e5ce7a65c6b65617a1d0bb450d299a1857438b",
+     "datavalue": {
+      "value": "Equinor_NA",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P6552": [
+      {
+       "snaktype": "value",
+       "property": "P6552",
+       "hash": "4710707dac1323085b43146f87b0c7f92c3e0772",
+       "datavalue": {
+        "value": "376438213",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      }
+     ],
+     "P1552": [
+      {
+       "snaktype": "value",
+       "property": "P1552",
+       "hash": "62f0039d240f7eeba6c6908a0d8807a6188324a1",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 28378282,
+         "id": "Q28378282"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ],
+     "P3744": [
+      {
+       "snaktype": "value",
+       "property": "P3744",
+       "hash": "735ca8254a0f4121006713bcd3a5a7e16166dbbc",
+       "datavalue": {
+        "value": {
+         "amount": "+5354",
+         "unit": "1"
+        },
+        "type": "quantity"
+       },
+       "datatype": "quantity"
+      }
+     ],
+     "P580": [
+      {
+       "snaktype": "value",
+       "property": "P580",
+       "hash": "e1f6f6e0f07f93a7ec26f69ae54476684a89b873",
+       "datavalue": {
+        "value": {
+         "time": "+2011-09-19T00:00:00Z",
+         "timezone": 0,
+         "before": 0,
+         "after": 0,
+         "precision": 11,
+         "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+        },
+        "type": "time"
+       },
+       "datatype": "time"
+      }
+     ],
+     "P585": [
+      {
+       "snaktype": "value",
+       "property": "P585",
+       "hash": "4338aad1e87905f156323b7d75faa5db4c7e7ad7",
+       "datavalue": {
+        "value": {
+         "time": "+2020-06-16T00:00:00Z",
+         "timezone": 0,
+         "before": 0,
+         "after": 0,
+         "precision": 11,
+         "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+        },
+        "type": "time"
+       },
+       "datatype": "time"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P6552",
+     "P1552",
+     "P3744",
+     "P580",
+     "P585"
+    ],
+    "id": "Q1776022$69ed92ba-49af-5d53-39af-86360aaa4705",
+    "rank": "normal"
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P2002",
+     "hash": "d0aab8e61575e2aba13acc998cf1fb44ca017dfa",
+     "datavalue": {
+      "value": "EquinorASA",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P6552": [
+      {
+       "snaktype": "value",
+       "property": "P6552",
+       "hash": "c12e20dcdaba422a6cb86fe9d3a544e23c5d0d50",
+       "datavalue": {
+        "value": "44588224",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      }
+     ],
+     "P1552": [
+      {
+       "snaktype": "value",
+       "property": "P1552",
+       "hash": "62f0039d240f7eeba6c6908a0d8807a6188324a1",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 28378282,
+         "id": "Q28378282"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ],
+     "P3744": [
+      {
+       "snaktype": "value",
+       "property": "P3744",
+       "hash": "c88cbd76cff1034327658bb88eeaac341c531d25",
+       "datavalue": {
+        "value": {
+         "amount": "+85839",
+         "unit": "1"
+        },
+        "type": "quantity"
+       },
+       "datatype": "quantity"
+      }
+     ],
+     "P580": [
+      {
+       "snaktype": "value",
+       "property": "P580",
+       "hash": "156762f9fc6d9a9c3532b80803a48fdc31c2884d",
+       "datavalue": {
+        "value": {
+         "time": "+2009-06-04T00:00:00Z",
+         "timezone": 0,
+         "before": 0,
+         "after": 0,
+         "precision": 11,
+         "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+        },
+        "type": "time"
+       },
+       "datatype": "time"
+      }
+     ],
+     "P585": [
+      {
+       "snaktype": "value",
+       "property": "P585",
+       "hash": "4338aad1e87905f156323b7d75faa5db4c7e7ad7",
+       "datavalue": {
+        "value": {
+         "time": "+2020-06-16T00:00:00Z",
+         "timezone": 0,
+         "before": 0,
+         "after": 0,
+         "precision": 11,
+         "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+        },
+        "type": "time"
+       },
+       "datatype": "time"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P6552",
+     "P1552",
+     "P3744",
+     "P580",
+     "P585"
+    ],
+    "id": "Q1776022$de46d246-45a6-0896-2972-689251dfab2f",
+    "rank": "normal"
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P2002",
+     "hash": "00dc7a00e680d70fa8655539ec5d7cb4d2a0b5b0",
+     "datavalue": {
+      "value": "Equinor_DE",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P6552": [
+      {
+       "snaktype": "value",
+       "property": "P6552",
+       "hash": "557030adddb72a954dc624ddc1962dc7cb3800e2",
+       "datavalue": {
+        "value": "918115717899325441",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      }
+     ],
+     "P3744": [
+      {
+       "snaktype": "value",
+       "property": "P3744",
+       "hash": "83615e6b554f8b494b4a83db36863d5b1f7a33d9",
+       "datavalue": {
+        "value": {
+         "amount": "+1818",
+         "unit": "1"
+        },
+        "type": "quantity"
+       },
+       "datatype": "quantity"
+      }
+     ],
+     "P580": [
+      {
+       "snaktype": "value",
+       "property": "P580",
+       "hash": "01e3d91aab3b74ae67e670591a36ec1c012791c4",
+       "datavalue": {
+        "value": {
+         "time": "+2017-10-11T00:00:00Z",
+         "timezone": 0,
+         "before": 0,
+         "after": 0,
+         "precision": 11,
+         "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+        },
+        "type": "time"
+       },
+       "datatype": "time"
+      }
+     ],
+     "P585": [
+      {
+       "snaktype": "value",
+       "property": "P585",
+       "hash": "4338aad1e87905f156323b7d75faa5db4c7e7ad7",
+       "datavalue": {
+        "value": {
+         "time": "+2020-06-16T00:00:00Z",
+         "timezone": 0,
+         "before": 0,
+         "after": 0,
+         "precision": 11,
+         "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+        },
+        "type": "time"
+       },
+       "datatype": "time"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P6552",
+     "P3744",
+     "P580",
+     "P585"
+    ],
+    "id": "Q1776022$fa697ac8-4eeb-37e5-1bc7-74716dfdc78b",
+    "rank": "normal"
+   }
+  ],
+  "P2657": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P2657",
+     "hash": "0e40d1f3508e9876235a87e84ea71e0dcb534ccd",
+     "datavalue": {
+      "value": "4447605981-76",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P1932": [
+      {
+       "snaktype": "value",
+       "property": "P1932",
+       "hash": "d625ecb4935b9525bd04e243553cc9819fef6e39",
+       "datavalue": {
+        "value": "Equinor ASA",
+        "type": "string"
+       },
+       "datatype": "string"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P1932"
+    ],
+    "id": "Q1776022$15149678-776C-4ACF-903D-78BB3FEB6CE8",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "04ee0ae14feac7a1b457f9138a0d5695d33927d8",
+      "snaks": {
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "0a4ca43b467f6c3a3abf786a1c18c80ed0efcc1c",
+         "datavalue": {
+          "value": "https://www.lobbyfacts.eu/datacard/equinor-asa?rid=4447605981-76",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P854"
+      ]
+     }
+    ]
+   }
+  ],
+  "P3761": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P3761",
+     "hash": "401eb338899c9a00898bf11e00ae8c9e136bcfec",
+     "datavalue": {
+      "value": "136.164.0.0/16",
+      "type": "string"
+     },
+     "datatype": "string"
+    },
+    "type": "statement",
+    "id": "Q1776022$46A0F2F5-B09A-4236-B585-0D31455A50D3",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "f9fbf55a649ebf1b6edb624028269d4175672789",
+      "snaks": {
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "242ea0fb895a53fbf22d1cdfed4243e459ad0996",
+         "datavalue": {
+          "value": "https://apps.db.ripe.net/search/lookup.html?source=ripe&key=136.164.0.0+-+136.164.255.255&type=inetnum",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P854"
+      ]
+     }
+    ]
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P3761",
+     "hash": "77076e0be884997fb36e1eaf7c06ecc45d7408fe",
+     "datavalue": {
+      "value": "143.97.0.0/16",
+      "type": "string"
+     },
+     "datatype": "string"
+    },
+    "type": "statement",
+    "id": "Q1776022$3384D45A-9EEC-4106-A346-FE2EFE649C23",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "68b6717ea5c66fa40d54d0554f6d22f906c02d64",
+      "snaks": {
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "7693581fba151247721060cfb6f58bcd7d8418cf",
+         "datavalue": {
+          "value": "https://apps.db.ripe.net/search/lookup.html?source=ripe&key=143.97.0.0+-+143.97.255.255&type=inetnum",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P854"
+      ]
+     }
+    ]
+   }
+  ],
+  "P4167": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P4167",
+     "hash": "48565e9634b068f218a1f968969585e4d4a02e23",
+     "datavalue": {
+      "value": "Statoil",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$d2be6467-4fcd-ffdb-17db-5db36aec92b7",
+    "rank": "normal"
+   }
+  ],
+  "P154": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P154",
+     "hash": "8e1a4e9b66883ff0b3ef7117ac870e2d75a8bcfe",
+     "datavalue": {
+      "value": "Equinor.svg",
+      "type": "string"
+     },
+     "datatype": "commonsMedia"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P580": [
+      {
+       "snaktype": "value",
+       "property": "P580",
+       "hash": "36b567473eb40bb7403da513d6fbe83768d5ef84",
+       "datavalue": {
+        "value": {
+         "time": "+2018-00-00T00:00:00Z",
+         "timezone": 0,
+         "before": 0,
+         "after": 0,
+         "precision": 9,
+         "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+        },
+        "type": "time"
+       },
+       "datatype": "time"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P580"
+    ],
+    "id": "Q1776022$695bb07f-4582-a511-9428-6196d7e7b79b",
+    "rank": "normal"
+   }
+  ],
+  "P127": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P127",
+     "hash": "f9d0d927efc8f06c21328a59d9afced909698726",
+     "datavalue": {
+      "value": {
+       "entity-type": "item",
+       "numeric-id": 2607880,
+       "id": "Q2607880"
+      },
+      "type": "wikibase-entityid"
+     },
+     "datatype": "wikibase-item"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P1107": [
+      {
+       "snaktype": "value",
+       "property": "P1107",
+       "hash": "2adcf991c6e3228d7aee4cbe3e76cbd1ffc9b34d",
+       "datavalue": {
+        "value": {
+         "amount": "+0.67",
+         "unit": "1"
+        },
+        "type": "quantity"
+       },
+       "datatype": "quantity"
+      }
+     ],
+     "P582": [
+      {
+       "snaktype": "value",
+       "property": "P582",
+       "hash": "763cc2601f1f932db7570838b1c60947823ac3bf",
+       "datavalue": {
+        "value": {
+         "time": "+2021-12-31T00:00:00Z",
+         "timezone": 0,
+         "before": 0,
+         "after": 0,
+         "precision": 11,
+         "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+        },
+        "type": "time"
+       },
+       "datatype": "time"
+      }
+     ],
+     "P580": [
+      {
+       "snaktype": "value",
+       "property": "P580",
+       "hash": "884835ec6930b796613caa4c2056ca2801f07b5a",
+       "datavalue": {
+        "value": {
+         "time": "+1978-00-00T00:00:00Z",
+         "timezone": 0,
+         "before": 0,
+         "after": 0,
+         "precision": 9,
+         "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+        },
+        "type": "time"
+       },
+       "datatype": "time"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P1107",
+     "P582",
+     "P580"
+    ],
+    "id": "Q1776022$968ACA20-B14D-418E-AB0A-6AEAC9AC5F7D",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "3f8207b00201c38e9956794274f5d5226ec8a674",
+      "snaks": {
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "5c6c91d6ad991a07571f5456b429415161484ea7",
+         "datavalue": {
+          "value": "https://www.equinor.com/en/investors/our-dividend/our-shareholders.html",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ],
+       "P813": [
+        {
+         "snaktype": "value",
+         "property": "P813",
+         "hash": "c8dbfdae5630d38474c1498591280ca6080105ed",
+         "datavalue": {
+          "value": {
+           "time": "+2020-09-17T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P854",
+       "P813"
+      ]
+     },
+     {
+      "hash": "e811111771f703fd4ca69feb0079767444dcc996",
+      "snaks": {
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "494495a00867a002407337eca09944e69c3dbe8e",
+         "datavalue": {
+          "value": "https://www.regjeringen.no/no/tema/energi/statlig-eierskap-i-energisektoren/deleid-selskap/id2353247/",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ],
+       "P1476": [
+        {
+         "snaktype": "value",
+         "property": "P1476",
+         "hash": "c505b52c94d70cb86d454c58c500f6ee9d03cd13",
+         "datavalue": {
+          "value": {
+           "text": "Deleid selskap",
+           "language": "en"
+          },
+          "type": "monolingualtext"
+         },
+         "datatype": "monolingualtext"
+        }
+       ],
+       "P577": [
+        {
+         "snaktype": "value",
+         "property": "P577",
+         "hash": "f20465fee42eca6e5a0719e08faa64d24eded359",
+         "datavalue": {
+          "value": {
+           "time": "+2021-06-24T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ],
+       "P813": [
+        {
+         "snaktype": "value",
+         "property": "P813",
+         "hash": "05eb7264c1411a9b348b772c525ed280d785d3fe",
+         "datavalue": {
+          "value": {
+           "time": "+2023-02-09T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ],
+       "P2093": [
+        {
+         "snaktype": "value",
+         "property": "P2093",
+         "hash": "fb76bcdeaf8916dc0d7c182205fd7c33602a2517",
+         "datavalue": {
+          "value": "Nærings-og fiskeridepartementet",
+          "type": "string"
+         },
+         "datatype": "string"
+        }
+       ],
+       "P123": [
+        {
+         "snaktype": "value",
+         "property": "P123",
+         "hash": "bcdeb4c2f32de3d11abe7103392f571de7bd1b73",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 173924,
+           "id": "Q173924"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P854",
+       "P1476",
+       "P577",
+       "P813",
+       "P2093",
+       "P123"
+      ]
+     }
+    ]
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P127",
+     "hash": "b7017918545e20fb9139897fe178f205e0014a37",
+     "datavalue": {
+      "value": {
+       "entity-type": "item",
+       "numeric-id": 11969389,
+       "id": "Q11969389"
+      },
+      "type": "wikibase-entityid"
+     },
+     "datatype": "wikibase-item"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P1107": [
+      {
+       "snaktype": "value",
+       "property": "P1107",
+       "hash": "bb3345dbc9b25462fc031d12629433840d440835",
+       "datavalue": {
+        "value": {
+         "amount": "+0.0345",
+         "unit": "1"
+        },
+        "type": "quantity"
+       },
+       "datatype": "quantity"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P1107"
+    ],
+    "id": "Q1776022$54ab9be1-4a9b-dfae-9e6f-231b9b7fa77a",
+    "rank": "normal"
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P127",
+     "hash": "21bd29b2c4fba6a504175413b6066926b0c64109",
+     "datavalue": {
+      "value": {
+       "entity-type": "item",
+       "numeric-id": 18177740,
+       "id": "Q18177740"
+      },
+      "type": "wikibase-entityid"
+     },
+     "datatype": "wikibase-item"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P1107": [
+      {
+       "snaktype": "value",
+       "property": "P1107",
+       "hash": "2adcf991c6e3228d7aee4cbe3e76cbd1ffc9b34d",
+       "datavalue": {
+        "value": {
+         "amount": "+0.67",
+         "unit": "1"
+        },
+        "type": "quantity"
+       },
+       "datatype": "quantity"
+      }
+     ],
+     "P580": [
+      {
+       "snaktype": "value",
+       "property": "P580",
+       "hash": "a4db6878864adc1c07db3b84dfdc063bb8d6c7b0",
+       "datavalue": {
+        "value": {
+         "time": "+2022-01-01T00:00:00Z",
+         "timezone": 0,
+         "before": 0,
+         "after": 0,
+         "precision": 11,
+         "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+        },
+        "type": "time"
+       },
+       "datatype": "time"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P1107",
+     "P580"
+    ],
+    "id": "Q1776022$19bfe111-40f9-a959-0b49-d08cbf044917",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "fb86593bb11d6eb7fe7b9929845e0b69d563c98e",
+      "snaks": {
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "494495a00867a002407337eca09944e69c3dbe8e",
+         "datavalue": {
+          "value": "https://www.regjeringen.no/no/tema/energi/statlig-eierskap-i-energisektoren/deleid-selskap/id2353247/",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P854"
+      ]
+     },
+     {
+      "hash": "e811111771f703fd4ca69feb0079767444dcc996",
+      "snaks": {
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "494495a00867a002407337eca09944e69c3dbe8e",
+         "datavalue": {
+          "value": "https://www.regjeringen.no/no/tema/energi/statlig-eierskap-i-energisektoren/deleid-selskap/id2353247/",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ],
+       "P1476": [
+        {
+         "snaktype": "value",
+         "property": "P1476",
+         "hash": "c505b52c94d70cb86d454c58c500f6ee9d03cd13",
+         "datavalue": {
+          "value": {
+           "text": "Deleid selskap",
+           "language": "en"
+          },
+          "type": "monolingualtext"
+         },
+         "datatype": "monolingualtext"
+        }
+       ],
+       "P577": [
+        {
+         "snaktype": "value",
+         "property": "P577",
+         "hash": "f20465fee42eca6e5a0719e08faa64d24eded359",
+         "datavalue": {
+          "value": {
+           "time": "+2021-06-24T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ],
+       "P813": [
+        {
+         "snaktype": "value",
+         "property": "P813",
+         "hash": "05eb7264c1411a9b348b772c525ed280d785d3fe",
+         "datavalue": {
+          "value": {
+           "time": "+2023-02-09T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ],
+       "P2093": [
+        {
+         "snaktype": "value",
+         "property": "P2093",
+         "hash": "fb76bcdeaf8916dc0d7c182205fd7c33602a2517",
+         "datavalue": {
+          "value": "Nærings-og fiskeridepartementet",
+          "type": "string"
+         },
+         "datatype": "string"
+        }
+       ],
+       "P123": [
+        {
+         "snaktype": "value",
+         "property": "P123",
+         "hash": "bcdeb4c2f32de3d11abe7103392f571de7bd1b73",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 173924,
+           "id": "Q173924"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P854",
+       "P1476",
+       "P577",
+       "P813",
+       "P2093",
+       "P123"
+      ]
+     }
+    ]
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P127",
+     "hash": "9a46576ba631ce3b67902830e063e89a5d789a7e",
+     "datavalue": {
+      "value": {
+       "entity-type": "item",
+       "numeric-id": 12715675,
+       "id": "Q12715675"
+      },
+      "type": "wikibase-entityid"
+     },
+     "datatype": "wikibase-item"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P580": [
+      {
+       "snaktype": "value",
+       "property": "P580",
+       "hash": "1eba62b20d9e1fc37937ada6fdb8a67474a40ddb",
+       "datavalue": {
+        "value": {
+         "time": "+1972-00-00T00:00:00Z",
+         "timezone": 0,
+         "before": 0,
+         "after": 0,
+         "precision": 9,
+         "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+        },
+        "type": "time"
+       },
+       "datatype": "time"
+      }
+     ],
+     "P582": [
+      {
+       "snaktype": "value",
+       "property": "P582",
+       "hash": "603baa61b7211e9c859a5cd8e897021f2ada4158",
+       "datavalue": {
+        "value": {
+         "time": "+1978-00-00T00:00:00Z",
+         "timezone": 0,
+         "before": 0,
+         "after": 0,
+         "precision": 9,
+         "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+        },
+        "type": "time"
+       },
+       "datatype": "time"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P580",
+     "P582"
+    ],
+    "id": "Q1776022$a28a232a-479b-cd7c-9209-0d5d4f2cc6dd",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "e811111771f703fd4ca69feb0079767444dcc996",
+      "snaks": {
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "494495a00867a002407337eca09944e69c3dbe8e",
+         "datavalue": {
+          "value": "https://www.regjeringen.no/no/tema/energi/statlig-eierskap-i-energisektoren/deleid-selskap/id2353247/",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ],
+       "P1476": [
+        {
+         "snaktype": "value",
+         "property": "P1476",
+         "hash": "c505b52c94d70cb86d454c58c500f6ee9d03cd13",
+         "datavalue": {
+          "value": {
+           "text": "Deleid selskap",
+           "language": "en"
+          },
+          "type": "monolingualtext"
+         },
+         "datatype": "monolingualtext"
+        }
+       ],
+       "P577": [
+        {
+         "snaktype": "value",
+         "property": "P577",
+         "hash": "f20465fee42eca6e5a0719e08faa64d24eded359",
+         "datavalue": {
+          "value": {
+           "time": "+2021-06-24T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ],
+       "P813": [
+        {
+         "snaktype": "value",
+         "property": "P813",
+         "hash": "05eb7264c1411a9b348b772c525ed280d785d3fe",
+         "datavalue": {
+          "value": {
+           "time": "+2023-02-09T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ],
+       "P2093": [
+        {
+         "snaktype": "value",
+         "property": "P2093",
+         "hash": "fb76bcdeaf8916dc0d7c182205fd7c33602a2517",
+         "datavalue": {
+          "value": "Nærings-og fiskeridepartementet",
+          "type": "string"
+         },
+         "datatype": "string"
+        }
+       ],
+       "P123": [
+        {
+         "snaktype": "value",
+         "property": "P123",
+         "hash": "bcdeb4c2f32de3d11abe7103392f571de7bd1b73",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 173924,
+           "id": "Q173924"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P854",
+       "P1476",
+       "P577",
+       "P813",
+       "P2093",
+       "P123"
+      ]
+     }
+    ]
+   }
+  ],
+  "P3347": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P3347",
+     "hash": "3ce175348c6f6f1dc99bb9e8870f1896aade1e4b",
+     "datavalue": {
+      "value": "4295885689",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$827A9083-46BF-4982-8F61-83D6089B9FC2",
+    "rank": "normal"
+   }
+  ],
+  "P3153": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P3153",
+     "hash": "2702b4b9e2fc53098306312ef3356ff208e1e245",
+     "datavalue": {
+      "value": "501100004342",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$FCA965A5-43CD-44F0-A9C3-9E9DC6C6D6D0",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "5a761c7a986f4a5cf8cefbfc18e5a5ae5133d44b",
+      "snaks": {
+       "P248": [
+        {
+         "snaktype": "value",
+         "property": "P248",
+         "hash": "2e92dfb9200a54eef9b44e474b97c4dd6dd90461",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 53705033,
+           "id": "Q53705033"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P248"
+      ]
+     }
+    ]
+   }
+  ],
+  "P4342": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P4342",
+     "hash": "da5267c289e1bc15c3883fe98fa5fe7d049dcef5",
+     "datavalue": {
+      "value": "StatoilHydro",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P4390": [
+      {
+       "snaktype": "value",
+       "property": "P4390",
+       "hash": "1a4df62914ea9afca349bd5fb5d8efd5832d83fa",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 39893449,
+         "id": "Q39893449"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P4390"
+    ],
+    "id": "Q1776022$A868F3E5-05DC-4CB1-90C8-D606187A8173",
+    "rank": "normal"
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P4342",
+     "hash": "5034347e23e91df13cc70cc2c7f491521158cfa1",
+     "datavalue": {
+      "value": "Equinor",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P4390": [
+      {
+       "snaktype": "value",
+       "property": "P4390",
+       "hash": "1a4df62914ea9afca349bd5fb5d8efd5832d83fa",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 39893449,
+         "id": "Q39893449"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ],
+     "P407": [
+      {
+       "snaktype": "value",
+       "property": "P407",
+       "hash": "606825e6b0d89c91936ce3fde73e10b917553f13",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 25167,
+         "id": "Q25167"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P4390",
+     "P407"
+    ],
+    "id": "Q1776022$d5753037-4f2c-3ef2-7cbb-dc8daae0d96f",
+    "rank": "preferred"
+   }
+  ],
+  "P2427": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P2427",
+     "hash": "d16a9def64742f7cdc584b0e367f7f379f444f07",
+     "datavalue": {
+      "value": "grid.422595.d",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$BC628648-A005-4526-9DFC-854BF246A6FB",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "40fdc7f3ce7f6771a8f285a1267bfc3f3de154d9",
+      "snaks": {
+       "P248": [
+        {
+         "snaktype": "value",
+         "property": "P248",
+         "hash": "858e5db66e8139829fa8f88e7e16ea6af5213e4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 53869345,
+           "id": "Q53869345"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P248"
+      ]
+     },
+     {
+      "hash": "a1914c8952a5bc482eafeb26be4fda504fe701f9",
+      "snaks": {
+       "P248": [
+        {
+         "snaktype": "value",
+         "property": "P248",
+         "hash": "31f77799b27e462a188007d80e9cae011a037bca",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 53705036,
+           "id": "Q53705036"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P248"
+      ]
+     }
+    ]
+   }
+  ],
+  "P1320": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P1320",
+     "hash": "789794d1f9e0cc4a41276213189c8476f55839b0",
+     "datavalue": {
+      "value": "no/923609016",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$1A94F3B6-A840-4F94-AE2D-0AB9F53E5CA5",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "f9d1fd2126d300946aca728768db0a5a5bc81020",
+      "snaks": {
+       "P2333": [
+        {
+         "snaktype": "value",
+         "property": "P2333",
+         "hash": "fa8e6bc8abcfa991f9c68ec0879c8e7391719d7b",
+         "datavalue": {
+          "value": "923609016",
+          "type": "string"
+         },
+         "datatype": "external-id"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P2333"
+      ]
+     }
+    ]
+   }
+  ],
+  "P6366": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P6366",
+     "hash": "98d5d6639c53415176a792ece0bf92ca4ee114f3",
+     "datavalue": {
+      "value": "49324905",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$EFCF54A6-81A0-4239-AB26-717E1C11129C",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "8ddca968ac99f7be2afea77f2697945db587e077",
+      "snaks": {
+       "P248": [
+        {
+         "snaktype": "value",
+         "property": "P248",
+         "hash": "2995ad06d424d751f036cb92149fada89fe252d9",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 60683589,
+           "id": "Q60683589"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ],
+       "P2427": [
+        {
+         "snaktype": "value",
+         "property": "P2427",
+         "hash": "d16a9def64742f7cdc584b0e367f7f379f444f07",
+         "datavalue": {
+          "value": "grid.422595.d",
+          "type": "string"
+         },
+         "datatype": "external-id"
+        }
+       ],
+       "P813": [
+        {
+         "snaktype": "value",
+         "property": "P813",
+         "hash": "74c664545729bbe3e2b6db4bfa3d58ebdeb8e9f0",
+         "datavalue": {
+          "value": {
+           "time": "+2019-01-19T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P248",
+       "P2427",
+       "P813"
+      ]
+     }
+    ]
+   }
+  ],
+  "P2013": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P2013",
+     "hash": "3a111f6fef5647a7055ff54dc541fec2aae9c771",
+     "datavalue": {
+      "value": "Equinor",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$d9c6d76f-4eab-0ddd-d53a-6b9cbcfa145f",
+    "rank": "normal"
+   }
+  ],
+  "P5887": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P5887",
+     "hash": "8a542b2dca40ff6a976e3f2b35d45c74096e997c",
+     "datavalue": {
+      "value": "no-a1450-06000000054262",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$F9AC36AB-3BA2-4499-8659-BBFB1016BD67",
+    "rank": "normal"
+   }
+  ],
+  "P6782": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P6782",
+     "hash": "7de5ea8e03b30f6b59d836f3b11babb8e11b1d47",
+     "datavalue": {
+      "value": "017mte255",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$87A72B14-F753-4047-9D28-76CFC2DDDC01",
+    "rank": "normal"
+   }
+  ],
+  "P1448": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P1448",
+     "hash": "4c2b78f2893488031b01875a0c88b67a5a902252",
+     "datavalue": {
+      "value": {
+       "text": "Equinor ASA",
+       "language": "nb"
+      },
+      "type": "monolingualtext"
+     },
+     "datatype": "monolingualtext"
+    },
+    "type": "statement",
+    "id": "Q1776022$f805881e-448a-17ee-989c-2b7741983419",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "38c812d2ced3b3a9eab3d3b3a08322d9653c4d61",
+      "snaks": {
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "5b31be3133992a70a031ab053110c4d04d3748c6",
+         "datavalue": {
+          "value": "https://www.equinor.com/no/where-we-are/norway.html",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P854"
+      ]
+     }
+    ]
+   }
+  ],
+  "P1128": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P1128",
+     "hash": "7b93af258ed9d08fc24c70f6a14442cf38749870",
+     "datavalue": {
+      "value": {
+       "amount": "+20000",
+       "unit": "1"
+      },
+      "type": "quantity"
+     },
+     "datatype": "quantity"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P585": [
+      {
+       "snaktype": "value",
+       "property": "P585",
+       "hash": "148296c500b6be774aacea4c8798fd1e1a900c08",
+       "datavalue": {
+        "value": {
+         "time": "+2019-10-00T00:00:00Z",
+         "timezone": 0,
+         "before": 0,
+         "after": 0,
+         "precision": 10,
+         "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+        },
+        "type": "time"
+       },
+       "datatype": "time"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P585"
+    ],
+    "id": "Q1776022$7f22240a-498f-9c44-9da7-5aee6b5458d1",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "55c24bf0c069033486e86f4d39023c352ee7fded",
+      "snaks": {
+       "P856": [
+        {
+         "snaktype": "value",
+         "property": "P856",
+         "hash": "cd179c99e8d6207cd0fbcc8c3a4a2a8c0c8dacce",
+         "datavalue": {
+          "value": "https://www.equinor.com/en/about-us.html",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P856"
+      ]
+     }
+    ]
+   }
+  ],
+  "P2226": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P2226",
+     "hash": "1162f114fea2152740fb0aebfcc2db1636298d37",
+     "datavalue": {
+      "value": {
+       "amount": "+64030000000",
+       "unit": "http://www.wikidata.org/entity/Q4917"
+      },
+      "type": "quantity"
+     },
+     "datatype": "quantity"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P585": [
+      {
+       "snaktype": "value",
+       "property": "P585",
+       "hash": "3b346e5ab7669dfe5d6959815d51d12131bf10ca",
+       "datavalue": {
+        "value": {
+         "time": "+2019-09-26T00:00:00Z",
+         "timezone": 0,
+         "before": 0,
+         "after": 0,
+         "precision": 11,
+         "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+        },
+        "type": "time"
+       },
+       "datatype": "time"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P585"
+    ],
+    "id": "Q1776022$e30b8df3-4954-c726-9a24-e7856471043d",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "1371e32a09677cbfa81e61303b5e53e6ac25e503",
+      "snaks": {
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "9e83b8537b163a4a78ab9c49447971a0b3ee0d52",
+         "datavalue": {
+          "value": "https://web.archive.org/web/20190926214639/https://ycharts.com/companies/EQNR/market_cap",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P854"
+      ]
+     }
+    ]
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P2226",
+     "hash": "4959af1153ebdd3468a2deb78667084cd37e6f52",
+     "datavalue": {
+      "value": {
+       "amount": "+98810000000",
+       "unit": "http://www.wikidata.org/entity/Q4917"
+      },
+      "type": "quantity"
+     },
+     "datatype": "quantity"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P585": [
+      {
+       "snaktype": "value",
+       "property": "P585",
+       "hash": "aa537aa7bf30ac442770805eb14cceb27b97d0c0",
+       "datavalue": {
+        "value": {
+         "time": "+2023-02-00T00:00:00Z",
+         "timezone": 0,
+         "before": 0,
+         "after": 0,
+         "precision": 10,
+         "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+        },
+        "type": "time"
+       },
+       "datatype": "time"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P585"
+    ],
+    "id": "Q1776022$c604d037-4045-7c9d-25db-559e65c61a4e",
+    "rank": "preferred",
+    "references": [
+     {
+      "hash": "faeccdd5b7c0b0d722a43ea54b6a3e160bf33497",
+      "snaks": {
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "fd7b680b9b1ebb2fb732c593fa2174007b92f56b",
+         "datavalue": {
+          "value": "https://companiesmarketcap.com/equinor/marketcap/",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ],
+       "P813": [
+        {
+         "snaktype": "value",
+         "property": "P813",
+         "hash": "d877695cc50b41d5573015679bc239d468e26270",
+         "datavalue": {
+          "value": {
+           "time": "+2023-02-10T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P854",
+       "P813"
+      ]
+     }
+    ]
+   }
+  ],
+  "P8253": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P8253",
+     "hash": "910a7fa2d9efb3de9033d4b9b2eeea06b4fc6cc0",
+     "datavalue": {
+      "value": "equinor-03e08c",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$0AB79466-4AB7-4C76-BBE0-FF27A3444A4C",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "17b44e0865ba260d9e25a3eb6dd105da11a26206",
+      "snaks": {
+       "P248": [
+        {
+         "snaktype": "value",
+         "property": "P248",
+         "hash": "bb9b2495417db83228e92ebc58dadf9e4c27c2b6",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 62108705,
+           "id": "Q62108705"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P248"
+      ]
+     }
+    ]
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P8253",
+     "hash": "2b1419befbfa3e8a2b6c7fc89e48125295f74e71",
+     "datavalue": {
+      "value": "equinor-143312",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$5E713EC6-80D0-416E-BCF9-4B860FCA099F",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "17b44e0865ba260d9e25a3eb6dd105da11a26206",
+      "snaks": {
+       "P248": [
+        {
+         "snaktype": "value",
+         "property": "P248",
+         "hash": "bb9b2495417db83228e92ebc58dadf9e4c27c2b6",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 62108705,
+           "id": "Q62108705"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P248"
+      ]
+     }
+    ]
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P8253",
+     "hash": "0d8a905e624fc4e46a7be47ff5a3363bb2f8f9cc",
+     "datavalue": {
+      "value": "equinor-3116d1",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$EFB73F3C-D400-4508-B4A4-FE13BF173B6C",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "17b44e0865ba260d9e25a3eb6dd105da11a26206",
+      "snaks": {
+       "P248": [
+        {
+         "snaktype": "value",
+         "property": "P248",
+         "hash": "bb9b2495417db83228e92ebc58dadf9e4c27c2b6",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 62108705,
+           "id": "Q62108705"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P248"
+      ]
+     }
+    ]
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P8253",
+     "hash": "a666b83756f0d8639cb49f01e030fd3cd2a32fc6",
+     "datavalue": {
+      "value": "equinor-74685d",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$F5C6CAE5-0561-4171-9E5E-B463332CFF2E",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "17b44e0865ba260d9e25a3eb6dd105da11a26206",
+      "snaks": {
+       "P248": [
+        {
+         "snaktype": "value",
+         "property": "P248",
+         "hash": "bb9b2495417db83228e92ebc58dadf9e4c27c2b6",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 62108705,
+           "id": "Q62108705"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P248"
+      ]
+     }
+    ]
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P8253",
+     "hash": "39d6b1832b6152a82448b9c08adb75a0991c5ca4",
+     "datavalue": {
+      "value": "equinor-5a45ea",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$DC0A0516-88FD-4E18-A889-0C715E7155E1",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "17b44e0865ba260d9e25a3eb6dd105da11a26206",
+      "snaks": {
+       "P248": [
+        {
+         "snaktype": "value",
+         "property": "P248",
+         "hash": "bb9b2495417db83228e92ebc58dadf9e4c27c2b6",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 62108705,
+           "id": "Q62108705"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P248"
+      ]
+     }
+    ]
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P8253",
+     "hash": "bbd2c1a6e62e36b5e34abf4e2458dbcd057c18c6",
+     "datavalue": {
+      "value": "statoil-ac665c",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$74D3847E-DB35-456F-8FBE-CD90DE5D1081",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "17b44e0865ba260d9e25a3eb6dd105da11a26206",
+      "snaks": {
+       "P248": [
+        {
+         "snaktype": "value",
+         "property": "P248",
+         "hash": "bb9b2495417db83228e92ebc58dadf9e4c27c2b6",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 62108705,
+           "id": "Q62108705"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P248"
+      ]
+     }
+    ]
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P8253",
+     "hash": "3070ff9460d81f5f2afe1a83b9a21407feaef69d",
+     "datavalue": {
+      "value": "statoil-316a32",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$34E50FD3-329E-4BE3-BABD-21830756E37F",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "17b44e0865ba260d9e25a3eb6dd105da11a26206",
+      "snaks": {
+       "P248": [
+        {
+         "snaktype": "value",
+         "property": "P248",
+         "hash": "bb9b2495417db83228e92ebc58dadf9e4c27c2b6",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 62108705,
+           "id": "Q62108705"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P248"
+      ]
+     }
+    ]
+   }
+  ],
+  "P9201": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P9201",
+     "hash": "98bb9c3a2be5ee215e98d16a5d3abf8aeeb1bee0",
+     "datavalue": {
+      "value": "52950",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$2f95360f-4e58-8716-51eb-ae3aa75ad340",
+    "rank": "normal"
+   }
+  ],
+  "P10283": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P10283",
+     "hash": "0059f325ca6b2c2a4185c56e9a0427fa1c9dc7a0",
+     "datavalue": {
+      "value": "I49324905",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$B4AF3C06-9427-4D2F-A696-AF7F25DA4297",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "decfbfa71977c9b0e5cec1f4a4dfb7dfafa59ea9",
+      "snaks": {
+       "P248": [
+        {
+         "snaktype": "value",
+         "property": "P248",
+         "hash": "4a4f26a5361b5707266e48e425bf2be2f99fd2ab",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 107507571,
+           "id": "Q107507571"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ],
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "a4a4bf53f22268815c51ec10fed608da703c9c7f",
+         "datavalue": {
+          "value": "https://docs.openalex.org/download-snapshot/snapshot-data-format",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ],
+       "P813": [
+        {
+         "snaktype": "value",
+         "property": "P813",
+         "hash": "08529d064baad71a9df22dc3308e931aca9bd537",
+         "datavalue": {
+          "value": {
+           "time": "+2022-01-25T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ],
+       "P1065": [
+        {
+         "snaktype": "value",
+         "property": "P1065",
+         "hash": "3134281f51e2490f88272d53c56ee95d9cc24e2c",
+         "datavalue": {
+          "value": "https://web.archive.org/web/20220125070108/https://docs.openalex.org/download-snapshot/snapshot-data-format",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ],
+       "P2960": [
+        {
+         "snaktype": "value",
+         "property": "P2960",
+         "hash": "f7ff3a0de7f9571ecb5e0740cba4122c6703e1ec",
+         "datavalue": {
+          "value": {
+           "time": "+2022-01-25T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P248",
+       "P854",
+       "P813",
+       "P1065",
+       "P2960"
+      ]
+     }
+    ]
+   }
+  ],
+  "P10301": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P10301",
+     "hash": "16bad437584d13a781800e361d06249776bef0bf",
+     "datavalue": {
+      "value": "R002292",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P580": [
+      {
+       "snaktype": "value",
+       "property": "P580",
+       "hash": "82e4f42ba1a1fd4e602d07defba33ea8fd5d1891",
+       "datavalue": {
+        "value": {
+         "time": "+2022-02-28T00:00:00Z",
+         "timezone": 0,
+         "before": 0,
+         "after": 0,
+         "precision": 11,
+         "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+        },
+        "type": "time"
+       },
+       "datatype": "time"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P580"
+    ],
+    "id": "Q1776022$3ED54BAD-D84B-4806-BF60-FC21AE1E220C",
+    "rank": "normal"
+   }
+  ],
+  "P5785": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P5785",
+     "hash": "ff71e1fae3d7bf222967a34fabce82de200fe254",
+     "datavalue": {
+      "value": "999939827",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$f79b4bb9-46be-1317-49f1-cd409316d306",
+    "rank": "normal"
+   }
+  ],
+  "P8645": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P8645",
+     "hash": "31b0ef52e3ff36f887f92f61f0c049ea42dd0a87",
+     "datavalue": {
+      "value": "21X000000001026N",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$4988AAB0-EE31-4EC4-8E88-C831E731EA6C",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "12dcf35bd46c2a62ccd611759caf018dd5119060",
+      "snaks": {
+       "P248": [
+        {
+         "snaktype": "value",
+         "property": "P248",
+         "hash": "ae31162bbfe83531650c3dae2be913e0896d8ac4",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 113027714,
+           "id": "Q113027714"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ],
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "1ccf8dcd1c0d65bf9a694eff2f21664e743d62f9",
+         "datavalue": {
+          "value": "https://www.acer-remit.eu/portal/export-public-eu-register",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ],
+       "P813": [
+        {
+         "snaktype": "value",
+         "property": "P813",
+         "hash": "d056c6601b26503fbd137fdbbc4e6175308af243",
+         "datavalue": {
+          "value": {
+           "time": "+2022-07-12T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P248",
+       "P854",
+       "P813"
+      ]
+     }
+    ]
+   }
+  ],
+  "P1278": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P1278",
+     "hash": "21a7e3de52b460ecc423ab54b79b5f3d5d03183f",
+     "datavalue": {
+      "value": "OW6OFBNCKXC4US5C7523",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$BE523146-62B8-44D5-B5EB-C6FB3AC6E9A9",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "12dcf35bd46c2a62ccd611759caf018dd5119060",
+      "snaks": {
+       "P248": [
+        {
+         "snaktype": "value",
+         "property": "P248",
+         "hash": "ae31162bbfe83531650c3dae2be913e0896d8ac4",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 113027714,
+           "id": "Q113027714"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ],
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "1ccf8dcd1c0d65bf9a694eff2f21664e743d62f9",
+         "datavalue": {
+          "value": "https://www.acer-remit.eu/portal/export-public-eu-register",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ],
+       "P813": [
+        {
+         "snaktype": "value",
+         "property": "P813",
+         "hash": "d056c6601b26503fbd137fdbbc4e6175308af243",
+         "datavalue": {
+          "value": {
+           "time": "+2022-07-12T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P248",
+       "P854",
+       "P813"
+      ]
+     }
+    ]
+   }
+  ],
+  "P8692": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P8692",
+     "hash": "52340ec88a681c28686adfc1cae2875551139483",
+     "datavalue": {
+      "value": "A0017743C.NL",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$BCF19B92-07C8-461B-9A79-3F7A40023D90",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "12dcf35bd46c2a62ccd611759caf018dd5119060",
+      "snaks": {
+       "P248": [
+        {
+         "snaktype": "value",
+         "property": "P248",
+         "hash": "ae31162bbfe83531650c3dae2be913e0896d8ac4",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 113027714,
+           "id": "Q113027714"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ],
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "1ccf8dcd1c0d65bf9a694eff2f21664e743d62f9",
+         "datavalue": {
+          "value": "https://www.acer-remit.eu/portal/export-public-eu-register",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ],
+       "P813": [
+        {
+         "snaktype": "value",
+         "property": "P813",
+         "hash": "d056c6601b26503fbd137fdbbc4e6175308af243",
+         "datavalue": {
+          "value": {
+           "time": "+2022-07-12T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P248",
+       "P854",
+       "P813"
+      ]
+     }
+    ]
+   }
+  ],
+  "P2088": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P2088",
+     "hash": "29ef1d5ecd91d911aaf7733a705d217a6d330952",
+     "datavalue": {
+      "value": "statoil",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$6BD49065-F40D-4711-A160-6D4DAB5EA5FE",
+    "rank": "normal"
+   }
+  ],
+  "P5531": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P5531",
+     "hash": "5b612022d0aff87e709af3ce1a8a4c9668c4e883",
+     "datavalue": {
+      "value": "0001140625",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$F7D5D45E-40D5-472B-8E6B-B79EEE3581E7",
+    "rank": "normal"
+   }
+  ],
+  "P3797": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P3797",
+     "hash": "9f3553bc892915a4fc1ec6a92196b7841df8421c",
+     "datavalue": {
+      "value": "42175",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$f69e36bf-48e1-1c76-9866-1008757fecff",
+    "rank": "normal"
+   }
+  ],
+  "P2003": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P2003",
+     "hash": "ccfe70ce60329c5108c052a296d2f61dfca201de",
+     "datavalue": {
+      "value": "equinor",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$A5D2139C-92FE-494B-A6F0-76DC76563D38",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "b984d883f33a214098931e92a5b11409cb6760f6",
+      "snaks": {
+       "P143": [
+        {
+         "snaktype": "value",
+         "property": "P143",
+         "hash": "c6f1777471211df31724ac60175786f3872c83e9",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 177837,
+           "id": "Q177837"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ],
+       "P4656": [
+        {
+         "snaktype": "value",
+         "property": "P4656",
+         "hash": "50f3443e9e4ef0ab0c220541355771dc75e33a97",
+         "datavalue": {
+          "value": "https://ja.wikipedia.org/w/index.php?title=エクイノール&oldid=93043323",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P143",
+       "P4656"
+      ]
+     }
+    ]
+   }
+  ],
+  "P4527": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P4527",
+     "hash": "e760a7a2b69388c5b7c76f470a9a979f5cce086a",
+     "datavalue": {
+      "value": "450509",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P1810": [
+      {
+       "snaktype": "value",
+       "property": "P1810",
+       "hash": "fc2fff07985f7bc74072a1bdcba7ea574886f6e2",
+       "datavalue": {
+        "value": "Equinor",
+        "type": "string"
+       },
+       "datatype": "string"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P1810"
+    ],
+    "id": "Q1776022$cbf9bc45-4a87-4267-f32a-69debfcca2ce",
+    "rank": "normal"
+   }
+  ],
+  "P10323": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P10323",
+     "hash": "cc762f322408cbef4739b4f88e9fba9c79352d6c",
+     "datavalue": {
+      "value": "14027748",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$1a3ec254-4526-79cd-9dd9-8b501c4b04b5",
+    "rank": "normal"
+   }
+  ],
+  "P13092": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P13092",
+     "hash": "f42dd39ea3b6814a3c04343fa589d36e603c0e42",
+     "datavalue": {
+      "value": "K000228710",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$29F05BAB-1272-4B87-92D2-3A6B1CEAA7BB",
+    "rank": "normal"
+   }
+  ],
+  "P463": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P463",
+     "hash": "64544d054eb1c56c3fe9754fb4e520b165efa394",
+     "datavalue": {
+      "value": {
+       "entity-type": "item",
+       "numeric-id": 501546,
+       "id": "Q501546"
+      },
+      "type": "wikibase-entityid"
+     },
+     "datatype": "wikibase-item"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P1810": [
+      {
+       "snaktype": "value",
+       "property": "P1810",
+       "hash": "5b2d90390ff750efac3539063e154f2e9859e7fb",
+       "datavalue": {
+        "value": "Statoil",
+        "type": "string"
+       },
+       "datatype": "string"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P1810"
+    ],
+    "id": "Q1776022$d407ffd3-4727-e16c-71cf-69f506a74a72",
+    "rank": "normal"
+   }
+  ],
+  "P13591": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P13591",
+     "hash": "3e384100bbd1c9c07e2d7eabb25ca04046aaa2f2",
+     "datavalue": {
+      "value": "group/872e1f99-b571-4126-92dc-3c5943fbbcac",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$D67EDE62-682B-4F14-9FCB-715EBEB95B89",
+    "rank": "normal"
+   }
+  ],
+  "P11471": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P11471",
+     "hash": "3e88d2ba032c83cbc330e5951b3cf90367c747ff",
+     "datavalue": {
+      "value": "44417",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$F6347A7A-3DDA-4A33-9187-42E8B41723AD",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "0d5b6e38d9301cb8ede1e259d4d55e2c9cd255ad",
+      "snaks": {
+       "P248": [
+        {
+         "snaktype": "value",
+         "property": "P248",
+         "hash": "de54966cd0c0771ec86da14f2db8e339cdb394e0",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 115910233,
+           "id": "Q115910233"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ],
+       "P813": [
+        {
+         "snaktype": "value",
+         "property": "P813",
+         "hash": "08fba3511bad9285e16847928bbcc37907ec04a4",
+         "datavalue": {
+          "value": {
+           "time": "+2025-07-22T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P248",
+       "P813"
+      ]
+     }
+    ]
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P11471",
+     "hash": "cb793d8c47a24987473803b59eff8aba57c210b2",
+     "datavalue": {
+      "value": "56703",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$0F5F058F-D4D0-4914-9E32-5FB2DC773303",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "0d5b6e38d9301cb8ede1e259d4d55e2c9cd255ad",
+      "snaks": {
+       "P248": [
+        {
+         "snaktype": "value",
+         "property": "P248",
+         "hash": "de54966cd0c0771ec86da14f2db8e339cdb394e0",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 115910233,
+           "id": "Q115910233"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ],
+       "P813": [
+        {
+         "snaktype": "value",
+         "property": "P813",
+         "hash": "08fba3511bad9285e16847928bbcc37907ec04a4",
+         "datavalue": {
+          "value": {
+           "time": "+2025-07-22T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P248",
+       "P813"
+      ]
+     }
+    ]
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P11471",
+     "hash": "fd7ea84d18002260f5e9ef9bbe77f8927e0bd160",
+     "datavalue": {
+      "value": "5760335",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$22344920-DCE9-4F22-B804-A15BDDF98045",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "0d5b6e38d9301cb8ede1e259d4d55e2c9cd255ad",
+      "snaks": {
+       "P248": [
+        {
+         "snaktype": "value",
+         "property": "P248",
+         "hash": "de54966cd0c0771ec86da14f2db8e339cdb394e0",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 115910233,
+           "id": "Q115910233"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ],
+       "P813": [
+        {
+         "snaktype": "value",
+         "property": "P813",
+         "hash": "08fba3511bad9285e16847928bbcc37907ec04a4",
+         "datavalue": {
+          "value": {
+           "time": "+2025-07-22T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P248",
+       "P813"
+      ]
+     }
+    ]
+   }
+  ],
+  "P2139": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P2139",
+     "hash": "0d9dfeabb6209d2674336a815acaaee75bdde279",
+     "datavalue": {
+      "value": {
+       "amount": "+103770000000",
+       "unit": "http://www.wikidata.org/entity/Q4917"
+      },
+      "type": "quantity"
+     },
+     "datatype": "quantity"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P585": [
+      {
+       "snaktype": "value",
+       "property": "P585",
+       "hash": "651e5c13c66535cd0ef6a59464de09ddb2b98582",
+       "datavalue": {
+        "value": {
+         "time": "+2024-01-01T00:00:00Z",
+         "timezone": 0,
+         "before": 0,
+         "after": 0,
+         "precision": 9,
+         "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+        },
+        "type": "time"
+       },
+       "datatype": "time"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P585"
+    ],
+    "id": "Q1776022$8612E995-5237-462E-9B06-F947F702B203",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "090babd642d9307faeb13e77fa8af0797e76e422",
+      "snaks": {
+       "P854": [
+        {
+         "snaktype": "value",
+         "property": "P854",
+         "hash": "7ac30c548aa05bea02da02d40c19510b5393ae6d",
+         "datavalue": {
+          "value": "https://www.equinor.com/investors/annual-reports",
+          "type": "string"
+         },
+         "datatype": "url"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P854"
+      ]
+     }
+    ]
+   }
+  ],
+  "P14075": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P14075",
+     "hash": "bfb6bcc61f61b0b96b6f2fbe7d40e0798f20e859",
+     "datavalue": {
+      "value": "14905",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$95253104-7FFD-4A35-8B81-6EAB0C6DFAAB",
+    "rank": "normal"
+   }
+  ],
+  "P1617": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P1617",
+     "hash": "9aedbf2dad97cf1bfd335fb51be794eafd7e19b4",
+     "datavalue": {
+      "value": "55b416ce-820d-41d1-9197-2e17619ec842",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$bee377a6-4523-e4bc-d342-479ddedf7cf6",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "8582d8416671f1f2567247201bac753552435ca5",
+      "snaks": {
+       "P248": [
+        {
+         "snaktype": "value",
+         "property": "P248",
+         "hash": "ea55dc6ac5c3ab77c77d4ae7979e3276d0d4cd20",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 18336371,
+           "id": "Q18336371"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P248"
+      ]
+     }
+    ]
+   }
+  ],
+  "P14750": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P14750",
+     "hash": "5dccb813a456aeb4469e793534ba203a4533cbaa",
+     "datavalue": {
+      "value": "45C8-B1C7-9A5C-2F7D-BEDB",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$ADA1FCAB-6927-4A7C-A3BB-4D2660D0D4BF",
+    "rank": "normal"
+   }
+  ],
+  "P18": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P18",
+     "hash": "135cb19c900b65ef309790d5a6548c005874f124",
+     "datavalue": {
+      "value": "Equinors kontorbygg på fornebu i bærum.jpg",
+      "type": "string"
+     },
+     "datatype": "commonsMedia"
+    },
+    "type": "statement",
+    "qualifiers": {
+     "P2096": [
+      {
+       "snaktype": "value",
+       "property": "P2096",
+       "hash": "b2a3fec83a60ae94f3ac6023aa2507fa1fc60ab5",
+       "datavalue": {
+        "value": {
+         "text": "Equinors kontorbygg på Fornebu i Bærum.",
+         "language": "nb"
+        },
+        "type": "monolingualtext"
+       },
+       "datatype": "monolingualtext"
+      }
+     ],
+     "P585": [
+      {
+       "snaktype": "value",
+       "property": "P585",
+       "hash": "33ab6432658c46735c19a61526ae17626a994f97",
+       "datavalue": {
+        "value": {
+         "time": "+2025-09-19T00:00:00Z",
+         "timezone": 0,
+         "before": 0,
+         "after": 0,
+         "precision": 11,
+         "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+        },
+        "type": "time"
+       },
+       "datatype": "time"
+      }
+     ],
+     "P7452": [
+      {
+       "snaktype": "value",
+       "property": "P7452",
+       "hash": "1da0eb421d97b5fcab46e628fc7d7c3f7445499d",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 71535331,
+         "id": "Q71535331"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      }
+     ]
+    },
+    "qualifiers-order": [
+     "P2096",
+     "P585",
+     "P7452"
+    ],
+    "id": "Q1776022$72699763-4175-e090-8348-ac28b712f20f",
+    "rank": "preferred"
+   },
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P18",
+     "hash": "50974c2b37fb0f8b8c16495806e15b96764357fa",
+     "datavalue": {
+      "value": "Equinor Building - Bærum, Norway 2021-02-23.jpg",
+      "type": "string"
+     },
+     "datatype": "commonsMedia"
+    },
+    "type": "statement",
+    "id": "Q1776022$a06336e6-41ac-87e3-d173-462ab235c6f7",
+    "rank": "normal"
+   }
+  ],
+  "P227": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P227",
+     "hash": "807c04ed1524d10aaac05a3d5b0324159b9781ce",
+     "datavalue": {
+      "value": "1047872498",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "Q1776022$E8B15A9F-F9B1-4CFD-8DA3-86ED1BB3F412",
+    "rank": "normal",
+    "references": [
+     {
+      "hash": "764eeecc037235bb153960a75860d61e5585fdd4",
+      "snaks": {
+       "P248": [
+        {
+         "snaktype": "value",
+         "property": "P248",
+         "hash": "019a50b7de741e0068bde41c9d9955b22a5de47b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 36578,
+           "id": "Q36578"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ],
+       "P813": [
+        {
+         "snaktype": "value",
+         "property": "P813",
+         "hash": "7d75dfe680b764c410cf813a587761d31a9f2d84",
+         "datavalue": {
+          "value": {
+           "time": "+2026-09-26T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "snaks-order": [
+       "P248",
+       "P813"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "sitelinks": {
+  "arwiki": {
+   "site": "arwiki",
+   "title": "إكوينور",
+   "badges": []
+  },
+  "azbwiki": {
+   "site": "azbwiki",
+   "title": "ایستات اویل",
+   "badges": []
+  },
+  "azwiki": {
+   "site": "azwiki",
+   "title": "Equinor",
+   "badges": []
+  },
+  "cawiki": {
+   "site": "cawiki",
+   "title": "Equinor",
+   "badges": []
+  },
+  "dawiki": {
+   "site": "dawiki",
+   "title": "Equinor",
+   "badges": []
+  },
+  "dewiki": {
+   "site": "dewiki",
+   "title": "Equinor",
+   "badges": []
+  },
+  "enwiki": {
+   "site": "enwiki",
+   "title": "Equinor",
+   "badges": []
+  },
+  "eswiki": {
+   "site": "eswiki",
+   "title": "Equinor",
+   "badges": []
+  },
+  "etwiki": {
+   "site": "etwiki",
+   "title": "Equinor",
+   "badges": []
+  },
+  "euwiki": {
+   "site": "euwiki",
+   "title": "Equinor",
+   "badges": []
+  },
+  "fawiki": {
+   "site": "fawiki",
+   "title": "اکوینور",
+   "badges": []
+  },
+  "fiwiki": {
+   "site": "fiwiki",
+   "title": "Equinor",
+   "badges": []
+  },
+  "frwiki": {
+   "site": "frwiki",
+   "title": "Equinor",
+   "badges": []
+  },
+  "glwiki": {
+   "site": "glwiki",
+   "title": "Equinor",
+   "badges": []
+  },
+  "hewiki": {
+   "site": "hewiki",
+   "title": "Equinor",
+   "badges": []
+  },
+  "hiwiki": {
+   "site": "hiwiki",
+   "title": "स्टेटऑयल",
+   "badges": []
+  },
+  "idwiki": {
+   "site": "idwiki",
+   "title": "Equinor",
+   "badges": []
+  },
+  "iswiki": {
+   "site": "iswiki",
+   "title": "Equinor",
+   "badges": []
+  },
+  "itwiki": {
+   "site": "itwiki",
+   "title": "Equinor",
+   "badges": []
+  },
+  "jawiki": {
+   "site": "jawiki",
+   "title": "エクイノール",
+   "badges": []
+  },
+  "kowiki": {
+   "site": "kowiki",
+   "title": "에퀴노르",
+   "badges": []
+  },
+  "ltwiki": {
+   "site": "ltwiki",
+   "title": "Equinor",
+   "badges": []
+  },
+  "lvwiki": {
+   "site": "lvwiki",
+   "title": "Equinor",
+   "badges": []
+  },
+  "mswiki": {
+   "site": "mswiki",
+   "title": "Equinor",
+   "badges": []
+  },
+  "nlwiki": {
+   "site": "nlwiki",
+   "title": "Equinor",
+   "badges": []
+  },
+  "nnwiki": {
+   "site": "nnwiki",
+   "title": "Equinor",
+   "badges": []
+  },
+  "nowiki": {
+   "site": "nowiki",
+   "title": "Equinor",
+   "badges": []
+  },
+  "plwiki": {
+   "site": "plwiki",
+   "title": "Equinor",
+   "badges": []
+  },
+  "ptwiki": {
+   "site": "ptwiki",
+   "title": "Equinor",
+   "badges": []
+  },
+  "rowiki": {
+   "site": "rowiki",
+   "title": "Equinor",
+   "badges": []
+  },
+  "ruwiki": {
+   "site": "ruwiki",
+   "title": "Equinor",
+   "badges": []
+  },
+  "sewiki": {
+   "site": "sewiki",
+   "title": "Equinor",
+   "badges": []
+  },
+  "simplewiki": {
+   "site": "simplewiki",
+   "title": "Equinor",
+   "badges": []
+  },
+  "svwiki": {
+   "site": "svwiki",
+   "title": "Equinor",
+   "badges": []
+  },
+  "tewiki": {
+   "site": "tewiki",
+   "title": "ఈక్వినార్",
+   "badges": []
+  },
+  "trwiki": {
+   "site": "trwiki",
+   "title": "Equinor",
+   "badges": []
+  },
+  "ukwiki": {
+   "site": "ukwiki",
+   "title": "Equinor",
+   "badges": []
+  },
+  "urwiki": {
+   "site": "urwiki",
+   "title": "ایکوینور",
+   "badges": []
+  },
+  "viwiki": {
+   "site": "viwiki",
+   "title": "Equinor",
+   "badges": []
+  },
+  "zhwiki": {
+   "site": "zhwiki",
+   "title": "挪威国家石油公司",
+   "badges": []
+  }
+ }
+}

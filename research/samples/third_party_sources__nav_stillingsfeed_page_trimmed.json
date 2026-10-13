@@ -1,0 +1,462 @@
+{
+ "version": "1.0",
+ "title": "Stillingsfeeden fra arbeidsplassen.no",
+ "home_page_url": "https://arbeidsplassen.nav.no",
+ "feed_url": "/api/v1/feed/483cc0f8-0b71-42e2-ab99-99456b505e2f",
+ "description": "Feed med stillinger fra arbeidsplassen.no - En av Norges største oversikter over utlyste stillinger",
+ "next_url": "/api/v1/feed/983c4c86-68b8-444f-b3b5-9d04370ed0ed",
+ "id": "483cc0f8-0b71-42e2-ab99-99456b505e2f",
+ "next_id": "983c4c86-68b8-444f-b3b5-9d04370ed0ed",
+ "items": [
+  {
+   "id": "d93605c9-da4c-44a8-af12-4cb1c7c245db",
+   "url": "/api/v1/feedentry/d93605c9-da4c-44a8-af12-4cb1c7c245db",
+   "title": "Serveringspersonale til Vidsjå/Tårnstua i Skimore ved Tryvannstårnet",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-10-11T15:03:58.669334+02:00",
+   "_feed_entry": {
+    "uuid": "d93605c9-da4c-44a8-af12-4cb1c7c245db",
+    "status": "ACTIVE",
+    "title": "Serveringspersonale til Vidsjå/Tårnstua i Skimore ved Tryvannstårnet",
+    "businessName": "Tårnstua As",
+    "municipal": "OSLO",
+    "sistEndret": "2026-10-11T15:03:58.669334+02:00"
+   }
+  },
+  {
+   "id": "1e173e6f-6173-4f8a-b9d2-236bb3e227cd",
+   "url": "/api/v1/feedentry/1e173e6f-6173-4f8a-b9d2-236bb3e227cd",
+   "title": "Pedagogisk leder 2. gangsutlysning",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-10-11T15:13:01.871961+02:00",
+   "_feed_entry": {
+    "uuid": "1e173e6f-6173-4f8a-b9d2-236bb3e227cd",
+    "status": "ACTIVE",
+    "title": "Pedagogisk leder 2. gangsutlysning",
+    "businessName": "Nannestad kommune Bjerke barnehage",
+    "municipal": "NANNESTAD",
+    "sistEndret": "2026-10-11T15:13:01.871961+02:00"
+   }
+  },
+  {
+   "id": "1e9b7770-c470-4349-9f7d-928946455205",
+   "url": "/api/v1/feedentry/1e9b7770-c470-4349-9f7d-928946455205",
+   "title": "Helsesekretær 80% fast stilling på Vesterngaten medisinske senter",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-10-11T15:17:22.723073+02:00",
+   "_feed_entry": {
+    "uuid": "1e9b7770-c470-4349-9f7d-928946455205",
+    "status": "ACTIVE",
+    "title": "Helsesekretær 80% fast stilling på Vesterngaten medisinske senter",
+    "businessName": "Vesterngaten medisinske senter",
+    "municipal": "RINGERIKE",
+    "sistEndret": "2026-10-11T15:17:22.723073+02:00"
+   }
+  },
+  {
+   "id": "02505dd9-57cc-45cc-ab3e-30c66ce2fb97",
+   "url": "/api/v1/feedentry/02505dd9-57cc-45cc-ab3e-30c66ce2fb97",
+   "title": "...",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-10-11T16:00:29.251119+02:00",
+   "_feed_entry": {
+    "uuid": "02505dd9-57cc-45cc-ab3e-30c66ce2fb97",
+    "status": "INACTIVE",
+    "title": "...",
+    "businessName": "",
+    "municipal": "NORD-FRON",
+    "sistEndret": "2026-10-11T16:00:29.251119+02:00"
+   }
+  },
+  {
+   "id": "d62ed09f-f213-4225-8bfa-2669d83beb68",
+   "url": "/api/v1/feedentry/d62ed09f-f213-4225-8bfa-2669d83beb68",
+   "title": "Ønsker du å jobbe som fastlege?",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-10-11T16:01:00.787949+02:00",
+   "_feed_entry": {
+    "uuid": "d62ed09f-f213-4225-8bfa-2669d83beb68",
+    "status": "ACTIVE",
+    "title": "Ønsker du å jobbe som fastlege?",
+    "businessName": "Nord-Fron kommune Legekontoret",
+    "municipal": "NORD-FRON",
+    "sistEndret": "2026-10-11T16:01:00.787949+02:00"
+   }
+  },
+  {
+   "id": "02505dd9-57cc-45cc-ab3e-30c66ce2fb97",
+   "url": "/api/v1/feedentry/02505dd9-57cc-45cc-ab3e-30c66ce2fb97",
+   "title": "Ønsker du å jobbe som fastlege?",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-10-11T16:04:45.252939+02:00",
+   "_feed_entry": {
+    "uuid": "02505dd9-57cc-45cc-ab3e-30c66ce2fb97",
+    "status": "INACTIVE",
+    "title": "Ønsker du å jobbe som fastlege?",
+    "businessName": "Nord-Fron kommune ",
+    "municipal": "NORD-FRON",
+    "sistEndret": "2026-10-11T16:04:45.252939+02:00"
+   }
+  },
+  {
+   "id": "d5ca2978-e8ad-419f-8607-ede05241317a",
+   "url": "/api/v1/feedentry/d5ca2978-e8ad-419f-8607-ede05241317a",
+   "title": "Administrativ leder i Vokal Nord",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-10-11T16:12:32.328+02:00",
+   "_feed_entry": {
+    "uuid": "d5ca2978-e8ad-419f-8607-ede05241317a",
+    "status": "ACTIVE",
+    "title": "Administrativ leder i Vokal Nord",
+    "businessName": "Stiftelsen Vokal Nord",
+    "municipal": "TROMSØ",
+    "sistEndret": "2026-10-11T16:12:32.328+02:00"
+   }
+  },
+  {
+   "id": "cf313d24-7303-490b-bab3-5175aac7f05b",
+   "url": "/api/v1/feedentry/cf313d24-7303-490b-bab3-5175aac7f05b",
+   "title": "Landkreditt Forsikring- Forsikringsrådgiver",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-10-11T17:00:39.187973+02:00",
+   "_feed_entry": {
+    "uuid": "cf313d24-7303-490b-bab3-5175aac7f05b",
+    "status": "ACTIVE",
+    "title": "Landkreditt Forsikring- Forsikringsrådgiver",
+    "businessName": "Partner Assuranse As",
+    "municipal": "OSLO",
+    "sistEndret": "2026-10-11T17:00:39.187973+02:00"
+   }
+  },
+  {
+   "id": "20527643-1995-4c58-a31f-e3c5c428f404",
+   "url": "/api/v1/feedentry/20527643-1995-4c58-a31f-e3c5c428f404",
+   "title": "HR- og bemanningsansvarlig til Bonliva",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-10-11T17:08:38.216944+02:00",
+   "_feed_entry": {
+    "uuid": "20527643-1995-4c58-a31f-e3c5c428f404",
+    "status": "ACTIVE",
+    "title": "HR- og bemanningsansvarlig til Bonliva",
+    "businessName": "Bravura Norge",
+    "municipal": "OSLO",
+    "sistEndret": "2026-10-11T17:08:38.216944+02:00"
+   }
+  },
+  {
+   "id": "1e228b5c-c329-4021-bb96-f2e014c40e6f",
+   "url": "/api/v1/feedentry/1e228b5c-c329-4021-bb96-f2e014c40e6f",
+   "title": "Handy-Jentene søker ny renholder",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-10-11T17:19:01.601479+02:00",
+   "_feed_entry": {
+    "uuid": "1e228b5c-c329-4021-bb96-f2e014c40e6f",
+    "status": "ACTIVE",
+    "title": "Handy-Jentene søker ny renholder",
+    "businessName": "Handy-Jentene AS",
+    "municipal": "FREDRIKSTAD",
+    "sistEndret": "2026-10-11T17:19:01.601479+02:00"
+   }
+  },
+  {
+   "id": "46a873f4-b5b1-4063-9b9a-a5b2081ad816",
+   "url": "/api/v1/feedentry/46a873f4-b5b1-4063-9b9a-a5b2081ad816",
+   "title": "Medarbeider bookingteam – fleksibel deltidsjobb",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-10-11T17:24:03.533125+02:00",
+   "_feed_entry": {
+    "uuid": "46a873f4-b5b1-4063-9b9a-a5b2081ad816",
+    "status": "ACTIVE",
+    "title": "Medarbeider bookingteam – fleksibel deltidsjobb",
+    "businessName": "Partner Assuranse As",
+    "municipal": "OSLO",
+    "sistEndret": "2026-10-11T17:24:03.533125+02:00"
+   }
+  },
+  {
+   "id": "ff46ded5-e766-46c8-a96d-d5f361146b6e",
+   "url": "/api/v1/feedentry/ff46ded5-e766-46c8-a96d-d5f361146b6e",
+   "title": "Avdelingsleder til REMA 1000 His",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-10-11T17:46:17.395985+02:00",
+   "_feed_entry": {
+    "uuid": "ff46ded5-e766-46c8-a96d-d5f361146b6e",
+    "status": "ACTIVE",
+    "title": "Avdelingsleder til REMA 1000 His",
+    "businessName": "REMA 1000 His",
+    "municipal": "ARENDAL",
+    "sistEndret": "2026-10-11T17:46:17.395985+02:00"
+   }
+  },
+  {
+   "id": "92fd5605-2b05-4a1c-85cd-cce6d2799c18",
+   "url": "/api/v1/feedentry/92fd5605-2b05-4a1c-85cd-cce6d2799c18",
+   "title": "...",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-10-11T18:25:43.878973+02:00",
+   "_feed_entry": {
+    "uuid": "92fd5605-2b05-4a1c-85cd-cce6d2799c18",
+    "status": "INACTIVE",
+    "title": "...",
+    "businessName": "",
+    "municipal": "STRYN",
+    "sistEndret": "2026-10-11T18:25:43.878973+02:00"
+   }
+  },
+  {
+   "id": "073838df-230a-4b0d-8aeb-85a23fcd2661",
+   "url": "/api/v1/feedentry/073838df-230a-4b0d-8aeb-85a23fcd2661",
+   "title": "...",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-10-11T18:26:04.903931+02:00",
+   "_feed_entry": {
+    "uuid": "073838df-230a-4b0d-8aeb-85a23fcd2661",
+    "status": "INACTIVE",
+    "title": "...",
+    "businessName": "",
+    "municipal": "ASKER",
+    "sistEndret": "2026-10-11T18:26:04.903931+02:00"
+   }
+  },
+  {
+   "id": "4a223f63-38fd-4da1-a00c-4c174a3e961e",
+   "url": "/api/v1/feedentry/4a223f63-38fd-4da1-a00c-4c174a3e961e",
+   "title": "Glowclean søker tilkallingsvikar ",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-10-11T18:32:40.415945+02:00",
+   "_feed_entry": {
+    "uuid": "4a223f63-38fd-4da1-a00c-4c174a3e961e",
+    "status": "ACTIVE",
+    "title": "Glowclean søker tilkallingsvikar ",
+    "businessName": "Glow Clean Spavorova",
+    "municipal": "STRYN",
+    "sistEndret": "2026-10-11T18:32:40.415945+02:00"
+   }
+  },
+  {
+   "id": "3e444dab-c8a1-48f9-bad7-db18ff7c496e",
+   "url": "/api/v1/feedentry/3e444dab-c8a1-48f9-bad7-db18ff7c496e",
+   "title": "Sykepleier ",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-10-11T18:40:35.416403+02:00",
+   "_feed_entry": {
+    "uuid": "3e444dab-c8a1-48f9-bad7-db18ff7c496e",
+    "status": "ACTIVE",
+    "title": "Sykepleier ",
+    "businessName": "Virksomhet for hjemmetjenester, Nordreisa kommune",
+    "municipal": "NORDREISA",
+    "sistEndret": "2026-10-11T18:40:35.416403+02:00"
+   }
+  },
+  {
+   "id": "3c549b8d-0b2e-4807-908c-59a66ec7bcaa",
+   "url": "/api/v1/feedentry/3c549b8d-0b2e-4807-908c-59a66ec7bcaa",
+   "title": "Driftsoperatør - Osland Settefisk, Sørebø",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-10-11T18:53:31.391888+02:00",
+   "_feed_entry": {
+    "uuid": "3c549b8d-0b2e-4807-908c-59a66ec7bcaa",
+    "status": "INACTIVE",
+    "title": "Driftsoperatør - Osland Settefisk, Sørebø",
+    "businessName": "OSLAND SETTEFISK AS",
+    "municipal": "HØYANGER",
+    "sistEndret": "2026-10-11T18:53:31.391888+02:00"
+   }
+  },
+  {
+   "id": "3c549b8d-0b2e-4807-908c-59a66ec7bcaa",
+   "url": "/api/v1/feedentry/3c549b8d-0b2e-4807-908c-59a66ec7bcaa",
+   "title": "Driftsoperatør - Osland Settefisk, Sørebø",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-10-11T18:53:58.479954+02:00",
+   "_feed_entry": {
+    "uuid": "3c549b8d-0b2e-4807-908c-59a66ec7bcaa",
+    "status": "ACTIVE",
+    "title": "Driftsoperatør - Osland Settefisk, Sørebø",
+    "businessName": "OSLAND SETTEFISK AS",
+    "municipal": "HØYANGER",
+    "sistEndret": "2026-10-11T18:53:58.479954+02:00"
+   }
+  },
+  {
+   "id": "3ea97446-c1d8-4761-8c51-a111452d136e",
+   "url": "/api/v1/feedentry/3ea97446-c1d8-4761-8c51-a111452d136e",
+   "title": "Hovmesterassistent",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-10-11T19:30:31.955969+02:00",
+   "_feed_entry": {
+    "uuid": "3ea97446-c1d8-4761-8c51-a111452d136e",
+    "status": "ACTIVE",
+    "title": "Hovmesterassistent",
+    "businessName": "DINNER AS",
+    "municipal": "OSLO",
+    "sistEndret": "2026-10-11T19:30:31.955969+02:00"
+   }
+  },
+  {
+   "id": "d5ca2978-e8ad-419f-8607-ede05241317a",
+   "url": "/api/v1/feedentry/d5ca2978-e8ad-419f-8607-ede05241317a",
+   "title": "Administrativ leder i Vokal Nord",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-10-11T19:43:02.549943+02:00",
+   "_feed_entry": {
+    "uuid": "d5ca2978-e8ad-419f-8607-ede05241317a",
+    "status": "ACTIVE",
+    "title": "Administrativ leder i Vokal Nord",
+    "businessName": "Stiftelsen Vokal Nord",
+    "municipal": "TROMSØ",
+    "sistEndret": "2026-10-11T19:43:02.549943+02:00"
+   }
+  },
+  {
+   "id": "d5ca2978-e8ad-419f-8607-ede05241317a",
+   "url": "/api/v1/feedentry/d5ca2978-e8ad-419f-8607-ede05241317a",
+   "title": "Administrativ leder i Vokal Nord",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-10-11T19:44:05.404802+02:00",
+   "_feed_entry": {
+    "uuid": "d5ca2978-e8ad-419f-8607-ede05241317a",
+    "status": "ACTIVE",
+    "title": "Administrativ leder i Vokal Nord",
+    "businessName": "Stiftelsen Vokal Nord",
+    "municipal": "TROMSØ",
+    "sistEndret": "2026-10-11T19:44:05.404802+02:00"
+   }
+  },
+  {
+   "id": "d5ca2978-e8ad-419f-8607-ede05241317a",
+   "url": "/api/v1/feedentry/d5ca2978-e8ad-419f-8607-ede05241317a",
+   "title": "Administrativ leder i Vokal Nord",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-10-11T19:46:27.132361+02:00",
+   "_feed_entry": {
+    "uuid": "d5ca2978-e8ad-419f-8607-ede05241317a",
+    "status": "ACTIVE",
+    "title": "Administrativ leder i Vokal Nord",
+    "businessName": "Stiftelsen Vokal Nord",
+    "municipal": "TROMSØ",
+    "sistEndret": "2026-10-11T19:46:27.132361+02:00"
+   }
+  },
+  {
+   "id": "2fbdf107-8033-46bf-bef8-1d82ad0c2b54",
+   "url": "/api/v1/feedentry/2fbdf107-8033-46bf-bef8-1d82ad0c2b54",
+   "title": "Barnehagelærer søkes til gårdsbarnehage, vikariat 100%",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-10-11T19:49:25.813947+02:00",
+   "_feed_entry": {
+    "uuid": "2fbdf107-8033-46bf-bef8-1d82ad0c2b54",
+    "status": "ACTIVE",
+    "title": "Barnehagelærer søkes til gårdsbarnehage, vikariat 100%",
+    "businessName": "Lande Gård Barnehage AS",
+    "municipal": "SARPSBORG",
+    "sistEndret": "2026-10-11T19:49:25.813947+02:00"
+   }
+  },
+  {
+   "id": "fe7fe125-e388-48ca-8675-499b465359a1",
+   "url": "/api/v1/feedentry/fe7fe125-e388-48ca-8675-499b465359a1",
+   "title": "Hannestad barnehage søker pedagogisk leder i 100% vikariat      ",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-10-11T20:16:44.109539+02:00",
+   "_feed_entry": {
+    "uuid": "fe7fe125-e388-48ca-8675-499b465359a1",
+    "status": "ACTIVE",
+    "title": "Hannestad barnehage søker pedagogisk leder i 100% vikariat      ",
+    "businessName": "Hannestad Barnehage As",
+    "municipal": "SARPSBORG",
+    "sistEndret": "2026-10-11T20:16:44.109539+02:00"
+   }
+  },
+  {
+   "id": "5aa3d33c-6af6-4d4a-9005-0822ff0fc342",
+   "url": "/api/v1/feedentry/5aa3d33c-6af6-4d4a-9005-0822ff0fc342",
+   "title": "Ergoterapeut tilknyttet hjemmetjenester, 100% vikariat",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-10-11T20:37:33.218002+02:00",
+   "_feed_entry": {
+    "uuid": "5aa3d33c-6af6-4d4a-9005-0822ff0fc342",
+    "status": "ACTIVE",
+    "title": "Ergoterapeut tilknyttet hjemmetjenester, 100% vikariat",
+    "businessName": "Virksomhet for hjemmetjenester, Nordreisa kommune",
+    "municipal": "NORDREISA",
+    "sistEndret": "2026-10-11T20:37:33.218002+02:00"
+   }
+  },
+  {
+   "id": "a7d6946d-c8e4-4dec-ab85-4d63f1e32c34",
+   "url": "/api/v1/feedentry/a7d6946d-c8e4-4dec-ab85-4d63f1e32c34",
+   "title": "Sykepleier i 100 %,  Sonjatun sykestue",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-10-11T20:37:57.657963+02:00",
+   "_feed_entry": {
+    "uuid": "a7d6946d-c8e4-4dec-ab85-4d63f1e32c34",
+    "status": "ACTIVE",
+    "title": "Sykepleier i 100 %,  Sonjatun sykestue",
+    "businessName": "Virksomhet for hjemmetjenester, Nordreisa kommune",
+    "municipal": "NORDREISA",
+    "sistEndret": "2026-10-11T20:37:57.657963+02:00"
+   }
+  },
+  {
+   "id": "ba10968e-be00-4944-93c5-41b4a2545d8c",
+   "url": "/api/v1/feedentry/ba10968e-be00-4944-93c5-41b4a2545d8c",
+   "title": "Hannestad barnehage søker barnehagelærer i 100% vikariat.    ",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-10-11T20:39:02.335751+02:00",
+   "_feed_entry": {
+    "uuid": "ba10968e-be00-4944-93c5-41b4a2545d8c",
+    "status": "ACTIVE",
+    "title": "Hannestad barnehage søker barnehagelærer i 100% vikariat.    ",
+    "businessName": "Hannestad Barnehage As",
+    "municipal": "SARPSBORG",
+    "sistEndret": "2026-10-11T20:39:02.335751+02:00"
+   }
+  },
+  {
+   "id": "fe7fe125-e388-48ca-8675-499b465359a1",
+   "url": "/api/v1/feedentry/fe7fe125-e388-48ca-8675-499b465359a1",
+   "title": "Hannestad barnehage søker pedagogisk leder i 100% vikariat      ",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-10-11T20:39:43.760939+02:00",
+   "_feed_entry": {
+    "uuid": "fe7fe125-e388-48ca-8675-499b465359a1",
+    "status": "ACTIVE",
+    "title": "Hannestad barnehage søker pedagogisk leder i 100% vikariat      ",
+    "businessName": "Hannestad Barnehage As",
+    "municipal": "SARPSBORG",
+    "sistEndret": "2026-10-11T20:39:43.760939+02:00"
+   }
+  },
+  {
+   "id": "f831f10b-c956-4f2a-8897-6d41a05189c6",
+   "url": "/api/v1/feedentry/f831f10b-c956-4f2a-8897-6d41a05189c6",
+   "title": "Hannestad barnehage søker barnehageassistent i 100% vikariat      ",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-10-11T20:50:24.59799+02:00",
+   "_feed_entry": {
+    "uuid": "f831f10b-c956-4f2a-8897-6d41a05189c6",
+    "status": "ACTIVE",
+    "title": "Hannestad barnehage søker barnehageassistent i 100% vikariat      ",
+    "businessName": "Hannestad Barnehage As",
+    "municipal": "SARPSBORG",
+    "sistEndret": "2026-10-11T20:50:24.59799+02:00"
+   }
+  },
+  {
+   "id": "d5b4bdd9-1c48-4821-b203-976f1b8ddef5",
+   "url": "/api/v1/feedentry/d5b4bdd9-1c48-4821-b203-976f1b8ddef5",
+   "title": "Hannestad barnehage søker barnehageassistent i 100% fast stilling     ",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-10-11T20:56:03.432851+02:00",
+   "_feed_entry": {
+    "uuid": "d5b4bdd9-1c48-4821-b203-976f1b8ddef5",
+    "status": "ACTIVE",
+    "title": "Hannestad barnehage søker barnehageassistent i 100% fast stilling     ",
+    "businessName": "Hannestad Barnehage As",
+    "municipal": "SARPSBORG",
+    "sistEndret": "2026-10-11T20:56:03.432851+02:00"
+   }
+  }
+ ]
+}

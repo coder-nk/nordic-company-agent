@@ -1,0 +1,90 @@
+{
+ "_request": {
+  "url": "https://data.brreg.no/enhetsregisteret/api/enheter/995783568",
+  "status": 200,
+  "retrieved_at": "2026-10-13T11:43:21Z",
+  "headers": {
+   "vary": "Origin",
+   "x-content-type-options": "nosniff",
+   "x-xss-protection": "0",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "pragma": "no-cache",
+   "expires": "0",
+   "strict-transport-security": "max-age=157680000; includeSubDomains",
+   "x-frame-options": "DENY",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:39:15 GMT",
+   "connection": "close"
+  }
+ },
+ "body": {
+  "_links": {
+   "self": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/enheter/995783568"
+   }
+  },
+  "aktivitet": [
+   "Utenlandsk enhet."
+  ],
+  "epostadresse": "info@chaathouse.co.uk",
+  "erIKonsern": false,
+  "foretaksformIHjemlandet": {
+   "beskrivelse": "Private limited company",
+   "beskrivelseBokmaal": "Aksjeselskap",
+   "kode": "LTD"
+  },
+  "forretningsadresse": {
+   "adresse": [
+    "33 Longford Avenue"
+   ],
+   "land": "Storbritannia",
+   "landkode": "GB",
+   "poststed": "UB13QN Southall"
+  },
+  "harRegistrertAntallAnsatte": false,
+  "historiskeNavn": [],
+  "konkurs": false,
+  "maalform": "Bokmål",
+  "navn": "...BY CHAAT HOUSE LTD",
+  "organisasjonsform": {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/UTLA"
+    }
+   },
+   "beskrivelse": "Utenlandsk enhet",
+   "kode": "UTLA"
+  },
+  "organisasjonsnummer": "995783568",
+  "paategninger": [],
+  "registreringsdatoEnhetsregisteret": "2010-09-07",
+  "registreringsdatoForetaksregisteret": "2010-09-07",
+  "registreringsnummerIHjemlandet": "05428049",
+  "registrertIForetaksregisteret": true,
+  "registrertIFrivillighetsregisteret": false,
+  "registrertIMvaregisteret": false,
+  "registrertIPartiregisteret": false,
+  "registrertIStiftelsesregisteret": false,
+  "respons_klasse": "Enhet",
+  "stiftelsesdato": "2010-06-27",
+  "telefon": "447768396480",
+  "underAvvikling": false,
+  "underTvangsavviklingEllerTvangsopplosning": false,
+  "underlagtLovgivningLand": "Storbritannia",
+  "underlagtLovgivningLandKode": "GB",
+  "utenlandskRegisterAdresse": {
+   "adresse": [
+    "Crown Way",
+    "Maindy"
+   ],
+   "land": "Storbritannia",
+   "poststed": "Cardiff CF14 3UZ"
+  },
+  "utenlandskRegisterNavn": "Companies House",
+  "vedtektsdato": "2010-06-27",
+  "vedtektsfestetFormaal": [
+   "Utenlandsk foretak."
+  ]
+ }
+}

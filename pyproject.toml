@@ -1,0 +1,31 @@
+[project]
+name = "nordic-company-agent"
+version = "0.1.0"
+description = "Deterministic agent that builds evidence-backed Norwegian company profiles from permitted public sources"
+requires-python = ">=3.12"
+dependencies = [
+    "dnspython>=2.9.0",
+    "httpx>=0.28.1",
+    "phonenumbers>=9.0.41",
+    "pydantic>=2.14.1",
+    "selectolax>=1.0.0",
+    "tldextract>=5.4.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.11.25,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "pytest-asyncio>=1.4.0",
+    "respx>=0.23.1",
+]
+
+[project.scripts]
+nca = "nordic_company_agent.cli:main"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

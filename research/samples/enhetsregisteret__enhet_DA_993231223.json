@@ -1,0 +1,87 @@
+{
+ "_request": {
+  "url": "https://data.brreg.no/enhetsregisteret/api/enheter/993231223",
+  "status": 200,
+  "retrieved_at": "2026-10-13T11:42:41Z",
+  "headers": {
+   "vary": "Origin",
+   "x-content-type-options": "nosniff",
+   "x-xss-protection": "0",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "pragma": "no-cache",
+   "expires": "0",
+   "strict-transport-security": "max-age=157680000; includeSubDomains",
+   "x-frame-options": "DENY",
+   "content-type": "application/json",
+   "transfer-encoding": "chunked",
+   "date": "Tue, 13 Oct 2026 11:38:35 GMT",
+   "connection": "close"
+  }
+ },
+ "body": {
+  "_links": {
+   "self": {
+    "href": "https://data.brreg.no/enhetsregisteret/api/enheter/993231223"
+   }
+  },
+  "aktivitet": [
+   "Legevirksomhet."
+  ],
+  "antallAnsatte": 5,
+  "erIKonsern": false,
+  "forretningsadresse": {
+   "adresse": [
+    "Indre Arna-vegen 175"
+   ],
+   "kommune": "BERGEN",
+   "kommunenummer": "4601",
+   "land": "Norge",
+   "landkode": "NO",
+   "postnummer": "5261",
+   "poststed": "INDRE ARNA"
+  },
+  "harRegistrertAntallAnsatte": true,
+  "historiskeNavn": [],
+  "institusjonellSektorkode": {
+   "beskrivelse": "Personlige foretak",
+   "kode": "2300"
+  },
+  "konkurs": false,
+  "maalform": "Bokmål",
+  "naeringskode1": {
+   "beskrivelse": "Allmennlegetjenester",
+   "kode": "86.210"
+  },
+  "navn": "3 LEGER DA",
+  "organisasjonsform": {
+   "_links": {
+    "self": {
+     "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/DA"
+    }
+   },
+   "beskrivelse": "Ansvarlig selskap med delt ansvar",
+   "kode": "DA"
+  },
+  "organisasjonsnummer": "993231223",
+  "paategninger": [],
+  "registreringsdatoAntallAnsatteEnhetsregisteret": "2026-04-14",
+  "registreringsdatoAntallAnsatteNAVAaregisteret": "2026-04-10",
+  "registreringsdatoEnhetsregisteret": "2008-10-27",
+  "registreringsdatoForetaksregisteret": "2008-10-27",
+  "registrertIForetaksregisteret": true,
+  "registrertIFrivillighetsregisteret": false,
+  "registrertIMvaregisteret": false,
+  "registrertIPartiregisteret": false,
+  "registrertIStiftelsesregisteret": false,
+  "respons_klasse": "Enhet",
+  "sisteInnsendteAarsregnskap": "2013",
+  "stiftelsesdato": "2008-10-06",
+  "telefon": "55 24 13 72",
+  "underAvvikling": false,
+  "underTvangsavviklingEllerTvangsopplosning": false,
+  "vedtektsdato": "2024-06-06",
+  "vedtektsfestetFormaal": [
+   "Legevirksomhet."
+  ]
+ }
+}
