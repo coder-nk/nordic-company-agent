@@ -33,7 +33,6 @@ import httpx
 
 from ..envelope import (COMPANY_LINKED_PROFILE, COMPANY_OWNED, COMPANY_SITE, Claim, CompanyResult, Evidence,
                         ModuleOutcome, utc_iso)
-from ..orgnr import text_patterns
 from ..http import BROWSER_ACCEPT, BudgetExceeded, DeadlineExceeded, RobotsDisallowed, UnsafeURL
 from ..web import candidates as C
 from ..web import extract as X
@@ -501,14 +500,18 @@ def _safe_json(ctx, name: str) -> Any:
 
 
 def _shared_orgnrs(ctx, target: str, final_url: str) -> list[str]:
+    """Other organisation numbers on this host: registry filings (shared-host index, every filer of the registrable
+    domain) and the discovery cache. A sub-domain always inherits its registrable domain's co-filers
+    (otta.spenst.no is a franchise page of spenst.no)."""
     host = (urlsplit(final_url).hostname or "").lower().removeprefix("www.")
     if not host:
         return []
     idx = _shared_index(ctx)
     out = set(idx.get(host, set()))
     dom = X.reg_domain(host)
-    if dom == host:
+    if dom and dom not in V.HOSTING_DOMAINS:
         out |= set(idx.get(dom, set()))
+        out |= {o for o, _n in V.domain_filers(_shared_contacts(ctx), dom)}
     out.discard(target)
     return sorted(out)
 
@@ -563,45 +566,33 @@ def _is_utf8(data: bytes | None) -> bool:
 
 
 def _text_rx(text: str, max_tokens: int = 10) -> "re.Pattern[str] | None":
-    """Regex for `text` as it may be written in HTML source (entities for punctuation/letters, any whitespace)."""
-    toks = [t for t in re.split(r"\s+", text.strip()) if t][:max_tokens]
-    if not toks:
-        return None
-
-    def ch(c: str) -> str:
-        if c.isascii() and c.isalnum():
-            return re.escape(c)
-        return f"(?:{re.escape(c)}|&#0*{ord(c)};|&#[xX]0*{ord(c):x};|&[a-zA-Z]+;)"
-
-    try:
-        return re.compile(r"(?:\s|&nbsp;|&#160;)+".join("".join(ch(c) for c in t) for t in toks), re.I)
-    except re.error:
-        return None
+    return V.html_text_rx(text, max_tokens)
 
 
 def _news_span(raw: str, href: str, title: str, url: str, ascii_only: bool = False) -> str | None:
-    """Verbatim fragment (<= 300 chars) of the news page containing the article link and/or its title,
-    accepted only when it shows the value (title prefix, URL or path)."""
+    """Verbatim fragment (<= 300 chars) of the news page / feed that shows the item's OWN title (and its link when
+    both fit); never a fragment anchored only on a link (it may sit next to another item's title)."""
     fact = V.Fact("news_item", {"title": title, "url": url}, 0, "a[href]", "")
-    hits = []
-    for needle in (f'"{href}"', f"'{href}'", href, html.escape(href, quote=False), html.escape(href)):
+    trx = _text_rx(title, max_tokens=12)
+    if trx is None:
+        return None
+    link_pos = -1
+    for needle in (f'"{href}"', f"'{href}'", f">{href}<", html.escape(href, quote=False), html.escape(href), href):
         i = raw.find(needle) if needle else -1
         if i >= 0:
-            hits.append((i, i + len(needle)))
+            link_pos = i
             break
-    trx = _text_rx(title)
-    tm = None
-    if trx is not None:
-        lo = hits[0][0] if hits else 0
-        tm = trx.search(raw, lo, lo + 3000 if hits else len(raw)) or (trx.search(raw) if hits else None)
+    tms = list(trx.finditer(raw))
+    if not tms:
+        return None
+    tm = min(tms, key=lambda m: abs(m.start() - link_pos)) if link_pos >= 0 else tms[0]
     cands = []
-    if hits and tm is not None:
-        a0, b0 = min(hits[0][0], tm.start()), max(hits[0][1], tm.end())
+    if link_pos >= 0:
+        a0 = min(link_pos, tm.start())
+        b0 = max(link_pos + len(href), tm.end())
         if b0 - a0 <= 300:
             cands.append((a0, b0))
-    if tm is not None:
-        cands.append((tm.start(), tm.end()))
-    cands += hits
+    cands.append((tm.start(), tm.end()))
     for a0, b0 in cands:
         sp = V._ascii_slice(raw, a0, b0) if ascii_only else V._raw_slice(raw, a0, b0)
         if sp and sp in raw and V._span_has(fact, sp) and (not ascii_only or sp.isascii()):
@@ -636,11 +627,18 @@ def parse_feed(data: bytes, feed_url: str, accept_url) -> list[dict]:
     else:
         return []
     out: dict[str, dict] = {}
+    feed_host = (urlsplit(feed_url).hostname or "").lower().removeprefix("www.")
     for e in entries:
         title = link = None
+        guid = ""
+        body = ""
         dates: dict[str, str] = {}
         for c in e:
             t = local(c.tag)
+            if t in ("guid", "id"):
+                guid = (c.text or "").strip()
+            elif t in ("description", "summary", "content", "encoded"):
+                body += " " + "".join(c.itertext())[:2000]
             if t == "title":
                 title = re.sub(r"\s+", " ", "".join(c.itertext())).strip()
             elif t == "link":
@@ -654,16 +652,20 @@ def parse_feed(data: bytes, feed_url: str, accept_url) -> list[dict]:
         raw_date = next((dates[k] for k in ("pubdate", "published", "date", "issued", "updated", "modified")
                          if dates.get(k)), None)
         dt = _parse_date(raw_date)
-        if not (title and link and dt) or PLACEHOLDER_TITLE_RX.search(title):
+        if not (title and link and dt) or PLACEHOLDER_TITLE_RX.search(title) or V.PLACEHOLDER_DESC_RX.search(title):
             continue
+        if V.PLACEHOLDER_DESC_RX.search(body):
+            continue                                   # theme demo post (lorem / hipster ipsum body)
         url = urljoin(feed_url, link)
         if not url.startswith(("http://", "https://")) or not accept_url(url):
             continue
-        span = _verbatim_around(raw, link, ascii_only=ascii_only) or \
-            _verbatim_around(raw, html.escape(link, quote=False), ascii_only=ascii_only)
-        fact = V.Fact("news_item", {"title": title[:300], "url": url}, 0, "item", "")
-        if not span or not V._span_has(fact, span):
-            continue                                   # policy N: no verbatim fragment containing the link
+        g_host = (urlsplit(guid).hostname or "").lower().removeprefix("www.") if guid.startswith("http") else ""
+        u_host = (urlsplit(url).hostname or "").lower().removeprefix("www.")
+        if (g_host and g_host != u_host) or (feed_host and X.reg_domain(u_host) != X.reg_domain(feed_host)):
+            continue                                   # imported demo content (guid on demosites.io etc.)
+        span = _news_span(raw, link, title[:300], url, ascii_only)
+        if not span:
+            continue                                   # policy N: no verbatim fragment showing this item
         out.setdefault(url, {"title": title[:300], "url": url, "published": utc_iso(dt), "span": span})
     items = sorted(out.values(), key=lambda it: (it["published"], it["url"]), reverse=True)
     return items[:MAX_NEWS]
@@ -746,13 +748,15 @@ def parse_news_page(html_text: str, page_url: str, accept_url, section_path: str
         if re.search(r"/(?:page|side|kategori|category|tag|arkiv|archive)(?:/|$)|\?page=", u, re.I):
             continue
         title = re.sub(r"\s+", " ", a.text(separator=" ", strip=True) or a.attributes.get("title") or "").strip()
-        hd = a.css_first("h1, h2, h3, h4, h5, h6")
+        hd = a.css_first("h1, h2, h3, h4, h5, h6") or a.css_first('[class*="title"], [class*="heading"], '
+                                                                  '[class*="Title"], [class*="Heading"]')
         if hd is not None:                             # the card's heading, not its date/teaser text
             ht = re.sub(r"\s+", " ", hd.text(separator=" ", strip=True) or "").strip()
             if len(ht) >= 12:
                 title = ht
         title = _LEADING_DATE_RX.sub("", title).strip()
-        if len(title) < 12 or len(title) > 200 or PLACEHOLDER_TITLE_RX.search(title):
+        if len(title) < 12 or len(title) > 200 or PLACEHOLDER_TITLE_RX.search(title) or \
+                V.PLACEHOLDER_DESC_RX.search(title):
             continue
         date = None
         node = a
@@ -1009,8 +1013,12 @@ def _emit(ctx, company: CompanyResult, rec: dict, st: _State, results: list[Lead
              "L2e": "registry_email_domain_corroborated"}.get(v.level, "registry_website_corroborated")
     method = f"{V.GATE_VERSION}:{v.level}"
     proof_page = v.infos[v.proof["page"]].page
-    proof_ev = _ev(proof_page, v.proof["locator"], v.proof["span"],
-                   anchor=text_patterns(company.organisation_number))
+    proof_ev = _ev(proof_page, v.proof["locator"], v.proof["span"], anchor=X.target_rx(company.organisation_number))
+    if company.organisation_number not in re.sub(r"\D", "", proof_ev.claim_span or ""):
+        # the span must show the org number as printed ('983 47 2583'): a verbatim window around it
+        raw_w = V.raw_window(proof_page.html or "", company.organisation_number, 100, 100)
+        if raw_w and (proof_page.utf8 or raw_w.isascii()):
+            proof_ev = dataclasses.replace(proof_ev, claim_span=raw_w)
     site_evs = [proof_ev]
     if v.level == "L2":
         rev = _registry_hjemmeside_ev(company, rec)
@@ -1019,7 +1027,8 @@ def _emit(ctx, company: CompanyResult, rec: dict, st: _State, results: list[Lead
     host_disp = (v.site_url or "").split("://", 1)[-1].rstrip("/")
     claims.append(Claim(field="official_website", value=v.site_url, evidence=list(site_evs), confidence=conf,
                         display=host_disp, method=method, match_basis=basis, note=v.reason[:600]))
-    ver = {"level": v.level, "proof_url": v.proof["url"], "proof_span": v.proof["span"], "method": v.proof["method"]}
+    ver = {"level": v.level, "proof_url": v.proof["url"], "proof_span": proof_ev.claim_span or v.proof["span"],
+           "method": v.proof["method"]}
     claims.append(Claim(field="website_verification", value=ver, evidence=list(site_evs), confidence=conf,
                         display=_display("website_verification", ver), method=method, match_basis=basis))
     facts = V.collect_facts(v, rec)

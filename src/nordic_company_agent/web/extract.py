@@ -651,7 +651,11 @@ FOREIGN_REG_RX = re.compile(
     r"\by-tunnus\b|\bhrb\s*\d{3,}|\bhandelsregister\b|\bkvk\b(?:-nummer)?\s*:?\s*\d{8}|\bsire[nt]\s*:?\s*\d{9}|"
     r"\babn\s*:?\s*\d{2}\s?\d{3}|\bvat\s*(?:reg\.?\s*)?(?:no|number)?\.?\s*:?\s*(?:gb|de|se|dk|pl|fi|nl|fr|it|es|ie|be|at)\s?\d{6,}|"
     r"(?:organisasjonsnummer|organisationsnummer|organisaatio|registreringsnummer|org\.?\s*n[or]\.?|reg\.?\s*no\.?)\s*[:.]?\s*"
-    r"\d{6}-\d{4}|\b(?:y-tunnus|fo-nummer)\s*:?\s*\d{7}-\d\b|\bSE\s?\d{10}01\b|\bDK\s?\d{8}\b|\bFI\s?\d{8}\b)",
+    r"\d{6}-\d{4}|\b(?:y-tunnus|fo-nummer)\s*:?\s*\d{7}-\d\b|\bSE\s?\d{10}01\b|\bDK\s?\d{8}\b|\bFI\s?\d{8}\b|"
+    r"\bGB\s?\d{9}(?:\d{3})?\b|\bDE\s?\d{9}\b|"
+    # Peppol participant ids of foreign entities (0007 Swedish org nr, 0037 Finnish OVT, 0096 Danish CVR, 0088 GLN
+    # outside the Norwegian GS1 prefix 70)
+    r"\b0007:\s?\d{10}\b|\b0037:\s?\d{8,12}\b|\b0096:\s?\d{8}\b|\b0216:\s?\d{8,12}\b|\b0088:\s?(?!70)\d{13}\b)",
     re.I)
 _FORM_WORDS = {"as", "asa", "ans", "da", "sa", "ba", "ks", "nuf", "iks", "kf", "enk", "brl", "ab", "aps", "a/s", "ehf",
                "oy", "oyj", "gmbh", "ag", "ltd", "limited", "llc", "inc", "bv", "nv", "srl", "spa", "sas", "sarl", "plc",
@@ -713,6 +717,10 @@ def is_target_entity(e: dict, own_words: list[str], own_foreign: bool = False) -
         return True
     # one-letter typos in long words ("Rjuken Hotell AS" for RJUKAN HOTELL AS)
     if len(w2) == len(o2) > 0 and all(a == b or (len(b) >= 5 and _edit1(a, b)) for a, b in zip(w2, o2)):
+        return True
+    # one transposed/misspelled long word, all other words equal ("Kobe Utelimjø AS" for KOBE UTEMILJØ AS)
+    if len(w2) == len(o2) > 1 and sum(a != b for a, b in zip(w2, o2)) == 1 and \
+            all(a == b or (len(b) >= 7 and a[0] == b[0] and sorted(a) == sorted(b)) for a, b in zip(w2, o2)):
         return True
     # one extra middle name ("Lars Ueland Kobro AS" for LARS KOBRO AS) - never a business/group word
     if len(o2) >= 2 and len(w2) == len(o2) + 1 and w2[0] == o2[0] and w2[-1] == o2[-1]:

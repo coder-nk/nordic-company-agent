@@ -1,9 +1,12 @@
 {
   "name": "registry_shared_contacts",
-  "built_at": "2026-10-13T19:56:52Z",
+  "built_at": "2026-10-13T22:06:17Z",
   "source": "Enhetsregisteret bulk file enheter.csv.gz (telefon, mobil, forretningsadresse, postadresse), NLOD 2.0",
   "entities": 1177860,
   "shared_phones": 43285,
   "shared_addresses": 59397,
-  "description": "Registry phone numbers filed by two or more organisation numbers, and street addresses shared by sister organisations. The website identity gate never counts them as corroboration and never publishes such a phone without the company's own block."
+  "website_domains": 84875,
+  "names": 843,
+  "places": 1948,
+  "description": "Registry phone numbers filed by two or more organisation numbers, and street addresses shared by sister organisations. The website identity gate never counts them as corroboration and never publishes such a phone. Also every filed website domain with its filers (chain/group domains), names of organisation numbers sharing a discovered host, and Norwegian place names (which never align a site's brand on their own)."
 }

@@ -68,7 +68,7 @@ def test_yabimo_sister_entity_site():
     home = page("home", "https://www.yabimo.com/", "https://yabimo.com/", "yabimo_home.html")
     contact = page("contact", "https://yabimo.com/contact/", "https://yabimo.com/contact/", "yabimo_contact.html")
     v, facts = run("912500128", [home, contact], start="https://www.yabimo.com/")
-    assert v.level == "ambiguous" and "sister/group" in v.reason and facts == []
+    assert v.level == "ambiguous" and ("sister/group" in v.reason or "group/foreign" in v.reason) and facts == []
     v2, _ = run("912500128", [home], start="https://www.yabimo.com/")
     assert v2.level == "ambiguous"                                # c/o accountant + one corroboration
 

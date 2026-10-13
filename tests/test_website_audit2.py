@@ -100,9 +100,8 @@ def test_scankab_block_stops_at_danish_parent():
     rec = {"navn": "SCANKAB CABLES AS", "organisasjonsform": {"kode": "AS"}, "epostadresse": "jj@scankab.dk"}
     v, facts = run([pg(html, "https://scankab.no/kontakt/", "contact")], rec, "987147229",
                    start="https://www.scankab.no/")
-    assert v.level == "L1"
-    assert vals(facts, "contact_email") == []            # policy L: 'scankab@' is not a generic role mailbox
-    assert vals(facts, "contact_phone") == ["+4751637020"]
+    # audit 5: a foreign parent on the page makes it a group site - never published, no block rescue
+    assert v.level == "ambiguous" and "group/foreign" in v.reason and facts == []
     assert "+4570203455" not in str(facts) and "+4770203455" not in str(facts)
 
 
@@ -143,7 +142,8 @@ def test_next_company_mailbox_not_in_block():
     rec = {"navn": "RENE TRAPPER AS", "organisasjonsform": {"kode": "AS"}}
     v, facts = run([pg(html, "https://www.renetrapper.no/kontakt-oss/", "contact")], rec, "989269631",
                    lead="name_joined_no", start="https://www.renetrapper.no/")
-    assert vals(facts, "contact_email") == ["kontakt@renetrapper.no"]
+    # audit 5: a sister entity (Rene Bygårder AS) on the page makes it a group site - never published
+    assert v.level == "ambiguous" and facts == []
     assert "+4748850001" not in vals(facts, "contact_phone")
 
 
