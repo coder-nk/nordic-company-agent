@@ -974,10 +974,16 @@ async def run_copies(ctx: Any, company: CompanyResult) -> None:
         async with st["lock"]:
             rem = st["remaining"]
             if rem is not None and rem < COPY_RATE_FLOOR and time.monotonic() - st["at"] < COPY_RATE_WINDOW_S:
-                company.outcome(ModuleOutcome(COPIES_MODULE, "failed", source_url=url,
-                                              note=f"not checked: copy API rate limit nearly exhausted "
-                                                   f"(x-rate-limit-remaining={rem})"))
-                return
+                wait_s = COPY_RATE_WINDOW_S - (time.monotonic() - st["at"])
+                if ctx.time_left() - wait_s > 600:
+                    # Plenty of run time left: wait for the copy API's rate window to reset.
+                    await asyncio.sleep(max(0.0, wait_s))
+                    st["remaining"] = None
+                else:
+                    company.outcome(ModuleOutcome(COPIES_MODULE, "failed", source_url=url,
+                                                  note=f"not checked: copy API rate limit nearly exhausted "
+                                                       f"(x-rate-limit-remaining={rem}) and run time is short"))
+                    return
             if not ctx.allow(COPIES_TIER, 1):
                 return
             res = await ctx.get(url, tier=COPIES_TIER, source=COPIES_MODULE,

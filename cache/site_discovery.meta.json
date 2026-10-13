@@ -1,0 +1,20 @@
+{
+  "name": "site_discovery",
+  "built_at": "2026-10-13T15:34:11Z",
+  "companies": 410518,
+  "companies_with_lead": 11078,
+  "lead_kinds": {
+    "email_domain": 1550,
+    "registry_website": 9214,
+    "name_hyphen_no": 24,
+    "name_joined_no": 230,
+    "name_core_no": 35,
+    "name_joined_com": 16,
+    "name_hyphen_com": 3,
+    "name_joined_alt_no": 3,
+    "name_core_com": 3
+  },
+  "crawled_keys": 38946,
+  "description": "Discovery leads only: domains on which the exact organisation number was printed when crawled. The agent re-fetches and re-verifies live before publishing any claim.",
+  "method": "candidates (registry website, own-domain e-mail, legal-name slugs) -> DNS -> robots.txt -> home + up to 3 contact/about/terms/privacy pages -> checksum-valid org numbers"
+}

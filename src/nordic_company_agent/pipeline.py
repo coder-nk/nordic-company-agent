@@ -49,7 +49,7 @@ PRIMARY_FIELD = {
 }
 
 
-def plan_reservations(ctx: RunContext, companies: list[CompanyResult]) -> dict[str, int]:
+def plan_reservations(ctx: RunContext, companies: list[CompanyResult], bulk: set[str] | None = None) -> dict[str, int]:
     """Split the request budget across tiers in priority order (needs estimated from the batch)."""
     n = len(companies)
     exact = [c for c in companies if c.data.get("identity", {}).get("match_status") == "exact"]
@@ -65,12 +65,12 @@ def plan_reservations(ctx: RunContext, companies: list[CompanyResult]) -> dict[s
         if rec.get("hjemmeside") or any(r.get("leads") for r in rows):
             leads += 1
     needs = {
-        "registry": 2 + max(1, n // 900) + (n - ne) * 2,
+        "registry": 2 + max(1, n // 900) + (n - ne) * 2 + len(bulk or ()),
         "batch_external": 6 + 3 * (n // 100 + 1) + 8,
         "accounts": filers,
         "website_primary": 3 * leads,
-        "roles": ne,
-        "subunits": ne,
+        "roles": 0 if "roles" in (bulk or ()) else ne,
+        "subunits": 0 if "subunits" in (bulk or ()) else ne,
         "group": in_group,
         "website_secondary": 2 * leads,
         "discovery": 3 * max(0, ne - leads),
@@ -137,6 +137,8 @@ async def run_modules(ctx: RunContext, companies: list[CompanyResult]) -> dict[s
     phases = sorted({m[4] for m in enabled})
     sem = asyncio.Semaphore(ctx.config.concurrency)
     for ph in phases:
+        if ph >= 3 and ctx.shared.get("_bulk_task") is not None:
+            await ctx.shared.pop("_bulk_task")
         tasks = []
         names = []
         for name, pymod, kind, tier, phase in enabled:
@@ -162,12 +164,36 @@ async def run_modules(ctx: RunContext, companies: list[CompanyResult]) -> dict[s
         for name in names:
             timings[name] = timings.get(name, 0) + int((time.monotonic() - t0) * 1000)
         if ph == 0:
-            # Identity is known now: size the per-tier budget for this batch.
-            ctx.planner.set_reservations(plan_reservations(ctx, companies))
+            # Identity is known now: size the per-tier budget for this batch, and decide whether the
+            # nightly bulk files are cheaper than per-company roles/sub-unit calls.
+            res = plan_reservations(ctx, companies)
+            kinds = decide_bulk(ctx, companies, res)
+            if kinds:
+                res = plan_reservations(ctx, companies, kinds)
+                ctx.shared["bulk_kinds"] = sorted(kinds)
+            ctx.planner.set_reservations(res)
+            if kinds:
+                from .sources import bulk_registry
+                ctx.shared["_bulk_task"] = asyncio.create_task(bulk_registry.prepare(ctx, companies, kinds))
         for tier, last in _tier_last_phase(enabled).items():
             if last == ph:
                 ctx.planner.done(tier)
     return timings
+
+
+def decide_bulk(ctx: RunContext, companies: list[CompanyResult], res: dict[str, int]) -> set[str]:
+    mode = getattr(ctx.config, "bulk_mode", "auto")
+    if mode == "never":
+        return set()
+    exact = sum(1 for c in companies if c.data.get("identity", {}).get("match_status") == "exact")
+    if mode == "always":
+        return {k for k in ("roles", "subunits") if ctx.module_enabled(k)} if exact else set()
+    kinds = set()
+    if exact >= 50 and ctx.time_left() > 25 * 60:
+        for k in ("roles", "subunits"):
+            if ctx.module_enabled(k) and res.get(k, 0) < exact:
+                kinds.add(k)
+    return kinds
 
 
 # Extra tiers a module may spend from besides its main tier.

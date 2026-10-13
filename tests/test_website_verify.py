@@ -330,3 +330,71 @@ def test_weak_placeholder_phrase_on_real_page_is_not_parked():
     v = V.verify(pages, {"navn": "ELEKTRO HANSEN AS"}, "912342344", lead_kind="registry_website",
                  start_url="https://elektrohansen.no/")
     assert v.level == "L1"
+
+
+# --------------------------------------------------------------------------- regressions from the live smoke test
+def _l2_page(html: str, url: str = "https://www.nmg.no/") -> list[V.Page]:
+    return [V.Page("home", url, url, 200, html, "s", "t")]
+
+
+def test_injected_spam_description_not_published():
+    x = case("879887682")
+    html = (FX / x["file"]).read_text().replace(
+        "<head>", "<head><meta name='description' content='Our Partner casaapostas.org'>", 1)
+    v = V.verify(_l2_page(html), RECORDS[x["orgnr"]], x["orgnr"], lead_kind="registry_website",
+                 start_url="https://www.nmg.no/")
+    assert v.level == "L2"
+    assert not [f for f in V.collect_facts(v, RECORDS[x["orgnr"]]) if f.field == "website_description"]
+
+
+def test_staff_mobile_numbers_not_published():
+    html = ("<html><head><title>Byggmesterforbundet</title></head><body><h1>Byggmesterforbundet</h1>"
+            "<p>Mona Veslum Kommunikasjonssjef <a href='tel:91740678'>91 74 06 78</a> mv@byggmesterforbundet.no</p>"
+            "<p>Ola Hansen Rådgiver Telefon: 92 60 52 67 oh@byggmesterforbundet.no</p>"
+            "<div><p>Besøks- og postadresse Sørkedalsveien 9D, 0369 Oslo</p><p>Sentralbord: 23 08 75 77</p>"
+            "<p>hei@byggmesterforbundet.no</p></div>"
+            "<footer><p>" + "Byggmesterforbundet er bransjeforeningen for byggmestere i hele Norge. " * 4 +
+            "</p><p>Faktura: EHF til organisasjonsnummer: 971547030</p></footer></body></html>")
+    pages = [V.Page("home", "https://byggmesterforbundet.no/", "https://byggmesterforbundet.no/", 200, html, "s", "t")]
+    rec = {"navn": "BYGGMESTERFORBUNDET", "organisasjonsform": {"kode": "FLI"}}
+    v = V.verify(pages, rec, "971547030", lead_kind="registry_website", start_url="https://byggmesterforbundet.no/")
+    facts = V.collect_facts(v, rec)
+    assert v.level == "L1"
+    assert {f.value for f in facts if f.field == "contact_phone"} == {"+4723087577"}
+    assert {f.value for f in facts if f.field == "contact_email"} == {"hei@byggmesterforbundet.no"}
+
+
+def test_foreign_country_brand_handle_rejected_for_non_nuf():
+    html = ("<html><head><title>Enterprise Norge AS</title></head><body><h1>Enterprise Norge</h1><p>" +
+            "Bilutleie i hele Norge. " * 20 + "</p><a href='https://www.youtube.com/user/enterpriseuk'>YouTube</a>"
+            "<a href='https://www.instagram.com/enterprisenorge'>Instagram</a>"
+            "<footer>Enterprise Norge AS · Org.nr 912 342 344</footer></body></html>")
+    pages = [V.Page("home", "https://www.enterprise.no/", "https://www.enterprise.no/", 200, html, "s", "t")]
+    rec = {"navn": "ENTERPRISE NORGE AS", "organisasjonsform": {"kode": "AS"}}
+    v = V.verify(pages, rec, "912342344", lead_kind="registry_website", start_url="https://www.enterprise.no/")
+    urls = {f.value["url"] for f in V.collect_facts(v, rec) if f.field == "social_profile"}
+    assert "https://www.instagram.com/enterprisenorge" in urls
+    assert not any("enterpriseuk" in u for u in urls)
+
+
+def test_parent_brand_site_after_redirect_refused():
+    # registry de4.no -> habberstad.no (group site): only 'Habberstad' in titles, one corroboration (address)
+    body = ("<h1>Habberstad</h1><p>" + "Vi hjelper virksomheter med ledelse og utvikling. " * 8 + "</p>"
+            "<footer>Habberstad · Karenslyst allé 8B, 0278 Oslo · Rekruttering og utvikling · Digitalisering</footer>")
+    html = f"<html><head><title>Hjem | Habberstad</title><meta property='og:site_name' content='Habberstad'></head><body>{body}</body></html>"
+    pages = [V.Page("home", "https://www.de4.no/", "https://www.habberstad.no/", 200, html, "s", "t", ["https://www.de4.no/"])]
+    rec = {"navn": "HABBERSTAD REKRUTTERING OG UTVIKLING AS", "organisasjonsform": {"kode": "AS"},
+           "epostadresse": "rune@de4.no", "forretningsadresse": {"adresse": ["Karenslyst allé 8"], "postnummer": "0278"}}
+    v = V.verify(pages, rec, "985579466", lead_kind="registry_website", start_url="https://www.de4.no/")
+    assert v.level == "ambiguous"
+
+
+def test_owner_entity_must_be_exactly_this_company():
+    prof = V.name_profile("HABBERSTAD REKRUTTERING OG UTVIKLING AS", "AS")
+    assert not V._entity_matches("Habberstad AS", prof)
+    assert V._entity_matches("Habberstad Rekruttering & Utvikling AS", prof)
+    assert V._entity_matches("Advokatfirmaet Rieber-Mohn AS", V.name_profile("ADVOKATFIRMAET RIEBER-MOHN AS", "AS"))
+
+
+def test_street_trim_keeps_legal_form_out():
+    assert V.find_addresses("Metafocus AS Prinsens gate 2B 0152 OSLO")[0]["value"] == "Prinsens gate 2B 0152 OSLO"

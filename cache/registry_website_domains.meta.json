@@ -1,0 +1,8 @@
+{
+  "name": "registry_website_domains",
+  "built_at": "2026-10-13T15:33:54Z",
+  "source": "Enhetsregisteret bulk CSV (hjemmeside), NLOD 2.0",
+  "shared_hosts": 5621,
+  "organisation_numbers": 29724,
+  "description": "Website hosts filed in Enhetsregisteret by two or more organisation numbers; a site on such a host is not exclusive to one entity, so only an org number printed on it can prove identity."
+}

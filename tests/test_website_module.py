@@ -393,3 +393,19 @@ def test_never_raises(tmp_path, monkeypatch):
 def test_parse_feed(data, expected):
     items = website.parse_feed(data, "https://firma.no/feed/", lambda u: "firma.no" in u)
     assert [i["url"] for i in items] == expected
+
+
+def test_offsite_subpage_redirect_ignored(tmp_path):
+    home = page("Kaffebar Test", "<h1>Kaffebar Test</h1><a href='/kontakt'>Kontakt</a><p>" + "Kaffe og kaker. " * 20 +
+                "</p><footer>Kaffebar Test AS · Org.nr 912 342 344</footer>")
+    other = page("Booking", "<p>Booking platform</p><a href='tel:22334455'>22 33 44 55</a><footer>Org.nr 920 209 319</footer>")
+    ctx = make_ctx(tmp_path)
+    rec = {"navn": "KAFFEBAR TEST AS", "hjemmeside": "www.kaffebartest.no", "organisasjonsform": {"kode": "AS"}}
+    c = run_site(ctx, "912342344", {
+        "https://www.kaffebartest.no/": httpx.Response(200, text=home, headers=HTML),
+        "https://www.kaffebartest.no/kontakt": httpx.Response(302, headers={"location": "https://booking.example.com/x"}),
+        "https://booking.example.com/x": httpx.Response(200, text=other, headers=HTML),
+    }, rec=rec, hosts=("www.kaffebartest.no", "booking.example.com"))
+    v = c.data["website"]
+    assert v["level"] == "L1" and v["other_orgnrs"] == []
+    assert values(c, "contact_phone") == []

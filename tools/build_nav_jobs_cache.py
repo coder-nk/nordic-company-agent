@@ -246,9 +246,9 @@ def fold_items() -> dict[str, dict[str, Any]]:
             u = it.get("uuid")
             if not u:
                 continue
-            prev = latest.get(u)
-            if prev is None or (it.get("modified") or "") >= (prev.get("modified") or ""):
-                latest[u] = it
+            # Pages are stored in feed (chronological) order, so the last occurrence is the latest
+            # state; comparing timestamp strings would break across DST offset changes.
+            latest[u] = it
     return latest
 
 
@@ -286,8 +286,12 @@ async def phase_entries(nav: Nav) -> None:
     active = {u: it for u, it in latest.items() if it.get("status") == "ACTIVE"}
     have = done_entries()
     # Re-fetch an entry when the feed reports a newer modification than the one we stored.
+    def newer(a: str | None, b: str | None) -> bool:
+        da, db = parse_ts(a), parse_ts(b)
+        return bool(da and (db is None or da > db))
+
     todo = sorted(u for u, it in active.items()
-                  if u not in have or (have[u].get("feed_modified") or "") < (it.get("modified") or ""))
+                  if u not in have or newer(it.get("modified"), have[u].get("feed_modified")))
     log(f"entries: {len(latest)} ads seen, {len(active)} ACTIVE, {len(have)} stored, {len(todo)} to fetch")
     if not todo:
         return

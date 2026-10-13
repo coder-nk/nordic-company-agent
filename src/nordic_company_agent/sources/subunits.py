@@ -54,6 +54,10 @@ async def _run(ctx: RunContext, company: CompanyResult) -> None:
     first: dict[str, Any] | None = None
     n_req = 0
     partial_note = None
+    bulk = ctx.shared.get("bulk_subunits")
+    if bulk is not None:
+        await _from_bulk(ctx, company, bulk)
+        return
     for page in range(MAX_PAGES):
         url = list_url(orgnr, page)
         if not ctx.allow(TIER, 1):
@@ -178,3 +182,61 @@ async def _run(ctx: RunContext, company: CompanyResult) -> None:
         company.outcome(ModuleOutcome(MODULE, "not_available", note=note or "no registered sub-units (underenheter)",
                                       source_url=first["url"], retrieved_at=first["retrieved_at"], http_status=200,
                                       requests=n_req))
+
+
+async def _from_bulk(ctx: RunContext, company: CompanyResult, bulk: dict[str, Any]) -> None:
+    """Sub-units from the nightly underenheter bulk file (one request for the whole batch)."""
+    orgnr = company.organisation_number
+    raws = bulk["items"].get(orgnr) or []
+    retrieved_at = bulk["retrieved_at"]
+    items = []
+    for raw in raws:
+        text = raw.decode("utf-8")
+        rec = json.loads(text)
+        if str(rec.get("overordnetEnhet") or "") != orgnr:
+            continue
+        v = subunit_value(rec)
+        v["closed"] = rec.get("nedleggelsesdato")
+        items.append({"value": v, "text": text, "rec": rec})
+    items.sort(key=lambda it: it["value"]["organisation_number"])
+    active = [it for it in items if not it["value"]["closed"]]
+    company.data["subunits"] = [dict(it["value"]) for it in items]
+    company.data["subunits_meta"] = {"total_reported": len(items), "fetched": len(items), "active": len(active),
+                                     "closed": len(items) - len(active), "complete": True, "source": "bulk",
+                                     "count": len(active)}
+    chosen = active
+    if len(active) > MAX_CLAIMS:
+        chosen = sorted(active, key=lambda it: (-(it["value"]["employees"] or 0), it["value"]["organisation_number"]))
+        chosen = sorted(chosen[:MAX_CLAIMS], key=lambda it: it["value"]["organisation_number"])
+    claims: list[Claim] = []
+    evs_all = []
+    for it in chosen:
+        v = {k: it["value"].get(k) for k in ("organisation_number", "name", "address", "industry", "employees", "started")}
+        sub = v["organisation_number"]
+        rsha = ctx.snapshots.save(it["text"].encode("utf-8"), url=underenhet_url(sub), retrieved_at=retrieved_at,
+                                  content_type="application/json")
+        span = members_span(it["text"], "", ["organisasjonsnummer", "overordnetEnhet"])
+        ev = Evidence(source_url=underenhet_url(sub), source_class=OFFICIAL_SUBUNITS, source_name=SOURCE_NAME,
+                      retrieved_at=retrieved_at, content_sha256=rsha, claim_span=span, locator="/overordnetEnhet",
+                      extraction_method=METHOD + "+bulk", page_url=underenhet_page(sub), http_status=200,
+                      licence=NLOD, retrieved_via=bulk["url"], effective_at=bulk.get("last_modified"))
+        evs_all.append(ev)
+        addr = (it["rec"].get("beliggenhetsadresse") or {}) if isinstance(it["rec"].get("beliggenhetsadresse"), dict) else {}
+        disp = f"{v.get('name')} ({formatted(sub)})" + (f", {address_display(addr)}" if address_display(addr) else "")
+        claims.append(Claim(field="registered_workplace", value=v, evidence=[ev], qualifier=sub, display=disp,
+                            relation="subunit", method=METHOD, effective_at=v.get("started")))
+    count = len(active)
+    count_ev = Evidence(source_url=bulk["url"], source_class=OFFICIAL_SUBUNITS, source_name=SOURCE_NAME,
+                        retrieved_at=retrieved_at, content_sha256=bulk.get("file_sha256"),
+                        claim_span=f'{count} elements with "overordnetEnhet":"{orgnr}" and no nedleggelsesdato',
+                        locator="$[?(@.overordnetEnhet=='" + orgnr + "')]", extraction_method=METHOD + "+bulk",
+                        page_url=enhet_page(orgnr), http_status=200, licence=NLOD,
+                        effective_at=bulk.get("last_modified"))
+    claims.append(Claim(field="registered_workplace_count", value=count, evidence=[count_ev], display=str(count),
+                        method=METHOD + "+bulk", match_basis="derived",
+                        note="counted in the nightly underenheter bulk file"))
+    company.add(claims)
+    state = "available" if count else "not_available"
+    company.outcome(ModuleOutcome(MODULE, state, source_url=bulk["url"], retrieved_at=retrieved_at, http_status=200,
+                                  note=(f"{count} registered sub-unit(s) (nightly bulk file)" if count
+                                        else "no registered sub-units (nightly bulk file)")))

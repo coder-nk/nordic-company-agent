@@ -108,12 +108,12 @@ async def _run(ctx, company: CompanyResult) -> None:
     tried_sites: set[str] = set()
     for lead in leads:
         key = _site_key(lead.fetch_url)
-        if key in tried_sites:
+        if key in tried_sites or _site_key(lead.start) in tried_sites:
             continue
         if MAX_REQUESTS - st.spent < 2 and not _robots_known(ctx, _origin(lead.fetch_url)):
             results.append(LeadResult(lead, "failed", f"lead {lead.start} not checked: per-company request cap"))
             continue
-        tried_sites.add(key)
+        tried_sites |= {key, _site_key(lead.start)}
         r = await _check_lead(ctx, st, lead, rec, target, lead_no=len(results))
         results.append(r)
         if r.state == "available":
@@ -251,8 +251,12 @@ async def _get(ctx, st: _State, url: str, *, tier: str, accept: str = BROWSER_AC
         res = await ctx.get(url, tier=tier, source=MODULE, headers={"Accept": accept}, public_only=True,
                             respect_robots=True, max_bytes=2_000_000, retries=0,
                             max_redirects=max_redirects)
-    except RobotsDisallowed:
-        err = ("robots", f"robots.txt disallows {url} (or robots.txt was unreachable)")
+    except RobotsDisallowed as exc:
+        if "timed out" in str(exc):
+            err = ("timeout", f"site unreachable this run (robots.txt timed out) at {url}")
+        else:
+            err = ("robots", f"robots.txt disallows {url}" + (f" ({str(exc).rsplit('(', 1)[-1].rstrip(')')})"
+                                                                 if "(" in str(exc) else ""))
     except UnsafeURL as exc:
         err = ("unsafe", f"not a public web address ({exc})")
     except (BudgetExceeded, DeadlineExceeded) as exc:
@@ -413,8 +417,8 @@ async def _check_lead(ctx, st: _State, lead: Lead, rec: dict, target: str, *, le
             continue
         p = _to_page(ctx, kind, res)
         _record(st, lead_no, p)
-        if 200 <= p.status < 300 and p.html:
-            pages.append(p)
+        if 200 <= p.status < 300 and p.html and under_site(p.final_url, home.final_url):
+            pages.append(p)                   # subpages redirected off-site (booking/shop platforms) are ignored
             found = found or bool(trx.search(p.html))
     shared = _shared_orgnrs(ctx, target, home.final_url)
     v = V.verify(pages, rec, target, lead_kind=lead_kind, start_url=lead.start, shared_orgnrs=shared,

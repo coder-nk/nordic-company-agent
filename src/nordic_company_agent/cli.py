@@ -129,7 +129,7 @@ def cmd_run(a: argparse.Namespace) -> int:
         modules=modules, concurrency=a.concurrency,
         registry_snapshot=Path(a.bulk) if a.bulk else None,
         previous_envelopes=prev_path if previous else None,
-        live_discovery=not a.no_live_discovery, save_snapshots=not a.no_snapshots,
+        live_discovery=not a.no_live_discovery, save_snapshots=not a.no_snapshots, bulk_mode=a.bulk_mode,
         **({"cache_dir": Path(a.cache_dir)} if a.cache_dir else {}),
     )
     result = asyncio.run(run_batch(orgnrs, config, invalid=invalid, duplicates=dups, previous=previous))
@@ -240,6 +240,9 @@ def main(argv: list[str] | None = None) -> int:
     r.add_argument("--no-live-discovery", action="store_true", help="only use cached/registry website leads")
     r.add_argument("--no-snapshots", action="store_true", help="do not store raw response snapshots")
     r.add_argument("--no-viewer", action="store_true")
+    r.add_argument("--bulk-mode", choices=["auto", "always", "never"], default="auto",
+                   help="use Brreg nightly bulk files for roles/sub-units when the request budget is too small "
+                        "for per-company calls (auto), always, or never")
     r.set_defaults(fn=cmd_run)
 
     c = sub.add_parser("company", help="research one organisation number and print its envelope")

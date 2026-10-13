@@ -223,8 +223,8 @@ class _Run:
                 # The feed is chronological, so the last occurrence is the latest state (string
                 # comparison of timestamps would break across DST offset changes).
                 latest[u] = {"uuid": u, "status": fe.get("status"), "modified": mod,
-                                 "business_name": fe.get("businessName") or "", "title": fe.get("title") or "",
-                                 "page": p_i, "index": i}
+                             "business_name": fe.get("businessName") or "", "title": fe.get("title") or "",
+                             "page": p_i, "index": i}
         return latest
 
     async def fetch_entry(self, uuid: str) -> dict[str, Any] | None:
@@ -241,7 +241,8 @@ class _Run:
         if redacted is None:
             return {"uuid": uuid, "http_status": res.status, "status": None}
         self.ctx.snapshots.save(redacted, url=url, retrieved_at=retrieved_at,
-                                content_type=res.headers.get("content-type"), sha256=res.sha256, redacted=True)
+                                content_type=res.headers.get("content-type"), sha256=res.sha256, redacted=True,
+                                redaction_note="contact-person names, e-mails and phones removed before storage")
         j = json.loads(res.content)
         ad = j.get("ad_content") or {}
         emp = ad.get("employer") or {}

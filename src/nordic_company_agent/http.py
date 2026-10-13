@@ -204,6 +204,7 @@ class BudgetedClient:
         self.by_host: Counter[str] = Counter()
         self._robots: dict[str, urllib.robotparser.RobotFileParser | None] = {}
         self._robots_locks: dict[str, asyncio.Lock] = defaultdict(asyncio.Lock)
+        self._robots_reason: dict[str, str] = {}
         self._client = httpx.AsyncClient(
             follow_redirects=False,
             timeout=httpx.Timeout(timeout, connect=min(timeout, 8.0)),
@@ -275,9 +276,10 @@ class BudgetedClient:
         )
 
     async def post(self, url: str, *, source: str, data: Any = None,
-                   headers: dict[str, str] | None = None, retries: int = 1) -> FetchResult:
+                   headers: dict[str, str] | None = None, retries: int = 1,
+                   timeout: float | None = None) -> FetchResult:
         return await self.request("POST", url, source=source, data=data, headers=headers,
-                                  max_redirects=0, retries=retries)
+                                  max_redirects=0, retries=retries, timeout=timeout)
 
     async def request(
         self,
@@ -307,7 +309,9 @@ class BudgetedClient:
             if public_only:
                 await assert_public_url(current)
             if respect_robots and not await self.allowed_by_robots(current, source=source):
-                raise RobotsDisallowed(current)
+                parts = urlsplit(current)
+                reason = self._robots_reason.get(f"{parts.scheme}://{parts.netloc}", "disallowed by robots.txt")
+                raise RobotsDisallowed(f"{current} ({reason})")
             res = await self._send_with_retries(method, current, source=source, headers=headers,
                                                 data=data, retries=retries, hop=hop,
                                                 max_bytes=max_bytes or self.max_body_bytes, timeout=timeout)
@@ -366,6 +370,40 @@ class BudgetedClient:
             return res
         raise last_exc or RuntimeError("unreachable")
 
+    async def download(self, url: str, path, *, source: str, headers: dict[str, str] | None = None,
+                       max_redirects: int = 3, read_timeout: float = 120.0) -> dict[str, Any]:
+        """Stream a (large) official bulk file to `path`. Counts one request per hop, honours the
+        run deadline between chunks. Returns {status, final_url, bytes, sha256, headers, retrieved_at}."""
+        current = url
+        for hop in range(max_redirects + 1):
+            await self._reserve()
+            host = urlsplit(current).hostname or ""
+            self.by_source[source] += 1
+            self.by_host[host] += 1
+            started = utcnow()
+            t0 = time.monotonic()
+            h = hashlib.sha256()
+            size = 0
+            async with self._client.stream("GET", current, headers=headers or {},
+                                           timeout=httpx.Timeout(read_timeout, connect=10.0)) as resp:
+                if resp.status_code in (301, 302, 303, 307, 308) and "location" in resp.headers:
+                    self._record(CallRecord(source, "GET", current, resp.status_code, started.isoformat(),
+                                            int((time.monotonic() - t0) * 1000), 0, redirect_hop=hop))
+                    current = urljoin(current, resp.headers["location"])
+                    continue
+                with open(path, "wb") as fh:
+                    async for chunk in resp.aiter_raw():
+                        fh.write(chunk)
+                        h.update(chunk)
+                        size += len(chunk)
+                        if self.deadline is not None and time.monotonic() >= self.deadline:
+                            raise DeadlineExceeded("run deadline reached during bulk download")
+                self._record(CallRecord(source, "GET", current, resp.status_code, started.isoformat(),
+                                        int((time.monotonic() - t0) * 1000), size, redirect_hop=hop))
+                return {"status": resp.status_code, "final_url": current, "bytes": size, "sha256": h.hexdigest(),
+                        "headers": {k.lower(): v for k, v in resp.headers.items()}, "retrieved_at": utcnow()}
+        raise RuntimeError("too many redirects")
+
     def _record(self, rec: CallRecord) -> None:
         if self.record_calls:
             self.calls.append(rec)
@@ -402,9 +440,16 @@ class BudgetedClient:
             if origin not in self._robots:
                 parser: urllib.robotparser.RobotFileParser | None = None
                 try:
-                    res = await self._send_with_retries("GET", origin + "/robots.txt", source=source,
-                                                        headers={"Accept": "text/plain,*/*"}, data=None,
-                                                        retries=0, hop=0, max_bytes=500_000)
+                    try:
+                        res = await self._send_with_retries("GET", origin + "/robots.txt", source=source,
+                                                            headers={"Accept": "text/plain,*/*"}, data=None,
+                                                            retries=0, hop=0, max_bytes=500_000)
+                    except httpx.TimeoutException:
+                        # One more (counted) attempt before treating the whole origin as unreachable.
+                        await asyncio.sleep(1.0)
+                        res = await self._send_with_retries("GET", origin + "/robots.txt", source=source,
+                                                            headers={"Accept": "text/plain,*/*"}, data=None,
+                                                            retries=0, hop=0, max_bytes=500_000, timeout=20.0)
                     if res.status in (301, 302, 307, 308) and "location" in res.headers:
                         # One counted hop to follow a robots.txt redirect (e.g. http -> https).
                         loc = urljoin(origin + "/robots.txt", res.headers["location"])
@@ -422,11 +467,13 @@ class BudgetedClient:
                         # RFC 9309 §2.3.1.3/§2.3.1.4: server errors mean "assume complete disallow".
                         parser = urllib.robotparser.RobotFileParser()
                         parser.disallow_all = True
+                        self._robots_reason[origin] = f"robots.txt returned HTTP {res.status}: treated as disallow"
                 except (BudgetExceeded, DeadlineExceeded):
                     raise
                 except httpx.TimeoutException:
                     parser = urllib.robotparser.RobotFileParser()
                     parser.disallow_all = True  # unreachable robots.txt -> do not crawl this run
+                    self._robots_reason[origin] = "robots.txt timed out: site unreachable this run"
                 except Exception:
                     parser = None  # e.g. TLS/connection refused: the page fetch itself will fail
                 self._robots[origin] = parser

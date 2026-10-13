@@ -193,7 +193,10 @@ def reg_domain(host: str) -> str:
     if not host:
         return ""
     r = _TLD(host)
-    dom = getattr(r, "top_domain_under_public_suffix", None) or r.registered_domain
+    if hasattr(r, "top_domain_under_public_suffix"):
+        dom = r.top_domain_under_public_suffix      # tldextract >= 5.3 (registered_domain is deprecated)
+    else:  # pragma: no cover - older tldextract
+        dom = r.registered_domain
     return dom or host
 
 def name_core_tokens(name: str):

@@ -1,0 +1,27 @@
+{
+ "name": "nav_jobs",
+ "built_at": "2026-10-13T15:29:28Z",
+ "source": "NAV arbeidsplassen stillingsfeed (https://pam-stilling-feed.nav.no/api/v1/feed)",
+ "licence": "NAV arbeidsplassen job-ad feed, https://arbeidsplassen.nav.no/vilkar-api",
+ "feed_since": "2026-06-15T14:43:05Z",
+ "feed_cursor": {
+  "page_id": "7fbc1e68-0671-467a-9ed1-9a5fff639a87",
+  "page_url": "https://pam-stilling-feed.nav.no/api/v1/feed/7fbc1e68-0671-467a-9ed1-9a5fff639a87",
+  "last_item_modified": "2026-10-13T17:17:19.809375+02:00",
+  "at_end": true
+ },
+ "feed_pages": 218,
+ "ads_seen": 57341,
+ "active_ads": 9194,
+ "companies": 3459,
+ "dropped": {
+  "feed_inactive": 47723,
+  "entry_not_active": 0,
+  "expired": 262,
+  "no_orgnr": 159,
+  "unmapped": 3,
+  "no_entry": 0
+ },
+ "key": "organisation_number (parent enhet of the advertising underenhet, or the enhet itself)",
+ "note": "Only ads whose latest feed state and feed entry are ACTIVE and whose expiry has not passed. Contact persons are not stored. The runtime pages the feed forward from feed_cursor and removes ads that became INACTIVE."
+}

@@ -34,6 +34,7 @@ class RunConfig:
     previous_envelopes: Path | None = None
     website_max_pages: int = 6
     live_discovery: bool = True                  # try candidate domains at run time when not cached
+    bulk_mode: str = "auto"                      # auto | always | never: nightly bulk files for roles/sub-units
     save_snapshots: bool = True
 
     @staticmethod
@@ -127,7 +128,7 @@ class SnapshotStore:
             root.mkdir(parents=True, exist_ok=True)
 
     def save(self, body: bytes, *, url: str, retrieved_at: str, content_type: str | None = None,
-             sha256: str | None = None, redacted: bool = False) -> str:
+             sha256: str | None = None, redacted: bool = False, redaction_note: str | None = None) -> str:
         import hashlib
         digest = sha256 or hashlib.sha256(body).hexdigest()
         if digest not in self.index:
@@ -135,7 +136,8 @@ class SnapshotStore:
             if content_type:
                 entry["content_type"] = content_type.split(";")[0]
             if redacted:
-                entry["redacted"] = "personal birth dates removed before storage; sha256 is of the original bytes"
+                entry["redacted"] = (redaction_note or "personal birth dates removed before storage") + \
+                    "; sha256 is of the original bytes"
             if self.root:
                 path = self.root / f"{digest}.gz"
                 if not path.exists():
@@ -145,10 +147,10 @@ class SnapshotStore:
         return digest
 
     def save_result(self, res: FetchResult, retrieved_at: str, body: bytes | None = None,
-                    redacted: bool = False) -> str:
+                    redacted: bool = False, redaction_note: str | None = None) -> str:
         return self.save(body if body is not None else res.content, url=res.final_url or res.url,
                          retrieved_at=retrieved_at, content_type=res.headers.get("content-type"),
-                         sha256=res.sha256, redacted=redacted)
+                         sha256=res.sha256, redacted=redacted, redaction_note=redaction_note)
 
     def entry(self, digest: str) -> dict[str, Any] | None:
         return self.index.get(digest)

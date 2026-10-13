@@ -200,16 +200,30 @@ async def _run(ctx: RunContext, company: CompanyResult) -> None:
                                       note="foreign entity (UTLA): Enhetsregisteret registers no roles"))
         return
     url = roles_url(orgnr)
-    if not ctx.allow(TIER, 1):
-        company.outcome(ModuleOutcome(MODULE, "failed", note=BUDGET_NOTE, source_url=url))
-        return
-    try:
-        res = await ctx.get(url, tier=TIER, source=MODULE, headers=ACCEPT_JSON)
-    except Exception as exc:
-        msg = f"roles lookup failed: {type(exc).__name__}: {exc}"[:300]
-        company.error(MODULE, "failed", msg, url)
-        company.outcome(ModuleOutcome(MODULE, "failed", note=msg, source_url=url, requests=1))
-        return
+    bulk = ctx.shared.get("bulk_roles")
+    via = None
+    if bulk is not None:
+        raw = bulk["items"].get(orgnr)
+        if raw is None:
+            company.data["roles"] = []
+            company.outcome(ModuleOutcome(MODULE, "not_available", source_url=url, retrieved_at=bulk["retrieved_at"],
+                                          note="no roles registered (entity absent from the nightly roles bulk file)"))
+            return
+        from ..http import FetchResult
+        res = FetchResult(url=bulk["url"], final_url=bulk["final_url"], status=200,
+                          headers={"content-type": "application/json"}, content=raw, retrieved_at=bulk["retrieved_dt"])
+        via = bulk["url"]
+    else:
+        if not ctx.allow(TIER, 1):
+            company.outcome(ModuleOutcome(MODULE, "failed", note=BUDGET_NOTE, source_url=url))
+            return
+        try:
+            res = await ctx.get(url, tier=TIER, source=MODULE, headers=ACCEPT_JSON)
+        except Exception as exc:
+            msg = f"roles lookup failed: {type(exc).__name__}: {exc}"[:300]
+            company.error(MODULE, "failed", msg, url)
+            company.outcome(ModuleOutcome(MODULE, "failed", note=msg, source_url=url, requests=1))
+            return
     retrieved_at = utc_iso(res.retrieved_at)
     if res.status == 404:
         company.outcome(ModuleOutcome(MODULE, "not_available", note="no roles registered (HTTP 404)", source_url=url,
@@ -251,7 +265,8 @@ async def _run(ctx: RunContext, company: CompanyResult) -> None:
         span = span_at(text, e["_ptr"])
         ev = Evidence(source_url=url, source_class=OFFICIAL_ROLES, source_name=SOURCE_NAME, retrieved_at=retrieved_at,
                       content_sha256=original_sha, claim_span=span, locator=e["_ptr"], extraction_method=METHOD,
-                      page_url=enhet_page(orgnr), effective_at=e.get("last_changed"), http_status=200, licence=NLOD)
+                      page_url=enhet_page(orgnr), effective_at=e.get("last_changed"), http_status=200, licence=NLOD,
+                      retrieved_via=via)
         claims.append(Claim(field=e["field"], value=_value(e), evidence=[ev], qualifier=e.get("qualifier"),
                             display=_display(e), effective_at=e.get("last_changed"),
                             relation="related" if e["_holder"] == "entity" else "self", method=METHOD))

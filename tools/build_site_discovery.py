@@ -376,9 +376,34 @@ def phase_join() -> None:
     log(f"join: {n_hit}/{n_comp} companies with an org-number lead; {dict(kinds)}")
 
 
+def phase_domains(bulk: Path) -> None:
+    """cache/registry_website_domains.json.gz: registry-filed website hosts shared by >= 2 org numbers.
+    Such hosts (property managers, chains, umbrella bodies) never prove identity on their own."""
+    from nordic_company_agent.web.candidates import normalize_registry_website
+    hosts: dict[str, set[str]] = {}
+    for rec in iter_snapshot(bulk):
+        url = normalize_registry_website(rec.get("hjemmeside"))
+        if not url:
+            continue
+        host = (urlsplit(url).hostname or "").lower().removeprefix("www.")
+        if host:
+            hosts.setdefault(host, set()).add(str(rec.get("organisasjonsnummer")))
+    shared = {h: sorted(o) for h, o in hosts.items() if len(o) >= 2}
+    CACHE.mkdir(parents=True, exist_ok=True)
+    with gzip.open(CACHE / "registry_website_domains.json.gz", "wt", encoding="utf-8") as fh:
+        json.dump(shared, fh, ensure_ascii=False, sort_keys=True)
+    meta = {"name": "registry_website_domains", "built_at": utcnow().isoformat().replace("+00:00", "Z"),
+            "source": "Enhetsregisteret bulk CSV (hjemmeside), NLOD 2.0", "shared_hosts": len(shared),
+            "organisation_numbers": sum(len(v) for v in shared.values()),
+            "description": "Website hosts filed in Enhetsregisteret by two or more organisation numbers; a site on such "
+                           "a host is not exclusive to one entity, so only an org number printed on it can prove identity."}
+    (CACHE / "registry_website_domains.meta.json").write_text(json.dumps(meta, indent=2) + "\n")
+    log(f"domains: {len(shared)} shared hosts covering {meta['organisation_numbers']} org numbers")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("phase", choices=["candidates", "dns", "crawl", "join", "all"])
+    ap.add_argument("phase", choices=["candidates", "dns", "crawl", "join", "domains", "all"])
     ap.add_argument("--universe", default=str(ROOT / "data" / "signalpost-company-universe-2025.jsonl.gz"))
     ap.add_argument("--bulk", default=str(ROOT / "data" / "bulk" / "enheter.csv.gz"))
     ap.add_argument("--nameserver", default=os.environ.get("NCA_DNS", "10.184.0.11"))
@@ -397,6 +422,8 @@ def main() -> None:
         asyncio.run(phase_crawl(a.concurrency, a.limit, a.max_prio, a.shard, a.shards))
     if a.phase in ("join", "all"):
         phase_join()
+    if a.phase in ("domains", "all"):
+        phase_domains(Path(a.bulk))
 
 
 if __name__ == "__main__":

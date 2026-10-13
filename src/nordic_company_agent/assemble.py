@@ -75,11 +75,42 @@ _FIELD_ORDER = [f for fam in ("legal_identity", "corporate_structure", "annual_a
                 for f in __import__("nordic_company_agent.envelope", fromlist=["FAMILIES"]).FAMILIES[fam]]
 
 
+def _merge_socials(claims: list[Claim]) -> list[Claim]:
+    """One social_profile claim per canonical profile URL, whichever source found it (website link,
+    registry hjemmeside, Wikidata). Keeps the highest-confidence claim and the union of evidence."""
+    from .web.verify import canonical_social
+    out: list[Claim] = []
+    by: dict[str, Claim] = {}
+    for cl in claims:
+        if cl.field != "social_profile" or cl.availability != "available" or not isinstance(cl.value, dict):
+            out.append(cl)
+            continue
+        plat = cl.value.get("platform") or ""
+        can = canonical_social(plat, cl.value.get("url") or "")
+        url = can[0] if can else (cl.value.get("url") or "")
+        url = url.replace("https://twitter.com/", "https://x.com/")
+        key = f"{plat}|{url.lower().rstrip('/')}"
+        cl.value = dict(cl.value, url=url)
+        cl.qualifier = key
+        if key in by:
+            keep = by[key]
+            if cl.confidence > keep.confidence:
+                cl.evidence = cl.evidence + [e for e in keep.evidence if e.id not in {x.id for x in cl.evidence}]
+                out[out.index(keep)] = cl
+                by[key] = cl
+            else:
+                keep.evidence.extend(e for e in cl.evidence if e.id not in {x.id for x in keep.evidence})
+            continue
+        by[key] = cl
+        out.append(cl)
+    return out
+
+
 def assemble_envelope(ctx: RunContext, c: CompanyResult, *, run_id: str, started_at: str, completed_at: str,
                       previous: dict[str, Any] | None) -> dict[str, Any]:
     identity = dict(c.data.get("identity") or {"match_status": "error", "confidence": 0.0, "method": "none", "checks": []})
     identity["organisation_number_formatted"] = formatted(c.organisation_number)
-    claims = dedupe_claims(c.claims + _missing_labels(c, ctx))
+    claims = dedupe_claims(_merge_socials(c.claims + _missing_labels(c, ctx)))
     claims.sort(key=_sort_key)
 
     evidence: dict[str, dict[str, Any]] = {}
