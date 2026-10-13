@@ -18,22 +18,43 @@ wrong-company publication.
 
 Leads come from the declared discovery cache, the registry-filed `hjemmeside`, Wikidata P856, and live
 candidates (own-domain e-mail, legal-name slugs; DNS check, at most 2 fetched). A lead is never evidence.
-The site is re-fetched live (robots.txt honoured, SSRF-safe) and classified:
+The site is re-fetched live (robots.txt honoured, SSRF-safe) and classified. The gate was hardened over
+four rounds of independent adversarial audits (EVAL.md), with precision always ahead of recall.
 
-* **L1, confidence 0.97:** the exact org number is printed on a fetched page of the site (text, HTML, or a
-  link to its registry page). The page is live and not parked, for sale, a bot wall or hijacked. If the site
-  also prints other org numbers (group, agency, processor), contacts come only from the smallest DOM block
-  containing the target number and no other, and descriptive facts need the company's name in the title,
-  og:site_name or JSON-LD.
-* **L2, confidence 0.85:** the registry-filed website, with no other company's org number on it, every
-  distinctive name token prominent, at least one independent registry corroboration (phone, e-mail, e-mail
-  domain, postcode + street, full legal name), not an address-named property SPV, not a c/o manager's site,
-  not a host shared by several org numbers (`cache/registry_website_domains.json.gz`), and no cross-domain
-  redirect to a parent or brand site.
-* Otherwise `official_website` is `ambiguous` (a site was seen but not proven) or `not_available` /
-  `blocked` / `failed`, with the reason in `note`. Nothing from such a site is published.
+* **L1, confidence 0.97:** the exact org number is printed in visible text on a fetched page, next to an
+  org-number label ("Org.nr", "Organisasjonsnummer", "NO … MVA", a privacy-controller or seller statement,
+  a footer imprint), or it is the JSON-LD identifier/vatID of an Organization with the company's name. Not
+  proof:
+  * numbers that appear only in HTML source (comments, attributes, placeholders, scripts, hidden elements)
+    or only in a document link;
+  * numbers inside a list of several companies;
+  * numbers printed under a different legal name.
+* **L2, confidence 0.85:** only for the registry-filed website, and only when all of these hold:
+  * an exact registry e-mail or phone is on the site;
+  * the full legal name, with its upper-case form token, is in visible footer, imprint or contact text;
+  * the privacy, terms or imprint page names no other controller, seller or owner;
+  * there are no foreign or group signals;
+  * the corroborating contacts are not shared with other organisation numbers.
+* **Never published as the company's official website**, so the claim is `ambiguous` with the reason:
+  * parent, group, sister or foreign-HQ sites: other legal entities, foreign registrations, ownership
+    phrases, a parent © owner, or the same brand on foreign country domains;
+  * sections of another brand's site: hotel or retail chains, foreign parents' `/no/` sections, sub-paths of
+    shared hosts;
+  * property-manager, community and directory platforms (e.g. Vibbo);
+  * hosts filed by several organisation numbers without a visible labelled proof;
+  * parked, for-sale, hijacked or bot-wall pages.
+* A published URL is never wider than the filed or proved URL. After a cross-domain redirect the locale path
+  is kept.
 
-Facts from a verified site: official URL, verification proof (URL + verbatim span), title, description,
-brand, logo, language, address, generic role mailboxes or the registry e-mail (never personal-looking
-addresses), phones (tel: links or labelled, isolated when shared), company-linked social profiles
-(platform, sponsor and personal links excluded), careers page, and dated RSS/Atom news on the same domain.
+Facts from a verified site:
+* title, description (agency credits and chain boilerplate removed), brand and logo;
+* generic role mailboxes on the site's own domain (never personal-looking addresses, authority or invoice
+  mailboxes);
+* phones from tel: links whose visible text matches, or labelled numbers inside the company's own block;
+  never postboxes, foreign-prefixed numbers, numbers shared with other organisation numbers in the
+  registry, or named persons' mobiles;
+* company-linked social profiles whose handle matches the company's distinctive name (platform, sponsor,
+  foreign-entity and generic handles excluded);
+* careers page, RSS/Atom news and news-section items.
+
+Every fact's evidence span contains the value; facts that cannot be anchored are dropped.
