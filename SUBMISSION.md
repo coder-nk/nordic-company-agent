@@ -11,6 +11,7 @@ Builderr accepts code revisions until **18 Oct** (version 1 + up to 4 revised co
 | Repository URL | *(push this repo to GitHub/GitLab and paste the URL; it is currently a local git repo)* |
 | Exact commit hash | `git rev-parse HEAD` after the final commit |
 | One run command | `./run.sh <organisations.jsonl> <output_dir>`, which wraps `uv run nca run --input <file> --out <dir>` |
+| Interactive app | `./ui.sh` (opens http://127.0.0.1:8765; see README "Interactive app") |
 | Reference-harness-compatible command | `python scripts/run_competition_batch.py --organisations batch.jsonl --bulk brreg-enheter.csv --output out/envelopes.jsonl --report out/run-report.json --run-id <id> --expected-count <n>` |
 | 100-company smoke test | `smoke/` (envelopes.jsonl, run-report.json, changes.jsonl, validation.json, site/) |
 | 1,000 company profiles | `profiles/envelopes.jsonl.gz` (+ run-report.json, validation.json) |

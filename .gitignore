@@ -11,3 +11,4 @@ runs/
 *.sqlite-wal
 *.sqlite-shm
 research/builderr_starter_kit/
+data/cc/

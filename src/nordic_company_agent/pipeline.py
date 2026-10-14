@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import asyncio
 import importlib
+import gzip
 import json
 import signal
 import time
@@ -140,6 +141,19 @@ async def _run_company_module(ctx: RunContext, name: str, fn: Callable[..., Awai
             CURRENT_COMPANY.reset(token_c)
         if name not in company.modules:
             company.outcome(ModuleOutcome(name, "failed", note="module produced no terminal state"))
+        _progress(ctx, company, name)
+
+
+def _progress(ctx: RunContext, company: CompanyResult, name: str) -> None:
+    """Optional live-progress callback (the UI's research view): (orgnr, module, availability, note)."""
+    cb = ctx.shared.get("progress")
+    if cb is None:
+        return
+    out = company.modules.get(name)
+    try:
+        cb(company.organisation_number, name, getattr(out, "availability", None), getattr(out, "note", None))
+    except Exception:
+        pass
 
 
 async def run_modules(ctx: RunContext, companies: list[CompanyResult]) -> dict[str, int]:
@@ -260,17 +274,22 @@ async def _run_batch_module(ctx: RunContext, name: str, fn, companies: list[Comp
     finally:
         CURRENT_MODULE.reset(token_m)
         for c in companies:
+            _progress(ctx, c, name)
+        for c in companies:
             if name not in c.modules:
                 c.outcome(ModuleOutcome(name, "failed", note="module produced no terminal state"))
 
 
 async def run_batch(orgnrs: list[str], config: RunConfig, invalid: list[dict[str, Any]] | None = None,
                     duplicates: list[str] | None = None,
-                    previous: dict[str, dict[str, Any]] | None = None) -> BatchOutput:
+                    previous: dict[str, dict[str, Any]] | None = None,
+                    progress: Callable[..., None] | None = None) -> BatchOutput:
     from .assemble import assemble_envelope  # local import keeps module import cheap
 
     started = utc_iso()
     ctx = RunContext(config)
+    if progress is not None:
+        ctx.shared["progress"] = progress
     companies = [CompanyResult(o) for o in orgnrs]
     previous = previous or {}
     times = [t for p in previous.values() if isinstance(p.get("run"), dict) and (t := p["run"].get("completed_at"))]
@@ -387,7 +406,9 @@ def _is_placeholder(env: dict[str, Any]) -> bool:
 def _iter_envelopes(path: Path):
     if not path.exists():
         return
-    with path.open(encoding="utf-8", errors="replace") as fh:
+    opener = (lambda: gzip.open(path, "rt", encoding="utf-8", errors="replace")) if path.suffix == ".gz" \
+        else (lambda: path.open(encoding="utf-8", errors="replace"))
+    with opener() as fh:
         for line in fh:
             line = line.strip()
             if not line:

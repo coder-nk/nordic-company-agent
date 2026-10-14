@@ -12,7 +12,10 @@ run                      {run_id, started_at, completed_at, terminal_status: com
                           agent: {name, version, llm: null, paid_apis: []}}
 identity                 {match_status: exact|subunit|deleted|not_found|invalid|error, confidence, method,
                           organisation_number_formatted, checks: [{name, passed, detail}], ...}
-summary                  {text, sentences: [{topic, text, claim_ids, evidence_ids}], unknowns: [...], method}
+summary                  {text, sentences: [{topic, text, claim_ids, evidence_ids}], unknowns: [...],
+                          signals: [{signal, polarity (risk|warn|positive|info), text, claim_ids}], method}
+                         signals: status risk, size, revenue (+growth), profitability, equity solidity, stale
+                         filings, hiring, public support, group membership - only over published claims
 sections                 the brief's required sections → {availability, claim_count, claim_ids}:
                           legal_identity_and_brand, annual_accounts, leadership_and_workplaces,
                           website_and_profiles, hiring_and_public_activity, claim_level_evidence,

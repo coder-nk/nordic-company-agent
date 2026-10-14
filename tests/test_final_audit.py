@@ -121,3 +121,82 @@ def test_domain_label_yields_to_a_verified_own_site():
     label_by_website(c)
     assert rel(c, "registry_website") == ["self"] and rel(c, "registry_email") == ["self"]
     assert all(x.note is None and x.confidence == 1.0 for x in c.claims)
+
+
+def test_common_crawl_leads_are_read_after_the_name_crawl_leads(tmp_path):
+    import json as _json
+
+    from nordic_company_agent.context import RunConfig, RunContext
+    from nordic_company_agent.sources import website
+
+    cache = tmp_path / "cache"
+    cache.mkdir()
+    (cache / "site_discovery.jsonl").write_text(_json.dumps(
+        {"organisation_number": "912342344", "leads": [{"kind": "name_joined_no", "start": "https://a.no/"}],
+         "checked": ["name_joined_no"]}) + "\n")
+    (cache / "site_discovery_cc.jsonl").write_text(_json.dumps(
+        {"organisation_number": "912342344", "leads": [{"kind": "commoncrawl", "start": "https://brand.no/",
+                                                          "proof_url": "https://brand.no/kontakt"}],
+         "checked": []}) + "\n")
+    ctx = RunContext(RunConfig(run_id="t", out_dir=tmp_path / "out", cache_dir=cache))
+    leads, checked, _ = website._leads(ctx, CompanyResult("912342344"), {})
+    assert [(L.kind, L.start) for L in leads] == [("name_joined_no", "https://a.no/"), ("commoncrawl", "https://brand.no/")]
+    assert checked == {"name_joined_no"}
+    assert website._shared_index(ctx)["brand.no"] == {"912342344"}
+
+
+# --------------------------------------------------------------------------- L2r: registry-filed own-name domain
+from nordic_company_agent.web import verify as V  # noqa: E402
+
+FILL = "<p>" + "Vi leverer tjenester av høy kvalitet til kunder i hele landet. " * 6 + "</p>"
+
+
+def _v(html, rec, orgnr, url):
+    page = V.Page("home", url, url, 200, f"<html lang='no'><head><title>{html[0]}</title></head><body>{FILL}{html[1]}"
+                  "</body></html>", "sha-" + url, "2026-10-14T00:00:00Z")
+    v = V.verify([page], rec, orgnr, lead_kind="registry_website", start_url=url)
+    return v, V.collect_facts(v, rec)
+
+
+REC = {"navn": "FJORDLYS ELEKTRO AS", "organisasjonsform": {"kode": "AS"}, "hjemmeside": "www.fjordlys-elektro.no",
+       "forretningsadresse": {"postnummer": "5003", "adresse": ["Strandgaten 9"]}, "telefon": "55 11 22 33"}
+
+
+def test_l2r_registry_filed_own_name_domain_without_contact():
+    v, facts = _v(("Fjordlys Elektro – elektriker i Bergen", "<footer>Fjordlys Elektro · Strandgaten 9, 5003 Bergen · "
+                   "<a href='tel:99887766'>998 87 766</a></footer>"), REC, "912342344", "https://fjordlys-elektro.no/")
+    assert v.level == "L2r" and v.published and v.confidence == 0.75 and v.restricted
+    assert "+4799887766" not in [f.value for f in facts if f.field == "contact_phone"]   # not registry-equal
+
+
+def test_l2r_needs_the_name_in_the_domain():
+    rec = dict(REC, hjemmeside="www.bergenstrom.no")
+    v, _ = _v(("Fjordlys Elektro – elektriker i Bergen", "<footer>Fjordlys Elektro · Strandgaten 9, 5003 Bergen</footer>"),
+              rec, "912342344", "https://bergenstrom.no/")
+    assert not v.published
+
+
+def test_l2r_refused_when_another_owner_is_named():
+    v, _ = _v(("Fjordlys Elektro", "<footer>Fjordlys Elektro · Strandgaten 9, 5003 Bergen · © 2026 Vestlandsgruppen "
+               "Holding AS</footer>"), REC, "912342344", "https://fjordlys-elektro.no/")
+    assert not v.published
+
+
+def test_signals_cover_risk_and_stale_filings():
+    from nordic_company_agent.synthesis import build_summary
+
+    def cl(i, field, value, **kw):
+        return {"id": f"cl-{i}", "field": field, "value": value, "availability": "available", "evidence_ids": [f"ev-{i}"],
+                **kw}
+    per = {"year": 2021, "scope": "company", "start": "2021-01-01", "end": "2021-12-31"}
+    claims = [cl(1, "legal_name", "GAMMEL AS"), cl(2, "registry_status", "under_liquidation"),
+              cl(3, "accounts_period", None, period=per), cl(4, "revenue", "0", period=per),
+              cl(5, "net_profit", "-120000", period=per), cl(6, "equity", "-50000", period=per),
+              cl(7, "total_assets", "300000", period=per)]
+    s = build_summary(claims, {}, [], {"organisation_number_formatted": "912 342 344"})
+    sig = {x["signal"]: x for x in s["signals"]}
+    assert sig["registry_status"]["polarity"] == "risk" and sig["solidity"]["text"] == "negative equity"
+    assert sig["filing"]["text"] == "latest filed accounts are for 2021" and sig["revenue"]["text"] == "no 2021 revenue"
+    assert sig["profitability"]["polarity"] == "warn"
+    glance = next(x for x in s["sentences"] if x["topic"] == "signals")
+    assert glance["text"].startswith("At a glance: under liquidation") and "cl-6" in glance["claim_ids"]

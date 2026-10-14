@@ -39,6 +39,8 @@ from ..web import extract as X
 from ..web import verify as V
 
 MODULE = "website"
+# declared lead caches, in lead order: name-guess crawl, then Common Crawl archive hits (tools/build_*_discovery.py)
+DISCOVERY_CACHES = ("site_discovery", "site_discovery_cc")
 METHOD = "website@1"
 MAX_REQUESTS = 5                 # per company, including robots.txt and redirect hops
 MAX_LIVE_CANDIDATES = 2
@@ -164,10 +166,12 @@ def _leads(ctx, company: CompanyResult, rec: dict) -> tuple[list[Lead], set[str]
     checked: set[str] = set()
     reg_url = C.normalize_registry_website(rec.get("hjemmeside")) if rec else None
     reg_dom = X.reg_domain(urlsplit(reg_url).hostname or "") if reg_url else None
-    try:
-        rows = ctx.caches.jsonl_index("site_discovery").get(target, [])
-    except Exception:
-        rows = []
+    rows: list[dict] = []
+    for name in DISCOVERY_CACHES:
+        try:
+            rows += ctx.caches.jsonl_index(name).get(target, [])
+        except Exception:
+            pass
     for row in rows:
         checked |= set(row.get("checked") or [])
         for ld in row.get("leads") or []:
@@ -459,18 +463,12 @@ def _shared_index(ctx) -> dict[str, set[str]]:
     if idx is not None:
         return idx
     idx = {}
-    try:
-        rows = ctx.caches.jsonl_index("site_discovery")
-    except Exception:
-        rows = {}
-    for org, recs in rows.items():
-        for row in recs:
-            for ld in row.get("leads") or []:
-                u = ld.get("final_url") or ld.get("start") or ""
-                sp = urlsplit(u if "://" in u else "https://" + u)
-                host = (sp.hostname or "").lower().removeprefix("www.")
-                if host and V.HOMEISH_PATH_RX.match(sp.path or "/"):
-                    idx.setdefault(host, set()).add(str(org))
+    for name in DISCOVERY_CACHES:
+        try:
+            rows = ctx.caches.jsonl_index(name)
+        except Exception:
+            rows = {}
+        _index_leads(idx, rows)
     for extra in (_safe_json(ctx, "registry_website_domains"), getattr(ctx, "shared", {}).get("registry_website_domains")):
         if isinstance(extra, dict):
             for k, orgs in extra.items():
@@ -479,6 +477,17 @@ def _shared_index(ctx) -> dict[str, set[str]]:
     if isinstance(getattr(ctx, "shared", None), dict):
         ctx.shared["website_shared_index"] = idx
     return idx
+
+
+def _index_leads(idx: dict[str, set[str]], rows: dict[str, list[dict]]) -> None:
+    for org, recs in rows.items():
+        for row in recs:
+            for ld in row.get("leads") or []:
+                u = ld.get("final_url") or ld.get("start") or ""
+                sp = urlsplit(u if "://" in u else "https://" + u)
+                host = (sp.hostname or "").lower().removeprefix("www.")
+                if host and V.HOMEISH_PATH_RX.match(sp.path or "/"):
+                    idx.setdefault(host, set()).add(str(org))
 
 
 def _shared_contacts(ctx) -> dict | None:
@@ -1078,6 +1087,7 @@ def _emit(ctx, company: CompanyResult, rec: dict, st: _State, results: list[Lead
     # ------------------------------------------------------------------ published (L1 / L2)
     conf = v.confidence
     basis = {"L1": "organisation_number_exact", "L2": "registry_website_corroborated",
+             "L2r": "registry_website_filed_name_domain",
              "L2e": "registry_email_domain_corroborated"}.get(v.level, "registry_website_corroborated")
     method = f"{V.GATE_VERSION}:{v.level}"
     proof_page = v.infos[v.proof["page"]].page
@@ -1099,7 +1109,7 @@ def _emit(ctx, company: CompanyResult, rec: dict, st: _State, results: list[Lead
         if raw_w and (proof_page.utf8 or raw_w.isascii()):
             proof_ev = dataclasses.replace(proof_ev, claim_span=raw_w)
     site_evs = [proof_ev]
-    if v.level == "L2":
+    if v.level in ("L2", "L2r"):
         rev = _registry_hjemmeside_ev(company, rec)
         if rev is not None:
             site_evs.append(rev)

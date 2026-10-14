@@ -186,9 +186,11 @@ def _blocking(rec: dict) -> bool:
 
 
 async def crawl_one(client: BudgetedClient, e: dict, host: str) -> dict:
-    targets = set(e["orgnrs"])
+    shared_targets = e.get("_targets")         # a shared set (e.g. the whole universe) is used as is, not copied
+    targets = shared_targets if shared_targets is not None else set(e["orgnrs"])
     max_sub = 3 if e.get("prio", 9) <= 2 else 2
-    rec: dict = {"key": e["key"], "host": host, "kinds": e["kinds"], "targets": sorted(targets), "pages": [],
+    rec: dict = {"key": e["key"], "host": host, "kinds": e["kinds"],
+                 "targets": sorted(targets) if shared_targets is None else [], "pages": [],
                  "checked_at": utcnow().isoformat().replace("+00:00", "Z")}
     if "registry_website" in e["kinds"]:
         start = e["key"]

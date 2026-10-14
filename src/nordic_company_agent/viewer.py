@@ -39,7 +39,7 @@ input[type=search]{width:100%;padding:10px 12px;border:1px solid var(--line);bor
 table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
 th{font-size:12px;text-transform:uppercase;letter-spacing:.03em;color:var(--mute);cursor:pointer;white-space:nowrap}
 .pill{display:inline-block;padding:1px 8px;border-radius:99px;background:var(--chip);font-size:12px;margin:0 4px 4px 0;white-space:nowrap}
-.pill.off{background:#f1f1ee;color:#9a9a96}.pill.amb{background:#fff4e0;color:var(--warn)}.pill.bad{background:#fde8e8;color:var(--bad)}
+.pill.good{background:#e3f4ea;color:var(--acc)}a.pill{text-decoration:none;color:inherit}.pill.off{background:#f1f1ee;color:#9a9a96}.pill.amb{background:#fff4e0;color:var(--warn)}.pill.bad{background:#fde8e8;color:var(--bad)}
 .dims{white-space:nowrap}.dim{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:2px;background:#d9d9d4}.dim.on{background:var(--acc)}
 .fact{display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:4px 14px;padding:7px 0;border-bottom:1px dashed var(--line)}
 .fact:last-child{border-bottom:0}.fact .k{color:var(--mute);font-size:13.5px}.fact .v{word-break:break-word}
@@ -160,7 +160,15 @@ def _company_page(env: dict[str, Any]) -> str:
            f'<a href="../index.html">all companies</a></p></header><main>']
     summ = env.get("summary") or {}
     out.append('<section class="card summary"><h2>Summary</h2>')
+    sig = summ.get("signals") or []
+    if sig:
+        cls = {"risk": "bad", "warn": "amb", "positive": "good"}
+        out.append('<p class="signals">' + "".join(
+            f'<a class="pill {cls.get(x.get("polarity"), "")}" href="#{_e((x.get("claim_ids") or [""])[0])}">{_e(x["text"])}</a>'
+            for x in sig) + '</p>')
     for s in summ.get("sentences", []):
+        if s.get("topic") == "signals":
+            continue
         refs = "".join(f'<sup><a href="#{_e(cid)}" title="evidence">[{i + 1}]</a></sup>'
                        for i, cid in enumerate(s.get("claim_ids", [])[:4]) if cid)
         out.append(f'<p>{_e(s["text"])} {refs}</p>')

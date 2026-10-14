@@ -7,6 +7,7 @@ unknowns are listed explicitly instead of being guessed.
 
 from __future__ import annotations
 
+from datetime import datetime, timezone
 from decimal import Decimal, InvalidOperation
 from typing import Any
 
@@ -216,6 +217,7 @@ def build_summary(claims: list[dict[str, Any]], modules: dict[str, dict[str, Any
     company_periods = sorted([c for c in periods if (c.get("period") or {}).get("scope") == "company"], key=_pkey,
                              reverse=True)
     headline = company_periods[0] if company_periods else (sorted(periods, key=_pkey, reverse=True) or [None])[0]
+    fin: dict[str, Any] = {}
     if headline:
         per = headline.get("period") or {}
         yr, scope = per.get("year"), per.get("scope")
@@ -223,6 +225,7 @@ def build_summary(claims: list[dict[str, Any]], modules: dict[str, dict[str, Any
         same = lambda f: next((c for c in C.get(f) if (c.get("period") or {}).get("year") == yr
                                and (c.get("period") or {}).get("scope") == scope), None)
         r0, op, npf, eq, ta = same("revenue"), same("operating_profit"), same("net_profit"), same("equity"), same("total_assets")
+        fin.update(headline=headline, yr=yr, scope=scope, cur=cur, r0=r0, npf=npf, eq=eq, ta=ta)
         days = _period_days(per)
         scope_txt = "group (consolidated)" if scope == "group" else "company"
         parts = []
@@ -256,6 +259,7 @@ def build_summary(claims: list[dict[str, Any]], modules: dict[str, dict[str, Any
                      and not (founded and prev_per.get("start") and str(founded) > str(prev_per.get("start"))))
         if ok_growth:
             g = (_num(r0["value"]) - _num(prev["value"])) / _num(prev["value"]) * 100
+            fin.update(growth=g, prev=prev)
             S.add(f"Revenue {'grew' if g >= 0 else 'fell'} {abs(g):.1f}% from {yr - 1} (derived from the two filed figures).",
                   [r0, prev], "financials")
 
@@ -289,6 +293,8 @@ def build_summary(claims: list[dict[str, Any]], modules: dict[str, dict[str, Any
     if site:
         lvl = ((ver or {}).get("value") or {}).get("level", "")
         how = ("its organisation number is printed on the site" if "L1" in lvl else
+               "it is the website the company filed in Enhetsregisteret, and its domain and title carry the company "
+               "name" if lvl == "L2r" else
                "it is the website filed in Enhetsregisteret and matches the registry contact details")
         S.add(f"Its official website is {site['value']} (verified: {how}).", [site, ver], "web")
     if socials:
@@ -364,6 +370,15 @@ def build_summary(claims: list[dict[str, Any]], modules: dict[str, dict[str, Any
         S.sentences.append({"topic": "changes", "text": txt + ".", "claim_ids": [c.get("new_claim_id") or c.get("old_claim_id") for c in changes[:5]],
                             "evidence_ids": sorted({e for c in changes[:5] for e in (c.get("new_evidence_ids") or []) + (c.get("old_evidence_ids") or [])})})
 
+    # At a glance: decision signals, placed right after the identity sentences
+    sig = _signals(C, status_c, fin, grants=grants)
+    if sig:
+        at = len([x for x in S.sentences if x["topic"] == "identity"])
+        before = len(S.sentences)
+        S.add("At a glance: " + "; ".join(x["text"] for x in sig) + ".", [c for x in sig for c in x["claims"]], "signals")
+        if len(S.sentences) > before:
+            S.sentences.insert(at, S.sentences.pop())
+
     # Unknowns
     unknowns = []
     for c in claims:
@@ -387,7 +402,68 @@ def build_summary(claims: list[dict[str, Any]], modules: dict[str, dict[str, Any
                "deleted": "This entity has been deleted from Enhetsregisteret."}.get(ms, "No verified information found.")
         S.sentences.append({"topic": "identity", "text": msg, "claim_ids": [], "evidence_ids": []})
     return {"text": " ".join(s["text"] for s in S.sentences), "sentences": S.sentences, "unknowns": unknowns,
+            "signals": [{"signal": x["signal"], "polarity": x["polarity"], "text": x["text"],
+                         "claim_ids": [c["id"] for c in x["claims"]]} for x in sig],
             "method": "deterministic template over published claims; every sentence cites claim and evidence ids"}
+
+
+RISK_STATUS = {"bankrupt": "registered as bankrupt", "under_liquidation": "under liquidation",
+               "forced_dissolution": "under forced dissolution", "deleted": "deleted from the register"}
+
+
+def _signals(C: _Claims, status_c: dict[str, Any] | None, fin: dict[str, Any], grants: list[dict[str, Any]]):
+    """Decision signals over published claims only (no new facts): status risk, size, revenue and growth,
+    profitability, equity solidity, filing freshness, hiring, public support and group membership."""
+    out: list[dict[str, Any]] = []
+
+    def add(kind: str, polarity: str, text: str, claims: list[dict[str, Any] | None]) -> None:
+        cs = [c for c in claims if c]
+        if cs:
+            out.append({"signal": kind, "polarity": polarity, "text": text, "claims": cs})
+
+    st = (status_c or {}).get("value")
+    if st in RISK_STATUS:
+        add("registry_status", "risk", RISK_STATUS[st], [status_c])
+    emp = C.one("employees")
+    cnt = ((emp or {}).get("value") or {}).get("count")
+    if cnt:
+        add("size", "info", f"{cnt:,} employee{'s' if cnt != 1 else ''}", [emp])
+    cur, yr = fin.get("cur") or "NOK", fin.get("yr")
+    r0, npf, eq, ta = fin.get("r0"), fin.get("npf"), fin.get("eq"), fin.get("ta")
+    if r0 and _num(r0["value"]) == 0:
+        add("revenue", "info", f"no {yr} revenue", [r0])
+    elif r0 and _num(r0["value"]) is not None:
+        txt = f"{yr} revenue {_money(r0['value'], cur)}"
+        if fin.get("growth") is not None:
+            g = fin["growth"]
+            txt += f" ({'+' if g >= 0 else '−'}{abs(g):.0f}% on {yr - 1})"
+        add("revenue", "positive" if (fin.get("growth") or 0) > 0 else "info", txt, [r0, fin.get("prev")])
+    if npf and _num(npf["value"]) is not None:
+        n = _num(npf["value"])
+        if n > 0:
+            add("profitability", "positive", f"profitable (net result {_money(npf['value'], cur)})", [npf])
+        elif n < 0:
+            add("profitability", "warn", f"loss-making (net result {_money(npf['value'], cur)})", [npf])
+    if eq and ta and _num(eq["value"]) is not None and (_num(ta["value"]) or 0) > 0:
+        e, t = _num(eq["value"]), _num(ta["value"])
+        if e < 0:
+            add("solidity", "risk", "negative equity", [eq])
+        else:
+            ratio = float(e / t * 100)
+            add("solidity", "warn" if ratio < 10 else "info", f"equity {ratio:.0f}% of total assets"
+                + (" (thin)" if ratio < 10 else ""), [eq, ta])
+    if yr and fin.get("headline") and yr <= datetime.now(timezone.utc).year - 3:
+        add("filing", "risk", f"latest filed accounts are for {yr}", [fin["headline"]])
+    jobs = C.get("job_posting")
+    if jobs:
+        add("hiring", "positive", f"hiring ({len(jobs)} active NAV job ad{'s' if len(jobs) != 1 else ''})", jobs[:3])
+    if grants:
+        add("public_support", "info", f"{len(grants)} public support grant{'s' if len(grants) != 1 else ''} listed "
+            f"(latest {str((grants[0]['value'] or {}).get('date'))[:4]})", grants[:1])
+    parent = C.one("parent_company", "parent")
+    if parent:
+        add("group", "info", f"subsidiary of {(parent['value'] or {}).get('name')}", [parent])
+    return out
 
 
 def _period_days(per: dict[str, Any]) -> int | None:

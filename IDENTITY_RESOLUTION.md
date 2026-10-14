@@ -16,7 +16,9 @@ wrong-company publication.
 
 ## Website gate (`web/verify.py`)
 
-Leads come from the declared discovery cache, the registry-filed `hjemmeside`, Wikidata P856, and live
+Leads come from the declared discovery caches (`site_discovery`: legal-name / e-mail domain guesses;
+`site_discovery_cc`: hosts from the Common Crawl web graph and archive that print the labelled org number),
+the registry-filed `hjemmeside`, Wikidata P856, and live
 candidates (own-domain e-mail, legal-name slugs; DNS check, at most 2 fetched). A lead is never evidence.
 The site is re-fetched live (robots.txt honoured, SSRF-safe) and classified. The gate was hardened over
 four rounds of independent adversarial audits (EVAL.md), with precision always ahead of recall.
@@ -35,6 +37,12 @@ four rounds of independent adversarial audits (EVAL.md), with precision always a
   * the privacy, terms or imprint page names no other controller, seller or owner;
   * there are no foreign or group signals;
   * the corroborating contacts are not shared with other organisation numbers.
+* **L2r, confidence 0.75:** the registry-filed website when the L2 contact / legal-name / legal-page
+  requirements are not all met, but every negative check passes and, in addition, the registrable domain
+  itself carries the company's distinctive name (or the whole name), the title / site name carries it too,
+  the site does not leave its domain, nothing names another owner or c/o company, and the home page is
+  readable (not a JavaScript shell). The company filed the address itself; Builderr's own reference crawler
+  treats registry-linked websites as the company website. Only registry-equal contact facts are published.
 * **Never published as the company's official website**, so the claim is `ambiguous` with the reason:
   * parent, group, sister or foreign-HQ sites: other legal entities, foreign registrations, ownership
     phrases, a parent © owner, or the same brand on foreign country domains;

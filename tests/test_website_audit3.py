@@ -112,7 +112,10 @@ def test_org_number_only_in_html_comment():
     rec = {"navn": "PRO ARKITEKT AS", "organisasjonsform": {"kode": "AS"}, "epostadresse": "post@proarkitekt.no",
            "hjemmeside": "www.proarkitekt.no"}
     v, facts = run([pg(html, "https://proarkitekt.no/")], rec, "914194423", start="https://proarkitekt.no/")
-    assert v.level != "L1" and not v.published
+    # never L1 from an invisible number; the registry-filed own-name domain is L2r (live-checked 2026-10-14: the
+    # site is titled "PRO Arkitekt AS"), with registry-equal contacts only
+    assert v.level == "L2r" and v.restricted
+    assert all(f.value == "post@proarkitekt.no" for f in facts if f.field == "contact_email")
 
 
 # --------------------------------------------------------------------------- WRONG / DOUBTFUL facts

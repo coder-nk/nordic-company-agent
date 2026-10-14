@@ -294,6 +294,21 @@ def cmd_serve(a: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_ui(a: argparse.Namespace) -> int:
+    from .ui_server import default_sources, serve_ui
+    root = Path.cwd()
+    sources = [Path(x) for x in a.data] if a.data else default_sources(root)
+    missing = [str(x) for x in sources if not x.exists()]
+    if missing:
+        print(f"error: not found: {', '.join(missing)}", file=sys.stderr)
+        return 2
+    if not sources:
+        print("no envelopes found (expected profiles/ or smoke/); companies can still be researched from the app",
+              file=sys.stderr)
+    serve_ui(sources, Path(a.store), host=a.host, port=a.port, open_browser=not a.no_open)
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="nca", description="nordic-company-agent: evidence-backed Norwegian company profiles")
     ap.add_argument("--version", action="version", version=f"nordic-company-agent {__version__}")
@@ -357,6 +372,14 @@ def main(argv: list[str] | None = None) -> int:
     sv.add_argument("--host", default="127.0.0.1")
     sv.add_argument("--port", type=int, default=8080)
     sv.set_defaults(fn=cmd_serve)
+
+    u = sub.add_parser("ui", help="interactive company-intelligence app (opens the browser)")
+    u.add_argument("--data", nargs="*", help="envelope files (.jsonl or .jsonl.gz); default: profiles/ and smoke/")
+    u.add_argument("--store", default="out/ui", help="where researched companies and caches are kept")
+    u.add_argument("--host", default="127.0.0.1")
+    u.add_argument("--port", type=int, default=8765)
+    u.add_argument("--no-open", action="store_true", help="do not open a browser window")
+    u.set_defaults(fn=cmd_ui)
 
     a = ap.parse_args(argv)
     return a.fn(a)

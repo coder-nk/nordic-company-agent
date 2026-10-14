@@ -36,6 +36,10 @@ Rules (DESIGN.md "Website identity gate", research/company_websites.md §3-§10,
       need two corroborations; place / region words never align a brand or a social handle on their own.
   L2e own-domain registry e-mail lead: exact registered name in title/og:site_name, >= 2 corroborations, exclusive
       host, no other-entity signals (confidence 0.8).
+  L2r registry-filed website that misses policy D (exact contact / full legal name / legal page) but passes every
+      negative check, with the distinctive name in the registrable domain AND in the title/site name, no other
+      owner or c/o company, no cross-domain redirect, a readable page (confidence 0.75; registry-equal contacts
+      only).
   Facts: generic role mailboxes only (never a person's mailbox, even the registry e-mail; never invoice-scanning
   or country/region-qualified mailboxes of foreign group entities); phones normalised to E.164, staff lines (named person / personal mailbox next to the number,
   directory pages, non-registry mobiles) skipped; socials whose handle is dominated by the company name or the
@@ -57,8 +61,8 @@ from ..orgnr import is_valid
 from . import extract as X
 
 GATE_VERSION = "website_gate@1"
-CONFIDENCE = {"L1": 0.97, "L2": 0.85, "L2e": 0.8}
-PUBLISHED_LEVELS = ("L1", "L2", "L2e")
+CONFIDENCE = {"L1": 0.97, "L2": 0.85, "L2e": 0.8, "L2r": 0.75}
+PUBLISHED_LEVELS = ("L1", "L2", "L2e", "L2r")
 OWNER_PAGE_KINDS = ("contact", "about", "terms", "privacy", "impressum")
 # Country/region-qualified role mailboxes (info-uk@, sales-au@, reception-wa@) belong to foreign group entities.
 REGION_LOCAL_RX = re.compile(r"(?:[-_.](?:uk|gb|au|in|it|de|se|dk|fi|us|usa|wa|nsw|qld|vic|nz|pl|fr|es|nl|be|at|ch|cz|"
@@ -71,7 +75,8 @@ REGION_LOCAL_RX = re.compile(r"(?:[-_.](?:uk|gb|au|in|it|de|se|dk|fi|us|usa|wa|n
 WEAK_PARKED_RX = re.compile(r"under construction|under oppbygging|siden er under|kommer snart|coming soon|launching soon|"
                             r"under maintenance|maintenance mode|midlertidig stengt|new page 1|\(offline\)", re.I)
 SPAM_RX = re.compile(r"\b(?:slot gacor|judi (?:online|bola)|togel|situs slot|slot online|casino online|poker online|"
-                     r"sbobet|agen slot|bandar ?q|viagra|cialis|replica watches|escort service)\b", re.I)
+                     r"sbobet|agen slot|bandar ?q|viagra|cialis|sildenafil|tadalafil|kamagra|levitra|replica watches|"
+                     r"escort service)\b", re.I)
 ADDRESS_NAME_RX = re.compile(r"^[A-ZÆØÅÉ][A-ZÆØÅÉ\-\. ']+ \d+[A-Z]?(?:\s?-\s?\d+)?(?: [A-Z])?"
                              r"(?: (?:AS|ASA|BRL|SA|ANS|DA|ESEK|SAMEIE|BORETTSLAG|EIENDOM AS))?$")
 ORGFORM_WORD_RX = re.compile(r"(?<![\w])(AS|ASA|ANS|DA|SA|BA|KS|NUF|IKS|KF|AB|GmbH|Ltd|Oy|ApS|A/S|Inc|LLC|BV|AG)(?![\w/])")
@@ -114,7 +119,8 @@ def _spammy(text: str, site_domain: str | None) -> bool:
     return False
 
 
-PLACEHOLDER_DESC_RX = re.compile(r"just another wordpress site|another wordpress site|lorem ipsum|hipster ipsum|"
+PLACEHOLDER_DESC_RX = re.compile(r"just another wordpress site|another wordpress site|bare enda et wordpress-nettsted|"
+                                 r"nur eine weitere wordpress|ännu en wordpress|lorem ipsum|hipster ipsum|"
                                  r"^description$|^beskrivelse$|my wordpress blog|site description|^test$|^home$|"
                                  # theme / page-builder demo copy (Avada, Elementor, Divi, ThemeIsle starter sites)
                                  r"\bavada\b|prebuilt website|pre-built website|website builder|\belementor\b|\bdivi\b|"
@@ -1208,7 +1214,7 @@ class Verdict:
     def restricted(self) -> bool:
         """Facts must come from the target's own org-number block (or equal the registry record)."""
         return self.multi or not self.exclusive or bool(self.foreign_owner) or bool(self.other_entities) or \
-            self.strict_block
+            self.strict_block or self.level == "L2r"
 
 
 _HIT_RANK = {("text", True): 0, ("registry_link", True): 1, ("jsonld", True): 2, ("text", False): 3,
@@ -1850,21 +1856,25 @@ def verify(pages: list[Page], rec: dict | None, target: str, *, lead_kind: str, 
         v.reason = (f"site names other legal entities ({what}) and does not print this organisation number: "
                     "treated as a group site, not the company's own website")
         return v
-    # ---- D: L2 needs an exact registry contact, the full legal name in owner text and a checked legal page
+    # ---- D: L2 needs an exact registry contact, the full legal name in owner text and a checked legal page.
+    # L2r: a registry-filed site that misses D is still published (lower confidence, registry-equal contacts only)
+    # when every later check passes AND the domain itself carries the company's distinctive name, the title / site
+    # name carries it too, nothing names another owner and the site stays on its own domain (see the end).
+    d_fail = None
     if not (corr["email_match"] or corr["phone_match"]):
-        v.reason = ("no exact registry e-mail or (unshared) registry phone on the site; an e-mail domain match alone "
-                    "does not identify the company")
-        return v
+        d_fail = ("no exact registry e-mail or (unshared) registry phone on the site; an e-mail domain match alone "
+                  "does not identify the company")
     nrx_l = X.legal_name_rx(name)
     owner_texts = [i.x.get("footer_excerpt", "") or "" for i in ok] + \
         [i.text for i in ok if i.page.kind in OWNER_PAGE_KINDS + ("legal",)]
-    if not (nrx_l and any(nrx_l.search(t) for t in owner_texts)):
-        v.reason = (f"the full legal name {name!r} (with its legal form) is not in the site's footer, contact or "
-                    "imprint text")
-        return v
+    if d_fail is None and not (nrx_l and any(nrx_l.search(t) for t in owner_texts)):
+        d_fail = (f"the full legal name {name!r} (with its legal form) is not in the site's footer, contact or "
+                  "imprint text")
     legal_pages = [i for i in ok if i.page.kind in ("privacy", "terms", "impressum", "legal")]
-    if not legal_pages:
-        v.reason = "privacy/terms/imprint page not found or not checked; L2 needs it"
+    if d_fail is None and not legal_pages:
+        d_fail = "privacy/terms/imprint page not found or not checked; L2 needs it"
+    if d_fail and not (reg_lead and not email_lead):
+        v.reason = d_fail
         return v
     for i in legal_pages:
         for m in CONTROLLER_RX.finditer(i.text):
@@ -1880,7 +1890,7 @@ def verify(pages: list[Page], rec: dict | None, target: str, *, lead_kind: str, 
     if owner:
         # A sibling/parent named as owner: only an overwhelming registry match keeps the registry-filed site,
         # and then facts are restricted to values equal to the registry record.
-        if not ((corr["phone_match"] or corr["email_match"]) and corr["n"] >= 3):
+        if d_fail or not ((corr["phone_match"] or corr["email_match"]) and corr["n"] >= 3):
             v.reason = f"site names another legal entity as its owner ({owner})"
             return v
         v.foreign_owner = owner
@@ -1890,7 +1900,7 @@ def verify(pages: list[Page], rec: dict | None, target: str, *, lead_kind: str, 
             v.reason += " not shared with other organisation numbers (" + "; ".join(corr["shared_discounted"][:2]) + ")"
         return v
     co_company = [co for co in co_names(rec) if not _person_like(co)]
-    if co_company and corr["n"] < 2:
+    if co_company and (corr["n"] < 2 or d_fail):
         v.reason = (f"registry address is c/o {co_company[0]}; with one registry corroboration only an org number "
                     "printed on the site can verify it")
         return v
@@ -1924,8 +1934,24 @@ def verify(pages: list[Page], rec: dict | None, target: str, *, lead_kind: str, 
     if not (strongish or corr["legal_name_full"] or corr["n"] >= 2):
         v.reason = "company name appears only in the footer and only one registry corroboration"
         return v
+    if d_fail:
+        # L2r gate: the registrable domain's label carries the whole name or a distinctive (non-place) name token,
+        # the title / site name / JSON-LD name carries a distinctive token, the site does not leave its domain,
+        # a distinctive name, and no legal page names another controller (checked above when one was fetched)
+        label_tok = [t for t in dist_t if len(squash(t)) >= 3 and squash(t) in label_sq and fold(t) not in places]
+        whole_label = any(len(w) >= 5 and w in label_sq for w in {prof.joined, squash("".join(X.entity_words(name)))})
+        title_tok = any(token_in(t, i.strong_text()) for i in ok for t in dist_t if fold(t) not in places)
+        readable = hi.x.get("text_len", 0) >= 200          # a JavaScript shell hides any other-entity signal
+        if not ((label_tok or whole_label) and title_tok and prof.distinctive and not v.cross_domain and readable and
+                (not st_dom or st_dom == v.domain) and not v.foreign_owner and not v.strict_block):
+            v.reason = d_fail
+            return v
+        why = _l2r_refusal(ok, rec, prof, name, corr, v.domain or "", dist_t)
+        if why:
+            v.reason = f"{d_fail}; registry-filed site not published without a printed org number: {why}"
+            return v
     pi = prom_pages[0]
-    v.level = "L2" if reg_lead else "L2e"
+    v.level = ("L2r" if d_fail else "L2") if reg_lead else "L2e"
     span = _clip(" | ".join(p for p in (pi.title, pi.meta.get("og:site_name", "")) if p) or pi.prominent_text()[:300])
     locator = "title"
     if v.strict_block:
@@ -1935,11 +1961,59 @@ def verify(pages: list[Page], rec: dict | None, target: str, *, lead_kind: str, 
     v.proof = {"page": pi.idx, "url": pi.url, "span": span, "method": method, "locator": locator}
     v.reason = ("registry-filed website" if reg_lead else "domain of the registry e-mail") + \
         "; company name prominent; corroborated by " + ", ".join(corr["kinds"])
+    if d_fail:
+        v.reason += ("; the domain and the site title carry the company name (filed by the company itself; " +
+                     d_fail.split(";")[0] + ": only registry-equal contact facts published)")
     if v.strict_block:
         v.reason += f" (site also names {', '.join((v.other_entities + v.foreign_regs)[:3])}: facts only from the company's own block)"
     if v.foreign_owner:
         v.reason += f" (site names {v.foreign_owner} as owner: only registry-equal contact facts published)"
     return v
+
+
+# --------------------------------------------------------------------------- L2r refusals (L2r audit, 40 sites)
+L2R_GROUP_WORDS = r"(?:group|gruppen|gruppe|konsern|konsernet|international|global|holding|nordic|norden)"
+COUNTRY_PICKER_RX = re.compile(r"(?:pick|choose|select) your (?:country|region|market)|velg (?:ditt )?(?:land|marked)|"
+                               r"choose (?:a )?location", re.I)
+CMS_DEFAULT_TITLE_RX = re.compile(r"bare enda et wordpress-nettsted|just another wordpress site|nur eine weitere "
+                                  r"wordpress-website|ännu en wordpress-webbplats|endnu et wordpress-websted", re.I)
+CMS_DEFAULT_BODY_RX = re.compile(r"hei,? verden!|hello world!|dette er din hjem-?side|legg til tilpasset tekst her|"
+                                 r"eksempelside|sample page|this is your homepage|du kan endre denne teksten", re.I)
+HOLDING_PURPOSE_RX = re.compile(r"^\W*(?:å\s+)?(?:eie|eierskap i|investere i|investering i|kjøp og salg av aksjer)\b"
+                                r"[^.]{0,80}\b(?:selskap|selskaper|aksjer|virksomheter)\b", re.I)
+SPECIFIC_CORR = ("phone_match", "email_match", "address_match")
+
+
+def _l2r_refusal(ok: list["PageInfo"], rec: dict, prof: NameProfile, name: str, corr: dict, domain: str,
+                 dist_t: list[str]) -> str | None:
+    """Extra refusals for L2r (no printed org number, policy D not met). Each rule is from an audited failure."""
+    strong = " | ".join(i.strong_text() + " | " + (i.h1 or "") for i in ok)
+    text = " | ".join(i.text for i in ok)
+    # a specific registry match: exact phone / e-mail / street address (e-mail domain or name alone: Mediaplanet, Norse)
+    if not any(k in corr.get("kinds", []) for k in SPECIFIC_CORR):
+        return "no exact registry phone, e-mail or street address on the site"
+    # the group / international brand of the name ("Mediaplanet Group", "NORSE GRUPPEN") when the legal name lacks it
+    own = fold(name)
+    for t in dist_t:
+        m = re.search(rf"\b{re.escape(fold(t))}\s*-?\s*{L2R_GROUP_WORDS}\b", fold(strong))
+        if m and not re.search(rf"\b{L2R_GROUP_WORDS}\b", own):
+            return f"the site presents a group brand ({m.group(0)!r}) that the legal name does not carry"
+    if COUNTRY_PICKER_RX.search(text):
+        return "country / market selector (an international group's site)"
+    # untouched CMS defaults (AER: "Bare enda et WordPress-nettsted", "Hei, verden!")
+    meta = " | ".join(" ".join((i.title, i.meta.get("description", ""), i.meta.get("og:description", ""))) for i in ok)
+    if CMS_DEFAULT_TITLE_RX.search(meta) or len(set(m.group(0).lower() for m in CMS_DEFAULT_BODY_RX.finditer(text))) >= 2:
+        return "untouched CMS default content"
+    # a filed e-mail on another organisation's domain (Safety Academy: tore@forstehjelperen.no)
+    em = registry_email(rec)
+    edom = X.reg_domain(em.rsplit("@", 1)[-1]) if em and "@" in em else ""
+    if edom and edom not in X.FREEMAIL and edom != X.reg_domain(domain):
+        return f"the registry e-mail is on another domain ({edom})"
+    # a holding entity (purpose leads with owning other companies) filing an operating brand's site
+    purpose = " ".join(str(x) for k in ("vedtektsfestetFormaal", "aktivitet") for x in (rec.get(k) or []))
+    if HOLDING_PURPOSE_RX.search(purpose):
+        return "the registered purpose is owning other companies (holding entity)"
+    return None
 
 
 # --------------------------------------------------------------------------- facts

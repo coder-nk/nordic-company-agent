@@ -50,6 +50,31 @@ Outputs in `<dir>`:
 Other commands: `nca company 923609016 --summary`, `nca serve` (HTTP: `GET /companies/:orgnr`,
 `POST /research`, `POST /refresh`), `nca validate out/smoke/envelopes.jsonl`, `nca viewer`, `nca sample`.
 
+## Interactive app (one command)
+
+```bash
+./ui.sh            # installs the pinned environment if needed and opens http://127.0.0.1:8765
+```
+
+A glass-style single-page app over every profile in `profiles/` and `smoke/` (1,100 companies), served by the
+standard library only. It works offline and needs no Node, CDN or API keys.
+* **Overview:** search, headline numbers, coverage per information type, and clickable signal cards
+  (risk flags, growth, hiring, losses, public support, verified websites).
+* **Companies:** instant search by name, organisation number, town or industry, with filters and sorting.
+* **Company profile:**
+  * an "at a glance" row of signals and KPI cards (revenue and growth, net result, equity ratio, completeness);
+  * a cited plain-language summary, a financials chart and table, and people and roles;
+  * workplaces, the verified website with an explanation of *how* it was verified, and an activity timeline;
+  * group links, what could not be found and why, and every fact.
+  * Every number opens an evidence drawer: the source link, retrieval time, licence, the exact text in the source
+    and, for the smoke run, the stored archived copy with that text highlighted.
+* **Research:** type any organisation number. The full agent runs live, with per-source progress, and the new
+  profile is added to the library (`out/ui/researched.jsonl`).
+* Keyboard: `Ctrl/⌘ K` or `/` opens search, `Esc` closes panels. There is a light and a dark theme, it works on
+  mobile, and it respects reduced motion.
+
+`uv run nca ui --data other/envelopes.jsonl --port 9000` serves any envelope file.
+
 ## Models, APIs and licences
 
 | source | used for | access | licence |
