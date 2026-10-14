@@ -6,7 +6,8 @@ const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-const state = { index: [], stats: null, byOrg: new Map(), filter: "all", q: "", sort: "name", shown: 40, cache: new Map(), job: null, pollT: null };
+const state = { index: [], stats: null, byOrg: new Map(), filter: "all", q: "", sort: "name", shown: 40, cache: new Map(), job: null, pollT: null,
+  compare: JSON.parse(localStorage.getItem("sp-compare") || "[]") };
 
 const P = {
   search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
@@ -227,7 +228,30 @@ function toast(msg) {
   clearTimeout(toast.t);
   toast.t = setTimeout(() => t.classList.remove("on"), 2200);
 }
+const STATIC = window.__SP_STATIC__ || null;     // static export (opened from disk): data files instead of the API
+function loadScript(src) {
+  return new Promise((res, rej) => { const s = document.createElement("script"); s.src = src; s.onload = res; s.onerror = () => rej(new Error("not found")); document.head.appendChild(s); });
+}
+async function staticApi(path) {
+  if (path.startsWith("/api/index")) return STATIC.index;
+  let m = /^\/api\/company\/(\d{9})/.exec(path);
+  if (m) {
+    const org = m[1], C = () => (window.__SP_C__ || {})[org];
+    if (!C()) {
+      if (!STATIC.index.companies.some((r) => r.orgnr === org)) throw Object.assign(new Error("not in this export"), { status: 404 });
+      await loadScript(`data/c/${org}.js`);
+    }
+    return C();
+  }
+  m = /^\/api\/snapshot\/([0-9a-f]{64})\?q=(.*)$/.exec(path);
+  if (m) {
+    const x = ((currentEnv || {})._excerpts || {})[m[1] + "|" + decodeURIComponent(m[2])];
+    return x ? { found: true, matched: true, ...x } : { found: false };
+  }
+  throw new Error("Live research needs the app server. Run ./ui.sh in the repository to research new companies.");
+}
 async function api(path, opts) {
+  if (STATIC) return staticApi(path, opts);
   const r = await fetch(path, opts);
   const j = await r.json().catch(() => ({}));
   if (!r.ok) throw Object.assign(new Error(j.error || r.statusText), { status: r.status, body: j });
@@ -413,7 +437,7 @@ function crow(r, i) {
     <div class="ind meta" title="${esc(r.industry || "")}">${esc(r.industry || "—")}</div>
     <div class="money num"><b>${r.fin && r.fin.revenue != null ? esc(money(r.fin.revenue, r.fin.currency)) : "—"}</b>${g != null ? `<span class="delta ${g >= 0 ? "up" : "down"}">${g >= 0 ? "▲" : "▼"} ${Math.abs(g).toFixed(0)}% y/y</span>` : `<span class="meta">${r.fin && r.fin.year ? "revenue " + esc(r.fin.year) : "no filed accounts"}</span>`}</div>
     <div class="sig wrapflex">${r.signals.filter((s) => s.signal !== "revenue").slice(0, 2).map(pill).join("")}</div>
-    <div class="icons"><span class="${r.website ? "on" : ""}" title="${r.website ? "Verified website" : "No verified website"}">${ico("globe")}</span><span class="${r.hiring ? "on" : ""}" title="${r.hiring ? "Hiring" : "No active job ads"}">${ico("brief")}</span><span class="${r.grants ? "on" : ""}" title="${r.grants ? "Public support" : "No grants listed"}">${ico("coins")}</span></div>
+    <div class="icons"><button class="cmp-btn ${state.compare.includes(r.orgnr) ? "on" : ""}" type="button" data-cmp="${esc(r.orgnr)}" title="Add to compare" aria-label="Add ${esc(r.name)} to compare">${ico("layers")}</button><span class="${r.website ? "on" : ""}" title="${r.website ? "Verified website" : "No verified website"}">${ico("globe")}</span><span class="${r.hiring ? "on" : ""}" title="${r.hiring ? "Hiring" : "No active job ads"}">${ico("brief")}</span><span class="${r.grants ? "on" : ""}" title="${r.grants ? "Public support" : "No grants listed"}">${ico("coins")}</span></div>
   </a>`;
 }
 
@@ -607,6 +631,7 @@ function viewCompany(env) {
     </div>
     <div class="actions">
       <a class="btn btn-primary" href="#/research/${esc(env.organisation_number)}">${ico("refresh")}Check for updates</a>
+      <button class="btn btn-ghost" type="button" data-cmp="${esc(env.organisation_number)}">${ico("layers")}<span data-cmp-label>${state.compare.includes(env.organisation_number) ? "In compare" : "Compare"}</span></button>
       <a class="btn btn-ghost" href="https://virksomhet.brreg.no/nb/oppslag/enheter/${esc(env.organisation_number)}" target="_blank" rel="noopener noreferrer">${ico("ext")}Brønnøysund</a>
       ${site ? `<a class="btn btn-ghost" href="${esc(site.value)}" target="_blank" rel="noopener noreferrer">${ico("globe")}Website</a>` : ""}
     </div>
@@ -751,6 +776,51 @@ async function finishJob(j, org, onPage) {
   }
 }
 
+/* ------------------------------------------------------------------ compare */
+function toggleCompare(org) {
+  const i = state.compare.indexOf(org);
+  if (i >= 0) state.compare.splice(i, 1);
+  else { if (state.compare.length >= 4) { toast("Compare holds up to 4 companies"); return; } state.compare.push(org); }
+  localStorage.setItem("sp-compare", JSON.stringify(state.compare));
+  $$(`[data-cmp="${org}"]`).forEach((b) => { b.classList.toggle("on", state.compare.includes(org)); const l = $("[data-cmp-label]", b); if (l) l.textContent = state.compare.includes(org) ? "In compare" : "Compare"; });
+  renderTray();
+}
+function renderTray() {
+  const t = $("#tray");
+  const rows = state.compare.map((o) => state.byOrg.get(o)).filter(Boolean);
+  if (!rows.length || location.hash.startsWith("#/compare")) { t.classList.remove("on"); return; }
+  t.innerHTML = `<div class="row" style="gap:6px">${rows.map((r) => avatar(r.name)).join("")}</div><span class="small muted">${rows.length} selected</span>
+    <a class="btn btn-primary" href="#/compare">${ico("layers")}Compare</a><button class="icon-btn" type="button" id="trayClear" aria-label="Clear compare">${ico("x")}</button>`;
+  t.classList.add("on");
+}
+function viewCompare() {
+  const rows = state.compare.map((o) => state.byOrg.get(o)).filter(Boolean);
+  if (!rows.length) return `<div class="glass card empty" style="padding:60px 24px"><h2 style="justify-content:center">Nothing to compare yet</h2><p class="muted">Use the ${ico("layers")} button on any company to add it here (up to 4).</p><a class="btn btn-primary mt" href="#/companies">Browse companies</a></div>`;
+  const best = (f, hi = true) => { const v = rows.map(f).filter((x) => x !== null && x !== undefined && !isNaN(x)); return v.length > 1 ? (hi ? Math.max(...v) : Math.min(...v)) : null; };
+  const eq = (r) => (r.fin && r.fin.equity != null && r.fin.total_assets > 0 ? (r.fin.equity / r.fin.total_assets) * 100 : null);
+  const lines = [
+    ["Status", (r) => (r.status && r.status !== "active" ? `<span class="chip risk"><i></i>${esc(r.status.replace(/_/g, " "))}</span>` : `<span class="chip positive"><i></i>Active</span>`)],
+    ["Legal form", (r) => esc(r.form_text || r.form || "—")],
+    ["Industry", (r) => esc(r.industry || "—")],
+    ["Municipality", (r) => esc(titleCase(r.municipality) || "—")],
+    ["Founded", (r) => esc(r.founded || "—")],
+    ["Employees", (r) => (r.employees != null ? fmtInt(r.employees) : "—"), (r) => r.employees],
+    ["Revenue", (r) => (r.fin && r.fin.revenue != null ? `${esc(money(r.fin.revenue, r.fin.currency))} <span class="faint small">${esc(r.fin.year)}</span>` : "—"), (r) => r.fin && r.fin.revenue],
+    ["Growth", (r) => (r.fin && r.fin.growth != null ? `<span class="delta ${r.fin.growth >= 0 ? "up" : "down"}">${r.fin.growth >= 0 ? "▲" : "▼"} ${Math.abs(r.fin.growth).toFixed(1)}%</span>` : "—"), (r) => r.fin && r.fin.growth],
+    ["Net result", (r) => (r.fin && r.fin.net_profit != null ? `<span style="color:${r.fin.net_profit < 0 ? "var(--rose)" : "inherit"}">${esc(money(r.fin.net_profit, r.fin.currency))}</span>` : "—"), (r) => r.fin && r.fin.net_profit],
+    ["Equity ratio", (r) => (eq(r) !== null ? eq(r).toFixed(0) + "%" : "—"), eq],
+    ["Verified website", (r) => (r.website ? `<a href="${esc(r.website)}" target="_blank" rel="noopener noreferrer">${esc(hostOf(r.website))}${ico("ext", "ext")}</a>` : `<span class="faint">none</span>`)],
+    ["Hiring", (r) => (r.hiring ? `${r.hiring} active ad${r.hiring === 1 ? "" : "s"}` : `<span class="faint">no ads</span>`)],
+    ["Public support", (r) => (r.grants ? `${r.grants} grant${r.grants === 1 ? "" : "s"}` : `<span class="faint">none listed</span>`)],
+    ["Signals", (r) => `<div class="wrapflex">${r.signals.filter((x) => x.signal !== "revenue").map(pill).join("")}</div>`],
+    ["Facts with sources", (r) => fmtInt(r.facts), (r) => r.facts],
+  ];
+  return `<div class="section-title" style="margin-top:6px"><div><h3>Compare companies</h3><p>Side by side, from the same verified facts. The strongest value in each row is highlighted.</p></div>
+    <button class="btn btn-ghost" type="button" id="cmpClear">${ico("x")}Clear</button></div>
+  <div class="glass card cmp" style="overflow:auto"><table class="ctable"><thead><tr><th></th>${rows.map((r) => `<th><a href="#/company/${esc(r.orgnr)}" class="row" style="gap:10px;text-decoration:none">${avatar(r.name)}<span style="min-width:0;text-align:left"><b style="display:block">${esc(r.name)}</b><span class="small muted">${esc(fmtOrg(r.orgnr))}</span></span></a><button class="chip" type="button" data-cmp="${esc(r.orgnr)}" style="margin-top:8px">Remove</button></th>`).join("")}</tr></thead>
+  <tbody>${lines.map(([l, f, num]) => { const b = num ? best(num) : null; return `<tr><td>${esc(l)}</td>${rows.map((r) => `<td class="${b !== null && num(r) === b ? "best" : ""}">${f(r)}</td>`).join("")}</tr>`; }).join("")}</tbody></table></div>`;
+}
+
 /* ------------------------------------------------------------------ views: about */
 function viewAbout() {
   const steps = [["building", "ice", "1. Anchor the identity", "The organisation number is looked up in Enhetsregisteret, Norway's official business register. Everything else must match it exactly."],
@@ -807,8 +877,10 @@ async function render() {
     return;
   } else if (parts[0] === "research") { app.innerHTML = viewResearch(digits(parts[1] || "")); bindResearch(digits(parts[1] || "")); }
   else if (parts[0] === "about") { app.innerHTML = viewAbout(); }
+  else if (parts[0] === "compare") { app.innerHTML = viewCompare(); }
   else { app.innerHTML = `<div class="glass card empty">Page not found. <a href="#/">Go home</a></div>`; }
   document.title = "Signalpost · Norwegian company intelligence";
+  renderTray();
   countUp(app);
   window.scrollTo({ top: 0 });
 }
@@ -915,6 +987,9 @@ $("#app").addEventListener("keydown", (e) => {
 document.addEventListener("click", (e) => {
   const sg = $("#heroSug");
   if (sg && !e.target.closest(".searchbig")) sg.classList.remove("on");
+  const cb = e.target.closest("[data-cmp]");
+  if (cb) { e.preventDefault(); e.stopPropagation(); toggleCompare(cb.dataset.cmp); if (location.hash.startsWith("#/compare")) render(); return; }
+  if (e.target.closest("#trayClear") || e.target.closest("#cmpClear")) { state.compare = []; localStorage.setItem("sp-compare", "[]"); renderTray(); if (location.hash.startsWith("#/compare")) render(); return; }
   const a = e.target.closest('a[href^="#/research/"]');
   if (a) state.autoStart = digits(a.getAttribute("href"));
 }, true);

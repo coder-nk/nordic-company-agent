@@ -247,38 +247,7 @@ class Library:
             ds["companies"] = sum(1 for x in self.rows.values() if x["dataset"] == "researched")
 
     def stats(self) -> dict[str, Any]:
-        rows = list(self.rows.values())
-        n = len(rows) or 1
-        fams = Counter()
-        for r in rows:
-            for f in r["families"]:
-                fams[f] += 1
-        return {
-            "companies": len(rows), "facts": sum(r["facts"] for r in rows),
-            "websites": sum(1 for r in rows if r["website"]),
-            "with_accounts": sum(1 for r in rows if r["fin"]),
-            "hiring": sum(1 for r in rows if r["hiring"]),
-            "risk": sum(1 for r in rows if any(s["polarity"] == "risk" for s in r["signals"])),
-            "grants": sum(1 for r in rows if r["grants"]),
-            "family_coverage": {f: round(c / n * 100, 1) for f, c in fams.most_common()},
-            "coverage": [
-                {"key": k, "label": lab, "desc": desc, "pct": round(sum(1 for r in rows if test(r)) / n * 100, 1)}
-                for k, lab, desc, test in (
-                    ("identity", "Legal identity", "Name, form, address, status, industry", lambda r: r["match"] == "exact"),
-                    ("accounts", "Annual accounts", "Revenue, results and balance sheet", lambda r: bool(r["fin"])),
-                    ("leadership", "Leadership", "General manager, board or owner", lambda r: r["leaders"] > 0),
-                    ("workplaces", "Workplaces", "Registered shops, offices and plants", lambda r: r["workplaces"] > 0),
-                    ("events", "Registry activity", "Dated updates in the last year", lambda r: r["events"] > 0),
-                    ("website", "Verified website", "Proven to be the company's own site", lambda r: bool(r["website"])),
-                    ("socials", "Social profiles", "Linked from the verified site", lambda r: r["socials"] > 0),
-                    ("news", "Company news", "Dated posts on the company's site", lambda r: r["news"] > 0),
-                    ("grants", "Public support", "Grants in Støtteregisteret", lambda r: r["grants"] > 0),
-                    ("records", "R&D and inspections", "SkatteFUNN, Research Council, Mattilsynet", lambda r: r["records"] > 0),
-                    ("group", "Group & ownership", "Parents and subsidiaries", lambda r: r["group"] > 0),
-                    ("hiring", "Hiring", "Active job ads on NAV", lambda r: r["hiring"] > 0),
-                )],
-            "sources": 12, "cost_usd": 0.0, "datasets": self.datasets,
-        }
+        return compute_stats(list(self.rows.values()), self.datasets)
 
     def snapshot_excerpt(self, sha: str, q: str) -> dict[str, Any]:
         if not re.fullmatch(r"[0-9a-f]{64}", sha):
@@ -302,6 +271,106 @@ class Library:
                 return {"found": True, "matched": True, "bytes": len(raw), "before": text[a:i],
                         "match": text[i:i + len(q)], "after": text[i + len(q):b]}
         return {"found": False}
+
+
+def compute_stats(rows: list[dict[str, Any]], datasets: list[dict[str, Any]]) -> dict[str, Any]:
+    n = len(rows) or 1
+    fams = Counter()
+    for r in rows:
+        for f in r["families"]:
+            fams[f] += 1
+    return {
+        "companies": len(rows), "facts": sum(r["facts"] for r in rows),
+        "websites": sum(1 for r in rows if r["website"]),
+        "with_accounts": sum(1 for r in rows if r["fin"]),
+        "hiring": sum(1 for r in rows if r["hiring"]),
+        "risk": sum(1 for r in rows if any(s["polarity"] == "risk" for s in r["signals"])),
+        "grants": sum(1 for r in rows if r["grants"]),
+        "family_coverage": {f: round(c / n * 100, 1) for f, c in fams.most_common()},
+        "coverage": [
+            {"key": k, "label": lab, "desc": desc, "pct": round(sum(1 for r in rows if test(r)) / n * 100, 1)}
+            for k, lab, desc, test in COVERAGE_DIMS],
+        "sources": 12, "cost_usd": 0.0, "datasets": datasets,
+    }
+
+
+COVERAGE_DIMS = (
+    ("identity", "Legal identity", "Name, form, address, status, industry", lambda r: r["match"] == "exact"),
+    ("accounts", "Annual accounts", "Revenue, results and balance sheet", lambda r: bool(r["fin"])),
+    ("leadership", "Leadership", "General manager, board or owner", lambda r: r["leaders"] > 0),
+    ("workplaces", "Workplaces", "Registered shops, offices and plants", lambda r: r["workplaces"] > 0),
+    ("events", "Registry activity", "Dated updates in the last year", lambda r: r["events"] > 0),
+    ("website", "Verified website", "Proven to be the company's own site", lambda r: bool(r["website"])),
+    ("socials", "Social profiles", "Linked from the verified site", lambda r: r["socials"] > 0),
+    ("news", "Company news", "Dated posts on the company's site", lambda r: r["news"] > 0),
+    ("grants", "Public support", "Grants in Støtteregisteret", lambda r: r["grants"] > 0),
+    ("records", "R&D and inspections", "SkatteFUNN, Research Council, Mattilsynet", lambda r: r["records"] > 0),
+    ("group", "Group & ownership", "Parents and subsidiaries", lambda r: r["group"] > 0),
+    ("hiring", "Hiring", "Active job ads on NAV", lambda r: r["hiring"] > 0),
+)
+
+
+# --------------------------------------------------------------------------- static export (no server)
+def _excerpts(env: dict[str, Any], snapshot_dirs: list[Path], width: int = 170) -> dict[str, dict[str, str]]:
+    out: dict[str, dict[str, str]] = {}
+    cache: dict[str, str | None] = {}
+    avail_ev = {e for c in env.get("claims") or [] if c.get("availability") == "available" for e in c.get("evidence_ids") or []}
+    for ev in env.get("evidence") or []:
+        sha, q = ev.get("content_sha256") or "", ev.get("claim_span") or ""
+        if ev.get("id") not in avail_ev or not sha or not q or f"{sha}|{q}" in out:
+            continue
+        if sha not in cache:
+            cache[sha] = None
+            for d in snapshot_dirs:
+                f = d / f"{sha}.gz"
+                if f.exists():
+                    try:
+                        cache[sha] = gzip.decompress(f.read_bytes()).decode("utf-8", errors="replace")
+                    except Exception:
+                        pass
+                    break
+        text = cache[sha]
+        if not text:
+            continue
+        i = text.find(q)
+        if i < 0:
+            continue
+        out[f"{sha}|{q}"] = {"before": text[max(0, i - width):i], "match": q, "after": text[i + len(q):i + len(q) + width],
+                             "bytes": len(text)}
+    return out
+
+
+def export_static(envelopes: list[dict[str, Any]], out: Path, dataset: str = "run", report: dict | None = None,
+                  snapshot_dir: Path | None = None) -> None:
+    """The app as a static folder (open index.html from disk): data/index.js + data/c/<orgnr>.js, no server."""
+    out.mkdir(parents=True, exist_ok=True)
+    (out / "data" / "c").mkdir(parents=True, exist_ok=True)
+    rows = []
+    snaps = [snapshot_dir] if snapshot_dir and snapshot_dir.is_dir() else []
+    for env in envelopes:
+        if not env.get("organisation_number"):
+            continue
+        if "signals" not in (env.get("summary") or {}):
+            env = dict(env, summary=_recompute_summary(env))
+        rows.append(summarize(env, dataset))
+        payload = dict(env, _excerpts=_excerpts(env, snaps)) if snaps else env
+        org = env["organisation_number"]
+        (out / "data" / "c" / f"{org}.js").write_text(
+            "window.__SP_C__=window.__SP_C__||{};window.__SP_C__[" + json.dumps(org) + "]=" +
+            json.dumps(payload, ensure_ascii=False, default=str) + ";\n", encoding="utf-8")
+    ops = (report or {}).get("operations") or {}
+    ds = [{"name": dataset, "file": "envelopes.jsonl", "companies": len(rows),
+           "report": {"requests": ops.get("requests"), "request_limit": ops.get("request_limit")} if report else None}]
+    index = {"companies": sorted(rows, key=lambda r: str(r["name"])), "stats": compute_stats(rows, ds),
+             "generated_at": _now()}
+    (out / "data" / "index.js").write_text("window.__SP_STATIC__={index:" + json.dumps(index, ensure_ascii=False) + "};\n",
+                                          encoding="utf-8")
+    for f in ("app.js", "app.css", "favicon.svg"):
+        (out / f).write_bytes((UI_DIR / f).read_bytes())
+    html = (UI_DIR / "index.html").read_text(encoding="utf-8")
+    html = html.replace('href="/app.css"', 'href="app.css"').replace('href="/favicon.svg"', 'href="favicon.svg"')
+    html = html.replace('<script src="/app.js"></script>', '<script src="data/index.js"></script><script src="app.js"></script>')
+    (out / "index.html").write_text(html, encoding="utf-8")
 
 
 # --------------------------------------------------------------------------- research jobs

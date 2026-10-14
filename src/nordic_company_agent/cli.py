@@ -203,8 +203,11 @@ def cmd_run(a: argparse.Namespace) -> int:
             Path(a.report).parent.mkdir(parents=True, exist_ok=True)
             Path(a.report).write_text(json.dumps(report, ensure_ascii=False, indent=2, default=str) + "\n")
         if not a.no_viewer:
+            from .ui_server import export_static
             from .viewer import build_site
-            build_site(envelopes, out_dir / "site", report=report)
+            export_static(envelopes, out_dir / "site", dataset=out_dir.name or "run", report=report,
+                          snapshot_dir=out_dir / "snapshots")
+            build_site(envelopes, out_dir / "site" / "classic", report=report)
         print(json.dumps({k: report[k] for k in ("run_id", "expected_count", "emitted_envelopes", "identity")}
                          | {"requests": report["operations"]["requests"],
                             "wall_clock_s": report["operations"]["wall_clock_s"],

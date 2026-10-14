@@ -44,7 +44,7 @@ Outputs in `<dir>`:
 | `run-report.json` | requests (total, by source, by host), p50/p95 runtime, cost, availability per module and field, contract validation |
 | `changes.jsonl` | every material and minor change since the previous run |
 | `snapshots/` | gzip raw response bodies, keyed by the SHA-256 cited in evidence (role payloads stored without birth dates) |
-| `site/index.html` | static viewer: search, coverage, per-fact "View source", compare. Works offline and on mobile |
+| `site/index.html` | the interactive app as a static export (open it from disk, no server needed): search, filters, profiles, compare, evidence drawer with archived-source excerpts. The previous plain-HTML viewer is kept in `site/classic/` |
 | `history/<run_id>/` | the previous run's envelopes, preserved before they are overwritten |
 
 Other commands: `nca company 923609016 --summary`, `nca serve` (HTTP: `GET /companies/:orgnr`,
@@ -61,6 +61,7 @@ standard library only. It works offline and needs no Node, CDN or API keys.
 * **Overview:** search, headline numbers, coverage per information type, and clickable signal cards
   (risk flags, growth, hiring, losses, public support, verified websites).
 * **Companies:** instant search by name, organisation number, town or industry, with filters and sorting.
+* **Compare:** put up to 4 companies side by side; the strongest value in each row is highlighted.
 * **Company profile:**
   * an "at a glance" row of signals and KPI cards (revenue and growth, net result, equity ratio, completeness);
   * a cited plain-language summary, a financials chart and table, and people and roles;
@@ -73,7 +74,8 @@ standard library only. It works offline and needs no Node, CDN or API keys.
 * Keyboard: `Ctrl/⌘ K` or `/` opens search, `Esc` closes panels. There is a light and a dark theme, it works on
   mobile, and it respects reduced motion.
 
-`uv run nca ui --data other/envelopes.jsonl --port 9000` serves any envelope file.
+`uv run nca ui --data other/envelopes.jsonl --port 9000` serves any envelope file. Every `nca run` also writes the same
+app as a static folder (`<out>/site/index.html`), so `smoke/site/index.html` opens directly in a browser.
 
 ## Models, APIs and licences
 

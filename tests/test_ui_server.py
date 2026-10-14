@@ -117,3 +117,21 @@ def test_ui_assets_exist():
         assert (ui / f).is_file()
     html = (ui / "index.html").read_text()
     assert "<script>" not in html and "http" not in html.split("<body>")[0].replace("http-equiv", "")
+
+
+def test_static_export(tmp_path):
+    from nordic_company_agent.ui_server import export_static
+    snaps = tmp_path / "snapshots"
+    snaps.mkdir()
+    (snaps / ("a" * 64 + ".gz")).write_bytes(gzip.compress(b'{"x":1,"sumDriftsinntekter":1200000,"y":2}'))
+    env = _env()
+    env["claims"][2]["evidence_ids"] = ["ev-1"]
+    export_static([env], tmp_path / "site", dataset="smoke", snapshot_dir=snaps)
+    site = tmp_path / "site"
+    html = (site / "index.html").read_text()
+    assert '<script src="data/index.js"></script><script src="app.js"></script>' in html and 'href="app.css"' in html
+    idx = (site / "data" / "index.js").read_text()
+    assert idx.startswith("window.__SP_STATIC__={index:") and '"912342344"' in idx
+    c = (site / "data" / "c" / "912342344.js").read_text()
+    assert '"_excerpts"' in c and '"before": "{\\"x\\":1,"' in c
+    assert (site / "app.js").read_bytes() == (ROOT / "src/nordic_company_agent/ui/app.js").read_bytes()
