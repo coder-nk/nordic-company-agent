@@ -39,3 +39,9 @@ environment variables only.
 * JavaScript-only sites are fetched as static HTML. No headless browser is used.
 * NAV is the only job source. Ads on finn.no or on company career pages that are not posted to NAV are missed,
   except for the careers-page URL itself.
+* Website news is what the verified site itself publishes. Posts presenting members, partners, customers or
+  suppliers (by feed category, URL path, or a title that is another company's legal name) are dropped. A post on
+  the company's own site that mentions a sister brand is still published as the company's own news item.
+* Registry-filed contacts are labelled `related` when the filed value or its domain is shared with other
+  organisation numbers. A company's own domain that a subsidiary also uses, without a verified website, is therefore
+  labelled `related` (under-claiming, never a wrong-company claim).

@@ -76,7 +76,7 @@ Google or search-engine scraping. See `LIMITATIONS.md` and `CRAWLERS.md`.
   | batch | requests | wall clock | mode |
   |---|---|---|---|
   | 100 companies | 778 of 2,000 | 3.7 min | every module live |
-  | 1,000 companies | 2,000 of 2,000 | 7.2 min | bulk roles/workplaces, cached state aid; optional extras skipped and reported |
+  | 1,000 companies | 2,000 of 2,000 | 8.1 min | bulk roles/workplaces, cached state aid; optional extras skipped and reported |
 
 * Batched endpoints keep registry identity, change feeds, GLEIF and Wikidata at about one request per
   100–1,000 companies. Per-company costs: accounts (1), roles (1), workplaces (1), state aid (1, or 0 from

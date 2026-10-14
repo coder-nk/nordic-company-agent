@@ -643,10 +643,13 @@ def parse_feed(data: bytes, feed_url: str, accept_url) -> list[dict]:
         guid = ""
         body = ""
         dates: dict[str, str] = {}
+        cats: list[str] = []
         for c in e:
             t = local(c.tag)
             if t in ("guid", "id"):
                 guid = (c.text or "").strip()
+            elif t in ("category", "subject"):
+                cats.append(" ".join(x for x in ("".join(c.itertext()), c.get("term"), c.get("label")) if x))
             elif t in ("description", "summary", "content", "encoded"):
                 body += " " + "".join(c.itertext())[:2000]
             if t == "title":
@@ -664,8 +667,8 @@ def parse_feed(data: bytes, feed_url: str, accept_url) -> list[dict]:
         junk = _news_junk(title, body) if title else None
         if junk in ("spam", "demo"):
             return []                                  # one spam / demo / filler item: the whole feed is dropped
-        if junk == "skip":
-            continue
+        if junk == "skip" or any(NEWS_OTHER_CAT_RX.search(x) for x in cats):
+            continue                                   # UI link, or a post presenting members/partners/customers
         dt = _parse_date(raw_date)
         if not (title and link and dt):
             continue
@@ -697,8 +700,17 @@ NEWS_FILLER_RX = re.compile(r"\b(?:quisque|donec|curabitur|vestibulum|aenean|pel
                             r"welcome to wordpress|velkommen til wordpress", re.I)
 WORD_DIGIT_TITLE_RX = re.compile(r"^[A-Za-zÆØÅæøå]+\d+$")
 NEWS_EXCLUDE_PATH_RX = re.compile(r"/(?:filter|kategori|kategorier|category|categories|tag|tags|collections?|products?|"
-                                  r"produkt|produkter|shop|butikk|page|side|arkiv|archive)(?:/|$)|[?&](?:page|filter)=",
-                                  re.I)
+                                  r"produkt|produkter|shop|butikk|page|side|arkiv|archive|medlem\w*|members?|"
+                                  r"partnere?|partners?|samarbeidspartnere?|sponsor\w*|kunder|customers?|"
+                                  r"referanser|references)(?:/|$)|[?&](?:page|filter)=", re.I)
+# final audit: posts filed under member / partner / customer presentations describe other companies
+NEWS_OTHER_CAT_RX = re.compile(r"presentasjon av|\bmedlem(?:mer|sbedrift\w*|spresentasjon\w*|sportrett\w*)\b|"
+                               r"\bnye medlem\w*|\bmember (?:spotlight|presentations?|profiles?|companies)\b|"
+                               r"\b(?:our|new) members\b|\b(?:samarbeids)?partnere?\b|\bpartners?\b|\bsponsorer\b|"
+                               r"\bsponsors?\b|\bkunder\b|\bkundehistori\w*|\bkundecase\w*|"
+                               r"\bcustomer (?:stories|story|cases?|spotlight)\b|\bleverandører\b|\bsuppliers\b", re.I)
+# a post titled with a legal name (PS TRAFIKKSKOLE AS) is about that company, unless it is this company's own name
+LEGAL_NAME_TITLE_RX = re.compile(r"(?:^|\s)(?:AS|ASA|SA|DA|ANS|BA|ENK|NUF|KS|IKS|AB|ApS|Oy|GmbH|Ltd\.?|LLC|Inc\.?)\s*$")
 
 
 DEMO_TITLE_RX = re.compile(r"^\W*(?:hello,? world|hei,? verden|hallo,? verden|sample page|eksempelside|testinnlegg|"
@@ -1109,8 +1121,11 @@ def _emit(ctx, company: CompanyResult, rec: dict, st: _State, results: list[Lead
                             method=METHOD, match_basis=basis))
     if news and feed_ev is not None:
         fpage, root = feed_ev
+        own = re.sub(r"\W+", " ", str((rec or {}).get("navn") or "")).strip().lower()
         for it in news:
             val = {"title": it["title"], "url": it["url"], "published": it["published"]}
+            if LEGAL_NAME_TITLE_RX.search(it["title"]) and re.sub(r"\W+", " ", it["title"]).strip().lower() != own:
+                continue                               # a presentation of another company, not this company's news
             sp = it.get("span") or ""
             if not (sp in (fpage.html or "") and len(sp) <= 300 and (fpage.utf8 or sp.isascii()) and
                     V._span_has(V.Fact("news_item", val, 0, root, sp), sp)):

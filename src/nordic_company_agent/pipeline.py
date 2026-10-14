@@ -230,6 +230,7 @@ def _tier_last_phase(enabled) -> dict[str, int]:
 
 
 from .refresh import FIELD_MODULE  # noqa: E402
+from .contact_sharing import label_by_website  # noqa: E402
 
 
 def _tag(company: CompanyResult, start: int, module: str) -> None:
@@ -327,6 +328,7 @@ async def run_batch(orgnrs: list[str], config: RunConfig, invalid: list[dict[str
     envelopes = []
     for c in companies:
         try:
+            label_by_website(c)
             env = assemble_envelope(ctx, c, run_id=config.run_id, started_at=started, completed_at=completed,
                                     previous=previous.get(c.organisation_number))
         except Exception as exc:  # never drop a company

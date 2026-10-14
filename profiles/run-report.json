@@ -1,7 +1,7 @@
 {
   "run_id": "profiles-1000",
-  "started_at": "2026-10-14T00:15:00Z",
-  "completed_at": "2026-10-14T00:22:11Z",
+  "started_at": "2026-10-14T00:51:40Z",
+  "completed_at": "2026-10-14T00:59:15Z",
   "agent": {
     "name": "nordic-company-agent",
     "version": "1.0.0",
@@ -53,13 +53,13 @@
       "bulk_subunits": 1,
       "registry_feed": 4,
       "accounts": 997,
-      "website": 587,
+      "website": 590,
       "group": 66,
       "jobs": 3,
-      "authorisations": 319
+      "authorisations": 316
     },
     "requests_by_host_top25": {
-      "data.brreg.no": 1392,
+      "data.brreg.no": 1389,
       "www.usbl.no": 21,
       "api.gleif.org": 17,
       "www.apolonia.no": 7,
@@ -75,21 +75,21 @@
       "henka.no": 5,
       "www.bkk.no": 5,
       "www.erstad-lekven.no": 5,
-      "www.jetsgroup.com": 5,
       "www.tecla.no": 5,
+      "www.jetsgroup.com": 5,
       "tannlege-jarhuset.no": 5,
       "www.norgesgruppeneiendom.no": 5,
-      "maroubraconsulting.com": 5,
       "fitnesspoint.no": 5,
+      "maroubraconsulting.com": 5,
       "whitson.com": 5,
       "www.nforeningen.no": 4,
       "brando.no": 4
     },
     "batch_module_requests": {
       "registry": 1,
-      "wikidata": 1,
-      "gleif": 17,
       "registry_feed": 4,
+      "gleif": 17,
+      "wikidata": 1,
       "bulk_subunits": 1,
       "bulk_roles": 1,
       "jobs": 3
@@ -97,28 +97,28 @@
     "per_company_requests_p50": 1,
     "per_company_requests_p95": 6,
     "p50_ms": 1923,
-    "p95_ms": 8547,
-    "wall_clock_s": 465.9,
+    "p95_ms": 8451,
+    "wall_clock_s": 486.0,
     "time_budget_s": 2400,
     "module_runtime_ms": {
-      "registry": 9745,
-      "registry_feed": 9911,
-      "gleif": 9911,
-      "wikidata": 9911,
-      "accounts": 81448,
-      "subunits": 602,
-      "roles": 602,
-      "website": 36771,
-      "group": 6794,
-      "jobs": 7909,
-      "public_records": 7909,
-      "authorisations": 29681,
-      "state_aid": 29681,
-      "account_copies": 29681
+      "registry": 10854,
+      "registry_feed": 11098,
+      "gleif": 11098,
+      "wikidata": 11098,
+      "accounts": 80493,
+      "subunits": 614,
+      "roles": 614,
+      "website": 43117,
+      "group": 6516,
+      "jobs": 5959,
+      "public_records": 5959,
+      "authorisations": 29664,
+      "state_aid": 29664,
+      "account_copies": 29664
     },
     "third_party_cost_usd": 0.0,
     "llm": null,
-    "http_errors": 28
+    "http_errors": 27
   },
   "planner": {
     "reservations": {
@@ -137,13 +137,13 @@
       "registry": 6,
       "batch_external": 25,
       "accounts": 997,
-      "website_primary": 410,
+      "website_primary": 412,
       "roles": 0,
       "subunits": 0,
       "group": 66,
-      "website_secondary": 177,
+      "website_secondary": 178,
       "discovery": 0,
-      "extras": 319
+      "extras": 316
     },
     "finished": [
       "accounts",
@@ -164,7 +164,7 @@
       "not_available": 1
     },
     "authorisations": {
-      "available": 167,
+      "available": 166,
       "not_applicable": 19,
       "not_available": 1
     },
@@ -203,11 +203,11 @@
       "not_available": 218
     },
     "website": {
-      "ambiguous": 76,
+      "ambiguous": 77,
       "not_available": 850,
       "available": 60,
       "blocked": 6,
-      "failed": 5
+      "failed": 4
     },
     "wikidata": {
       "not_available": 986,
@@ -399,11 +399,11 @@
       "available": 9
     },
     "official_website": {
-      "ambiguous": 76,
+      "ambiguous": 77,
       "not_available": 850,
       "available": 60,
       "blocked": 6,
-      "failed": 5
+      "failed": 4
     },
     "operating_expenses": {
       "available": 2736
@@ -439,8 +439,8 @@
       "available": 2744
     },
     "prokura_rule": {
-      "not_available": 114,
-      "available": 37
+      "not_available": 115,
+      "available": 34
     },
     "receivables": {
       "available": 2334
@@ -501,7 +501,7 @@
       "available": 933
     },
     "signature_rule": {
-      "available": 167,
+      "available": 166,
       "not_applicable": 19,
       "not_available": 1
     },
@@ -578,7 +578,7 @@
     "corporate_structure": 131,
     "hiring": 2008,
     "leadership": 3984,
-    "legal_identity": 23410,
+    "legal_identity": 23406,
     "public_activity": 4457,
     "social_profiles": 56,
     "website": 402,
@@ -685,17 +685,17 @@
       "status": "ok",
       "bytes": 89175260,
       "matched": 779,
-      "seconds": 216.7
+      "seconds": 204.3
     },
     "roles": {
       "status": "ok",
       "bytes": 129854060,
       "matched": 997,
-      "seconds": 334.7
+      "seconds": 351.7
     }
   },
   "optional_modules_skipped_by_budget": {
     "account_copies": 997,
-    "authorisations": 810
+    "authorisations": 811
   }
 }

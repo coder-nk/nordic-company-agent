@@ -39,7 +39,7 @@ for measurement.
 | 4 | 300 fresh (same mix) | 130 (127 L1, 3 L2) | 2 (+2 doubtful) | 4 | decisive policies: exclusivity (no other org numbers on any fetched page except in data-processor or agency context), brand alignment, acquisition and ownership phrases, the controller check also for L1, impostor/template pages, contacts only from the company's own block or equal to the registry, logos on own domain only, every span must contain its value |
 | 5 | 500 fresh | 242 (238 L1, 4 L2) | 3 (+2 doubtful) | ~10 (theme demo text, shared phones) | removed the last "own block on a group site" rescue: any group, foreign, sister or ownership signal → ambiguous; subdomains inherit the registrable domain's co-filers; «vi/oss» definitions in privacy pages; co-filers sharing the brand token; theme/demo filters; shared phones never published |
 | 6 | 600 fresh (3 auditors) | 358 | 1 (+8 doubtful) | ~27 (registry contacts shared by property managers/groups, theme and CMS text, non-registry addresses) | sub-paths need registrable-domain alignment; ownership/chain spelling variants; NUF (foreign branch) group signals; proofs only from fetched URLs; contacts only when filed in Enhetsregisteret by this company alone; website addresses only when equal to the registry address; CMS/theme/spam/demo filters; a whole RSS feed is rejected if any item fails; registry contacts shared with other org numbers published as `related` |
-| 7 | final deliverables (`smoke/`, `profiles/`) | 65 | see below | | final check after the round-6 rules |
+| 7 | final deliverables (`smoke/`, `profiles/`), all published sites | 65 | **0** (0 doubtful) | 0 wrong, 4 doubtful of 576 website facts (member-presentation news posts); 17 registry-filed contacts on group/chain/accountant domains labelled `self` | news posts in member/partner/customer categories or titled with another legal name dropped; registry contacts on a domain shared with other org numbers, or on a domain the gate refused as another entity's site, labelled `related`. Regenerated: all 17 now `related`, published website facts byte-identical to the audited set |
 
 ## Refresh
 * Re-running 50 companies against their previous envelopes: **0 changes** (idempotent). Sources disabled or
@@ -51,7 +51,7 @@ for measurement.
 | run | companies | requests | wall clock | verified websites | notes |
 |---|---|---|---|---|---|
 | `smoke/` (smoke-100, cap 2,000) | 100 | 778 | 3.7 min | 5 (all L1) | all modules ran live, none budget-skipped; accounts, roles, workplaces 100/100; state aid 14 companies (81 grants, live search); LEI 12; food inspections 10; news items 6 |
-| `profiles/` (profiles-1000, cap 2,000) | 1,000 | 2,000 | 7.2 min | 60 (59 L1, 1 L2) | bulk mode for roles and workplaces (2 requests, 220 MB streamed); accounts 997; state aid 690 grants, SkatteFUNN 95, Research Council 38, food inspections 84 (declared caches); LEI 123; 56 social profiles; 75 news items; optional extras skipped by budget and reported (`account_copies` 997, `authorisations` 810) |
+| `profiles/` (profiles-1000, cap 2,000) | 1,000 | 2,000 | 8.1 min | 60 (59 L1, 1 L2) | bulk mode for roles and workplaces (2 requests, 220 MB streamed); accounts 997; state aid 690 grants, SkatteFUNN 95, Research Council 38, food inspections 84 (declared caches); LEI 123; 56 social profiles; 75 news items; optional extras skipped by budget and reported (`account_copies` 997, `authorisations` 811) |
 
 Third-party cost: **$0.00** in every run (no LLM, no paid API, no keys).
 
