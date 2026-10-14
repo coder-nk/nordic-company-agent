@@ -1,5 +1,12 @@
 # nordic-company-agent
 
+[![Live Demo](https://img.shields.io/badge/demo-live-success?style=flat-square)](https://coder-nk.github.io/nordic-company-agent/)
+[![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue?style=flat-square)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![Tests: 428 Passing](https://img.shields.io/badge/tests-428%20passing-brightgreen?style=flat-square)](#development)
+
+🌐 **[Live Demo](https://coder-nk.github.io/nordic-company-agent/)** | 📖 **[Documentation](#documentation)** | 🚀 **[Quick Start](#one-command)**
+
 A deterministic company-research agent for the Builderr **Signalpost** challenge. Give it Norwegian
 organisation numbers. It returns **one terminal envelope per company**: legal identity, filed accounts,
 leadership, workplaces, the verified official website and company-linked profiles, hiring and dated
