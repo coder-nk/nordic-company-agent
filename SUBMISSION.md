@@ -12,11 +12,12 @@ Builderr accepts code revisions until **18 Oct** (version 1 + up to 4 revised co
 | Exact commit hash | `git rev-parse HEAD` after the final commit |
 | One run command | `./run.sh <organisations.jsonl> <output_dir>`, which wraps `uv run nca run --input <file> --out <dir>` |
 | Reference-harness-compatible command | `python scripts/run_competition_batch.py --organisations batch.jsonl --bulk brreg-enheter.csv --output out/envelopes.jsonl --report out/run-report.json --run-id <id> --expected-count <n>` |
-| 100-company smoke test | `smoke/` (envelopes.jsonl, run-report.json, changes.jsonl, site/) |
-| Models / APIs | **No LLM.** Keyless official/open APIs only: Brønnøysundregistrene Enhetsregisteret + Regnskapsregisteret + update feeds + signature/prokura + Støtteregisteret (NLOD 2.0), GLEIF (CC0), Wikidata (CC0), NAV Arbeidsplassen job feed (public token, NAV API terms), company-owned websites (robots.txt honoured). See README "Models, APIs and licences". |
-| Expected cost per official run | **$0.00** third-party cost. Requests: about 8–10 per company for 100 companies; the default hard cap is 2,000 per run (see below). Runtime: about 5 min per 100 companies, and about 9 min for 1,000 companies at a 2,000-request cap. |
+| 100-company smoke test | `smoke/` (envelopes.jsonl, run-report.json, changes.jsonl, validation.json, site/) |
+| 1,000 company profiles | `profiles/envelopes.jsonl.gz` (+ run-report.json, validation.json) |
+| Models / APIs | **No LLM.** Keyless official/open APIs only: Brønnøysundregistrene Enhetsregisteret + Regnskapsregisteret + update feeds + signature/prokura + Støtteregisteret (NLOD 2.0), GLEIF (CC0), Wikidata (CC0), NAV Arbeidsplassen job feed (public token, NAV API terms), Forskningsrådet SkatteFUNN/project data (NLOD), Mattilsynet smilefjes (CC BY 4.0), company-owned websites (robots.txt honoured). See README "Models, APIs and licences". |
+| Expected cost per official run | **$0.00** third-party cost. Measured: 100 companies = 778 requests in 3.7 min; 1,000 companies = 2,000 requests (the hard cap, never exceeded) in 7.2 min. The default cap is 2,000 per run (see below). |
 | Secrets | none (no API keys) |
-| Declared caches | `cache/` (see CACHES.md): site-discovery leads, NAV jobs, Wikidata P2333 index, registry shared-website hosts, public records |
+| Declared caches | `cache/` (see CACHES.md): site-discovery leads, NAV jobs, Wikidata P2333 index, registry shared-contact indexes, state aid, public records (SkatteFUNN, Research Council, Mattilsynet) |
 | Contact for results | *(your e-mail)* |
 
 ## Budget flags

@@ -70,11 +70,21 @@ Google or search-engine scraping. See `LIMITATIONS.md` and `CRAWLERS.md`.
 
 ## Expected run cost
 
-* Third-party cost: **$0.00** per run (no paid API, no LLM).
-* Requests and runtime: see `smoke/run-report.json` (measured on the 100-company smoke batch).
-  Batched endpoints keep registry identity, change feeds, GLEIF and Wikidata at about one request per
-  100–1,000 companies. The per-company costs are accounts (1), roles (1), workplaces (1) and the
-  website (about 3–5 when a lead exists).
+* Third-party cost: **$0.00** per run (no paid API, no LLM, no API keys).
+* Measured (laptop, 24 concurrent connections, the committed `smoke/` and `profiles/` runs):
+
+  | batch | requests | wall clock | mode |
+  |---|---|---|---|
+  | 100 companies | 778 of 2,000 | 3.7 min | every module live |
+  | 1,000 companies | 2,000 of 2,000 | 7.2 min | bulk roles/workplaces, cached state aid; optional extras skipped and reported |
+
+* Batched endpoints keep registry identity, change feeds, GLEIF and Wikidata at about one request per
+  100–1,000 companies. Per-company costs: accounts (1), roles (1), workplaces (1), state aid (1, or 0 from
+  the declared cache) and the website (about 3–5 when a lead exists). When the budget cannot reserve one
+  roles and one workplaces request per company, `--bulk-mode auto` switches both to the nightly bulk files
+  (2 requests in total).
+* The cap is never exceeded: every redirect hop, retry and robots.txt fetch is counted, and modules the
+  budget could not cover are labelled `failed: not checked: request budget`. They are never left blank.
 
 ## Declared caches (`cache/`, see `CACHES.md`)
 
