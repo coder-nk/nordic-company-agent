@@ -1,0 +1,34 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Compare</title><style>
+:root{--bg:#f7f7f5;--card:#fff;--ink:#1d1f21;--mute:#666b70;--line:#e3e3df;--acc:#0b6e4f;--warn:#a15c00;--bad:#9b1c1c;--chip:#eef4f1}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+a{color:var(--acc)}header{background:var(--card);border-bottom:1px solid var(--line);padding:14px 20px;position:sticky;top:0;z-index:5}
+header h1{font-size:18px;margin:0}header p{margin:2px 0 0;color:var(--mute);font-size:13px}
+main{max-width:1100px;margin:0 auto;padding:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:0 0 14px}
+.card h2{font-size:16px;margin:0 0 10px}.muted{color:var(--mute)}.small{font-size:12.5px}
+input[type=search]{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.03em;color:var(--mute);cursor:pointer;white-space:nowrap}
+.pill{display:inline-block;padding:1px 8px;border-radius:99px;background:var(--chip);font-size:12px;margin:0 4px 4px 0;white-space:nowrap}
+.pill.off{background:#f1f1ee;color:#9a9a96}.pill.amb{background:#fff4e0;color:var(--warn)}.pill.bad{background:#fde8e8;color:var(--bad)}
+.dims{white-space:nowrap}.dim{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:2px;background:#d9d9d4}.dim.on{background:var(--acc)}
+.fact{display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:4px 14px;padding:7px 0;border-bottom:1px dashed var(--line)}
+.fact:last-child{border-bottom:0}.fact .k{color:var(--mute);font-size:13.5px}.fact .v{word-break:break-word}
+details.src{margin-top:3px}details.src summary{cursor:pointer;color:var(--acc);font-size:12.5px}
+details.src div{font-size:12.5px;color:var(--mute);background:#fafaf8;border:1px solid var(--line);border-radius:6px;padding:6px 8px;margin-top:4px}
+code{font-size:12px;background:#f3f3f0;padding:0 4px;border-radius:4px}.summary p{margin:0 0 8px}
+sup a{text-decoration:none;font-size:11px}.cmp{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:10px 0}.btn{border:1px solid var(--acc);background:var(--acc);color:#fff;border-radius:7px;padding:7px 12px;cursor:pointer;font-size:14px}
+.btn[disabled]{opacity:.4;cursor:default}footer{color:var(--mute);font-size:12px;text-align:center;padding:20px}
+@media (max-width:640px){.fact{grid-template-columns:1fr}.hide-sm{display:none}main{padding:10px}}
+</style></head><body><header><h1>Compare companies</h1><p><a href="index.html">back to all companies</a></p></header><main><div class="cmp" id="box"></div></main><script>
+const ids=(location.hash||'').slice(1).split(',').filter(Boolean);const box=document.getElementById('box');
+const F=[['legal_form','Legal form'],['registry_status','Status'],['business_address','Address'],['industry','Industry'],['employees','Employees'],
+['revenue','Revenue (latest)'],['net_profit','Net result (latest)'],['equity','Equity (latest)'],['ceo','CEO'],['chair','Chair'],
+['registered_workplace_count','Workplaces'],['official_website','Website'],['social_profile','Profiles'],['active_job_count','Active job ads'],['lei','LEI']];
+window.__C={};let left=ids.length;ids.forEach(o=>{const s=document.createElement('script');s.src='company/'+o+'.js';s.onload=s.onerror=()=>{if(--left===0)draw()};document.body.appendChild(s)});
+function draw(){box.innerHTML=ids.map(o=>{const c=window.__C[o];if(!c)return `<div class=card>${o}: not found</div>`;
+return `<div class=card><h2><a href="company/${o}.html">${c.name||o}</a></h2><div class="small muted">${o}</div>`+
+F.map(([f,l])=>`<div class=fact><div class=k>${l}</div><div class=v>${(c.f[f]||'—')}</div></div>`).join('')+'</div>'}).join('')}
+if(!ids.length)box.innerHTML='<div class=card>Select 2–4 companies on the index page.</div>';
+</script></body></html>

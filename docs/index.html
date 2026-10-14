@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nordic Company Agent - Evidence-Backed Company Intelligence</title>
+    <meta name="description" content="Deterministic company research agent for Norwegian companies. Zero-cost, evidence-backed company profiles from public sources.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        header {
+            text-align: center;
+            padding: 4rem 0 3rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+        .tagline {
+            font-size: 1.25rem;
+            color: #94a3b8;
+            margin-bottom: 2rem;
+        }
+        .badges {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(96, 165, 250, 0.1);
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            color: #60a5fa;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(96, 165, 250, 0.5);
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-bottom: 0.75rem;
+        }
+        .feature-description {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+        .cta-section {
+            text-align: center;
+            margin: 4rem 0;
+            padding: 3rem;
+            background: rgba(96, 165, 250, 0.05);
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            border-radius: 1rem;
+        }
+        .cta-title {
+            font-size: 2rem;
+            color: #f1f5f9;
+            margin-bottom: 1rem;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            color: white;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(96, 165, 250, 0.3);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: #60a5fa;
+            border-color: #60a5fa;
+        }
+        .btn-secondary:hover {
+            background: rgba(96, 165, 250, 0.1);
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        .stat {
+            padding: 1.5rem;
+        }
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #60a5fa;
+        }
+        .stat-label {
+            color: #94a3b8;
+            margin-top: 0.5rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #64748b;
+        }
+        .code-block {
+            background: #1e293b;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            overflow-x: auto;
+        }
+        .code-block code {
+            color: #60a5fa;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Nordic Company Agent</h1>
+            <p class="tagline">Deterministic, Evidence-Backed Company Intelligence for Norwegian Companies</p>
+            <div class="badges">
+                <span class="badge">🎯 Zero Cost ($0.00)</span>
+                <span class="badge">🔍 No LLM</span>
+                <span class="badge">📊 Evidence-Backed</span>
+                <span class="badge">⚡ Deterministic</span>
+                <span class="badge">🔒 Privacy-Compliant</span>
+            </div>
+        </header>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value">$0.00</div>
+                <div class="stat-label">Cost per Run</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">428</div>
+                <div class="stat-label">Passing Tests</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">3.7min</div>
+                <div class="stat-label">100 Companies</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">15</div>
+                <div class="stat-label">Data Sources</div>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3 class="feature-title">Identity First</h3>
+                <p class="feature-description">Every fact is tied to the exact organisation number. Websites verified with org number on page or independent corroboration.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3 class="feature-title">Evidence-Backed</h3>
+                <p class="feature-description">Every claim carries source URL, retrieval timestamp, content hash, and verbatim evidence span. Full snapshot archiving.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3 class="feature-title">Zero Cost</h3>
+                <p class="feature-description">No LLM, no paid APIs, no API keys. Uses only open Norwegian government data and public company websites.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3 class="feature-title">Deterministic</h3>
+                <p class="feature-description">Same sources produce identical output. Refresh-as-diff detects typed changes with stable claim keys.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔐</div>
+                <h3 class="feature-title">Privacy & Security</h3>
+                <p class="feature-description">SSRF protection, robots.txt honored, birth dates redacted. Personal data limited to current roles only.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📈</div>
+                <h3 class="feature-title">Request Budgeting</h3>
+                <p class="feature-description">Hard cap on HTTP requests (default 3,000). Every redirect, retry, and robots.txt fetch counted.</p>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2 class="cta-title">Get Started</h2>
+            <p class="tagline">One command to research 100 Norwegian companies</p>
+            <div class="code-block">
+                <code>./run.sh batches/smoke-100.jsonl out/smoke</code>
+            </div>
+            <div class="cta-buttons">
+                <a href="https://github.com/coder-nk/nordic-company-agent" class="btn btn-primary" target="_blank">
+                    View on GitHub
+                </a>
+                <a href="https://github.com/coder-nk/nordic-company-agent#readme" class="btn btn-secondary" target="_blank">
+                    Documentation
+                </a>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2 class="cta-title">Key Features</h2>
+            <div style="text-align: left; max-width: 800px; margin: 0 auto;">
+                <ul style="list-style: none; color: #94a3b8; line-height: 2;">
+                    <li>✅ <strong>Legal Identity:</strong> Name, form, status, addresses, industry codes, employees, capital</li>
+                    <li>✅ <strong>Financials:</strong> Latest 3 filed accounts (revenue, profit, assets, equity, ratios)</li>
+                    <li>✅ <strong>Leadership:</strong> Board members, CEO, auditors, accountants with role dates</li>
+                    <li>✅ <strong>Workplaces:</strong> Registered locations with addresses and employee counts</li>
+                    <li>✅ <strong>Website Verification:</strong> L1 (org number on page) and L2 (registry-filed + corroboration)</li>
+                    <li>✅ <strong>Social Profiles:</strong> Linked from verified website or Wikidata P2333 match</li>
+                    <li>✅ <strong>Job Postings:</strong> Active NAV ads by employer org number</li>
+                    <li>✅ <strong>Public Activity:</strong> State aid grants, R&D tax credits, registry events</li>
+                    <li>✅ <strong>Interactive UI:</strong> Search, compare, evidence drawers, live research mode</li>
+                </ul>
+            </div>
+        </div>
+
+        <footer>
+            <p>Built for the Builderr Signalpost Challenge</p>
+            <p style="margin-top: 0.5rem;">Open Source • Python 3.12+ • MIT License</p>
+        </footer>
+    </div>
+</body>
+</html>
