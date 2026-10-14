@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  # Web UI Server
+  ui:
+    build: .
+    ports:
+      - "8765:8765"
+    command: ui --port 8765 --host 0.0.0.0
+    volumes:
+      - ./out:/app/out
+      - ./profiles:/app/profiles
+      - ./smoke:/app/smoke
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+
+  # HTTP API Server
+  api:
+    build: .
+    ports:
+      - "8080:8080"
+    command: serve --port 8080 --host 0.0.0.0
+    volumes:
+      - ./out:/app/out
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+
+  # Background research worker (optional)
+  # Uncomment to enable batch processing
+  # worker:
+  #   build: .
+  #   command: run --input /data/batch.jsonl --out /app/out/batch
+  #   volumes:
+  #     - ./batches:/data
+  #     - ./out:/app/out
+  #     - ./cache:/app/cache
+  #   environment:
+  #     - PYTHONUNBUFFERED=1
+  #     - NCA_MAX_REQUESTS=3000
+  #     - NCA_TIME_BUDGET_S=2400
+
+networks:
+  default:
+    name: nordic-company-agent
