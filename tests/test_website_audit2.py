@@ -188,4 +188,5 @@ def test_builder_host_redirect_publishes_filed_domain():
     html = doc("Firma Test", "<footer>Firma Test AS · Org.nr 912 342 344</footer>")
     pages = [pg(html, "https://www.firmatest.no/", final="https://firmatest.wixsite.com/firma", redirects=["https://www.firmatest.no/"])]
     v, _ = run(pages, {"navn": "FIRMA TEST AS"}, "912342344", start="https://www.firmatest.no/")
-    assert v.level == "L1" and v.site_url == "https://www.firmatest.no/"
+    # audit 6: only a URL actually fetched with 200 is published (never the constructed filed domain)
+    assert v.level == "L1" and v.site_url.startswith("https://firmatest.wixsite.com/firma")

@@ -392,7 +392,7 @@ async def _check_lead(ctx, st: _State, lead: Lead, rec: dict, target: str, *, le
     home = pages[0]
     lead_kind = "registry_website" if lead.registry else lead.kind
     pre = V.verify(pages, rec, target, lead_kind=lead_kind, start_url=lead.start, cache=st.analysis,
-                   shared_contacts=_shared_contacts(ctx))
+                   shared_contacts=_shared_contacts(ctx), contact_filers=_contact_filers(ctx))
     if pre.level in ("blocked", "not_available"):
         return LeadResult(lead, pre.level, f"{lead.start}: {pre.reason}", pre, pages)
     trx = X.target_rx(target)
@@ -438,7 +438,7 @@ async def _check_lead(ctx, st: _State, lead: Lead, rec: dict, target: str, *, le
             found = found or bool(trx.search(p.html))
     shared = _shared_orgnrs(ctx, target, home.final_url)
     v = V.verify(pages, rec, target, lead_kind=lead_kind, start_url=lead.start, shared_orgnrs=shared,
-                 cache=st.analysis, shared_contacts=_shared_contacts(ctx))
+                 cache=st.analysis, shared_contacts=_shared_contacts(ctx), contact_filers=_contact_filers(ctx))
     state = "available" if v.published else v.level
     reason = v.reason if state == "available" else f"{lead.start}: {v.reason}"
     if state == "ambiguous" and st.budget_hit and not found:
@@ -490,6 +490,16 @@ def _shared_contacts(ctx) -> dict | None:
         val = _safe_json(ctx, "registry_shared_contacts")
         shared["website_shared_contacts"] = val if isinstance(val, dict) else None
     return shared.get("website_shared_contacts")
+
+
+def _contact_filers(ctx) -> dict | None:
+    """Declared cache `registry_contact_filers` ({"phones": {last8: [orgnr]}, "emails": {addr: [orgnr]}}; sub-unit
+    contacts count for their parent): a website phone / e-mail is published only if no OTHER org number files it."""
+    shared = ctx.shared if isinstance(getattr(ctx, "shared", None), dict) else {}
+    if "website_contact_filers" not in shared:
+        val = _safe_json(ctx, "registry_contact_filers")
+        shared["website_contact_filers"] = val if isinstance(val, dict) else None
+    return shared.get("website_contact_filers")
 
 
 def _safe_json(ctx, name: str) -> Any:
@@ -651,13 +661,17 @@ def parse_feed(data: bytes, feed_url: str, accept_url) -> list[dict]:
                 dates.setdefault(t, (c.text or "").strip())
         raw_date = next((dates[k] for k in ("pubdate", "published", "date", "issued", "updated", "modified")
                          if dates.get(k)), None)
-        dt = _parse_date(raw_date)
-        if not (title and link and dt) or PLACEHOLDER_TITLE_RX.search(title) or V.PLACEHOLDER_DESC_RX.search(title):
+        junk = _news_junk(title, body) if title else None
+        if junk in ("spam", "demo"):
+            return []                                  # one spam / demo / filler item: the whole feed is dropped
+        if junk == "skip":
             continue
-        if V.PLACEHOLDER_DESC_RX.search(body):
-            continue                                   # theme demo post (lorem / hipster ipsum body)
+        dt = _parse_date(raw_date)
+        if not (title and link and dt):
+            continue
         url = urljoin(feed_url, link)
-        if not url.startswith(("http://", "https://")) or not accept_url(url):
+        if not url.startswith(("http://", "https://")) or not accept_url(url) or \
+                NEWS_EXCLUDE_PATH_RX.search(urlsplit(url).path + ("?" + urlsplit(url).query if urlsplit(url).query else "")):
             continue
         g_host = (urlsplit(guid).hostname or "").lower().removeprefix("www.") if guid.startswith("http") else ""
         u_host = (urlsplit(url).hostname or "").lower().removeprefix("www.")
@@ -669,6 +683,41 @@ def parse_feed(data: bytes, feed_url: str, accept_url) -> list[dict]:
         out.setdefault(url, {"title": title[:300], "url": url, "published": utc_iso(dt), "span": span})
     items = sorted(out.values(), key=lambda it: (it["published"], it["url"]), reverse=True)
     return items[:MAX_NEWS]
+
+
+# audit 6: spam / demo / filler / product links in news - one bad item drops the whole feed
+NEWS_SPAM_RX = re.compile(r"casino|kasino|gambl|betting|\bodds\b|poker|\bslots?\b|spilleautomat|free\s*spins|"
+                          r"velkomstbonus|innskuddsbonus|bonus\s+uten|uten\s+innskudd|no\s+deposit|viagra|cialis|porn|"
+                          r"escort|crypto|krypto|bitcoin|forex|payday|\bloans?\b|forbrukslån|lån\s+uten|smålån|apostas|"
+                          r"togel|judi", re.I)
+NEWS_FILLER_RX = re.compile(r"\b(?:quisque|donec|curabitur|vestibulum|aenean|pellentesque|nullam|vivamus|ipsum|"
+                            r"dolor\s+sit|consectetur|adipiscing)\b|this is a subtitle for your new post|"
+                            r"write about something you know|first,? love yourself|dette er en god tittel|"
+                            r"eksempel på innlegg|sample post|example post|your new post|ditt første innlegg|"
+                            r"welcome to wordpress|velkommen til wordpress", re.I)
+WORD_DIGIT_TITLE_RX = re.compile(r"^[A-Za-zÆØÅæøå]+\d+$")
+NEWS_EXCLUDE_PATH_RX = re.compile(r"/(?:filter|kategori|kategorier|category|categories|tag|tags|collections?|products?|"
+                                  r"produkt|produkter|shop|butikk|page|side|arkiv|archive)(?:/|$)|[?&](?:page|filter)=",
+                                  re.I)
+
+
+DEMO_TITLE_RX = re.compile(r"^\W*(?:hello,? world|hei,? verden|hallo,? verden|sample page|eksempelside|testinnlegg|"
+                           r"test post|test|lorem ipsum)\W*$|^\W*(?:hello,? world|hei,? verden)\b", re.I)
+BODY_DEMO_RX = re.compile(r"lorem ipsum|hipster ipsum|readymade godard|demosites|themeisle", re.I)
+
+
+def _news_junk(title: str, body: str = "") -> str | None:
+    """'spam' | 'demo' when a news item is spam or theme/filler copy (the whole feed is dropped), 'skip' for a UI
+    link title ('Les mer', 'Quick view'), else None."""
+    if NEWS_SPAM_RX.search(title or "") or NEWS_SPAM_RX.search(body or "") or V.SPAM_RX.search(title or ""):
+        return "spam"
+    if NEWS_FILLER_RX.search(title or "") or NEWS_FILLER_RX.search(body or "") or BODY_DEMO_RX.search(body or "") or \
+            V.PLACEHOLDER_DESC_RX.search(title or "") or DEMO_TITLE_RX.search(title or "") or \
+            WORD_DIGIT_TITLE_RX.match((title or "").strip()):
+        return "demo"
+    if PLACEHOLDER_TITLE_RX.search(title or ""):
+        return "skip"
+    return None
 
 
 PLACEHOLDER_TITLE_RX = re.compile(r"^\W*(hello,? world|hei,? verden|hallo,? verden|sample page|eksempelside|"
@@ -745,8 +794,8 @@ def parse_news_page(html_text: str, page_url: str, accept_url, section_path: str
         path = (sp.path or "/").rstrip("/")
         if not path.lower().startswith(base.lower() + "/") or path.lower() == base.lower():
             continue
-        if re.search(r"/(?:page|side|kategori|category|tag|arkiv|archive)(?:/|$)|\?page=", u, re.I):
-            continue
+        if NEWS_EXCLUDE_PATH_RX.search(sp.path + ("?" + sp.query if sp.query else "")):
+            continue                                   # category / filter / collection / product links
         title = re.sub(r"\s+", " ", a.text(separator=" ", strip=True) or a.attributes.get("title") or "").strip()
         hd = a.css_first("h1, h2, h3, h4, h5, h6") or a.css_first('[class*="title"], [class*="heading"], '
                                                                   '[class*="Title"], [class*="Heading"]')
@@ -755,14 +804,21 @@ def parse_news_page(html_text: str, page_url: str, accept_url, section_path: str
             if len(ht) >= 12:
                 title = ht
         title = _LEADING_DATE_RX.sub("", title).strip()
-        if len(title) < 12 or len(title) > 200 or PLACEHOLDER_TITLE_RX.search(title) or \
-                V.PLACEHOLDER_DESC_RX.search(title):
+        junk = _news_junk(title, a.text(separator=" ", strip=True)[:1000])
+        if junk in ("spam", "demo"):
+            return []                                  # one spam / demo / filler card: the whole page is dropped
+        if junk == "skip":
+            continue
+        if len(title) < 12 or len(title) > 200:
             continue
         date = None
         node = a
         for _ in range(4):
             if node is None:
                 break
+            if node is not a and len({(x.attributes.get("href") or "").split("#")[0] for x in node.css("a[href]")
+                                      if (x.attributes.get("href") or "").strip() not in ("", "#")}) > 1:
+                break                                  # a container of several items: its date is another item's
             t = node.css_first("time[datetime]")
             if t is not None:
                 date = _find_date(t.attributes.get("datetime") or "") or date
@@ -771,7 +827,7 @@ def parse_news_page(html_text: str, page_url: str, accept_url, section_path: str
             if date:
                 break
             node = node.parent
-        if u not in out:
+        if u not in out and date:                      # audit 6: undated links are not dated activity
             span = _news_span(html_text, href, title, u, ascii_only)
             if span:
                 out[u] = {"title": title, "url": u, "published": date, "span": span}
@@ -1013,6 +1069,17 @@ def _emit(ctx, company: CompanyResult, rec: dict, st: _State, results: list[Lead
              "L2e": "registry_email_domain_corroborated"}.get(v.level, "registry_website_corroborated")
     method = f"{V.GATE_VERSION}:{v.level}"
     proof_page = v.infos[v.proof["page"]].page
+
+    def _nu(u: str | None) -> tuple[str, str]:
+        sp0 = urlsplit(u or "")
+        return (sp0.hostname or "").lower(), (sp0.path or "/").rstrip("/") or "/"
+
+    ok_pages = [p for p in best.pages if 200 <= p.status < 300 and p.html]
+    if _nu(v.site_url) not in {_nu(p.final_url) for p in ok_pages}:
+        # audit 6: publish only a URL that was actually fetched with HTTP 200 and passed the gate - never construct one
+        pick = home if (home in ok_pages and V.under_base(home.final_url, v.site_url or "", v.subpath, v.exclusive)) \
+            else proof_page
+        v.site_url = pick.final_url.split("#")[0].split("?")[0]
     proof_ev = _ev(proof_page, v.proof["locator"], v.proof["span"], anchor=X.target_rx(company.organisation_number))
     if company.organisation_number not in re.sub(r"\D", "", proof_ev.claim_span or ""):
         # the span must show the org number as printed ('983 47 2583'): a verbatim window around it

@@ -127,7 +127,10 @@ def test_theme_demo_description_title_and_feed_items_dropped():
             b"<item><title>Ny CNC-fres levert til kunde</title><link>https://www.gento.no/ny-cnc-fres/</link>"
             b"<guid>https://www.gento.no/?p=40</guid><pubDate>Mon, 06 Oct 2025 10:00:00 +0000</pubDate>"
             b"<description>Vi har levert en ny fres.</description></item></channel></rss>")
-    items = parse_feed(feed, "https://www.gento.no/feed/", lambda u: True)
+    # audit 6: one demo / filler item drops the whole feed
+    assert parse_feed(feed, "https://www.gento.no/feed/", lambda u: True) == []
+    clean = feed.replace(feed[feed.index(b"<item>"):feed.index(b"</item>") + 7], b"")
+    items = parse_feed(clean, "https://www.gento.no/feed/", lambda u: True)
     assert [it["title"] for it in items] == ["Ny CNC-fres levert til kunde"]
     assert "Ny CNC-fres levert til kunde" in items[0]["span"]
 
@@ -189,7 +192,7 @@ def test_news_card_title_from_title_class_and_span_shows_own_title():
     raw = ('<div><a href="/blogg/kaffereise"><div class="cardContent"><div class="title_eN4rQ textheading3">Kaffereise: '
            'Oppdag Vietnamesisk Kaffe</div><div class="description_YLQ">Oppdag de unike smakene av kaffe!</div></div>'
            '<div class="date">21. mars 2025</div></a><a href="/blogg/iskaffe"><div class="title_x">Slik lager du '
-           'vietnamesisk iskaffe</div></a></div>')
+           'vietnamesisk iskaffe</div><div class="date">5. april 2025</div></a></div>')
     items = parse_news_page(raw, "https://phin.no/blogg/", lambda u: True, "/blogg")
     by = {it["title"]: it for it in items}
     assert set(by) == {"Kaffereise: Oppdag Vietnamesisk Kaffe", "Slik lager du vietnamesisk iskaffe"}

@@ -122,7 +122,8 @@ PLACEHOLDER_DESC_RX = re.compile(r"just another wordpress site|another wordpress
 CAREERS_RX = re.compile(r"(?<![a-zæøå])(karriere|careers?|jobb(?:e)?[- ]hos(?:[- ]oss)?|ledige[- ]stillinger|"
                         r"ledig[- ]stilling|stillinger|stilling|vacanc(?:y|ies)|jobs|rekruttering|join[- ]us|"
                         r"work[- ]with[- ]us)(?![a-zæøå])", re.I)
-NOT_CAREERS_PATH_RX = re.compile(r"/(?:om-oss|om|about(?:-us)?|kontakt(?:-oss)?|contact)/?$", re.I)
+NOT_CAREERS_PATH_RX = re.compile(r"/(?:om-oss|om|about(?:-us)?|kontakt(?:-oss)?|contact)/?$|"
+                                 r"/(?:tjenester|tjeneste|services?|produkter|products?|losninger|løsninger)(?:/|$)", re.I)
 
 
 def _brand_dash_other(d: str, prof: NameProfile) -> bool:
@@ -524,12 +525,27 @@ _GROUP_WORD = (r"(?:Group|GROUP|Gruppen|GRUPPEN|Groupe|Gruppe|konsern\w*|Konsern
 ACQUISITION_RX = re.compile(
     r"\b(?:er\s+blitt|har\s+blitt|nå|er\s+nå|blitt)\s+(?:en\s+)?del\s+av\b|\bkjøpt\s+opp\s+av\b|\bovertatt\s+av\b|"
     r"\bhar\s+slått\s+seg\s+sammen\s+med\b|\bslått\s+sammen\s+med\b|\bfusjonert\s+med\b|\bfusjonerer\s+med\b|"
-    r"\b(?:heleid|eid|eies)\s+av\b|\bsiden\s+(?:driftes|drives|eies)\s+av\b|\bacquired\s+by\b|\bmerged\s+with\b|"
-    r"\bis\s+now\s+part\s+of\b|\b(?<!er\s)(?<!vært\s)en\s+del\s+av\b", re.I)
+    r"\b(?:heleid|helt\s+eid|eid|eies|eiet|eiest)\s+av\b|\b100\s*(?:prosent|%)\s+eie[td]\s+av\b|"
+    r"\b(?:driftes|drives)\s+av\b|\bacquired\s+by\b|\bmerged\s+with\b|\bis\s+now\s+part\s+of\b|\bpart\s+of\b|"
+    r"\bowned\s+by\b|\boperated\s+by\b|\b(?<!vært\s)en\s+del\s+av\b|(?-i:\bDel\s+av\b)", re.I)
+# membership of a chain ("medlem av Norgeshus-kjeden", "stolt medlem av ...")
+CHAIN_MEMBER_RX = re.compile(r"\bmedlem\s+av\b[^.|\n]{0,60}?kjede\w*|\bkjedemedlem\b|\bmedlem\s+i\s+\w*-?kjeden\b|"
+                             r"\bstolt\s+medlem\s+av\b", re.I)
+# "En del av" followed only by markup and a link to another domain (a logo)
+_DEL_AV_LINK_RX = re.compile(r"\b(?:en\s+)?del\s+av\b(?:&nbsp;|&#160;|\s+|<(?!a\b)[^>]{0,400}>){0,30}"
+                             r"<a\b[^>]*?href=[\"']([^\"']+)[\"']", re.I)
 # subjects of "eies av" that are not the company ("Programmet eies av Kommunal- og distriktsdepartementet")
-_NOT_COMPANY_SUBJECTS = {"programmet", "prosjektet", "nettverket", "initiativet", "ordningen", "konseptet", "kurset",
+_NOT_COMPANY_SUBJECTS = {"parkeringsplassen", "parkeringen", "parkeringshuset", "garasjen", "bygget", "bygningen",
+                         "lokalene", "huset", "kantina", "kantinen", "kafeen", "kiosken", "plassen", "parken",
+                         "programmet", "prosjektet", "nettverket", "initiativet", "ordningen", "konseptet", "kurset",
                          "arrangementet", "programmene", "prosjektene", "tiltaket", "satsingen"}
-_NOT_OWNER_OBJECTS = {"norge", "norway", "norden", "europa", "europe", "skandinavia", "scandinavia", "verden", "world",
+_NOT_OWNER_OBJECTS = {"this", "that", "these", "those", "my", "his", "her", "their", "its", "all", "any", "every",
+                      "each", "some", "denne", "dette", "disse", "det", "den", "de", "vi", "du", "alle", "hver",
+                      "noen", "her", "nå", "også", "star", "award", "awards",
+                      "bruker", "brukeren", "kunde", "kunden", "kundene", "selger", "selgeren", "kjøper", "kjøperen",
+                      "leverandøren", "user", "customer", "client", "buyer", "seller", "oppdragsgiver", "medlemmene",
+                      "norges", "nordens", "europas", "verdens",
+                      "norge", "norway", "norden", "europa", "europe", "skandinavia", "scandinavia", "verden", "world",
                       "landet", "byen", "oss", "vår", "vårt", "våre", "deg", "dere", "hverdagen", "livet", "teamet",
                       "familien", "laget", "prosessen", "prosjektet", "løsningen", "oslo", "bergen", "trondheim",
                       "stavanger", "tromsø", "kristiansand", "drammen", "fredrikstad", "the", "a", "an", "our", "your"}
@@ -545,10 +561,32 @@ def _acquisition_phrases(text: str, prof: NameProfile) -> list[str]:
         if not mo:
             continue
         words = (mo.group(1) + mo.group(2)).split()
-        if words[0].lower() in _NOT_OWNER_OBJECTS:
+        if re.sub(r"['’]s$", "", words[0].lower()) in _NOT_OWNER_OBJECTS:
             continue
-        if prof.required and all(token_in(t, " ".join(words)) for t in prof.required):
+        pre = text[max(0, m.start() - 30):m.start()]
+        if re.search(r"owned|operated|eies|eid|eiet", m.group(0), re.I) and \
+                re.search(r"addthis|google|facebook|tracking|sporing|analytics|plugin|tredjepart|third[- ]party|"
+                          r"informasjonskapsel(?:en|er)?\s+(?:fra|levert)", text[max(0, m.start() - 80):m.start()], re.I):
+            continue                                   # a third-party service's owner ('AddThis, owned by ...')
+        if re.search(r"part\s+of", m.group(0), re.I) and \
+                re.search(r"\b(?:a|an|the|big|large|great|important|natural|integral|key|vital|central|core|"
+                          r"major|small|huge|essential|fundamental)\s*$", pre, re.I):
+            continue                                   # 'has become a big part of STG': figurative, not an owner
+        if re.search(r"\btidligere\s*$", pre, re.I):
+            continue                                   # 'eiendom tidligere eiet av Bruker'
+        initials = "".join(w[0] for w in re.findall(r"[A-Za-zÆØÅæøå]+", prof.name or "")
+                           if w.upper() not in X.NO_FORMS).lower()
+        if len(words) == 1 and len(initials) >= 2 and fold(words[0]).strip(".,") == fold(initials):
+            continue                                   # the company's own acronym ('STG' for SYSTEM TECH GROUP AS)
+        chainy = bool(re.search(r"interflora|kjede", " ".join(words), re.I))
+        gw = re.search(r"\b(group|gruppen|gruppe|holding|konsern\w*)\b", " ".join(words), re.I)
+        if gw and not re.search(r"\b" + re.escape(gw.group(1)) + r"\b", prof.name or "", re.I):
+            chainy = True                              # 'Del av Atlas Gruppen' for ATLAS EIENDOM AS: the parent
+        if prof.required and all(token_in(t, " ".join(words)) for t in prof.required) and not chainy:
             continue                                   # the object is this company
+        if re.search(r"(?:levert|utviklet|designet|laget|hostet|produsert)\s+(?:og\s+)?$|nettsiden\s+er\s+(?:levert|utviklet)",
+                     text[max(0, m.start() - 40):m.start()], re.I):
+            continue                                   # web-agency credit ('nettsiden er levert og driftes av X')
         own = set(X.entity_words(prof.name)) if getattr(prof, "name", None) else set(prof.required)
         core = re.sub(r"-?familien$|-?familie$", "", " ".join(words), flags=re.I)
         cw = [w for w in re.findall(r"[a-z0-9]+", fold(core))]
@@ -565,7 +603,29 @@ def _acquisition_phrases(text: str, prof: NameProfile) -> list[str]:
         if person and re.search(r"eies|eid|drives|driftes", m.group(0), re.I):
             continue                                   # "eies og drives av Susanne J Kvalvik" - owners are persons
         out.append(_ws(text[max(0, m.start() - 40):m.end() + 60]))
+    for m in CHAIN_MEMBER_RX.finditer(text or ""):
+        out.append(_ws(text[max(0, m.start() - 40):m.end() + 40]))
     return out[:6]
+
+
+def _acq_object(snippet: str) -> str:
+    """The capitalised object of the first acquisition/ownership phrase in `snippet`."""
+    m = ACQUISITION_RX.search(snippet or "")
+    if not m:
+        return ""
+    mo = re.match(r"\s*[:,\-–]?\s*(?:nå\s+)?([A-ZÆØÅ][\wÆØÅæøå&'.\-]*)", snippet[m.end():])
+    return mo.group(1) if mo else ""
+
+
+def _del_av_links(html: str, page_url: str) -> list[str]:
+    """Registrable domains linked (logo) right after 'En del av' with no visible text in between."""
+    out = []
+    own = X.reg_domain(urlsplit(page_url).hostname or "")
+    for m in _DEL_AV_LINK_RX.finditer(html or ""):
+        d = X.reg_domain(urlsplit(urljoin(page_url, m.group(1))).hostname or "")
+        if d and d != own and d not in out:
+            out.append(d)
+    return out[:3]
 
 
 _COPY_OWNER_RX = re.compile(r"(?:(?:©|&copy;|\([cC]\)|[Cc]opyright|COPYRIGHT)\s*(?:\d{4}\s*(?:[-–]\s*\d{4}\s*)?)?)+"
@@ -622,6 +682,10 @@ _DEF_ENTITY_RX = re.compile(r"(?<![\wÆØÅæøå])([A-ZÆØÅa-zæøå][\wÆØ�
                             r"Inc\.?|LLC|plc|SE)(?![\wÆØÅæøå/])")
 
 
+# '<Hotel> by <Brand>' in a title / og:site_name (not 'powered/made/designed by')
+BY_BRAND_RX = re.compile(r"(?<!powered )(?<!made )(?<!designed )(?<!built )(?<!website )(?<!theme )(?<!web )"
+                         r"\bby\s+([A-ZÆØÅ][\wÆØÅæøå&'.\-]+(?:\s+[A-ZÆØÅ][\wÆØÅæøå&'.\-]+){0,3})\s*(?:$|[|–—\-:])")
+CHAIN_WORDS = ("hotell", "hotel", "senter", "butikk", "motell", "camping")
 # Swedish / Danish interface words that a Norwegian company's own site does not use ("Sök i nyheter", "Läs mer")
 FOREIGN_UI_RX = re.compile(r"(?<![\wÆØÅæøåÄÖäö])(?:Sök|SÖK|Läs(?:\s+mer)?|LÄS|Kontakta\s+oss|Startsida|Varukorg|Kassan|"
                            r"Logga\s+in|Integritetspolicy|Om\s+företaget|Förbrukning|Våra\s+\w+|Søg|Læs(?:\s+mere?)?|"
@@ -839,7 +903,9 @@ def analyse_page(page: Page, target: str, name: str = "", idx: int = 0) -> PageI
                                      _ws(a.text(separator=" "))) for a in tree.css('a[href^="mailto:"]')],
                     ownership=_ownership_phrases(text), country_list=_country_office_list(text),
                     all_foreign_regs=X.foreign_registrations(text), vis_others=sorted(vis_others),
-                    third_party_orgnrs=sorted(third_party), acquisitions=_acquisition_phrases(vis, prof_p),
+                    third_party_orgnrs=sorted(third_party),
+                    acquisitions=_acquisition_phrases(vis, prof_p) + ["En del av <" + d + ">"
+                                                                      for d in _del_av_links(html, page.final_url)],
                     formless_owners=_formless_owners(vis),
                     template=sorted({_ws(m.group(0))[:40] for m in TEMPLATE_RX.finditer(vis)}),
                     we_defs=_we_definitions(vis))
@@ -1122,6 +1188,7 @@ class Verdict:
     shared_reg_phones: list[str] = field(default_factory=list) # registry phones also filed by other org numbers
     shared_contacts: dict | None = field(default=None, repr=False, compare=False)   # registry_shared_contacts
     places: frozenset = field(default=frozenset(), repr=False, compare=False)     # folded place / region tokens
+    contact_filers: dict | None = field(default=None, repr=False, compare=False)  # cache registry_contact_filers
     site_links: list[str] = field(default_factory=list)        # "<company> nettside" links to another domain
     other_entities: list[str] = field(default_factory=list)   # sibling / foreign legal entities named on the site
     foreign_regs: list[str] = field(default_factory=list)
@@ -1197,6 +1264,19 @@ def _words_seq_in(words: list[str], text: str) -> bool:
     return False
 
 
+def _abbrev_of(label: str, words: list[str]) -> bool:
+    """'eikel' for EIKEFJORD ELEKTRO: the label is the name words' prefixes (>= 2 chars each), in order."""
+    ws = [squash(w) for w in words if squash(w)]
+    if len(ws) < 2 or not label:
+        return False
+
+    def rec_(lab: str, k: int) -> bool:
+        if k == len(ws):
+            return lab == ""
+        return any(lab.startswith(ws[k][:n]) and rec_(lab[n:], k + 1) for n in range(min(len(ws[k]), len(lab)), 1, -1))
+    return rec_(label, 0)
+
+
 def _edit_le2(a: str, b: str) -> bool:
     """Levenshtein distance <= 2 ('aktivepeople' ~ 'activepeople')."""
     if abs(len(a) - len(b)) > 2:
@@ -1236,11 +1316,11 @@ def _controller_conflict(ok: list["PageInfo"], prof: NameProfile, own_words: lis
 
 def _group_signals(ok: list["PageInfo"], v: "Verdict", prof: NameProfile, own_words: list[str],
                    own_core: set[str], own_foreign: bool, form: str | None, siblings: list[str],
-                   is_target=None) -> list[str]:
+                   is_target=None, places: set[str] | frozenset[str] = frozenset(),
+                   reg_email_dom: str = "") -> list[str]:
     """Foreign-parent / group / chain signals over ALL fetched pages (policy C)."""
     is_target = is_target or X.is_target_entity
-    if form == "NUF":                       # a Norwegian branch is the foreign company itself
-        return []
+    # (audit 6) group signals apply to NUFs too: a branch's site that shows the head office's group is ambiguous
     sig: list[str] = []
     label = squash((v.domain or "").split(".")[0])
     brand_keys = {k for k in own_core if len(k) >= 3} | ({label} if len(label) >= 3 else set())
@@ -1270,7 +1350,23 @@ def _group_signals(ok: list["PageInfo"], v: "Verdict", prof: NameProfile, own_wo
             sig.append("ownership statement: " + ph)
         if i.country_list:
             sig.append("list of country offices")
-        sig += ["acquisition/ownership statement: " + a for a in i.acquisitions]
+        for a in i.acquisitions:
+            if a.startswith("En del av <"):
+                d = a[len("En del av <"):-1]
+                req = [squash(t) for t in prof.required if not t.isdigit() and len(squash(t)) >= 2]
+                if req and all(t in squash(d.split(".")[0]) for t in req):
+                    continue                    # a link to the company's own other domain
+            else:
+                ob = fold(re.sub(r"['’]s$", "", _acq_object(a)))
+                mo2 = ACQUISITION_RX.search(a)
+                tail = a[mo2.end():] if mo2 else ""
+                owner_verb = bool(mo2 and re.search(r"eid|eies|eiet|heleid|driftes|drives|owned|operated",
+                                                    mo2.group(0), re.I))
+                single = bool(re.match(r"\s*[:,\-–]?\s*[A-ZÆØÅ][\wÆØÅæøå'’]*(?:\s+(?![A-ZÆØÅ])|[.,;:!?]|$)", tail))
+                municipal = bool(re.match(r"\s*\S+\s+(?:kommune|fylkeskommune|kommunes|fylke)\b", tail, re.I))
+                if ob and (ob in places or ob.rstrip("s") in places) and (single or municipal) and not owner_verb:
+                    continue                    # 'en del av Arendals næringsliv': a place, not an owner
+            sig.append("acquisition/ownership statement: " + a)
         dist = _distinctive_tokens(prof)
         own_sq = squash(" ".join(own_words))
         for fo in i.formless_owners:
@@ -1300,6 +1396,45 @@ def _group_signals(ok: list["PageInfo"], v: "Verdict", prof: NameProfile, own_wo
             if not is_target(o, own_words, own_foreign) and not _entity_matches(o["name"], prof) and \
                     not PROVIDER_RX.search(o["key"]):
                 sig.append("owner statement names " + o["name"])
+    own_toks = {fold(t) for t in prof.core}
+    for i in ok[:1]:
+        for t0 in (i.title, i.meta.get("og:site_name", "")):
+            mc = re.search(r"interflora|\w*kjeden\b", t0 or "", re.I)
+            if mc and fold(mc.group(0)) not in own_toks:
+                sig.append(f"chain-branded site ({_ws(t0)[:60]})")
+                break
+    for i in ok:
+        for t0 in (i.title, i.meta.get("og:site_name", "")):
+            mb = BY_BRAND_RX.search(t0 or "")
+            if mb and not any(fold(w) in own_toks for w in re.findall(r"[\wÆØÅæøå]+", mb.group(1))):
+                sig.append(f"site branded '{_ws(mb.group(0))}' (a chain brand not in the legal name)")
+                break
+    site_words = {w for w in CHAIN_WORDS if w in squash((v.domain or "").split(".")[0])} | \
+        {w for w in CHAIN_WORDS for i in ok[:1] if re.search(r"(?<![a-z])" + w + r"(?![a-z])", fold(i.title or ""))}
+    if site_words:
+        doms = set()
+        for i in ok:
+            for u, _t in i.links:
+                d = X.reg_domain(urlsplit(u).hostname or "")
+                if d and d != v.domain and any(w in squash(d.split(".")[0]) for w in site_words) and \
+                        not any(squash(t) in squash(d) for t in prof.required if len(t) >= 4 and fold(t) not in places):
+                    doms.add(d)
+        if len(doms) >= 2:
+            sig.append("links to sister sites: " + ", ".join(sorted(doms)[:3]))
+    mail_doms: dict[str, int] = {}
+    for i in ok:
+        for e0 in {a for a, _t in i.mailto_anchors} | {x.lower() for x in X.EMAIL_RX.findall(i.text)}:
+            d = X.reg_domain(e0.split("@", 1)[-1]) if "@" in e0 else ""
+            if d and d not in X.FREEMAIL and d not in AUTHORITY_MAIL_DOMAINS and d not in INVOICE_MAIL_DOMAINS:
+                mail_doms[d] = mail_doms.get(d, 0) + 1
+    mail_doms = {d: n for d, n in mail_doms.items() if re.fullmatch(r"[a-z0-9][a-z0-9.\-]*\.[a-z]{2,}", d)}
+    if mail_doms:
+        top, n_top = max(mail_doms.items(), key=lambda kv: kv[1])
+        if top != v.domain and top != reg_email_dom and n_top >= 2 and n_top > mail_doms.get(v.domain, 0) and \
+                not _abbrev_of(squash(top.split(".")[0]), own_words) and \
+                not any(len(squash(t)) >= 3 and squash(t) in squash(top.split(".")[0]) for t in prof.required
+                        if not t.isdigit() and fold(t) not in places):
+            sig.append(f"most mailboxes are on another domain (@{top})")
     ui = sorted({_ws(m0.group(0)).lower() for i in ok for m0 in FOREIGN_UI_RX.finditer(i.text)})
     if len(ui) >= 2:
         sig.append("foreign-language interface strings: " + ", ".join(ui[:4]))
@@ -1327,7 +1462,8 @@ def _group_signals(ok: list["PageInfo"], v: "Verdict", prof: NameProfile, own_wo
 
 def verify(pages: list[Page], rec: dict | None, target: str, *, lead_kind: str, start_url: str,
            shared_orgnrs: Iterable[str] = (), name: str | None = None, form: str | None = None,
-           cache: dict | None = None, shared_contacts: dict | None = None) -> Verdict:
+           cache: dict | None = None, shared_contacts: dict | None = None,
+           contact_filers: dict | None = None) -> Verdict:
     """Identity verdict for the pages of one lead (pages[0] = home page after redirects)."""
     rec = rec or {}
     name = name if name is not None else (rec.get("navn") or "")
@@ -1381,8 +1517,10 @@ def verify(pages: list[Page], rec: dict | None, target: str, *, lead_kind: str, 
     st_host = (urlsplit(start_url).hostname or "").lower() if start_url else ""
     if (v.domain in HOSTING_DOMAINS or v.host.endswith("sites.google.com")) and st_host and \
             X.reg_domain(st_host) != v.domain and X.reg_domain(st_host) not in HOSTING_DOMAINS:
-        # filed domain redirects to a site-builder host: the company's address is the filed domain
-        v.site_url, v.subpath, v.hosted = f"https://{st_host}/", False, True
+        # filed domain / lead redirects to a site-builder host: publish only the page actually fetched (audit 6:
+        # never construct the filed domain's URL - nfmaskin.no was an 'Index of /' listing)
+        v.site_url, v.subpath = site_base(home.final_url, home.final_url)
+        v.hosted = True
     shared = sorted(set(shared_orgnrs) - {target})
     v.shared_with = shared
     v.exclusive = not v.subpath and not shared
@@ -1426,10 +1564,10 @@ def verify(pages: list[Page], rec: dict | None, target: str, *, lead_kind: str, 
             if not _is_target_alias(e, own_words, own_foreign) and any(k in e["key"] for k in dist_keys):
                 seen_ent.setdefault(e["key"] + ("|f" if e["foreign"] else ""), _trim_entity(e["name"], dist_keys))
         for e in i.owner_entities:                 # foreign entities: where a site states its owner
-            if not _is_target_alias(e, own_words, own_foreign) and e["foreign"] and form != "NUF":
+            if not _is_target_alias(e, own_words, own_foreign) and e["foreign"]:
                 seen_ent.setdefault(e["key"] + "|f", e["name"])
     v.other_entities = sorted(set(seen_ent.values()))[:10]
-    v.foreign_regs = [] if form == "NUF" else sorted({r for i in ok for r in i.foreign_regs})[:5]
+    v.foreign_regs = sorted({r for i in ok for r in i.foreign_regs})[:5]
     siblings = sorted({n for k, n in seen_ent.items() if any(d in k.split("|")[0] for d in dist_keys)})
     exact_named = any(i.exact_named for i in ok)
     st_dom0 = X.reg_domain(urlsplit(start_url).hostname or "") if start_url else ""
@@ -1492,9 +1630,12 @@ def verify(pages: list[Page], rec: dict | None, target: str, *, lead_kind: str, 
         X.reg_domain(registry_email(rec).split("@", 1)[1]) == v.domain
     v.shared_reg_phones = [p for p in registry_phones(rec) if _shared(shared_contacts, "phones", p, target)]
     v.shared_contacts = shared_contacts
+    v.contact_filers = contact_filers
     # ---- C: foreign / group / chain signals on all fetched pages
     v.group_signals = _group_signals(ok, v, prof, own_words, own_core, own_foreign, form, siblings,
-                                     is_target=_is_target_alias)
+                                     is_target=_is_target_alias, places=places | REGION_WORDS,
+                                     reg_email_dom=X.reg_domain(registry_email(rec).split("@", 1)[1])
+                                     if "@" in registry_email(rec) else "")
     # ---- P: chain / franchise domains and group co-filers (registry filings of the site's domain / host)
     v.places = frozenset(places)
     if v.domain and v.domain not in HOSTING_DOMAINS and not v.hosted:
@@ -2014,7 +2155,7 @@ def social_handle_ok(handle: str, prof: NameProfile, label: str | None, form: st
     lab = label if (label and len(label) >= 3 and any(t in label or label in t for t in dist if len(t) >= 3)) else None
     if lab:
         brands.add(lab)
-    if form != "NUF":
+    if True:                                # NUF too: 'axlabab' is the head office's profile
         for suf in FOREIGN_GLUED_FORMS:
             if h2.endswith(suf) and h2[:-len(suf)] in brands | {squash(t) for t in prof.core}:
                 return False
@@ -2345,7 +2486,7 @@ def collect_facts(v: Verdict, rec: dict | None) -> list[Fact]:
         local = e.split("@", 1)[0]
         if kind != "role":
             continue                                      # policy L: generic role mailboxes only
-        if REGION_LOCAL_RX.search(local) and v.form != "NUF":
+        if REGION_LOCAL_RX.search(local):
             continue                                      # info-uk@, sales-au@: a foreign group entity's mailbox
         host_e = e.split("@", 1)[1]
         dom = X.reg_domain(host_e)
@@ -2513,7 +2654,7 @@ def collect_facts(v: Verdict, rec: dict | None) -> list[Fact]:
                 if not social_matches(can[0], prof, label if not restricted else None) or \
                         not social_handle_ok(can[1], prof, label if not restricted else None, v.form, v.places):
                     continue
-                if v.form != "NUF" and (FOREIGN_HANDLE_RX.search(squash(can[1])) or
+                if (FOREIGN_HANDLE_RX.search(squash(can[1])) or
                                         (FOREIGN_FORM_HANDLE_RX.search(unquote(can[1])) and
                                          not (v.form == "SA" and unquote(can[1]).lower().endswith("sa")))):
                     continue
@@ -2535,8 +2676,8 @@ def collect_facts(v: Verdict, rec: dict | None) -> list[Fact]:
                     if can and can[0] not in so_seen and not X.PLATFORM_SOCIAL_RX.search(can[0]) and \
                             social_matches(can[0], prof, label) and \
                             social_handle_ok(can[1], prof, label, v.form, v.places) and \
-                            (v.form == "NUF" or not (FOREIGN_HANDLE_RX.search(squash(can[1])) or
-                                                     FOREIGN_FORM_HANDLE_RX.search(unquote(can[1])))):
+                            not (FOREIGN_HANDLE_RX.search(squash(can[1])) or
+                                 FOREIGN_FORM_HANDLE_RX.search(unquote(can[1]))):
                         so_seen.add(can[0])
                         facts.append(Fact("social_profile", {"platform": platform, "url": can[0], "handle": can[1]},
                                           i.idx, 'script[type="application/ld+json"] sameAs',
@@ -2558,6 +2699,9 @@ def collect_facts(v: Verdict, rec: dict | None) -> list[Fact]:
                 if X.SKIP_EXT_RX.search(sp.path) or sp.path in ("", "/") or NOT_CAREERS_PATH_RX.search(sp.path):
                     continue
                 short_txt = txt if len(txt) <= 40 else ""
+                if re.search(r"\b(?:mer\s+om|les\s+mer|read\s+more|about)\b", short_txt, re.I) and \
+                        not CAREERS_RX.search(unquote(sp.path)):
+                    continue                           # 'Mer om rekruttering' -> a service page, not careers
                 hay = unquote(sp.path) + " " + short_txt
                 if CAREERS_RX.search(hay):
                     score = (0 if CAREERS_RX.search(short_txt) else 1, sp.path.count("/"), bool(sp.query), len(u), u)
@@ -2567,9 +2711,164 @@ def collect_facts(v: Verdict, rec: dict | None) -> list[Fact]:
             _, u, i, txt = best
             href_span = raw_window(i.page.html, urlsplit(u).path or u, 40, 80) or f"{txt} -> {u}"
             facts.append(Fact("careers_page", u, i.idx, "a[href]", href_span))
+    facts = blunt_fact_filters(facts, v, rec, prof)
     facts = anchor_spans(facts, v)
     facts.sort(key=Fact.sort_key)
     return facts
+
+
+# --------------------------------------------------------------------------- audit 6: blunt fact rules
+OTHER_OFFICE_RX = re.compile(r"legesenter\w*|legekontor\w*|fastleg\w*|legevakt\w*|butikk\w*|verksted\w*|"
+                             r"avdeling\w*|filial\w*|depot\w*", re.I)
+CMS_DEFAULT_RX = re.compile(r"flat-file cms|open source flat-file|easy to use, yet powerful|^home \| grav$|\| grav$|"
+                            r"this is a page excerpt|page excerpt|classic shop|\bdemo\b|starter\s+(?:site|theme|template|kit)|"
+                            r"\benfold\b|\bflatsome\b|\bwoocommerce\b|\bgrav\b", re.I)
+_EMAIL_IN_TEXT_RX = re.compile(r"[\w.+-]+@[\w-]+\.[\w.-]+")
+_PHONE_IN_TEXT_RX = re.compile(r"(?<!\d)(?:\+47[\s.]?)?(?:\d[\s.]?){8}(?!\d)")
+_HASHTAG_RX = re.compile(r"#([A-Za-zÆØÅæøå][\wÆØÅæøå]{2,})")
+_FORM_ENTITY_RX = re.compile(r"(?<![\wÆØÅæøå&])((?:[A-ZÆØÅ0-9][\wÆØÅæøå&.\-]*\s+(?:(?:&|og|and)\s+)?){1,5}"
+                             r"(?:AS|ASA|SA|DA|ANS))(?![\wÆØÅæøå])")
+
+
+def _filers_other(filers: dict | None, kind: str, key: str, target: str) -> list[str]:
+    if not filers or not key:
+        return []
+    lst = (filers.get(kind) or {}).get(key) or []
+    return sorted(set(map(str, lst)) - {target})
+
+
+def _names_other_entity(text: str, prof: NameProfile, own_words: list[str]) -> str | None:
+    """'<Name> AS/ASA/SA/DA/ANS' in `text` that is not the company itself."""
+    own_j = "".join(own_words)
+    initials = "".join(w[0] for w in own_words if w)
+    for m in _FORM_ENTITY_RX.finditer(text or ""):
+        nm = _ws(m.group(1))
+        words = X.entity_words(nm)
+        wj = "".join(words)
+        acro = len(words) == 1 and len(initials) >= 2 and len(words[0]) <= len(initials) + 2 and \
+            words[0].startswith(initials) and nm.split()[0].isupper()
+        if not words or (wj and wj in own_j) or acro:
+            continue                                   # part of the company's own name / its acronym ('ÅBF AS')
+        if not X.is_target_entity({"words": words, "foreign": False, "name": nm, "key": squash(nm)},
+                                  own_words, False):
+            body = [w for w in nm.split()[:-1]]
+            while body and not any(c.isupper() for c in body[0][:1]):
+                body = body[1:]
+            if body:
+                return nm
+    return None
+
+
+def _desc_free_text(page: Page) -> tuple[str, set[str], set[str]]:
+    """Body text, tel: and mailto: hrefs of a page with description / excerpt elements removed."""
+    t = LexborHTMLParser(page.html or "")
+    for sel in ("script", "style", "noscript", "template", "svg", '[class*="excerpt"]', '[itemprop="description"]',
+                '[class*="Excerpt"]', '[class*="product-description"]', '[class*="item-description"]'):
+        for n in t.css(sel):
+            n.decompose()
+    tels = {re.sub(r"\D", "", (a.attributes.get("href") or ""))[-8:] for a in t.css('a[href^="tel:"]')}
+    mails = {unquote((a.attributes.get("href") or "")[7:].split("?")[0]).strip().lower() for a in t.css('a[href^="mailto:"]')}
+    body = t.body or t.root
+    return re.sub(r"\s+", " ", body.text(separator=" ") if body else ""), tels, mails
+
+
+def _street_key(line: str) -> tuple[str, str]:
+    """('myntgata', '3') from 'Myntgata 3' / 'Kinoveien 3 A' -> ('kinoveien', '3a')."""
+    m = re.match(r"\s*(.*?)\s+(\d{1,4})\s*([A-Za-z])?\b", line or "")
+    if not m:
+        return fold((line or "").split()[0]).strip(",.") if (line or "").split() else "", ""
+    name = squash(m.group(1))
+    return name, m.group(2) + (m.group(3) or "").lower()
+
+
+def _address_matches_registry(value: str, rec: dict) -> bool:
+    """Same postcode, street name and house number as the registry business or postal address."""
+    m = re.search(r"(?<!\d)(\d{4})(?!\d)\s+\S", value or "")
+    if not m:
+        return False
+    street = (value or "").split(",")[0]
+    sk = _street_key(street)
+    for k in ("forretningsadresse", "postadresse"):
+        a = rec.get(k) or {}
+        lines = a.get("adresse") or []
+        if not lines or a.get("postnummer") != m.group(1):
+            continue
+        for ln in lines[:2]:
+            rk = _street_key(str(ln))
+            if rk[0] and rk == sk:
+                return True
+    return False
+
+
+def blunt_fact_filters(facts: list["Fact"], v: Verdict, rec: dict, prof: NameProfile) -> list["Fact"]:
+    """Audit-6 blunt rules: contacts filed by no other organisation number, registry-equal addresses only, no CMS /
+    theme defaults, no descriptions or titles with contacts, other entities, chains or other companies' hashtags."""
+    target = v.target
+    own_words = X.entity_words(rec.get("navn") or prof.name)
+    nrx = X.legal_name_rx(rec.get("navn") or prof.name)
+    free: dict[int, tuple[str, set[str], set[str]]] = {}
+
+    def free_of(idx: int):
+        if idx not in free:
+            free[idx] = _desc_free_text(v.infos[idx].page)
+        return free[idx]
+
+    out = []
+    for f in facts:
+        val = f.value
+        if f.field == "contact_phone":
+            p8 = re.sub(r"\D", "", str(val))[-8:]
+            if _filers_other(v.contact_filers, "phones", p8, target) or \
+                    _filers_other(v.shared_contacts, "phones", p8, target):
+                continue                               # filed by another organisation number
+            txt, tels, _m = free_of(f.page)
+            occ = [m0 for m0 in re.finditer(r"(?<!\d)" + r"[\s.\-\u00a0]?".join(p8) + r"(?!\d)", txt)]
+            if not occ and p8 not in tels:
+                continue                               # only inside a description / excerpt
+            def _other_office(m0) -> bool:
+                win = txt[max(0, m0.start() - 90):m0.start()]
+                win = re.split(r"[.!?]\s|\n|\s\|\s", win)[-1]          # same sentence as the number
+                hits = [w0.group(0) for w0 in OTHER_OFFICE_RX.finditer(win)
+                        if not any(fold(w0.group(0)).startswith(fold(t)[:6]) for t in own_words if len(t) >= 5)]
+                return bool(hits) and not (nrx and nrx.search(win))
+            if any(_other_office(m0) for m0 in occ):
+                continue                               # labelled as another office / service (legesenteret, butikk)
+        elif f.field == "contact_email":
+            e = str(val).lower()
+            if _filers_other(v.contact_filers, "emails", e, target):
+                continue
+            txt, _t, mails = free_of(f.page)
+            if e not in txt.lower() and e not in mails and "cfemail" not in (f.locator or "") and \
+                    "reversed" not in (f.locator or ""):
+                continue                               # only inside a description / excerpt
+        elif f.field == "website_address":
+            if not _address_matches_registry(str(val), rec):
+                continue                               # policy: registry-equal business / postal address only
+            if (v.form or "") in ("SAM", "ESEK", "BRL", "BBL"):
+                continue                               # sameie / borettslag sites show the manager's address
+        elif f.field in ("website_description", "website_title", "brand_name"):
+            t = str(val)
+            if PLACEHOLDER_DESC_RX.search(t) or CMS_DEFAULT_RX.search(t) or DESC_CHAIN_RX.search(t):
+                continue
+            if f.field == "website_description" and (_EMAIL_IN_TEXT_RX.search(t) or _PHONE_IN_TEXT_RX.search(t)):
+                continue
+            if _names_other_entity(t, prof, own_words):
+                continue
+            tags = [h for h in _HASHTAG_RX.findall(t) if not any(token_in(tk, h) for tk in prof.required)]
+            if tags:
+                continue
+            if f.field == "brand_name":
+                mb = re.search(r"\s+by\s+\S.*$", t, re.I)
+                if mb and all(fold(w) in {fold(x) for x in own_words} for w in re.findall(r"[\wÆØÅæøå]+", mb.group(0))
+                              if fold(w) != "by"):
+                    mb = None                          # 'ZEN by Lisa' is the registered name itself
+                if mb:
+                    t2 = t[:mb.start()].strip(" -–|")
+                    if not t2 or not name_matches(t2, prof):
+                        continue
+                    f.value = t2
+        out.append(f)
+    return out
 
 
 def _norm_span(sp: str) -> str:

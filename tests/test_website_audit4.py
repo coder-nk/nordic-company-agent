@@ -200,7 +200,8 @@ def test_non_utf8_page_gets_ascii_only_spans():
                " aria-label='Følg oss på Facebook'>f</a></footer>",
                "<meta name='description' content='I over 50 år har Kai Hansen vært din partner for trykksaker.'>")
     page = V.Page("home", "https://www.kai-hansen.no/", "https://www.kai-hansen.no/", 200, html, "sha", "t", utf8=False)
-    rec = {"navn": "KAI HANSEN AS", "organisasjonsform": {"kode": "AS"}, "telefon": "51 90 66 00"}
+    rec = {"navn": "KAI HANSEN AS", "organisasjonsform": {"kode": "AS"}, "telefon": "51 90 66 00",
+           "forretningsadresse": {"adresse": ["Kontorveien 12"], "postnummer": "4033", "poststed": "STAVANGER"}}
     v, facts = run([page], rec, "940036437")
     assert v.level == "L1" and facts
     assert all(f.span.isascii() and f.span in html and V._span_has(f, f.span) for f in facts)
