@@ -1,0 +1,676 @@
+{
+  "run_id": "smoke-100",
+  "started_at": "2026-10-14T00:00:39Z",
+  "completed_at": "2026-10-14T00:04:18Z",
+  "agent": {
+    "name": "nordic-company-agent",
+    "version": "1.0.0",
+    "llm": null,
+    "paid_apis": []
+  },
+  "expected_count": 100,
+  "emitted_envelopes": 100,
+  "invalid_inputs": [],
+  "duplicate_inputs_dropped": [],
+  "validation": {
+    "passed": true,
+    "checks": {
+      "exact_expected_count": true,
+      "same_order_as_input": true,
+      "unique_organisation_numbers": true,
+      "all_terminal_status": true,
+      "every_available_claim_has_evidence": true,
+      "no_dangling_evidence_ids": true,
+      "evidence_has_source_and_time": true,
+      "missing_values_never_encoded": true,
+      "financial_claims_have_period": true,
+      "no_invalid_availability": true
+    },
+    "counts": {
+      "claims_without_evidence": 0,
+      "dangling_evidence_ids": 0,
+      "evidence_incomplete": 0,
+      "non_null_missing_values": 0,
+      "financial_without_period": 0
+    },
+    "problems": []
+  },
+  "identity": {
+    "exact": 100
+  },
+  "terminal_status": {
+    "completed": 100
+  },
+  "operations": {
+    "requests": 778,
+    "request_limit": 2000,
+    "requests_by_source": {
+      "registry": 1,
+      "gleif": 3,
+      "wikidata": 1,
+      "registry_feed": 2,
+      "accounts": 100,
+      "account_copies": 100,
+      "subunits": 100,
+      "roles": 100,
+      "website": 64,
+      "group": 5,
+      "jobs": 3,
+      "authorisations": 196,
+      "state_aid": 103
+    },
+    "requests_by_host_top25": {
+      "data.brreg.no": 604,
+      "stottetiltak-registerinfo-api.app.brreg.no": 103,
+      "peakservices.no": 5,
+      "www.norskgjenvinning.no": 5,
+      "www.renvar.no": 4,
+      "automasjons-service.no": 4,
+      "vestbo.no": 4,
+      "doxa.nu": 4,
+      "api.gleif.org": 3,
+      "swerock.no": 3,
+      "www.xn--v-konomi-64a.no": 3,
+      "hoisethutleie.no": 3,
+      "harpefossbygg.no": 3,
+      "www.ektetreningsglede.no": 3,
+      "bate.no": 3,
+      "peabasfalt.no": 3,
+      "pam-stilling-feed.nav.no": 3,
+      "www.automasjons-service.no": 2,
+      "www.vestbo.no": 2,
+      "www.litleremat.no": 2,
+      "www.bate.no": 2,
+      "www.bjorback.no": 2,
+      "www.doxa.nu": 2,
+      "www.peabasfalt.no": 2,
+      "bylofoten.no": 2
+    },
+    "batch_module_requests": {
+      "registry": 1,
+      "wikidata": 1,
+      "gleif": 3,
+      "registry_feed": 2,
+      "jobs": 3
+    },
+    "per_company_requests_p50": 7,
+    "per_company_requests_p95": 12,
+    "p50_ms": 31314,
+    "p95_ms": 84197,
+    "wall_clock_s": 220.6,
+    "time_budget_s": 2400,
+    "module_runtime_ms": {
+      "registry": 3441,
+      "registry_feed": 2479,
+      "gleif": 2479,
+      "wikidata": 2479,
+      "accounts": 94187,
+      "subunits": 16893,
+      "roles": 16893,
+      "website": 10121,
+      "group": 1625,
+      "jobs": 5313,
+      "public_records": 5313,
+      "authorisations": 79967,
+      "state_aid": 79967,
+      "account_copies": 79967
+    },
+    "third_party_cost_usd": 0.0,
+    "llm": null,
+    "http_errors": 0
+  },
+  "planner": {
+    "reservations": {
+      "registry": 0,
+      "batch_external": 44,
+      "accounts": 100,
+      "website_primary": 45,
+      "roles": 100,
+      "subunits": 100,
+      "group": 5,
+      "website_secondary": 30,
+      "discovery": 255,
+      "extras": 200
+    },
+    "spent": {
+      "registry": 1,
+      "batch_external": 9,
+      "accounts": 100,
+      "website_primary": 51,
+      "roles": 100,
+      "subunits": 100,
+      "group": 5,
+      "website_secondary": 13,
+      "discovery": 0,
+      "extras": 399
+    },
+    "finished": [
+      "accounts",
+      "batch_external",
+      "discovery",
+      "extras",
+      "group",
+      "registry",
+      "roles",
+      "subunits",
+      "website_primary",
+      "website_secondary"
+    ]
+  },
+  "module_states": {
+    "account_copies": {
+      "available": 100
+    },
+    "accounts": {
+      "available": 100
+    },
+    "authorisations": {
+      "available": 94,
+      "not_applicable": 2,
+      "not_available": 4
+    },
+    "gleif": {
+      "not_available": 88,
+      "available": 12
+    },
+    "group": {
+      "not_available": 95,
+      "available": 5
+    },
+    "jobs": {
+      "not_available": 99,
+      "available": 1
+    },
+    "public_records": {
+      "not_available": 97,
+      "available": 3
+    },
+    "registry": {
+      "available": 100
+    },
+    "registry_feed": {
+      "available": 100
+    },
+    "roles": {
+      "available": 100
+    },
+    "state_aid": {
+      "not_available": 86,
+      "available": 14
+    },
+    "subunits": {
+      "available": 73,
+      "not_available": 27
+    },
+    "website": {
+      "not_available": 85,
+      "ambiguous": 9,
+      "available": 5,
+      "blocked": 1
+    },
+    "wikidata": {
+      "not_available": 98,
+      "available": 2
+    }
+  },
+  "field_availability": {
+    "accountant": {
+      "available": 72
+    },
+    "accounts_currency": {
+      "available": 280
+    },
+    "accounts_filing_years": {
+      "available": 100
+    },
+    "accounts_period": {
+      "available": 280
+    },
+    "active_job_count": {
+      "available": 100
+    },
+    "activity": {
+      "available": 100
+    },
+    "annual_report_copy": {
+      "available": 425
+    },
+    "audit_exemption": {
+      "available": 55
+    },
+    "auditor": {
+      "available": 44
+    },
+    "board_member": {
+      "available": 102
+    },
+    "brand_name": {
+      "available": 2
+    },
+    "business_address": {
+      "available": 100
+    },
+    "business_manager": {
+      "available": 4
+    },
+    "business_register_registration": {
+      "available": 100
+    },
+    "cash_and_bank": {
+      "available": 264,
+      "ambiguous": 3
+    },
+    "ceo": {
+      "available": 67,
+      "not_available": 28,
+      "not_applicable": 5
+    },
+    "chair": {
+      "available": 99,
+      "not_available": 1
+    },
+    "contact_email": {
+      "available": 3
+    },
+    "contact_phone": {
+      "available": 2
+    },
+    "country": {
+      "available": 100
+    },
+    "county": {
+      "available": 99
+    },
+    "current_assets": {
+      "available": 277,
+      "ambiguous": 3
+    },
+    "current_liabilities": {
+      "available": 260,
+      "ambiguous": 2
+    },
+    "deputy_board_member": {
+      "available": 17
+    },
+    "employees": {
+      "available": 41,
+      "not_available": 59
+    },
+    "encyclopedia_entry": {
+      "available": 1
+    },
+    "equity": {
+      "available": 277,
+      "ambiguous": 3
+    },
+    "equity_ratio": {
+      "available": 95
+    },
+    "financial_expenses": {
+      "available": 228
+    },
+    "financial_income": {
+      "available": 229
+    },
+    "fixed_assets": {
+      "available": 271,
+      "ambiguous": 3
+    },
+    "food_inspection": {
+      "not_available": 99,
+      "available": 10
+    },
+    "former_name": {
+      "available": 35
+    },
+    "foundation_register_registration": {
+      "available": 100
+    },
+    "founding_date": {
+      "available": 99
+    },
+    "goodwill": {
+      "available": 6
+    },
+    "group_membership": {
+      "available": 100
+    },
+    "group_subsidiary": {
+      "available": 9
+    },
+    "hiring_status": {
+      "available": 100
+    },
+    "industry": {
+      "available": 89
+    },
+    "inventories": {
+      "available": 73
+    },
+    "job_posting": {
+      "not_available": 99,
+      "available": 2
+    },
+    "language_form": {
+      "available": 100
+    },
+    "latest_submitted_accounts_year": {
+      "available": 100
+    },
+    "legal_form": {
+      "available": 100
+    },
+    "legal_name": {
+      "available": 100
+    },
+    "lei": {
+      "not_available": 88,
+      "available": 12
+    },
+    "lei_parent": {
+      "available": 2
+    },
+    "lei_status": {
+      "available": 12
+    },
+    "liquidation": {
+      "available": 1
+    },
+    "long_term_liabilities": {
+      "available": 220,
+      "ambiguous": 2
+    },
+    "municipality": {
+      "available": 99
+    },
+    "net_financial_items": {
+      "available": 252
+    },
+    "net_profit": {
+      "available": 280
+    },
+    "news_item": {
+      "available": 6
+    },
+    "news_page": {
+      "available": 1
+    },
+    "official_website": {
+      "not_available": 85,
+      "ambiguous": 9,
+      "available": 5,
+      "blocked": 1
+    },
+    "operating_expenses": {
+      "available": 274
+    },
+    "operating_margin": {
+      "available": 66
+    },
+    "operating_profit": {
+      "available": 273
+    },
+    "organisation_number": {
+      "available": 100
+    },
+    "paid_in_equity": {
+      "available": 257,
+      "ambiguous": 3
+    },
+    "parent_company": {
+      "not_available": 95,
+      "not_applicable": 4,
+      "available": 1
+    },
+    "payroll_expenses": {
+      "available": 193
+    },
+    "postal_address": {
+      "available": 23
+    },
+    "profit_before_tax": {
+      "available": 277
+    },
+    "prokura_rule": {
+      "available": 17,
+      "not_available": 81
+    },
+    "receivables": {
+      "available": 230,
+      "ambiguous": 3
+    },
+    "registered_workplace": {
+      "available": 93,
+      "not_available": 27
+    },
+    "registered_workplace_count": {
+      "available": 100
+    },
+    "registration_date": {
+      "available": 100
+    },
+    "registry_email": {
+      "available": 26
+    },
+    "registry_event": {
+      "available": 258
+    },
+    "registry_mobile": {
+      "available": 21
+    },
+    "registry_phone": {
+      "available": 18
+    },
+    "registry_status": {
+      "available": 100
+    },
+    "registry_website": {
+      "available": 10
+    },
+    "research_grant": {
+      "not_available": 100
+    },
+    "retained_earnings": {
+      "available": 260,
+      "ambiguous": 2
+    },
+    "revenue": {
+      "available": 223
+    },
+    "role_change_event": {
+      "available": 106
+    },
+    "role_other": {
+      "available": 1
+    },
+    "sales_revenue": {
+      "available": 173
+    },
+    "sector": {
+      "available": 98
+    },
+    "share_capital": {
+      "available": 92
+    },
+    "signature_rule": {
+      "available": 94,
+      "not_applicable": 2,
+      "not_available": 4
+    },
+    "social_profile": {
+      "available": 1
+    },
+    "state_aid_grant": {
+      "not_available": 86,
+      "available": 81
+    },
+    "statutory_purpose": {
+      "available": 97
+    },
+    "tax_expense": {
+      "available": 190
+    },
+    "tax_incentive_project": {
+      "not_available": 98,
+      "available": 3
+    },
+    "total_assets": {
+      "available": 277,
+      "ambiguous": 3
+    },
+    "total_comprehensive_income": {
+      "available": 160
+    },
+    "total_liabilities": {
+      "available": 276,
+      "ambiguous": 3
+    },
+    "ultimate_parent": {
+      "available": 1
+    },
+    "vat_registration": {
+      "available": 100
+    },
+    "voluntary_register_registration": {
+      "available": 100
+    },
+    "website_address": {
+      "available": 2
+    },
+    "website_description": {
+      "available": 1
+    },
+    "website_language": {
+      "available": 5
+    },
+    "website_title": {
+      "available": 5
+    },
+    "website_verification": {
+      "available": 5
+    },
+    "wikidata_item": {
+      "not_available": 98,
+      "available": 2
+    }
+  },
+  "family_company_coverage": {
+    "annual_accounts": 1.0,
+    "corporate_structure": 0.06,
+    "hiring": 1.0,
+    "leadership": 1.0,
+    "legal_identity": 1.0,
+    "public_activity": 1.0,
+    "social_profiles": 0.01,
+    "website": 0.05,
+    "workplaces": 1.0
+  },
+  "family_claim_counts": {
+    "annual_accounts": 7046,
+    "corporate_structure": 13,
+    "hiring": 202,
+    "leadership": 406,
+    "legal_identity": 2438,
+    "public_activity": 468,
+    "social_profiles": 1,
+    "website": 30,
+    "workplaces": 193
+  },
+  "website_verification_levels": {
+    "L1": 5
+  },
+  "change_types": {},
+  "caches": {
+    "site_discovery": {
+      "name": "site_discovery",
+      "built_at": "2026-10-13T22:31:20Z",
+      "companies": 410518,
+      "companies_with_lead": 26224,
+      "lead_kinds": {
+        "email_domain": 2505,
+        "name_joined_no": 11962,
+        "registry_website": 9313,
+        "name_hyphen_no": 813,
+        "name_joined_com": 805,
+        "name_idn_no": 136,
+        "name_core_no": 480,
+        "name_hyphen_com": 76,
+        "name_core_com": 43,
+        "name_joined_alt_no": 91
+      },
+      "crawled_keys": 331917,
+      "description": "Discovery leads only: domains on which the exact organisation number was printed when crawled. The agent re-fetches and re-verifies live before publishing any claim.",
+      "method": "candidates (registry website, own-domain e-mail, legal-name slugs) -> DNS -> robots.txt -> home + up to 3 contact/about/terms/privacy pages -> checksum-valid org numbers"
+    },
+    "nav_jobs": {
+      "name": "nav_jobs",
+      "built_at": "2026-10-13T19:19:16Z",
+      "source": "NAV arbeidsplassen stillingsfeed (https://pam-stilling-feed.nav.no/api/v1/feed)",
+      "licence": "NAV arbeidsplassen job-ad feed, https://arbeidsplassen.nav.no/vilkar-api",
+      "feed_since": "2026-06-15T14:43:05Z",
+      "feed_cursor": {
+        "page_id": "0da858d0-0cf4-46f0-b556-0fefbcdd9a14",
+        "page_url": "https://pam-stilling-feed.nav.no/api/v1/feed/0da858d0-0cf4-46f0-b556-0fefbcdd9a14",
+        "last_item_modified": "2026-10-13T20:46:03.244718+02:00",
+        "at_end": true
+      },
+      "feed_pages": 220,
+      "ads_seen": 57376,
+      "active_ads": 9208,
+      "companies": 3467,
+      "dropped": {
+        "feed_inactive": 47731,
+        "entry_not_active": 0,
+        "expired": 262,
+        "no_orgnr": 172,
+        "unmapped": 3,
+        "no_entry": 0
+      },
+      "key": "organisation_number (parent enhet of the advertising underenhet, or the enhet itself)",
+      "note": "Only ads whose latest feed state and feed entry are ACTIVE and whose expiry has not passed. Contact persons are not stored. The runtime pages the feed forward from feed_cursor and removes ads that became INACTIVE."
+    },
+    "wikidata_p2333": {
+      "name": "wikidata_p2333",
+      "built_at": "2026-10-13T19:19:28Z",
+      "source": "Wikidata Query Service, P2333 (Norwegian organisation number)",
+      "licence": "Wikidata, CC0 1.0",
+      "endpoint": "https://query.wikidata.org/sparql",
+      "query": "SELECT ?item ?orgnr WHERE {\n  ?item p:P2333 ?st . ?st ps:P2333 ?orgnr .\n  FILTER NOT EXISTS { ?st wikibase:rank wikibase:DeprecatedRank }\n}",
+      "statements": 10501,
+      "organisation_numbers": 10403,
+      "multi_item_organisation_numbers": 91,
+      "skipped_non_9_digit_values": 0,
+      "requests": 1,
+      "use": "pre-selection only; the runtime re-reads every published fact live"
+    }
+  },
+  "config": {
+    "max_requests": 2000,
+    "time_budget_s": 2400,
+    "modules": [
+      "account_copies",
+      "accounts",
+      "authorisations",
+      "gleif",
+      "grants",
+      "group",
+      "jobs",
+      "news",
+      "public_records",
+      "registry",
+      "registry_feed",
+      "roles",
+      "social_profiles",
+      "state_aid",
+      "subunits",
+      "website",
+      "wikidata"
+    ],
+    "registry_snapshot": "",
+    "previous_envelopes": "",
+    "concurrency": 24,
+    "live_discovery": true
+  },
+  "bulk": null,
+  "optional_modules_skipped_by_budget": {}
+}

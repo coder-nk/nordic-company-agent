@@ -46,8 +46,9 @@ OPTIONAL_MODULES = {"account_copies", "authorisations"}
 
 
 def planned_skip(module: str, out) -> bool:
+    note = str(out.note or "") if out is not None else ""
     return (module in OPTIONAL_MODULES and out is not None and out.availability == "failed"
-            and str(out.note or "").startswith("not checked: request budget"))
+            and ("not checked: request budget" in note or note == "module produced no terminal state"))
 
 
 def _missing_labels(c: CompanyResult, ctx: RunContext) -> list[Claim]:
