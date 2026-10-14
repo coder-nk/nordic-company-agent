@@ -1021,6 +1021,74 @@ def _display(field_name: str, value: Any) -> str | None:
     return None
 
 
+def _nu(u: str | None) -> tuple[str, str]:
+    sp0 = urlsplit(u or "")
+    return (sp0.hostname or "").lower(), (sp0.path or "/").rstrip("/") or "/"
+
+
+def _declared(results: list[LeadResult]) -> tuple[LeadResult, dict] | None:
+    """The registry-filed lead the gate left ambiguous, when it qualifies as the declared website (L3d)."""
+    for r in results:
+        if r.lead.registry and r.state == "ambiguous" and r.pages:
+            d = V.declared_site(r.verdict, r.lead.start)
+            if d is not None:
+                return r, d
+    return None
+
+
+def _emit_declared(company: CompanyResult, rec: dict, st: _State, results: list[LeadResult], r: LeadResult,
+                   d: dict, *, data: dict[str, Any], claims: list[Claim]) -> bool:
+    """L3d: publish the URL the company filed in Enhetsregisteret (live, carrying its name) as its declared website,
+    with the relation the gate saw (group_member when group / sister / other-entity signals; settled after the
+    group module in contact_sharing.finalize_declared). No facts are taken from a site the gate did not verify."""
+    v = r.verdict
+    rev = _registry_hjemmeside_ev(company, rec)
+    if v is None or rev is None:
+        return False
+    home = r.pages[0]
+    ok_pages = [p for p in r.pages if 200 <= p.status < 300 and p.html]
+    url = d["url"]
+    if _nu(url) not in {_nu(p.final_url) for p in ok_pages}:
+        url = home.final_url.split("#")[0].split("?")[0]   # publish only a URL actually fetched with HTTP 200
+    hi = v.infos[0]
+    title = hi.title or hi.meta.get("og:site_name", "") or hi.strong_text()[:300]
+    pev = _ev(home, "title", title)
+    relation = "group_member" if d["group"] else "self"
+    why = re.sub(r"^\S+: ", "", r.reason)
+    carries = (f"its filed domain {d['redirect_from']}, which carries the company name, forwards to it"
+               if d.get("redirect_from") else "the live site carries its name")
+    note = (f"declared website: the company filed it in Enhetsregisteret (hjemmeside) and {carries}, but the "
+            f"identity gate did not verify it as exclusively this entity's site ({why}); only social profiles whose "
+            "handle is the company's own name are taken from the site")
+    method = f"{V.GATE_VERSION}:{V.DECLARED_LEVEL}"
+    basis = "registry_filed_website"
+    conf = V.DECLARED_CONFIDENCE
+    claims.append(Claim(field="official_website", value=url, evidence=[rev, pev], confidence=conf,
+                        display=url.split("://", 1)[-1].rstrip("/"), method=method, match_basis=basis,
+                        relation=relation, note=note[:600]))
+    ver = {"level": V.DECLARED_LEVEL, "proof_url": home.final_url, "proof_span": pev.claim_span or title,
+           "method": "registry_filed_website"}
+    claims.append(Claim(field="website_verification", value=ver, evidence=[rev, pev], confidence=conf,
+                        display=_display("website_verification", ver), method=method, match_basis=basis,
+                        relation=relation))
+    socials = V.anchor_spans(V.declared_socials(v, d.get("redirect_from"), group=d["group"]), v)
+    for f in socials:
+        claims.append(Claim(field=f.field, value=f.value, qualifier=f.qualifier, confidence=conf,
+                            evidence=[_ev(v.infos[f.page].page, f.locator, f.span, source_class=COMPANY_LINKED_PROFILE)],
+                            display=_display(f.field, f.value), method=method, match_basis=basis, relation=relation,
+                            note="linked from the company's declared website; the handle is the company's own name"))
+    company.add(claims)
+    data.update(state=r.state, reason=r.reason, level=None, url=None, domain=v.domain, candidate_url=url,
+                other_orgnrs=v.other_orgnrs,
+                socials=sorted((f.value for f in socials), key=lambda x: (x["platform"], x["url"])),
+                declared={"url": url, "domain": v.domain, "group": d["group"], "relation": relation,
+                          "reason": r.reason, "level": V.DECLARED_LEVEL, "confidence": conf})
+    company.data[MODULE] = data
+    company.outcome(ModuleOutcome(MODULE, "available", note=note[:500], source_url=home.final_url,
+                                  retrieved_at=home.retrieved_at, http_status=home.status, requests=st.spent))
+    return True
+
+
 def _emit(ctx, company: CompanyResult, rec: dict, st: _State, results: list[LeadResult], best: LeadResult | None,
           news: list[dict], feed_ev: tuple[V.Page, str] | None, reg_note: str | None,
           news_link: str | None = None) -> None:
@@ -1061,6 +1129,9 @@ def _emit(ctx, company: CompanyResult, rec: dict, st: _State, results: list[Lead
     v = best.verdict
     home = best.pages[0] if best.pages else None
     if best.state != "available" or v is None or not v.published:
+        decl = _declared(results)
+        if decl is not None and _emit_declared(company, rec, st, results, *decl, data=data, claims=claims):
+            return
         reason = best.reason
         others = [r.reason for r in results if r is not best and r.reason]
         if others:
@@ -1091,11 +1162,6 @@ def _emit(ctx, company: CompanyResult, rec: dict, st: _State, results: list[Lead
              "L2e": "registry_email_domain_corroborated"}.get(v.level, "registry_website_corroborated")
     method = f"{V.GATE_VERSION}:{v.level}"
     proof_page = v.infos[v.proof["page"]].page
-
-    def _nu(u: str | None) -> tuple[str, str]:
-        sp0 = urlsplit(u or "")
-        return (sp0.hostname or "").lower(), (sp0.path or "/").rstrip("/") or "/"
-
     ok_pages = [p for p in best.pages if 200 <= p.status < 300 and p.html]
     if _nu(v.site_url) not in {_nu(p.final_url) for p in ok_pages}:
         # audit 6: publish only a URL that was actually fetched with HTTP 200 and passed the gate - never construct one

@@ -1,0 +1,21 @@
+{
+  "name": "site_discovery_cc",
+  "built_at": "2026-10-14T04:49:44Z",
+  "sources": {
+    "commoncrawl": "Common Crawl CC-MAIN-2026-39 archived .no pages (CDX + WARC range reads)",
+    "live_crawl": "live crawl (robots.txt honoured) of .no domains listed in the Common Crawl web graph cc-main-2026-jul-aug-sep that no other discovery source covered",
+    "namecrawl": "labelled organisation numbers of other companies on pages fetched by the site_discovery crawl"
+  },
+  "source_terms": "https://commoncrawl.org/terms-of-use",
+  "companies_with_lead": 65,
+  "stats": {
+    "hosts": 1699,
+    "hosts_with_kw": 426,
+    "lead_commoncrawl": 66,
+    "already_lead": 314,
+    "brand_filtered": 64,
+    "hosts_directory": 1,
+    "subdomain_roots": 8
+  },
+  "description": "Discovery leads only, for companies without a site_discovery lead on the same domain: hosts whose home/contact/about/privacy pages printed this labelled organisation number (at most 3 labelled numbers per host; web-agency credit lines and hosts without a distinctive legal-name token in the domain or title skipped). The agent re-fetches and re-verifies every lead live before publishing any claim."
+}

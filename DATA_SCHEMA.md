@@ -51,10 +51,12 @@ confidence    0..1
 evidence_ids  ["ev-…"]: at least one for every available claim
 effective_at  date the source says the value is valid for (role sistEndret, accounts period end, …)
 period        accounts only: {start, end, year, scope: company|group}
-relation      self (default) | parent | ultimate_parent | subunit | related. Claims about another entity
-              are labelled, never presented as the company's own.
+relation      self (default) | parent | ultimate_parent | group_member | subunit | related. Claims about
+              another entity are labelled, never presented as the company's own; `group_member` marks a
+              declared (L3d) website the company shares with its group.
 match_basis   why the fact belongs to this org number: organisation_number_exact, org_number_on_website,
-              registry_linked_website, derived, wikidata_P2333_item_and_handle_name, ...
+              registry_linked_website, registry_filed_website (L3d, declared), derived,
+              wikidata_P2333_item_and_handle_name, ...
 method        extraction/verification method id
 module        source module that produced it
 first_seen / last_seen   first and latest run in which this exact key+value was observed

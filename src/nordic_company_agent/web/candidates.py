@@ -41,18 +41,41 @@ def name_tokens(name: str) -> list[str]:
     return [t for t in re.findall(r"[a-z0-9æøåäöüéè]+", n) if t]
 
 
-def name_slugs(name: str) -> dict[str, str]:
+def place_words(rec: dict) -> set[str]:
+    """Folded words of the registered post towns and municipalities (business and postal address)."""
+    out: set[str] = set()
+    for k in ("forretningsadresse", "postadresse"):
+        a = rec.get(k) if isinstance(rec.get(k), dict) else {}
+        for f in ("poststed", "kommune"):
+            out |= {translit(w, 0) for w in re.findall(r"[a-zæøåäöüéè]+", str(a.get(f) or "").lower())}
+    return out
+
+
+def name_slugs(name: str, places: set[str] | frozenset[str] = frozenset()) -> dict[str, str]:
     toks = name_tokens(name)
     if not toks:
         return {}
     t0 = [translit(t, 0) for t in toks]
     t1 = [translit(t, 1) for t in toks]
+    # leading initials written with dots ("P.E. GAARUD") form one label: pe-gaarud
+    merged: list[str] = []
+    m = re.match(r"\s*((?:[^\W\d_]\.\s*){2,})", name or "")
+    if m:
+        merged = [translit(re.sub(r"[\W\d_]", "", m.group(1)).lower(), 0)] + \
+            [translit(t, 0) for t in name_tokens(name[m.end():])]
+    # a trailing post town / municipality ("SJØ-SPORT MANDAL" -> sjo-sport) or "& Co" ("LAPSEN & CO" -> lapsen)
+    short = list(t0)
+    while len(short) > 1 and (short[-1] in places or short[-1] in ("co", "og")):
+        short.pop()
     out: dict[str, str | None] = {
         "joined": "".join(t0),
         "hyphen": "-".join(t0) if len(t0) > 1 else None,
         "joined_alt": "".join(t1) if t1 != t0 else None,
         "idn": None,
         "core": None,
+        "initials": "-".join(merged) if len(merged) > 1 and merged != t0 else None,
+        "short": "".join(short) if short and short != t0 and len("".join(short)) >= 5 else None,
+        "short_hyphen": "-".join(short) if len(short) > 1 and short != t0 else None,
     }
     if any(c in "".join(toks) for c in "æøåäöü"):
         try:
@@ -95,7 +118,7 @@ def email_domain(email: str | None) -> str | None:
     return reg_domain(d)
 
 
-def candidates(rec: dict, max_cands: int = 8) -> list[tuple[str, str]]:
+def candidates(rec: dict, max_cands: int = 10) -> list[tuple[str, str]]:
     """[(kind, host_or_url)] in priority order. kind ∈ registry_website, email_domain, name_*."""
     out: list[tuple[str, str]] = []
     reg = normalize_registry_website(rec.get("hjemmeside"))
@@ -104,8 +127,10 @@ def candidates(rec: dict, max_cands: int = 8) -> list[tuple[str, str]]:
     ed = email_domain(rec.get("epostadresse"))
     if ed:
         out.append(("email_domain", ed))
-    sl = name_slugs(rec.get("navn") or "")
+    from .verify import REGION_WORDS                    # lazy: verify is the heavier module
+    sl = name_slugs(rec.get("navn") or "", place_words(rec) | REGION_WORDS)
     for key, tld in (("joined", ".no"), ("hyphen", ".no"), ("idn", ".no"), ("joined_alt", ".no"),
+                     ("initials", ".no"), ("short_hyphen", ".no"), ("short", ".no"),
                      ("core", ".no"), ("joined", ".com"), ("hyphen", ".com"), ("core", ".com")):
         if sl.get(key):
             out.append((f"name_{key}{tld.replace('.', '_')}", sl[key] + tld))

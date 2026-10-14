@@ -33,7 +33,7 @@ Exact commit: <git rev-parse HEAD>
 Run command (one command, pinned environment via uv):
   ./run.sh <organisations.jsonl> <output_dir>
   (wraps: uv run nca run --input <file> --out <dir>; optional --bulk <frozen enheter CSV> uses the
-   frozen registry snapshot as identity anchor with zero requests; default caps --max-requests 2000
+   frozen registry snapshot as identity anchor with zero requests; default caps --max-requests 3000
    --time-budget 40)
 Reference-harness form:
   python scripts/run_competition_batch.py --organisations batch.jsonl --bulk brreg-enheter.csv \

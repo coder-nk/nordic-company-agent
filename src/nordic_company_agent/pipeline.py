@@ -15,8 +15,9 @@ from pathlib import Path
 from typing import Any, Awaitable, Callable
 
 from . import __version__
-from .context import CURRENT_COMPANY, CURRENT_MODULE, RunConfig, RunContext
+from .context import CURRENT_COMPANY, CURRENT_MODULE, TIERS, RunConfig, RunContext
 from .envelope import CompanyResult, ModuleOutcome, utc_iso
+from .web.candidates import candidates as web_candidates
 
 # (module name, python module, kind, tier, phase). Phases run in order; modules within a phase run
 # concurrently per company. Batch modules receive all companies at once.
@@ -65,12 +66,17 @@ def plan_reservations(ctx: RunContext, companies: list[CompanyResult], bulk: set
                  or (c.data.get("registry") or {}).get("organisasjonsform", {}).get("kode") in ("AS", "ASA", "SA", "NUF"))
     in_group = sum(1 for c in exact if (c.data.get("registry") or {}).get("erIKonsern"))
     leads = 0
+    live = 0                      # companies without a lead whose live candidate domains were not crawled offline
     disc = ctx.caches.jsonl_index("site_discovery")
     for c in exact:
         rec = c.data.get("registry") or {}
         rows = disc.get(c.organisation_number) or []
         if rec.get("hjemmeside") or any(r.get("leads") for r in rows):
             leads += 1
+        elif getattr(ctx.config, "live_discovery", False):
+            checked = {k for r in rows for k in (r.get("checked") or [])}
+            if any(k not in checked and k != "registry_website" for k, _d in web_candidates(rec)):
+                live += 1
     needs = {
         "registry": len(bulk or ()),
         "batch_external": 3 + 2 * (n // 100 + 1) + max(10, ne // 8) + 25,
@@ -80,13 +86,14 @@ def plan_reservations(ctx: RunContext, companies: list[CompanyResult], bulk: set
         "subunits": 0 if "subunits" in (bulk or ()) else ne,
         "group": in_group,
         "website_secondary": 2 * leads,
-        "discovery": 3 * max(0, ne - leads),
+        "discovery": 3 * live,
         "extras": 2 * ne,
     }
     remaining = ctx.client.remaining
     reservations: dict[str, int] = {}
-    for tier in ("registry", "batch_external", "accounts", "website_primary", "roles", "subunits", "group",
-                 "website_secondary", "discovery", "extras"):
+    # website tiers come before roles / subunits: those two have a complete nightly bulk fallback, a website
+    # that is never checked has none
+    for tier in TIERS:
         give = min(needs.get(tier, 0), max(0, remaining))
         reservations[tier] = give
         remaining -= give

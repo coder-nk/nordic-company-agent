@@ -1,15 +1,17 @@
 # Connectors, budgets and fallbacks
 
 Every request goes through `http.BudgetedClient`. It counts every HTTP request, including redirect hops,
-retries and robots.txt fetches, against `--max-requests` (default 2,000). It also enforces per-host
+retries and robots.txt fetches, against `--max-requests` (default 3,000). It also enforces per-host
 concurrency and spacing, timeouts, body caps, no cookies, and an SSRF guard for company-controlled URLs.
 A global wall-clock guard stops gathering early enough to write every envelope within `--time-budget`
 (default 40 min).
 
 ## Spending tiers (priority order)
-`registry → batch_external → accounts → website_primary → roles → subunits → group → website_secondary →
-discovery → extras`. Reservations are sized from the batch after identity is known. A lower tier can borrow
-only what no unfinished higher tier still needs.
+`registry → batch_external → accounts → website_primary → group → website_secondary → discovery → roles →
+subunits → extras`. Reservations are sized from the batch after identity is known. A lower tier can borrow
+only what no unfinished higher tier still needs. Website tiers come before roles and subunits because those
+two have a complete nightly bulk fallback and an unchecked website has none; `discovery` reserves 3 requests
+only for companies whose live candidate domains the declared discovery cache did not already crawl.
 
 | module | requests | batching / fallback |
 |---|---|---|
@@ -25,7 +27,7 @@ only what no unfinished higher tier still needs.
 | authorisations, state_aid, account_copies | extras, only with leftover budget | copy API rate limit (~30/min) respected |
 
 With 100 companies at the default budget everything runs (about 750 requests, about 3 minutes). With
-1,000 companies at 2,000 requests, bulk mode, batch endpoints and tiers keep identity, accounts, roles,
+1,000 companies at 3,000 requests, bulk mode, batch endpoints and tiers keep identity, accounts, roles,
 workplaces and verified websites. Extras are dropped first, and each is reported as
 `failed: not checked: request budget …` rather than silently missing.
 

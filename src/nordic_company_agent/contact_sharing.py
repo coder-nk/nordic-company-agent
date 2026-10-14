@@ -120,10 +120,34 @@ def _domain_filers(idx: dict[str, Any], dom: str, me: str) -> tuple[list[str], s
     return sorted(others), f"domain ({dom}, in e-mail addresses or websites)"
 
 
+def finalize_declared(company: CompanyResult) -> str | None:
+    """Settle the relation of a declared (L3d) website once the group module has run: a group / sister site is the
+    company's own when the company heads its registered group (it has subsidiaries and no parent); otherwise it
+    stays `group_member`. Returns the final relation, or None without a declared website."""
+    data = company.data.get("website") or {}
+    decl = data.get("declared")
+    if not isinstance(decl, dict):
+        return None
+    avail = [c for c in company.claims if c.availability == "available"]
+    subs = sum(1 for c in avail if c.field == "group_subsidiary")
+    parent = any(c.field in ("parent_company", "ultimate_parent") for c in avail)
+    rel = "self" if not decl.get("group") or (subs and not parent) else "group_member"
+    for c in company.claims:
+        if c.method.endswith(":L3d"):                    # the declared site, its verification and socials
+            c.relation = rel
+            if c.field == "official_website" and rel == "self" and decl.get("group"):
+                c.note = (f"{c.note}; the company heads its registered group ({subs} subsidiar"
+                          f"{'y' if subs == 1 else 'ies'}), so the group's site is its own")[:700]
+    decl["relation"] = rel
+    return rel
+
+
 def label_by_website(company: CompanyResult) -> int:
     """After the website gate: registry-filed websites and e-mails on a domain the gate refused as another entity's
-    site (group, parent, sister, chain, foreign, acquirer, platform, other org numbers) are labelled related."""
+    site (group, parent, sister, chain, foreign, acquirer, platform, other org numbers) are labelled related.
+    A declared (L3d) website whose relation is `self` counts as the entity's own domain."""
     data = company.data.get("website") or {}
+    decl = data.get("declared") if finalize_declared(company) == "self" else None
     name = next((str(c.value) for c in company.claims if c.field == "legal_name" and c.relation == "self"
                  and c.availability == "available"), "")
     refused: dict[str, str] = {}
@@ -136,6 +160,8 @@ def label_by_website(company: CompanyResult) -> int:
             if dom:
                 refused.setdefault(dom, reason)
     own_dom = reg_domain(_host(str(data["url"]))) if data.get("state") == "available" and data.get("url") else ""
+    if not own_dom and decl:
+        own_dom = reg_domain(_host(str(decl.get("url") or "")))
     refused.pop(own_dom, None)                                   # never contradict a published own site
     n = 0
     for cl in company.claims:

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # One evaluator command:
 #   ./run.sh <organisations.jsonl|.json|.txt> [output_dir] [extra `nca run` flags]
-# Example: ./run.sh smoke/smoke-100.jsonl out/smoke --max-requests 2000 --time-budget 40
+# Example: ./run.sh smoke/smoke-100.jsonl out/smoke --max-requests 3000 --time-budget 40
 # Writes <output_dir>/envelopes.jsonl (one terminal envelope per input, same order),
 # run-report.json, changes.jsonl, snapshots/ and site/index.html.
 set -euo pipefail

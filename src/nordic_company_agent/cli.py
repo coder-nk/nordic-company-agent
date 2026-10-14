@@ -265,6 +265,16 @@ def cmd_validate(a: argparse.Namespace) -> int:
     return 0 if res["passed"] else 1
 
 
+def cmd_bench(a: argparse.Namespace) -> int:
+    from .bench import bench, load_envelopes, render
+    ref = json.loads(Path(a.reference).read_text(encoding="utf-8"))
+    res = bench(load_envelopes(a.envelopes), ref if isinstance(ref, list) else ref.get("profiles", []))
+    if a.json:
+        Path(a.json).write_text(json.dumps(res, indent=2, ensure_ascii=False), encoding="utf-8")
+    print(render(res, show=a.show))
+    return 0
+
+
 def cmd_sample(a: argparse.Namespace) -> int:
     rows = []
     with gzip.open(a.universe, "rt", encoding="utf-8") as fh:
@@ -322,7 +332,7 @@ def main(argv: list[str] | None = None) -> int:
     r.add_argument("--out", "--output-dir", default="out/run", help="output directory")
     r.add_argument("--bulk", "--registry-snapshot", help="optional Brreg enheter CSV/JSON snapshot (identity anchor)")
     r.add_argument("--previous", help="previous envelopes.jsonl (default: <out>/envelopes.jsonl if present)")
-    r.add_argument("--max-requests", type=int, help="hard cap on outbound HTTP requests (default 2000 or $NCA_MAX_REQUESTS)")
+    r.add_argument("--max-requests", type=int, help="hard cap on outbound HTTP requests (default 3000 or $NCA_MAX_REQUESTS)")
     r.add_argument("--time-budget", type=float, help="minutes (default 40 or $NCA_TIME_BUDGET_S/60)")
     r.add_argument("--run-id")
     r.add_argument("--expected-count", type=int)
@@ -357,6 +367,13 @@ def main(argv: list[str] | None = None) -> int:
     v.add_argument("envelopes")
     v.add_argument("--input")
     v.set_defaults(fn=cmd_validate)
+
+    b = sub.add_parser("bench", help="score a run against Builderr's public reference profiles (recall proxy)")
+    b.add_argument("envelopes")
+    b.add_argument("--reference", default="research/samples/builderr_public_sample_100_profiles.json")
+    b.add_argument("--json", help="write the full comparison (all misses, conflicts, extras) here")
+    b.add_argument("--show", type=int, default=10, help="items listed per section")
+    b.set_defaults(fn=cmd_bench)
 
     s = sub.add_parser("sample", help="draw a random batch from the public universe")
     s.add_argument("--universe", default="data/signalpost-company-universe-2025.jsonl.gz")

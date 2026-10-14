@@ -2016,6 +2016,150 @@ def _l2r_refusal(ok: list["PageInfo"], rec: dict, prof: NameProfile, name: str, 
     return None
 
 
+# --------------------------------------------------------------------------- L3d: declared by the company itself
+# The registry-filed website (Enhetsregisteret `hjemmeside`) is the address the company itself declared to the
+# register, and Builderr's reference treats it as the company's website. When the gate cannot verify the filed site
+# as exclusively this entity's (a group, parent or sister site; no printed org number; no corroborating contact),
+# its URL is still published as the company's *declared* website: confidence 0.6, the relation labelled, and no
+# facts taken from the site. Only when the live site is a real site (the gate already refused parked, for-sale,
+# template, hijacked and bot-wall pages), is not a platform or site-builder page and not untouched CMS defaults,
+# its registrable domain carries the company's own name (a chain's or property manager's domain never does:
+# kitchn.no, vestbo.no, bate.no), and no other entity with this company's name prints its own org number there.
+HOLDING_NAME_WORDS = {"eiendom", "eiendommer", "eiendomsselskap", "holding", "holdings", "invest", "investering",
+                      "investment", "investments", "kapital", "capital", "ventures", "property", "properties"}
+DEAD_SITE_RX = re.compile(r"\b(?:lagt ned|nedlagt|under avvikling|er avviklet|har opphørt|ikke lenger i drift|"
+                          r"slått konkurs|er konkurs|har avsluttet driften|avsluttet virksomheten|"
+                          r"(?:site|website|business|company) (?:has been|is) (?:closed|shut down|discontinued)|"
+                          r"no longer in (?:business|operation))\b", re.I)
+DECLARED_LEVEL = "L3d"
+DECLARED_CONFIDENCE = 0.6
+# gate reasons that name a group, sister, parent, foreign or other-entity relationship (not mere missing proof:
+# "... not shared with other organisation numbers", "possibly a parent/brand site")
+GROUPISH_RX = re.compile(r"group site|group/foreign|sister|chain/franchise|section of another site|states another owner|"
+                         r"prints organisation numbers of other|as controller/seller/owner|parent/group site|"
+                         r"also the website of other organisation|also filed by sister|names other legal entities|"
+                         r"names another legal entity|holding entity|group brand|international group", re.I)
+
+
+def declared_alignment(domain: str, prof: NameProfile, places: Iterable[str] = ()) -> bool:
+    """The registrable-domain label carries the company's own name: a distinctive (non-place, non-country) token,
+    the whole name, or a >= 5-character prefix of it (worksystem.no for WORK SYSTEM NORWAY AS)."""
+    label = squash((domain or "").split(".")[0])
+    if len(label) < 3:
+        return False
+    places = {fold(p) for p in places}
+    toks = {squash(t) for t in _distinctive_tokens(prof)
+            if not t.isdigit() and fold(t) not in places and fold(t) not in COUNTRY_WORDS}
+    toks = {t for t in toks if len(t) >= 3}
+    whole = {w for w in (prof.joined, squash("".join(X.entity_words(prof.name)))) if len(w) >= 5}
+    if any(t in label for t in toks) or any(w in label for w in whole):
+        return True
+    # a prefix of the name aligns only beyond its leading place words (narvikgolf.no, never narvik.no)
+    rest = label
+    for t in prof.core:
+        if fold(t) in places and rest.startswith(squash(t)):
+            rest = rest[len(squash(t)):]
+        else:
+            break
+    return len(label) >= 5 and len(rest) >= 3 and any(w.startswith(label) for w in whole | toks)
+
+
+def declared_site(v: "Verdict | None", start_url: str = "") -> dict | None:
+    """{"url", "domain", "group", "reason", "redirect_from"} when the fetched registry-filed site the gate left
+    ambiguous qualifies as the company's declared website (L3d), else None. The live domain must carry the
+    company's name, or the filed domain must and forward to it (hjelpemiddelspesialisten.no -> hm-spes.no; a filed
+    lbl.as forwarding to another company's site never qualifies). `group`: the gate saw group, sister, parent,
+    chain, foreign or other-entity signals (relation group_member unless the company heads its registered group)."""
+    if v is None or v.level != "ambiguous" or not v.infos or not v.site_url or v.profile is None:
+        return None
+    if v.hosted or (v.domain or "") in PLATFORM_DOMAINS or (v.domain or "") in HOSTING_DOMAINS:
+        return None
+    ok = [i for i in v.infos if not i.blocking]
+    if not ok or ok[0].page is not v.infos[0].page:
+        return None
+    meta = " | ".join(" ".join((i.title, i.meta.get("description", ""), i.meta.get("og:description", ""))) for i in ok)
+    text = " | ".join(i.text for i in ok)
+    if CMS_DEFAULT_TITLE_RX.search(meta) or len({m.group(0).lower() for m in CMS_DEFAULT_BODY_RX.finditer(text)}) >= 2:
+        return None
+    if len(text) < 1500 and DEAD_SITE_RX.search(text + " | " + meta):
+        return None                             # "Dette nettstedet er lagt ned", "Selskapet er under avvikling"
+    own_words = X.entity_words(v.profile.name)
+    own_foreign = v.form == "NUF" or X.legal_form_is_foreign(v.profile.name)
+    named = any(_words_seq_in(own_words, i.text + " | " + i.strong_text()) for i in ok)
+    filed = X.reg_domain(urlsplit(start_url).hostname or "") if start_url else ""
+    redirect_from = None
+    if not declared_alignment(v.domain or "", v.profile, v.places):
+        # the filed own-name domain forwards here: only when the site names the company (a filed 33konsept.no
+        # forwarding to gagn.no, which never mentions 33Konsept, is another company's site)
+        if not (filed and filed != v.domain and filed not in HOSTING_DOMAINS and
+                declared_alignment(filed, v.profile, v.places) and named):
+            return None
+        redirect_from = filed
+    vis_others = sorted({d for i in ok for d in i.vis_others} - {v.target})
+    if vis_others and not named:
+        return None                             # prints other entities' org numbers and never names this company
+    for i in ok:
+        for before, d in i.named_orgnrs:
+            ents = X.legal_entities(before) if d != v.target else []
+            # the entity printed right before the number (only separators between): that number's name
+            if ents and re.fullmatch(r"[\s,;:–\-·|()]*", before[ents[-1]["end"]:]) and \
+                    X.is_target_entity(ents[-1], own_words, own_foreign):
+                return None                     # a namesake prints its own org number: not this company's site
+    group = bool(v.group_signals or vis_others or v.other_orgnrs or v.shared_with or v.other_entities or
+                 v.foreign_regs or v.subpath or v.foreign_owner) or bool(GROUPISH_RX.search(v.reason or ""))
+    # a property / holding / investment entity on its operating brand's site (HOBBY BOAT EIENDOM AS on
+    # hobbyboat.no) when the site never shows that part of the name: the brand's site, not the entity's own
+    strong = " | ".join(i.prominent_text() for i in ok)
+    holding = [t for t in v.profile.core if t in HOLDING_NAME_WORDS and not token_in(t, strong)]
+    if holding:
+        group = True
+    # the site is plainly this company's own: it prints this org number and no other, or its owner / © line is
+    # this company (KAN RENHOLD OSLO AS, "© Whitson AS") - a sister filing the same domain does not change that
+    own_printed = any(not h.get("misnamed") and h["src"] in ("text", "jsonld") for i in ok for h in i.hits) and \
+        not vis_others
+    owner_self = any(X.is_target_entity(o, own_words, own_foreign) for i in ok for o in i.owners)
+    if own_printed or owner_self:
+        group = False
+    return {"url": v.site_url, "domain": v.domain, "group": group, "reason": v.reason, "redirect_from": redirect_from}
+
+
+LEGAL_PREFIX_WORDS = {"stiftelsen", "stiftelse", "sameiet", "borettslaget", "foreningen", "andelslaget",
+                      "samvirkelaget", "brl"}
+
+
+def declared_socials(v: Verdict, redirect_from: str | None = None, group: bool = False) -> list["Fact"]:
+    """Social profiles linked from a declared (L3d) site whose handle is the company's own name (policy G, as for a
+    verified site: the name or the name-carrying domain label dominates the handle; platform, sponsor, place,
+    foreign-form and generic handles rejected). The only facts taken from a declared site. On a group site
+    (`group`) the handle must carry every word of the name: 'peab' is PEAB BYGG AS's parent group, not the company."""
+    prof = v.profile
+    if prof is None:
+        return []
+    label = None if redirect_from else squash((v.domain or "").split(".")[0])
+    words = [squash(t) for t in prof.core if fold(t) not in LEGAL_PREFIX_WORDS and squash(t)]
+    ok = [i for i in v.infos if not i.blocking]
+    out: list[Fact] = []
+    seen: set[str] = set()
+    for i in ok:
+        for platform in SOCIAL_PLATFORMS:
+            for u in i.x.get("social", {}).get(platform, []):
+                can = canonical_social(platform, u)
+                if not can or can[0] in seen or X.PLATFORM_SOCIAL_RX.search(can[0]):
+                    continue
+                if not social_matches(can[0], prof, label) or \
+                        not social_handle_ok(can[1], prof, label, v.form, v.places):
+                    continue
+                if FOREIGN_HANDLE_RX.search(squash(can[1])) or FOREIGN_FORM_HANDLE_RX.search(unquote(can[1])):
+                    continue
+                if group and not all(w in squash(unquote(can[1])) for w in words):
+                    continue
+                seen.add(can[0])
+                out.append(Fact("social_profile", {"platform": platform, "url": can[0], "handle": can[1]}, i.idx,
+                                "a[href]", raw_window(i.page.html, u.split("://", 1)[-1], 30, 60) or u,
+                                qualifier=f"{platform}|{can[0]}"))
+    return out
+
+
 # --------------------------------------------------------------------------- facts
 @dataclass
 class Fact:
@@ -2233,6 +2377,8 @@ def social_handle_ok(handle: str, prof: NameProfile, label: str | None, form: st
         for suf in FOREIGN_GLUED_FORMS:
             if h2.endswith(suf) and h2[:-len(suf)] in brands | {squash(t) for t in prof.core}:
                 return False
+    if len(prof.joined) >= 5 and h2 == prof.joined:
+        return True                         # the whole registered name ('afgruppen' for AF GRUPPEN ASA)
     for w in (X.GENERIC_TOKENS | COMMON_NOUNS):
         w = squash(w)
         if len(w) >= 4 and (h2.startswith(w) or h2.endswith(w)) and len(h2) - len(w) <= 2:

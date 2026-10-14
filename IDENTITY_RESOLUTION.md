@@ -43,9 +43,28 @@ four rounds of independent adversarial audits (EVAL.md), with precision always a
   the site does not leave its domain, nothing names another owner or c/o company, and the home page is
   readable (not a JavaScript shell). The company filed the address itself; Builderr's own reference crawler
   treats registry-linked websites as the company website. Only registry-equal contact facts are published.
+* **L3d, declared, confidence 0.6:** the website the company filed in Enhetsregisteret (`hjemmeside`) that the
+  gate could not verify as exclusively this entity's (a group, parent or sister site, no printed org number, no
+  corroborating contact). It is the address the company declared for itself, and Builderr's reference treats
+  it as the company's website, so it is published as `official_website` with `website_verification.level`
+  `L3d`, the gate's reason in the note, and a relation label:
+  * `self` when the gate saw no group signal, or when the company heads its registered group (it has
+    subsidiaries in the konsernstruktur and no parent): AF GRUPPEN ASA's afgruppen.no;
+  * `group_member` otherwise: PEAB BYGG AS's peab.no/bygg.
+
+  Conditions: the live home page is a real site (not parked, for sale, hijacked, a bot wall, a template, untouched
+  CMS defaults, a platform or site-builder page); its registrable domain carries the company's own name (a
+  distinctive non-place token, the whole name, or a prefix of it beyond leading place words), or the filed domain
+  does and forwards to it; and no namesake prints its own org number there. A chain's or property manager's
+  domain never carries the company's name (kitchn.no, vestbo.no, bate.no), and a filed domain that forwards to
+  another company's site never qualifies. The only facts taken from a declared site are social profiles whose
+  handle is the company's own name (on a group site: every word of the name, so PEAB BYGG AS never gets the
+  group's `peab` profile). Registry-filed contacts on the domain stay `related` unless the relation is `self`.
+  On Builderr's 100-company reference sample all 27 declared sites matched the reference domain (EVAL.md).
 * **Never published as the company's official website**, so the claim is `ambiguous` with the reason:
   * parent, group, sister or foreign-HQ sites: other legal entities, foreign registrations, ownership
-    phrases, a parent © owner, or the same brand on foreign country domains;
+    phrases, a parent © owner, or the same brand on foreign country domains (unless the company filed the
+    site itself: L3d above);
   * sections of another brand's site: hotel or retail chains, foreign parents' `/no/` sections, sub-paths of
     shared hosts;
   * property-manager, community and directory platforms (e.g. Vibbo);

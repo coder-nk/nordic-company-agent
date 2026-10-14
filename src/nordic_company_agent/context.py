@@ -25,7 +25,7 @@ DEFAULT_STATE_DIR = REPO_ROOT / "state"          # mutable local state (previous
 class RunConfig:
     run_id: str
     out_dir: Path
-    max_requests: int = 2000
+    max_requests: int = 3000
     time_budget_s: float = 40 * 60
     cache_dir: Path = DEFAULT_CACHE_DIR
     concurrency: int = 24
@@ -62,11 +62,11 @@ TIERS = (
     "batch_external",    # GLEIF / Wikidata / feeds / NAV feed pages (O(N/100))
     "accounts",          # one per company that files accounts
     "website_primary",   # robots + home + proof page of a known/verified site
-    "roles",             # one per company
-    "subunits",          # one per company
     "group",             # konsernstruktur when erIKonsern
     "website_secondary", # contact/about/news/careers/sitemap pages
-    "discovery",         # live candidate-domain discovery for companies not in the cache
+    "discovery",         # live candidate domains not crawled by the declared discovery cache
+    "roles",             # one per company (complete nightly bulk fallback: --bulk-mode auto)
+    "subunits",          # one per company (complete nightly bulk fallback)
     "extras",            # signature/prokura, state aid, filing-year copies
 )
 

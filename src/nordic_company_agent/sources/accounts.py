@@ -123,6 +123,7 @@ STALE_DAYS = 548                # ~18 months
 COPY_YEARS_PUBLISHED = 5        # annual_report_copy claims for the most recent N listed years
 COPY_RATE_FLOOR = 5             # stop calling the copy API when x-rate-limit-remaining < 5
 COPY_RATE_WINDOW_S = 65.0       # the copy API's fixed rate window is ~60 s
+COPY_WAIT_UNTIL_S = 480.0       # wait for the copy rate window only during a run's first 8 minutes
 
 _MISSING = object()
 
@@ -977,8 +978,10 @@ async def run_copies(ctx: Any, company: CompanyResult) -> None:
             rem = st["remaining"]
             if rem is not None and rem < COPY_RATE_FLOOR and time.monotonic() - st["at"] < COPY_RATE_WINDOW_S:
                 wait_s = COPY_RATE_WINDOW_S - (time.monotonic() - st["at"])
-                if ctx.time_left() - wait_s > 600:
-                    # Plenty of run time left: wait for the copy API's rate window to reset.
+                elapsed = float(getattr(ctx.config, "time_budget_s", 0) or 0) - ctx.time_left()
+                if ctx.time_left() - wait_s > 600 and elapsed + wait_s < COPY_WAIT_UNTIL_S:
+                    # Early in the run with plenty of time left: wait for the copy API's rate window to reset
+                    # (an optional extra must never stretch a large batch's wall clock).
                     await asyncio.sleep(max(0.0, wait_s))
                     st["remaining"] = None
                 else:

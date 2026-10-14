@@ -11,7 +11,7 @@ verbatim evidence span, plus an explicit availability state for anything it coul
   published only when the site prints that number, or when the registry-filed site is independently
   corroborated. Otherwise the website claim is `ambiguous` or `not_available`.
 * **Budgeted:** every outbound HTTP request (redirect hops, retries and robots.txt included) counts against
-  a hard cap. The defaults are 2,000 requests and 40 minutes per batch.
+  a hard cap. The defaults are 3,000 requests and 40 minutes per batch.
 * **Refresh as a diff:** re-running against the previous envelopes emits typed, evidence-backed
   changes. An identical source snapshot produces zero changes. A failed source keeps its last value,
   marked stale; it is never silently removed.
@@ -29,7 +29,7 @@ if `uv` is missing) and runs:
 uv run nca run --input <organisations.jsonl|.json|.txt> --out <dir> \
     [--bulk brreg-enheter.csv]        # optional frozen registry snapshot (identity anchor, 0 requests)
     [--previous old/envelopes.jsonl]  # default: <dir>/envelopes.jsonl from the last run
-    [--max-requests 2000] [--time-budget 40]
+    [--max-requests 3000] [--time-budget 40]
 ```
 
 Input formats: JSONL (`{"organisation_number": "..."}` per line), JSON (a list or
@@ -48,7 +48,9 @@ Outputs in `<dir>`:
 | `history/<run_id>/` | the previous run's envelopes, preserved before they are overwritten |
 
 Other commands: `nca company 923609016 --summary`, `nca serve` (HTTP: `GET /companies/:orgnr`,
-`POST /research`, `POST /refresh`), `nca validate out/smoke/envelopes.jsonl`, `nca viewer`, `nca sample`.
+`POST /research`, `POST /refresh`), `nca validate out/smoke/envelopes.jsonl`, `nca viewer`, `nca sample`,
+`nca bench out/run/envelopes.jsonl` (recall proxy: scores a run against Builderr's 100 public reference profiles
+with the official 70 % company / 30 % claim formula and lists every miss, conflict and extra; EVAL.md).
 
 ## Interactive app (one command)
 

@@ -452,7 +452,7 @@ function claimsOf(env) {
 }
 const one = (K, f, relation) => (K.avail[f] || []).find((c) => !relation || (c.relation || "self") === relation) || null;
 const many = (K, f) => K.avail[f] || [];
-const LEVEL_TXT = { L1: "Organisation number printed on the site", L2: "Filed in the register and matches its contact details", L2e: "Domain of the registered e-mail, independently corroborated", L2r: "Filed by the company itself; its name is in the domain and title" };
+const LEVEL_TXT = { L1: "Organisation number printed on the site", L2: "Filed in the register and matches its contact details", L2e: "Domain of the registered e-mail, independently corroborated", L2r: "Filed by the company itself; its name is in the domain and title", L3d: "Declared by the company in the register; not verified as exclusively its own" };
 function shown(c) {
   if (!c) return "—";
   if (c.field === "website_verification" && c.value && c.value.level) return LEVEL_TXT[c.value.level] || c.value.level;
@@ -574,9 +574,10 @@ function viewCompany(env) {
     const lvl = ((ver || {}).value || {}).level;
     const vtxt = !site ? "" : lvl === "L1" ? ["Organisation number printed on the site", "We found this company's exact organisation number on the website, next to a label such as “Org.nr”."]
       : lvl === "L2r" ? ["Filed by the company itself", "The company entered this website in the business register, and the domain and page title carry its name. Contacts are only shown if they equal the register."]
+      : lvl === "L3d" ? ["Declared by the company", site.relation === "group_member" ? "The company entered this website in the business register and the site carries its name, but it is shared with its group, so only social profiles in the company's own name are taken from it." : "The company entered this website in the business register and the site carries its name, but we could not verify it as exclusively this company's, so only social profiles in the company's own name are taken from it."]
         : ["Matches the register", "This is the website filed in the register, and the site shows the company's registered contact details and full legal name."];
     const socials = many(K, "social_profile");
-    S("online", "Online presence", "globe", "A website is only shown when it is proven to belong to this exact company, never a parent's, a chain's or a namesake's.",
+    S("online", "Online presence", "globe", "A website is verified only when it is proven to belong to this exact company. A site the company declared in the register but that we could not prove is shown as declared, never a chain's or a namesake's.",
       `${site ? `<div class="verify ${lvl === "L1" ? "" : "weak"}"><div class="ico">${ico("shield")}</div><div><b><a href="${esc(site.value)}" target="_blank" rel="noopener noreferrer">${esc(site.display || site.value)}${ico("ext", "ext")}</a></b><span>${esc(vtxt[0])}. ${esc(vtxt[1])}</span></div></div>` : `<div class="gap"><div>${ico("info")}</div><div><b>No verified website</b><p>${esc(((K.by.official_website || [])[0] || {}).note || "No site could be proven to belong to this company.")}</p></div></div>`}
       <div class="facts-list">${[ver, one(K, "website_title"), one(K, "website_description"), one(K, "brand_name")].map(factRow).join("")}${many(K, "contact_email").concat(many(K, "contact_phone")).map(factRow).join("")}${socials.map(factRow).join("")}${[one(K, "careers_page"), one(K, "news_page")].map(factRow).join("")}${many(K, "registry_website").concat(many(K, "registry_email"), many(K, "registry_phone"), many(K, "registry_mobile")).map(factRow).join("")}</div>`, (site ? 1 : 0) + socials.length);
   }

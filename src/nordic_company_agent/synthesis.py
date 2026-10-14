@@ -290,9 +290,13 @@ def build_summary(claims: list[dict[str, Any]], modules: dict[str, dict[str, Any
     site = C.one("official_website")
     ver = C.one("website_verification")
     socials = C.get("social_profile")
-    if site:
+    if site and ((ver or {}).get("value") or {}).get("level") == "L3d":
+        shared = " a site it shares with its group, and" if site.get("relation") == "group_member" else ""
+        S.add(f"Its website, as filed by the company itself in Enhetsregisteret, is {site['value']} —{shared} "
+              "not independently verified as exclusively its own, so only its own-name social profiles are taken from it.", [site, ver], "web")
+    elif site:
         lvl = ((ver or {}).get("value") or {}).get("level", "")
-        how = ("its organisation number is printed on the site" if "L1" in lvl else
+        how =("its organisation number is printed on the site" if "L1" in lvl else
                "it is the website the company filed in Enhetsregisteret, and its domain and title carry the company "
                "name" if lvl == "L2r" else
                "it is the website filed in Enhetsregisteret and matches the registry contact details")
