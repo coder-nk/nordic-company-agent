@@ -204,9 +204,11 @@ function initials(name) {
   const w = String(name || "?").replace(/[^\p{L}\p{N}& -]/gu, " ").split(/\s+/).filter((x) => x && !stop.has(x.toUpperCase()));
   return ((w[0] || "?")[0] + (w[1] ? w[1][0] : (w[0] || "").slice(1, 2))).toUpperCase();
 }
+const TONES = [["#2f8f6b", "#1d5c45"], ["#4f8197", "#2f5566"], ["#5d72a0", "#3d4d72"], ["#a87b35", "#6f5122"],
+  ["#a2565b", "#6b373b"], ["#3b8686", "#255757"], ["#738553", "#4c5a35"], ["#5b6f86", "#3a4859"]];
 function avatar(name, cls = "") {
-  const h = hashHue(name), h2 = (h + 48) % 360;
-  return `<span class="avatar ${cls}" style="background:linear-gradient(135deg,hsl(${h} 72% 58%),hsl(${h2} 76% 44%))" aria-hidden="true">${esc(initials(name))}</span>`;
+  const t = TONES[hashHue(name) % TONES.length];
+  return `<span class="avatar ${cls}" style="background:linear-gradient(135deg,${t[0]},${t[1]})" aria-hidden="true">${esc(initials(name))}</span>`;
 }
 function mod11(o) {
   if (!/^\d{9}$/.test(o)) return false;
@@ -240,7 +242,7 @@ function countUp(root = document) {
     const step = (t) => { const k = Math.min(1, (t - t0) / d); show(end * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(step); };
     requestAnimationFrame(step);
   });
-  requestAnimationFrame(() => $$("[data-w]", root).forEach((el) => (el.style.width = el.dataset.w + "%")));
+  requestAnimationFrame(() => $$("[data-w]", root).forEach((el) => (el.style.clipPath = `inset(0 ${100 - Math.max(+el.dataset.w, 0.6)}% 0 0 round 99px)`)));
 }
 const stagger = (i) => `style="animation-delay:${Math.min(i, 14) * 45}ms"`;
 const pill = (s) => `<span class="chip ${esc(s.polarity || "info")}"><i></i>${esc(s.text)}</span>`;
@@ -268,7 +270,7 @@ function optRow(r, i, on) {
   return `<a class="opt ${on ? "on" : ""}" data-i="${i}" href="#/company/${esc(r.orgnr)}">${avatar(r.name)}<div style="min-width:0"><b>${esc(r.name)}</b><span>${esc(sub)}</span></div><span class="r">${r.fin && r.fin.revenue != null ? esc(money(r.fin.revenue, r.fin.currency)) : ""}</span></a>`;
 }
 function researchOpt(d, i, on) {
-  return `<a class="opt ${on ? "on" : ""}" data-i="${i}" href="#/research/${d}"><span class="avatar" style="background:var(--grad-btn)">${ico("bolt")}</span><div><b>Research ${fmtOrg(d)} now</b><span>Not in your library yet · runs the full agent (about 30 s)</span></div><span class="r">↵</span></a>`;
+  return `<a class="opt ${on ? "on" : ""}" data-i="${i}" href="#/research/${d}"><span class="avatar" style="background:var(--aurora);color:var(--aurora-ink)">${ico("bolt")}</span><div><b>Research ${fmtOrg(d)} now</b><span>Not in your library yet · runs the full agent (about 30 s)</span></div><span class="r">↵</span></a>`;
 }
 
 /* palette */
@@ -321,8 +323,8 @@ function viewHome() {
   </section>
 
   <div class="grid g6 mt-l">
-    ${statTile("building", "violet", st.companies, "Companies", "profiled end to end", 0)}
-    ${statTile("file", "cyan", st.facts, "Facts with evidence", "each one clickable", 1)}
+    ${statTile("building", "ice", st.companies, "Companies", "profiled end to end", 0)}
+    ${statTile("file", "slate", st.facts, "Facts with evidence", "each one clickable", 1)}
     ${statTile("globe", "emerald", st.websites, "Verified websites", "proven to be the company's own", 2)}
     ${statTile("brief", "sky", st.hiring, "Hiring now", "active job ads on NAV", 3)}
     ${statTile("coins", "amber", st.grants, "Public support", "companies with grants", 4)}
@@ -340,8 +342,8 @@ function viewHome() {
     ${insight("trend", "emerald", growing, "growing over 20%", "Revenue up more than a fifth on the year before", "growing", 1)}
     ${insight("brief", "sky", st.hiring, "hiring right now", "Active job advertisements on NAV Arbeidsplassen", "hiring", 2)}
     ${insight("down", "amber", lossy, "made a loss", "Negative net result in the latest filed year", "loss", 3)}
-    ${insight("coins", "violet", st.grants, "received public support", "Grants listed in Støtteregisteret", "grants", 4)}
-    ${insight("globe", "cyan", st.websites, "verified websites", "The site proves it belongs to the company", "website", 5)}
+    ${insight("coins", "ice", st.grants, "received public support", "Grants listed in Støtteregisteret", "grants", 4)}
+    ${insight("globe", "slate", st.websites, "verified websites", "The site proves it belongs to the company", "website", 5)}
   </div>
 
   ${featured.length ? `<div class="section-title"><div><h3>Rich profiles</h3><p>Companies with a verified website and filed accounts.</p></div></div>
@@ -479,8 +481,8 @@ function chartSVG(series, cur) {
     g += `<text x="${x(i)}" y="${H - 8}" text-anchor="middle">${s.year}</text>`;
   });
   const pts = series.map((s, i) => (np[i] !== null ? [x(i), y(np[i]), s] : null)).filter(Boolean);
-  if (pts.length > 1) g += `<polyline points="${pts.map((p) => p[0] + "," + p[1]).join(" ")}" fill="none" stroke="#34d399" stroke-width="2.5" stroke-linejoin="round"/>`;
-  pts.forEach((p) => (g += `<circle cx="${p[0]}" cy="${p[1]}" r="5.5" fill="var(--bg)" stroke="${val(p[2].net_profit) < 0 ? "#fb7185" : "#34d399"}" stroke-width="2.5" data-c="${esc(p[2].net_profit.id)}" style="cursor:pointer"><title>Net result ${p[2].year}: ${esc(money(val(p[2].net_profit), cur))}</title></circle>`));
+  if (pts.length > 1) g += `<polyline points="${pts.map((p) => p[0] + "," + p[1]).join(" ")}" fill="none" stroke="#3ddc97" stroke-width="2.5" stroke-linejoin="round"/>`;
+  pts.forEach((p) => (g += `<circle cx="${p[0]}" cy="${p[1]}" r="5.5" fill="var(--bg)" stroke="${val(p[2].net_profit) < 0 ? "#f0575c" : "#3ddc97"}" stroke-width="2.5" data-c="${esc(p[2].net_profit.id)}" style="cursor:pointer"><title>Net result ${p[2].year}: ${esc(money(val(p[2].net_profit), cur))}</title></circle>`));
   return `<svg class="chart" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Revenue and net result by year">${g}</svg>`;
 }
 function ring(pct, labelTxt) {
@@ -530,7 +532,7 @@ function viewCompany(env) {
     const rowsF = [["revenue", "Revenue"], ["operating_profit", "Operating result"], ["net_profit", "Net result"], ["equity", "Equity"], ["total_assets", "Total assets"], ["total_liabilities", "Total debt"], ["equity_ratio", "Equity ratio"]];
     const cell = (c, f) => (c ? `<td class="c num" data-c="${esc(c.id)}" title="Open source">${esc(f === "equity_ratio" || f === "operating_margin" ? (val(c) * 100).toFixed(1) + " %" : money(val(c), cur))}</td>` : `<td class="faint">—</td>`);
     S("financials", "Financials", "chart", `Company accounts filed with Regnskapsregisteret, ${fin[0].year}–${last.year}. Bars show revenue, the line shows the net result.`,
-      `${chartSVG(fin, cur)}<div class="legend"><span><i style="background:linear-gradient(#818cf8,#22d3ee)"></i>Revenue</span><span><i style="background:#34d399"></i>Net result (red dot = loss)</span></div>
+      `${chartSVG(fin, cur)}<div class="legend"><span><i style="background:#a8d5e2"></i>Revenue</span><span><i style="background:#3ddc97"></i>Net result (red dot = loss)</span></div>
       <div style="overflow:auto"><table class="ftable"><thead><tr><th>${esc(cur)}</th>${fin.map((s) => `<th>${s.year}</th>`).join("")}</tr></thead><tbody>
       ${rowsF.filter(([f]) => fin.some((s) => s[f])).map(([f, t]) => `<tr><td>${esc(t)} ${help(f)}</td>${fin.map((s) => cell(s[f], f)).join("")}</tr>`).join("")}</tbody></table></div>`, fin.length);
   }
@@ -557,14 +559,14 @@ function viewCompany(env) {
   // Activity timeline
   const tl = [];
   const push = (c, when, what, why, color) => tl.push({ c, when: date10(when), what, why, color });
-  many(K, "registry_event").forEach((c) => push(c, c.value.date, "Registry update", (c.display || "").replace(/^\S+\s/, ""), "#818cf8"));
-  many(K, "role_change_event").forEach((c) => push(c, c.value.date, "Board or management change", "Roles updated in the register", "#a78bfa"));
-  many(K, "news_item").forEach((c) => push(c, c.value.published, c.value.title, "News on the company's website", "#22d3ee"));
-  many(K, "job_posting").forEach((c) => push(c, c.value.published || c.value.date || c.effective_at, c.value.title, "Job ad on NAV Arbeidsplassen", "#38bdf8"));
-  many(K, "state_aid_grant").forEach((c) => push(c, c.value.date, `Public support${c.value.amount ? ": " + money(c.value.amount, c.value.currency || "NOK") : ""}`, c.value.grantor || c.value.scheme || "Støtteregisteret", "#fbbf24"));
-  many(K, "tax_incentive_project").forEach((c) => push(c, c.value.date, `SkatteFUNN: ${c.value.title || "R&D project"}`, `Status: ${c.value.status || "—"}`, "#34d399"));
-  many(K, "research_grant").forEach((c) => push(c, c.value.date, `Research Council: ${c.value.title || "project"}`, `Status: ${c.value.status || "—"}`, "#34d399"));
-  many(K, "food_inspection").forEach((c) => push(c, c.value.date, `Food-safety inspection: ${c.value.location_name || ""}`, c.display || "", "#fb7185"));
+  many(K, "registry_event").forEach((c) => push(c, c.value.date, "Registry update", (c.display || "").replace(/^\S+\s/, ""), "#a8d5e2"));
+  many(K, "role_change_event").forEach((c) => push(c, c.value.date, "Board or management change", "Roles updated in the register", "#8ab4f8"));
+  many(K, "news_item").forEach((c) => push(c, c.value.published, c.value.title, "News on the company's website", "#3ddc97"));
+  many(K, "job_posting").forEach((c) => push(c, c.value.published || c.value.date || c.effective_at, c.value.title, "Job ad on NAV Arbeidsplassen", "#8ab4f8"));
+  many(K, "state_aid_grant").forEach((c) => push(c, c.value.date, `Public support${c.value.amount ? ": " + money(c.value.amount, c.value.currency || "NOK") : ""}`, c.value.grantor || c.value.scheme || "Støtteregisteret", "#f2b544"));
+  many(K, "tax_incentive_project").forEach((c) => push(c, c.value.date, `SkatteFUNN: ${c.value.title || "R&D project"}`, `Status: ${c.value.status || "—"}`, "#3ddc97"));
+  many(K, "research_grant").forEach((c) => push(c, c.value.date, `Research Council: ${c.value.title || "project"}`, `Status: ${c.value.status || "—"}`, "#3ddc97"));
+  many(K, "food_inspection").forEach((c) => push(c, c.value.date, `Food-safety inspection: ${c.value.location_name || ""}`, c.display || "", "#f0575c"));
   tl.sort((a, b) => String(b.when).localeCompare(String(a.when)));
   S("activity", "Activity timeline", "clock", "Dated events from the register, the company's website, NAV, Støtteregisteret and other public records.",
     tl.length ? `<div class="timeline">${tl.slice(0, 40).map((t) => `<div class="tl" data-c="${esc(t.c.id)}" style="--c:${t.color}" tabindex="0" role="button"><div class="when">${esc(t.when || "undated")}</div><div class="what">${esc(t.what)}</div><div class="why">${esc(t.why)}</div></div>`).join("")}</div>${tl.length > 40 ? `<p class="small muted">+ ${tl.length - 40} older events in “All facts”.</p>` : ""}` : "", tl.length);
@@ -684,7 +686,7 @@ function bindResearch(org) {
     const ok = mod11(d);
     f.classList.toggle("ok", ok);
     f.classList.toggle("bad", d.length === 9 && !ok);
-    h.innerHTML = d.length < 9 ? `<span class="muted">${d.length}/9 digits</span>` : ok ? `<span style="color:var(--emerald)">✓ valid number${state.byOrg.has(d) ? " · in library" : ""}</span>` : `<span style="color:var(--rose)">check digit does not match</span>`;
+    h.innerHTML = d.length < 9 ? `<span class="muted">${d.length}/9 digits</span>` : ok ? `<span style="color:var(--aurora)">✓ valid number${state.byOrg.has(d) ? " · in library" : ""}</span>` : `<span style="color:var(--rose)">check digit does not match</span>`;
     go.disabled = !ok || !!state.job;
     return ok ? d : null;
   };
@@ -725,7 +727,7 @@ function poll(job, org) {
       $(".si", s).innerHTML = ico(cls === "done" ? "check" : cls === "none" ? "x" : "alert");
       $("[data-st]", s).textContent = `${STATE_TXT[ev.availability] || ev.availability || ""} · ${ev.t}s`;
     }
-    $("#rp i").style.width = Math.min(100, (seen.size / MODULES.length) * 100) + "%";
+    $("#rp i").style.clipPath = `inset(0 ${100 - Math.min(100, (seen.size / MODULES.length) * 100)}% 0 0 round 99px)`;
     if (j.status === "running") { state.pollT = setTimeout(tick, 700); return; }
     finishJob(j, org, true);
   };
@@ -738,7 +740,7 @@ async function finishJob(j, org, onPage) {
     state.cache.delete(org);
     if (onPage) {
       $$(".step.wait").forEach((s) => { s.className = "step none"; $(".si", s).innerHTML = ico("x"); $("[data-st]", s).textContent = "Not run"; });
-      $("#rp i").style.width = "100%";
+      $("#rp i").style.clipPath = "inset(0 0 0 0 round 99px)";
       $("#rdone").innerHTML = `<div class="verify"><div class="ico">${ico("check")}</div><div><b>Profile ready in ${j.elapsed}s</b><span>Every fact has its source attached.</span></div><a class="btn btn-primary" style="margin-left:auto" href="#/company/${org}">Open profile ${ico("arrow")}</a></div>`;
       $("#rgo").disabled = false;
     }
@@ -751,8 +753,8 @@ async function finishJob(j, org, onPage) {
 
 /* ------------------------------------------------------------------ views: about */
 function viewAbout() {
-  const steps = [["building", "violet", "1. Anchor the identity", "The organisation number is looked up in Enhetsregisteret, Norway's official business register. Everything else must match it exactly."],
-    ["db", "cyan", "2. Gather from official sources", "Annual accounts, board and management, workplaces, group links, LEI, job ads, public support, R&D projects and inspections, each from its official source."],
+  const steps = [["building", "ice", "1. Anchor the identity", "The organisation number is looked up in Enhetsregisteret, Norway's official business register. Everything else must match it exactly."],
+    ["db", "sky", "2. Gather from official sources", "Annual accounts, board and management, workplaces, group links, LEI, job ads, public support, R&D projects and inspections, each from its official source."],
     ["shield", "emerald", "3. Verify the website", "A website is only accepted if it prints the exact organisation number, or is filed by the company with its name in the domain. Group, chain and namesake sites are rejected."],
     ["spark", "amber", "4. Explain and keep current", "A plain-language summary is written from the verified facts only. Re-running shows what changed, with evidence for both the old and new values."]];
   const states = Object.entries(STATE_TXT).map(([k, t]) => `<div class="gap" style="border-style:solid"><span class="state ${k}">${esc(t)}</span><div><p style="margin:0;color:var(--ink-2)">${esc(STATE_HELP[k])}</p></div></div>`).join("");
