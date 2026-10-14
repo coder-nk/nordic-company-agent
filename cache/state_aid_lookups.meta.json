@@ -1,0 +1,9 @@
+{
+  "name": "state_aid_lookups",
+  "built_at": "2026-10-14T06:32:59Z",
+  "schemes": 736,
+  "codes": 202,
+  "sha256": "ab45eaf496949942e67c5b6da4f4d9ae1f0627faf0f444e3559ea2d1bb1deba4",
+  "licence": "NLOD 2.0 (Brønnøysundregistrene)",
+  "use": "labels for scheme ids and codes when the live Støtteregisteret lookups do not answer"
+}

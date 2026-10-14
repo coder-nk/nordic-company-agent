@@ -103,6 +103,18 @@ async def _lookups(ctx) -> dict[str, Any]:
                             out["schemes"][s["stoettetiltaksnummer"]] = (nm, SCHEMES_URL, sha, ra, i)
             except Exception:  # noqa: BLE001
                 pass
+        # Declared fallback (cache/state_aid_lookups): labels for ids the live lookups did not resolve this run, so a
+        # slow register API never turns names into bare ids (and a refresh never reports that as a change).
+        try:
+            fb = ctx.caches.json("state_aid_lookups") or {}
+            fmeta = ctx.caches.meta("state_aid_lookups") or {}
+        except Exception:  # noqa: BLE001
+            fb, fmeta = {}, {}
+        built, fsha = fb.get("built_at") or fmeta.get("built_at"), fmeta.get("sha256")
+        for sid, nm in (fb.get("schemes") or {}).items():
+            out["schemes"].setdefault(sid, (nm, SCHEMES_URL, fsha, built, None))
+        for cid, nm in (fb.get("codes") or {}).items():
+            out["codes"].setdefault(cid, (nm, f"{API}/kodeliste", fsha, built, None))
         shared["state_aid_lookups"] = out
         return out
 
@@ -229,7 +241,10 @@ async def _run(ctx, company: CompanyResult) -> None:
         for hit, what in ((scheme_hit, "scheme name"), (purpose_hit, "purpose label")):
             if hit:
                 name, url, lsha, lra, li = hit
-                loc = f"/stoetteordning/{li}/navn" if what == "scheme name" else f"/{li}/navn"
+                if li is None:
+                    loc = "declared cache state_aid_lookups (live lookup did not answer)"
+                else:
+                    loc = f"/stoetteordning/{li}/navn" if what == "scheme name" else f"/{li}/navn"
                 evs.append(Evidence(source_url=url, source_class=OFFICIAL_STATE_AID, source_name=SOURCE_NAME,
                                     retrieved_at=lra, content_sha256=lsha, claim_span=str(name)[:300],
                                     locator=loc, extraction_method=f"{VERSION}:{what.replace(' ', '_')}",

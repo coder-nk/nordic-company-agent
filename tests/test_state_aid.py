@@ -184,3 +184,29 @@ def test_budget_fallback_uses_declared_dump_cache(tmp_path):
     asyncio.run(state_aid.run(ctx, other))
     assert other.modules["state_aid"].availability == "not_available"
     asyncio.run(ctx.client.aclose())
+
+
+def test_scheme_names_fall_back_to_declared_cache_when_lookup_fails(tmp_path):
+    """Live scheme lookup times out: names come from cache/state_aid_lookups, so values (and refresh) stay stable."""
+    import gzip as _gz
+    body = (FIX / "stotte_equinor.json").read_bytes()
+    sid = json.loads(body)["stoettetildeling"][0]["tilknyttetStoetteordning"]
+    cache = tmp_path / "cache"
+    cache.mkdir()
+    (cache / "state_aid_lookups.json.gz").write_bytes(_gz.compress(json.dumps(
+        {"built_at": "2026-10-14T06:32:59Z", "schemes": {sid: "Cached scheme name"}, "codes": {}}).encode()))
+    (cache / "state_aid_lookups.meta.json").write_text(json.dumps({"built_at": "2026-10-14T06:32:59Z", "sha256": "ab" * 32}))
+    eq = company("923609016")
+    ctx = make_ctx(tmp_path)
+    host = "stottetiltak-registerinfo-api.app.brreg.no"
+    with respx.mock(assert_all_called=False) as router:
+        router.post(host=host, path=SEARCH_PATH).mock(return_value=httpx.Response(
+            200, content=body, headers={"content-type": "application/json"}))
+        for name in state_aid.CODELISTS:
+            router.get(f"{API}/kodeliste/{name}").mock(return_value=httpx.Response(
+                200, content=(FIX / f"stotte_kodeliste_{name}.json").read_bytes(), headers={"content-type": "application/json"}))
+        router.post(host=host, path="/api/v1/soek/stoetteordning").mock(side_effect=httpx.ReadTimeout("slow"))
+        run(ctx, [eq])
+    top = [c for c in eq.claims if c.field == "state_aid_grant"][0]
+    assert top.value["scheme"] == "Cached scheme name" and top.value["scheme_id"] == sid
+    assert any("declared cache state_aid_lookups" in (e.locator or "") for e in top.evidence)
